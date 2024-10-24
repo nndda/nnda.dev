@@ -98,7 +98,7 @@ body {
     }
   }
 
-  & > svg {
+  & > svg { /* stylelint-disable-line */
     // padding-left: .25em;
     color: $background;
   }

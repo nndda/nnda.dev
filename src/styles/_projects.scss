@@ -68,17 +68,17 @@
   border-radius: 9px;
   @include project-label-style($text);
 
+  /* stylelint-disable */
   &.SCSS {
     @include project-label-style(#c6538c);
   }
-
   &.TypeScript {
     @include project-label-style(#3178c6);
   }
-
   &.Handlebars {
     @include project-label-style(#f7931e);
   }
+  /* stylelint-enable */
 }
 
 @media (width >= 700px) {
