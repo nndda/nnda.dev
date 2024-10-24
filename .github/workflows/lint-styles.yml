@@ -1,0 +1,39 @@
+name: Stylelint
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**/*.scss'
+      - '**/*.css'
+      - '.github/workflows/lint-styles.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.scss'
+      - '**/*.css'
+      - '.github/workflows/lint-styles.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Linting Dependencies
+        run: |
+          npm install --no-save \
+            stylelint \
+            stylelint-config-standard-scss
+
+      - name: Lint Stylesheets
+        run: npm run lint-styles
