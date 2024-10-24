@@ -1,0 +1,58 @@
+@use "variables" as *;
+
+#projects {
+
+  & .section-title {
+    margin: 0;
+    margin-right: .5em;
+    // margin-bottom: 2em;
+    text-align: right;
+  }
+
+  & > .section-inner {
+    display: grid;
+    grid-template-rows: 130px;
+    grid-auto-rows: auto;
+    grid-template-columns: 50% 50%;
+
+    margin: auto;
+    padding: 5em 0;
+
+    max-width: 980px;
+
+    & > .project-card {
+      margin: .5em;
+      background: $background;
+
+      border-radius: 6px;
+      border: 1px solid rgba($text, 0.3);
+
+      overflow: hidden;
+
+      & > h3 {
+        margin: 0;
+        padding: 1em;
+        background: $background-light;
+      }
+
+      & > p {
+        margin: 0;
+        padding: 1.5em 2em;
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+
+  #projects {
+    & > .section-inner {
+      & > :nth-child(odd) {
+        transform: translateY(2.5em);
+      }
+      & > :nth-child(even) {
+        transform: translateY(-2.5em);
+      }
+    }
+  }
+}
