@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+.flex-space {
+  flex-grow: 1;
+}
+
+.text-secondary {
+  color: $secondary !important;
+
+  & svg {
+    fill: $secondary !important;
+  }
+}
+
+.text-primary {
+  color: $primary;
+}
