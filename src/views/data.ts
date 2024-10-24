@@ -1,14 +1,14 @@
-const {
+import {
   siItchdotio,
   siGithub,
   siMastodon,
   siCodepen,
   siPatreon,
   siKofi,
-} = require("simple-icons");
+} from "simple-icons";
 
-const { icon } = require("@fortawesome/fontawesome-svg-core");
-const {
+import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
   faCode,
   faBars,
   faCodeFork,
@@ -16,13 +16,13 @@ const {
   faBug,
   faXmark,
   faScaleBalanced,
-} = require("@fortawesome/free-solid-svg-icons");
+} from "@fortawesome/free-solid-svg-icons";
 
-function i(icon_name) {
+function i(icon_name: IconDefinition): string[] {
   return icon(icon_name).html;
 }
 
-function urlStr(url) {
+function urlStr(url: string): string {
   if (!url.startsWith("https://") && !url.startsWith("http://")) {
     return "https://" + url;
   }
@@ -142,9 +142,9 @@ module.exports = {
   },
 
   easeOutBounce: `--easeOutBounce: linear(${[...new Array(50)]
-    .map((_d, i) => {
+    .map((_d: number, i: number): number => {
       let x = i * (1 / 50);
-      
+
       const n1 = 7.5625;
       const d1 = 2.75;
 

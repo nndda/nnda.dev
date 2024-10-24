@@ -6,9 +6,15 @@
     "strict": true,
     "noImplicitAny": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "removeComments": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlBundlerPlugin = require("html-bundler-webpack-plugin");
 
-function abs(path_string) {
+function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
 }
 
@@ -18,7 +18,7 @@ module.exports = {
         index: abs("src/views/index.hbs"),
       },
 
-      data: require("./src/views/data.js"),
+      data: require("./src/views/data.ts"),
 
       preprocessor: "handlebars",
       preprocessorOptions: {
