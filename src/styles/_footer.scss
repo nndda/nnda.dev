@@ -14,6 +14,9 @@ footer {
 	& .note {
 		max-width: 400px;
 		padding: .25em 1.5em;
+		margin-right: 0;
+		margin-left: 0;
+
 		border-radius: 6px;
 
 		background: rgba($background-light, 0.6);
