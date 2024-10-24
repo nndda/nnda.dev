@@ -10,3 +10,9 @@ $background-dark: color.adjust($background, $lightness: -1.5%);
 
 $text: #eee;
 $text-secondary: color.mix($text, $background, 80%);
+
+@mixin no-select() {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

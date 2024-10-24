@@ -136,6 +136,7 @@ body {
 #things-stuff {
   display: inline-block;
   color: $primary;
+  @include no-select();
 }
 
 .bg-spiral-container {
@@ -146,6 +147,8 @@ body {
   z-index: -2;
 
   // transform: skewY(3deg) skewX(6deg);
+
+  @include no-select();
 
   & > :nth-child(1) {
     opacity: 0.9;
