@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sass:color";
 
 #projects {
   & .section-title {
@@ -31,15 +32,51 @@
 
       & > h3 {
         margin: 0;
-        padding: 1em;
+        padding: .5em;
+        padding-left: 1em;
         background: $background-light;
+      }
+
+      & > .labels-container {
+        padding-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
       }
 
       & > p {
         margin: 0;
-        padding: 1.5em 2em;
+        padding: 1.5em 1.2em;
+        padding-top: 1em;
       }
     }
+  }
+}
+
+@mixin project-label-style($color) {
+  color: $color;
+  background: color.mix($color, $background, 2%);
+  border: 1px solid color.mix($color, $background, 30%);
+}
+
+.project-label {
+  display: inline-block;
+  padding: .15em .5em;
+  margin: 0 .25em;
+  font-size: .8em;
+  font-weight: lighter;
+  border-radius: 9px;
+  @include project-label-style($text);
+
+  &.SCSS {
+    @include project-label-style(#c6538c);
+  }
+
+  &.TypeScript {
+    @include project-label-style(#3178c6);
+  }
+
+  &.Handlebars {
+    @include project-label-style(#f7931e);
   }
 }
 

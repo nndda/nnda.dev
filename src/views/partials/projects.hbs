@@ -16,6 +16,11 @@
               {{this.name}}
             </a>
           </h3>
+          <div class="labels-container">
+            {{#each this.labels}}
+              <span class="project-label {{this}}">{{this}}</span>
+            {{/each}}
+          </div>
           <p>{{this.description}}</p>
         </div>
       {{/if}}
