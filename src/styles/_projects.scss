@@ -99,5 +99,9 @@
     & > .section-inner {
       grid-template-columns: 100%;
     }
+
+    & .section-title {
+      text-align: center;
+    }
   }
 }
