@@ -89,6 +89,9 @@ body {
 }
 
 #home {
+  padding-bottom: 5em;
+  overflow: hidden;
+
   & > .content {
     display: flex;
 
