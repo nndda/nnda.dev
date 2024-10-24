@@ -3,18 +3,22 @@
     <h1 class="section-title">Projects<small>プロジェクト</small></h1>
     <div></div>
     {{#each projects}}
-      <div class="project-card">
-        <h3>
-          <a href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            referrerpolicy="origin"
-          >
-            {{this.name}}
-          </a>
-        </h3>
-        <p>{{this.description}}</p>
-      </div>
+      {{#if this.offsetElem}}
+        <div class="hidden-display"></div>
+      {{else}}
+        <div class="project-card">
+          <h3>
+            <a href="{{this.url}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              referrerpolicy="origin"
+            >
+              {{this.name}}
+            </a>
+          </h3>
+          <p>{{this.description}}</p>
+        </div>
+      {{/if}}
     {{/each}}
   </div>
 </section>
