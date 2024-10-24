@@ -36,6 +36,12 @@ function i(icon_name: IconDefinition): string[] {
 }
 
 function urlStr(url: string): string {
+  if (url.startsWith("#")) {
+    return url;
+  }
+  if (url.startsWith("\\#")) {
+    return url.replace("\\#", "#");
+  }
   if (!url.startsWith("https://") && !url.startsWith("http://")) {
     return "https://" + url;
   }
@@ -58,7 +64,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
   siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
 });
 
-const repoURL = urlStr(siteData.repoURL) ?? "";
+const repoURL = urlStr(siteData.repoURL);
 
 module.exports = {
   "repoURL": repoURL,

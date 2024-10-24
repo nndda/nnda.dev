@@ -18,9 +18,11 @@ nav:
 
     - icon: itchdotio
       url: nnda.itch.io
+      external: true
 
     - icon: github
       url: github.com/nndda
+      external: true
 
 socials:
   - name: GitHub
