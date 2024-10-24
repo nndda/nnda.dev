@@ -1,0 +1,12 @@
+@use "sass:color";
+
+$primary: #fc3a78;
+// $secondary: #b9cdff;
+$secondary: #b9f3ff;
+$background: #0f1116;
+// $background: color.adjust(#0f1116, $lightness: -2.5%);
+$background-light: color.adjust($background, $lightness: 1.5%);
+$background-dark: color.adjust($background, $lightness: -1.5%);
+
+$text: #eee;
+$text-secondary: color.mix($text, $background, 80%);
