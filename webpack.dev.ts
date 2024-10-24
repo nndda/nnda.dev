@@ -1,5 +1,5 @@
-const path = require("path");
-const HtmlBundlerPlugin = require("html-bundler-webpack-plugin");
+import path from "path";
+import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 
 function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
@@ -42,20 +42,20 @@ module.exports = {
   },
 
   module: {
-      rules: [
-        {
-          test: /\.ts$/,
-          use: "ts-loader",
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.s?css$/,
-          use: ["css-loader", "sass-loader"],
-        },
-        {
-          test: /\.(ico|png|jp?g|svg)/,
-          type: "asset/resource",
-        },
-      ],
-    },
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.s?css$/,
+        use: ["css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(ico|png|jp?g|svg)/,
+        type: "asset/resource",
+      },
+    ],
+  },
 };

@@ -1,3 +1,7 @@
+import { parse } from "yaml";
+import path from "path";
+import fs from "fs";
+
 import {
   siItchdotio,
   siGithub,
@@ -6,6 +10,15 @@ import {
   siPatreon,
   siKofi,
 } from "simple-icons";
+
+const siIcons : Record<string, string> = {
+  "itchdotio": siItchdotio.svg,
+  "github": siGithub.svg,
+  "mastodon": siMastodon.svg,
+  "codepen": siCodepen.svg,
+  "patreon": siPatreon.svg,
+  "kofi": siKofi.svg,
+}
 
 import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -29,81 +42,35 @@ function urlStr(url: string): string {
   return url;
 }
 
-const repoURL = "https://github.com/nndda/website";
+// ---------------------------------------------------------------------------------------
+
+const siteData = parse(
+  fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
+);
+
+siteData!.nav.links.forEach((navLinkData: any, i: number) => {
+  siteData.nav.links[i]!.url = urlStr(navLinkData.url);
+  siteData.nav.links[i]!.icon = siIcons[<string>navLinkData.icon];
+});
+
+siteData!.socials.forEach((socialLinkData: any, i: number) => {
+  siteData.socials[i]!.url = urlStr(socialLinkData.url);
+  siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
+});
+
+const repoURL = siteData.repoURL ?? "";
 
 module.exports = {
   "repoURL": repoURL,
 	nav: {
     links: [
-      {
-        name: "Home",
-        url: "#home",
-      },
-      {
-        name: "About",
-        url: "#about",
-      },
-      {
-        name: "Projects",
-        url: "#projects",
-      },
-      {
-        name: "Artworks",
-        url: "#artworks",
-      },
-      {
-        name: siItchdotio.svg,
-        url: urlStr("nnda.itch.io"),
-        external: true,
-      },
-      {
-        name: siGithub.svg,
-        url: urlStr("github.com/nndda"),
-        external: true,
-      },
     ],
   },
 
   socials: [
-    {
-      name: "GitHub",
-      url: urlStr("github.com/nndda"),
-      icon: siGithub.svg,
-    },
-    {
-      name: "itch.io",
-      url: urlStr("nnda.itch.io"),
-      icon: siItchdotio.svg,
-    },
-    {
-      name: "Mastodon",
-      url: urlStr("mastodon.art/@nnda"),
-      icon: siMastodon.svg,
-    },
-    {
-      name: "CodePen",
-      url: urlStr("codepen.io/nnda"),
-      icon: siCodepen.svg,
-    },
   ],
 
   projects: [
-    {
-      name: "Project I",
-      description: "Project description goes here...",
-    },
-    {
-      name: "Project II",
-      description: "Project description goes here...",
-    },
-    {
-      name: "Project III",
-      description: "Project description goes here...",
-    },
-    {
-      name: "Project IV",
-      description: "Project description goes here...",
-    },
   ],
 
   icons: {
@@ -160,4 +127,6 @@ module.exports = {
     })
     .join(",")
   });`,
+
+  ...siteData,
 }
