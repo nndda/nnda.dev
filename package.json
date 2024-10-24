@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "nnda's personal website",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.ts --port 9000"
+    "start": "webpack-dev-server --config webpack.dev.ts --port 9000",
+    "lint-styles": "npx stylelint \"**/*.scss\""
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "html-bundler-webpack-plugin": "^4.1.2",
     "sass": "^1.80.3",
     "sass-loader": "^16.0.2",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard-scss": "^13.1.0",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
