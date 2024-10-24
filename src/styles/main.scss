@@ -75,6 +75,31 @@ body {
   }
 }
 
+.badge-success {
+  display: inline-block;
+  margin-bottom: 1em;
+  margin-right: .5em;
+  background: $secondary;
+  color: $text;
+  font-size: .8em;
+  overflow: hidden;
+
+  & > .badge-text {
+    display: inline-block;
+    padding: .2em .5em;
+    background: color.adjust($background-light, $lightness: 5%);
+
+    & > svg {
+      fill: $text;
+    }
+  }
+
+  & > svg {
+    // padding-left: .25em;
+    color: $background;
+  }
+}
+
 .section-title {
   font-size: 2.5em;
   font-weight: 400;

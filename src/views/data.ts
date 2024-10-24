@@ -1,6 +1,16 @@
 import { parse } from "yaml";
 import path from "path";
 import fs from "fs";
+import { execSync } from "child_process";
+
+function fetchCurl(url: string): any {
+  try {
+    return JSON.parse(execSync(`curl -s ${url}`).toString());
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
 import {
   siItchdotio,
@@ -9,6 +19,7 @@ import {
   siCodepen,
   siPatreon,
   siKofi,
+  siStylelint,
 } from "simple-icons";
 
 const siIcons : Record<string, string> = {
@@ -18,6 +29,7 @@ const siIcons : Record<string, string> = {
   "codepen": siCodepen.svg,
   "patreon": siPatreon.svg,
   "kofi": siKofi.svg,
+  "stylelint": siStylelint.svg,
 }
 
 import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -29,6 +41,7 @@ import {
   faBug,
   faXmark,
   faScaleBalanced,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 function i(icon_name: IconDefinition): string[] {
@@ -54,6 +67,12 @@ const siteData = parse(
   fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
 );
 
+const repoURL = urlStr(siteData.repoURL);
+const reRepoOwner = /^.+\.(?:com|org)\/(\w+)\/(\w+)/.exec(repoURL);
+
+const repoOwner = reRepoOwner![1] ?? "";
+const repoName = reRepoOwner![2] ?? "";
+
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
   siteData.nav.links[i]!.icon = siIcons[<string>navLinkData.icon];
@@ -64,7 +83,34 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
   siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
 });
 
-const repoURL = urlStr(siteData.repoURL);
+const repoBadges : string[] = [];
+siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
+  const urlData = fetchCurl(
+    `https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/${workflowPath}/runs?branch=main&per_page=1`
+  )
+
+  if (urlData.workflow_runs[0].conclusion === "success") {
+    const badgeName : string = urlData.workflow_runs[0].name;
+    let badgeIcon = "";
+
+    if (badgeName.includes("CodeQL")) {
+      badgeIcon = siGithub.svg;
+    } else if (badgeName.includes("Stylelint")) {
+      badgeIcon = siStylelint.svg;
+    }
+
+    repoBadges.push(`
+      <span class="badge-success">
+        <span class="badge-text">
+          ${badgeIcon}
+          ${badgeName}
+        </span>
+        ${i(faCheck)}
+      </span>
+    `);
+  }
+});
+
 
 module.exports = {
   "repoURL": repoURL,
@@ -135,4 +181,5 @@ module.exports = {
   });`,
 
   ...siteData,
+  "repoBadges": repoBadges,
 }

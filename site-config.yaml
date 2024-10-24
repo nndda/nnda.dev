@@ -58,3 +58,7 @@ projects:
     url: https://github.com/nndda/website
     description: |
       My personal website, written in TypeScript, SCSS, and Handlebars, bundled with webpack.
+
+repoWorkflowBadges:
+  - codeql.yml
+  - lint-styles.yml

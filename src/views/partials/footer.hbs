@@ -20,6 +20,11 @@
     <div class="links-section horizontal">
       <h3>This Site</h3>
       <div>
+        {{#each repoBadges}}
+          {{{this}}}
+        {{/each}}
+      </div>
+      <div>
         {{{icons.scaleBalanced}}} Licensed Under
         <a href="https://{{repoURL}}/blob/main/LICENSE"
           target="_blank"
