@@ -89,25 +89,27 @@ siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
     `https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/${workflowPath}/runs?branch=main&per_page=1`
   )
 
-  if (urlData.workflow_runs[0].conclusion === "success") {
-    const badgeName : string = urlData.workflow_runs[0].name;
-    let badgeIcon = "";
+  if (urlData !== null) {
+    if (urlData.workflow_runs[0].conclusion === "success") {
+      const badgeName : string = urlData.workflow_runs[0].name;
+      let badgeIcon = "";
 
-    if (badgeName.includes("CodeQL")) {
-      badgeIcon = siGithub.svg;
-    } else if (badgeName.includes("Stylelint")) {
-      badgeIcon = siStylelint.svg;
-    }
+      if (badgeName.includes("CodeQL")) {
+        badgeIcon = siGithub.svg;
+      } else if (badgeName.includes("Stylelint")) {
+        badgeIcon = siStylelint.svg;
+      }
 
-    repoBadges.push(`
-      <span class="badge-success">
-        <span class="badge-text">
-          ${badgeIcon}
-          ${badgeName}
+      repoBadges.push(`
+        <span class="badge-success">
+          <span class="badge-text">
+            ${badgeIcon}
+            ${badgeName}
+          </span>
+          ${i(faCheck)}
         </span>
-        ${i(faCheck)}
-      </span>
-    `);
+      `);
+    }
   }
 });
 
