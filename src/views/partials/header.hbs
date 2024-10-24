@@ -1,3 +1,58 @@
 <header>
-	<h1>nnda's corner</h1>
+  <div class="header-inner">
+  	<h1 class="text-primary">
+      ん.
+    </h1>
+    <div class="flex-space"></div>
+    <button class="navbar-button" id="navbar-button">{{{icons.bars}}}</button>
+    <nav>
+      <ul>
+        {{#each nav.links}}
+          {{#if nav.links.external}}
+            <li>
+              <a href="{{this.url}}" class="text-secondary"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                referrerpolicy="no-referrer"
+              >
+                {{{this.name}}}
+              </a>
+            </li>
+          {{else}}
+            <li>
+              <a href="{{this.url}}" class="text-secondary">
+                {{{this.name}}}
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </nav>
+  </div>
+  <nav id="navbar-mobile" class="collapsed">
+    <div class="nav-button-container">
+      <button class="nav-item navbar-button">{{{icons.xmark}}}</button>
+    </div>
+      <ul>
+        {{#each nav.links}}
+          {{#if nav.links.external}}
+            <li>
+              <a href="{{this.url}}" class="text-secondary"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                referrerpolicy="no-referrer"
+              >
+                {{{this.name}}}
+              </a>
+            </li>
+          {{else}}
+            <li>
+              <a href="{{this.url}}" class="text-secondary">
+                {{{this.name}}}
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+  </nav>
 </header>
