@@ -18,6 +18,8 @@ module.exports = {
         index: abs("src/views/index.hbs"),
       },
 
+      data: require("./src/views/data.js"),
+
       preprocessor: "handlebars",
       preprocessorOptions: {
         root: abs("src/views/"),
