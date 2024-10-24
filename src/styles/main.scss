@@ -9,6 +9,7 @@
 @use "../../node_modules/modern-normalize/modern-normalize.css" as *;
 
 @use "../../node_modules/@fontsource/noto-sans-jp/latin-400.css" as *;
+@use "../../node_modules/@fontsource/noto-sans-jp/latin-300.css" as *;
 @use "../../node_modules/@fontsource/noto-sans-jp/japanese-200.css" as *;
 
 @use "../../node_modules/@fontsource/kode-mono/latin-400.css" as *;
@@ -48,7 +49,8 @@ code {
 }
 
 html {
-	color-scheme: dark only;
+  color-scheme: dark only !important;
+  scroll-behavior:smooth !important;
 }
 
 body {
@@ -63,6 +65,8 @@ body {
   // background: $background;
   background: radial-gradient(circle at bottom, $primary -90%, $background 30%);
   font-family: "Noto Sans JP", sans-serif;
+
+  letter-spacing: .05em;
 
   & h1 {
     font-weight: 200;
