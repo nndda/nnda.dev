@@ -1,5 +1,13 @@
 @use "variables" as *;
 
+.navbar-button {
+  width: 1.5em;
+
+  & > svg {
+    fill: $text;
+  }
+}
+
 header {
   position: relative;
   padding: .2em 1.2em;
@@ -36,14 +44,6 @@ header {
       }
     }
 
-  }
-}
-
-.navbar-button {
-  width: 1.5em;
-
-  & > svg {
-    fill: $text;
   }
 }
 
@@ -101,16 +101,17 @@ header {
   }
 }
 
-@media (min-width: 700px) {
+@media (width >= 700px) {
   #navbar-button {
     display: none;
   }
+
   #navbar-mobile {
     display: none;
   }
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
   header {
     & > .header-inner {
       & > nav {

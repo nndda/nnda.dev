@@ -46,6 +46,7 @@ footer {
 
 		& > .links-section {
 			padding: .5em;
+
 			& > ul {
 				padding: 0;
 
@@ -62,10 +63,6 @@ footer {
 
 					& > li {
 						margin-right: 1em;
-						& svg {
-							margin-right: .3em;
-							height: 1em;
-						}
 					}
 				}
 			}
@@ -83,6 +80,7 @@ footer {
 
 		& a {
 			color: $secondary;
+
 			& > svg {
 				color: $secondary;
 				margin-right: .25em;
@@ -91,7 +89,7 @@ footer {
 	}
 }
 
-@media (max-width: 700px) {
+@media (width <= 920px) {
 	footer {
 		& > .footer-body {
 			flex-direction: column;

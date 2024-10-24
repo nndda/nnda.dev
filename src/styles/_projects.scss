@@ -1,7 +1,6 @@
 @use "variables" as *;
 
 #projects {
-
   & .section-title {
     margin: 0;
     margin-right: .5em;
@@ -44,13 +43,13 @@
   }
 }
 
-@media (min-width: 700px) {
-
+@media (width >= 700px) {
   #projects {
     & > .section-inner {
       & > :nth-child(odd) {
         transform: translateY(2.5em);
       }
+
       & > :nth-child(even) {
         transform: translateY(-2.5em);
       }
@@ -58,8 +57,7 @@
   }
 }
 
-@media (max-width: 700px) {
-
+@media (width <= 700px) {
   #projects {
     & > .section-inner {
       grid-template-columns: 100%;

@@ -20,6 +20,11 @@
   color: $background;
 }
 
+svg {
+  display: inline-block;
+  fill: $primary;
+}
+
 a {
   color: $primary;
   text-decoration: none;
@@ -36,11 +41,6 @@ a {
       fill: $secondary;
     }
   }
-}
-
-svg {
-  display: inline-block;
-  fill: $primary;
 }
 
 code {
@@ -101,6 +101,7 @@ body {
     min-height: 70vh;
 
     margin: auto;
+    padding: 2em;
 
     & > .profile-picture {
       position: relative;
@@ -139,7 +140,7 @@ body {
 #things-stuff {
   display: inline-block;
   color: $primary;
-  @include no-select();
+  @include no-select;
 }
 
 .bg-spiral-container {
@@ -151,14 +152,16 @@ body {
 
   // transform: skewY(3deg) skewX(6deg);
 
-  @include no-select();
+  @include no-select;
 
   & > :nth-child(1) {
     opacity: 0.9;
   }
+
   & > :nth-child(2) {
     opacity: 0.7;
   }
+
   & > :nth-child(3) {
     opacity: 0.4;
   }
@@ -176,8 +179,8 @@ body {
   font-size: 2em;
   font-family: monospace;
   letter-spacing: .2em;
-  // animation-timing-function: var(--easeOutBounce);
-  transition: var(--easeOutBounce) .6s;
+
+  transition: var(--ease-out-bounce) .6s;
 }
 
 #bg-spiral-3 {
@@ -187,12 +190,13 @@ body {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
 
   // body {
   //   & > main {
@@ -200,9 +204,9 @@ body {
   //   }
   // }
 
-  #things-stuff {
+  // #things-stuff {
     // min-height: 3.5em;
-  }
+  // }
 
   #home {
     & > .content {
