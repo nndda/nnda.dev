@@ -64,14 +64,14 @@ body {
   background: radial-gradient(circle at bottom, $primary -90%, $background 30%);
   font-family: "Noto Sans JP", sans-serif;
 
+  & h1 {
+    font-weight: 200;
+  }
+
   & > main {
     flex-grow: 1;
     padding: 0 2em;
     overflow: hidden;
-
-    & h1 {
-      font-weight: 200;
-    }
   }
 }
 
