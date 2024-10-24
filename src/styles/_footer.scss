@@ -1,3 +1,97 @@
+@use "variables" as *;
+
 footer {
-	
+	margin-top: 5em;
+
+	background: $background-dark;
+
+	box-shadow: 0 0 1em $background-dark;
+
+	& > div {
+  	padding: .5em 1.2em;
+	}
+
+	& .note {
+		max-width: 400px;
+		padding: .25em 1.5em;
+		border-radius: 6px;
+
+		background: rgba($background-light, 0.6);
+
+		border: 1px solid rgba($text, 0.2);
+
+		& > p {
+			color: $text-secondary;
+			text-align: justify;
+			letter-spacing: .05em;
+		}
+	}
+
+	& h3 {
+		letter-spacing: .1em;
+	}
+
+	& > .footer-body {
+		display: flex;
+		justify-content: space-evenly;
+  	padding: .5em 3em;
+
+  	& svg {
+			margin-right: .3em;
+			height: 1em;
+  	}
+
+		& > .links-section {
+			padding: .5em;
+			& > ul {
+				padding: 0;
+
+				list-style: none;
+
+				& > li {
+					line-height: 1.8em;
+				}
+			}
+
+			&.horizontal {
+				& > ul {
+					display: flex;
+
+					& > li {
+						margin-right: 1em;
+						& svg {
+							margin-right: .3em;
+							height: 1em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	& > .footer-end {
+		display: flex;
+
+		padding-top: .9em;
+		padding-bottom: .9em;
+
+		color: $text-secondary;
+		background: $background-light;
+
+		& a {
+			color: $secondary;
+			& > svg {
+				color: $secondary;
+				margin-right: .25em;
+			}
+		}
+	}
+}
+
+@media (max-width: 700px) {
+	footer {
+		& > .footer-body {
+			flex-direction: column;
+		}
+	}
 }
