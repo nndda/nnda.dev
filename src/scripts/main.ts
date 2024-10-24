@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     navbarMobile.classList.toggle("collapsed");
   });
 
-  navbarMobile.querySelectorAll(".nav-item").forEach((elem) => {
+  navbarMobile.querySelectorAll(".nav-link").forEach((elem) => {
     elem.addEventListener("click", () => {
       navbarMobile.classList.toggle("collapsed");
     });
