@@ -8,6 +8,10 @@ function abs(path_string) {
 module.exports = {
   mode: "development",
 
+  resolve: {
+    extensions: [".js", ".ts"],
+  },
+
   plugins: [
     new HtmlBundlerPlugin({
       entry: {
@@ -37,6 +41,11 @@ module.exports = {
 
   module: {
       rules: [
+        {
+          test: /\.ts$/,
+          use: "ts-loader",
+          exclude: /node_modules/,
+        },
         {
           test: /\.s?css$/,
           use: ["css-loader", "sass-loader"],
