@@ -10,7 +10,7 @@
         {{#each nav.links}}
           {{#if nav.links.external}}
             <li>
-              <a href="{{this.url}}" class="text-secondary"
+              <a href="{{this.url}}" class="text-secondary nav-link"
                 target="_blank"
                 rel="nofollow noopener noreferrer"
                 referrerpolicy="no-referrer"
@@ -21,7 +21,7 @@
             </li>
           {{else}}
             <li>
-              <a href="{{this.url}}" class="text-secondary">
+              <a href="{{this.url}}" class="text-secondary nav-link">
                 {{{this.icon}}}
                 {{{this.name}}}
               </a>
@@ -39,7 +39,7 @@
         {{#each nav.links}}
           {{#if nav.links.external}}
             <li>
-              <a href="{{this.url}}" class="text-secondary"
+              <a href="{{this.url}}" class="text-secondary nav-link"
                 target="_blank"
                 rel="nofollow noopener noreferrer"
                 referrerpolicy="no-referrer"
@@ -50,7 +50,7 @@
             </li>
           {{else}}
             <li>
-              <a href="{{this.url}}" class="text-secondary">
+              <a href="{{this.url}}" class="text-secondary nav-link">
                 {{{this.icon}}}
                 {{{this.name}}}
               </a>

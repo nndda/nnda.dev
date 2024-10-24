@@ -8,6 +8,16 @@
   }
 }
 
+a.nav-link {
+  &:hover {
+    color: $primary !important;
+
+    & > svg {
+      fill: $primary !important;
+    }
+  }
+}
+
 header {
   position: relative;
   padding: .2em 1.2em;
