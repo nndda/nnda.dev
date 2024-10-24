@@ -58,7 +58,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
   siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
 });
 
-const repoURL = siteData.repoURL ?? "";
+const repoURL = urlStr(siteData.repoURL) ?? "";
 
 module.exports = {
   "repoURL": repoURL,
