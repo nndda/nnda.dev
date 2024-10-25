@@ -35,6 +35,7 @@
         padding: .5em;
         padding-left: 1em;
         background: $background-light;
+        letter-spacing: .08em;
       }
 
       & > .labels-container {
@@ -55,8 +56,8 @@
 
 @mixin project-label-style($color) {
   color: $color;
-  background: color.mix($color, $background, 2%);
-  border: 1px solid color.mix($color, $background, 30%);
+  background: color.mix($color, $background, 1%);
+  border: 1px solid color.mix($color, $background, 20%);
 }
 
 .project-label {
@@ -64,19 +65,22 @@
   padding: .15em .5em;
   margin: 0 .25em;
   font-size: .8em;
-  font-weight: lighter;
+  letter-spacing: .1em;
   border-radius: 9px;
   @include project-label-style($text);
 
   /* stylelint-disable */
   &.SCSS {
-    @include project-label-style(#c6538c);
+    @include project-label-style(#fc56a8);
   }
   &.TypeScript {
-    @include project-label-style(#3178c6);
+    @include project-label-style(#3b93f5);
   }
   &.Handlebars {
-    @include project-label-style(#f7931e);
+    @include project-label-style(#ff9b26);
+  }
+  &.Godot, &.GDScript {
+    @include project-label-style(#66b2f2);
   }
   /* stylelint-enable */
 }
