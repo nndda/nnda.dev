@@ -66,6 +66,10 @@ footer {
 					}
 				}
 			}
+
+			&:nth-child(2) {
+				max-width: 280px;
+			}
 		}
 	}
 
@@ -89,10 +93,20 @@ footer {
 	}
 }
 
+.badges-container {
+	margin-bottom: .7em;
+}
+
 @media (width <= 920px) {
 	footer {
 		& > .footer-body {
 			flex-direction: column;
+		}
+	}
+
+	.links-section {
+		&:nth-child(2) {
+			max-width: 100% !important;
 		}
 	}
 }
