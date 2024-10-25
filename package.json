@@ -4,6 +4,7 @@
   "description": "nnda's personal website",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.ts --port 9000",
+    "build": "webpack --config webpack.config.ts",
     "lint-styles": "npx stylelint \"**/*.scss\""
   },
   "repository": {
