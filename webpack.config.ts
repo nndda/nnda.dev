@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 
 function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
@@ -72,6 +73,14 @@ module.exports = {
       },
 
       integrity: "auto",
+    }),
+
+    new CopyPlugin({
+      patterns: [
+        { from: abs("src/misc/_headers"), to: abs("dist/") },
+        { from: abs("src/misc/ai.txt"), to: abs("dist/") },
+        { from: abs("src/misc/robots.txt"), to: abs("dist/") },
+      ],
     }),
   ],
 
