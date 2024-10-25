@@ -47,13 +47,13 @@ module.exports = {
         },
         {
           test: /\.(ttf|woff2?)$/,
-          as: "image",
+          as: "font",
           rel: "prefetch",
           attributes: { crossorigin: true },
         },
         {
           test: /\.(png|webp|svg)$/,
-          as: "font",
+          as: "image",
           rel: "prefetch",
         },
       ],
