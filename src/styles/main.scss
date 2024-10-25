@@ -8,12 +8,6 @@
 
 @use "../../node_modules/modern-normalize/modern-normalize.css" as *;
 
-@use "../../node_modules/@fontsource/noto-sans-jp/latin-400.css" as *;
-@use "../../node_modules/@fontsource/noto-sans-jp/latin-300.css" as *;
-@use "../../node_modules/@fontsource/noto-sans-jp/japanese-200.css" as *;
-
-@use "../../node_modules/@fontsource/kode-mono/latin-400.css" as *;
-
 @use "sass:color";
 
 ::selection{
