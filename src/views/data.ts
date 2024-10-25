@@ -44,6 +44,7 @@ import {
   faXmark,
   faScaleBalanced,
   faCheck,
+  faNoteSticky,
 } from "@fortawesome/free-solid-svg-icons";
 
 function i(icon_name: IconDefinition): string[] {
@@ -139,6 +140,7 @@ module.exports = {
     bug: i(faBug),
     xmark: i(faXmark),
     scaleBalanced: i(faScaleBalanced),
+    noteSticky: i(faNoteSticky),
   },
 
   siteOptions: [
