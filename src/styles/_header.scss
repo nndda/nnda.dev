@@ -19,13 +19,22 @@ a.nav-link {
 }
 
 header {
-  position: relative;
+  position: absolute;
+  top: 0;
   padding: .2em 1.2em;
 
-  // background: $background-light;
-  background: radial-gradient(circle at left, $primary -100%, $background-light 15%);
+  width: 100%;
+
+  background: radial-gradient(
+    circle at left,
+    rgba($primary, 70%) -100%,
+    rgba($background-light, 70%) 15%
+  );
+  backdrop-filter: blur(.4em);
 
   box-shadow: 0 0 1em .5em rgba($background-dark, 20%);
+
+  z-index: 2;
 
   & > .header-inner {
     display: flex;
