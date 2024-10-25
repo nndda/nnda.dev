@@ -1,5 +1,9 @@
 
-author: nnda
+site:
+  author: nnda
+  title: nnda's
+  description: My personal website.
+
 repoURL: github.com/nndda/website
 
 nav:
