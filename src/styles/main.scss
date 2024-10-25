@@ -212,11 +212,21 @@ body {
   letter-spacing: .2em;
 
   transition: var(--ease-out-bounce) .6s;
+
+  &.horizontal {
+    white-space: nowrap;
+    // width: 200px;
+  }
+}
+
+#clock-hand-sec {
+  transition: var(--ease-out-bounce) .3s;
 }
 
 #bg-spiral-3 {
   animation: rotate-full linear 120s infinite;
 }
+
 @keyframes rotate-full {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
