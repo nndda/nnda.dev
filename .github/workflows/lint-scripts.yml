@@ -1,0 +1,43 @@
+name: ESLint
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**/*.ts'
+      - '**/*.js'
+      - '.github/workflows/lint-scripts.yml'
+      - 'eslint.config.mjs'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.ts'
+      - '**/*.js'
+      - '.github/workflows/lint-scripts.yml'
+      - 'eslint.config.mjs'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Linting Dependencies
+        run: |
+          npm install --no-save \
+            @eslint/js \
+            eslint \
+            globals \
+            typescript-eslint
+
+      - name: Lint Scripts
+        run: npx eslint .

@@ -20,6 +20,7 @@ import {
   siPatreon,
   siKofi,
   siStylelint,
+  siEslint,
 } from "simple-icons";
 
 const siIcons : Record<string, string> = {
@@ -30,6 +31,7 @@ const siIcons : Record<string, string> = {
   "patreon": siPatreon.svg,
   "kofi": siKofi.svg,
   "stylelint": siStylelint.svg,
+  "eslint": siEslint.svg,
 }
 
 import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -98,6 +100,8 @@ siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
         badgeIcon = siGithub.svg;
       } else if (badgeName.includes("Stylelint")) {
         badgeIcon = siStylelint.svg;
+      } else if (badgeName.includes("ESLint")) {
+        badgeIcon = siEslint.svg;
       }
 
       repoBadges.push(`
