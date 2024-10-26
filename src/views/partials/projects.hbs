@@ -6,7 +6,16 @@
       {{#if this.offsetElem}}
         <div class="hidden-display"></div>
       {{else}}
-        <div class="project-card">
+        <div class="project-card"
+          style="
+          {{#if this.image}}
+            --img-bg: url({{this.image}});
+          {{/if}}
+          {{#if this.min-height}}
+            min-height: {{this.min-height}};
+          {{/if}}
+          "
+        >
           <h3>
             <a href="{{this.url}}"
               target="_blank"

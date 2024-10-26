@@ -28,6 +28,15 @@ module.exports = {
         ],
       },
 
+      loaderOptions: {
+        sources: [
+          {
+            tag: "div",
+            attributes: ["style"],
+          },
+        ],
+      },
+
       hotUpdate: true,
     }),
   ],
