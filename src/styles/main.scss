@@ -89,13 +89,14 @@ body {
     background: color.adjust($background-light, $lightness: 5%);
 
     & > svg {
-      margin-left: .3em;
+      vertical-align: -.15em;
       fill: $text;
     }
   }
 
   & > svg { /* stylelint-disable-line */
     // padding-left: .25em;
+    margin-left: .3em;
     color: $background;
   }
 }
