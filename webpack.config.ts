@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
+const { FaviconsBundlerPlugin } = require("html-bundler-webpack-plugin/plugins");
 import CopyPlugin from "copy-webpack-plugin";
 
 function abs(path_string : string): string {
@@ -82,6 +83,16 @@ module.exports = {
       },
 
       integrity: "auto",
+    }),
+
+    new FaviconsBundlerPlugin({
+      enabled: "auto",
+      faviconOptions: {
+        path: "/",
+        icons: {
+          favicons: true,
+        },
+      },
     }),
 
     new CopyPlugin({
