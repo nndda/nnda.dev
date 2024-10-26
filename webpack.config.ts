@@ -86,11 +86,16 @@ module.exports = {
     }),
 
     new FaviconsBundlerPlugin({
-      enabled: "auto",
+      enabled: true,
       faviconOptions: {
         path: "/",
         icons: {
           favicons: true,
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          windows: false,
+          yandex: false,
         },
       },
     }),
