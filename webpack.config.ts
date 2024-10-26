@@ -52,10 +52,10 @@ module.exports = {
       },
 
       preload: [
-        {
-          test: /\.s?css$/,
-          as: "style",
-        },
+        // {
+        //   test: /\.s?css$/,
+        //   as: "style",
+        // },
         {
           test: /\.(ttf|woff2?)$/,
           as: "font",
