@@ -39,6 +39,14 @@ socials:
     url: codepen.io/nnda
     icon: codepen
 
+  - name: Patreon
+    url: www.patreon.com/nnda
+    icon: patreon
+
+  - name: Ko-fi
+    url: ko-fi.com/nnda
+    icon: kofi
+
 projects:
   - name: Theatre
     url: https://github.com/nndda/Theatre
