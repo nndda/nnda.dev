@@ -89,6 +89,7 @@ body {
     background: color.adjust($background-light, $lightness: 5%);
 
     & > svg {
+      margin-left: .3em;
       fill: $text;
     }
   }
