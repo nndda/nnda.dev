@@ -44,7 +44,7 @@
 
       overflow: hidden;
 
-      & > h3 {
+      & > .project-title {
         margin: 0;
         padding: .5em;
         padding-left: 1em;
@@ -53,6 +53,7 @@
           $background-light 10%,
           transparent 90%
         );
+        font-size: 1.3em;
         letter-spacing: .08em;
       }
 
