@@ -39,6 +39,14 @@ socials:
     url: codepen.io/nnda
     icon: codepen
 
+  - name: Patreon
+    url: www.patreon.com/nnda
+    icon: patreon
+
+  - name: Ko-fi
+    url: ko-fi.com/nnda
+    icon: kofi
+
 projects:
   - name: Theatre
     url: https://github.com/nndda/Theatre
@@ -46,11 +54,17 @@ projects:
     description: |
       🎭 Yet another (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text. Compatible with Godot 4.3.
 
+    image: ../assets/project-theatre.webp
+    min-height: 280px
+
   - name: Pitch
     url: https://github.com/nndda/Pitch
     labels: [ Web, TypeScript, SCSS ]
     description: |
       🧩 Collection of UI components and tweaks, designed specifically for itch.io project pages.
+
+    image: ../assets/project-pitch.webp
+    min-height: 280px
 
   - offsetElem: true
 

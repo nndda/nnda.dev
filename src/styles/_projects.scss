@@ -22,11 +22,25 @@
     max-width: 980px;
 
     & > .project-card {
+      position: relative;
       margin: .5em;
-      background: $background;
+
+      background:
+        radial-gradient(
+          circle at 80% 160%,
+          transparent,
+          rgba($background, 0.4) 40%,
+          rgba($background, 0.6) 50%,
+          rgba($background, 0.8) 60%,
+          $background 70%
+        ),
+        var(--img-bg, $background);
+      background-size: auto;
+      background-position: bottom right;
+      background-repeat: no-repeat;
 
       border-radius: 6px;
-      border: 1px solid rgba($text, 0.3);
+      border: 1px solid color.mix($text, $background, 30%);
 
       overflow: hidden;
 
@@ -34,7 +48,11 @@
         margin: 0;
         padding: .5em;
         padding-left: 1em;
-        background: $background-light;
+        background: linear-gradient(
+          to right,
+          $background-light 10%,
+          transparent 90%
+        );
         letter-spacing: .08em;
       }
 

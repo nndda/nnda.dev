@@ -34,6 +34,15 @@ module.exports = {
         ],
       },
 
+      loaderOptions: {
+        sources: [
+          {
+            tag: "div",
+            attributes: ["style"],
+          },
+        ],
+      },
+
       js: {
         filename: "[contenthash:6].js",
       },
