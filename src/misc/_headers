@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; child-src 'none'; style-src 'self'; script-src static.cloudflareinsights.com 'self'; connect-src cloudflareinsights.com 'self'
+  Content-Security-Policy: default-src 'self'; child-src 'none'; style-src unsafe-inline 'self'; script-src static.cloudflareinsights.com 'self'; connect-src cloudflareinsights.com 'self'
   X-Frame-Options: SAMEORIGIN
   X-Robots-Tag: noimageai
   X-Robots-Tag: noai
