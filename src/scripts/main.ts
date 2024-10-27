@@ -1,8 +1,9 @@
 const CircleType = require("circletype");
+const d = document;
 
 function rotateElem(elem : HTMLElement, degrees : number) {
   let currentRotation = parseInt(<string>elem.getAttribute("data-rotation"), 10);
-  if (currentRotation >= 3600) {
+  if (currentRotation >= 360 * 30) {
     currentRotation = 0 + degrees;
   } else {
     currentRotation += degrees;
@@ -18,49 +19,56 @@ const thingsStuffStr = <string[]>[
   "Open Source Developer",
   "Digital Illustrator",
 ];
+let intervalEven = 0,
+  thingsStuffIdx = 0;
 
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll(".bg-spiral:not(.horizontal)").forEach((elem) => {
-    new CircleType(elem);
-  });
+const degSec = 360 / 60;
 
-  const bgSpiral1 = <HTMLElement>document.getElementById("bg-spiral-1");
-  const bgSpiral2 = <HTMLElement>document.getElementById("bg-spiral-2");
+d.addEventListener("DOMContentLoaded", () => {
+  const thingsStuff = d.getElementById("things-stuff");
 
-  const clockHandSec = <HTMLElement>document.getElementById("clock-hand-sec");
-  const clockHandMin = <HTMLElement>document.getElementById("clock-hand-min");
+  const bgSpiral1 = <HTMLElement>d.getElementById("bg-spiral-1");
+  const bgSpiral2 = <HTMLElement>d.getElementById("bg-spiral-2");
 
-  const thingsStuff = document.getElementById("things-stuff");
-  let thingsStuffIdx = 0;
+  const clockHandSec = <HTMLElement>d.getElementById("clock-hand-sec");
+  const clockHandMin = <HTMLElement>d.getElementById("clock-hand-min");
 
-  const degSec = 360 / 60;
+  let circleElems = d.querySelectorAll(".bg-spiral:not(.horizontal)");
 
-  let intervalEven = 0;
+  setTimeout(() => {
+    circleElems.forEach((elem) => {
+      new CircleType(elem);
+    });
 
-  rotateElem(clockHandSec, (new Date().getSeconds() - 15) * degSec);
-  rotateElem(clockHandMin, (new Date().getMinutes() - 15) * degSec);
+    const mainClockClasses = <DOMTokenList>d.getElementById("main-clock")?.classList;
+    mainClockClasses.remove("hidden");
 
-  setInterval(function() {
-    thingsStuff!.textContent = thingsStuffStr[thingsStuffIdx];
-    thingsStuffIdx = (thingsStuffIdx + 1) % thingsStuffStr.length;
+    rotateElem(clockHandSec, (new Date().getSeconds() - 15) * degSec);
+    rotateElem(clockHandMin, (new Date().getMinutes() - 15) * degSec);
 
-    intervalEven = (intervalEven + 1) % 2;
+    setInterval(() => {
+      thingsStuff!.textContent = thingsStuffStr[thingsStuffIdx];
+      thingsStuffIdx = (thingsStuffIdx + 1) % thingsStuffStr.length;
 
-    rotateElem(clockHandSec, degSec);
+      intervalEven = (intervalEven + 1) % 2;
 
-    if (intervalEven === 1) {
-      rotateElem(bgSpiral1, degSec * 0.5);
-      rotateElem(bgSpiral2, -degSec);
-    }
+      rotateElem(clockHandSec, degSec);
 
-    if (new Date().getSeconds() === 0) {
-      rotateElem(clockHandMin, degSec);
-    }
+      if (intervalEven === 1) {
+        rotateElem(bgSpiral1, degSec * 0.5);
+        rotateElem(bgSpiral2, -degSec);
+      }
 
-  }, 1000);
+      if (new Date().getSeconds() === 0) {
+        rotateElem(clockHandMin, degSec);
+      }
+    }, 1000);
 
-  const navbarMobile = <HTMLElement>document.getElementById("navbar-mobile");
-  const navbarButton = <HTMLButtonElement>document.getElementById("navbar-button");
+    mainClockClasses.remove("hidden-display");
+  }, 600);
+
+  const navbarMobile = <HTMLElement>d.getElementById("navbar-mobile");
+  const navbarButton = <HTMLButtonElement>d.getElementById("navbar-button");
 
   navbarButton.addEventListener("click", () => {
     navbarMobile.classList.toggle("collapsed");
