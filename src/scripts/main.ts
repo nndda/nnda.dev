@@ -33,7 +33,7 @@ d.addEventListener("DOMContentLoaded", () => {
   const clockHandSec = <HTMLElement>d.getElementById("clock-hand-sec");
   const clockHandMin = <HTMLElement>d.getElementById("clock-hand-min");
 
-  let circleElems = d.querySelectorAll(".bg-spiral:not(.horizontal)");
+  const circleElems = d.querySelectorAll(".bg-spiral:not(.horizontal)");
 
   setTimeout(() => {
     circleElems.forEach((elem) => {
