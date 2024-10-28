@@ -18,6 +18,10 @@ nav:
       url: nnda.itch.io
       external: true
 
+    - icon: artstation
+      url: www.artstation.com/nnda
+      external: true
+
     - icon: github
       url: github.com/nndda
       external: true
@@ -30,6 +34,10 @@ socials:
   - name: itch.io
     url: nnda.itch.io
     icon: itchdotio
+
+  - name: ArtStation
+    url: www.artstation.com/nnda
+    icon: artstation
 
   - name: Mastodon
     url: mastodon.art/@nnda

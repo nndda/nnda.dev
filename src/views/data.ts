@@ -15,6 +15,7 @@ function fetchCurl(url: string): any {
 import {
   siItchdotio,
   siGithub,
+  siArtstation,
   siMastodon,
   siCodepen,
   siPatreon,
@@ -26,6 +27,7 @@ import {
 const siIcons : Record<string, string> = {
   "itchdotio": siItchdotio.svg,
   "github": siGithub.svg,
+  "artstation": siArtstation.svg,
   "mastodon": siMastodon.svg,
   "codepen": siCodepen.svg,
   "patreon": siPatreon.svg,
