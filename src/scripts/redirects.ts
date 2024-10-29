@@ -7,7 +7,7 @@ export function updateSocialRedirects(data: any[]): void {
 
   data.forEach((value) => {
     if (Object.prototype.hasOwnProperty.call(value, "redirect")) {
-      updatedContents += `${value.redirect}    https://${value.url}    301\n`;
+      updatedContents += `${value.redirect}    ${value.url}    301\n`;
     }
   });
 
