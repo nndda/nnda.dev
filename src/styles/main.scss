@@ -251,11 +251,13 @@ body {
   //   }
   // }
 
-  // #things-stuff {
-    // min-height: 3.5em;
-  // }
+  #things-stuff {
+    min-height: 3.5em;
+  }
 
   #home {
+    padding-top: 9em;
+
     & > .content {
       flex-direction: column;
       align-items: start;
