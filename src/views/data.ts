@@ -88,6 +88,9 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
   siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
 });
 
+import { updateSocialRedirects } from "../scripts/redirects";
+updateSocialRedirects(siteData.socials);
+
 const repoBadges : string[] = [];
 siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
   const urlData = fetchCurl(
