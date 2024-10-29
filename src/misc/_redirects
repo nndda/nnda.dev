@@ -1,0 +1,10 @@
+#SOCIAL_REDIRECTS_START
+/github    https://github.com/nndda    301
+/itchio    https://nnda.itch.io    301
+/artstation    https://www.artstation.com/nnda    301
+/mastodon    https://mastodon.art/@nnda    301
+/codepen    https://codepen.io/nnda    301
+/patreon    https://www.patreon.com/nnda    301
+/kofi    https://ko-fi.com/nnda    301
+
+#SOCIAL_REDIRECTS_ENDS
