@@ -8,7 +8,7 @@
     <nav>
       <ul>
         {{#each nav.links}}
-          {{#if nav.links.external}}
+          {{#if this.external}}
             <li>
               <a href="{{this.url}}" class="text-secondary nav-link"
                 target="_blank"
