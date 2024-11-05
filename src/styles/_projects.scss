@@ -2,7 +2,12 @@
 @use "sass:color";
 
 #projects {
-  background: $background;
+  padding-top: 2em;
+
+  background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
+
+  mask: radial-gradient(60px at 50% -10px,#0000 98%,#000);
+
   @include shadow-black;
 
   & .section-title {
@@ -131,11 +136,14 @@
 @media (width <= 700px) {
   #projects {
     & > .section-inner {
+      grid-template-rows: auto;
       grid-template-columns: 100%;
+      padding-top: 2em;
     }
 
     & .section-title {
       margin-right: 0;
+      padding: .5em 0;
       text-align: center;
     }
   }
