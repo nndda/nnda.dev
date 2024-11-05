@@ -1,0 +1,20 @@
+<section id="links">
+  <div class="section-inner">
+    <ul>
+      {{#each socials}}
+        <li class="link-item" data-icon-slug="{{this.iconSlug}}">
+          <a href="{{this.url}}"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="{{{this.name}}}"
+          >
+            <div class="social-icon">{{{this.icon}}}</div>
+            <span class="social-name">{{{this.name}}}</span>
+            <small class="username">{{this.urlS}}</small>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
