@@ -2,11 +2,15 @@
 @use "sass:color";
 
 #projects {
+  background: $background;
+  @include shadow-black;
+
   & .section-title {
     margin: 0;
     margin-right: .5em;
-    // margin-bottom: 2em;
     text-align: right;
+
+    @include gradient-text-secondary;
   }
 
   & > .section-inner {
@@ -16,8 +20,7 @@
     grid-template-columns: 50% 50%;
 
     margin: auto;
-    // padding: 5em 0;
-    // padding-top: 0;
+    padding-bottom: 3em;
 
     max-width: 980px;
 
@@ -41,6 +44,8 @@
 
       border-radius: 6px;
       border: 1px solid color.mix($text, $background, 30%);
+
+      box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
 
       overflow: hidden;
 
@@ -77,6 +82,11 @@
   color: $color;
   background: color.mix($color, $background, 1%);
   border: 1px solid color.mix($color, $background, 20%);
+  transition: .2s ease;
+
+  &:not(:hover) {
+    opacity: .6;
+  }
 }
 
 .project-label {

@@ -1,11 +1,9 @@
 @use "variables" as *;
 
 footer {
-	margin-top: 5em;
-
 	background: $background-dark;
 
-	box-shadow: 0 0 1em $background-dark;
+	@include shadow-black;
 
 	& > div {
   	padding: .5em 1.2em;

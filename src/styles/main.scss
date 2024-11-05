@@ -21,8 +21,7 @@ svg {
 }
 
 a {
-  color: $primary;
-  text-decoration: none;
+  color: $text;
 
   & > svg {
     height: 1em;
@@ -57,9 +56,10 @@ body {
   margin: auto;
 
   color: $text;
-  // background: $background;
-  background: radial-gradient(circle at bottom, $primary -90%, $background 30%);
+  background: $background-dark;
   font-family: "Noto Sans JP", sans-serif;
+
+  @include shadow-black;
 
   letter-spacing: .05em;
 
@@ -69,8 +69,14 @@ body {
 
   & > main {
     flex-grow: 1;
-    padding: 0 2em;
-    overflow: hidden;
+    background: radial-gradient(circle at 50% 120%, $primary -80%, $background-dark 30%);
+    overflow-x: clip;
+
+    & > section {
+      position: relative;
+      padding-left: 2em;
+      padding-right: 2em;
+    }
   }
 }
 
@@ -95,7 +101,6 @@ body {
   }
 
   & > svg { /* stylelint-disable-line */
-    // padding-left: .25em;
     margin-left: .3em;
     color: $background;
   }
@@ -117,8 +122,10 @@ body {
 
 #home {
   padding-top: 4em;
-  padding-bottom: 5em;
+  padding-bottom: 9em;
+  margin-top: -2em;
   overflow: hidden;
+  z-index: -2;
 
   & > .content {
     display: flex;
@@ -140,7 +147,6 @@ body {
 
       margin-right: 1.5em;
 
-      // background: $text;
       background: url("../assets/avatar.webp");
 
       background-size: 100%;
@@ -151,8 +157,8 @@ body {
   }
 
   & h1.greeting {
-    box-shadow: 0 0 1em 1em $background;
-    background: rgba($background, 0.9);
+    box-shadow: 0 0 1em 1em $background-dark;
+    background: rgba($background-dark, 0.9);
     font-size: 2em;
 
     & > i {
@@ -169,7 +175,9 @@ body {
 #things-stuff {
   display: inline-block;
   color: $primary;
+
   @include no-select;
+  @include gradient-text-primary(60%);
 }
 
 .bg-spiral-container {
@@ -211,17 +219,14 @@ body {
   transform: translate(-50%, -50%);
 
   margin: 0;
-  z-index: -2;
 
-  font-size: 2em;
-  font-family: monospace;
-  letter-spacing: .2em;
+  font-size: 1.5em;
+  font-family: "DejaVu Mono", monospace;
 
   transition: var(--ease-out-bounce) .6s;
 
   &.horizontal {
     white-space: nowrap;
-    // width: 200px;
   }
 }
 
@@ -245,12 +250,6 @@ body {
 
 @media (width <= 700px) {
 
-  // body {
-  //   & > main {
-  //     margin: 0;
-  //   }
-  // }
-
   #things-stuff {
     min-height: 3.5em;
   }
@@ -261,7 +260,6 @@ body {
     & > .content {
       flex-direction: column;
       align-items: start;
-      // min-height: 4em;
     }
   }
 };
