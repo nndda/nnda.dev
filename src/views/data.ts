@@ -12,7 +12,10 @@ function fetchCurl(url: string): any {
   }
 }
 
+// ---------------------------------------------------------------------------------------
+
 import {
+  SimpleIcon,
   siItchdotio,
   siGithub,
   siArtstation,
@@ -22,19 +25,25 @@ import {
   siKofi,
   siStylelint,
   siEslint,
+  siIcon,
 } from "simple-icons";
 
-const siIcons : Record<string, string> = {
-  "itchdotio": siItchdotio.svg,
-  "github": siGithub.svg,
-  "artstation": siArtstation.svg,
-  "mastodon": siMastodon.svg,
-  "codepen": siCodepen.svg,
-  "patreon": siPatreon.svg,
-  "kofi": siKofi.svg,
-  "stylelint": siStylelint.svg,
-  "eslint": siEslint.svg,
-}
+export const siIcons : Record<string, SimpleIcon> = [
+  siItchdotio,
+  siGithub,
+  siArtstation,
+  siMastodon,
+  siCodepen,
+  siPatreon,
+  siKofi,
+  siStylelint,
+  siEslint,
+].reduce((acc, icon) => {
+  acc[icon.slug] = icon;
+  return acc;
+}, {} as Record<string, SimpleIcon>);
+
+// ---------------------------------------------------------------------------------------
 
 import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -52,6 +61,8 @@ import {
 function i(icon_name: IconDefinition): string[] {
   return icon(icon_name).html;
 }
+
+// ---------------------------------------------------------------------------------------
 
 function urlStr(url: string): string {
   if (url.startsWith("#")) {
@@ -80,12 +91,21 @@ const repoName = reRepoOwner![2] ?? "";
 
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
-  siteData.nav.links[i]!.icon = siIcons[<string>navLinkData.icon];
+
+  if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
+    siteData.nav.links[i].iconSlug = <string>navLinkData.icon;
+    siteData.nav.links[i].icon = siIcons[<string>navLinkData.icon]!.svg;
+  }
 });
 
 siteData!.socials.forEach((socialLinkData: any, i: number) => {
+  siteData.socials[i].urlS = socialLinkData.url;
   siteData.socials[i]!.url = urlStr(socialLinkData.url);
-  siteData.socials[i]!.icon = siIcons[<string>socialLinkData.icon];
+
+  if (Object.prototype.hasOwnProperty.call(socialLinkData, "icon")) {
+    siteData.socials[i].iconSlug = <string>socialLinkData.icon;
+    siteData.socials[i].icon = siIcons[<string>socialLinkData.icon].svg;
+  }
 });
 
 import { updateSocialRedirects } from "../scripts/redirects";
@@ -147,6 +167,8 @@ module.exports = {
     scaleBalanced: i(faScaleBalanced),
     noteSticky: i(faNoteSticky),
   },
+
+  "siIcons": siIcons,
 
   siteOptions: [
     {

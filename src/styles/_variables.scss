@@ -1,16 +1,37 @@
 @use "sass:color";
 
 $primary: #fc3a78;
-// $secondary: #b9cdff;
-$secondary: #b9f3ff;
-$background: #0f1116;
-// $background: color.adjust(#0f1116, $lightness: -2.5%);
-$background-light: color.adjust($background, $lightness: 1.5%);
+$secondary: #3ae5f9;
+$background: #100f15;
+$background-light: color.adjust($background, $lightness: 2.0%);
 $background-dark: color.adjust($background, $lightness: -1.5%);
+
+$primary-gradient: linear-gradient(90deg, $primary var(--offset, 0%), #b23ee0);
+$secondary-gradient: linear-gradient(90deg, $secondary var(--offset, 0%), #2a8aec);
 
 $text: #eee;
 $text-secondary: color.mix($text, $background, 80%);
 
-@mixin no-select() {
+@mixin no-select {
   user-select: none;
+}
+
+@mixin gradient-text($gradient-col, $gradient-offset: 0%) {
+  --offset: #{$gradient-offset};
+  background: $gradient-col;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin gradient-text-primary($gradient-offset: 0%) {
+  @include gradient-text($primary-gradient, $gradient-offset);
+}
+
+@mixin gradient-text-secondary($gradient-offset: 0%) {
+  @include gradient-text($secondary-gradient, $gradient-offset);
+}
+
+@mixin shadow-black {
+  box-shadow: 0 0 2em -.2em color.adjust($background-dark, $lightness: -2.5%);
 }

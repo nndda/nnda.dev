@@ -19,27 +19,28 @@ a.nav-link {
 }
 
 header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  padding: .2em 1.2em;
+  left: 0;
+  padding: 0 1em;
 
   width: 100%;
 
   background: radial-gradient(
     circle at left,
     rgba($primary, 70%) -100%,
-    rgba($background-light, 70%) 15%
+    rgba($background, 80%) 15%
   );
   backdrop-filter: blur(.4em);
+  border-bottom: 1px solid rgba($text, 0.2);
 
-  box-shadow: 0 0 1em .5em rgba($background-dark, 20%);
+  @include shadow-black;
 
   z-index: 2;
 
   & > .header-inner {
-    display: flex;
-
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
 
     & > h1 {
       margin: 0;
@@ -59,6 +60,14 @@ header {
           & svg { /* stylelint-disable-line */
             height: 1.1em;
           }
+        }
+
+        &.nav-inner-center {
+          justify-content: center;
+        }
+
+        &.nav-inner-right {
+          justify-content: end;
         }
       }
     }
@@ -120,7 +129,7 @@ header {
   }
 }
 
-$navbar-responsive-point: 450px;
+$navbar-responsive-point: 480px;
 
 @media (width >= $navbar-responsive-point) {
   #navbar-button {
