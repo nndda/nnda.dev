@@ -12,6 +12,8 @@ function fetchCurl(url: string): any {
   }
 }
 
+// ---------------------------------------------------------------------------------------
+
 import {
   siItchdotio,
   siGithub,
@@ -52,6 +54,8 @@ import {
 function i(icon_name: IconDefinition): string[] {
   return icon(icon_name).html;
 }
+
+// ---------------------------------------------------------------------------------------
 
 function urlStr(url: string): string {
   if (url.startsWith("#")) {
