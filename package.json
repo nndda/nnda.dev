@@ -40,7 +40,7 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "@fontsource/kode-mono": "^5.1.0",
+    "@fontsource/dejavu-mono": "^5.1.0",
     "@fontsource/noto-sans-jp": "^5.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
