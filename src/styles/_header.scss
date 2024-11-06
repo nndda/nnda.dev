@@ -8,16 +8,6 @@
   }
 }
 
-a.nav-link {
-  &:hover {
-    color: $primary !important;
-
-    & > svg {
-      fill: $primary !important;
-    }
-  }
-}
-
 header {
   position: sticky;
   top: 0;
@@ -64,6 +54,15 @@ header {
 
         &.nav-inner-center {
           justify-content: center;
+
+          & .nav-link {
+            text-decoration: none;
+
+            &:hover {
+              color: $secondary;
+              text-decoration: underline;
+            }
+          }
         }
 
         &.nav-inner-right {
