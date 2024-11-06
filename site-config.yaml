@@ -42,6 +42,10 @@ socials:
     icon: artstation
     redirect: /artstation
 
+  - name: cara.app
+    url: cara.app/nnda
+    redirect: /cara
+
   - name: Patreon
     url: www.patreon.com/nnda
     icon: patreon
