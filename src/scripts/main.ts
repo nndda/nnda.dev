@@ -1,6 +1,8 @@
 const CircleType = require("circletype");
 const d = document;
 
+import { initializeScrollspy } from "./scrollspy";
+
 function rotateElem(elem : HTMLElement, degrees : number) {
   let currentRotation = parseInt(<string>elem.getAttribute("data-rotation"), 10);
   if (currentRotation >= 360 * 30) {
@@ -66,6 +68,8 @@ d.addEventListener("DOMContentLoaded", () => {
 
     mainClockClasses.remove("hidden-display");
   }, 600);
+
+  initializeScrollspy(d);
 
   const navbarMobile = <HTMLElement>d.getElementById("navbar-mobile");
   const navbarButton = <HTMLButtonElement>d.getElementById("navbar-button");
