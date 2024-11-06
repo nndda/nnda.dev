@@ -7,6 +7,10 @@ function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
 }
 
+function copyToDist(file_path : string): CopyPlugin.Pattern {
+  return { from: abs("src/" + file_path), to: abs("dist/") }
+}
+
 module.exports = {
   mode: "production",
 
@@ -102,10 +106,10 @@ module.exports = {
 
     new CopyPlugin({
       patterns: [
-        { from: abs("src/misc/_headers"), to: abs("dist/") },
-        { from: abs("src/misc/_redirects"), to: abs("dist/") },
-        { from: abs("src/misc/ai.txt"), to: abs("dist/") },
-        { from: abs("src/misc/robots.txt"), to: abs("dist/") },
+        copyToDist("misc/_headers"),
+        copyToDist("misc/_redirects"),
+        copyToDist("misc/ai.txt"),
+        copyToDist("misc/robots.txt"),
       ],
     }),
   ],
