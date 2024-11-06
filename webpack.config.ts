@@ -27,6 +27,7 @@ module.exports = {
     new HtmlBundlerPlugin({
       entry: {
         index: abs("src/views/index.hbs"),
+        "404": abs("src/views/404.hbs"),
       },
 
       data: require("./src/views/data.ts"),

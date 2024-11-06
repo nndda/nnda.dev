@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  {{ include "head" }}
+  <style type="text/css">
+    main {
+      min-height: 100vh;
+    }
+
+    main, main > h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    main > h1 {
+      flex-direction: column;
+      margin-top: -2em;
+      text-align: center;
+      font-size: 4em;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: lighter;
+      letter-spacing: .2ch;
+    }
+
+    main > h1 > a {
+      margin-top: .5em;
+      font-size: .5em;
+      letter-spacing: 0;
+    }
+  </style>
+</head>
+
+<body>
+  {{ include "header" }}
+  <main>
+    <h1>
+      404
+      <small>Page Not Found</small>
+      <a href="/"><small>Back to Home</small></a>
+    </h1>
+  </main>
+  {{ include "footer" }}
+</body>
+</html>
