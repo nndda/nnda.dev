@@ -73,7 +73,7 @@ projects:
     min-height: 280px
 
   - name: Pitch
-    url: https://github.com/nndda/Pitch
+    url: https://nnda.itch.io/pitch
     labels: [ Web, TypeScript, SCSS ]
     description: |
       🧩 Collection of UI components and tweaks, designed specifically for itch.io project pages.
