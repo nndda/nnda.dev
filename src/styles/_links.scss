@@ -19,18 +19,14 @@
 }
 
 @mixin link-style($color, $color_override: null) {
-  background: color.mix($color, $background-dark, 10%);
   color: $color;
-  border: 1px solid color.mix(if(
-    $color_override != null,
-    $color_override,
-    $color
-  ), $background-dark, 40%);
 
   transition: .2s ease;
 
   &:hover {
-    box-shadow: 0 0 1em -.8em $color;
+    box-shadow: 0 0 1.5em -.4em
+      if($color_override != null,
+        $color_override, $color);
   }
 
   & > a {
@@ -107,7 +103,12 @@
     @include link-style(#000000, white);
   }
 
+  &[data-icon-slug="codepen"] {
+    font-size: 1em;
+  }
+
   &[data-icon-slug="kofi"] {
+    font-size: 1em;
     @include link-style(#FF5E5B);
   }
 }
