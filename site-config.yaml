@@ -42,6 +42,11 @@ socials:
     icon: artstation
     redirect: /artstation
 
+  - name: Patreon
+    url: www.patreon.com/nnda
+    icon: patreon
+    redirect: /patreon
+
   - name: Mastodon
     url: mastodon.art/@nnda
     icon: mastodon
@@ -51,11 +56,6 @@ socials:
     url: codepen.io/nnda
     icon: codepen
     redirect: /codepen
-
-  - name: Patreon
-    url: www.patreon.com/nnda
-    icon: patreon
-    redirect: /patreon
 
   - name: Ko-fi
     url: ko-fi.com/nnda
