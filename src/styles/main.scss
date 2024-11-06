@@ -122,8 +122,6 @@ body {
 }
 
 #home {
-  padding-top: 4em;
-  padding-bottom: 9em;
   margin-top: -2em;
   overflow: hidden;
   z-index: -2;
@@ -134,7 +132,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    min-height: 70vh;
+    min-height: 560px;
 
     margin: auto;
     padding: 2em;
