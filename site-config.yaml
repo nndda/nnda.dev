@@ -88,8 +88,3 @@ projects:
     labels: [ Web, TypeScript, SCSS, Handlebars ]
     description: |
       My personal website, written in TypeScript, SCSS, and Handlebars, bundled with webpack.
-
-repoWorkflowBadges:
-  - codeql.yml
-  - lint-styles.yml
-  - lint-scripts.yml
