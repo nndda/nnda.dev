@@ -1,7 +1,9 @@
 <header>
   <div class="header-inner">
-  	<h1 class="text-primary">
-      ん.
+    <h1>
+      <a href="/" class="text-primary">
+        ん.
+      </a>
     </h1>
     <button class="navbar-button" id="navbar-button">{{{icons.bars}}}</button>
 
@@ -10,7 +12,7 @@
         {{#each nav.links}}
           {{#unless this.external}}
             <li>
-              <a href="{{this.url}}" class="nav-link">
+              <a href="/{{this.url}}" class="nav-link">
                 {{{this.icon}}}
                 {{{this.name}}}
               </a>
