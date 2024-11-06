@@ -28,58 +28,58 @@
     padding-bottom: 3em;
 
     max-width: 980px;
+  }
+}
 
-    & > .project-card {
-      position: relative;
-      margin: .5em;
+.project-card {
+  position: relative;
+  margin: .5em;
 
-      background:
-        radial-gradient(
-          circle at 80% 160%,
-          transparent,
-          rgba($background, 0.4) 40%,
-          rgba($background, 0.6) 50%,
-          rgba($background, 0.8) 60%,
-          $background 70%
-        ),
-        var(--img-bg, $background);
-      background-size: auto;
-      background-position: bottom right;
-      background-repeat: no-repeat;
+  background:
+    radial-gradient(
+      circle at 80% 160%,
+      transparent,
+      rgba($background, 0.4) 40%,
+      rgba($background, 0.6) 50%,
+      rgba($background, 0.8) 60%,
+      $background 70%
+    ),
+    var(--img-bg, $background);
+  background-size: auto;
+  background-position: bottom right;
+  background-repeat: no-repeat;
 
-      border-radius: 6px;
-      border: 1px solid color.mix($text, $background, 30%);
+  border-radius: 6px;
+  border: 1px solid color.mix($text, $background, 30%);
 
-      box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
+  box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
 
-      overflow: hidden;
+  overflow: hidden;
 
-      & > .project-title {
-        margin: 0;
-        padding: .5em;
-        padding-left: 1em;
-        background: linear-gradient(
-          to right,
-          $background-light 10%,
-          transparent 90%
-        );
-        font-size: 1.3em;
-        letter-spacing: .08em;
-      }
+  & > .project-title {
+    margin: 0;
+    padding: .5em;
+    padding-left: 1em;
+    background: linear-gradient(
+      to right,
+      $background-light 10%,
+      transparent 90%
+    );
+    font-size: 1.3em;
+    letter-spacing: .08em;
+  }
 
-      & > .labels-container {
-        padding-top: 1em;
-        padding-left: 1em;
-        padding-right: 1em;
-      }
+  & > .labels-container {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 
-      & > p {
-        margin: 0;
-        padding: 1.5em 1.2em;
-        padding-top: 1em;
-        font-weight: 300;
-      }
-    }
+  & > p {
+    margin: 0;
+    padding: 1.5em 1.2em;
+    padding-top: 1em;
+    font-weight: 300;
   }
 }
 

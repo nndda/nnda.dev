@@ -21,12 +21,9 @@
 @mixin link-style($color, $color_override: null) {
   color: $color;
 
-  transition: .2s ease;
-
   &:hover {
-    box-shadow: 0 0 1.5em -.4em
-      if($color_override != null,
-        $color_override, $color);
+    outline: 1px solid rgba(if($color_override != null,
+      $color_override, $color), 0.3);
   }
 
   & > a {
@@ -82,32 +79,36 @@
     }
   }
 
-  &[data-icon-slug="itchdotio"] {
+  &.default {
+    @include link-style(black, white);
+  }
+
+  &.itchdotio {
     @include link-style(#FA5C5C);
   }
 
-  &[data-icon-slug="github"] {
+  &.github {
     @include link-style(#181717, white);
   }
 
-  &[data-icon-slug="artstation"] {
+  &.artstation {
     @include link-style(#13AFF0);
   }
 
-  &[data-icon-slug="mastodon"] {
+  &.mastodon {
     @include link-style(#6364FF);
   }
 
-  &[data-icon-slug="codepen"],
-  &[data-icon-slug="patreon"] {
+  &.codepen,
+  &.patreon {
     @include link-style(#000000, white);
   }
 
-  &[data-icon-slug="codepen"] {
+  &.codepen {
     font-size: 1em;
   }
 
-  &[data-icon-slug="kofi"] {
+  &.kofi {
     font-size: 1em;
     @include link-style(#FF5E5B);
   }

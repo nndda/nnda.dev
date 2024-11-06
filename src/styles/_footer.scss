@@ -10,84 +10,88 @@ footer {
   	padding: .5em 1.2em;
 	}
 
-	& .note {
-		max-width: 400px;
-		padding: .25em 1.5em;
-		margin-right: 0;
-		margin-left: 0;
-
-		border-radius: 6px;
-
-		border: 1px solid rgba($text, 0.1);
-
-		& .title {
-			margin: 1em 0;
-			font-size: 1.1em;
-		}
-
-		& > p {
-			color: color.mix($text-secondary, $background-dark, 80%);
-			text-align: justify;
-			letter-spacing: .05em;
-		}
-	}
-
 	& h3 {
 		letter-spacing: .1em;
 	}
+}
 
-	& > .footer-body {
-		display: flex;
-		justify-content: space-evenly;
-  	padding: .5em 3em;
+.footer-body {
+	display: flex;
+	justify-content: space-evenly;
+	padding: .5em 3em;
 
-  	& svg {
-			margin-right: .3em;
-			height: 1em;
-  	}
+	& svg {
+		margin-right: .3em;
+		height: 1em;
+	}
 
-		& > .links-section {
-			padding: .5em;
+	& > .links-section {
+		padding: .5em;
 
-			& > ul {
-				padding: 0;
+		& > ul {
+			padding: 0;
 
-				list-style: none;
+			list-style: none;
 
-				& > li {
-					line-height: 1.8em;
+			& > li {
+				line-height: 1.8em;
+
+				& > a {
+					text-decoration: none;
 				}
 			}
+		}
 
-			&.horizontal {
-				& > ul {
-					display: flex;
+		&.horizontal {
+			& > ul {
+				display: flex;
 
-					& > li {
-						margin-right: 1em;
-					}
+				& > li {
+					margin-right: 1em;
 				}
 			}
 		}
 	}
+}
 
-	& > .footer-end {
-		display: flex;
+.footer-end {
+	display: flex;
 
-		padding-top: .9em;
-		padding-bottom: .9em;
+	padding-top: .9em;
+	padding-bottom: .9em;
 
-		color: $text-secondary;
-		background: $background-light;
+	color: $text-secondary;
+	background: $background-light;
 
-		& a {
+	& a {
+		color: $secondary;
+
+		& > svg {
 			color: $secondary;
-
-			& > svg {
-				color: $secondary;
-				margin-right: .25em;
-			}
+			margin-right: .25em;
 		}
+	}
+}
+
+.note {
+	max-width: 400px;
+	padding: .25em 1.5em;
+	margin-right: 0;
+	margin-left: 0;
+
+	border-radius: 6px;
+
+	border: 1px solid rgba($text, 0.1);
+
+	& .title {
+		margin: 1em 0;
+		font-size: 1.1em;
+	}
+
+	& > p {
+		color: color.mix($text-secondary, $background-dark, 80%);
+		text-align: justify;
+		letter-spacing: .05em;
 	}
 }
 
