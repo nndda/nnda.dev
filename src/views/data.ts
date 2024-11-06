@@ -112,7 +112,7 @@ import { updateSocialRedirects } from "../scripts/redirects";
 updateSocialRedirects(siteData.socials);
 
 const repoBadges : string[] = [];
-siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
+if (siteData.repoWorkflowBadges != null) siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
   const urlData = fetchCurl(
     `https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/${workflowPath}/runs?branch=main&per_page=1`
   )
