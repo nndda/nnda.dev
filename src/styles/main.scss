@@ -44,7 +44,8 @@ code {
 
 html {
   color-scheme: dark only !important;
-  scroll-behavior:smooth !important;
+  scroll-behavior: smooth !important;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 body {
@@ -58,7 +59,6 @@ body {
 
   color: $text;
   background: $background-dark;
-  font-family: "Noto Sans JP", sans-serif;
 
   @include shadow-black;
 
@@ -122,137 +122,70 @@ body {
 }
 
 #home {
-  margin-top: -2em;
+  height: 98vh;
+  min-height: 620px;
+  width: 100%;
+  max-width: 1700px;
   overflow: hidden;
   z-index: -2;
 
   & > .content {
+    position: fixed;
+    top: 0;
+
     display: flex;
+    flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: end;
 
-    min-height: 560px;
+    height: inherit;
+    width: inherit;
+    max-width: inherit;
 
     margin: auto;
     padding: 2em;
 
-    & > .profile-picture {
-      position: relative;
-
-      $dimension: 150px;
-      width: $dimension;
-      height: $dimension;
-
-      margin-right: 1.5em;
-
-      background: url("../assets/avatar.webp");
-
-      background-size: 100%;
-
-      border-radius: 50%;
-      border: 2px solid $text;
-    }
+    background:
+      linear-gradient(to top, $background -10%, transparent 60%);
+    background-size: cover;
+    background-position: center;
   }
 
   & h1.greeting {
-    box-shadow: 0 0 1em 1em $background-dark;
-    background: rgba($background-dark, 0.9);
     font-size: 2em;
 
     & > b {
-      opacity: .3;
-    }
-
-    & > sub {
-      display: inline-block;
       opacity: .5;
     }
   }
+
+  & .greeting-card {
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-#things-stuff {
-  display: inline-block;
-  color: $primary;
-
-  @include no-select;
-  @include gradient-text-primary(60%);
-}
-
-.bg-spiral-container {
+#profile-picture {
   position: relative;
-  width: 100%;
-  height: 100%;
-  opacity: .7;
-  z-index: -2;
 
-  transition:
-    opacity .8s ease,
-    transform 1.2s ease;
+  $dimension: 4.5em;
+  width: $dimension;
+  height: $dimension;
 
-  // transform: skewY(3deg) skewX(6deg);
+  margin-right: 1.5em;
 
-  @include no-select;
+  background: url("../assets/avatar.webp");
 
-  &.hidden-display {
-    transform: scale(.6) rotate(45deg);
-  }
+  background-size: 100%;
 
-  & > :nth-child(1) {
-    opacity: 0.9;
-  }
-
-  & > :nth-child(2) {
-    opacity: 0.7;
-  }
-
-  & > :nth-child(3) {
-    opacity: 0.4;
-  }
-}
-
-.bg-spiral {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  margin: 0;
-
-  font-size: 1.5em;
-  font-family: "DejaVu Mono", monospace;
-
-  transition: var(--ease-out-bounce) .6s;
-
-  &.horizontal {
-    white-space: nowrap;
-  }
-}
-
-#clock-hand-sec {
-  transition: var(--ease-out-bounce) .3s;
-}
-
-#bg-spiral-3 {
-  animation: rotate-full linear 120s infinite;
-}
-
-@keyframes rotate-full {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  border-radius: 50%;
+  border: 2px solid $text;
 }
 
 @media (width <= 700px) {
-
-  #things-stuff {
-    min-height: 3.5em;
-  }
-
   #home {
     padding-top: 9em;
 
@@ -262,3 +195,9 @@ body {
     }
   }
 };
+
+@media (width >= 1200px) {
+  #home {
+    max-height: 920px;
+  }
+}
