@@ -28,6 +28,7 @@ module.exports = {
       entry: {
         index: abs("src/views/index.hbs"),
         "404": abs("src/views/404.hbs"),
+        links: abs("src/views/links.hbs"),
       },
 
       data: require("./src/views/data.ts"),
