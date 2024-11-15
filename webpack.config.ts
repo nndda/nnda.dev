@@ -130,7 +130,7 @@ module.exports = {
         test: /\.(ico|png|jp?g|webp|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: "img/[hash:6][ext][query]",
+          filename: "[hash:2]/[hash:7][ext][query]",
         },
       },
       {
