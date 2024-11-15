@@ -1,19 +1,14 @@
-<section id="projects">
+<section id="projects" data-nav-name="Projects">
   <div class="section-inner">
     <h1 class="section-title">Projects<small>プロジェクト</small></h1>
-    <div></div>
     {{#each projects}}
-      {{#if this.offsetElem}}
-        <div class="hidden-display"></div>
-      {{else}}
-        <div class="project-card"
+      {{#unless this.offsetElem}}
+        <div
+          class="project-card"
           style="
-          {{#if this.image}}
-            --img-bg: url({{this.image}});
-          {{/if}}
-          {{#if this.min-height}}
-            min-height: {{this.min-height}};
-          {{/if}}
+            {{#if this.image}}
+              --img-bg: url({{this.image}});
+            {{/if}}
           "
         >
           <div class="project-title">
@@ -32,7 +27,7 @@
           </div>
           <p>{{this.description}}</p>
         </div>
-      {{/if}}
+      {{/unless}}
     {{/each}}
   </div>
 </section>

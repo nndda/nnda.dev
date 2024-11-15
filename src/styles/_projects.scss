@@ -3,36 +3,31 @@
 
 #projects {
   padding-top: 2em;
+  padding-bottom: 2em;
 
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
-
-  mask: radial-gradient(60px at 50% -10px,#0000 98%,#000);
 
   @include shadow-black;
 
   & .section-title {
-    margin: 0;
-    margin-right: .5em;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: .5em;
 
     @include gradient-text-secondary;
   }
 
   & > .section-inner {
-    display: grid;
-    grid-template-rows: 130px;
-    grid-auto-rows: auto;
-    grid-template-columns: 50% 50%;
-
     margin: auto;
-    padding-bottom: 3em;
-
-    max-width: 980px;
+    max-width: 1150px;
   }
 }
 
 .project-card {
   position: relative;
+  min-height: 15em;
   margin: .5em;
 
   background:
@@ -50,11 +45,16 @@
   background-repeat: no-repeat;
 
   border-radius: 6px;
-  border: 1px solid color.mix($text, $background, 30%);
+  border: 1px solid color.mix($text, $background, 18.5%);
 
   box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
 
+  transition: .2s ease;
   overflow: hidden;
+
+  &:hover {
+    border: 1px solid color.mix($text, $background, 80%);
+  }
 
   & > .project-title {
     margin: 0;
@@ -77,6 +77,7 @@
 
   & > p {
     margin: 0;
+    max-width: 326px;
     padding: 1.5em 1.2em;
     padding-top: 1em;
     font-weight: 300;
@@ -110,6 +111,9 @@
   &.TypeScript {
     @include project-label-style(#3b93f5);
   }
+  &.JavaScript {
+    @include project-label-style(#ff9b26);
+  }
   &.Handlebars {
     @include project-label-style(#ff9b26);
   }
@@ -117,34 +121,4 @@
     @include project-label-style(#66b2f2);
   }
   /* stylelint-enable */
-}
-
-@media (width >= 700px) {
-  #projects {
-    & > .section-inner {
-      & > :nth-child(odd) {
-        transform: translateY(2.5em);
-      }
-
-      & > :nth-child(even) {
-        transform: translateY(-2.5em);
-      }
-    }
-  }
-}
-
-@media (width <= 700px) {
-  #projects {
-    & > .section-inner {
-      grid-template-rows: auto;
-      grid-template-columns: 100%;
-      padding-top: 2em;
-    }
-
-    & .section-title {
-      margin-right: 0;
-      padding: .5em 0;
-      text-align: center;
-    }
-  }
 }

@@ -29,44 +29,35 @@ nav:
 # ------------------------------------------------------------------------------------------------------------------------------------
 
 socials:
-  - name: GitHub
-    url: github.com/nndda
-    icon: github
-    redirect: /github
+  - group: My Main Works
+    links:
+      - name: GitHub
+        url: github.com/nndda
+        icon: github
+        redirect: /github
 
-  - name: itch.io
-    url: nnda.itch.io
-    icon: itchdotio
-    redirect: /itchio
+      - name: itch.io
+        url: nnda.itch.io
+        icon: itchdotio
+        redirect: /itchio
 
-  - name: ArtStation
-    url: www.artstation.com/nnda
-    icon: artstation
-    redirect: /artstation
+      - name: Patreon
+        url: patreon.com/nnda
+        icon: patreon
+        redirect: /patreon
 
-  - name: cara.app
-    url: cara.app/nnda
-    redirect: /cara
+  - group: Artworks & Illustrations
+    links:
+      - name: ArtStation
+        url: artstation.com/nnda
+        icon: artstation
+        redirect: /artstation
 
-  - name: Patreon
-    url: www.patreon.com/nnda
-    icon: patreon
-    redirect: /patreon
+      - name: cara.app
+        url: cara.app/nnda
+        redirect: /cara
 
-  - name: Mastodon
-    url: mastodon.art/@nnda
-    icon: mastodon
-    redirect: /mastodon
-
-  - name: CodePen
-    url: codepen.io/nnda
-    icon: codepen
-    redirect: /codepen
-
-  - name: Ko-fi
-    url: ko-fi.com/nnda
-    icon: kofi
-    redirect: /kofi
+# ------------------------------------------------------------------------------------------------------------------------------------
 
 projects:
   - name: Theatre

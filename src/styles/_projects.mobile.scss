@@ -1,0 +1,13 @@
+@media (width <= 700px) {
+  #projects {
+    & > .section-inner {
+      grid-template-columns: 100%;
+    }
+
+    & .section-title {
+      margin-right: 0;
+      padding: .5em 0;
+      text-align: center;
+    }
+  }
+}
