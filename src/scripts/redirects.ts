@@ -2,7 +2,11 @@ import fs from "fs";
 import path from "path";
 
 export function updateSocialRedirects(data: any[]): void {
-  const sourceStr = fs.readFileSync(path.resolve(__dirname, "../misc/_redirects")).toString();
+  const
+    sourceStr = fs.readFileSync(path.resolve(__dirname, "../misc/_redirects")).toString(),
+    startComment = '#SOCIAL_REDIRECTS_START',
+    endComment = '#SOCIAL_REDIRECTS_ENDS';
+
   let updatedContents = "";
 
   data.forEach((value) => {
@@ -10,9 +14,6 @@ export function updateSocialRedirects(data: any[]): void {
       updatedContents += `${value.redirect}    ${value.url}    301\n`;
     }
   });
-
-  const startComment = '#SOCIAL_REDIRECTS_START';
-  const endComment = '#SOCIAL_REDIRECTS_ENDS';
 
   if (!sourceStr.includes(startComment) || !sourceStr.includes(endComment)) {
     console.error(`${startComment} and ${endComment} doesn't exist.`);
