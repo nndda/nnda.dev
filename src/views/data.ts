@@ -188,13 +188,6 @@ module.exports = {
     },
   ],
 
-  rings: {
-    outerAbs:`<></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></>`,
-    outer:`<><body><header></header><aside></aside><main><section></section></main><footer></footer></body></>`,
-    inner:`"I'm currently doing some %s." % [ "illustration", "game dev", "web dev" ].pick_random()`,
-    coreAbs:`{{{{#}}}}  <></>  ../../../../     /*   *////////////`,
-  },
-
   easeOutBounce: `--ease-out-bounce: linear(${[...new Array(50)]
     .map((_d: number, i: number): number => {
       let x = i * (1 / 50);
