@@ -94,3 +94,9 @@ projects:
     labels: [ Web, TypeScript, SCSS, Handlebars ]
     description: |
       My personal website, written in TypeScript, SCSS, and Handlebars, bundled with webpack.
+
+  - name: itchio-profile
+    url: https://github.com/nndda/itchio-profile
+    labels: [ Web, JavaScript, SCSS ]
+    description: |
+      Source code for my itch.io profile page.
