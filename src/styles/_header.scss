@@ -1,20 +1,13 @@
 @use "variables" as *;
 
-.navbar-button {
-  width: 1.5em;
-
-  & > svg {
-    fill: $text;
-  }
-}
-
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
+  left: auto;
   padding: 0 1em;
 
   width: 100%;
+  max-width: 1700px;
 
   background: radial-gradient(
     circle at left,
@@ -26,11 +19,10 @@ header {
 
   @include shadow-black;
 
-  z-index: 2;
+  z-index: 4;
 
   & > .header-inner {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    display: flex;
 
     & > h1 {
       margin: 0;
@@ -41,31 +33,12 @@ header {
         text-decoration: none;
       }
     }
-
-    & > nav {
-      & > ul {
-        display: flex;
-        margin: 0;
-        list-style: none;
-
-        & > li {
-          padding: .8em;
-          box-sizing: border-box;
-
-          letter-spacing: .1em;
-
-          & svg { /* stylelint-disable-line */
-            height: 1.1em;
-          }
-        }
-      }
-    }
-
   }
 }
 
 .nav-inner-center {
   justify-content: center;
+  padding: 0;
 
   & .nav-link {
     height: 100%;
@@ -78,102 +51,15 @@ header {
   }
 }
 
-.scrollspy {
-  border-bottom: 2px solid transparent;
-  transition: .5s ease;
-
-  &.active {
-    border-bottom: 2px solid;
-
-    &:nth-child(1) {
-      color: $secondary;
-      background: rgba($secondary, 0.05);
-    }
-
-    &:nth-child(2) {
-      color: $primary;
-      background: rgba($primary, 0.05);
-    }
-  }
-}
-
 .nav-inner-right {
   justify-content: end;
+  padding: 0;
 }
 
-#navbar-mobile {
-  position: absolute;
-  top: 0;
-  right: 0;
+.nav-vertical {
+  margin-top: 0;
 
-  width: 100%;
-
-  padding-top: 1em;
-
-  background: rgba($background-dark, 0.9);
-  backdrop-filter: blur(.5em);
-
-  transition: ease .2s;
-
-  overflow: hidden;
-  z-index: 99;
-
-  &.collapsed {
-    transform: translateY(-100%);
-  }
-
-  & > .nav-button-container {
-    display: block;
-    margin-right: 2em;
-
-    text-align: right;
-
-    & > .navbar-button {
-      height: 2em;
-      width: 2em;
-    }
-  }
-
-  & > ul {
-    list-style: none;
-    padding: 0;
-    padding-right: 2em;
-
-    & > li {
-      margin: 0 .9em;
-      width: 100%;
-
-      letter-spacing: .1em;
-      line-height: 2.2em;
-
-      & > a {
-        display: inline-block;
-        width: 100%;
-      }
-    }
-  }
-}
-
-$navbar-responsive-point: 480px;
-
-@media (width >= $navbar-responsive-point) {
-  #navbar-button {
-    display: none;
-  }
-
-  #navbar-mobile {
-    display: none;
-  }
-}
-
-@media (width <= $navbar-responsive-point) {
-  header {
-    & > .header-inner {
-      & > nav {
-        & > ul {
-          display: none;
-        }
-      }
-    }
+  & > li {
+    display: inline-block;
   }
 }

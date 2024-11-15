@@ -1,0 +1,101 @@
+@use "variables" as *;
+
+.navbar-button {
+  width: 1.5em;
+
+  & > svg {
+    fill: $text;
+  }
+}
+
+#navbar-mobile-header {
+  display: flex;
+  flex-grow: 1;
+}
+
+#navbar-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+
+  padding-top: 1em;
+
+  background: rgba($background-light, 0.6);
+  backdrop-filter: blur(.5em);
+
+  transition: ease .2s;
+
+  overflow: hidden;
+  z-index: 99;
+
+  &.collapsed {
+    transform: translateY(-100%);
+  }
+
+  & > .nav-button-container {
+    display: block;
+    margin-right: 2em;
+
+    text-align: right;
+
+    & > .navbar-button {
+      height: 2em;
+      width: 2em;
+    }
+  }
+
+  & > ul {
+    list-style: none;
+    padding: 0;
+    padding-right: 2em;
+
+    & > li {
+      margin: 0 .9em;
+      // width: 100%;
+
+      letter-spacing: .1em;
+      line-height: 2.2em;
+
+      & > a {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+#collapse-trigger-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($background, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+#mobile-nav-sect-label {
+  margin: .5em 0;
+  letter-spacing: .2ch;
+}
+
+$navbar-responsive-point: 700px;
+
+@media (width <= $navbar-responsive-point) {
+  header {
+    & > .header-inner {
+      & > nav {
+        & > ul {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #navbar-desktop-header {
+    display: none;
+  }
+}
