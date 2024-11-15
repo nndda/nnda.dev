@@ -2,29 +2,41 @@
 @use "sass:color";
 
 #links {
-  padding-top: 6em;
-  padding-bottom: 6em;
+  padding-top: 4em;
+  padding-bottom: 4em;
 
   & > .section-inner {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  & .links-group {
+    padding-bottom: 1.5em;
+
     & > ul {
       display: flex;
       flex-wrap: wrap;
-      max-width: 560px;
       padding: 0;
       margin: auto;
-      justify-content: center;
       list-style: none;
     }
+  }
+
+  & .links-title {
+    padding-bottom: .2em;
+
+    color: color.mix($text, $background-dark, 70%);
+
+    font-size: 1.7em;
+    font-weight: 200;
+    letter-spacing: .2ch;
+
+    border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
   }
 }
 
 @mixin link-style($color, $color_override: null) {
   color: $color;
-
-  &:hover {
-    outline: 1px solid rgba(if($color_override != null,
-      $color_override, $color), 0.3);
-  }
 
   & > a {
     color: if(
