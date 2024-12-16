@@ -34,7 +34,7 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0",
+    "typescript-eslint": "^8.18.1",
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.0"
@@ -42,8 +42,8 @@
   "dependencies": {
     "@fontsource/dejavu-mono": "^5.1.0",
     "@fontsource/noto-sans-jp": "^5.1.0",
-    "@fortawesome/fontawesome-svg-core": "^6.7.1",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "modern-normalize": "^3.0.1",
     "simple-icons": "^13.21.0",
     "yaml": "^2.6.0"
