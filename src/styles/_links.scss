@@ -20,6 +20,10 @@
       margin: auto;
       list-style: none;
     }
+
+    &:nth-child(3) {
+      font-size: .8em;
+    }
   }
 
   & .links-title {
@@ -57,7 +61,7 @@
 
 .link-item {
   margin: .5em;
-  padding: .2em .6em;
+  padding: .2em .3em;
   font-size: 1.2em;
   border-radius: 8px;
 
@@ -99,9 +103,9 @@
     @include link-style(#FA5C5C);
   }
 
-  &.github {
-    @include link-style(#181717, white);
-  }
+  // &.github {
+  //   @include link-style(#181717, white);
+  // }
 
   &.artstation {
     @include link-style(#13AFF0);
@@ -111,13 +115,19 @@
     @include link-style(#6364FF);
   }
 
-  &.codepen,
-  &.patreon {
-    @include link-style(#000000, white);
+  // &.reddit {
+  //   @include link-style(#ff4500);
+  // }
+
+  &.bluesky {
+    @include link-style(#0285FF);
   }
 
-  &.codepen {
-    font-size: 1em;
+  // &.codepen,
+  &.github,
+  &.x,
+  &.patreon {
+    @include link-style(#000000, $text);
   }
 
   &.kofi {
