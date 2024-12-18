@@ -36,13 +36,19 @@
 
   & > .nav-button-container {
     display: block;
-    margin-right: 2em;
+    margin-right: 1.25em;
 
     text-align: right;
 
     & > .navbar-button {
       height: 2em;
       width: 2em;
+      cursor: pointer;
+      transition: ease .3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -52,7 +58,7 @@
     padding-right: 2em;
 
     & > li {
-      margin: 0 .9em;
+      margin: 0 1.25em;
       // width: 100%;
 
       letter-spacing: .1em;
@@ -74,7 +80,7 @@
   height: 100%;
   background: rgba($background, 0.4);
   backdrop-filter: blur(8px);
-  z-index: 3;
+  z-index: 7;
 }
 
 #mobile-nav-sect-label {

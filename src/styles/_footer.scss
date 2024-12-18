@@ -4,6 +4,8 @@
 footer {
 	background: $background-dark;
 
+  z-index: 3;
+
 	@include shadow-black;
 
 	& > div {
@@ -63,13 +65,10 @@ footer {
 	color: $text-secondary;
 	background: $background-light;
 
-	& a {
-		color: $secondary;
+	font-size: .9em;
 
-		& > svg {
-			color: $secondary;
-			margin-right: .25em;
-		}
+	& a {
+		text-decoration-color: rgba($text, .3);
 	}
 }
 

@@ -18,7 +18,7 @@
 
 svg {
   display: inline-block;
-  fill: $primary;
+  fill: $text;
 }
 
 a {
@@ -72,6 +72,7 @@ body {
     flex-grow: 1;
     background: radial-gradient(circle at 50% 120%, $primary -80%, $background-dark 30%);
     overflow-x: clip;
+    z-index: 3;
 
     & > section {
       position: relative;
@@ -81,31 +82,120 @@ body {
   }
 }
 
-.badge-success {
-  display: inline-block;
-  margin-bottom: .4em;
-  margin-right: .4em;
-  background: $secondary;
+.cta-container {
+  position: absolute;
+  display: flex;
+  margin-right: 1em;
+  margin-bottom: 1em;
+
+  & > small {
+    margin-right: 1em;
+    text-align: right;
+  }
+}
+
+#cta-button {
+  position: relative;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  padding: .35em .8em;
+
   color: $text;
-  font-size: .8em;
+
+  border: 1px solid $text;
+  border-radius: 16px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
   overflow: hidden;
 
-  & > .badge-text {
-    display: inline-block;
-    padding: .2em .5em;
-    background: color.adjust($background-light, $lightness: 5%);
+  transition: ease .5s;
+
+  & > svg {
+    height: 1em;
+    margin-right: .5em;
+    fill: $text;
+  }
+
+  &:hover {
+    color: $background-dark;
+    &:after {
+      transform: translateX(0);
+    }
 
     & > svg {
-      vertical-align: -.15em;
-      fill: $text;
+      fill: $background-dark;
     }
   }
 
-  & > svg { /* stylelint-disable-line */
-    margin-left: .3em;
-    color: $background;
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0em;
+    background: $secondary-gradient;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    transition: ease .25s;
+    z-index: -1;
+    transform: translateX(-100%);
   }
 }
+
+#in-dev-stat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2em;
+  font-weight: 200;
+
+  text-align: center;
+  letter-spacing: .2ch;
+
+  opacity: .7;
+
+  & > .icon {
+    width: 5em;
+  }
+}
+
+// .badge-success {
+//   display: inline-block;
+//   margin-bottom: .4em;
+//   margin-right: .4em;
+//   background: $secondary;
+//   color: $text;
+//   font-size: .8em;
+//   overflow: hidden;
+
+//   & > .badge-text {
+//     display: inline-block;
+//     padding: .2em .5em;
+//     background: color.adjust($background-light, $lightness: 5%);
+
+//     & > svg {
+//       vertical-align: -.15em;
+//       fill: $text;
+//     }
+//   }
+
+//   & > svg { /* stylelint-disable-line */
+//     margin-left: .3em;
+//     color: $background;
+//   }
+// }
 
 .section-title {
   font-size: 2.5em;
@@ -127,20 +217,19 @@ body {
   width: 100%;
   max-width: 1700px;
   overflow: hidden;
-  z-index: -2;
 
   & > .content {
     position: fixed;
     top: 0;
 
     display: flex;
-    flex-direction: column;
 
-    align-items: start;
+    align-items: end;
     justify-content: end;
 
     height: inherit;
     width: inherit;
+    max-height: inherit;
     max-width: inherit;
 
     margin: auto;
@@ -150,40 +239,27 @@ body {
       linear-gradient(to top, $background -10%, transparent 60%);
     background-size: cover;
     background-position: center;
-  }
 
-  & h1.greeting {
-    font-size: 2em;
-
-    & > b {
-      opacity: .5;
-    }
-  }
-
-  & .greeting-card {
-    font-size: .8em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 3;
   }
 }
 
-#profile-picture {
-  position: relative;
+// #profile-picture {
+//   position: relative;
 
-  $dimension: 4.5em;
-  width: $dimension;
-  height: $dimension;
+//   $dimension: 4.5em;
+//   width: $dimension;
+//   height: $dimension;
 
-  margin-right: 1.5em;
+//   margin-right: 1.5em;
 
-  background: url("../assets/avatar.webp");
+//   background: url("../assets/avatar.webp");
 
-  background-size: 100%;
+//   background-size: 100%;
 
-  border-radius: 50%;
-  border: 2px solid $text;
-}
+//   border-radius: 50%;
+//   border: 2px solid $text;
+// }
 
 @media (width <= 700px) {
   #home {
@@ -191,7 +267,18 @@ body {
 
     & > .content {
       flex-direction: column;
-      align-items: start;
+      align-items: center;
+    }
+  }
+
+  .cta-container {
+    flex-direction: column;
+    margin: 0;
+
+    & > small {
+      margin-right: 0;
+      margin-bottom: 1em;
+      text-align: center;
     }
   }
 };

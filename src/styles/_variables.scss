@@ -2,9 +2,9 @@
 
 $primary: #fc3a78;
 $secondary: #3ae5f9;
-$background: #100f15;
+$background: #15141b;
 $background-light: color.adjust($background, $lightness: 2.0%);
-$background-dark: color.adjust($background, $lightness: -1.5%);
+$background-dark: color.adjust($background, $lightness: -2.5%);
 
 $primary-gradient: linear-gradient(90deg, $primary var(--offset, 0%), #b23ee0);
 $secondary-gradient: linear-gradient(90deg, $secondary var(--offset, 0%), #2a8aec);
