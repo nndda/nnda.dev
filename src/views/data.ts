@@ -25,7 +25,11 @@ import {
   siPatreon,
   siKofi,
   siStylelint,
+  siNodedotjs,
   siEslint,
+  siReddit,
+  siBluesky,
+  siX,
 } from "simple-icons";
 
 export const siIcons : Record<string, SimpleIcon> = [
@@ -37,7 +41,11 @@ export const siIcons : Record<string, SimpleIcon> = [
   siPatreon,
   siKofi,
   siStylelint,
+  siNodedotjs,
   siEslint,
+  siReddit,
+  siBluesky,
+  siX,
 ].reduce((acc, icon) => {
   acc[icon.slug] = icon;
   return acc;
@@ -55,7 +63,9 @@ import {
   faXmark,
   faScaleBalanced,
   faCheck,
+  faChain,
   faNoteSticky,
+  faRoadBarrier,
 } from "@fortawesome/free-solid-svg-icons";
 
 function i(icon_name: IconDefinition): string[] {
@@ -136,6 +146,7 @@ module.exports = {
   ],
 
   icons: {
+    chain: i(faChain),
     code: i(faCode),
     bars: i(faBars),
     codeFork: i(faCodeFork),
@@ -144,6 +155,7 @@ module.exports = {
     xmark: i(faXmark),
     scaleBalanced: i(faScaleBalanced),
     noteSticky: i(faNoteSticky),
+    roadBarrier: i(faRoadBarrier),
   },
 
   "siIcons": siIcons,
