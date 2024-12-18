@@ -84,6 +84,6 @@ projects:
 
   - name: itchio-profile
     url: https://github.com/nndda/itchio-profile
-    labels: [ Web, JavaScript, SCSS ]
+    labels: [ Node, JavaScript, SCSS ]
     description: |
       Source code for my itch.io profile page.
