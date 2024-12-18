@@ -166,6 +166,7 @@ module.exports = {
     },
   ],
 
+  /*
   easeOutBounce: `--ease-out-bounce: linear(${[...new Array(50)]
     .map((_d: number, i: number): number => {
       let x = i * (1 / 50);
@@ -185,6 +186,7 @@ module.exports = {
     })
     .join(",")
   });`,
+  */
 
   ...siteData,
 }
