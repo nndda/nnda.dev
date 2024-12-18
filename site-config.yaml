@@ -35,16 +35,19 @@ socials:
         url: github.com/nndda
         icon: github
         redirect: /github
+        username: nndda
 
       - name: itch.io
         url: nnda.itch.io
         icon: itchdotio
         redirect: /itchio
+        username: nnda
 
       - name: Patreon
         url: patreon.com/nnda
         icon: patreon
         redirect: /patreon
+        username: nnda
 
   - group: Artworks & Illustrations
     links:
@@ -52,10 +55,32 @@ socials:
         url: artstation.com/nnda
         icon: artstation
         redirect: /artstation
+        username: nnda
 
       - name: cara.app
         url: cara.app/nnda
         redirect: /cara
+        username: nnda
+
+  - group: Socials
+    links:
+      - name: Mastodon
+        url: mastodon.art/@nnda
+        icon: mastodon
+        redirect: /mastodon
+        username: '@nnda'
+
+      - name: Twitter/X
+        url: twitter.com/@nnda_dev
+        icon: x
+        redirect: /twitter
+        username: '@nnda_dev'
+
+      - name: Bluesky
+        url: bsky.app/profile/nndda.bsky.social
+        icon: bluesky
+        redirect: /bsky
+        username: 'nndda'
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 
