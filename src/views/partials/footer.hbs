@@ -1,7 +1,7 @@
 <footer>
   <div class="footer-body">
     <div class="links-section horizontal">
-      <h3>This Site</h3>
+      <div class="footer-heading">This Site</div>
       <div class="badges-container">
         {{#each repoBadges}}
           {{{this}}}
@@ -28,6 +28,7 @@
             aria-label="{{{this.url}}}"
           >
             {{{this.icon}}}
+            {{this.name}}
           </a>
         </li>
       {{/each}}
@@ -35,7 +36,7 @@
     </div>
     <div class="links-section">
       <blockquote class="note">
-        <h3>{{{icons.noteSticky}}} Note</h3>
+        <div class="title">{{{icons.noteSticky}}} Note</div>
         <p>
           While the source code of this site is licensed under GPLv3, some assets and content displayed here may be subject to different licenses or copyright restrictions.
         </p>

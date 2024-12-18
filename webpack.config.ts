@@ -7,6 +7,10 @@ function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
 }
 
+function copyToDist(file_path : string): CopyPlugin.Pattern {
+  return { from: abs("src/" + file_path), to: abs("dist/") }
+}
+
 module.exports = {
   mode: "production",
 
@@ -23,6 +27,8 @@ module.exports = {
     new HtmlBundlerPlugin({
       entry: {
         index: abs("src/views/index.hbs"),
+        "404": abs("src/views/404.hbs"),
+        links: abs("src/views/links.hbs"),
       },
 
       data: require("./src/views/data.ts"),
@@ -102,10 +108,10 @@ module.exports = {
 
     new CopyPlugin({
       patterns: [
-        { from: abs("src/misc/_headers"), to: abs("dist/") },
-        { from: abs("src/misc/_redirects"), to: abs("dist/") },
-        { from: abs("src/misc/ai.txt"), to: abs("dist/") },
-        { from: abs("src/misc/robots.txt"), to: abs("dist/") },
+        copyToDist("misc/_headers"),
+        copyToDist("misc/_redirects"),
+        copyToDist("misc/ai.txt"),
+        copyToDist("misc/robots.txt"),
       ],
     }),
   ],
@@ -125,7 +131,7 @@ module.exports = {
         test: /\.(ico|png|jp?g|webp|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: "img/[hash:6][ext][query]",
+          filename: "[hash:2]/[hash:7][ext][query]",
         },
       },
       {

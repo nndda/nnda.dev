@@ -16,6 +16,7 @@ function fetchCurl(url: string): any {
 
 import {
   SimpleIcon,
+
   siItchdotio,
   siGithub,
   siArtstation,
@@ -24,8 +25,11 @@ import {
   siPatreon,
   siKofi,
   siStylelint,
+  siNodedotjs,
   siEslint,
-  siIcon,
+  siReddit,
+  siBluesky,
+  siX,
 } from "simple-icons";
 
 export const siIcons : Record<string, SimpleIcon> = [
@@ -37,7 +41,11 @@ export const siIcons : Record<string, SimpleIcon> = [
   siPatreon,
   siKofi,
   siStylelint,
+  siNodedotjs,
   siEslint,
+  siReddit,
+  siBluesky,
+  siX,
 ].reduce((acc, icon) => {
   acc[icon.slug] = icon;
   return acc;
@@ -55,7 +63,9 @@ import {
   faXmark,
   faScaleBalanced,
   faCheck,
+  faChain,
   faNoteSticky,
+  faRoadBarrier,
 } from "@fortawesome/free-solid-svg-icons";
 
 function i(icon_name: IconDefinition): string[] {
@@ -82,12 +92,18 @@ function urlStr(url: string): string {
 const siteData = parse(
   fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
 );
+console.log(siteData);
+
+if (process.env.SITE_CFG_EXTEND) {
+  execSync(`
+    curl ${process.env.SITE_CFG_EXTEND} --output ext.zip && unzip ext.zip .
+  `)
+  fs.readFileSync(path.resolve(__dirname, "../../site-config-ext.yaml"), { encoding: "utf-8" })
+}
+
+// ---------------------------------------------------------------------------------------
 
 const repoURL = urlStr(siteData.repoURL);
-const reRepoOwner = /^.+\.(?:com|org)\/(\w+)\/(\w+)/.exec(repoURL);
-
-const repoOwner = reRepoOwner![1] ?? "";
-const repoName = reRepoOwner![2] ?? "";
 
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
@@ -99,56 +115,28 @@ siteData!.nav.links.forEach((navLinkData: any, i: number) => {
 });
 
 siteData!.socials.forEach((socialLinkData: any, i: number) => {
-  siteData.socials[i].urlS = socialLinkData.url;
-  siteData.socials[i]!.url = urlStr(socialLinkData.url);
+  socialLinkData.links.forEach((socialLink: any, n: number) => {
+    siteData.socials[i].links[n].urlS = socialLink.url;
+    siteData.socials[i].links[n].url = urlStr(socialLink.url);
 
-  if (Object.prototype.hasOwnProperty.call(socialLinkData, "icon")) {
-    siteData.socials[i].iconSlug = <string>socialLinkData.icon;
-    siteData.socials[i].icon = siIcons[<string>socialLinkData.icon].svg;
-  }
+    if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
+      siteData.socials[i].links[n].iconSlug = <string>socialLink.icon;
+      siteData.socials[i].links[n].icon = siIcons[<string>socialLink.icon].svg;
+    }
+  });
+
 });
 
 import { updateSocialRedirects } from "../scripts/redirects";
-updateSocialRedirects(siteData.socials);
-
-const repoBadges : string[] = [];
-siteData!.repoWorkflowBadges.forEach((workflowPath: string) => {
-  const urlData = fetchCurl(
-    `https://api.github.com/repos/${repoOwner}/${repoName}/actions/workflows/${workflowPath}/runs?branch=main&per_page=1`
-  )
-
-  if (urlData !== null) {
-    if (urlData.workflow_runs[0].conclusion === "success") {
-      const badgeName : string = urlData.workflow_runs[0].name;
-      let badgeIcon = "";
-
-      if (badgeName.includes("CodeQL")) {
-        badgeIcon = siGithub.svg;
-      } else if (badgeName.includes("Stylelint")) {
-        badgeIcon = siStylelint.svg;
-      } else if (badgeName.includes("ESLint")) {
-        badgeIcon = siEslint.svg;
-      }
-
-      repoBadges.push(`
-        <span class="badge-success">
-          <span class="badge-text">
-            ${badgeIcon}
-            ${badgeName}
-          </span>
-          ${i(faCheck)}
-        </span>
-      `);
-    }
-  }
-});
-
+const socialRedirData = <any[]>[];
+siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
+updateSocialRedirects(socialRedirData);
 
 module.exports = {
   "repoURL": repoURL,
+
 	nav: {
-    links: [
-    ],
+    links: [ ],
   },
 
   socials: [
@@ -158,6 +146,7 @@ module.exports = {
   ],
 
   icons: {
+    chain: i(faChain),
     code: i(faCode),
     bars: i(faBars),
     codeFork: i(faCodeFork),
@@ -166,6 +155,7 @@ module.exports = {
     xmark: i(faXmark),
     scaleBalanced: i(faScaleBalanced),
     noteSticky: i(faNoteSticky),
+    roadBarrier: i(faRoadBarrier),
   },
 
   "siIcons": siIcons,
@@ -188,13 +178,7 @@ module.exports = {
     },
   ],
 
-  rings: {
-    outerAbs:`<></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></><></>`,
-    outer:`<><body><header></header><aside></aside><main><section></section></main><footer></footer></body></>`,
-    inner:`"I'm currently doing some %s." % [ "illustration", "game dev", "web dev" ].pick_random()`,
-    coreAbs:`{{{{#}}}}  <></>  ../../../../     /*   *////////////`,
-  },
-
+  /*
   easeOutBounce: `--ease-out-bounce: linear(${[...new Array(50)]
     .map((_d: number, i: number): number => {
       let x = i * (1 / 50);
@@ -214,7 +198,7 @@ module.exports = {
     })
     .join(",")
   });`,
+  */
 
   ...siteData,
-  "repoBadges": repoBadges,
 }

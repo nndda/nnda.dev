@@ -1,30 +1,13 @@
 @use "variables" as *;
 
-.navbar-button {
-  width: 1.5em;
-
-  & > svg {
-    fill: $text;
-  }
-}
-
-a.nav-link {
-  &:hover {
-    color: $primary !important;
-
-    & > svg {
-      fill: $primary !important;
-    }
-  }
-}
-
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
+  left: auto;
   padding: 0 1em;
 
   width: 100%;
+  max-width: 1700px;
 
   background: radial-gradient(
     circle at left,
@@ -36,119 +19,47 @@ header {
 
   @include shadow-black;
 
-  z-index: 2;
+  z-index: 9;
 
   & > .header-inner {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    display: flex;
 
     & > h1 {
       margin: 0;
+      margin-top: .15em;
       font-weight: 200;
-    }
-
-    & > nav {
-      & > ul {
-        display: flex;
-        list-style: none;
-
-        & > li {
-          margin: 0 .9em;
-
-          letter-spacing: .1em;
-
-          & svg { /* stylelint-disable-line */
-            height: 1.1em;
-          }
-        }
-
-        &.nav-inner-center {
-          justify-content: center;
-        }
-
-        &.nav-inner-right {
-          justify-content: end;
-        }
-      }
-    }
-
-  }
-}
-
-#navbar-mobile {
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  width: 100%;
-  // height: 100vh;
-
-  padding-top: 1em;
-
-  background: rgba($background-dark, 0.9);
-  backdrop-filter: blur(.5em);
-
-  transition: ease .2s;
-
-  overflow: hidden;
-  z-index: 99;
-
-  &.collapsed {
-    transform: translateY(-100%);
-  }
-
-  & > .nav-button-container {
-    display: block;
-    margin-right: 2em;
-
-    text-align: right;
-
-    & > .navbar-button {
-      height: 2em;
-      width: 2em;
-    }
-  }
-
-  & > ul {
-    list-style: none;
-    padding: 0;
-    padding-right: 2em;
-
-    & > li {
-      margin: 0 .9em;
-      width: 100%;
-
-      letter-spacing: .1em;
-      line-height: 2.2em;
 
       & > a {
-        display: inline-block;
-        width: 100%;
+        text-decoration: none;
       }
     }
   }
 }
 
-$navbar-responsive-point: 480px;
+.nav-inner-center {
+  justify-content: center;
+  padding: 0;
 
-@media (width >= $navbar-responsive-point) {
-  #navbar-button {
-    display: none;
-  }
+  & .nav-link {
+    height: 100%;
+    text-decoration: none;
 
-  #navbar-mobile {
-    display: none;
+    &:hover {
+      color: $secondary;
+      text-decoration: underline;
+    }
   }
 }
 
-@media (width <= $navbar-responsive-point) {
-  header {
-    & > .header-inner {
-      & > nav {
-        & > ul {
-          display: none;
-        }
-      }
-    }
+.nav-inner-right {
+  justify-content: end;
+  padding: 0;
+}
+
+.nav-vertical {
+  margin-top: 0;
+
+  & > li {
+    display: inline-block;
   }
 }

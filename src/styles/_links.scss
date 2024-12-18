@@ -2,36 +2,45 @@
 @use "sass:color";
 
 #links {
-  padding-top: 6em;
-  padding-bottom: 6em;
+  padding-top: 4em;
+  padding-bottom: 4em;
 
   & > .section-inner {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  & .links-group {
+    padding-bottom: 1.5em;
+
     & > ul {
       display: flex;
       flex-wrap: wrap;
-      max-width: 560px;
       padding: 0;
       margin: auto;
-      justify-content: center;
       list-style: none;
     }
+
+    &:nth-child(3) {
+      font-size: .8em;
+    }
+  }
+
+  & .links-title {
+    padding-bottom: .2em;
+
+    color: color.mix($text, $background-dark, 70%);
+
+    font-size: 1.7em;
+    font-weight: 200;
+    letter-spacing: .2ch;
+
+    border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
   }
 }
 
 @mixin link-style($color, $color_override: null) {
-  background: color.mix($color, $background-dark, 10%);
   color: $color;
-  border: 1px solid color.mix(if(
-    $color_override != null,
-    $color_override,
-    $color
-  ), $background-dark, 40%);
-
-  transition: .2s ease;
-
-  &:hover {
-    box-shadow: 0 0 1em -.8em $color;
-  }
 
   & > a {
     color: if(
@@ -52,7 +61,7 @@
 
 .link-item {
   margin: .5em;
-  padding: .2em .6em;
+  padding: .2em .3em;
   font-size: 1.2em;
   border-radius: 8px;
 
@@ -86,28 +95,43 @@
     }
   }
 
-  &[data-icon-slug="itchdotio"] {
+  &.default {
+    @include link-style(black, white);
+  }
+
+  &.itchdotio {
     @include link-style(#FA5C5C);
   }
 
-  &[data-icon-slug="github"] {
-    @include link-style(#181717, white);
-  }
+  // &.github {
+  //   @include link-style(#181717, white);
+  // }
 
-  &[data-icon-slug="artstation"] {
+  &.artstation {
     @include link-style(#13AFF0);
   }
 
-  &[data-icon-slug="mastodon"] {
+  &.mastodon {
     @include link-style(#6364FF);
   }
 
-  &[data-icon-slug="codepen"],
-  &[data-icon-slug="patreon"] {
-    @include link-style(#000000, white);
+  // &.reddit {
+  //   @include link-style(#ff4500);
+  // }
+
+  &.bluesky {
+    @include link-style(#0285FF);
   }
 
-  &[data-icon-slug="kofi"] {
+  // &.codepen,
+  &.github,
+  &.x,
+  &.patreon {
+    @include link-style(#000000, $text);
+  }
+
+  &.kofi {
+    font-size: 1em;
     @include link-style(#FF5E5B);
   }
 }

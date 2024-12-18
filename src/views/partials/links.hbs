@@ -1,20 +1,44 @@
 <section id="links">
   <div class="section-inner">
-    <ul>
-      {{#each socials}}
-        <li class="link-item" data-icon-slug="{{this.iconSlug}}">
-          <a href="{{this.url}}"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            referrerpolicy="no-referrer"
-            aria-label="{{{this.name}}}"
-          >
-            <div class="social-icon">{{{this.icon}}}</div>
-            <span class="social-name">{{{this.name}}}</span>
-            <small class="username">{{this.urlS}}</small>
-          </a>
-        </li>
-      {{/each}}
-    </ul>
+    {{#each socials}}
+      <div class="links-group">
+        <div class="links-title">
+          {{this.group}}
+        </div>
+        <ul>
+          {{#each this.links}}
+            <li class="
+                link-item
+                {{#if this.iconSlug}}
+                  {{this.iconSlug}}
+                {{else}}
+                  default
+                {{/if}}
+                "
+            >
+              <a href="{{this.url}}"
+                target="_blank"
+                rel="me nofollow noopener noreferrer"
+                referrerpolicy="no-referrer"
+                aria-label="{{{this.name}}}"
+              >
+                {{#if this.icon}}
+                  <div class="social-icon">{{{this.icon}}}</div>
+                {{else}}
+                  <div class="social-icon">{{{@root.icons.chain}}}</div>
+                {{/if}}
+                <span class="social-name">{{{this.name}}}</span>
+
+                {{#if this.username}}
+                  <small class="username">{{this.username}}</small>
+                {{else}}
+                  <small class="username">{{this.urlS}}</small>
+                {{/if}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/each}}
   </div>
 </section>
