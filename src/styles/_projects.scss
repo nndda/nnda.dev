@@ -2,8 +2,8 @@
 @use "sass:color";
 
 #projects {
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 3em;
+  padding-bottom: 3em;
 
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
@@ -11,12 +11,36 @@
 
   & .section-title {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: .5em;
 
-    @include gradient-text-secondary;
+    font-size: 1em;
+
+    border: 2px dashed color.mix($text, $background, 30%);
+    border-radius: 8px;
+
+    transition: .2s ease;
+
+    &:hover {
+      border-color: color.mix($text, $background, 80%);
+    }
+
+    & > .title-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 2.6em;
+      letter-spacing: .15ch;
+
+      @include gradient-text-secondary;
+
+      & > small {
+        font-size: .8em;
+        font-weight: 200;
+      }
+    }
   }
 
   & > .section-inner {
@@ -67,6 +91,10 @@
     );
     font-size: 1.3em;
     letter-spacing: .08em;
+
+    & a {
+      text-decoration: none;
+    }
   }
 
   & > .labels-container {
@@ -80,7 +108,10 @@
     max-width: 326px;
     padding: 1.5em 1.2em;
     padding-top: 1em;
+    color: color.mix($text, $background, 80%);
     font-weight: 300;
+    letter-spacing: .05em;
+    word-spacing: .1em;
   }
 }
 
@@ -99,7 +130,7 @@
   display: inline-block;
   padding: .15em .5em;
   margin: 0 .25em;
-  font-size: .8em;
+  font-size: .65em;
   letter-spacing: .1em;
   border-radius: 9px;
   @include project-label-style($text);
@@ -112,7 +143,10 @@
     @include project-label-style(#3b93f5);
   }
   &.JavaScript {
-    @include project-label-style(#ff9b26);
+    @include project-label-style(#f7df1e);
+  }
+  &.Node {
+    @include project-label-style(#5fa04e);
   }
   &.Handlebars {
     @include project-label-style(#ff9b26);
