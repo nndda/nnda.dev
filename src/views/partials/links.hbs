@@ -24,6 +24,8 @@
               >
                 {{#if this.icon}}
                   <div class="social-icon">{{{this.icon}}}</div>
+                {{else}}
+                  <div class="social-icon">{{{@root.icons.chain}}}</div>
                 {{/if}}
                 <span class="social-name">{{{this.name}}}</span>
                 <small class="username">{{this.urlS}}</small>
