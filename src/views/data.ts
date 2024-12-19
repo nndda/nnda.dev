@@ -92,7 +92,6 @@ function urlStr(url: string): string {
 const siteData = parse(
   fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
 );
-console.log(siteData);
 
 if (process.env.SITE_CFG_EXTEND) {
   execSync(`
