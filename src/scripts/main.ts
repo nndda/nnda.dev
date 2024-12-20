@@ -1,6 +1,7 @@
 const d = document;
 
 import { initializeScrollspy } from "./scrollspy";
+import { initializeInputs } from "./input";
 
 d.addEventListener("DOMContentLoaded", () => {
   initializeScrollspy(d);
@@ -21,4 +22,6 @@ d.addEventListener("DOMContentLoaded", () => {
 
   navbarButton.addEventListener("click", toggleNavMobile);
   navbarCollapseArea.addEventListener("click", toggleNavMobile);
+
+  initializeInputs(d);
 });
