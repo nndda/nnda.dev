@@ -87,7 +87,9 @@ socials:
 projects:
   - name: Theatre
     url: https://github.com/nndda/Theatre
-    labels: [ Godot, GDScript ]
+    tags: [ Godot, GDScript ]
+    category: Game Development
+    platform: N/A
     description: |
       🎭 Yet another (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text. Compatible with Godot 4.3.
 
@@ -95,7 +97,9 @@ projects:
 
   - name: Pitch
     url: https://nnda.itch.io/pitch
-    labels: [ Web, TypeScript, SCSS ]
+    tags: [ Web, TypeScript, SCSS ]
+    category: Web Project
+    platform: Web
     description: |
       🧩 Collection of UI components and tweaks, designed specifically for itch.io project pages.
 
@@ -103,12 +107,16 @@ projects:
 
   - name: This website
     url: https://github.com/nndda/website
-    labels: [ Web, TypeScript, SCSS, Handlebars ]
+    tags: [ Web, TypeScript, SCSS, Handlebars ]
+    category: Web Project
+    platform: Web
     description: |
       My personal website, written in TypeScript, SCSS, and Handlebars, bundled with webpack.
 
   - name: itchio-profile
     url: https://github.com/nndda/itchio-profile
-    labels: [ Node, JavaScript, SCSS ]
+    tags: [ Node, JavaScript, SCSS ]
+    category: Web Project
+    platform: Web
     description: |
       Source code for my itch.io profile page.

@@ -14,63 +14,32 @@ function fetchCurl(url: string): any {
 
 // ---------------------------------------------------------------------------------------
 
-import {
-  SimpleIcon,
+import type { SimpleIcon } from "simple-icons";
+const siIconsRaw: any = require("simple-icons");
 
-  siItchdotio,
-  siGithub,
-  siArtstation,
-  siMastodon,
-  siCodepen,
-  siPatreon,
-  siKofi,
-  siStylelint,
-  siNodedotjs,
-  siEslint,
-  siReddit,
-  siBluesky,
-  siX,
-} from "simple-icons";
-
-export const siIcons : Record<string, SimpleIcon> = [
-  siItchdotio,
-  siGithub,
-  siArtstation,
-  siMastodon,
-  siCodepen,
-  siPatreon,
-  siKofi,
-  siStylelint,
-  siNodedotjs,
-  siEslint,
-  siReddit,
-  siBluesky,
-  siX,
-].reduce((acc, icon) => {
-  acc[icon.slug] = icon;
-  return acc;
-}, {} as Record<string, SimpleIcon>);
+export const siIcons = Object.keys(siIconsRaw).reduce(
+  (acc, val) => {
+    const icon: SimpleIcon = siIconsRaw[val];
+    acc[
+      icon.slug
+    ] = icon.svg;
+    return acc;
+  }, {} as Record<string, string>
+)
 
 // ---------------------------------------------------------------------------------------
 
-import { icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  faCode,
-  faBars,
-  faCodeFork,
-  faStar,
-  faBug,
-  faXmark,
-  faScaleBalanced,
-  faCheck,
-  faChain,
-  faNoteSticky,
-  faRoadBarrier,
-} from "@fortawesome/free-solid-svg-icons";
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
-function i(icon_name: IconDefinition): string[] {
-  return icon(icon_name).html;
-}
+export const faIcons = Object.keys(fas).reduce(
+  (acc, val) => {
+    acc[
+      fas[val].iconName.replace("-", "_")
+    ] = icon(fas[val]).html.join();
+    return acc;
+  }, {} as Record<string, string>
+);
 
 // ---------------------------------------------------------------------------------------
 
@@ -92,7 +61,6 @@ function urlStr(url: string): string {
 const siteData = parse(
   fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
 );
-console.log(siteData);
 
 if (process.env.SITE_CFG_EXTEND) {
   execSync(`
@@ -110,7 +78,7 @@ siteData!.nav.links.forEach((navLinkData: any, i: number) => {
 
   if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
     siteData.nav.links[i].iconSlug = <string>navLinkData.icon;
-    siteData.nav.links[i].icon = siIcons[<string>navLinkData.icon]!.svg;
+    siteData.nav.links[i].icon = siIcons[<string>navLinkData.icon];
   }
 });
 
@@ -121,7 +89,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
     if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
       siteData.socials[i].links[n].iconSlug = <string>socialLink.icon;
-      siteData.socials[i].links[n].icon = siIcons[<string>socialLink.icon].svg;
+      siteData.socials[i].links[n].icon = siIcons[<string>socialLink.icon];
     }
   });
 
@@ -131,6 +99,56 @@ import { updateSocialRedirects } from "../scripts/redirects";
 const socialRedirData = <any[]>[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
+
+// =======================================================================================
+
+const projectCatData: Object[] = [{
+  name: "All",
+  id: "All",
+  default: true,
+}];
+const projectCatReadable: string[] = [];
+
+// ---------------------------------------------------------------------------------------
+
+const projectPlatformData: Object[] = [];
+const projectPlatformReadble: string[] = [];
+
+// =======================================================================================
+
+siteData!.projects.forEach((projectData: any) => {
+
+  const projectCat: string = projectData!.category;
+
+  if (!projectCatReadable.includes(projectCat)) {
+    projectCatReadable.push(projectCat);
+    const id = projectCat.replace(" ", "");
+
+    projectCatData.push({
+      name: projectCat,
+      id: id,
+    });
+  }
+
+  // ---------------------------------------------------------------------------------------
+
+  const projectPlatform: string = projectData!.platform;
+
+  if (!projectPlatformReadble.includes(projectPlatform)) {
+    projectPlatformReadble.push(projectPlatform);
+    const id = projectPlatform
+      .replace(" ", "")
+      .replace("/", "");
+
+    projectPlatformData.push({
+      name: projectPlatform,
+      id: id,
+    });
+  }
+
+});
+
+// =======================================================================================
 
 module.exports = {
   "repoURL": repoURL,
@@ -142,37 +160,28 @@ module.exports = {
   socials: [
   ],
 
-  projects: [
-  ],
-
-  icons: {
-    chain: i(faChain),
-    code: i(faCode),
-    bars: i(faBars),
-    codeFork: i(faCodeFork),
-    star: i(faStar),
-    bug: i(faBug),
-    xmark: i(faXmark),
-    scaleBalanced: i(faScaleBalanced),
-    noteSticky: i(faNoteSticky),
-    roadBarrier: i(faRoadBarrier),
+  projects: [ ],
+  projectData: {
+    categories: projectCatData,
+    platforms: projectPlatformData,
   },
 
-  "siIcons": siIcons,
+  icons: faIcons,
+  brands: siIcons,
 
   siteOptions: [
     {
-      icon: i(faStar),
+      icon: faIcons.star,
       name: "Star",
       url: `${repoURL}`,
     },
     {
-      icon: i(faCodeFork),
+      icon: faIcons.code_fork,
       name: "Fork",
       url: `${repoURL}/fork`,
     },
     {
-      icon: i(faBug),
+      icon: faIcons.bug,
       name: "Issues",
       url: `${repoURL}/issues`,
     },

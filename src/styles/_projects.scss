@@ -2,7 +2,7 @@
 @use "sass:color";
 
 #projects {
-  padding-top: 3em;
+  padding-top: 2em;
   padding-bottom: 3em;
 
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
@@ -12,6 +12,7 @@
   & .section-title {
     display: flex;
     justify-content: center;
+    min-height: 15em;
     margin: .5em;
 
     font-size: 1em;
@@ -40,6 +41,23 @@
         font-size: .8em;
         font-weight: 200;
       }
+    }
+  }
+
+  & > .section-controls {
+    position: sticky;
+    top: 0;
+
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    margin: auto;
+    max-width: 1150px;
+
+    z-index: 9;
+
+    & > * {
+      box-shadow: 0 0 2em 1em $background;
     }
   }
 
@@ -115,6 +133,16 @@
   }
 }
 
+#project-cat-display, #project-platform-display {
+  display: inline-block;
+  width: 2em;
+  margin-left: .6em;
+  margin-right: .6em;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 @mixin project-label-style($color) {
   color: $color;
   background: color.mix($color, $background, 1%);
@@ -133,6 +161,7 @@
   font-size: .65em;
   letter-spacing: .1em;
   border-radius: 9px;
+  cursor: pointer;
   @include project-label-style($text);
 
   /* stylelint-disable */

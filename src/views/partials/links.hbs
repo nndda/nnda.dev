@@ -2,9 +2,7 @@
   <div class="section-inner">
     {{#each socials}}
       <div class="links-group">
-        <div class="links-title">
-          {{this.group}}
-        </div>
+        <div class="links-title">{{this.group}}</div>
         <ul>
           {{#each this.links}}
             <li class="
@@ -22,18 +20,23 @@
                 referrerpolicy="no-referrer"
                 aria-label="{{{this.name}}}"
               >
-                {{#if this.icon}}
-                  <div class="social-icon">{{{this.icon}}}</div>
-                {{else}}
-                  <div class="social-icon">{{{@root.icons.chain}}}</div>
-                {{/if}}
+                <div class="social-icon">
+                  {{#if this.icon}}
+                    {{{this.icon}}}
+                  {{else}}
+                    {{{@root.icons.link}}}
+                  {{/if}}
+                </div>
+
                 <span class="social-name">{{{this.name}}}</span>
 
-                {{#if this.username}}
-                  <small class="username">{{this.username}}</small>
-                {{else}}
-                  <small class="username">{{this.urlS}}</small>
-                {{/if}}
+                <small class="username">
+                  {{#if this.username}}
+                    {{this.username}}
+                  {{else}}
+                    {{this.urlS}}
+                  {{/if}}
+                </small>
               </a>
             </li>
           {{/each}}
