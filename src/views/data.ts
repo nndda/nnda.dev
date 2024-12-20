@@ -100,6 +100,56 @@ const socialRedirData = <any[]>[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
 
+// =======================================================================================
+
+const projectCatData: Object[] = [{
+  name: "All",
+  id: "All",
+  default: true,
+}];
+const projectCatReadable: string[] = [];
+
+// ---------------------------------------------------------------------------------------
+
+const projectPlatformData: Object[] = [];
+const projectPlatformReadble: string[] = [];
+
+// =======================================================================================
+
+siteData!.projects.forEach((projectData: any) => {
+
+  const projectCat: string = projectData!.category;
+
+  if (!projectCatReadable.includes(projectCat)) {
+    projectCatReadable.push(projectCat);
+    const id = projectCat.replace(" ", "");
+
+    projectCatData.push({
+      name: projectCat,
+      id: id,
+    });
+  }
+
+  // ---------------------------------------------------------------------------------------
+
+  const projectPlatform: string = projectData!.platform;
+
+  if (!projectPlatformReadble.includes(projectPlatform)) {
+    projectPlatformReadble.push(projectPlatform);
+    const id = projectPlatform
+      .replace(" ", "")
+      .replace("/", "");
+
+    projectPlatformData.push({
+      name: projectPlatform,
+      id: id,
+    });
+  }
+
+});
+
+// =======================================================================================
+
 module.exports = {
   "repoURL": repoURL,
 
@@ -110,8 +160,11 @@ module.exports = {
   socials: [
   ],
 
-  projects: [
-  ],
+  projects: [ ],
+  projectData: {
+    categories: projectCatData,
+    platforms: projectPlatformData,
+  },
 
   icons: faIcons,
   brands: siIcons,
