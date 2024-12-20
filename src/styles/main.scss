@@ -1,3 +1,4 @@
+@use "../../node_modules/modern-normalize/modern-normalize.css" as *;
 @use "variables" as *;
 @use "header";
 @use "footer";
@@ -6,8 +7,6 @@
 @use "input";
 
 @use "utils";
-
-@use "../../node_modules/modern-normalize/modern-normalize.css" as *;
 
 @use "sass:color";
 
