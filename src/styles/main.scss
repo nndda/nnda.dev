@@ -210,6 +210,11 @@ body {
   }
 }
 
+.section-controls {
+  display: flex;
+  // width: 100%;
+}
+
 #home {
   height: 98vh;
   min-height: 620px;
