@@ -5,6 +5,8 @@ const d = document;
 
 const XIcon = icon(faX).html.join();
 
+import { eventForElements } from "./input";
+
 window.addEventListener("DOMContentLoaded", () => {
   interface iTagsData {
     elem: HTMLElement,
@@ -58,11 +60,9 @@ window.addEventListener("DOMContentLoaded", () => {
     projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
   });
 
-  btnCats.forEach(elem => {
-    elem.addEventListener("input", () => {
-      btnCatDisplay.textContent = elem.getAttribute("data-cat");
-      toggleCat(<string>btnCatDisplay.textContent);
-    });
+  eventForElements(btnCats, "input", (_event, elem) => {
+    btnCatDisplay.textContent = elem.getAttribute("data-cat");
+    toggleCat(<string>btnCatDisplay.textContent);
   });
 
   // Tags -----------------------------------------------------------------------------------------
@@ -133,9 +133,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   tagsInput.addEventListener("keydown", handleTagsInput);
 
-  d.querySelectorAll(".project-label").forEach(elem => {
-    elem.addEventListener("click", () => {
-      addTag(<string>elem.getAttribute("data-tag"));
-    });
+  eventForElements(d.querySelectorAll(".project-label"), "click", (_event, elem) => {
+    addTag(<string>elem.getAttribute("data-tag"));
   });
 });

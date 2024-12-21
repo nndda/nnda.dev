@@ -46,3 +46,13 @@ export function initializeInputs(d: Document): void {
     }
   });
 }
+
+export function eventForElements(
+  elems: HTMLInputElement[] | NodeListOf<Element>,
+  type: string,
+  callbackfn: (event: Event, elem: Element) => void,
+): void {
+  elems.forEach(elem => {
+    elem.addEventListener(type, event => callbackfn(event, elem));
+  });
+}
