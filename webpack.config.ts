@@ -2,6 +2,7 @@ import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 const { FaviconsBundlerPlugin } = require("html-bundler-webpack-plugin/plugins");
 import CopyPlugin from "copy-webpack-plugin";
+import * as hbsHelpers from "./src/views/helpers";
 
 function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
@@ -36,6 +37,7 @@ module.exports = {
       preprocessor: "handlebars",
       preprocessorOptions: {
         root: abs("src/views/"),
+        helpers: hbsHelpers.default,
         views: [
           abs("src/views/partials"),
         ],
