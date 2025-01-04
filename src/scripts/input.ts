@@ -12,7 +12,6 @@ export function initializeInputs(d: Document): void {
       button = <HTMLButtonElement>e.querySelector("button"),
       items = <HTMLElement>e.querySelector(".items");
 
-    if (items != null && button != null) {
       button.insertAdjacentHTML("beforeend", iconCaretDown);
       items.classList.add("hidden");
 
@@ -43,7 +42,6 @@ export function initializeInputs(d: Document): void {
           (<HTMLInputElement>elem).checked = true;
         }
       })
-    }
   });
 }
 

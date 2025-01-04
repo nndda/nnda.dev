@@ -7,32 +7,48 @@ const XIcon = icon(faX).html.join();
 
 import { eventForElements } from "./input";
 
-window.addEventListener("DOMContentLoaded", () => {
-  interface iTagsData {
-    elem: HTMLElement,
-    tags: string[],
-  }
+function initContentControls(
+  btnCategories: HTMLElement[] | NodeListOf<Element>,
+  btnTags: HTMLElement[] | NodeListOf<Element>,
+): void {
 
+}
+
+// Tags -----------------------------------------------------------------------------------------
+
+interface iTagsData {
+  elem: HTMLElement,
+  tags: string[],
+}
+
+const tagsData: iTagsData[] = [];
+
+let tagsCurrent: string[] = [];
+
+function filterTags(tags: string[]): void {
+  tagsData.forEach(item => {
+    item.elem.classList.toggle("hidden",
+      tags.length > 0 ? 
+      !item.tags.some(tag => tags.includes(tag)) : false
+    );
+  });
+}
+
+// Category -------------------------------------------------------------------------------------
+
+function initContentCategory(
+  catsDropdownBtn: HTMLElement,
+  catsContents: HTMLElement[] | NodeListOf<Element>,
+  callbackfn: (elem: Element) => void = () => {},
+): void {
   const
     catsData: Record<string, HTMLElement[]> = {},
+    catDisplay = <HTMLElement>catsDropdownBtn.querySelector(".text-display"),
+    catToggles = (<HTMLElement>catsDropdownBtn.parentElement).querySelectorAll("input[type=\"radio\"]");
 
-    headerElem = <HTMLElement>d.querySelector("body > header"),
-    projCtrlElem = <HTMLElement>d.querySelector("#projects > .section-controls"),
+  let currentCat = "";
 
-    btnCat = <HTMLButtonElement>d.getElementById("project-cat-button"),
-    btnCatDisplay = <HTMLElement>d.getElementById("project-cat-display"),
-    btnCats = btnCat.parentElement!.querySelectorAll("input[name=\"project-cat\"]"),
-
-    tagsData: iTagsData[] = [],
-
-    tagsInput = <HTMLTextAreaElement>d.getElementById("project-tag-input"),
-    tagsCont = <HTMLTextAreaElement>d.getElementById("project-tag-cont");
-
-  let tagsCurrent: string[] = [];
-
-  // Category -------------------------------------------------------------------------------------
-
-  d.querySelectorAll("[data-project-cat]").forEach(elem => {
+  catsContents.forEach(elem => {
     const catName = <string>elem.getAttribute("data-project-cat");
 
     if (!Object.prototype.hasOwnProperty.call(catsData, catName)) {
@@ -47,12 +63,30 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function toggleCat(catName: string): void {
+    currentCat = catName;
+
     for (const cat in catsData) {
       catsData[cat].forEach(elem => {
-        toggleCatElem(elem, cat, catName);
+        toggleCatElem(elem, cat, currentCat);
       });
     }
   }
+
+  eventForElements(catToggles, "input", (_event, elem) => {
+    catDisplay.textContent = elem.getAttribute("data-cat");
+    toggleCat(<string>catDisplay.textContent);
+
+    callbackfn(elem);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const
+    headerElem = <HTMLElement>d.querySelector("body > header"),
+    projCtrlElem = <HTMLElement>d.querySelector("#projects > .section-controls"),
+
+    tagsInput = <HTMLTextAreaElement>d.getElementById("project-tag-input"),
+    tagsCont = <HTMLTextAreaElement>d.getElementById("project-tag-cont");
 
   projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
 
@@ -60,10 +94,12 @@ window.addEventListener("DOMContentLoaded", () => {
     projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
   });
 
-  eventForElements(btnCats, "input", (_event, elem) => {
-    btnCatDisplay.textContent = elem.getAttribute("data-cat");
-    toggleCat(<string>btnCatDisplay.textContent);
-  });
+  // Category -------------------------------------------------------------------------------------
+
+  initContentCategory(
+    <HTMLButtonElement>d.getElementById("project-cat-button"),
+    d.querySelectorAll("[data-project-cat]")
+  );
 
   // Tags -----------------------------------------------------------------------------------------
 
@@ -76,22 +112,6 @@ window.addEventListener("DOMContentLoaded", () => {
         .filter(tag => tag.length > 0),
     });
   });
-
-  function filterTags(tags: string[]): void {
-    tagsData.forEach(item => {
-
-      // if (!item.elem.classList.contains("hidden")) {
-
-        item.elem.classList.toggle("hidden",
-          tags.length > 0 ? 
-          !item.tags.some(tag => tags.includes(tag)) : false
-        );
-
-      // }
-
-    });
-
-  }
 
   function addTag(tag: string): void {
     const tagBtn = d.createElement("button");
@@ -114,24 +134,22 @@ window.addEventListener("DOMContentLoaded", () => {
     filterTags(tagsCurrent);
   }
 
-  function handleTagsInput(event: KeyboardEvent): void {
+  tagsInput.addEventListener("keydown", (event: KeyboardEvent): void => {
     const textarea = <HTMLTextAreaElement>event.target;
 
     if (event.key === "," || event.key === "Enter") {
-        event.preventDefault();
+      event.preventDefault();
 
-        const val = textarea.value.trim();
+      const val = textarea.value.trim();
 
-        if (val) {
-          const tagName = event.key === "," ? val.slice(0, -1).trim() : val;
-          textarea.value = "";
+      if (val) {
+        const tagName = event.key === "," ? val.slice(0, -1).trim() : val;
+        textarea.value = "";
 
-          addTag(tagName);
-        }
+        addTag(tagName);
+      }
     }
-  }
-
-  tagsInput.addEventListener("keydown", handleTagsInput);
+  });
 
   eventForElements(d.querySelectorAll(".project-label"), "click", (_event, elem) => {
     addTag(<string>elem.getAttribute("data-tag"));
