@@ -93,7 +93,7 @@ projects:
     description: |
       🎭 Yet another (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text. Compatible with Godot 4.3.
 
-    image: ../assets/project-theatre.webp
+    image: /assets/project-theatre.webp
 
   - name: Pitch
     url: https://nnda.itch.io/pitch
@@ -103,7 +103,7 @@ projects:
     description: |
       🧩 Collection of UI components and tweaks, designed specifically for itch.io project pages.
 
-    image: ../assets/project-pitch.webp
+    image: /assets/project-pitch.webp
 
   - name: This website
     url: https://github.com/nndda/website

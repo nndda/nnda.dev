@@ -31,6 +31,7 @@ module.exports = {
       },
 
       loaderOptions: {
+        root: abs("src"),
         sources: [
           {
             tag: "div",

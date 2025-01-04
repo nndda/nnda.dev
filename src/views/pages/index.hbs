@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
 <head>
+	{{ title site.title }}
+	{{ desc site.description }}
+
 	{{ include "head" }}
-	<script type="text/javascript" src="../scripts/main.ts"></script>
-	<script type="text/javascript" src="../scripts/projects.ts"></script>
+
+  <meta property="og:type" content="website">
+
+	<script type="text/javascript" src="/scripts/main.ts"></script>
+	<script type="text/javascript" src="/scripts/projects.ts"></script>
+
+	<link rel="preload" href="/assets/avatar.webp" as="image" type="image/webp">
 </head>
 
 <body>
