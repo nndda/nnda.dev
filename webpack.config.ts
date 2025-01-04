@@ -30,9 +30,9 @@ module.exports = {
   plugins: [
     new HtmlBundlerPlugin({
       entry: {
-        index: abs("src/views/index.hbs"),
-        "404": abs("src/views/404.hbs"),
-        links: abs("src/views/links.hbs"),
+        index: abs("src/views/pages/index.hbs"),
+        "404": abs("src/views/pages/404.hbs"),
+        links: abs("src/views/pages/links.hbs"),
         ... projectEntries,
       },
 
