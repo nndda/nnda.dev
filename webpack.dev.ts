@@ -1,6 +1,9 @@
 import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import * as hbsHelpers from "./src/views/helpers";
+import { buildProjectPages, projectEntries } from "./src/_projects/project-pages";
+
+buildProjectPages()
 
 function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
@@ -19,6 +22,7 @@ module.exports = {
         index: abs("src/views/index.hbs"),
         "404": abs("src/views/404.hbs"),
         links: abs("src/views/links.hbs"),
+        ... projectEntries,
       },
 
       data: require("./src/views/data.ts"),
