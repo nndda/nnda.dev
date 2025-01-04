@@ -135,7 +135,7 @@ module.exports = {
         use: ["css-loader", "sass-loader"],
       },
       {
-        test: /\.(ico|png|jp?g|webp|svg)$/,
+        test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
         generator: {
           filename: "[hash:2]/[hash:7][ext][query]",
