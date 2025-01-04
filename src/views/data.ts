@@ -209,5 +209,7 @@ module.exports = {
   });`,
   */
 
+  year: new Date().getFullYear(),
+
   ...siteData,
 }
