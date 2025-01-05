@@ -10,7 +10,9 @@ User-agent: ChatGPT-User
 User-agent: Claude-Web
 User-agent: ClaudeBot
 User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
 User-agent: Diffbot
+User-agent: DuckAssistBot
 User-agent: FacebookBot
 User-agent: facebookexternalhit
 User-agent: FriendlyCrawler
@@ -30,6 +32,7 @@ User-agent: Meta-ExternalFetcher
 User-agent: OAI-SearchBot
 User-agent: omgili
 User-agent: omgilibot
+User-agent: PanguBot
 User-agent: PerplexityBot
 User-agent: PetalBot
 User-agent: Scrapy
