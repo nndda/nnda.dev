@@ -4,7 +4,7 @@
   "description": "nnda's personal website",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.ts --port 9000",
-    "build": "webpack --config webpack.config.ts",
+    "build": "npm run fetch-gh && webpack --config webpack.config.ts",
     "watch-project": "npx ts-node ./src/_projects/project-pages.ts --watch",
     "lint-styles": "npx stylelint \"**/*.scss\"",
     "fetch-gh": "npx ts-node ./src/api/gh.ts"
