@@ -42,6 +42,11 @@ interface ContribsData {
   },
 }
 
+if (!process.env.GH_PAT) {
+  console.error("Error: GH_PAT is not set");
+  process.exit(1);
+}
+
 const
   user = "nndda",
   pat = process.env.GH_PAT,
