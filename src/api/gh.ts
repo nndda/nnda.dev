@@ -42,6 +42,9 @@ interface ContribsData {
   },
 }
 
+console.log("Testing env...");
+console.log(process.env.CF_PAGES_URL, process.env.CF_PAGES_COMMIT_SHA, process.env.CF_PAGES_BRANCH);
+
 if (!process.env.GH_PAT) {
   console.error("Error: GH_PAT is not set");
   process.exit(1);
