@@ -63,7 +63,6 @@ body {
   margin: auto;
 
   color: $text;
-  background: $background-dark;
 
   @include shadow-black;
 
@@ -75,7 +74,6 @@ body {
 
   & > main {
     flex-grow: 1;
-    background: radial-gradient(circle at 50% 120%, $primary -80%, $background-dark 30%);
     overflow-x: clip;
     z-index: 3;
 
@@ -176,32 +174,6 @@ body {
   }
 }
 
-// .badge-success {
-//   display: inline-block;
-//   margin-bottom: .4em;
-//   margin-right: .4em;
-//   background: $secondary;
-//   color: $text;
-//   font-size: .8em;
-//   overflow: hidden;
-
-//   & > .badge-text {
-//     display: inline-block;
-//     padding: .2em .5em;
-//     background: color.adjust($background-light, $lightness: 5%);
-
-//     & > svg {
-//       vertical-align: -.15em;
-//       fill: $text;
-//     }
-//   }
-
-//   & > svg { /* stylelint-disable-line */
-//     margin-left: .3em;
-//     color: $background;
-//   }
-// }
-
 .section-title {
   font-size: 2.5em;
   font-weight: 400;
@@ -218,11 +190,10 @@ body {
 
 .section-controls {
   display: flex;
-  // width: 100%;
 }
 
 #home {
-  height: 98vh;
+  height: 100vh;
   min-height: 620px;
   width: 100%;
   max-width: 1700px;
@@ -245,31 +216,9 @@ body {
     margin: auto;
     padding: 2em;
 
-    background:
-      linear-gradient(to top, $background -10%, transparent 60%);
-    background-size: cover;
-    background-position: center;
-
     z-index: 3;
   }
 }
-
-// #profile-picture {
-//   position: relative;
-
-//   $dimension: 4.5em;
-//   width: $dimension;
-//   height: $dimension;
-
-//   margin-right: 1.5em;
-
-//   background: url("../assets/avatar.webp");
-
-//   background-size: 100%;
-
-//   border-radius: 50%;
-//   border: 2px solid $text;
-// }
 
 @media (width <= 700px) {
   #home {
