@@ -6,7 +6,8 @@
     "start": "webpack-dev-server --config webpack.dev.ts --port 9000",
     "build": "webpack --config webpack.config.ts",
     "watch-project": "npx ts-node ./src/_projects/project-pages.ts --watch",
-    "lint-styles": "npx stylelint \"**/*.scss\""
+    "lint-styles": "npx stylelint \"**/*.scss\"",
+    "fetch-gh": "npx ts-node ./src/api/gh.ts"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "gray-matter": "^4.0.3",
     "html-bundler-webpack-plugin": "^4.10.3",
     "marked": "^15.0.5",
+    "node-fetch": "^3.3.2",
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "stylelint": "^16.12.0",
