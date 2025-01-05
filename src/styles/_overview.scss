@@ -1,0 +1,152 @@
+@use "variables" as *;
+@use "sass:color";
+
+#overview {
+  & > .section-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding-bottom: 1em;
+  }
+}
+
+.section-title-sub {
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: .6em;
+}
+
+.commits {
+  display: grid;
+  grid-template-columns: auto 65% 25%;
+  grid-gap: 1.1em;
+  justify-content: center;
+
+  & ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  & > .controls {
+    margin-top: 2em;
+    & button {
+      font-size: 1.1em;
+    }
+  }
+
+  & > .calendar-container, & > .stats {
+  }
+
+  & .inner {
+    position: relative;
+    padding: 1em 1.2em;
+    min-height: 230px;
+    background: $background;
+    border-radius: 6px;
+    overflow: hidden;
+
+    @include shadow-black;
+
+    & > .icon-bg {
+      position: absolute;
+      bottom: 0;
+      left: -.1em;
+      font-size: 8em;
+      opacity: .07;
+    }
+  }
+}
+
+.stats-list {
+  position: relative;
+  font-size: .75em;
+
+  & > li {
+    display: grid;
+    grid-template-columns: auto 4.5em 4.5em;
+    // padding-left: 1em;
+    margin: .25em 0;
+    color: color.mix($text-secondary, $background, 70%);
+  }
+
+  & > li.title:first-child {
+    margin-top: 0;
+  }
+
+  & > li.title {
+    margin: .5em 0;
+    padding-left: 0;
+    color: $text-secondary;
+  }
+}
+
+.languages {
+  margin-top: 1.5em;
+}
+
+.languages-container {
+  display: flex;
+
+  margin-bottom: 2em;
+
+  & > .lang {
+    position: relative;
+    display: inline-block;
+
+    margin: 0 .2em;
+
+    font-size: .8em;
+
+    white-space: nowrap;
+
+    & > .box {
+      max-height: .8em;
+      background: color.mix($secondary, $background, 30%);
+      color: transparent;
+    }
+
+    &:nth-child(1) {
+      & > .box {
+        background: color.mix($secondary, $background, 70%);
+      }
+    }
+    &:nth-child(2) {
+      & > .box {
+        background: color.mix($secondary, $background, 60%);
+      }
+    }
+    &:nth-child(3) {
+      & > .box {
+        background: color.mix($secondary, $background, 50%);
+      }
+    }
+    &:nth-child(4) {
+      & > .box {
+        background: color.mix($secondary, $background, 40%);
+      }
+    }
+
+    & > code {
+      position: absolute;
+      top: 0;
+      padding-left: .5em;
+      color: $background;
+      font-size: .8em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    & > .name {
+      margin-top: .5em;
+      color: $text-secondary;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      & > svg {
+        margin-right: .25em;
+        max-width: 1em;
+      }
+    }
+  }
+}

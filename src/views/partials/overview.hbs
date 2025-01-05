@@ -1,0 +1,82 @@
+<section id="overview">
+  <h1>Overview</h1>
+  <div class="section-inner">
+    <div class="commits">
+      <div class="controls">
+        <ul>
+          <li>
+            <button class="icon-only blank">{{{icons.calendar}}}</button>
+          </li>
+          <li>
+            <button class="icon-only blank">{{{icons.chart_area}}}</button>
+          </li>
+          <li>
+            <button class="icon-only blank">{{{brands.github}}}</button>
+          </li>
+        </ul>
+      </div>
+      <div class="calendar-container">
+        <div class="section-title-sub">
+            Contribution Graph
+        </div>
+        <div class="inner">
+        </div>
+      </div>
+      <div class="stats">
+        <div class="section-title-sub">
+            Commits
+        </div>
+        <div class="inner">
+          <div class="icon-bg">
+            {{{icons.fire}}}
+          </div>
+          <ul class="stats-list">
+
+            <li class="title">
+              <span>Stats</span>
+              <span>Yearly</span>
+              <span>All Time</span>
+            </li>
+            <li>
+              <div>Total Commits</div>
+              <span>1,000</span>
+              <span>1,000</span>
+            </li>
+            <li>
+              <div>Longest Streaks</div>
+              <span>0</span>
+              <span>0</span>
+            </li>
+            <li>
+              <div>Avg. Daily Commits</div>
+              <span>0</span>
+              <span>0</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="languages">
+      <div class="section-title-sub">
+          Most Used Languages
+      </div>
+      <div class="languages-container">
+        {{#each ghLangs}}
+          <div class="lang" style="width: {{this.percent}}%">
+            <div class="box">|</div>
+            <code><b>{{this.percent}}%</b></code>
+            <div class="name">
+              {{#if this.icon}}
+                {{{this.icon}}}
+              {{/if}}
+              <span>
+                {{this.name}}
+              </span>
+            </div>
+          </div>
+        {{/each}}
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
