@@ -212,6 +212,7 @@ module.exports = {
   year: new Date().getFullYear(),
 
   ghLangs: require("../api/langs.json"),
+  ghContribs: require("../api/contribs.json"),
 
   ...siteData,
 }
