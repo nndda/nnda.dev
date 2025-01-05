@@ -2,10 +2,12 @@
 @use "sass:color";
 
 #overview {
+  background: $background-dark;
+
   & > .section-inner {
     max-width: 1150px;
     margin: auto;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
   }
 }
 
@@ -17,7 +19,7 @@
 
 .commits {
   display: grid;
-  grid-template-columns: auto 65% 25%;
+  grid-template-columns: auto 68% 25%;
   grid-gap: 1.1em;
   justify-content: center;
 
@@ -37,10 +39,45 @@
   & > .calendar-container, & > .stats {
   }
 
+  & > .stats {
+    & .icon-bg {
+      color: $primary;
+    }
+  }
+
+  & > .calendar-container {
+    & .c {
+      height: .8em;
+      width: .8em;
+      padding: 0;
+      margin: 0;
+      background: color.mix($text, $background-light, 3%);
+      border-radius: 3px;
+
+      &:hover {
+        transform: scale(2.0);
+      }
+
+      @for $i from 1 through 5 {
+        &.c#{$i} {
+          background: color.mix($secondary, $background-light, (20 * $i) + 0%);
+        }
+      }
+    }
+
+    & .grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 0;
+      grid-template-rows: repeat(7, 1em);
+      grid-template-columns: repeat(52, 1fr);
+    }
+  }
+
   & .inner {
     position: relative;
     padding: 1em 1.2em;
-    min-height: 230px;
+    min-height: 150px;
     background: $background;
     border-radius: 6px;
     overflow: hidden;
@@ -52,7 +89,7 @@
       bottom: 0;
       left: -.1em;
       font-size: 8em;
-      opacity: .07;
+      opacity: .09;
     }
   }
 }
@@ -64,19 +101,19 @@
   & > li {
     display: grid;
     grid-template-columns: auto 4.5em 4.5em;
-    // padding-left: 1em;
+
     margin: .25em 0;
     color: color.mix($text-secondary, $background, 70%);
-  }
 
-  & > li.title:first-child {
-    margin-top: 0;
-  }
+    &.title {
+      margin: .5em 0;
+      padding-left: 0;
+      color: $primary;
 
-  & > li.title {
-    margin: .5em 0;
-    padding-left: 0;
-    color: $text-secondary;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
 
@@ -95,34 +132,23 @@
 
     margin: 0 .2em;
 
-    font-size: .8em;
+    font-size: .86em;
 
     white-space: nowrap;
 
+    $color: $secondary;
+
     & > .box {
       max-height: .8em;
-      background: color.mix($secondary, $background, 30%);
+      background: color.mix($color, $background, 20%);
       color: transparent;
     }
 
-    &:nth-child(1) {
-      & > .box {
-        background: color.mix($secondary, $background, 70%);
-      }
-    }
-    &:nth-child(2) {
-      & > .box {
-        background: color.mix($secondary, $background, 60%);
-      }
-    }
-    &:nth-child(3) {
-      & > .box {
-        background: color.mix($secondary, $background, 50%);
-      }
-    }
-    &:nth-child(4) {
-      & > .box {
-        background: color.mix($secondary, $background, 40%);
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        & > .box {
+          background: color.mix($color, $background, (5 - $i) * 20%);
+        }
       }
     }
 
