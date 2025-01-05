@@ -1,5 +1,6 @@
 <section id="overview">
-  <h1>Overview</h1>
+  <hr class="hr">
+  <br>
   <div class="section-inner">
     <div class="commits">
       <div class="controls">
@@ -20,11 +21,14 @@
             Contribution Graph
         </div>
         <div class="inner">
+          <div class="grid">
+            {{#each ghContribs.arr.yearly}}<span class="c c{{this}}"></span>{{/each}}
+          </div>
         </div>
       </div>
       <div class="stats">
         <div class="section-title-sub">
-            Commits
+            Stats
         </div>
         <div class="inner">
           <div class="icon-bg">
@@ -33,24 +37,29 @@
           <ul class="stats-list">
 
             <li class="title">
-              <span>Stats</span>
+              <span></span>
               <span>Yearly</span>
               <span>All Time</span>
             </li>
             <li>
-              <div>Total Commits</div>
-              <span>1,000</span>
-              <span>1,000</span>
+              <div>Total</div>
+              <span>{{ghContribs.stats.total.yearly}}</span>
+              <span>{{ghContribs.stats.total.all}}</span>
+            </li>
+            <li>
+              <div>Highest</div>
+              <span>{{ghContribs.stats.highest.yearly}}</span>
+              <span>{{ghContribs.stats.highest.all}}</span>
             </li>
             <li>
               <div>Longest Streaks</div>
-              <span>0</span>
-              <span>0</span>
+              <span>{{ghContribs.stats.avg.streaks.yearly}}</span>
+              <span>{{ghContribs.stats.avg.streaks.all}}</span>
             </li>
             <li>
-              <div>Avg. Daily Commits</div>
-              <span>0</span>
-              <span>0</span>
+              <div>Daily Average</div>
+              <span>{{ghContribs.stats.avg.daily.yearly}}</span>
+              <span>{{ghContribs.stats.avg.daily.all}}</span>
             </li>
           </ul>
         </div>
