@@ -4,6 +4,19 @@ site:
   title: nnda's
   description: My personal website.
 
+  authorProfile:
+    status:
+      icon: 🛌
+      text: eepy
+
+    description: |
+      (self-proclaimed) game developer, front-end web dev, &amp; digital artist/illustrator.
+
+    pronouns: he/him
+    pronunciation: /ˈnæn.də/
+    languages: 🇮🇩&nbsp;🇬🇧
+    location: 🇮🇩
+
 repoURL: github.com/nndda/website
 
 nav:

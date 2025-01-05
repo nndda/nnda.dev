@@ -1,0 +1,51 @@
+<section id="profile">
+  <div class="bg-cover">
+    <div class="section-inner">
+      <div class="info-container">
+        <div class="left">
+          <div class="profile-pict">
+            <img src="/assets/avatar.webp" height="180" width="180">
+            <div class="status">
+              <span>{{site.authorProfile.status.icon}}</span>
+              {{site.authorProfile.status.text}}
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <h1 class="name">
+            {{site.author}}
+          </h1>
+          <p class="about">
+            {{{site.authorProfile.description}}}
+          </p>
+          <ul class="user-metadata">
+            <li>
+              {{{icons.volume_high}}}
+              <span>
+                {{{site.authorProfile.pronunciation}}}
+              </span>
+            </li>
+            <li>
+              {{{icons.user_tag}}}
+              <span>
+                {{{site.authorProfile.pronouns}}}
+              </span>
+            </li>
+            <li>
+              {{{icons.language}}}
+              <span>
+                {{{site.authorProfile.languages}}}
+              </span>
+            </li>
+            <li>
+              {{{icons.location_dot}}}
+              <span>
+                {{{site.authorProfile.location}}}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
