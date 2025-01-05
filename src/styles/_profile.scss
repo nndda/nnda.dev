@@ -46,7 +46,7 @@
     display: flex;
     padding: 0;
     margin: 0;
-    font-size: .8em;
+    font-size: .9em;
     list-style: none;
 
     & > li {
@@ -80,8 +80,9 @@
     padding-bottom: .6em;
     background: $background-dark;
     backdrop-filter: blur(.5em);
-    border: 1px solid color.mix($primary, $background-dark, 70%);
+    border: 1px solid color.mix($primary, $background-dark, 50%);
     border-radius: 16px;
+    font-size: 0.8em;
     line-height: 1em;
     white-space: nowrap;
 
