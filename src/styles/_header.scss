@@ -17,6 +17,8 @@ header {
   backdrop-filter: blur(.4em);
   border-bottom: 1px solid rgba($text, 0.2);
 
+  font-size: .9em;
+
   @include shadow-black;
 
   z-index: 9;
@@ -26,7 +28,6 @@ header {
 
     & > h1 {
       margin: 0;
-      margin-top: .15em;
       font-weight: 200;
 
       & > a {
@@ -41,7 +42,6 @@ header {
   padding: 0;
 
   & .nav-link {
-    height: 100%;
     text-decoration: none;
 
     &:hover {
