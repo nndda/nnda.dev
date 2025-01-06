@@ -7,6 +7,7 @@
   & > .section-inner {
     max-width: 1150px;
     margin: auto;
+    margin-top: 1.5em;
     padding-bottom: 2em;
   }
 }
@@ -18,11 +19,6 @@
 }
 
 .commits {
-  display: grid;
-  grid-template-columns: auto 68% 25%;
-  grid-gap: 1.1em;
-  justify-content: center;
-
   & ul {
     padding: 0;
     margin: 0;
@@ -30,13 +26,9 @@
   }
 
   & > .controls {
-    margin-top: 2em;
     & button {
       font-size: 1.1em;
     }
-  }
-
-  & > .calendar-container, & > .stats {
   }
 
   & > .stats {
@@ -80,7 +72,7 @@
     min-height: 150px;
     background: $background;
     border-radius: 6px;
-    overflow: hidden;
+    overflow-x: scroll;
 
     @include shadow-black;
 

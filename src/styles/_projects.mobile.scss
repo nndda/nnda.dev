@@ -1,13 +1,11 @@
-@media (width <= 700px) {
-  #projects {
-    & .section-title {
-      padding-top: 3em;
-      padding-bottom: 3em;
-      margin-bottom: 1em;
-    }
-  }
-
-  .project-card {
+#projects {
+  & .section-title {
+    padding-top: 3em;
+    padding-bottom: 3em;
     margin-bottom: 1em;
   }
+}
+
+.project-card {
+  margin-bottom: 1em;
 }

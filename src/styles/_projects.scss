@@ -54,11 +54,9 @@
     margin: auto;
     max-width: 1150px;
 
-    z-index: 9;
+    overflow-x: scroll;
 
-    & > * {
-      box-shadow: 0 0 2em 1em $background;
-    }
+    z-index: 9;
   }
 
   & > .section-inner {
