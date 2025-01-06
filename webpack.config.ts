@@ -4,6 +4,7 @@ const { FaviconsBundlerPlugin } = require("html-bundler-webpack-plugin/plugins")
 import CopyPlugin from "copy-webpack-plugin";
 import * as hbsHelpers from "./src/views/helpers";
 import { buildProjectPages, projectEntries } from "./src/_projects/project-pages";
+import type { Configuration } from "webpack";
 
 buildProjectPages()
 
@@ -15,7 +16,7 @@ function copyToDist(file_path : string): CopyPlugin.Pattern {
   return { from: abs("src/" + file_path), to: abs("dist/") }
 }
 
-module.exports = {
+module.exports = <Configuration>{
   mode: "production",
 
   output: {

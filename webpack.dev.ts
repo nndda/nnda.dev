@@ -2,6 +2,7 @@ import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import * as hbsHelpers from "./src/views/helpers";
 import { buildProjectPages, projectEntries } from "./src/_projects/project-pages";
+import type { Configuration } from "webpack";
 
 buildProjectPages()
 
@@ -9,7 +10,7 @@ function abs(path_string : string): string {
   return path.resolve(__dirname, path_string);
 }
 
-module.exports = {
+module.exports = <Configuration>{
   mode: "development",
 
   resolve: {
