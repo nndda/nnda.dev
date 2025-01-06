@@ -16,7 +16,7 @@
     <div id="navbar-desktop-header">
       <div class="flex-space"></div>
       <nav>
-        <ul class="nav-inner-center">
+        <ul class="nav-inner-center nostyle">
           {{#each nav.links}}
             {{#unless this.external}}
               <li class="scrollspy">
@@ -33,7 +33,7 @@
       <div class="vseparator"></div>
 
       <nav>
-        <ul class="nav-inner-right">
+        <ul class="nav-inner-right nostyle">
           {{#each nav.links}}
             {{#if this.external}}
               <li>
@@ -58,7 +58,7 @@
     <div class="nav-button-container">
       <button class="nav-item navbar-button nav-link icon-only blank">{{{icons.xmark}}}</button>
     </div>
-    <ul>
+    <ul class="nostyle">
       {{#each nav.links}}
         {{#unless this.external}}
           <li>
@@ -70,7 +70,7 @@
         {{/unless}}
       {{/each}}
     </ul>
-    <ul class="nav-vertical">
+    <ul class="nav-vertical nostyle">
       {{#each nav.links}}
         {{#if this.external}}
           <li>
