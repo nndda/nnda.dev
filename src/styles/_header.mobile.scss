@@ -88,23 +88,15 @@
 }
 
 header {
-  padding-right: 0;
-}
-
-$navbar-responsive-point: 700px;
-
-@media (width <= $navbar-responsive-point) {
-  header {
-    & > .header-inner {
-      & > nav {
-        & > ul {
-          display: none;
-        }
+  & > .header-inner {
+    & > nav {
+      & > ul {
+        display: none;
       }
     }
   }
+}
 
-  #navbar-desktop-header {
-    display: none;
-  }
+#navbar-desktop-header {
+  display: none;
 }

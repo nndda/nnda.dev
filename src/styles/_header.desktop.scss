@@ -43,18 +43,14 @@
   }
 }
 
-$navbar-responsive-point: 700px;
+#navbar-button {
+  display: none;
+}
 
-@media (width >= $navbar-responsive-point) {
-  #navbar-button {
-    display: none;
-  }
+#navbar-mobile-header {
+  display: none;
+}
 
-  #navbar-mobile-header {
-    display: none;
-  }
-
-  #navbar-mobile {
-    display: none;
-  }
+#navbar-mobile {
+  display: none;
 }
