@@ -1,11 +1,7 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { eventForElements } from "./input";
+import { iconX } from "./icons";
 
 const d = document;
-
-const XIcon = icon(faX).html.join();
-
-import { eventForElements } from "./input";
 
 function initContentControls(
   btnCategories: HTMLElement[] | NodeListOf<Element>,
@@ -120,7 +116,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     tagBtn.textContent = tag;
     tagBtn.classList.add("tag");
-    tagBtn.insertAdjacentHTML("beforeend", XIcon);
+    tagBtn.insertAdjacentHTML("beforeend", iconX);
 
     tagBtn.addEventListener("click", () => {
       tagsCurrent = tagsCurrent.filter(tg => tg !== tag.toLowerCase());

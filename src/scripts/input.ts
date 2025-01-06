@@ -1,7 +1,4 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-const iconCaretDown = icon(faCaretDown).html.join();
+import { iconCaretDown } from "./icons";
 
 export function initializeInputs(d: Document): void {
 
