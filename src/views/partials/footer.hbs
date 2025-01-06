@@ -2,7 +2,8 @@
   <div class="footer-body">
     <div class="links-section horizontal">
       <div class="footer-heading">This Site</div>
-      <div class="icon-list-item">
+
+      <div class="icon-text site-opt">
         {{{icons.scale_balanced}}}
         <span>
           Licensed Under
@@ -21,7 +22,7 @@
         </span>
       </div>
 
-      <div class="icon-list-item">
+      <div class="icon-text site-opt">
         {{{icons.box}}}
         <span>
           Version
@@ -36,7 +37,7 @@
         </span>
       </div>
 
-      <div class="icon-list-item">
+      <div class="icon-text site-opt">
         {{{icons.clock}}}
         <span>
           Last updated
@@ -48,7 +49,7 @@
 
       <ul>
       {{#each siteOptions}}
-        <li>
+        <li class="icon-text">
           <a href="{{this.url}}"
             target="_blank"
             rel="nofollow noopener noreferrer"
@@ -56,7 +57,9 @@
             aria-label="{{{this.url}}}"
           >
             {{{this.icon}}}
-            {{this.name}}
+            <span>
+              {{this.name}}
+            </span>
           </a>
         </li>
       {{/each}}

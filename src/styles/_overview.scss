@@ -154,17 +154,12 @@
       overflow: hidden;
     }
 
-    & > .name {
-      margin-top: .5em;
+    & > .icon-text {
+      display: block;
       color: $text-secondary;
 
       text-overflow: ellipsis;
       overflow: hidden;
-
-      & > svg {
-        margin-right: .25em;
-        max-width: 1em;
-      }
     }
   }
 }

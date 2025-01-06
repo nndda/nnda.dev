@@ -49,21 +49,15 @@
     padding: 0;
     margin: 0;
     list-style: none;
+  }
 
-    & > li {
-      display: inline-block;
-      margin-right: 1.3em;
-      margin-top: .5em;
-      white-space: nowrap;
+  & .icon-text {
+    & > svg {
+      color: color.mix($primary, $background-dark, 85%);
+    }
 
-      & > svg {
-        color: $primary;
-        margin-right: .3em;
-      }
-
-      & > span {
-        color: color.mix($text-secondary, $background-dark, 70%);
-      }
+    & > span {
+      color: color.mix($text-secondary, $background-dark, 70%);
     }
   }
 }

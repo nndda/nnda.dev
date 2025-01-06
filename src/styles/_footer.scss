@@ -32,24 +32,11 @@ footer {
 
 		& > ul {
 			padding: 0;
-
 			list-style: none;
 
 			& > li {
-				line-height: 1.8em;
-
 				& > a {
 					text-decoration: none;
-				}
-			}
-		}
-
-		&.horizontal {
-			& > ul {
-				display: flex;
-
-				& > li {
-					margin-right: 1em;
 				}
 			}
 		}
@@ -89,22 +76,12 @@ footer {
 	}
 }
 
-.badges-container {
-	margin-bottom: .7em;
-}
-
-.icon-list-item {
+.site-opt {
 	display: grid;
 	grid-template-columns: 1.5em auto;
-	margin: .5em 0;
-	padding-left: 1em;
 
 	& > svg {
 		width: 1em;
 		margin-top: .1em;
-	}
-
-	& > span {
-		color: $text-secondary;
 	}
 }
