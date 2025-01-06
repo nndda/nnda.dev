@@ -30,3 +30,7 @@
   margin: .4em 1em;
   background: color.mix($text-secondary, $background-light, 40%);
 }
+
+.scrollbar-secondary {
+  @include style-scrollbar($secondary);
+}
