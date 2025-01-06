@@ -4,24 +4,30 @@ header {
   position: fixed;
   top: 0;
   left: auto;
-  padding: 0 1em;
+  padding: 2em;
 
   width: 100%;
   max-width: 1700px;
 
-  background: radial-gradient(
-    circle at left,
-    rgba($primary, 70%) -100%,
-    rgba($background, 80%) 15%
-  );
-  backdrop-filter: blur(.4em);
-  border-bottom: 1px solid rgba($text, 0.2);
+  font-size: 1em;
 
-  font-size: .9em;
-
-  @include shadow-black;
+  transition: .6s ease;
 
   z-index: 9;
+
+  &.active {
+    padding: 0 1em;
+
+    background: radial-gradient(
+      circle at left,
+      $primary -100%,
+      $background-dark 15%
+    );
+
+    font-size: .9em;
+
+    @include shadow-black;
+  }
 
   & > .header-inner {
     display: flex;
