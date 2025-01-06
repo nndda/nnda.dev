@@ -96,3 +96,19 @@ footer {
 .badges-container {
 	margin-bottom: .7em;
 }
+
+.icon-list-item {
+	display: grid;
+	grid-template-columns: 1.5em auto;
+	margin: .5em 0;
+	padding-left: 1em;
+
+	& > svg {
+		width: 1em;
+		margin-top: .1em;
+	}
+
+	& > span {
+		color: $text-secondary;
+	}
+}

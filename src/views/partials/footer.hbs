@@ -2,22 +2,50 @@
   <div class="footer-body">
     <div class="links-section horizontal">
       <div class="footer-heading">This Site</div>
-      <div class="badges-container">
-        {{#each repoBadges}}
-          {{{this}}}
-        {{/each}}
+      <div class="icon-list-item">
+        {{{icons.scale_balanced}}}
+        <span>
+          Licensed Under
+          <a href="https://{{repoURL}}/blob/main/LICENSE"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="GNU GPLv3 License text"
+          >
+            GNU GPLv3
+          </a>
+          <br>
+          <small>
+            (source code only)
+          </small>
+        </span>
       </div>
-      <div>
-        {{{icons.scale_balanced}}} Licensed Under
-        <a href="https://{{repoURL}}/blob/main/LICENSE"
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          referrerpolicy="no-referrer"
-          aria-label="GNU GPLv3 License text"
-        >
-          GNU GPLv3
-        </a>
+
+      <div class="icon-list-item">
+        {{{icons.box}}}
+        <span>
+          Version
+          <a href="https://{{repoURL}}/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="GNU GPLv3 License text"
+          >
+            1234567890abcdef
+          </a>
+        </span>
       </div>
+
+      <div class="icon-list-item">
+        {{{icons.clock}}}
+        <span>
+          Last updated
+          <abbr title="">
+            0 hours ago
+          </abbr>
+        </span>
+      </div>
+
       <ul>
       {{#each siteOptions}}
         <li>
