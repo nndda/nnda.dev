@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
 
-  window.addEventListener("resize", () => {
+  window.addEventListener("scroll", () => {
     projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
   });
 

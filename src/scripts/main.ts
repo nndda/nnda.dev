@@ -1,10 +1,10 @@
 const d = document;
 
-import { initializeScrollspy } from "./scrollspy";
+import { initializeScroll } from "./scroll";
 import { initializeInputs } from "./input";
 
 d.addEventListener("DOMContentLoaded", () => {
-  initializeScrollspy(d);
+  initializeScroll(d);
 
   const
     navbarMobile = <HTMLElement>d.getElementById("navbar-mobile"),

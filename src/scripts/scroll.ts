@@ -1,5 +1,7 @@
-export function initializeScrollspy(d : Document) {
+export function initializeScroll(d : Document) {
   const
+    header = <HTMLElement>d.querySelector("body > header"),
+
     navLinksClass : DOMTokenList[] = Array.from(
       d.querySelectorAll(".scrollspy")
     ).map(n => n.classList),
@@ -18,8 +20,10 @@ export function initializeScrollspy(d : Document) {
     navLinksClass.forEach(n => n.remove("active"));
   }
 
-  function scrollspy(): void {
+  function scrollEv(): void {
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
+
+    header.classList.toggle("active", scrollPosition > window.innerHeight);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {
@@ -36,7 +40,7 @@ export function initializeScrollspy(d : Document) {
     }
   }
 
-  scrollspy();
+  scrollEv();
 
-  window.addEventListener("scroll", scrollspy);
+  window.addEventListener("scroll", scrollEv);
 }
