@@ -22,6 +22,8 @@ footer {
 	justify-content: space-evenly;
 	padding: 2em 1em;
 
+	font-size: .9em;
+
 	& svg {
 		margin-right: .3em;
 		height: 1em;
@@ -76,10 +78,6 @@ footer {
 	padding: .25em 1.5em;
 	margin-right: 0;
 	margin-left: 0;
-
-	border-radius: 6px;
-
-	border: 1px solid rgba($text, 0.1);
 
 	& .title {
 		margin: 1em 0;
