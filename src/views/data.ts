@@ -5,6 +5,10 @@ import { execSync } from "child_process";
 
 // ---------------------------------------------------------------------------------------
 
+execSync("npx ts-node ./src/scripts/icons-build.ts");
+
+// ---------------------------------------------------------------------------------------
+
 import type { SimpleIcon } from "simple-icons";
 const siIconsRaw: any = require("simple-icons");
 
