@@ -26,6 +26,13 @@ button, .input-group {
 
   transition: ease .15s;
 
+  &.blank {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
   & .text {
     color: color.mix($background, $text, 20%);
   }
@@ -39,7 +46,13 @@ button, .input-group {
     display: inline-block;
     // max-height: 1em;
     min-width: 1em;
+  }
 
+  &.icon-only {
+    padding: .5em;
+  }
+
+  &:not(.icon-only) > svg {
     &:first-child {
       margin-right: .5em;
     }

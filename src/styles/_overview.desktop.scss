@@ -1,0 +1,12 @@
+.commits {
+  display: grid;
+  grid-template-columns: auto 68% 25%;
+  grid-gap: 1.1em;
+  justify-content: center;
+
+  & > .controls {
+    & > .inner {
+      padding-top: .5em;
+    }
+  }
+}

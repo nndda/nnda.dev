@@ -41,20 +41,12 @@
     text-align: right;
 
     & > .navbar-button {
-      height: 2em;
-      width: 2em;
-      cursor: pointer;
-      transition: ease .3s;
-
-      &:hover {
-        transform: scale(1.2);
-      }
+      width: fit-content;
+      font-size: 1.2em;
     }
   }
 
   & > ul {
-    list-style: none;
-    padding: 0;
     padding-right: 2em;
 
     & > li {
@@ -88,20 +80,21 @@
   letter-spacing: .2ch;
 }
 
-$navbar-responsive-point: 700px;
+#navbar-button {
+  width: fit-content;
+  padding: 1em;
+}
 
-@media (width <= $navbar-responsive-point) {
-  header {
-    & > .header-inner {
-      & > nav {
-        & > ul {
-          display: none;
-        }
+header {
+  & > .header-inner {
+    & > nav {
+      & > ul {
+        display: none;
       }
     }
   }
+}
 
-  #navbar-desktop-header {
-    display: none;
-  }
+#navbar-desktop-header {
+  display: none;
 }

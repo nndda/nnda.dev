@@ -4,6 +4,7 @@
 #links {
   padding-top: 4em;
   padding-bottom: 4em;
+  background: $background-dark;
 
   & > .section-inner {
     max-width: 1100px;
@@ -16,9 +17,7 @@
     & > ul {
       display: flex;
       flex-wrap: wrap;
-      padding: 0;
       margin: auto;
-      list-style: none;
     }
 
     &:nth-child(3) {

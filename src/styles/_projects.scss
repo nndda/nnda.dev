@@ -2,47 +2,12 @@
 @use "sass:color";
 
 #projects {
-  padding-top: 2em;
-  padding-bottom: 3em;
+  padding-top: 3em;
+  padding-bottom: 4em;
 
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
   @include shadow-black;
-
-  & .section-title {
-    display: flex;
-    justify-content: center;
-    min-height: 15em;
-    margin: .5em;
-
-    font-size: 1em;
-
-    border: 2px dashed color.mix($text, $background, 30%);
-    border-radius: 8px;
-
-    transition: .2s ease;
-
-    &:hover {
-      border-color: color.mix($text, $background, 80%);
-    }
-
-    & > .title-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      font-size: 2.6em;
-      letter-spacing: .15ch;
-
-      @include gradient-text-secondary;
-
-      & > small {
-        font-size: .8em;
-        font-weight: 200;
-      }
-    }
-  }
 
   & > .section-controls {
     position: sticky;
@@ -55,10 +20,6 @@
     max-width: 1150px;
 
     z-index: 9;
-
-    & > * {
-      box-shadow: 0 0 2em 1em $background;
-    }
   }
 
   & > .section-inner {
@@ -67,9 +28,10 @@
   }
 }
 
-.project-card {
+.project.card {
   position: relative;
   min-height: 15em;
+  padding: 0;
   margin: .5em;
 
   background:
@@ -86,16 +48,13 @@
   background-position: bottom right;
   background-repeat: no-repeat;
 
-  border-radius: 6px;
-  border: 1px solid color.mix($text, $background, 18.5%);
-
-  box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
+  outline: 1px solid transparent;
 
   transition: .2s ease;
   overflow: hidden;
 
   &:hover {
-    border: 1px solid color.mix($text, $background, 80%);
+    outline: 1px solid color.mix($text, $background, 80%);
   }
 
   & > .project-title {
@@ -119,6 +78,7 @@
     padding-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
+    font-size: 1.1em;
   }
 
   & > p {
@@ -128,7 +88,7 @@
     padding-top: 1em;
     color: color.mix($text, $background, 80%);
     font-weight: 300;
-    letter-spacing: .05em;
+    letter-spacing: .08em;
     word-spacing: .1em;
   }
 }

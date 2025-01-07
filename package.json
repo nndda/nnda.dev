@@ -4,8 +4,10 @@
   "description": "nnda's personal website",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.ts --port 9000",
-    "build": "webpack --config webpack.config.ts",
-    "lint-styles": "npx stylelint \"**/*.scss\""
+    "build": "npm run fetch-gh && webpack --config webpack.config.ts",
+    "watch-project": "npx ts-node ./src/_projects/project-pages.ts --watch",
+    "lint-styles": "npx stylelint \"**/*.scss\"",
+    "fetch-gh": "npx ts-node ./src/api/gh.ts"
   },
   "repository": {
     "type": "git",
@@ -13,20 +15,27 @@
   },
   "author": "nnda",
   "license": " GPL-3.0-or-later",
+  "engines": {
+    "node": ">=23.5.0"
+  },
   "bugs": {
     "url": "https://github.com/nndda/website/issues"
   },
   "homepage": "https://github.com/nndda/website#readme",
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.3",
     "@types/webpack": "^5.28.5",
+    "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "eslint": "^9.17.0",
     "favicons": "^7.2.0",
     "globals": "^15.13.0",
+    "gray-matter": "^4.0.3",
     "html-bundler-webpack-plugin": "^4.10.3",
+    "marked": "^15.0.5",
+    "node-fetch": "^3.3.2",
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "stylelint": "^16.12.0",
@@ -34,9 +43,9 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1",
+    "typescript-eslint": "^8.19.0",
     "webpack": "^5.97.1",
-    "webpack-cli": "^5.1.4",
+    "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
@@ -45,7 +54,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^13.21.0",
-    "yaml": "^2.6.0"
+    "simple-icons": "^14.0.0",
+    "yaml": "^2.7.0"
   }
 }

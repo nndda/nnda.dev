@@ -1,13 +1,11 @@
-@media (width >= 700px) {
-  #projects {
-    & > .section-inner {
-      display: grid;
-      grid-template-rows: auto;
-      grid-template-columns: repeat(3, 33.333%);
+#projects {
+  & > .section-inner {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 33.333%);
 
-      & >:nth-child(2) {
-        grid-column: span 2;
-      }
+    & >:nth-child(2) {
+      grid-column: span 2;
     }
   }
 }

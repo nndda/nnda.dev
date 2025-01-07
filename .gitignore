@@ -1,3 +1,19 @@
+
+# Compiled, pre-build scripts
+src/**/*.js
+
+# Third party JavaScripts
+!src/scripts/vendor/*.js
+
+# API data
+src/api/*.json
+
+# Compiled project pages
+src/_projects/**/*.hbs
+!src/_projects/**/index.hbs
+
+# Node gitignore --------------------------------------------------------------
+
 # Logs
 logs
 *.log

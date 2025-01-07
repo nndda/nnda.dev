@@ -4,29 +4,35 @@ header {
   position: fixed;
   top: 0;
   left: auto;
-  padding: 0 1em;
+  padding: 2em;
 
   width: 100%;
   max-width: 1700px;
 
-  background: radial-gradient(
-    circle at left,
-    rgba($primary, 70%) -100%,
-    rgba($background, 80%) 15%
-  );
-  backdrop-filter: blur(.4em);
-  border-bottom: 1px solid rgba($text, 0.2);
+  background: transparent;
 
-  @include shadow-black;
+  font-size: 1em;
+
+  will-change: padding, background;
+  transition:
+    padding .6s ease,
+    background .9s ease;
 
   z-index: 9;
+
+  &.active {
+    padding: 0 1em;
+
+    background: $background-dark;
+
+    @include shadow-black;
+  }
 
   & > .header-inner {
     display: flex;
 
     & > h1 {
       margin: 0;
-      margin-top: .15em;
       font-weight: 200;
 
       & > a {
@@ -41,7 +47,6 @@ header {
   padding: 0;
 
   & .nav-link {
-    height: 100%;
     text-decoration: none;
 
     &:hover {

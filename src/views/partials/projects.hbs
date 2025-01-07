@@ -1,5 +1,9 @@
 <section id="projects" data-nav-name="Projects">
-  <div class="section-controls">
+  <h1 class="heading-left-sticky">
+    <div>プロジェクト</div>
+  </h1>
+
+  <div class="section-controls scrollbar-secondary">
 
     {{!-- PROJECT CATEGORY ------------------------------------------------------------------------ --}}
 
@@ -10,7 +14,7 @@
       >
         {{{icons.filter}}}
         <span class="text">Category:</span>
-        <span class="text" id="project-cat-display">All</span>
+        <span class="text text-display">All</span>
       </button>
 
       <div
@@ -100,18 +104,11 @@
 
   <div class="section-inner">
 
-    <h1 class="section-title">
-      <div class="title-inner">
-        Projects
-        <small>プロジェクト</small>
-      </div>
-    </h1>
-
     {{!-- PROJECT CONTENTS ------------------------------------------------------------------------ --}}
 
     {{#each projects}}
       <div
-        class="project-card"
+        class="project card"
         data-project-cat="{{this.category}}"
         data-project-tags="{{this.tags}}"
         {{#if this.image}}

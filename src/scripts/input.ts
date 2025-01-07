@@ -1,7 +1,4 @@
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-const iconCaretDown = icon(faCaretDown).html.join();
+import { iconCaretDown } from "./icons";
 
 export function initializeInputs(d: Document): void {
 
@@ -12,7 +9,6 @@ export function initializeInputs(d: Document): void {
       button = <HTMLButtonElement>e.querySelector("button"),
       items = <HTMLElement>e.querySelector(".items");
 
-    if (items != null && button != null) {
       button.insertAdjacentHTML("beforeend", iconCaretDown);
       items.classList.add("hidden");
 
@@ -43,6 +39,15 @@ export function initializeInputs(d: Document): void {
           (<HTMLInputElement>elem).checked = true;
         }
       })
-    }
+  });
+}
+
+export function eventForElements(
+  elems: HTMLInputElement[] | NodeListOf<Element>,
+  type: string,
+  callbackfn: (event: Event, elem: Element) => void,
+): void {
+  elems.forEach(elem => {
+    elem.addEventListener(type, event => callbackfn(event, elem));
   });
 }

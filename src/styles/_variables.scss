@@ -2,6 +2,7 @@
 
 $primary: #fc3a78;
 $secondary: #3ae5f9;
+$tertiary: #f5cf0e;
 $background: #15141b;
 $background-light: color.adjust($background, $lightness: 2.0%);
 $background-dark: color.adjust($background, $lightness: -2.5%);
@@ -34,4 +35,26 @@ $text-secondary: color.mix($text, $background, 80%);
 
 @mixin shadow-black {
   box-shadow: 0 0 2em -.2em color.adjust($background-dark, $lightness: -2.5%);
+}
+
+@mixin style-scrollbar($col: $primary) {
+  scrollbar-color: $col $background;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: .5em;
+    height: .5em;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $col; 
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: color.adjust($col, $lightness: 20%); 
+  }
 }

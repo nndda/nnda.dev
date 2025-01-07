@@ -20,7 +20,7 @@ footer {
 .footer-body {
 	display: flex;
 	justify-content: space-evenly;
-	padding: .5em 3em;
+	padding: 2em 1em;
 
 	& svg {
 		margin-right: .3em;
@@ -31,27 +31,7 @@ footer {
 		padding: .5em;
 
 		& > ul {
-			padding: 0;
-
-			list-style: none;
-
-			& > li {
-				line-height: 1.8em;
-
-				& > a {
-					text-decoration: none;
-				}
-			}
-		}
-
-		&.horizontal {
-			& > ul {
-				display: flex;
-
-				& > li {
-					margin-right: 1em;
-				}
-			}
+			padding-top: 1em;
 		}
 	}
 }
@@ -59,13 +39,12 @@ footer {
 .footer-end {
 	display: flex;
 
-	padding-top: .9em;
-	padding-bottom: .9em;
+	padding: 1em 2em;
 
 	color: $text-secondary;
 	background: $background-light;
 
-	font-size: .9em;
+	font-size: .8em;
 
 	& a {
 		text-decoration-color: rgba($text, .3);
@@ -77,10 +56,6 @@ footer {
 	padding: .25em 1.5em;
 	margin-right: 0;
 	margin-left: 0;
-
-	border-radius: 6px;
-
-	border: 1px solid rgba($text, 0.1);
 
 	& .title {
 		margin: 1em 0;
@@ -94,6 +69,17 @@ footer {
 	}
 }
 
-.badges-container {
-	margin-bottom: .7em;
+.site-opt {
+	display: grid;
+	grid-template-columns: 1.5em auto;
+	padding-left: 1em;
+
+	& > svg {
+		width: 1em;
+		margin-top: .1em;
+	}
+
+	& > span {
+		color: $text-secondary;
+	}
 }

@@ -1,0 +1,14 @@
+.commits {
+  & > .controls {
+    display: none;
+
+    & > ul {
+      display: flex;
+      align-items: end;
+    }
+  }
+
+  & > div {
+    margin-top: 1em;
+  }
+}

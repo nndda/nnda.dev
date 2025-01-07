@@ -3,14 +3,9 @@ import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
 
-function fetchCurl(url: string): any {
-  try {
-    return JSON.parse(execSync(`curl -s ${url}`).toString());
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
+// ---------------------------------------------------------------------------------------
+
+execSync("npx ts-node ./src/scripts/icons-build.ts");
 
 // ---------------------------------------------------------------------------------------
 
@@ -102,7 +97,7 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const projectCatData: Object[] = [{
+const projectCatData: object[] = [{
   name: "All",
   id: "All",
   default: true,
@@ -111,7 +106,7 @@ const projectCatReadable: string[] = [];
 
 // ---------------------------------------------------------------------------------------
 
-const projectPlatformData: Object[] = [];
+const projectPlatformData: object[] = [];
 const projectPlatformReadble: string[] = [];
 
 // =======================================================================================
@@ -187,27 +182,13 @@ module.exports = {
     },
   ],
 
-  /*
-  easeOutBounce: `--ease-out-bounce: linear(${[...new Array(50)]
-    .map((_d: number, i: number): number => {
-      let x = i * (1 / 50);
+  buildTimetamp: new Date(),
+  buildCommitSHA: process.env.CF_PAGES_COMMIT_SHA,
 
-      const n1 = 7.5625;
-      const d1 = 2.75;
+  year: new Date().getFullYear(),
 
-      if (x < 1 / d1) {
-        return n1 * x * x;
-      } else if (x < 2 / d1) {
-        return n1 * (x -= 1.5 / d1) * x + 0.75;
-      } else if (x < 2.5 / d1) {
-        return n1 * (x -= 2.25 / d1) * x + 0.9375;
-      } else {
-        return n1 * (x -= 2.625 / d1) * x + 0.984375;
-      };
-    })
-    .join(",")
-  });`,
-  */
+  ghLangs: require("../api/langs.json"),
+  ghContribs: require("../api/contribs.json"),
 
   ...siteData,
 }

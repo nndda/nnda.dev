@@ -1,0 +1,161 @@
+@use "variables" as *;
+@use "sass:color";
+
+#overview {
+  background: $background-dark;
+
+  & > .section-inner {
+    max-width: 1150px;
+    margin: auto;
+    margin-top: 1.5em;
+    padding-bottom: 2em;
+  }
+}
+
+.section-title-sub {
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: .6em;
+}
+
+.commits {
+  & ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  & > .controls {
+    padding: 0;
+
+    & > .section-title-sub {
+      opacity: 0;
+    }
+
+    & button {
+      font-size: 1.1em;
+    }
+  }
+
+  & > .calendar-container {
+    & .c {
+      height: .8em;
+      width: .8em;
+      padding: 0;
+      margin: 0;
+      background: color.mix($text, $background-light, 3%);
+      border-radius: 3px;
+
+      &:hover {
+        transform: scale(2.0);
+      }
+
+      @for $i from 1 through 5 {
+        &.c#{$i} {
+          background: color.mix($secondary, $background-light, (20 * $i) + 0%);
+        }
+      }
+    }
+
+    & .grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 0;
+      grid-template-rows: repeat(7, 1em);
+      grid-template-columns: repeat(52, 1fr);
+    }
+  }
+
+  & .inner {
+    position: relative;
+    min-height: 150px;
+    overflow-x: scroll;
+
+    & > .icon-bg {
+      position: absolute;
+      bottom: 0;
+      left: -.1em;
+      color: $primary;
+      font-size: 8em;
+      opacity: .09;
+    }
+  }
+}
+
+.stats-list {
+  position: relative;
+  font-size: .9em;
+
+  & > li {
+    display: grid;
+    grid-template-columns: auto 4.5em 4.5em;
+
+    margin: .25em 0;
+    color: color.mix($text-secondary, $background, 70%);
+
+    &.title {
+      margin: .5em 0;
+      padding-left: 0;
+      color: $primary;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.languages {
+  margin-top: 1.5em;
+}
+
+.languages-container {
+  display: flex;
+
+  margin-bottom: 2em;
+
+  & > .lang {
+    position: relative;
+    display: inline-block;
+
+    margin: 0 .2em;
+
+    font-size: .9em;
+
+    white-space: nowrap;
+
+    $color: $secondary;
+
+    & > .box {
+      max-height: .8em;
+      background: color.mix($color, $background, 20%);
+      color: transparent;
+    }
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        & > .box {
+          background: color.mix($color, $background, (5 - $i) * 20%);
+        }
+      }
+    }
+
+    & > code {
+      position: absolute;
+      top: 0;
+      padding-left: .5em;
+      color: $background;
+      font-size: .8em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    & > .icon-text {
+      display: block;
+      color: $text-secondary;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

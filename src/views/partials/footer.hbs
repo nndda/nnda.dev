@@ -2,25 +2,54 @@
   <div class="footer-body">
     <div class="links-section horizontal">
       <div class="footer-heading">This Site</div>
-      <div class="badges-container">
-        {{#each repoBadges}}
-          {{{this}}}
-        {{/each}}
+
+      <div class="icon-text site-opt">
+        {{{icons.scale_balanced}}}
+        <span>
+          Licensed Under
+          <a href="https://{{repoURL}}/blob/main/LICENSE"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="GNU GPLv3 License text"
+          >
+            GNU GPLv3
+          </a>
+          <br>
+          <small>
+            (source code only)
+          </small>
+        </span>
       </div>
-      <div>
-        {{{icons.scale_balanced}}} Licensed Under
-        <a href="https://{{repoURL}}/blob/main/LICENSE"
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          referrerpolicy="no-referrer"
-          aria-label="GNU GPLv3 License text"
-        >
-          GNU GPLv3
-        </a>
+
+      {{#if buildCommitSHA}}
+      <div class="icon-text site-opt">
+        {{{icons.box}}}
+        <span>
+          Version
+          <a href="https://{{repoURL}}/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            referrerpolicy="no-referrer"
+            aria-label="Build commit SHA"
+          >
+            {{buildCommitSHA}}
+          </a>
+        </span>
       </div>
-      <ul>
+      {{/if}}
+
+      <div class="icon-text site-opt">
+        {{{icons.clock}}}
+        <span>
+          Last updated
+          <abbr id="last-updated-label" title="{{buildTimetamp}}"></abbr>
+        </span>
+      </div>
+
+      <ul class="nostyle">
       {{#each siteOptions}}
-        <li>
+        <li class="icon-text">
           <a href="{{this.url}}"
             target="_blank"
             rel="nofollow noopener noreferrer"
@@ -28,7 +57,9 @@
             aria-label="{{{this.url}}}"
           >
             {{{this.icon}}}
-            {{this.name}}
+            <span>
+              {{this.name}}
+            </span>
           </a>
         </li>
       {{/each}}
@@ -46,7 +77,7 @@
 
   <div class="footer-end">
     <div>
-      Copyright &copy; 2024 nnda
+      Copyright &copy; {{year}} nnda
     </div>
     <div class="flex-space"></div>
     <div>

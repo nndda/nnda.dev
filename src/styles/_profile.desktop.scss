@@ -1,0 +1,26 @@
+#profile {
+  & .info-container {
+    grid-template-columns: 12em auto;
+    grid-template-rows: auto auto;
+  }
+
+  & .left {
+    grid-row: 1 / 4;
+  }
+
+  & .right {
+    grid-row: 2;
+  }
+
+  & .user-metadata {
+    grid-row: 3;
+    margin-left: 1.5em;
+  }
+}
+
+.profile-pict {
+  & > img {
+    width: 12em;
+    height: 12em;
+  }
+}

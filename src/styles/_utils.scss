@@ -30,3 +30,13 @@
   margin: .4em 1em;
   background: color.mix($text-secondary, $background-light, 40%);
 }
+
+ul.nostyle {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.scrollbar-secondary {
+  @include style-scrollbar($secondary);
+}
