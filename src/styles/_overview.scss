@@ -26,14 +26,14 @@
   }
 
   & > .controls {
+    padding: 0;
+
+    & > .section-title-sub {
+      opacity: 0;
+    }
+
     & button {
       font-size: 1.1em;
-    }
-  }
-
-  & > .stats {
-    & .icon-bg {
-      color: $primary;
     }
   }
 
@@ -68,13 +68,8 @@
 
   & .inner {
     position: relative;
-    padding: 1em 1.2em;
     min-height: 150px;
-    background: $background;
-    border-radius: 6px;
     overflow-x: scroll;
-
-    @include shadow-black;
 
     & > .icon-bg {
       position: absolute;

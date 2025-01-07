@@ -5,7 +5,9 @@
   justify-content: center;
 
   & > .controls {
-    margin-top: 2em;
+    & > .inner {
+      padding-top: .5em;
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sass:color";
 
 .icon-text {
   display: inline-block;
@@ -10,4 +11,12 @@
     margin-right: .3em;
     max-height: 1em;
   }
+}
+
+.card {
+  padding: 1em;
+  background: $background;
+  border-radius: 6px;
+
+  @include shadow-black;
 }

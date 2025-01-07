@@ -1,6 +1,6 @@
 .commits {
   & > .controls {
-    margin-top: 0;
+    display: none;
 
     & > ul {
       display: flex;

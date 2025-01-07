@@ -63,9 +63,10 @@
   }
 }
 
-.project-card {
+.project.card {
   position: relative;
   min-height: 15em;
+  padding: 0;
   margin: .5em;
 
   background:
@@ -82,16 +83,13 @@
   background-position: bottom right;
   background-repeat: no-repeat;
 
-  border-radius: 6px;
-  border: 1px solid color.mix($text, $background, 18.5%);
-
-  box-shadow: 0 0 1em .5em rgba($background-dark, 95%);
+  outline: 1px solid transparent;
 
   transition: .2s ease;
   overflow: hidden;
 
   &:hover {
-    border: 1px solid color.mix($text, $background, 80%);
+    outline: 1px solid color.mix($text, $background, 80%);
   }
 
   & > .project-title {

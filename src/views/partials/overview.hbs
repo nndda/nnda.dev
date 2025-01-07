@@ -4,7 +4,8 @@
     <h1 class="title-left-sticky">Overview</h1>
     <div class="commits">
       <div class="controls">
-        <ul class="nostyle">
+        <div class="section-title-sub">-</div>
+        <ul class="inner nostyle card">
           <li>
             <button class="icon-only blank">{{{icons.calendar}}}</button>
           </li>
@@ -20,7 +21,7 @@
         <div class="section-title-sub">
             Contribution Graph
         </div>
-        <div class="inner scrollbar-secondary">
+        <div class="inner card scrollbar-secondary">
           <div class="grid">
             {{#each ghContribs.arr.yearly}}<span class="c c{{this}}"></span>{{/each}}
           </div>
@@ -30,7 +31,7 @@
         <div class="section-title-sub">
             Stats
         </div>
-        <div class="inner">
+        <div class="inner card">
           <div class="icon-bg">
             {{{icons.fire}}}
           </div>
