@@ -1,6 +1,9 @@
 @use "../../node_modules/modern-normalize/modern-normalize.css" as *;
 @use "variables" as *;
+
 @use "components";
+@use "utils";
+
 @use "header";
 @use "footer";
 @use "profile";
@@ -8,8 +11,6 @@
 @use "projects";
 @use "links";
 @use "input";
-
-@use "utils";
 
 @use "sass:color";
 
