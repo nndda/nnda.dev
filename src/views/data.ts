@@ -183,6 +183,7 @@ module.exports = {
   ],
 
   buildTimetamp: new Date(),
+  buildCommitSHA: process.env.CF_PAGES_COMMIT_SHA,
 
   year: new Date().getFullYear(),
 

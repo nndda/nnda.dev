@@ -22,6 +22,7 @@
         </span>
       </div>
 
+      {{#if buildCommitSHA}}
       <div class="icon-text site-opt">
         {{{icons.box}}}
         <span>
@@ -30,12 +31,13 @@
             target="_blank"
             rel="nofollow noopener noreferrer"
             referrerpolicy="no-referrer"
-            aria-label="GNU GPLv3 License text"
+            aria-label="Build commit SHA"
           >
-            1234567890abcdef
+            {{buildCommitSHA}}
           </a>
         </span>
       </div>
+      {{/if}}
 
       <div class="icon-text site-opt">
         {{{icons.clock}}}
