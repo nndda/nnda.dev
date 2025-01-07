@@ -3,15 +3,6 @@ import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
 
-function fetchCurl(url: string): any {
-  try {
-    return JSON.parse(execSync(`curl -s ${url}`).toString());
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
 // ---------------------------------------------------------------------------------------
 
 import type { SimpleIcon } from "simple-icons";
@@ -186,28 +177,6 @@ module.exports = {
       url: `${repoURL}/issues`,
     },
   ],
-
-  /*
-  easeOutBounce: `--ease-out-bounce: linear(${[...new Array(50)]
-    .map((_d: number, i: number): number => {
-      let x = i * (1 / 50);
-
-      const n1 = 7.5625;
-      const d1 = 2.75;
-
-      if (x < 1 / d1) {
-        return n1 * x * x;
-      } else if (x < 2 / d1) {
-        return n1 * (x -= 1.5 / d1) * x + 0.75;
-      } else if (x < 2.5 / d1) {
-        return n1 * (x -= 2.25 / d1) * x + 0.9375;
-      } else {
-        return n1 * (x -= 2.625 / d1) * x + 0.984375;
-      };
-    })
-    .join(",")
-  });`,
-  */
 
   year: new Date().getFullYear(),
 
