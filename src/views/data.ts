@@ -182,6 +182,8 @@ module.exports = {
     },
   ],
 
+  buildTimetamp: new Date(),
+
   year: new Date().getFullYear(),
 
   ghLangs: require("../api/langs.json"),
