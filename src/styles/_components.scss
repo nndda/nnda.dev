@@ -1,0 +1,13 @@
+@use "variables" as *;
+
+.icon-text {
+  display: inline-block;
+  margin-right: 1em;
+  margin-top: .5em;
+  white-space: nowrap;
+
+  & > svg {
+    margin-right: .3em;
+    max-height: 1em;
+  }
+}
