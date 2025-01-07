@@ -9,41 +9,6 @@
 
   @include shadow-black;
 
-  & .section-title {
-    display: flex;
-    justify-content: center;
-    min-height: 15em;
-    margin: .5em;
-
-    font-size: 1em;
-
-    border: 2px dashed color.mix($text, $background, 30%);
-    border-radius: 8px;
-
-    transition: .2s ease;
-
-    &:hover {
-      border-color: color.mix($text, $background, 80%);
-    }
-
-    & > .title-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      font-size: 2.6em;
-      letter-spacing: .15ch;
-
-      @include gradient-text-secondary;
-
-      & > small {
-        font-size: .8em;
-        font-weight: 200;
-      }
-    }
-  }
-
   & > .section-controls {
     position: sticky;
     top: 0;
