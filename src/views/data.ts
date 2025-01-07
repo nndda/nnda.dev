@@ -97,7 +97,7 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const projectCatData: Object[] = [{
+const projectCatData: object[] = [{
   name: "All",
   id: "All",
   default: true,
@@ -106,7 +106,7 @@ const projectCatReadable: string[] = [];
 
 // ---------------------------------------------------------------------------------------
 
-const projectPlatformData: Object[] = [];
+const projectPlatformData: object[] = [];
 const projectPlatformReadble: string[] = [];
 
 // =======================================================================================

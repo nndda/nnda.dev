@@ -3,12 +3,12 @@ import { iconX } from "./icons";
 
 const d = document;
 
-function initContentControls(
-  btnCategories: HTMLElement[] | NodeListOf<Element>,
-  btnTags: HTMLElement[] | NodeListOf<Element>,
-): void {
+// function initContentControls(
+//   btnCategories: HTMLElement[] | NodeListOf<Element>,
+//   btnTags: HTMLElement[] | NodeListOf<Element>,
+// ): void {
 
-}
+// }
 
 // Tags -----------------------------------------------------------------------------------------
 
