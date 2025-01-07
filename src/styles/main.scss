@@ -20,7 +20,11 @@
 
 svg {
   display: inline-block;
+  height: 1em;
+  box-sizing: content-box;
   fill: $text;
+  vertical-align: -0.125em;
+  overflow: visible;
 }
 
 a {
