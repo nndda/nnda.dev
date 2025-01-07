@@ -1,3 +1,10 @@
+
+# Compiled, pre-build scripts
+src/**/*.js
+
+# Third party JavaScripts
+!src/scripts/vendor/*.js
+
 # API data
 src/api/*.json
 
