@@ -58,3 +58,11 @@ $text-secondary: color.mix($text, $background, 80%);
     background: color.adjust($col, $lightness: 20%); 
   }
 }
+
+@mixin nth-loop($start, $end) {
+  @for $i from $start through $end {
+    &:nth-child(#{$i}) {
+      @content($i);
+    }
+  }
+}

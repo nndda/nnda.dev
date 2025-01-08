@@ -3,7 +3,7 @@
     <div class="section-inner">
       <div class="info-container">
         <div class="left">
-          <div class="profile-pict">
+          <div class="profile-pict anim fade float-up">
             <img src="/assets/avatar.webp" height="180" width="180">
             <div class="status">
               <span>{{site.authorProfile.status.icon}}</span>
@@ -11,7 +11,7 @@
             </div>
           </div>
         </div>
-        <div class="right">
+        <div class="right anim fade float-right">
           <h1 class="name">
             {{site.author}}
           </h1>
@@ -20,31 +20,31 @@
           </p>
         </div>
         <ul class="user-metadata nostyle">
-          <li class="icon-text">
+          <li class="icon-text anim">
             {{{icons.volume_high}}}
             <span>
               {{{site.authorProfile.pronunciation}}}
             </span>
           </li>
-          <li class="icon-text">
+          <li class="icon-text anim">
             {{{icons.user_tag}}}
             <span>
               {{{site.authorProfile.pronouns}}}
             </span>
           </li>
-          <li class="icon-text">
+          <li class="icon-text anim">
             {{{icons.clock}}}
             <span id="clock-timezone" data-timezone="{{site.authorProfile.timezone}}">
               00:00:00
             </span>
           </li>
-          <li class="icon-text">
+          <li class="icon-text anim">
             {{{icons.language}}}
             <span>
               {{{site.authorProfile.languages}}}
             </span>
           </li>
-          <li class="icon-text">
+          <li class="icon-text anim">
             {{{icons.location_dot}}}
             <span>
               {{{site.authorProfile.location}}}

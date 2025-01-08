@@ -6,10 +6,11 @@
   <div class="section-inner">
     {{#each socials}}
       <div class="links-group">
-        <div class="links-title">{{this.group}}</div>
+        <div class="links-title anim fade float-up">{{this.group}}</div>
         <ul class="nostyle">
           {{#each this.links}}
             <li class="
+                anim
                 link-item
                 {{#if this.iconSlug}}
                   {{this.iconSlug}}
