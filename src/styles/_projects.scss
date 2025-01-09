@@ -50,7 +50,10 @@
 
   outline: 1px solid transparent;
 
-  transition: outline .15s ease !important;
+  transition:
+    outline .15s ease,
+    transform .23s ease !important;
+
   overflow: hidden;
 
   &:hover {
