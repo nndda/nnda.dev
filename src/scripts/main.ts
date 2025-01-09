@@ -2,6 +2,7 @@ const d = document;
 
 import { initializeScroll } from "./scroll";
 import { initializeInputs } from "./input";
+import { initializeAnimations } from "./animations";
 
 let now: Date = new Date();
 
@@ -23,6 +24,7 @@ function getLastUpdated(date: Date): string {
 };
 
 d.addEventListener("DOMContentLoaded", () => {
+  initializeAnimations(d);
   initializeScroll(d);
 
   const

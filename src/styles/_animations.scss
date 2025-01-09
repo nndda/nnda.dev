@@ -1,0 +1,24 @@
+@use "variables" as *;
+
+.anim {
+  transition: .7s ease;
+  will-change: tranform, opacity;
+
+  &.fade {
+    &:not(.on) {
+      opacity: 0.0;
+    }
+  }
+
+  &.float-up {
+    &:not(.on) {
+      transform: translateY(2em);
+    }
+  }
+
+  &.float-right {
+    &:not(.on) {
+      transform: translateX(-2em);
+    }
+  }
+}

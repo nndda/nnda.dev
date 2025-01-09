@@ -13,6 +13,16 @@
   flex-grow: 1;
 }
 
+header {
+  & > .header-inner {
+    & > nav {
+      & > ul {
+        display: none;
+      }
+    }
+  }
+}
+
 #navbar-mobile {
   position: absolute;
   top: 0;
@@ -83,16 +93,6 @@
 #navbar-button {
   width: fit-content;
   padding: 1em;
-}
-
-header {
-  & > .header-inner {
-    & > nav {
-      & > ul {
-        display: none;
-      }
-    }
-  }
 }
 
 #navbar-desktop-header {

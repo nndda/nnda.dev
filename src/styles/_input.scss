@@ -1,6 +1,26 @@
 @use "variables" as *;
 @use "sass:color";
 
+textarea {
+  border: none;
+  outline: none;
+  background: color.adjust($background-light, $lightness: 1.5%);
+
+  &.one-line {
+    resize: none;
+    height: 1.2em;
+    font-size: 1.2em;
+  }
+
+  &:hover {
+    outline: 1px solid color.adjust($background-light, $lightness: 12.5%);
+  }
+
+  &:focus {
+    outline: 1px solid color.adjust($background-light, $lightness: 15.5%);
+  }
+}
+
 button, .input-group {
   position: relative;
   display: flex;
@@ -44,18 +64,17 @@ button, .input-group {
 
   & > svg {
     display: inline-block;
-    // max-height: 1em;
     min-width: 1em;
-  }
-
-  &.icon-only {
-    padding: .5em;
   }
 
   &:not(.icon-only) > svg {
     &:first-child {
       margin-right: .5em;
     }
+  }
+
+  &.icon-only {
+    padding: .5em;
   }
 }
 
@@ -66,7 +85,6 @@ button, .input-group {
 
   & > textarea, textarea::placeholder {
     padding: 0 .5em;
-    font-size: .8em;
   }
 }
 
@@ -98,30 +116,6 @@ button, .input-group {
       border-radius: 0;
       box-shadow: none;
     }
-  }
-
-  & > svg:last-child {
-    margin-left: .5em;
-  }
-}
-
-textarea {
-  border: none;
-  outline: none;
-  background: color.adjust($background-light, $lightness: 1.5%);
-
-  &.one-line {
-    resize: none;
-    height: 1.2em;
-    font-size: 1.2em;
-  }
-
-  &:hover {
-    outline: 1px solid color.adjust($background-light, $lightness: 12.5%);
-  }
-
-  &:focus {
-    outline: 1px solid color.adjust($background-light, $lightness: 15.5%);
   }
 }
 
