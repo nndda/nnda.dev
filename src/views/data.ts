@@ -67,6 +67,11 @@ if (process.env.SITE_CFG_EXTEND) {
 // ---------------------------------------------------------------------------------------
 
 const repoURL = urlStr(siteData.repoURL);
+const commitSHA = (
+  process.env.CF_PAGES_COMMIT_SHA ??
+  process.env.COMMIT_SHA ??
+  ""
+)
 
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
@@ -183,7 +188,8 @@ module.exports = {
   ],
 
   buildTimetamp: new Date(),
-  buildCommitSHA: process.env.CF_PAGES_COMMIT_SHA,
+  buildCommitSHAFull: commitSHA,
+  buildCommitSHA: commitSHA.substring(0, 16),
 
   year: new Date().getFullYear(),
 

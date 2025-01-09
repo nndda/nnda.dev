@@ -25,6 +25,7 @@ jobs:
       - run: npm run build
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
+          COMMIT_SHA ${{ github.sha }}
 
       - name: Deploy Pages
         uses: cloudflare/wrangler-action@v3
