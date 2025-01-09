@@ -4,30 +4,30 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Choose an environment to deploy to: <dev|prod>'
-        required: true
-        default: 'prod'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
-      - run: npm install
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build website
+        run: npm run build
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           COMMIT_SHA ${{ github.sha }}
 
-      - name: Deploy Pages
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -1,4 +1,4 @@
-name: Stylelint
+name: Lint stylesheets with Stylelint
 
 on:
   push:
@@ -21,21 +21,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version-file: '.nvmrc'
 
-      - name: Install Linting Dependencies
+      - name: Install linting dependencies
         run: |
           npm install --no-save \
             stylelint \
             stylelint-config-standard-scss
 
-      - name: Lint Stylesheets
+      - name: Lint stylesheets
         run: npm run lint-styles
