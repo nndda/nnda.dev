@@ -1,0 +1,24 @@
+name: Deploy site to Cloudflare Pages
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose an environment to deploy to: <dev|prod>"
+        required: true
+        default: "prod"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy app
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy --env ${{ github.event.inputs.environment }}
