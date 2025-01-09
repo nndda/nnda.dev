@@ -19,10 +19,13 @@ $text-secondary: color.mix($text, $background, 80%);
 
 @mixin gradient-text($gradient-col, $gradient-offset: 0%) {
   --offset: #{$gradient-offset};
+
+  /* stylelint-disable */
   background: $gradient-col;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* stylelint-enable */
 }
 
 @mixin gradient-text-primary($gradient-offset: 0%) {

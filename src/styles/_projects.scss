@@ -98,11 +98,10 @@
   & > p {
     transition: .55s ease-out;
   }
-  & .project-label {
-    transition: .2s ease;
-  }
 
   & .project-label {
+    transition: .2s ease;
+
     @include nth-loop(1, 4) using ($i) {
       transition-delay: 0s + (.15 * $i);
     }
