@@ -23,6 +23,8 @@ jobs:
 
       - run: npm install
       - run: npm run build
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
 
       - name: Deploy Pages
         uses: cloudflare/wrangler-action@v3
