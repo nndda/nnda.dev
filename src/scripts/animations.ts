@@ -10,5 +10,7 @@ const observerScrollAnim = new IntersectionObserver(entries => {
 );
 
 export function initializeAnimations(d: Document): void {
-  d.querySelectorAll(".anim").forEach(el => observerScrollAnim.observe(el));
+  if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    d.querySelectorAll(".anim").forEach(el => observerScrollAnim.observe(el));
+  };
 }

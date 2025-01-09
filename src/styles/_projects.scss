@@ -91,47 +91,6 @@
     letter-spacing: .08em;
     word-spacing: .1em;
   }
-
-  // ANIMATIONS >>>
-  &.on,
-  & > .project-title,
-  & > p {
-    transition: .55s ease-out;
-  }
-
-  & .project-label {
-    transition: .2s ease;
-
-    @include nth-loop(1, 4) using ($i) {
-      transition-delay: 0s + (.15 * $i);
-    }
-  }
-
-  &:not(.on) {
-    transform: translateY(1.5em);
-    opacity: 0;
-
-    & > .project-title,
-    & > p,
-    & .project-label {
-      transition: .09s ease;
-    }
-
-    & > .project-title {
-      transform: translateX(2.5em);
-    }
-
-    & > p {
-      transform: translateY(2em);
-    }
-
-    & .project-label {
-      transform: translateX(2.5em);
-      transition-delay: 0 !important;
-      opacity: 0;
-    }
-  }
-  // ANIMATIONS <<<
 }
 
 #project-cat-display, #project-platform-display {
