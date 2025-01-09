@@ -5,7 +5,7 @@ const observerScrollAnim = new IntersectionObserver(entries => {
   },
   {
     root: null,
-    threshold: 0.5,
+    threshold: 0,
   }
 );
 
