@@ -2,13 +2,13 @@ name: Deploy site to Cloudflare Pages
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       environment:
-        description: "Choose an environment to deploy to: <dev|prod>"
+        description: 'Choose an environment to deploy to: <dev|prod>'
         required: true
-        default: "prod"
+        default: 'prod'
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: '.nvmrc'
 
       - run: npm install
       - run: npm run build
