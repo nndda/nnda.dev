@@ -69,7 +69,7 @@
   & .inner {
     position: relative;
     min-height: 150px;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     & > .icon-bg {
       position: absolute;
