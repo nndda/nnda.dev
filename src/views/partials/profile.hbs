@@ -2,7 +2,7 @@
   <div class="bg-cover">
     <div class="section-inner">
       <div class="info-container">
-        <div class="left">
+        <div class="pfp-cont">
           <div class="profile-pict anim fade float-up">
             <img src="/assets/avatar.webp" height="180" width="180">
             <div class="status">
@@ -11,10 +11,12 @@
             </div>
           </div>
         </div>
-        <div class="right anim fade float-right">
+        <div class="name-cont anim fade float-right">
           <h1 class="name">
             {{site.author}}
           </h1>
+        </div>
+        <div class="desc-cont anim fade float-up">
           <p class="about">
             {{{site.authorProfile.description}}}
           </p>
@@ -39,15 +41,15 @@
             </span>
           </li>
           <li class="icon-text anim">
-            {{{icons.language}}}
-            <span>
-              {{{site.authorProfile.languages}}}
-            </span>
-          </li>
-          <li class="icon-text anim">
             {{{icons.location_dot}}}
             <span>
               {{{site.authorProfile.location}}}
+            </span>
+          </li>
+          <li class="icon-text anim">
+            {{{icons.language}}}
+            <span>
+              {{{site.authorProfile.languages}}}
             </span>
           </li>
         </ul>

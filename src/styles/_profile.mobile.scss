@@ -1,11 +1,15 @@
 #profile {
   & .info-container {
-    grid-template-columns: 9em auto;
+    grid-template-columns: 10em auto;
+  }
+
+  & .desc-cont {
+    grid-column: span 2;
+    margin-top: 1.25em;
   }
 
   & .user-metadata {
     grid-column: span 2;
-    margin-top: 1.5em;
   }
 }
 
