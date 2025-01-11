@@ -23,13 +23,11 @@
     position: relative;
     top: -4em;
     display: grid;
+  }
 
-    & > .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      margin-left: 1.5em;
-    }
+  & .name-cont {
+    display: flex;
+    align-items: end;
   }
 
   & h1.name {
