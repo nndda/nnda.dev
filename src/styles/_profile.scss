@@ -51,9 +51,9 @@
   }
 
   & .icon-text {
-    & > svg {
-      color: color.mix($primary, $background-dark, 85%);
-    }
+    // & > svg {
+    //   color: color.mix($primary, $background-dark, 75%);
+    // }
 
     & > span {
       color: color.mix($text-secondary, $background-dark, 70%);
