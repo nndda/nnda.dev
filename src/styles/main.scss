@@ -60,6 +60,7 @@ html {
   color-scheme: dark only !important;
   scroll-behavior: smooth !important;
   font-family: "Noto Sans JP", sans-serif;
+  @include style-scrollbar;
 }
 
 body {
