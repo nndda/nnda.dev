@@ -11,16 +11,9 @@ const
   msDay = msHr * 24;
 
 function getLastUpdated(date: Date): string {
-  const
-    diff = now.getTime() - date.getTime(),
-    days = Math.floor(diff / msDay),
-    hours = Math.floor((diff % msDay) / msHr);
+  const hours = Math.floor(((now.getTime() - date.getTime()) % msDay) / msHr);
 
-  let str = days > 0 ? `${days} days` : "";
-
-  if (hours > 0) str += (str ? " " : "") + `${hours} hours`;
-
-  return !str ? "less than an hour ago" : str + " ago";
+  return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
 };
 
 d.addEventListener("DOMContentLoaded", () => {
