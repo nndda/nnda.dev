@@ -176,7 +176,7 @@ getRepositories(user).then(repos => {
 
             langData.perCent[l] = percent;
 
-            if (percent < 5.0) {
+            if (percent < 1.0) {
 
               const other = langData.frontEnd["Other"] ?? { percent: 0, byte: 0 };
               other.percent += percent;
