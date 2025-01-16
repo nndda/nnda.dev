@@ -26,6 +26,9 @@ module.exports = <Configuration>{
 
   resolve: {
     extensions: [".js", ".ts"],
+    alias: {
+      "@fonts": abs("node_modules/@fontsource/")
+    },
   },
 
   plugins: [
