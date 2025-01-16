@@ -66,21 +66,20 @@ module.exports = <Configuration>{
       },
 
       preload: [
-        // {
-        //   test: /\.s?css$/,
-        //   as: "style",
-        // },
         {
-          test: /\.(ttf|woff2?)$/,
+          test: /(fonts)\.s?css$/,
+          as: "style",
+        },
+        {
+          test: /\.woff2$/,
           as: "font",
-          rel: "prefetch",
           attributes: { crossorigin: true },
         },
-        {
-          test: /\.(png|webp|svg)$/,
-          as: "image",
-          rel: "prefetch",
-        },
+        // {
+        //   test: /\.(png|webp|svg)$/,
+        //   as: "image",
+        //   rel: "prefetch",
+        // },
       ],
 
       minify: true,
