@@ -76,7 +76,7 @@ module.exports = <Configuration>{
         type: "asset/resource",
       },
       {
-        test: /\.(woff2|woff)$/,
+        test: /\.woff2$/,
         type: "asset/resource",
       },
     ],

@@ -142,7 +142,7 @@ module.exports = <Configuration>{
         },
       },
       {
-        test: /\.(woff2|woff)$/,
+        test: /\.woff2$/,
         type: "asset/resource",
         generator: {
           filename: "[hash:6][ext]",
