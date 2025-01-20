@@ -1,39 +1,50 @@
+// BUILD SCRIPT
+
 import { parse } from "yaml";
-import path from "path";
 import fs from "fs";
 import { execSync } from "child_process";
 
+import {
+  createResolver,
+  type DirResolver,
+} from "../scripts/build/utils";
+const abs: DirResolver = createResolver(__dirname);
+
 // ---------------------------------------------------------------------------------------
 
-execSync("npx ts-node ./src/scripts/icons-build.ts");
+execSync("npx ts-node ./src/scripts/build/icons.ts");
+
+// =======================================================================================
+
+type IconDefs = Record<string, string>; // icon slug, svg string
 
 // ---------------------------------------------------------------------------------------
 
-import type { SimpleIcon } from "simple-icons";
-const siIconsRaw: any = require("simple-icons");
+import { type SimpleIcon } from "simple-icons";
+import * as siIconsRaw from 'simple-icons';
 
-export const siIcons = Object.keys(siIconsRaw).reduce(
+export const siIcons: IconDefs = Object.keys(siIconsRaw).reduce(
   (acc, val) => {
     const icon: SimpleIcon = siIconsRaw[val];
     acc[
       icon.slug
     ] = icon.svg;
     return acc;
-  }, {} as Record<string, string>
-)
+  }, {} as IconDefs
+);
 
 // ---------------------------------------------------------------------------------------
 
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
-export const faIcons = Object.keys(fas).reduce(
+export const faIcons: IconDefs = Object.keys(fas).reduce(
   (acc, val) => {
     acc[
       fas[val].iconName.replace("-", "_")
     ] = icon(fas[val]).html.join();
     return acc;
-  }, {} as Record<string, string>
+  }, {} as IconDefs
 );
 
 // ---------------------------------------------------------------------------------------
@@ -54,14 +65,14 @@ function urlStr(url: string): string {
 // ---------------------------------------------------------------------------------------
 
 const siteData = parse(
-  fs.readFileSync(path.resolve(__dirname, "../../site-config.yaml"), { encoding: "utf-8" })
+  fs.readFileSync(abs("../../site-config.yaml"), { encoding: "utf-8" })
 );
 
-if (process.env.SITE_CFG_EXTEND) {
+if (process.env.SITE_EXT) {
   execSync(`
-    curl ${process.env.SITE_CFG_EXTEND} --output ext.zip && unzip ext.zip .
+    curl ${process.env.SITE_EXT} --output ext.zip && unzip ext.zip .
   `)
-  fs.readFileSync(path.resolve(__dirname, "../../site-config-ext.yaml"), { encoding: "utf-8" })
+  fs.readFileSync(abs("../../site-config-ext.yaml"), { encoding: "utf-8" })
 }
 
 // ---------------------------------------------------------------------------------------
@@ -71,14 +82,14 @@ const commitSHA = (
   process.env.CF_PAGES_COMMIT_SHA ??
   process.env.COMMIT_SHA ??
   ""
-)
+);
 
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
 
   if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
-    siteData.nav.links[i].iconSlug = <string>navLinkData.icon;
-    siteData.nav.links[i].icon = siIcons[<string>navLinkData.icon];
+    siteData.nav.links[i].iconSlug = navLinkData.icon as string;
+    siteData.nav.links[i].icon = siIcons[(navLinkData.icon as string)];
   }
 });
 
@@ -88,69 +99,79 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
     siteData.socials[i].links[n].url = urlStr(socialLink.url);
 
     if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
-      siteData.socials[i].links[n].iconSlug = <string>socialLink.icon;
-      siteData.socials[i].links[n].icon = siIcons[<string>socialLink.icon];
+      siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
+      siteData.socials[i].links[n].icon = siIcons[(socialLink.icon as string)];
     }
   });
 
 });
 
 import { updateSocialRedirects } from "../scripts/redirects";
-const socialRedirData = <any[]>[];
+const socialRedirData = [] as any[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const projectCatData: object[] = [{
-  name: "All",
-  id: "All",
-  default: true,
-}];
-const projectCatReadable: string[] = [];
+// temporarily disabled
+
+// const projectCatData: object[] = [{
+//   name: "All",
+//   id: "All",
+//   default: true,
+// }];
+// const projectCatReadable: string[] = [];
 
 // ---------------------------------------------------------------------------------------
 
-const projectPlatformData: object[] = [];
-const projectPlatformReadble: string[] = [];
+// const projectPlatformData: object[] = [];
+// const projectPlatformReadble: string[] = [];
 
 // =======================================================================================
 
-siteData!.projects.forEach((projectData: any) => {
+// siteData!.projects.forEach((projectData: any) => {
 
-  const projectCat: string = projectData!.category;
+//   const projectCat: string = projectData!.category;
 
-  if (!projectCatReadable.includes(projectCat)) {
-    projectCatReadable.push(projectCat);
-    const id = projectCat.replace(" ", "");
+//   if (!projectCatReadable.includes(projectCat)) {
+//     projectCatReadable.push(projectCat);
+//     const id = projectCat.replace(" ", "");
 
-    projectCatData.push({
-      name: projectCat,
-      id: id,
-    });
-  }
+//     projectCatData.push({
+//       name: projectCat,
+//       id: id,
+//     });
+//   }
 
-  // ---------------------------------------------------------------------------------------
+//   // ---------------------------------------------------------------------------------------
 
-  const projectPlatform: string = projectData!.platform;
+//   const projectPlatform: string = projectData!.platform;
 
-  if (!projectPlatformReadble.includes(projectPlatform)) {
-    projectPlatformReadble.push(projectPlatform);
-    const id = projectPlatform
-      .replace(" ", "")
-      .replace("/", "");
+//   if (!projectPlatformReadble.includes(projectPlatform)) {
+//     projectPlatformReadble.push(projectPlatform);
+//     const id = projectPlatform
+//       .replace(" ", "")
+//       .replace("/", "");
 
-    projectPlatformData.push({
-      name: projectPlatform,
-      id: id,
-    });
-  }
+//     projectPlatformData.push({
+//       name: projectPlatform,
+//       id: id,
+//     });
+//   }
 
-});
+// });
 
 // =======================================================================================
 
-module.exports = {
+const ghLangsData = require("../api/langs.json");
+const ghContribsData = require("../api/contribs.json");
+
+// import ghLangsData from "../api/langs.json" with { type: "json" };
+// import ghContribsData from "../api/contribs.json" with { type: "json" };
+
+// =======================================================================================
+
+export default {
   "repoURL": repoURL,
 
 	nav: {
@@ -161,10 +182,11 @@ module.exports = {
   ],
 
   projects: [ ],
-  projectData: {
-    categories: projectCatData,
-    platforms: projectPlatformData,
-  },
+  // temporarily disabled
+  // projectData: {
+    // categories: projectCatData,
+    // platforms: projectPlatformData,
+  // },
 
   icons: faIcons,
   brands: siIcons,
@@ -193,8 +215,8 @@ module.exports = {
 
   year: new Date().getFullYear(),
 
-  ghLangs: require("../api/langs.json"),
-  ghContribs: require("../api/contribs.json"),
+  ghLangs: ghLangsData,
+  ghContribs: ghContribsData,
 
   ...siteData,
 }

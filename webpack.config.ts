@@ -1,26 +1,29 @@
-import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
-const { FaviconsBundlerPlugin } = require("html-bundler-webpack-plugin/plugins");
+import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
+
 import CopyPlugin from "copy-webpack-plugin";
-import * as hbsHelpers from "./src/views/helpers";
+
+import handlebarsData from "./src/views/data";
+import handlebarsHelpers from "./src/views/helpers";
+
 import { buildProjectPages, projectEntries } from "./src/_projects/project-pages";
-import type { Configuration } from "webpack";
 
-buildProjectPages()
+import { type Configuration } from "webpack";
 
-function abs(path_string : string): string {
-  return path.resolve(__dirname, path_string);
+import { createResolver, type DirResolver } from "./src/scripts/build/utils";
+const abs: DirResolver = createResolver(__dirname);
+
+buildProjectPages();
+
+function copyToDist(file_path: string): CopyPlugin.Pattern {
+  return { from: abs("./src/" + file_path), to: abs("./dist/") }
 }
 
-function copyToDist(file_path : string): CopyPlugin.Pattern {
-  return { from: abs("src/" + file_path), to: abs("dist/") }
-}
-
-module.exports = <Configuration>{
+export default {
   mode: "production",
 
   output: {
-    path: abs("dist"),
+    path: abs("./dist"),
     crossOriginLoading: "anonymous",
   },
 
@@ -34,25 +37,25 @@ module.exports = <Configuration>{
   plugins: [
     new HtmlBundlerPlugin({
       entry: {
-        index: abs("src/views/pages/index.hbs"),
-        "404": abs("src/views/pages/404.hbs"),
-        links: abs("src/views/pages/links.hbs"),
+        index: abs("./src/views/pages/index.hbs"),
+        "404": abs("./src/views/pages/404.hbs"),
+        links: abs("./src/views/pages/links.hbs"),
         ... projectEntries,
       },
 
-      data: require("./src/views/data.ts"),
+      data: handlebarsData,
 
       preprocessor: "handlebars",
       preprocessorOptions: {
-        root: abs("src/views/"),
-        helpers: hbsHelpers.default,
+        root: abs("./src/views/"),
+        helpers: handlebarsHelpers,
         views: [
-          abs("src/views/partials"),
+          abs("./src/views/partials"),
         ],
       },
 
       loaderOptions: {
-        root: abs("src"),
+        root: abs("./src"),
         sources: [
           {
             tag: "div",
@@ -153,4 +156,4 @@ module.exports = <Configuration>{
       },
     ],
   },
-};
+} as Configuration;

@@ -1,13 +1,19 @@
-import fs from "fs";
-import path from "path";
+// BUILD SCRIPT
+
+import {
+  readTextFile,
+  writeTextFile,
+  createResolver,
+  type DirResolver } from "./build/utils";
+const abs: DirResolver = createResolver(__dirname);
 
 export function updateSocialRedirects(data: any[]): void {
   const
-    sourceStr = fs.readFileSync(path.resolve(__dirname, "../misc/_redirects")).toString(),
-    startComment = '#SOCIAL_REDIRECTS_START',
-    endComment = '#SOCIAL_REDIRECTS_ENDS';
+    sourceStr: string = readTextFile(abs("../misc/_redirects")),
+    startComment: string = '#SOCIAL_REDIRECTS_START',
+    endComment: string = '#SOCIAL_REDIRECTS_ENDS';
 
-  let updatedContents = "";
+  let updatedContents: string = "";
 
   data.forEach((value) => {
     if (Object.prototype.hasOwnProperty.call(value, "redirect")) {
@@ -25,7 +31,7 @@ export function updateSocialRedirects(data: any[]): void {
     return;
   }
 
-  fs.writeFileSync(path.resolve(__dirname, "../misc/_redirects"),
+  writeTextFile(abs("../misc/_redirects"),
     sourceStr.replace(
       /(#SOCIAL_REDIRECTS_START\s*\n)([\s\S]*?)(\n?#SOCIAL_REDIRECTS_ENDS)/,
       `$1${updatedContents}$3`
