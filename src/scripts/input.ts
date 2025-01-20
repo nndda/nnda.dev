@@ -6,15 +6,15 @@ export function initializeInputs(d: Document): void {
 
   d.querySelectorAll(".dropdown").forEach(e => {
     const
-      button = <HTMLButtonElement>e.querySelector("button"),
-      items = <HTMLElement>e.querySelector(".items");
+      button: HTMLButtonElement = e.querySelector("button") as HTMLButtonElement,
+      items: HTMLElement = e.querySelector(".items") as HTMLElement;
 
       button.insertAdjacentHTML("beforeend", iconCaretDown);
       items.classList.add("hidden");
 
       function toggleItem(): void {
         items.classList.toggle("hidden");
-        const toggleStr = items.classList.contains("hidden");
+        const toggleStr: boolean = items.classList.contains("hidden");
 
         items.setAttribute("aria-hidden", `${toggleStr}`);
         button.setAttribute("aria-expanded", `${!toggleStr}`);
@@ -27,7 +27,7 @@ export function initializeInputs(d: Document): void {
 
       d.addEventListener("click", e => {
         if (
-            !items.contains(<Node>e.target) &&
+            !items.contains(e.target as Node) &&
             !items.classList.contains("hidden")
           ) {
           toggleItem();
@@ -36,7 +36,7 @@ export function initializeInputs(d: Document): void {
 
       items.querySelectorAll(".item-input").forEach(elem => {
         if (elem.getAttribute("checked") !== null) {
-          (<HTMLInputElement>elem).checked = true;
+          (elem as HTMLInputElement).checked = true;
         }
       })
   });
@@ -47,7 +47,7 @@ export function eventForElements(
   type: string,
   callbackfn: (event: Event, elem: Element) => void,
 ): void {
-  elems.forEach(elem => {
+  elems.forEach((elem: HTMLElement | Element) => {
     elem.addEventListener(type, event => callbackfn(event, elem));
   });
 }

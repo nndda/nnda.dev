@@ -39,19 +39,19 @@ function initContentCategory(
 ): void {
   const
     catsData: Record<string, HTMLElement[]> = {},
-    catDisplay = <HTMLElement>catsDropdownBtn.querySelector(".text-display"),
-    catToggles = (<HTMLElement>catsDropdownBtn.parentElement).querySelectorAll("input[type=\"radio\"]");
+    catDisplay: HTMLElement = catsDropdownBtn.querySelector(".text-display") as HTMLElement,
+    catToggles: NodeListOf<Element> = (catsDropdownBtn.parentElement as HTMLElement).querySelectorAll("input[type=\"radio\"]");
 
-  let currentCat = "";
+  let currentCat: string = "";
 
   catsContents.forEach(elem => {
-    const catName = <string>elem.getAttribute("data-project-cat");
+    const catName: string = elem.getAttribute("data-project-cat") as string;
 
     if (!Object.prototype.hasOwnProperty.call(catsData, catName)) {
       catsData[catName] = []
     }
 
-    catsData[catName].push(<HTMLElement>elem);
+    catsData[catName].push(elem as HTMLElement);
   });
 
   function toggleCatElem(elem: HTMLElement, cat: string, catName: string): void {
@@ -70,7 +70,7 @@ function initContentCategory(
 
   eventForElements(catToggles, "input", (_event, elem) => {
     catDisplay.textContent = elem.getAttribute("data-cat");
-    toggleCat(<string>catDisplay.textContent);
+    toggleCat(catDisplay.textContent as string);
 
     callbackfn(elem);
   });
@@ -78,11 +78,11 @@ function initContentCategory(
 
 window.addEventListener("DOMContentLoaded", () => {
   const
-    headerElem = <HTMLElement>d.querySelector("body > header"),
-    projCtrlElem = <HTMLElement>d.querySelector("#projects > .section-controls"),
+    headerElem: HTMLElement = d.querySelector("body > header") as HTMLElement,
+    projCtrlElem: HTMLElement = d.querySelector("#projects > .section-controls") as HTMLElement,
 
-    tagsInput = <HTMLTextAreaElement>d.getElementById("project-tag-input"),
-    tagsCont = <HTMLTextAreaElement>d.getElementById("project-tag-cont");
+    tagsInput: HTMLTextAreaElement = d.getElementById("project-tag-input") as HTMLTextAreaElement,
+    tagsCont: HTMLTextAreaElement = d.getElementById("project-tag-cont") as HTMLTextAreaElement;
 
   projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
 
@@ -93,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Category -------------------------------------------------------------------------------------
 
   initContentCategory(
-    <HTMLButtonElement>d.getElementById("project-cat-button"),
+    (d.getElementById("project-cat-button") as HTMLButtonElement),
     d.querySelectorAll("[data-project-cat]")
   );
 
@@ -101,8 +101,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   d.querySelectorAll("[data-project-tags]").forEach(elem => {
     tagsData.push({
-      elem: <HTMLElement>elem,
-      tags: (<string>elem.getAttribute("data-project-tags"))
+      elem: elem as HTMLElement,
+      tags: (elem.getAttribute("data-project-tags") as string)
         .split(',')
         .map(tag => tag.trim().toLowerCase())
         .filter(tag => tag.length > 0),
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   function addTag(tag: string): void {
-    const tagBtn = d.createElement("button");
+    const tagBtn: HTMLButtonElement = d.createElement("button");
 
     tagsCurrent.push(tag.toLowerCase());
 
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   tagsInput.addEventListener("keydown", (event: KeyboardEvent): void => {
-    const textarea = <HTMLTextAreaElement>event.target;
+    const textarea: HTMLTextAreaElement = event.target as HTMLTextAreaElement;
 
     if (event.key === "," || event.key === "Enter") {
       event.preventDefault();
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const val = textarea.value.trim();
 
       if (val) {
-        const tagName = event.key === "," ? val.slice(0, -1).trim() : val;
+        const tagName: string = event.key === "," ? val.slice(0, -1).trim() : val;
         textarea.value = "";
 
         addTag(tagName);
@@ -148,6 +148,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   eventForElements(d.querySelectorAll(".project-label"), "click", (_event, elem) => {
-    addTag(<string>elem.getAttribute("data-tag"));
+    addTag(elem.getAttribute("data-tag") as string);
   });
 });
