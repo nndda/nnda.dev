@@ -10,4 +10,3 @@ function populateIcons(selector: string, iconSets: Record<string, string>): void
 };
 
 window.populateIcons = populateIcons;
-` aria-hidden="true" focusable="false"`
