@@ -2,6 +2,8 @@
 
 import fetch from "node-fetch";
 
+import handlebarsHelpers from "../views/helpers"
+
 import {
   writeTextFile,
   createResolver,
@@ -71,12 +73,6 @@ const
       return acc;
     }, {} as Record<string, string>
   ),
-
-  iconDef: Record<string, string> = {
-    "GDScript": siIcons["Godot Engine"],
-    "HTML": siIcons["HTML5"],
-    "SCSS": siIcons["Sass"],
-  },
 
   langData: LangData = {
     total: 0,
@@ -195,7 +191,7 @@ getRepositories(user).then(repos => {
               langData.frontEnd[l] = {
                 percent: percent,
                 byte: byte,
-                icon: siIcons[l] ?? iconDef[l],
+                icon: handlebarsHelpers.icon("overview", l),
               };
 
             }

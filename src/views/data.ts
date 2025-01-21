@@ -4,6 +4,8 @@ import { parse } from "yaml";
 import fs from "fs";
 import { execSync } from "child_process";
 
+import handlebarsHelpers from "./helpers";
+
 import {
   createResolver,
   type DirResolver,
@@ -12,6 +14,7 @@ const abs: DirResolver = createResolver(__dirname);
 
 // ---------------------------------------------------------------------------------------
 
+console.log("Building icons...");
 execSync("npx ts-node ./src/scripts/build/icons.ts");
 
 // =======================================================================================
@@ -20,8 +23,7 @@ type IconDefs = Record<string, string>; // icon slug, svg string
 
 // ---------------------------------------------------------------------------------------
 
-import { type SimpleIcon } from "simple-icons";
-import * as siIconsRaw from 'simple-icons';
+import siIconsRaw, { type SimpleIcon } from 'simple-icons';
 
 export const siIcons: IconDefs = Object.keys(siIconsRaw).reduce(
   (acc, val) => {
@@ -47,6 +49,7 @@ export const faIcons: IconDefs = Object.keys(fas).reduce(
   }, {} as IconDefs
 );
 
+console.log("Finished building icons");
 // ---------------------------------------------------------------------------------------
 
 function urlStr(url: string): string {
@@ -89,6 +92,7 @@ siteData!.nav.links.forEach((navLinkData: any, i: number) => {
 
   if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
     siteData.nav.links[i].iconSlug = navLinkData.icon as string;
+    siteData.nav.links[i].iconLazy = handlebarsHelpers.icon("g", navLinkData.icon as string);
     siteData.nav.links[i].icon = siIcons[(navLinkData.icon as string)];
   }
 });
@@ -100,7 +104,11 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
     if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
       siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
-      siteData.socials[i].links[n].icon = siIcons[(socialLink.icon as string)];
+      siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
+        ["github"].includes(socialLink.icon) ?
+        "g" : "links",
+        socialLink.icon as string
+      );
     }
   });
 
@@ -193,17 +201,17 @@ export default {
 
   siteOptions: [
     {
-      icon: faIcons.star,
+      icon: handlebarsHelpers.icon("g", "star"),
       name: "Star",
       url: `${repoURL}`,
     },
     {
-      icon: faIcons.code_fork,
+      icon: handlebarsHelpers.icon("g", "code-fork"),
       name: "Fork",
       url: `${repoURL}/fork`,
     },
     {
-      icon: faIcons.bug,
+      icon: handlebarsHelpers.icon("g", "bug"),
       name: "Issues",
       url: `${repoURL}/issues`,
     },
