@@ -3,11 +3,14 @@
 <head>
   {{ include "head" }}
   <style type="text/css">
-    main > h1 {
+    .banner-spacing {
+      height: 300px;
+    }
+    .banner-spacing > h1 {
       padding: 2em;
       padding-top: 3em;
       margin: 0;
-      text-align: center;
+      text-align: left;
       font-weight: 200;
     }
   </style>
@@ -15,10 +18,17 @@
 
 <body>
   {{ include "header" }}
-  <main>
+  <div class="banner-spacing">
     <h1>Links &amp; Socials</h1>
+  </div>
+  <main>
+    {{ include "profile" }}
     {{ include "links" }}
   </main>
   {{ include "footer" }}
+
+  <link rel="stylesheet" type="text/css" href="/styles/animations.scss" media="(prefers-reduced-motion: no-preference)">
+
+  <script type="text/javascript" src="/scripts/_page.ts" defer=""></script>
 </body>
 </html>

@@ -1,20 +1,27 @@
+// BUILD SCRIPT
+
+console.log("Building project pages...")
+
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+import matter, { type GrayMatterFile } from "gray-matter";
 import chokidar from "chokidar";
-import { EntryObject } from "webpack";
+import { type EntryObject } from "webpack";
 
-function abs(path_string : string): string {
-  return path.resolve(__dirname, path_string);
-}
+import {
+  readTextFile,
+  writeTextFile,
+  createResolver,
+  type DirResolver,
+} from "../scripts/build/utils";
 
 const
-  encoding: fs.ObjectEncodingOptions = {encoding: "utf-8"},
-  template = <string>fs.readFileSync(abs("./project.hbs"), encoding);
+  abs: DirResolver = createResolver(__dirname),
+  template: string = readTextFile(abs("./project.hbs"));
 
 export function buildProjectPages(): void {
   fs.readdirSync(abs("./")).forEach(dir => {
-    const subd = abs(dir);
+    const subd: string = abs(dir);
 
     if (fs.statSync(subd).isDirectory()) {
       if (fs.readdirSync(subd).includes("index.hbs")) {
@@ -25,7 +32,7 @@ export function buildProjectPages(): void {
 }
 
 export const projectEntries: EntryObject = fs.readdirSync(abs("./")).reduce((acc, dir) => {
-  const subd = abs(dir);
+  const subd: string = abs(dir);
 
   if (fs.statSync(subd).isDirectory()) {
     if (fs.readdirSync(subd).includes(`${dir}.hbs`)) {
@@ -40,14 +47,10 @@ export function buildProjectPage(absPath: string): void {
   if (!fs.readdirSync(absPath).includes("index.hbs")) return;
 
   const
-    base = path.basename(absPath),
-    out = path.join(absPath, base + ".hbs"),
-    pagePath = path.join(absPath, "index.hbs"),
-    page = matter(
-      fs.readFileSync(
-        pagePath, encoding
-      )
-    );
+    base: string = path.basename(absPath),
+    out: string = path.join(absPath, base + ".hbs"),
+    pagePath: string = path.join(absPath, "index.hbs"),
+    page: GrayMatterFile<string> = matter(readTextFile(pagePath));
 
   page.content = template
     .replace("{CONTENT}", page.content)
@@ -55,7 +58,7 @@ export function buildProjectPage(absPath: string): void {
     .replace("{DESC}", `"${page.data.desc ?? ""}"`)
     ;
 
-  fs.writeFileSync(out, page.content, encoding);
+  writeTextFile(out, page.content);
   console.log(`Finished building project '${base}'`)
 }
 

@@ -1,50 +1,32 @@
-const d = document;
-
-import { initializeScroll } from "./scroll";
 import { initializeInputs } from "./input";
 import { initializeAnimations } from "./animations";
 
-let now: Date = new Date();
-
-const
-  msHr = 1e3 * 60 * 60,
-  msDay = msHr * 24;
+// const
+//   msHr: number = 1e3 * 60 * 60, // 3600000
+//   msDay: number = msHr * 24; // 86400000
 
 function getLastUpdated(date: Date): string {
-  const hours = Math.floor(((now.getTime() - date.getTime()) % msDay) / msHr);
+  const hours: number = Math.floor(((new Date().getTime() - date.getTime()) % 864e5) / 36e5);
 
   return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
 };
 
-d.addEventListener("DOMContentLoaded", () => {
+export function init(d: Document): void {
   initializeAnimations(d);
-  initializeScroll(d);
 
   const
-    navbarMobile = <HTMLElement>d.getElementById("navbar-mobile"),
-    navbarButton = <HTMLButtonElement>d.getElementById("navbar-button"),
-    navbarCollapseArea = <HTMLElement>d.getElementById("collapse-trigger-area"),
+    navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement,
+    navbarButton: HTMLElement = d.getElementById("navbar-button") as HTMLButtonElement,
+    navbarCollapseArea: HTMLElement = d.getElementById("collapse-trigger-area") as HTMLElement,
 
-    timezoneClock = <HTMLElement>d.getElementById("clock-timezone"),
-    timezoneOpt: Intl.DateTimeFormatOptions = {
-      timeZone: timezoneClock.getAttribute("data-timezone") ?? "Asia/Jakarta",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    },
+    lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement,
+    lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string);
 
-    lastUpdateLabel = <HTMLElement>d.getElementById("last-updated-label"),
-    lastUpdateDate: Date = new Date(<string>lastUpdateLabel.getAttribute("title"));
-
-  function updateTimezoneClock() {
-    now = new Date();
-
-    timezoneClock.textContent = new Intl.DateTimeFormat([], timezoneOpt).format(now);
+  function updateClock(): void {
     lastUpdateLabel.textContent = getLastUpdated(lastUpdateDate);
   }
 
-  setInterval(updateTimezoneClock, 1e3);
+  setInterval(updateClock, 1e3);
 
   function toggleNavMobile(): void {
     navbarMobile.classList.toggle("collapsed");
@@ -59,4 +41,4 @@ d.addEventListener("DOMContentLoaded", () => {
   navbarCollapseArea.addEventListener("click", toggleNavMobile);
 
   initializeInputs(d);
-});
+}

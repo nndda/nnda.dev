@@ -1,8 +1,15 @@
-import fetch from "node-fetch";
-import fs from "fs";
-import path from "path";
+// BUILD SCRIPT
 
-import type { SimpleIcon } from "simple-icons";
+import fetch from "node-fetch";
+
+import handlebarsHelpers from "../views/helpers"
+
+import {
+  writeTextFile,
+  createResolver,
+  type DirResolver,
+} from "../scripts/build/utils";
+const abs: DirResolver = createResolver(__dirname);
 
 interface LangData {
   total: number,
@@ -53,23 +60,6 @@ const
 
   startYear = 2021,
   currentTime = new Date().getTime(),
-
-  siIconsRaw: any = require("simple-icons"),
-  siIcons = Object.keys(siIconsRaw).reduce(
-    (acc, val) => {
-      const icon: SimpleIcon = siIconsRaw[val];
-      acc[
-        icon.title
-      ] = icon.svg;
-      return acc;
-    }, {} as Record<string, string>
-  ),
-
-  iconDef: Record<string, string> = {
-    "GDScript": siIcons["Godot Engine"],
-    "HTML": siIcons["HTML5"],
-    "SCSS": siIcons["Sass"],
-  },
 
   langData: LangData = {
     total: 0,
@@ -137,13 +127,13 @@ async function fetchJSON(url: string) {
 async function getRepositories(user: string): Promise<any[]> {
   const repos: any[] = [];
   let
-    page = 1,
-    more = true;
+    page: number = 1,
+    more: boolean = true;
 
   while (more) {
     const
-      url = `https://api.github.com/users/${user}/repos?per_page=100&page=${page}`,
-      response = <any[]>(await fetchJSON(url));
+      url: string = `https://api.github.com/users/${user}/repos?per_page=100&page=${page}`,
+      response: any[] = await fetchJSON(url) as any[];
     repos.push(...response);
     more = response.length === 100;
     page++;
@@ -153,9 +143,9 @@ async function getRepositories(user: string): Promise<any[]> {
 }
 
 getRepositories(user).then(repos => {
-  let reposTotal = repos.length;
+  let reposTotal: number = repos.length;
 
-  repos.forEach(repo => {
+  repos.forEach((repo: any) => {
     fetchJSON(repo.languages_url)
       .then((lang: any) => {
         for (const l in lang) {
@@ -167,16 +157,16 @@ getRepositories(user).then(repos => {
       })
       .finally(() => {
         if (reposTotal <= 0) {
-          const perByte = langData.perByte;
+          const perByte: Record<string, number> = langData.perByte;
 
           for (const l in perByte) {
             const
-              percent = +(perByte[l] / langData.total * 100).toFixed(2),
-              byte = perByte[l];
+              percent: number = +(perByte[l] / langData.total * 100).toFixed(2),
+              byte: number = perByte[l];
 
             langData.perCent[l] = percent;
 
-            if (percent < 5.0) {
+            if (percent < 1.0) {
 
               const other = langData.frontEnd["Other"] ?? { percent: 0, byte: 0 };
               other.percent += percent;
@@ -188,7 +178,7 @@ getRepositories(user).then(repos => {
               langData.frontEnd[l] = {
                 percent: percent,
                 byte: byte,
-                icon: siIcons[l] ?? iconDef[l],
+                icon: handlebarsHelpers.icon("overview", l),
               };
 
             }
@@ -202,7 +192,7 @@ getRepositories(user).then(repos => {
 
           langsArray.sort((a, b) => b.percent - a.percent);
 
-          fs.writeFileSync(path.resolve(__dirname, "langs.json"), JSON.stringify(langsArray));
+          writeTextFile(abs("./langs.json"), JSON.stringify(langsArray));
         }
       });
   });
@@ -274,14 +264,14 @@ interface RawContribsData {
 }
 
 async function fetchContribsAll(): Promise<RawContribsWeek[]> {
-  const allContributions = [];
+  const allContributions: any[] = [];
 
   for (let year = startYear; year <= new Date().getFullYear(); year++) {
     const
-      from = `${year}-01-01T00:00:00Z`,
-      to = `${year}-12-31T23:59:59Z`,
+      from: string = `${year}-01-01T00:00:00Z`,
+      to: string = `${year}-12-31T23:59:59Z`,
 
-      contributions = await fetchContribsRanged(from, to);
+      contributions: RawContribsData = await fetchContribsRanged(from, to);
 
     allContributions.push(...contributions.weeks);
   }
@@ -291,7 +281,7 @@ async function fetchContribsAll(): Promise<RawContribsWeek[]> {
 
 async function fetchContribsRanged(from?: string, to?: string): Promise<RawContribsData> {
   const
-    query = getContribsQuery(from, to),
+    query: string = getContribsQuery(from, to),
 
     response = await fetch("https://api.github.com/graphql", {
       method: "POST",
@@ -302,7 +292,7 @@ async function fetchContribsRanged(from?: string, to?: string): Promise<RawContr
       body: JSON.stringify({ query })
     }),
 
-    data = <any>(await response.json());
+    data: any = await response.json() as any;
 
   return data.data.user.contributionsCollection.contributionCalendar;
 }
@@ -348,6 +338,6 @@ fetchContribsAll().then(weeks => {
     contribsData.stats.streaks.all = getContribsStreak(contribsData.arr.all);
     contribsData.stats.streaks.yearly = getContribsStreak(contribsData.arr.yearly);
 
-    fs.writeFileSync(path.resolve(__dirname, "contribs.json"), JSON.stringify(contribsData));
+    writeTextFile(abs("./contribs.json"), JSON.stringify(contribsData));
   });
 });

@@ -1,6 +1,12 @@
 import * as Handlebars from 'handlebars';
 
 export default {
+  icon: (group: string, name: string) => {
+    return `
+      <i class="${group}" data-i="${name}"></i>
+    `;
+  },
+
   title: (title: string = "") => {
     if (title === "") return "";
 
