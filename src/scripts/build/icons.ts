@@ -95,6 +95,8 @@ function createIconDefs(filename: string, icons: IconDefinition[]): void {
   );
 }
 
+const reAttr: RegExp = /(\sdata-(prefix|icon)="[^"]*"|\s(class|aria-hidden|focusable)="[^"]*"|<title>.*?<\/title>)/g;
+
 function createIconDefsGrouped(
   groupName: string,
   faIcons: IconDefinition[] = [],
@@ -102,24 +104,22 @@ function createIconDefsGrouped(
   iconsOther: Record<string, string> = {},
   ): void {
   writeTextFile(abs(`./${groupName}.js`),
-    `const i={`
+    `window.populateIcons("i.${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
-        return `"${ico.iconName}": \`${fa2HTML(ico)}\``
+        return `"${ico.iconName}": \`${fa2HTML(ico).replace(reAttr, "")}\``
       }),
       ...siIcons.map(ico => {
-        return `"${ico.slug}": \`${ico.svg}\``
+        return `"${ico.slug}": \`${ico.svg.replace(reAttr, "")}\``
       }),
       ...Object.entries(iconsOther)
         .map(([ico, svg]) => {
-          return `"${ico}": \`${svg}\``
+          return `"${ico}": \`${svg.replace(reAttr, "")}\``
         }),
     ].join(",")
     +
-    "};"
-    +
-    `document.querySelectorAll(\`i.${groupName}\`).forEach(e=>{e.outerHTML=i[e.getAttribute("data-i")]})`
+    "});"
   );
 }
 
