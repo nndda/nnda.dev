@@ -1,4 +1,3 @@
-import path from "path";
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 
 import handlebarsData from "./src/views/data";

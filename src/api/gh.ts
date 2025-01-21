@@ -11,8 +11,6 @@ import {
 } from "../scripts/build/utils";
 const abs: DirResolver = createResolver(__dirname);
 
-import { type SimpleIcon } from "simple-icons";
-
 interface LangData {
   total: number,
   perByte: Record<string, number>,
@@ -62,17 +60,6 @@ const
 
   startYear = 2021,
   currentTime = new Date().getTime(),
-
-  siIconsRaw: any = require("simple-icons"),
-  siIcons = Object.keys(siIconsRaw).reduce(
-    (acc, val) => {
-      const icon: SimpleIcon = siIconsRaw[val];
-      acc[
-        icon.title
-      ] = icon.svg;
-      return acc;
-    }, {} as Record<string, string>
-  ),
 
   langData: LangData = {
     total: 0,
