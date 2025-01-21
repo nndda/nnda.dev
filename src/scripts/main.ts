@@ -1,24 +1,20 @@
-const d = document;
-
-import { initializeScroll } from "./scroll";
 import { initializeInputs } from "./input";
 import { initializeAnimations } from "./animations";
 
-let now: Date = new Date();
+export function init(d: Document): void {
+  let now: Date = new Date();
 
-const
-  msHr: number = 1e3 * 60 * 60,
-  msDay: number = msHr * 24;
+  const
+    msHr: number = 1e3 * 60 * 60,
+    msDay: number = msHr * 24;
 
-function getLastUpdated(date: Date): string {
-  const hours: number = Math.floor(((now.getTime() - date.getTime()) % msDay) / msHr);
+  function getLastUpdated(date: Date): string {
+    const hours: number = Math.floor(((now.getTime() - date.getTime()) % msDay) / msHr);
 
-  return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
-};
+    return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
+  };
 
-d.addEventListener("DOMContentLoaded", () => {
   initializeAnimations(d);
-  initializeScroll(d);
 
   const
     navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement,
@@ -59,4 +55,4 @@ d.addEventListener("DOMContentLoaded", () => {
   navbarCollapseArea.addEventListener("click", toggleNavMobile);
 
   initializeInputs(d);
-});
+}
