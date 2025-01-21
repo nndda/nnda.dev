@@ -30,7 +30,8 @@ export default {
   resolve: {
     extensions: [".js", ".ts"],
     alias: {
-      "@fonts": abs("node_modules/@fontsource/")
+      "@fonts": abs("./node_modules/@fontsource/"),
+      "@node_modules": abs("./node_modules/"),
     },
   },
 
