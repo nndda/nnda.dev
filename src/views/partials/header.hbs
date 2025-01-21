@@ -10,7 +10,7 @@
       <div class="vseparator"></div>
       <div id="mobile-nav-sect-label">UwU</div>
       <div class="flex-space"></div>
-      <button name="navbar menu" class="navbar-button icon-only blank" id="navbar-button">{{{icons.bars}}}</button>
+      <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">{{{icons.bars}}}</button>
     </div>
 
     <div id="navbar-desktop-header">
@@ -56,7 +56,7 @@
 
   <nav id="navbar-mobile" class="collapsed">
     <div class="nav-button-container">
-      <button class="nav-item navbar-button nav-link icon-only blank">{{{icons.xmark}}}</button>
+      <button aria-label="Close Button" class="nav-item navbar-button nav-link icon-only blank">{{{icons.xmark}}}</button>
     </div>
     <ul class="nostyle">
       {{#each nav.links}}
@@ -75,6 +75,7 @@
         {{#if this.external}}
           <li>
             <a href="{{this.url}}" class="nav-link"
+              aria-label="{{this.url}}"
               target="_blank"
               rel="nofollow noopener noreferrer"
               referrerpolicy="no-referrer"
