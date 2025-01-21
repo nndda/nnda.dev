@@ -1,5 +1,5 @@
-import { eventForElements } from "./input";
-import { iconX } from "./icons";
+import { eventForElements } from "../input";
+import { iconX } from "../icons";
 
 const d = document;
 
