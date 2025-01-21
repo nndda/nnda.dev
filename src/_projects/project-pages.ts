@@ -1,5 +1,7 @@
 // BUILD SCRIPT
 
+console.log("Building project pages...")
+
 import fs from "fs";
 import path from "path";
 import matter, { type GrayMatterFile } from "gray-matter";

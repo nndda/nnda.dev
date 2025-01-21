@@ -67,6 +67,8 @@ function urlStr(url: string): string {
 
 // ---------------------------------------------------------------------------------------
 
+console.log("Parsing site data...");
+
 const siteData = parse(
   fs.readFileSync(abs("../../site-config.yaml"), { encoding: "utf-8" })
 );
@@ -78,6 +80,7 @@ if (process.env.SITE_EXT) {
   fs.readFileSync(abs("../../site-config-ext.yaml"), { encoding: "utf-8" })
 }
 
+console.log("Finished parsing site data...");
 // ---------------------------------------------------------------------------------------
 
 const repoURL = urlStr(siteData.repoURL);
@@ -86,6 +89,8 @@ const commitSHA = (
   process.env.COMMIT_SHA ??
   ""
 );
+
+console.log("Processing links & URLs...");
 
 siteData!.nav.links.forEach((navLinkData: any, i: number) => {
   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
@@ -113,6 +118,8 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
   });
 
 });
+
+console.log("Finished processing links & URLs...");
 
 import { updateSocialRedirects } from "../scripts/redirects";
 const socialRedirData = [] as any[];
@@ -178,6 +185,8 @@ const ghContribsData = require("../api/contribs.json");
 // import ghContribsData from "../api/contribs.json" with { type: "json" };
 
 // =======================================================================================
+
+console.log("Finished processing data");
 
 export default {
   "repoURL": repoURL,
