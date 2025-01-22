@@ -3,12 +3,14 @@
 import {
   writeTextFile,
   createResolver,
+  mkdir,
   cleanupDir,
   type DirResolver,
 } from "./utils";
 const abs: DirResolver = createResolver(__dirname);
 
-cleanupDir(abs("./icons"));
+mkdir(abs("./icons/"));
+cleanupDir(abs("./icons/"));
 
 // ----------------------------------------------------------------------------
 
