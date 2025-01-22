@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
 <head>
-	{{ title site.title }}
-	{{ desc site.description }}
+  {{ title site.title }}
+  {{ desc site.description }}
 
-	{{ include "head" }}
+  {{ include "head" }}
 
   <meta property="og:type" content="website">
 
-
-	<link rel="preload" href="/assets/avatar.webp" as="image" type="image/webp">
+  <link rel="preload" href="/assets/avatar.webp" as="image" type="image/webp">
 </head>
 
 <body>
-	{{ include "header" }}
-	{{ include "home" }}
-	<main>
-		{{ include "profile" }}
-		{{ include "overview" }}
-		{{ include "projects" }}
-		<section id="illustrations" data-nav-name="Illustrations"></section>
-		{{ include "links" }}
-	</main>
-	{{ include "footer" }}
+  {{ include "header" }}
+  {{ include "home" }}
 
-	<link rel="stylesheet" type="text/css" href="/styles/animations.scss" media="(prefers-reduced-motion: no-preference)">
-	<link rel="stylesheet" type="text/css" href="/styles/main.animations.scss" media="(prefers-reduced-motion: no-preference)">
+  <main>
+    {{ include "profile" }}
+    {{ include "overview" }}
+    {{ include "projects" }}
+    <section id="illustrations" data-nav-name="Illustrations"></section>
+    {{ include "links" }}
+  </main>
 
-  <script type="text/javascript" src="/scripts/_home.ts" defer=""></script>
+  {{ include "footer" }}
+
+  {{ stylesheet "/styles/animations.scss" "(prefers-reduced-motion: no-preference)" }}
+  {{ stylesheet "/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }}
+
+  {{ script "/scripts/_home.ts" true }}
 </body>
 </html>

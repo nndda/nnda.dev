@@ -3,15 +3,21 @@
 <head>
   {{ title {TITLE} }}
   {{ desc {DESC} }}
+
   {{ include "head" }}
 </head>
 
 <body>
   {{ include "header" }}
+
   <main>
     {CONTENT}
   </main>
+
   {{ include "footer" }}
-  <script type="text/javascript" src="/scripts/_page.ts" defer=""></script>
+
+  {{ stylesheet "/styles/animations.scss" "(prefers-reduced-motion: no-preference)" }}
+
+  {{ script "/scripts/_page.ts" true }}
 </body>
 </html>

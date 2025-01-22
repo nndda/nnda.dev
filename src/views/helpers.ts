@@ -7,6 +7,24 @@ export default {
     `;
   },
 
+  meta: (name: string, content: string) => {
+    return new Handlebars.SafeString(`
+      <meta name="${name}" content="${content}">
+    `);
+  },
+
+  stylesheet: (file: string, media: string = "") => {
+    return new Handlebars.SafeString(`
+      <link rel="stylesheet" type="text/css" href="${file}" ${media !== "" ? `media="${media}"` : ``}>
+    `);
+  },
+
+  script: (file: string, defer: boolean = false) => {
+    return new Handlebars.SafeString(`
+      <script type="text/javascript" src="${file}" ${defer ? `defer=""` : ""}></script>
+    `);
+  },
+
   title: (title: string = "") => {
     if (title === "") return "";
 
