@@ -13,6 +13,10 @@ export function writeTextFile(filePath: string, content: string): void {
   fs.writeFileSync(filePath, content, textEncoding);
 }
 
+export function mkdir(dir: string): void {
+  fs.mkdirSync(dir, {recursive: true});
+}
+
 export function cleanupDir(cleanupPath: string): void {
   fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
     if (val.isFile() && (val.name.endsWith(".js") || val.name.endsWith(".json"))) {
