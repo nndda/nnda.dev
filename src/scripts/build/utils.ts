@@ -13,6 +13,15 @@ export function writeTextFile(filePath: string, content: string): void {
   fs.writeFileSync(filePath, content, textEncoding);
 }
 
+export function cleanupDir(cleanupPath: string): void {
+  fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
+    if (val.isFile() && (val.name.endsWith(".js") || val.name.endsWith(".json"))) {
+      console.log("Removing: ", val.name);
+      fs.unlinkSync(path.resolve(cleanupPath, val.name));
+    };
+  });
+}
+
 export type DirResolver = (path: string) => string;
 
 export function createResolver(pathBase: string): DirResolver {
