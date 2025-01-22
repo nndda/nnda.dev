@@ -3,9 +3,12 @@
 import {
   writeTextFile,
   createResolver,
+  cleanupDir,
   type DirResolver,
 } from "./utils";
 const abs: DirResolver = createResolver(__dirname);
+
+cleanupDir(abs("./icons"));
 
 // ----------------------------------------------------------------------------
 
