@@ -111,7 +111,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
       siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
       siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
         ["github"].includes(socialLink.icon) ?
-        "g" : "links",
+        "global" : "links",
         socialLink.icon as string
       );
     }
@@ -210,17 +210,17 @@ export default {
 
   siteOptions: [
     {
-      icon: handlebarsHelpers.icon("g", "star"),
+      icon: handlebarsHelpers.icon("global", "star"),
       name: "Star",
       url: `${repoURL}`,
     },
     {
-      icon: handlebarsHelpers.icon("g", "code-fork"),
+      icon: handlebarsHelpers.icon("global", "code-fork"),
       name: "Fork",
       url: `${repoURL}/fork`,
     },
     {
-      icon: handlebarsHelpers.icon("g", "bug"),
+      icon: handlebarsHelpers.icon("global", "bug"),
       name: "Issues",
       url: `${repoURL}/issues`,
     },

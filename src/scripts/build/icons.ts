@@ -88,7 +88,7 @@ function toPascalCase(str: string) {
 }
 
 function createIconDefs(filename: string, icons: IconDefinition[]): void {
-  writeTextFile(abs(filename),
+  writeTextFile(abs(`./icons/${filename}.js`),
     icons.map(ico => {
       return `export const icon${toPascalCase(ico.iconName)}=\`${toHTML(ico)}\``;
     }).join(";")
@@ -103,7 +103,7 @@ function createIconDefsGrouped(
   siIcons: SimpleIcon[] = [],
   iconsOther: Record<string, string> = {},
   ): void {
-  writeTextFile(abs(`./${groupName}.js`),
+  writeTextFile(abs(`./icons/${groupName}.js`),
     `window.populateIcons("i.${groupName}",{`
     +
     [
@@ -124,7 +124,7 @@ function createIconDefsGrouped(
 }
 
 createIconDefs(
-  "../icons.js",
+  "icons",
   [
     faCaretDown,
     faX,
@@ -168,7 +168,7 @@ createIconDefsGrouped(
 );
 
 createIconDefsGrouped(
-  "g",
+  "global",
   [
     faBox,
     faBug,
