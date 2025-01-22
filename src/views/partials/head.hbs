@@ -1,23 +1,21 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ meta "viewport" "width=device-width, initial-scale=1" }}
 
-<meta name="CCBot" content="nofollow">
-<meta name="robots" content="noai, noimageai">
-<meta name="tdm-reservation" content="1">
+{{ meta "CCBot" "nofollow" }}
+{{ meta "robots" "noai, noimageai" }}
+{{ meta "tdm-reservation" "1" }}
+{{ meta "googlebot" "notranslate" }}
 
-<meta name="googlebot" content="notranslate">
+<meta name="author" content="{{ site.author }}">
 
-<meta name="author" content="{{site.author}}">
+{{ stylesheet "/styles/critical.scss" "" }}
+{{ stylesheet "/styles/main.scss" "" }}
 
-<link rel="stylesheet" type="text/css" href="/styles/critical.scss">
+{{ stylesheet "/styles/main.desktop.scss" "(min-width: 700px)" }}
+{{ stylesheet "/styles/main.mobile.scss" "(max-width: 700px)" }}
 
-<link rel="stylesheet" type="text/css" href="/styles/main.scss">
-
-<link rel="stylesheet" type="text/css" href="/styles/main.desktop.scss" media="(min-width: 700px)">
-<link rel="stylesheet" type="text/css" href="/styles/main.mobile.scss" media="(max-width: 700px)">
+{{ script "/scripts/critical.ts" false }}
 
 <link href="/assets/favicon.png" rel="icon"/>
 
-<meta name="theme-color" content="#0c0d11">
-
-<script type="text/javascript" src="/scripts/critical.ts" defer=""></script>
+{{ meta "theme-color" "#0c0d11" }}

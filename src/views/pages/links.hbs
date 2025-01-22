@@ -2,6 +2,9 @@
 <html lang="en" translate="no">
 <head>
   {{ include "head" }}
+
+  <meta property="og:type" content="website">
+
   <style type="text/css">
     .banner-spacing {
       height: 300px;
@@ -18,17 +21,20 @@
 
 <body>
   {{ include "header" }}
+
   <div class="banner-spacing">
     <h1>Links &amp; Socials</h1>
   </div>
+
   <main>
     {{ include "profile" }}
     {{ include "links" }}
   </main>
+
   {{ include "footer" }}
 
-  <link rel="stylesheet" type="text/css" href="/styles/animations.scss" media="(prefers-reduced-motion: no-preference)">
+  {{ stylesheet "/styles/animations.scss" "(prefers-reduced-motion: no-preference)" }}
 
-  <script type="text/javascript" src="/scripts/_page.ts" defer=""></script>
+  {{ script "/scripts/_page.ts" true }}
 </body>
 </html>
