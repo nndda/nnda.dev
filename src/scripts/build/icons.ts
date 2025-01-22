@@ -104,7 +104,7 @@ function createIconDefsGrouped(
   iconsOther: Record<string, string> = {},
   ): void {
   writeTextFile(abs(`./icons/${groupName}.js`),
-    `window.populateIcons("i.${groupName}",{`
+    `window.p("i.${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
