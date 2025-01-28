@@ -3,9 +3,14 @@
 import {
   writeTextFile,
   createResolver,
+  mkdir,
+  cleanupDir,
   type DirResolver,
 } from "./utils";
 const abs: DirResolver = createResolver(__dirname);
+
+mkdir(abs("./icons/"));
+cleanupDir(abs("./icons/"));
 
 // ----------------------------------------------------------------------------
 
@@ -88,7 +93,7 @@ function toPascalCase(str: string) {
 }
 
 function createIconDefs(filename: string, icons: IconDefinition[]): void {
-  writeTextFile(abs(filename),
+  writeTextFile(abs(`./icons/${filename}.js`),
     icons.map(ico => {
       return `export const icon${toPascalCase(ico.iconName)}=\`${toHTML(ico)}\``;
     }).join(";")
@@ -103,8 +108,8 @@ function createIconDefsGrouped(
   siIcons: SimpleIcon[] = [],
   iconsOther: Record<string, string> = {},
   ): void {
-  writeTextFile(abs(`./${groupName}.js`),
-    `window.populateIcons("i.${groupName}",{`
+  writeTextFile(abs(`./icons/${groupName}.js`),
+    `window.p("i.${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
@@ -124,7 +129,7 @@ function createIconDefsGrouped(
 }
 
 createIconDefs(
-  "../icons.js",
+  "icons",
   [
     faCaretDown,
     faX,
@@ -168,7 +173,7 @@ createIconDefsGrouped(
 );
 
 createIconDefsGrouped(
-  "g",
+  "global",
   [
     faBox,
     faBug,

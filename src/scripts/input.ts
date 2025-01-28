@@ -1,4 +1,4 @@
-import { iconCaretDown } from "./icons";
+import { iconCaretDown } from "./build/icons/icons";
 
 export function initializeInputs(d: Document): void {
 

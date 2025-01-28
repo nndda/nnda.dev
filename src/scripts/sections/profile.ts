@@ -1,4 +1,4 @@
-import "../build/profile";
+import "../build/icons/profile";
 
 const
   timezoneClock: HTMLElement = document.getElementById("clock-timezone") as HTMLElement,

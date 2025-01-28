@@ -7,9 +7,12 @@ import handlebarsHelpers from "../views/helpers"
 import {
   writeTextFile,
   createResolver,
+  cleanupDir,
   type DirResolver,
 } from "../scripts/build/utils";
 const abs: DirResolver = createResolver(__dirname);
+
+cleanupDir(abs("./"));
 
 interface LangData {
   total: number,

@@ -1,7 +1,7 @@
 export {};
 const d: Document = document;
 
-import "./build/g";
+import "./build/icons/global";
 
 import { init } from "./main";
 init(d);
