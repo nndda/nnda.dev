@@ -25,11 +25,13 @@
   "homepage": "https://github.com/nndda/website#readme",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^22.13.0",
     "@types/webpack": "^5.28.5",
     "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
+    "dotenv": "^16.4.7",
     "eslint": "^9.19.0",
     "favicons": "^7.2.0",
     "fuzzball": "^2.1.3",
