@@ -7,6 +7,7 @@ import handlebarsHelpers from "../views/helpers"
 import {
   writeTextFile,
   createResolver,
+  fetchJSON,
   cleanupDir,
   type DirResolver,
 } from "../scripts/build/utils";
@@ -64,6 +65,12 @@ const
   startYear = 2021,
   currentTime = new Date().getTime(),
 
+  ghHeaders: HeadersInit = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": `Bearer ${pat}`,
+    "X-GitHub-Api-Version": "2022-11-28",
+  },
+
   langData: LangData = {
     total: 0,
     perByte: {},
@@ -108,23 +115,6 @@ const
     },
   };
 
-
-async function fetchJSON(url: string) {
-    const response = await fetch(url, {
-      headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `Bearer ${pat}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error fetching ${url}: ${response.statusText}`);
-    }
-
-    return response.json();
-}
-
 // =======================================================================================================
 
 async function getRepositories(user: string): Promise<any[]> {
@@ -136,7 +126,7 @@ async function getRepositories(user: string): Promise<any[]> {
   while (more) {
     const
       url: string = `https://api.github.com/users/${user}/repos?per_page=100&page=${page}`,
-      response: any[] = await fetchJSON(url) as any[];
+      response: any[] = await fetchJSON(url, ghHeaders) as any[];
     repos.push(...response);
     more = response.length === 100;
     page++;
@@ -149,7 +139,7 @@ getRepositories(user).then(repos => {
   let reposTotal: number = repos.length;
 
   repos.forEach((repo: any) => {
-    fetchJSON(repo.languages_url)
+    fetchJSON(repo.languages_url, ghHeaders)
       .then((lang: any) => {
         for (const l in lang) {
           langData.total += lang[l];
