@@ -1,8 +1,12 @@
 // BUILD SCRIPT
 
+console.log("Getting data from GitHub API...");
+
+import "dotenv/config";
+
 import fetch from "node-fetch";
 
-import handlebarsHelpers from "../views/helpers"
+import handlebarsHelpers from "../views/helpers";
 
 import {
   writeTextFile,
