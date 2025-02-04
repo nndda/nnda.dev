@@ -13,7 +13,9 @@ header {
 
   font-size: 1em;
 
-  will-change: padding, background;
+  will-change:
+    padding,
+    background;
   transition:
     padding .6s ease,
     background .9s ease;
@@ -23,7 +25,9 @@ header {
   &.active {
     padding: 0 1em;
 
-    background: $background-dark;
+    background: rgba($background-dark, .8);
+    // background: $background-dark;
+    backdrop-filter: blur(.5em);
 
     @include shadow-black;
   }
