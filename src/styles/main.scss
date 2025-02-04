@@ -72,7 +72,7 @@ body {
   background: $background-dark;
 
   color: $text;
-  font-size: .9em;
+  font-size: .85em;
 
   @include shadow-black;
 
@@ -212,19 +212,19 @@ body {
   }
 }
 
-.section-title {
-  font-size: 2.5em;
-  font-weight: 400;
+// .section-title {
+//   font-size: 2.5em;
+//   font-weight: 400;
 
-  & > small {
-    display: inline-block;
-    margin-left: .25em;
-    margin-right: .25em;
-    color: color.mix($text, $secondary, 50%);
-    font-weight: 200;
-    opacity: .7;
-  }
-}
+//   & > small {
+//     display: inline-block;
+//     margin-left: .25em;
+//     margin-right: .25em;
+//     color: color.mix($text, $secondary, 50%);
+//     font-weight: 200;
+//     opacity: .7;
+//   }
+// }
 
 .section-controls {
   display: flex;
