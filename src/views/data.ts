@@ -1,16 +1,26 @@
 // BUILD SCRIPT
 
-import { parse } from "yaml";
-import fs from "fs";
+import "dotenv/config";
+
 import { execSync } from "child_process";
+import { parse } from "yaml";
+import { merge } from "lodash";
 
 import handlebarsHelpers from "./helpers";
 
 import {
+  exists,
+  readTextFile,
+  pathResolve,
   createResolver,
   type DirResolver,
 } from "../scripts/build/utils";
 const abs: DirResolver = createResolver(__dirname);
+const rootAbs: string = abs("../../");
+
+function rootResolve(...paths: string[]): string {
+  return pathResolve(rootAbs, ...paths);
+}
 
 // ---------------------------------------------------------------------------------------
 
@@ -69,18 +79,34 @@ function urlStr(url: string): string {
 
 console.log("Parsing site data...");
 
-const siteData = parse(
-  fs.readFileSync(abs("../../site-config.yaml"), { encoding: "utf-8" })
-);
-
-if (process.env.SITE_EXT) {
+if (
+  process.env.SITE_EXT &&
+  process.env.GH_PAT
+  ) {
   execSync(`
-    curl ${process.env.SITE_EXT} --output ext.zip && unzip ext.zip .
-  `)
-  fs.readFileSync(abs("../../site-config-ext.yaml"), { encoding: "utf-8" })
+    curl -L \
+      -H "Accept: application/vnd.github+json" \
+      -H "Authorization: Bearer ${process.env.GH_PAT}" \
+      -H "X-GitHub-Api-Version: 2022-11-28" \
+      "https://api.github.com/repos/${process.env.SITE_EXT}/zipball/main" \
+      --output ${rootAbs}/ext.zip && \
+    mkdir -p ${rootAbs}/TEMP && \
+    unzip -q ${rootAbs}/ext.zip -d ${rootAbs}/TEMP && \
+    mv ${rootAbs}/TEMP/*/* ${rootAbs}/ ;\
+
+    rm -r ${rootAbs}/TEMP
+  `);
 }
 
-console.log("Finished parsing site data...");
+const siteDataExt: string = rootResolve("site-config-ext.yaml");
+const siteData = merge(
+  parse(readTextFile(rootResolve("site-config.yaml"))),
+  exists(siteDataExt) ?
+    parse(readTextFile(siteDataExt)) : {}
+);
+
+console.log("Finished parsing site data");
+
 // ---------------------------------------------------------------------------------------
 
 const repoURL = urlStr(siteData.repoURL);
@@ -119,7 +145,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
 });
 
-console.log("Finished processing links & URLs...");
+console.log("Finished processing links & URLs");
 
 import { updateSocialRedirects } from "../scripts/redirects";
 const socialRedirData = [] as any[];
