@@ -86,3 +86,22 @@
     }
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  #profile .icon-text {
+    transition:
+      opacity .3s ease-out,
+      transform .25s ease-out;
+
+    @include nth-loop(1, 5) using ($i) {
+      transition-delay: 0s + (.09 * $i);
+    }
+
+    &:not(.on) {
+      transition: .05s ease-out;
+      transition-delay: 0;
+      transform: translateX(-2em);
+      opacity: 0;
+    }
+  }
+}
