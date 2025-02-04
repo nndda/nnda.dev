@@ -81,12 +81,12 @@ console.log("Parsing site data...");
 
 if (
   process.env.SITE_EXT &&
-  process.env.GH_PAT
+  process.env.GH_PAT_EXT
   ) {
   execSync(`
     curl -L \
       -H "Accept: application/vnd.github+json" \
-      -H "Authorization: Bearer ${process.env.GH_PAT}" \
+      -H "Authorization: Bearer ${process.env.GH_PAT_EXT}" \
       -H "X-GitHub-Api-Version: 2022-11-28" \
       "https://api.github.com/repos/${process.env.SITE_EXT}/zipball/main" \
       --output ${rootAbs}/ext.zip && \
