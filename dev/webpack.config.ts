@@ -3,15 +3,22 @@ import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
 
 import CopyPlugin from "copy-webpack-plugin";
 
-import handlebarsData from "./src/views/data";
-import handlebarsHelpers from "./src/views/helpers";
+import handlebarsData from "../src/views/data";
+import handlebarsHelpers from "../src/views/helpers";
 
-import { buildProjectPages, projectEntries } from "./src/_projects/project-pages";
+import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
 
 import { type Configuration } from "webpack";
 
-import { createResolver, type DirResolver } from "./src/scripts/build/utils";
-const abs: DirResolver = createResolver(__dirname);
+import {
+  pathResolve,
+  createResolver,
+  type DirResolver
+} from "../src/scripts/build/utils";
+const absRel: string = createResolver(__dirname)("../");
+function abs(path: string): string {
+  return pathResolve(absRel, path);
+}
 
 buildProjectPages();
 
