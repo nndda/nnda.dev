@@ -4,7 +4,7 @@
   &.on,
   & > .project-title,
   & > p {
-    transition: .55s ease-out;
+    transition: .3s ease-out;
   }
 
   & .project-label {
@@ -44,8 +44,8 @@
 // Profile also available on /links.html
 #profile .icon-text { // ==========================================================================
   transition:
-    opacity .5s ease-out,
-    transform .35s ease-out;
+    opacity .3s ease-out,
+    transform .25s ease-out;
 
   @include nth-loop(1, 5) using ($i) {
     transition-delay: 0s + (.09 * $i);
@@ -75,7 +75,7 @@
 .stats.anim {
   &.on {
     & .stats-list > li {
-      transition: .3s ease-out;
+      transition: .2s ease-out;
     }
   }
 
@@ -100,7 +100,7 @@
     transition: .7s ease-out;
 
     & > .icon-text {
-      transition: .5s ease-out;
+      transition: .3s ease-out;
     }
   }
 
