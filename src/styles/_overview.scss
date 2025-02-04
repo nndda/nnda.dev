@@ -2,6 +2,7 @@
 @use "sass:color";
 
 #overview {
+  padding-top: 1em;
   background: $background-dark;
 
   & > .section-inner {

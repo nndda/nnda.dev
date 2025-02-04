@@ -164,6 +164,33 @@ body {
   }
 }
 
+.illust-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: -1;
+
+  & > .fg {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: radial-gradient(circle at 100% 0%, $background-dark -20%, transparent 60%);
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    // box-sizing: content-box;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// "In development" notice
 #in-dev-stat {
   display: flex;
   flex-direction: column;
@@ -224,8 +251,8 @@ body {
     max-height: inherit;
     max-width: inherit;
 
-    margin: auto;
-    padding: 2em;
+    // margin: auto;
+    // padding: 2em;
 
     z-index: 3;
   }
