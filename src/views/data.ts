@@ -97,7 +97,7 @@ siteData!.nav.links.forEach((navLinkData: any, i: number) => {
 
   if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
     siteData.nav.links[i].iconSlug = navLinkData.icon as string;
-    siteData.nav.links[i].iconLazy = handlebarsHelpers.icon("g", navLinkData.icon as string);
+    siteData.nav.links[i].iconLazy = handlebarsHelpers.icon("global", navLinkData.icon as string);
     siteData.nav.links[i].icon = siIcons[(navLinkData.icon as string)];
   }
 });
