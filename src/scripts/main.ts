@@ -26,7 +26,8 @@ export function init(d: Document): void {
     lastUpdateLabel.textContent = getLastUpdated(lastUpdateDate);
   }
 
-  setInterval(updateClock, 1e3);
+  updateClock();
+  setInterval(updateClock, 3e5);
 
   function toggleNavMobile(): void {
     navbarMobile.classList.toggle("collapsed");
