@@ -1,0 +1,11 @@
+@use "variables" as *;
+@use "sass:color";
+
+#illustrations {
+  position: relative;
+  z-index: 1;
+  min-height: 50em;
+  background: $background-dark;
+
+  @include shadow-black;
+}

@@ -113,8 +113,8 @@
     {{#each projects}}
       <div
         class="project card anim"
-        data-project-cat="{{this.category}}"
-        data-project-tags="{{this.tags}}"
+        {{!-- data-project-cat="{{this.category}}" --}}
+        {{!-- data-project-tags="{{this.tags}}" --}}
         {{#if this.image}}
           style="--img-bg: url({{this.image}});"
         {{/if}}

@@ -1,3 +1,9 @@
+# Proprietary configs, and assets
+site-config-ext.yaml
+secret_*
+ext.zip
+TEMP/
+README.txt
 
 # Compiled, pre-build scripts
 src/**/*.js

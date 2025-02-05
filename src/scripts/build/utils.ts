@@ -26,7 +26,15 @@ export function cleanupDir(cleanupPath: string): void {
   });
 }
 
-export type DirResolver = (path: string) => string;
+export function exists(whatPath: fs.PathLike): boolean {
+  return fs.existsSync(whatPath);
+}
+
+export function pathResolve(...paths: string[]): string {
+  return path.resolve(...paths);
+}
+
+export type DirResolver = (pathBase: string) => string;
 
 export function createResolver(pathBase: string): DirResolver {
   return pathString => path.resolve(pathBase, pathString);
@@ -51,3 +59,13 @@ export function createResolver(pathBase: string): DirResolver {
 // export function createResolverWithDir(importMeta: ImportMeta): DirResolver {
 //   return createResolver(getDir(importMeta));
 // }
+
+export async function fetchJSON(url: string, headers: HeadersInit | undefined = undefined) {
+    const response = await fetch(url, {"headers": headers});
+
+    if (!response.ok) {
+      throw new Error(`Error fetching ${url}: ${response.statusText}`);
+    }
+
+    return response.json();
+}

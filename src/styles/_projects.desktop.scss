@@ -2,10 +2,11 @@
   & > .section-inner {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: repeat(3, 33.333%);
+    grid-template-columns: repeat(4, 25%);
 
-    & >:nth-child(1) {
+    & >:nth-child(1), & >:nth-child(2) {
       grid-column: span 2;
+      min-height: 20em;
     }
   }
 }

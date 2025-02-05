@@ -1,4 +1,4 @@
-interface Window {
+interface Window { // eslint-disable-line
   p: (selector: string, iconSets: Record<string, string>) => void,
 }
 
