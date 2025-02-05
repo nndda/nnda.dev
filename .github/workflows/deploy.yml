@@ -3,6 +3,10 @@ name: Deploy site to Cloudflare Pages
 on:
   schedule:
     - cron: '0 */12 * * *'
+  push:
+    branches:
+      - main
+      - dev
   workflow_dispatch:
 
 jobs:
