@@ -17,6 +17,16 @@ export function mkdir(dir: string): void {
   fs.mkdirSync(dir, {recursive: true});
 }
 
+export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath: string): void {
+  fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
+}
+
+export function mv(pathFrom: string, pathTo: string): void {
+  fs.readdirSync(pathFrom).forEach(srcPath => {
+    fs.renameSync(path.resolve(pathFrom, srcPath), path.resolve(pathTo, srcPath));
+  });
+}
+
 export function cleanupDir(cleanupPath: string): void {
   fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
     if (val.isFile() && (val.name.endsWith(".js") || val.name.endsWith(".json"))) {
