@@ -18,6 +18,10 @@ site:
     location: 🇮🇩
     timezone: Asia/Jakarta
 
+  note: |
+    This website is licensed under the GNU GPLv3.
+    The source code is available in the public repository.
+
 repoURL: github.com/nndda/website
 
 nav:
