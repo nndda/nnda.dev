@@ -15,12 +15,35 @@ footer {
 	& .footer-heading {
 		letter-spacing: .1em;
 	}
+
+	& > .packages {
+		padding-bottom: 1.5em;
+		white-space: nowrap;
+		font-size: .75em;
+		overflow: hidden;
+
+		& > a {
+			display: inline-block;
+			margin: 0 .25em;
+
+			&:not(:hover) {
+				text-decoration: none;
+			}
+		}
+
+		& .d {
+			color: color.mix($primary, $text, 30%);
+		}
+		& .r {
+			color: color.mix($secondary, $text, 30%);
+		}
+	}
 }
 
 .footer-body {
 	display: flex;
 	justify-content: space-evenly;
-	padding: 2em 1em;
+	padding: 3em 1em;
 
 	& svg {
 		margin-right: .3em;
@@ -53,19 +76,35 @@ footer {
 
 .note {
 	max-width: 400px;
-	padding: .25em 1.5em;
-	margin-right: 0;
-	margin-left: 0;
+	margin: 0;
 
 	& .title {
 		margin: 1em 0;
 		font-size: 1.1em;
+
+		&:first-child {
+			margin-top: 0;
+		}
 	}
 
 	& > p {
 		color: color.mix($text-secondary, $background-dark, 80%);
 		text-align: justify;
 		letter-spacing: .05em;
+
+		& > small {
+			opacity: .7;
+		}
+	}
+}
+
+.this-site {
+	max-width: 380px;
+
+	& > .package-info {
+		margin-top: 2em;
+		color: $text-secondary;
+		font-weight: lighter;
 	}
 }
 

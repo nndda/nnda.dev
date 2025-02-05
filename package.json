@@ -4,11 +4,12 @@
   "description": "nnda's personal website",
   "scripts": {
     "start": "webpack-dev-server --config ./dev/webpack.dev.ts --port 9000",
-    "build": "npm run fetch-gh && webpack --no-devtool --config ./dev/webpack.config.ts",
+    "build": "npm run fetch-gh & npm run fetch-data-ext & webpack --no-devtool --config ./dev/webpack.config.ts",
     "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
     "lint-styles": "stylelint --config ./dev/.stylelintrc.json \"**/*.scss\"",
     "lint-scripts": "eslint --config ./dev/eslint.config.mjs .",
-    "fetch-gh": "ts-node ./src/api/gh.ts"
+    "fetch-gh": "ts-node ./src/api/gh.ts",
+    "fetch-data-ext": "ts-node ./src/views/data-ext.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "@eslint/js": "^9.19.0",
     "@types/lodash": "^4.17.15",
     "@types/node": "^22.13.0",
+    "@types/unzipper": "^0.10.10",
     "@types/webpack": "^5.28.5",
     "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^12.0.2",
@@ -49,6 +51,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
+    "unzipper": "^0.12.3",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0",
@@ -58,6 +61,7 @@
   "dependencies": {
     "@fontsource/dejavu-mono": "^5.1.0",
     "@fontsource/noto-sans-jp": "^5.1.0",
+    "@fontsource/zen-kaku-gothic-new": "^5.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "modern-normalize": "^3.0.1",

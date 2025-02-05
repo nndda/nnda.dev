@@ -13,14 +13,15 @@ import {
   readTextFile,
   pathResolve,
   createResolver,
-  type DirResolver,
 } from "../scripts/build/utils";
-const abs: DirResolver = createResolver(__dirname);
-const rootAbs: string = abs("../../");
+const rootDir: string = createResolver(__dirname)("../../");
 
 function rootResolve(...paths: string[]): string {
-  return pathResolve(rootAbs, ...paths);
+  return pathResolve(rootDir, ...paths);
 }
+
+console.log("Getting packages info...");
+import "../scripts/build/packages";
 
 // ---------------------------------------------------------------------------------------
 
@@ -78,25 +79,6 @@ function urlStr(url: string): string {
 // ---------------------------------------------------------------------------------------
 
 console.log("Parsing site data...");
-
-if (
-  process.env.SITE_EXT &&
-  process.env.GH_PAT_EXT
-  ) {
-  execSync(`
-    curl -L \
-      -H "Accept: application/vnd.github+json" \
-      -H "Authorization: Bearer ${process.env.GH_PAT_EXT}" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      "https://api.github.com/repos/${process.env.SITE_EXT}/zipball/main" \
-      --output ${rootAbs}/ext.zip && \
-    mkdir -p ${rootAbs}/TEMP && \
-    unzip -q ${rootAbs}/ext.zip -d ${rootAbs}/TEMP && \
-    mv ${rootAbs}/TEMP/*/* ${rootAbs}/ ;\
-
-    rm -r ${rootAbs}/TEMP
-  `);
-}
 
 const siteDataExt: string = rootResolve("site-config-ext.yaml");
 const siteData = merge(
@@ -204,8 +186,8 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const ghLangsData = require("../api/langs.json");
-const ghContribsData = require("../api/contribs.json");
+const ghLangsData = process.env.GH_PAT ? require("../api/langs.json") : {};
+const ghContribsData = process.env.GH_PAT ? require("../api/contribs.json") : {};
 
 // import ghLangsData from "../api/langs.json" with { type: "json" };
 // import ghContribsData from "../api/contribs.json" with { type: "json" };
