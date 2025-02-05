@@ -1,4 +1,4 @@
-document.querySelector("footer > .packages")!.innerHTML =
+document.querySelector("footer>.packages>.inner")!.innerHTML =
   (require("./build/packages.json") as string[]).map(pkg => {
     const pkgName: string = pkg.slice(0, -1);
     return `

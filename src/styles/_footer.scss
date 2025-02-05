@@ -17,14 +17,24 @@ footer {
 	}
 
 	& > .packages {
+		position: relative;
 		padding-bottom: 1.5em;
 		white-space: nowrap;
 		font-size: .75em;
 		overflow: hidden;
 
-		& > a {
+		& > .inner {
+			animation: pkg 50s linear infinite alternate;
+
+			&:hover {
+  			animation-play-state: paused;
+			}
+		}
+
+		& a {
 			display: inline-block;
 			margin: 0 .25em;
+			font-family: "DejaVu Mono";
 
 			&:not(:hover) {
 				text-decoration: none;
@@ -34,9 +44,19 @@ footer {
 		& .d {
 			color: color.mix($primary, $text, 30%);
 		}
+
 		& .r {
 			color: color.mix($secondary, $text, 30%);
 		}
+	}
+}
+
+@keyframes pkg {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
 	}
 }
 
