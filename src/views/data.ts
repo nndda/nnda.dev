@@ -186,8 +186,8 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const ghLangsData = require("../api/langs.json");
-const ghContribsData = require("../api/contribs.json");
+const ghLangsData = process.env.GH_PAT ? require("../api/langs.json") : {};
+const ghContribsData = process.env.GH_PAT ? require("../api/contribs.json") : {};
 
 // import ghLangsData from "../api/langs.json" with { type: "json" };
 // import ghContribsData from "../api/contribs.json" with { type: "json" };
