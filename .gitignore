@@ -5,14 +5,12 @@ ext.zip
 TEMP/
 README.txt
 
-# Compiled, pre-build scripts
+# Compiled, pre-build scripts and data
 src/**/*.js
+src/**/*.json
 
 # Third party JavaScripts
 !src/scripts/vendor/*.js
-
-# API data
-src/api/*.json
 
 # Compiled project pages
 src/_projects/**/*.hbs
