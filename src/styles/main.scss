@@ -50,14 +50,10 @@ hr.hr {
   border-top: 2px dashed color.mix($text, $background-dark, 19%);
 }
 
-code {
-  font-family: "DejaVu Mono", monospace;
-}
-
 html {
   color-scheme: dark only !important;
   scroll-behavior: smooth !important;
-  font-family: "Noto Sans JP", sans-serif;
+
   @include style-scrollbar;
 }
 
@@ -73,7 +69,6 @@ body {
   background: $background-dark;
 
   color: $text;
-  font-size: .85em;
 
   @include shadow-black;
 

@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@fontsource/dejavu-mono": "^5.1.0",
-    "@fontsource/noto-sans-jp": "^5.1.0",
+    "@fontsource/ibm-plex-sans-jp": "^5.1.1",
     "@fontsource/zen-kaku-gothic-new": "^5.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
