@@ -1,6 +1,6 @@
 <footer>
   <div class="footer-body">
-    <div class="links-section horizontal">
+    <div class="links-section horizontal this-site">
       <div class="footer-heading">This Site</div>
 
       <div class="icon-text site-opt">
@@ -64,6 +64,10 @@
         </li>
       {{/each}}
       </ul>
+
+      <div class="package-info">
+        This website is made possible with these awesome projects &amp; libraries 👇️
+      </div>
     </div>
     <div class="links-section">
       <blockquote class="note">
@@ -72,6 +76,8 @@
       </blockquote>
     </div>
   </div>
+
+  <div class="packages"></div>
 
   <div class="footer-end">
     <div>
@@ -89,3 +95,5 @@
     </div>
   </div>
 </footer>
+
+{{ script "/scripts/footer.ts" true }}

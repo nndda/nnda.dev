@@ -20,6 +20,9 @@ function rootResolve(...paths: string[]): string {
   return pathResolve(rootDir, ...paths);
 }
 
+console.log("Getting packages info...");
+import "../scripts/build/packages";
+
 // ---------------------------------------------------------------------------------------
 
 console.log("Building icons...");
