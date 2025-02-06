@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "nnda's personal website",
   "scripts": {
-    "start": "webpack-dev-server --config ./dev/webpack.dev.ts --port 9000",
-    "build": "npm run fetch-gh & npm run fetch-data-ext & webpack --no-devtool --config ./dev/webpack.config.ts",
+    "start": "webpack-dev-server --config ./config/webpack.dev.ts --port 9000",
+    "build": "npm run fetch-gh & npm run fetch-data-ext & webpack --no-devtool --config ./config/webpack.config.ts",
     "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
-    "lint-styles": "stylelint --config ./dev/.stylelintrc.json \"**/*.scss\"",
-    "lint-scripts": "eslint --config ./dev/eslint.config.mjs .",
+    "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
+    "lint-scripts": "eslint --config ./config/eslint.config.mjs .",
     "fetch-gh": "ts-node ./src/api/gh.ts",
     "fetch-data-ext": "ts-node ./src/views/data-ext.ts"
   },
