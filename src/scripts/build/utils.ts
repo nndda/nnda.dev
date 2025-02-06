@@ -18,7 +18,9 @@ export function mkdir(dir: string): void {
 }
 
 export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath: string): void {
-  fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
+  if (exists(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath)) {
+    fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
+  }
 }
 
 export function mv(pathFrom: string, pathTo: string): void {
