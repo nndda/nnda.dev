@@ -2,7 +2,6 @@
 
 import "dotenv/config";
 
-import { execSync } from "child_process";
 import { parse } from "yaml";
 import { merge } from "lodash";
 
@@ -26,7 +25,7 @@ import "../scripts/build/packages";
 // ---------------------------------------------------------------------------------------
 
 console.log("Building icons...");
-execSync("npx ts-node ./src/scripts/build/icons.ts");
+import "../scripts/build/icons";
 
 // =======================================================================================
 
@@ -186,8 +185,13 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-const ghLangsData = process.env.GH_PAT ? require("../api/langs.json") : {};
-const ghContribsData = process.env.GH_PAT ? require("../api/contribs.json") : {};
+let ghLangsData = {};
+let ghContribsData = {};
+
+if (process.env.GH_PAT) {
+  ghLangsData = require("../api/langs.json");
+  ghContribsData = require("../api/contribs.json");
+}
 
 // import ghLangsData from "../api/langs.json" with { type: "json" };
 // import ghContribsData from "../api/contribs.json" with { type: "json" };

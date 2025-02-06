@@ -30,7 +30,7 @@
 
     color: color.mix($text, $background-dark, 70%);
 
-    font-size: 1.7em;
+    font-size: 1.5em;
     font-weight: 200;
     letter-spacing: .2ch;
 
@@ -61,7 +61,7 @@
 .link-item {
   margin: .5em;
   padding: .2em .3em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   border-radius: 8px;
 
   & > a {
@@ -88,6 +88,7 @@
     & > .username {
       grid-column: 2;
       grid-row: 2;
+      margin-top: .2em;
 
       font-family: "DejaVu Mono", monospace;
       opacity: .5;
