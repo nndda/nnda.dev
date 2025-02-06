@@ -26,7 +26,7 @@ import "../scripts/build/packages";
 // ---------------------------------------------------------------------------------------
 
 console.log("Building icons...");
-execSync("npx ts-node ./src/scripts/build/icons.ts");
+import "../scripts/build/icons";
 
 // =======================================================================================
 
