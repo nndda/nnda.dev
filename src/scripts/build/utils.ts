@@ -27,6 +27,10 @@ export function mv(pathFrom: string, pathTo: string): void {
   });
 }
 
+export function ls(whatPath: string): string[] {
+  return fs.readdirSync(whatPath);
+}
+
 export function cleanupDir(cleanupPath: string): void {
   fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
     if (val.isFile() && (val.name.endsWith(".js") || val.name.endsWith(".json"))) {
