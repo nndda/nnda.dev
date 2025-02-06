@@ -66,9 +66,7 @@ export default {
     , imgdata: ISizeCalculationResult = sizeOf(srcAbs)
     ;
 
-    if (!exists(srcAbs)) {
-      throw Error(`Image ${path.basename(src)} doesn't exists`);
-    }
+    if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
 
     return new Handlebars.SafeString(`
       <img src="${src}" width="${imgdata.width}" height="${imgdata.height}" loading="lazy" alt="">
