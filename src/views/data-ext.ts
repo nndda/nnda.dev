@@ -4,6 +4,7 @@ import "dotenv/config";
 
 import fs from "fs";
 import { pipeline } from "stream/promises";
+import { execSync } from "child_process";
 
 import { Open as unzipperOpen } from "unzipper";
 
@@ -11,6 +12,7 @@ import {
   mkdir,
   rm,
   mv,
+  exists,
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
@@ -44,6 +46,9 @@ if (
         res.extract({path: tempDir}).then(() => {
           mv(pathResolve(tempDir, fs.readdirSync(tempDir)[0]), rootDir);
           rm(tempDir);
+          if (exists(pathResolve(rootDir, "./extra.ts"))) {
+            execSync("npx ts-node ./extra.ts");
+          }
         });
       });
     });

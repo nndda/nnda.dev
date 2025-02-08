@@ -41,12 +41,12 @@ footer {
 			}
 		}
 
-		& .d {
-			color: color.mix($primary, $text, 30%);
+		& .pkg-d {
+			color: color.mix($secondary, $text, 30%);
 		}
 
-		& .r {
-			color: color.mix($secondary, $text, 30%);
+		& .pkg-r {
+			color: color.mix($primary, $text, 30%);
 		}
 	}
 }

@@ -18,13 +18,19 @@ export function mkdir(dir: string): void {
 }
 
 export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath: string): void {
-  fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
+  if (exists(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath)) {
+    fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
+  }
 }
 
 export function mv(pathFrom: string, pathTo: string): void {
   fs.readdirSync(pathFrom).forEach(srcPath => {
     fs.renameSync(path.resolve(pathFrom, srcPath), path.resolve(pathTo, srcPath));
   });
+}
+
+export function ls(whatPath: string): string[] {
+  return fs.readdirSync(whatPath);
 }
 
 export function cleanupDir(cleanupPath: string): void {

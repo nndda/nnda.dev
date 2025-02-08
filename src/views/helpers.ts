@@ -1,4 +1,21 @@
 import * as Handlebars from 'handlebars';
+import sizeOf from "image-size";
+import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
+
+import path from "path";
+
+import {
+  ls, // eslint-disable-line
+  exists,
+  pathResolve,
+  createResolver,
+} from "../scripts/build/utils";
+import { sortBy } from "lodash"; // eslint-disable-line
+const srcDir: string = createResolver(__dirname)("../../src/");
+
+function srcResolve(src: string): string {
+  return pathResolve(srcDir, "./" + src);
+}
 
 export default {
   icon: (group: string, name: string) => {
@@ -41,6 +58,19 @@ export default {
     return new Handlebars.SafeString(`
       <meta name="description" content="${desc}">
       <meta property="og:description" content="${desc}">
+    `);
+  },
+
+  img: (src: string) => {
+    const
+      srcAbs: string = srcResolve(src)
+    , imgdata: ISizeCalculationResult = sizeOf(srcAbs)
+    ;
+
+    if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
+
+    return new Handlebars.SafeString(`
+      <img src="${src}" width="${imgdata.width}" height="${imgdata.height}" loading="lazy" alt="">
     `);
   },
 }

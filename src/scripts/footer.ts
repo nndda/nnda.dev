@@ -1,13 +1,13 @@
 document.querySelector("footer>.packages>.inner")!.innerHTML =
   (require("./build/packages.json") as string[]).map(pkg => {
-    const pkgName: string = pkg.slice(0, -1);
+    const pkgName: string = pkg.slice(0, -5);
     return `
       <a
         href="https://www.npmjs.com/package/${pkgName}"
         target="_blank"
         rel="nofollow noopener noreferrer"
         referrerpolicy="no-referrer"
-        class="${pkg.slice(-1)}"
+        class="${pkg.slice(-5)}"
       >
         ${pkgName}
       </a>`;
