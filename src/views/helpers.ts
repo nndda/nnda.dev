@@ -10,6 +10,7 @@ import {
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
+import { sortBy } from "lodash"; // eslint-disable-line
 const srcDir: string = createResolver(__dirname)("../../src/");
 
 function srcResolve(src: string): string {
