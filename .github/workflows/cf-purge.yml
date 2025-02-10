@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Purge deployments
-        run: ./util/cf-purge.sh
+        run: chmod +x ./util/cf-purge.sh && ./util/cf-purge.sh
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
