@@ -1,0 +1,22 @@
+name: Purge Cloudflare Pages deployments
+
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Purge deployments
+        run: chmod +x ./util/cf-purge.sh && ./util/cf-purge.sh
+        env:
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # TODO: env name is a mess
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_GLOBAL }}
