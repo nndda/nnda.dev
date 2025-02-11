@@ -30,23 +30,27 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ruby
-          bundler-cache: true
-
-      - name: Set up licensed
-        uses: licensee/setup-licensed@v1
-        with:
-          version: 4.x
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Cache Ruby gems
+        id: gem-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-licensed
+
+      - name: Install licensed gem
+        if: steps.gem-cache.outputs.cache-hit != 'true'
+        run: gem install licensed --install-dir vendor/bundle
+
+      - name: Install project dependencies
+        run: npm install --omit=dev
 
       - name: Check licenses
-        uses: licensee/licensed-ci@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          config_file: config/.licensed.yml
+        run: |
+          ./vendor/bundle/bin/licensed cache --config=./config/.licensed.yml && \
+          ./vendor/bundle/bin/licensed status

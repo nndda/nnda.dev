@@ -26,6 +26,9 @@ dist/
 # Licensed configuration file
 .licenses/
 
+# Ruby's local gem
+vendor/
+
 # Node.js ---------------------------------------------------------------------
 
 # npm dependency directory
