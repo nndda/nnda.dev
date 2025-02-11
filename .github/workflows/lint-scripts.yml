@@ -9,7 +9,7 @@ on:
       - '**/*.ts'
       - '**/*.js'
       - '.github/workflows/lint-scripts.yml'
-      - 'eslint.config.mjs'
+      - 'config/eslint.config.mjs'
   pull_request:
     branches:
       - main
@@ -17,7 +17,7 @@ on:
       - '**/*.ts'
       - '**/*.js'
       - '.github/workflows/lint-scripts.yml'
-      - 'eslint.config.mjs'
+      - 'config/eslint.config.mjs'
   workflow_dispatch:
 
 jobs:
