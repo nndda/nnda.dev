@@ -32,7 +32,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
 
       - name: Get npm cache directory
         id: npm-cache-dir
@@ -47,7 +46,6 @@ jobs:
           key: ${{ runner.os }}-npm-stylelint
 
       - name: Install linting dependencies
-        if: steps.stylelint-cache.outputs.cache-hit != 'true'
         run: |
           npm install --no-save \
             stylelint \
