@@ -1,0 +1,16 @@
+name: nnda's personal website
+
+sources:
+  npm: true
+
+allowed:
+  - mit
+  - ofl-1.1
+  - cc0-1.0
+
+reviewed:
+  npm:
+    - '@fontsource/dejavu-mono'
+    - '@fortawesome/fontawesome-common-types'
+    - '@fortawesome/fontawesome-svg-core'
+    - '@fortawesome/free-solid-svg-icons'

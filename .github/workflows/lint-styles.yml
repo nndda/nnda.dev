@@ -9,7 +9,7 @@ on:
       - '**/*.scss'
       - '**/*.css'
       - '.github/workflows/lint-styles.yml'
-      - '.stylelintrc.json'
+      - 'config/.stylelintrc.json'
   pull_request:
     branches:
       - main
@@ -17,7 +17,7 @@ on:
       - '**/*.scss'
       - '**/*.css'
       - '.github/workflows/lint-styles.yml'
-      - '.stylelintrc.json'
+      - 'config/.stylelintrc.json'
   workflow_dispatch:
 
 jobs:
