@@ -7,15 +7,21 @@ on:
       - dev
     paths:
       - 'package.json'
+      - 'config/.licensed.yml'
+      - '.github/workflows/licensed.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'package.json'
+      - 'config/.licensed.yml'
+      - '.github/workflows/licensed.yml'
   workflow_dispatch:
 
 jobs:
   licensed:
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,3 +49,4 @@ jobs:
         uses: licensee/licensed-ci@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          config_file: config/.licensed.yml
