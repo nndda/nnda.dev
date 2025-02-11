@@ -47,6 +47,9 @@ jobs:
         if: steps.gem-cache.outputs.cache-hit != 'true'
         run: gem install licensed --install-dir vendor/bundle
 
+      - name: Add gems to GEM_PATH
+        run: echo "GEM_PATH=$GEM_PATH:$(pwd)/vendor/bundle" >> $GITHUB_ENV
+
       - name: Install project dependencies
         run: npm install --omit=dev
 
