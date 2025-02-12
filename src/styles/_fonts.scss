@@ -23,11 +23,11 @@
 }
 
 @font-face {
-  font-family: "DejaVu Mono";
+  font-family: "Oxygen Mono";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url("@fonts/dejavu-mono/files/dejavu-mono-latin-400-normal.woff2") format("woff2");
+  src: url("@fonts/oxygen-mono/files/oxygen-mono-latin-400-normal.woff2") format("woff2");
 }
 
 html {
@@ -36,5 +36,5 @@ html {
 }
 
 code {
-  font-family: "DejaVu Mono", monospace;
+  font-family: "Oxygen Mono", monospace;
 }
