@@ -56,4 +56,4 @@ jobs:
       - name: Check licenses
         run: |
           ./vendor/bundle/bin/licensed cache --config=./config/.licensed.yml && \
-          ./vendor/bundle/bin/licensed status
+          ./vendor/bundle/bin/licensed status --config=./config/.licensed.yml
