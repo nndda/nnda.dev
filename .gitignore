@@ -1,6 +1,7 @@
 # Proprietary configs, and assets
 site-config-ext.yaml
 secret_*
+secret-*
 ext.zip
 TEMP/
 README.txt
