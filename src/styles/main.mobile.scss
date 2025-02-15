@@ -3,3 +3,19 @@
 @use "overview.mobile";
 @use "projects.mobile";
 @use "footer.mobile";
+
+#profile .info-container {
+  & > .name-cont {
+    padding-left: 3.5em;
+  }
+}
+
+#overview,
+#links {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+section > .heading-left-sticky {
+  padding-top: 1.25em;
+}
