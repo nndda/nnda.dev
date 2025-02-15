@@ -4,5 +4,17 @@
   </h1>
   
   <div class="section-inner">
+    {{#each illustrations }}
+      <div class="illust">
+        <div class="img">
+          {{ img this.src }}
+        </div>
+        <div class="title">{{ this.title }}</div>
+        <div>
+        </div>
+      </div>
+    {{/each}}
   </div>
 </section>
+
+{{ script "/scripts/sections/illustrations.ts" true }}

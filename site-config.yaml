@@ -140,3 +140,9 @@ projects:
       Source code for my itch.io profile page.
 
 # -------------------------------------------------------------------------------------------------
+
+illustrations:
+
+  # - title: Illustration's Title
+  #   chr: [ Character/Subject ]
+  #   src: /assets/illust-file.webp
