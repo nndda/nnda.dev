@@ -4,12 +4,6 @@
 @use "projects.mobile";
 @use "footer.mobile";
 
-#profile .info-container {
-  & > .name-cont {
-    padding-left: 3.5em;
-  }
-}
-
 #overview,
 #links {
   padding-left: 1.5em;
