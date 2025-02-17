@@ -9,9 +9,12 @@
         <div class="img">
           {{ img this.src }}
         </div>
+        <small class="chr">
+          {{#each this.chr}}
+            <span>{{this}}</span>
+          {{/each}}
+        </small>
         <div class="title">{{ this.title }}</div>
-        <div>
-        </div>
       </div>
     {{/each}}
   </div>
