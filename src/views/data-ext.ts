@@ -37,6 +37,7 @@ if (
     }
 
     const tempDir: string = pathResolve(rootDir, "./TEMP");
+    const tempDirMain: string = pathResolve(rootDir, "./TEMP", fs.readdirSync(tempDir)[0]);
     const extZipPath: string = pathResolve(rootDir, "./ext.zip");
 
     mkdir(tempDir);
@@ -44,8 +45,12 @@ if (
     pipeline(response.body as ReadableStream, fs.createWriteStream(extZipPath)).then(() => {
       (unzipperOpen.file(extZipPath)).then(res => {
         res.extract({path: tempDir}).then(() => {
-          mv(pathResolve(tempDir, fs.readdirSync(tempDir)[0]), rootDir);
+          fs.readdirSync(tempDirMain).forEach(dir => {
+            mv(pathResolve(tempDirMain, dir), rootDir);
+          });
+
           rm(tempDir);
+
           if (exists(pathResolve(rootDir, "./extra.ts"))) {
             execSync("npx ts-node ./extra.ts");
           }
