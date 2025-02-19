@@ -24,9 +24,15 @@ export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNa
 }
 
 export function mv(pathFrom: string, pathTo: string): void {
-  fs.readdirSync(pathFrom).forEach(srcPath => {
-    fs.renameSync(path.resolve(pathFrom, srcPath), path.resolve(pathTo, srcPath));
-  });
+  if (fs.lstatSync(pathFrom).isDirectory()) {
+    const pathTarget: string = path.resolve(pathTo, path.basename(pathFrom));
+
+    fs.readdirSync(pathFrom).forEach(srcPath => {
+      mv(path.resolve(pathFrom, srcPath), pathTarget);
+    });
+  } else {
+    fs.renameSync(pathFrom, path.resolve(pathTo, path.basename(pathFrom)));
+  }
 }
 
 export function ls(whatPath: string): string[] {
