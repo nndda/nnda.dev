@@ -15,7 +15,7 @@ import {
   cleanupDir,
   type DirResolver,
 } from "../scripts/build/utils";
-const abs: DirResolver = createResolver(__dirname);
+const abs: DirResolver = createResolver(import.meta);
 
 cleanupDir(abs("./"));
 

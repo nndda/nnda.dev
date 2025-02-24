@@ -7,8 +7,10 @@
     "noImplicitAny": false,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "noEmit": true,
     "removeComments": true,
     "resolveJsonModule": true
   },

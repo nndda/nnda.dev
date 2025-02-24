@@ -16,7 +16,7 @@ import {
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
-const rootDir: string = createResolver(__dirname)("../../");
+const rootDir: string = createResolver(import.meta)("../../");
 
 if (
   process.env.SITE_EXT &&

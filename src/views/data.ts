@@ -3,29 +3,29 @@
 import "dotenv/config";
 
 import { parse } from "yaml";
-import { merge } from "lodash";
+import _ from "lodash";
 
-import handlebarsHelpers from "./helpers";
+import handlebarsHelpers from "./helpers.ts";
 
 import {
   exists,
   readTextFile,
   pathResolve,
   createResolver,
-} from "../scripts/build/utils";
-const rootDir: string = createResolver(__dirname)("../../");
+} from "../scripts/build/utils.ts";
+const rootDir: string = createResolver(import.meta)("../../");
 
 function rootResolve(...paths: string[]): string {
   return pathResolve(rootDir, ...paths);
 }
 
 console.log("Getting packages info...");
-import "../scripts/build/packages";
+import "../scripts/build/packages.ts";
 
 // ---------------------------------------------------------------------------------------
 
 console.log("Building icons...");
-import "../scripts/build/icons";
+import "../scripts/build/icons.ts";
 
 // =======================================================================================
 
@@ -33,7 +33,8 @@ type IconDefs = Record<string, string>; // icon slug, svg string
 
 // ---------------------------------------------------------------------------------------
 
-import siIconsRaw, { type SimpleIcon } from 'simple-icons';
+import * as siIconsRaw from "simple-icons";
+import { type SimpleIcon } from "simple-icons";
 
 export const siIcons: IconDefs = Object.keys(siIconsRaw).reduce(
   (acc, val) => {
@@ -80,7 +81,7 @@ function urlStr(url: string): string {
 console.log("Parsing site data...");
 
 const siteDataExt: string = rootResolve("site-config-ext.yaml");
-const siteData = merge(
+const siteData = _.merge(
   parse(readTextFile(rootResolve("site-config.yaml"))),
   exists(siteDataExt) ?
     parse(readTextFile(siteDataExt)) : {}
@@ -128,7 +129,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
 console.log("Finished processing links & URLs");
 
-import { updateSocialRedirects } from "../scripts/redirects";
+import { updateSocialRedirects } from "../scripts/redirects.ts";
 const socialRedirData = [] as any[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
@@ -185,16 +186,8 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-let ghLangsData = {};
-let ghContribsData = {};
-
-if (process.env.GH_PAT) {
-  ghLangsData = require("../api/langs.json");
-  ghContribsData = require("../api/contribs.json");
-}
-
-// import ghLangsData from "../api/langs.json" with { type: "json" };
-// import ghContribsData from "../api/contribs.json" with { type: "json" };
+import ghLangsData from "../api/langs.json" with { type: "json" };
+import ghContribsData from "../api/contribs.json" with { type: "json" };
 
 // =======================================================================================
 

@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars';
+import Handlebars from "handlebars";
 import sizeOf from "image-size";
 import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 
@@ -9,9 +9,10 @@ import {
   exists,
   pathResolve,
   createResolver,
-} from "../scripts/build/utils";
-import { sortBy } from "lodash"; // eslint-disable-line
-const srcDir: string = createResolver(__dirname)("../../src/");
+} from "../scripts/build/utils.ts";
+import _ from "lodash";
+const sortBy = _.sortBy; // eslint-disable-line
+const srcDir: string = createResolver(import.meta)("../../src/");
 
 function srcResolve(src: string): string {
   return pathResolve(srcDir, "./" + src);

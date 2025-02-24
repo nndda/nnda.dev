@@ -58,29 +58,17 @@ export function pathResolve(...paths: string[]): string {
 
 export type DirResolver = (pathBase: string) => string;
 
-export function createResolver(pathBase: string): DirResolver {
-  return pathString => path.resolve(pathBase, pathString);
+import { fileURLToPath } from "url";
+
+export function getDir(importMeta: ImportMeta): string {
+  return path.dirname(
+    fileURLToPath(importMeta.url)
+  );
 }
 
-// When I'm forced to use ESM again:
-
-// /* const abs: DirResolver = createResolverWithDir(import.meta); */
-
-// import { fileURLToPath } from "url";
-
-// export function getDir(importMeta: ImportMeta): string {
-//   return path.dirname(
-//     fileURLToPath(importMeta.url)
-//   );
-// }
-
-// export function createResolver(pathBase: string): DirResolver {
-//   return pathString => path.resolve(pathBase, pathString);
-// }
-
-// export function createResolverWithDir(importMeta: ImportMeta): DirResolver {
-//   return createResolver(getDir(importMeta));
-// }
+export function createResolver(importMeta: ImportMeta): DirResolver {
+  return pathString => path.resolve(getDir(importMeta), pathString);
+}
 
 export async function fetchJSON(url: string, headers: HeadersInit | undefined = undefined) {
     const response = await fetch(url, {"headers": headers});

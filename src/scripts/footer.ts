@@ -1,5 +1,7 @@
+import packageJSON from "./build/packages.json" with { type: "json" };
+
 document.querySelector("footer>.packages>.inner")!.innerHTML =
-  (require("./build/packages.json") as string[]).map(pkg => {
+  (packageJSON as string[]).map(pkg => {
     const pkgName: string = pkg.slice(0, -5);
     return `
       <a

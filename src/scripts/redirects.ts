@@ -4,8 +4,8 @@ import {
   readTextFile,
   writeTextFile,
   createResolver,
-  type DirResolver } from "./build/utils";
-const abs: DirResolver = createResolver(__dirname);
+  type DirResolver } from "./build/utils.ts";
+const abs: DirResolver = createResolver(import.meta);
 
 export function updateSocialRedirects(data: any[]): void {
   const
