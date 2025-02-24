@@ -4,6 +4,7 @@ console.log("Getting data from GitHub API...");
 
 import "dotenv/config";
 
+import path from "path";
 import fetch from "node-fetch";
 
 import handlebarsHelpers from "../views/helpers";
@@ -15,7 +16,9 @@ import {
   cleanupDir,
   type DirResolver,
 } from "../scripts/build/utils";
-const abs: DirResolver = createResolver(import.meta);
+function abs(pathString: string): string {
+  return path.resolve(__dirname, pathString);
+}
 
 cleanupDir(abs("./"));
 
