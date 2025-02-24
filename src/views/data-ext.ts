@@ -10,7 +10,6 @@ import { Open as unzipperOpen } from "unzipper";
 
 import {
   mkdir,
-  rm,
   mv,
   exists,
   pathResolve,
@@ -48,8 +47,6 @@ if (
           fs.readdirSync(tempDirMain).forEach(dir => {
             mv(pathResolve(tempDirMain, dir), rootDir);
           });
-
-          rm(tempDir);
 
           if (exists(pathResolve(rootDir, "./extra.ts"))) {
             execSync("npx ts-node ./extra.ts");
