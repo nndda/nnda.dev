@@ -37,3 +37,12 @@ node_modules/
 
 # dotenv environment variable file
 .env
+
+# Python ----------------------------------------------------------------------
+
+pyvenv.cfg
+bin
+lib
+lib64
+include
+**/*/__pycache__
