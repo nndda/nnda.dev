@@ -8,7 +8,7 @@
     "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
     "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
     "lint-scripts": "eslint --config ./config/eslint.config.mjs .",
-    "fetch-gh": "ts-node ./src/api/gh.ts",
+    "fetch-gh": "python ./src/api/gh.py",
     "fetch-data-ext": "ts-node ./src/views/data-ext.ts"
   },
   "repository": {
