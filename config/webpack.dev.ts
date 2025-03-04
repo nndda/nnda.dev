@@ -2,7 +2,7 @@ import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import { type Configuration } from "webpack";
 
 import _ from "lodash";
-import common from "./webpack.common.ts";
+import common from "./webpack.common";
 
 export default {
   mode: "development",

@@ -9,10 +9,10 @@ import {
   exists,
   pathResolve,
   createResolver,
-} from "../scripts/build/utils.ts";
+} from "../scripts/build/utils";
 import _ from "lodash";
 const sortBy = _.sortBy; // eslint-disable-line
-const srcDir: string = createResolver(import.meta)("../../src/");
+const srcDir: string = createResolver(__dirname)("../../src/");
 
 function srcResolve(src: string): string {
   return pathResolve(srcDir, "./" + src);

@@ -2,31 +2,29 @@ import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import webpack from "webpack";
 import type { Configuration, RuleSetRule } from "webpack";
 
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-
 import CopyPlugin from "copy-webpack-plugin";
 export function copyToDist(path: string): CopyPlugin.Pattern {
   return { from: abs("./src/" + path), to: abs("./dist/") }
 }
 
-import handlebarsData from "../src/views/data.ts";
-import handlebarsHelpers from "../src/views/helpers.ts";
+import handlebarsData from "../src/views/data";
+import handlebarsHelpers from "../src/views/helpers";
 
-import { buildProjectPages, projectEntries } from "../src/_projects/project-pages.ts";
+import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
 buildProjectPages();
 
 import {
   pathResolve,
   createResolver,
-} from "../src/scripts/build/utils.ts";
-const absRel: string = createResolver(import.meta)("../");
+} from "../src/scripts/build/utils";
+const absRel: string = createResolver(__dirname)("../");
 export function abs(path: string): string {
   return pathResolve(absRel, path);
 }
 
 export default {
   resolve: {
-    extensions: [".js", ".ts"],
+    extensions: [".js", ".ts", ".json"],
     alias: {
       "@fonts": abs("./node_modules/@fontsource/"),
       "@node_modules": abs("./node_modules/"),
@@ -64,15 +62,17 @@ export default {
   } as HtmlBundlerPlugin.PluginOptions,
 
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      async: false,
-    }),
   ] as unknown as webpack.DefinePlugin[],
 
   moduleRules: [
     {
       test: /\.ts$/,
-      use: "ts-loader",
+      use: {
+        loader: "ts-loader",
+        options: {
+          configFile: abs("./config/tsconfig.web.json"),
+        },
+      },
       exclude: /node_modules/,
     },
     {

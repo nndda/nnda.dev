@@ -13,10 +13,10 @@ import {
   writeTextFile,
   createResolver,
   type DirResolver,
-} from "../scripts/build/utils.ts";
+} from "../scripts/build/utils";
 
 const
-  abs: DirResolver = createResolver(import.meta),
+  abs: DirResolver = createResolver(__dirname),
   template: string = readTextFile(abs("./project.hbs"));
 
 export function buildProjectPages(): void {

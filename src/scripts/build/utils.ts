@@ -58,16 +58,8 @@ export function pathResolve(...paths: string[]): string {
 
 export type DirResolver = (pathBase: string) => string;
 
-import { fileURLToPath } from "url";
-
-export function getDir(importMeta: ImportMeta): string {
-  return path.dirname(
-    fileURLToPath(importMeta.url)
-  );
-}
-
-export function createResolver(importMeta: ImportMeta): DirResolver {
-  return pathString => path.resolve(getDir(importMeta), pathString);
+export function createResolver(pathBase: string): DirResolver {
+  return pathString => path.resolve(pathBase, pathString);
 }
 
 export async function fetchJSON(url: string, headers: HeadersInit | undefined = undefined) {

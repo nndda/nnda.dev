@@ -2,7 +2,7 @@ import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import { type Configuration } from "webpack";
 
 import _ from "lodash";
-import common, { abs, copyToDist } from "./webpack.common.ts";
+import common, { abs, copyToDist } from "./webpack.common";
 
 import CopyPlugin from "copy-webpack-plugin";
 import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";

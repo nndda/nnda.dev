@@ -6,8 +6,8 @@ import {
   mkdir,
   cleanupDir,
   type DirResolver,
-} from "./utils.ts";
-const abs: DirResolver = createResolver(import.meta);
+} from "./utils";
+const abs: DirResolver = createResolver(__dirname);
 
 mkdir(abs("./icons/"));
 cleanupDir(abs("./icons/"));

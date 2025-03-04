@@ -5,27 +5,27 @@ import "dotenv/config";
 import { parse } from "yaml";
 import _ from "lodash";
 
-import handlebarsHelpers from "./helpers.ts";
+import handlebarsHelpers from "./helpers";
 
 import {
   exists,
   readTextFile,
   pathResolve,
   createResolver,
-} from "../scripts/build/utils.ts";
-const rootDir: string = createResolver(import.meta)("../../");
+} from "../scripts/build/utils";
+const rootDir: string = createResolver(__dirname)("../../");
 
 function rootResolve(...paths: string[]): string {
   return pathResolve(rootDir, ...paths);
 }
 
 console.log("Getting packages info...");
-import "../scripts/build/packages.ts";
+import "../scripts/build/packages";
 
 // ---------------------------------------------------------------------------------------
 
 console.log("Building icons...");
-import "../scripts/build/icons.ts";
+import "../scripts/build/icons";
 
 // =======================================================================================
 
@@ -129,7 +129,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
 console.log("Finished processing links & URLs");
 
-import { updateSocialRedirects } from "../scripts/redirects.ts";
+import { updateSocialRedirects } from "../scripts/redirects";
 const socialRedirData = [] as any[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
@@ -186,8 +186,8 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-import ghLangsData from "../api/langs.json" with { type: "json" };
-import ghContribsData from "../api/contribs.json" with { type: "json" };
+import ghLangsData from "../api/langs.json";
+import ghContribsData from "../api/contribs.json";
 
 // =======================================================================================
 
