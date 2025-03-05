@@ -1,4 +1,5 @@
 import os
+import shutil
 import requests
 from typing import Optional, Any
 
@@ -25,3 +26,17 @@ def cleanup_dir(cleanup_path: str) -> None:
         ):
             print("Removing:", entry.name)
             os.remove(os.path.join(cleanup_path, entry.name))
+
+
+def cp(target: str, dest: str) -> None:
+    for item in os.listdir(target):
+        a: str = os.path.join(target, item)
+        b: str = os.path.join(dest, item)
+
+        if os.path.isdir(a):
+            if os.path.exists(b):
+                cp(a, b)
+            else:
+                shutil.copytree(a, b)
+        else:
+            shutil.copy2(a, b)
