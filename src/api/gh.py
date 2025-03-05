@@ -2,7 +2,7 @@ import os
 import sys
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 from dotenv import load_dotenv
 from utils import fetch_json, cleanup_dir, write_txt_file
@@ -23,7 +23,7 @@ user: str = "nndda"
 pat: str = os.getenv("GH_PAT")
 
 start_year: int = 2021
-current_time: int = int(datetime.utcnow().timestamp() * 1000)
+current_time: int = int(datetime.now(timezone.utc).timestamp() * 1000)
 
 gh_headers: dict[str, str] = {
   "Accept": "application/vnd.github+json",
@@ -197,7 +197,7 @@ def fetch_contribs_ranged(from_date: str = "", to_date: str = "") -> list[Any] |
 def fetch_contribs_all() -> list[Any] | None:
     all_contributions: list[Any] = []
 
-    for year in range(start_year, datetime.utcnow().year + 1):
+    for year in range(start_year, datetime.now(timezone.utc).year + 1):
         all_contributions.extend(fetch_contribs_ranged(
             f"{year}-01-01T00:00:00Z",
             f"{year}-12-31T23:59:59Z"
@@ -206,7 +206,7 @@ def fetch_contribs_all() -> list[Any] | None:
     return all_contributions[
         next((i for i, item in enumerate(all_contributions) if item['contributionCount'] > 0), None)
         :
-        next((i for i, item in enumerate(all_contributions) if item['date'] == datetime.utcnow().strftime('%Y-%m-%d')), len(all_contributions) - 1)
+        next((i for i, item in enumerate(all_contributions) if item['date'] == datetime.now(timezone.utc).strftime('%Y-%m-%d')), len(all_contributions) - 1)
         + 1
     ]
 
