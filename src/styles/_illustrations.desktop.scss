@@ -1,0 +1,12 @@
+#illustrations {
+  & > .section-inner {
+    padding-top: 2.5em;
+    column-count: 3;
+  }
+}
+
+.illust {
+  & > .title {
+    font-size: 1.1em;
+  }
+}

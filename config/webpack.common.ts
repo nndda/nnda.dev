@@ -1,4 +1,5 @@
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
+import webpack from "webpack";
 import type { Configuration, RuleSetRule } from "webpack";
 
 import CopyPlugin from "copy-webpack-plugin";
@@ -23,7 +24,7 @@ export function abs(path: string): string {
 
 export default {
   resolve: {
-    extensions: [".js", ".ts"],
+    extensions: [".js", ".ts", ".json"],
     alias: {
       "@fonts": abs("./node_modules/@fontsource/"),
       "@node_modules": abs("./node_modules/"),
@@ -60,10 +61,18 @@ export default {
     },
   } as HtmlBundlerPlugin.PluginOptions,
 
+  plugins: [
+  ] as unknown as webpack.DefinePlugin[],
+
   moduleRules: [
     {
       test: /\.ts$/,
-      use: "ts-loader",
+      use: {
+        loader: "ts-loader",
+        options: {
+          configFile: abs("./config/tsconfig.web.json"),
+        },
+      },
       exclude: /node_modules/,
     },
     {

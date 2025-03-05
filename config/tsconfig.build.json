@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+
+
+
+
+
+
+
+    "sourceMap": true,
+  },
+  "extends": "./tsconfig.base.json",
+  "include": [
+    "./build.d.ts",
+    "./webpack.dev.ts",
+    "./webpack.config.ts"
+  ],
+  "exclude": [
+    "../node_modules",
+    "./dist"
+  ]
+}

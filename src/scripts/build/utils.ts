@@ -24,9 +24,15 @@ export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNa
 }
 
 export function mv(pathFrom: string, pathTo: string): void {
-  fs.readdirSync(pathFrom).forEach(srcPath => {
-    fs.renameSync(path.resolve(pathFrom, srcPath), path.resolve(pathTo, srcPath));
-  });
+  if (fs.lstatSync(pathFrom).isDirectory()) {
+    const pathTarget: string = path.resolve(pathTo, path.basename(pathFrom));
+
+    fs.readdirSync(pathFrom).forEach(srcPath => {
+      mv(path.resolve(pathFrom, srcPath), pathTarget);
+    });
+  } else {
+    fs.renameSync(pathFrom, path.resolve(pathTo, path.basename(pathFrom)));
+  }
 }
 
 export function ls(whatPath: string): string[] {
@@ -55,26 +61,6 @@ export type DirResolver = (pathBase: string) => string;
 export function createResolver(pathBase: string): DirResolver {
   return pathString => path.resolve(pathBase, pathString);
 }
-
-// When I'm forced to use ESM again:
-
-// /* const abs: DirResolver = createResolverWithDir(import.meta); */
-
-// import { fileURLToPath } from "url";
-
-// export function getDir(importMeta: ImportMeta): string {
-//   return path.dirname(
-//     fileURLToPath(importMeta.url)
-//   );
-// }
-
-// export function createResolver(pathBase: string): DirResolver {
-//   return pathString => path.resolve(pathBase, pathString);
-// }
-
-// export function createResolverWithDir(importMeta: ImportMeta): DirResolver {
-//   return createResolver(getDir(importMeta));
-// }
 
 export async function fetchJSON(url: string, headers: HeadersInit | undefined = undefined) {
     const response = await fetch(url, {"headers": headers});

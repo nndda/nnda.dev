@@ -3,7 +3,7 @@
 import "dotenv/config";
 
 import { parse } from "yaml";
-import { merge } from "lodash";
+import _ from "lodash";
 
 import handlebarsHelpers from "./helpers";
 
@@ -33,7 +33,8 @@ type IconDefs = Record<string, string>; // icon slug, svg string
 
 // ---------------------------------------------------------------------------------------
 
-import siIconsRaw, { type SimpleIcon } from 'simple-icons';
+import * as siIconsRaw from "simple-icons";
+import { type SimpleIcon } from "simple-icons";
 
 export const siIcons: IconDefs = Object.keys(siIconsRaw).reduce(
   (acc, val) => {
@@ -80,7 +81,7 @@ function urlStr(url: string): string {
 console.log("Parsing site data...");
 
 const siteDataExt: string = rootResolve("site-config-ext.yaml");
-const siteData = merge(
+const siteData = _.merge(
   parse(readTextFile(rootResolve("site-config.yaml"))),
   exists(siteDataExt) ?
     parse(readTextFile(siteDataExt)) : {}
@@ -185,16 +186,8 @@ updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
-let ghLangsData = {};
-let ghContribsData = {};
-
-if (process.env.GH_PAT) {
-  ghLangsData = require("../api/langs.json");
-  ghContribsData = require("../api/contribs.json");
-}
-
-// import ghLangsData from "../api/langs.json" with { type: "json" };
-// import ghContribsData from "../api/contribs.json" with { type: "json" };
+import ghLangsData from "../api/langs.json";
+import ghContribsData from "../api/contribs.json";
 
 // =======================================================================================
 

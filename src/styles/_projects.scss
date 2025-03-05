@@ -2,8 +2,7 @@
 @use "sass:color";
 
 #projects {
-  padding-top: 4em;
-  padding-bottom: 5em;
+  padding-bottom: 3em;
 
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
@@ -17,14 +16,14 @@
     padding-bottom: 1em;
 
     margin: auto;
-    max-width: 1150px;
+    max-width: 1100px;
 
     z-index: 9;
   }
 
   & > .section-inner {
     margin: auto;
-    max-width: 1150px;
+    max-width: 1100px;
   }
 }
 

@@ -1,7 +1,7 @@
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import { type Configuration } from "webpack";
 
-import { merge } from "lodash";
+import _ from "lodash";
 import common from "./webpack.common";
 
 export default {
@@ -10,7 +10,9 @@ export default {
   resolve: common.resolve,
 
   plugins: [
-    new HtmlBundlerPlugin(merge(common.HtmlBundlerPluginConfig, { hotUpdate: true })),
+    ...common.plugins,
+
+    new HtmlBundlerPlugin(_.merge(common.HtmlBundlerPluginConfig, { hotUpdate: true })),
   ],
 
   devServer: {
@@ -28,6 +30,9 @@ export default {
       {
         test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
+        generator: {
+          filename: '[name].[hash:6][ext][query]',
+        },
       },
     ],
   },

@@ -1,14 +1,17 @@
+# Compiled, pre-build scripts and data
+**/*.js
+**/*.js.map
+**/*.json
+
 # Proprietary configs, and assets
+!config/**/*.json
 site-config-ext.yaml
 secret_*
+secret-*
 ext.zip
 TEMP/
 README.txt
 src/**/*---*
-
-# Compiled, pre-build scripts and data
-src/**/*.js
-src/**/*.json
 
 # Third party JavaScripts
 !src/scripts/vendor/*.js
@@ -36,3 +39,12 @@ node_modules/
 
 # dotenv environment variable file
 .env
+
+# Python ----------------------------------------------------------------------
+
+pyvenv.cfg
+bin
+lib
+lib64
+include
+**/*/__pycache__

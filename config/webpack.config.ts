@@ -1,7 +1,7 @@
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import { type Configuration } from "webpack";
 
-import { merge } from "lodash";
+import _ from "lodash";
 import common, { abs, copyToDist } from "./webpack.common";
 
 import CopyPlugin from "copy-webpack-plugin";
@@ -18,7 +18,9 @@ export default {
   resolve: common.resolve,
 
   plugins: [
-    new HtmlBundlerPlugin(merge(common.HtmlBundlerPluginConfig, {
+    ...common.plugins,
+
+    new HtmlBundlerPlugin(_.merge(common.HtmlBundlerPluginConfig, {
       js: {
         filename: "[contenthash:6].js",
       },
@@ -91,7 +93,7 @@ export default {
         test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: "[hash:2]/[hash:7][ext][query]",
+          filename: "[hash:6][ext][query]",
         },
       },
     ],

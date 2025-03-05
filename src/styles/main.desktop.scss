@@ -2,3 +2,18 @@
 @use "profile.desktop";
 @use "overview.desktop";
 @use "projects.desktop";
+@use "illustrations.desktop";
+
+body {
+  & > main {
+    & > section {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+  }
+}
+
+#projects {
+  padding-top: 2.5em;
+  padding-bottom: 5em;
+}
