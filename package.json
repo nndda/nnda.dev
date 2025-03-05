@@ -10,7 +10,7 @@
     "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
     "lint-scripts": "eslint --config ./config/eslint.config.mjs .",
     "fetch-gh": "python ./src/api/gh.py",
-    "fetch-data-ext": "ts-node ./src/views/data-ext.ts"
+    "fetch-data-ext": "python ./src/api/data-ext.py"
   },
   "repository": {
     "type": "git",
