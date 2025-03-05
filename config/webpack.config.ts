@@ -93,7 +93,7 @@ export default {
         test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: "[hash:2]/[hash:7][ext][query]",
+          filename: "[hash:6][ext][query]",
         },
       },
     ],
