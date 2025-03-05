@@ -31,9 +31,10 @@ My personal static site. (Almost) vanilla, framework-free, modular, &amp; backen
 
 - [x] Author profile section
   - [x] GitHub activity summary 
-- [ ] Projects showcase
+- [x] Projects showcase
   - [ ] Browse feature
-- [ ] Illustrations & artworks gallery
+- [x] Illustrations & artworks gallery
+  - [ ] Browse feature
 - [ ] Blogs &amp; articles
   - [ ] Comments system
 - [x] Dedicated social links section
