@@ -7,6 +7,10 @@ My personal static site. (Almost) vanilla, framework-free, modular, &amp; backen
   <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/nodedotjs/1f2328">
 </picture>
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/python/d6dce2">
+  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/python/1f2328">
+</picture>
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/webpack/d6dce2">
   <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/webpack/1f2328">
 </picture>
