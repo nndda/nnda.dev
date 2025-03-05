@@ -4,7 +4,7 @@
   "description": "nnda's personal website",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --port 9000",
-    "build": "npm run fetch-gh && npm run fetch-data-ext && webpack --no-devtool --config ./config/webpack.config.js",
+    "build": "npm run compile-configs && npm run fetch-gh && npm run fetch-data-ext && webpack --no-devtool --config ./config/webpack.config.js",
     "compile-configs": "tsc --project ./config/tsconfig.build.json",
     "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
     "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
