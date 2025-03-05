@@ -1,7 +1,6 @@
 import _ from "lodash";
 import {
   writeTextFile,
-  cleanupDir,
   createResolver,
   type DirResolver
 } from "./utils";
