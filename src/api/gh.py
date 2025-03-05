@@ -12,7 +12,7 @@ load_dotenv()
 
 if not os.getenv("GH_PAT"):
     print("Error: GH_PAT is not set", file=sys.stderr)
-    sys.exit(1)
+    sys.exit(0)
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
