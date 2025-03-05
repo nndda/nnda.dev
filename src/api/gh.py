@@ -15,7 +15,7 @@ if not os.getenv("GH_PAT"):
     sys.exit(0)
 
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir: str = os.path.dirname(os.path.abspath(__file__))
 cleanup_dir(script_dir)
 
 
@@ -175,7 +175,7 @@ write_txt_file(os.path.join(script_dir, "langs.json"), json.dumps(lang_data["fro
 print("Fetching GitHub contributions data...")
 
 def fetch_contribs_ranged(from_date: str = "", to_date: str = "") -> list[Any] | None:
-    response = requests.post(
+    response: requests.Response = requests.post(
         "https://api.github.com/graphql",
         headers={
             "Content-Type": "application/json",
