@@ -17,14 +17,6 @@ function clamp(num: number, min: number, max: number): number {
 
 function updateIllustHeight(): void {
   elements.forEach(el => {
-    // const
-    //   height: number = parseInt(el.getAttribute("data-height") || "")
-    // , width: number = parseInt(el.getAttribute("data-width") || "")
-    // ;
-
-    // el.style.height = `${height}px`;
-    // el.style.width = `${width}px`;
-
     (el.parentElement as HTMLElement).style.height = `${el.clientHeight * scrollOffset}px`;
     el.style.top = `-${el.clientHeight * scrollOffsetV}px`;
   });

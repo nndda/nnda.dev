@@ -1,19 +1,20 @@
 export function initScroll(d: Document) {
   const
-    header: HTMLElement = d.querySelector("body > header") as HTMLElement,
+    header: HTMLElement = d.querySelector("body > header") as HTMLElement
 
-    sections: HTMLElement[] = [
+  , sections: HTMLElement[] = [
       d.getElementById("projects"),
       d.getElementById("illustrations"),
-    ] as HTMLElement[],
+    ] as HTMLElement[]
 
-    navLinksClass: DOMTokenList[] = Array.from(
+  , navLinksClass: DOMTokenList[] = Array.from(
       d.querySelectorAll(".scrollspy")
-    ).map(n => n.classList),
+    ).map(n => n.classList)
 
-    mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement;
+  , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
+  ;
 
-  let scrollPosition: number;
+  let scrollPosition: number = 0;
 
   function deactivateLinks(): void {
     navLinksClass.forEach(n => n.remove("active"));

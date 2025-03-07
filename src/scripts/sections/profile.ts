@@ -1,17 +1,16 @@
 import "../build/icons/profile";
 
 const
-  timezoneClock: HTMLElement = document.getElementById("clock-timezone") as HTMLElement,
-  timezoneOpt: Intl.DateTimeFormatOptions = {
-    timeZone: timezoneClock.getAttribute("data-timezone") ?? "Asia/Jakarta",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
+  timezoneClock: HTMLElement = document.getElementById("clock-timezone") as HTMLElement
+, timezoneOpt: Intl.DateTimeFormatOptions = {
+    timeZone: timezoneClock.getAttribute("data-timezone") || "Asia/Jakarta",
     hour12: false,
-  };
+  }
+;
 
 function updateClock(): void {
-  timezoneClock.textContent = new Intl.DateTimeFormat([], timezoneOpt).format(new Date());
+  timezoneClock.textContent = new Date().toLocaleTimeString("en-US", timezoneOpt);
 }
 
+updateClock();
 setInterval(updateClock, 1e3);
