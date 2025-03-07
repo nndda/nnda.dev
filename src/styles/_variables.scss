@@ -69,3 +69,34 @@ $text-secondary: color.mix($text, $background, 80%);
     }
   }
 }
+
+// BACKGROUNDS
+
+@mixin diagonal-stripes(
+  $color-a,
+  $color-b,
+  $width,
+  $spacing,
+) {
+  background: repeating-linear-gradient(
+    45deg,
+    $color-a, $color-a $width,
+    $color-b $width,
+    $color-b $width + $spacing
+  );
+}
+
+@mixin polka-dots(
+  $color,
+  $background,
+  $dot-size,
+  $cell-size,
+  $offset: $cell-size * .5,
+) {
+  background:
+    radial-gradient(circle, $color $dot-size, transparent $dot-size) 0 0,
+    radial-gradient(circle, $color $dot-size, transparent $dot-size) $offset $offset;
+
+  background-color: $background;
+  background-size: $cell-size $cell-size;
+}
