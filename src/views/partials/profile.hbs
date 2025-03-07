@@ -3,7 +3,7 @@
     <div class="section-inner">
       <div class="info-container">
         <div class="pfp-cont">
-          <div class="profile-pict anim fade float-up">
+          <div class="profile-pict anim once fade float-up">
             {{ img "/assets/avatar.webp" }}
             <div class="status">
               <span>{{site.authorProfile.status.icon}}</span>
@@ -11,42 +11,42 @@
             </div>
           </div>
         </div>
-        <div class="name-cont anim fade float-right">
+        <div class="name-cont anim once fade float-right">
           <h1 class="name">
             {{site.author}}
           </h1>
         </div>
-        <div class="desc-cont anim fade float-up">
+        <div class="desc-cont anim once fade float-up">
           <p class="about">
             {{{site.authorProfile.description}}}
           </p>
         </div>
         <ul class="user-metadata nostyle">
-          <li class="icon-text anim">
+          <li class="icon-text anim once">
             {{{icon "profile" "volume-high"}}}
             <span>
               {{{site.authorProfile.pronunciation}}}
             </span>
           </li>
-          <li class="icon-text anim">
+          <li class="icon-text anim once">
             {{{icon "profile" "user-tag"}}}
             <span>
               {{{site.authorProfile.pronouns}}}
             </span>
           </li>
-          <li class="icon-text anim">
+          <li class="icon-text anim once">
             {{{icon "global" "clock"}}}
             <span id="clock-timezone" data-timezone="{{site.authorProfile.timezone}}">
               00:00:00
             </span>
           </li>
-          <li class="icon-text anim">
+          <li class="icon-text anim once">
             {{{icon "profile" "location-dot"}}}
             <span>
               {{{site.authorProfile.location}}}
             </span>
           </li>
-          <li class="icon-text anim">
+          <li class="icon-text anim once">
             {{{icon "profile" "language"}}}
             <span>
               {{{site.authorProfile.languages}}}
