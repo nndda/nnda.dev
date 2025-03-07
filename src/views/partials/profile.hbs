@@ -4,7 +4,9 @@
       <div class="info-container">
         <div class="pfp-cont">
           <div class="profile-pict anim once fade float-up">
-            {{ img "/assets/avatar.webp" }}
+            <div class="img-cont">
+              {{ img "/assets/avatar.webp" }}
+            </div>
             <div class="status">
               <span>{{site.authorProfile.status.icon}}</span>
               {{site.authorProfile.status.text}}

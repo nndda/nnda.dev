@@ -1,6 +1,10 @@
 #profile {
   & .info-container {
-    grid-template-columns: 10em auto;
+    grid-template-columns: auto 1fr;
+  }
+
+  & .name-cont {
+    margin-left: 2em;
   }
 
   & .desc-cont {
@@ -14,8 +18,8 @@
 }
 
 .profile-pict {
-  & > img {
-    width: 9em;
-    height: 9em;
+  & > .img-cont > img {
+    width: 11em;
+    height: 11em;
   }
 }
