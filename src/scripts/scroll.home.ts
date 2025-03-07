@@ -12,9 +12,18 @@ export function initScroll(d: Document) {
     ).map(n => n.classList)
 
   , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
+
+  , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
   ;
 
   let scrollPosition: number = 0;
+
+  backTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 
   function deactivateLinks(): void {
     navLinksClass.forEach(n => n.remove("active"));
@@ -24,6 +33,7 @@ export function initScroll(d: Document) {
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
 
     header.classList.toggle("active", scrollPosition > window.innerHeight);
+    backTop.classList.toggle("active", scrollPosition > window.innerHeight);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {
