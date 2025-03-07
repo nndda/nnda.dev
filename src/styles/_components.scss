@@ -16,6 +16,7 @@
 .card {
   padding: 1em;
   background: $background;
+  border: 1px solid rgba($text-secondary, 8.5%);
   border-radius: 6px;
 
   @include shadow-black;

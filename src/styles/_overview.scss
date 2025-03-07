@@ -45,8 +45,8 @@
     // }
 
     & .c {
-      height: .8em;
-      width: .8em;
+      height: .7em;
+      width: .7em;
       padding: 0;
       margin: 0;
       background: color.mix($text, $background-light, 3%);
@@ -76,6 +76,7 @@
   & .inner {
     position: relative;
     min-height: 150px;
+    padding: .8em;
     overflow-x: auto;
 
     & > .icon-bg {

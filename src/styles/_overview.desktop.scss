@@ -5,6 +5,10 @@
   justify-content: center;
 
   & > .controls {
+    & button {
+      margin: 0;
+    }
+
     & > .inner {
       padding-top: .5em;
     }
