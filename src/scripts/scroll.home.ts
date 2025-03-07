@@ -1,19 +1,29 @@
 export function initScroll(d: Document) {
   const
-    header: HTMLElement = d.querySelector("body > header") as HTMLElement,
+    header: HTMLElement = d.querySelector("body > header") as HTMLElement
 
-    sections: HTMLElement[] = [
+  , sections: HTMLElement[] = [
       d.getElementById("projects"),
       d.getElementById("illustrations"),
-    ] as HTMLElement[],
+    ] as HTMLElement[]
 
-    navLinksClass: DOMTokenList[] = Array.from(
+  , navLinksClass: DOMTokenList[] = Array.from(
       d.querySelectorAll(".scrollspy")
-    ).map(n => n.classList),
+    ).map(n => n.classList)
 
-    mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement;
+  , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
 
-  let scrollPosition: number;
+  , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
+  ;
+
+  let scrollPosition: number = 0;
+
+  backTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 
   function deactivateLinks(): void {
     navLinksClass.forEach(n => n.remove("active"));
@@ -23,6 +33,7 @@ export function initScroll(d: Document) {
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
 
     header.classList.toggle("active", scrollPosition > window.innerHeight);
+    backTop.classList.toggle("active", scrollPosition > window.innerHeight);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {

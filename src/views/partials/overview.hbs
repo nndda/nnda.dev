@@ -7,8 +7,11 @@
 
   <div class="section-inner">
     <div class="commits">
-      <div class="controls anim fade float-up">
+      <div class="controls anim once fade float-up">
         <div class="section-title-sub">-</div>
+        <div class="inner bg-scroll">
+        </div>
+{{!-- 
         <ul class="inner nostyle card">
           <li>
             <button class="icon-only blank">{{{icon "overview" "calendar"}}}</button>
@@ -20,8 +23,9 @@
             <button class="icon-only blank">{{{icon "global" "github"}}}</button>
           </li>
         </ul>
+ --}}
       </div>
-      <div class="calendar-container anim fade float-up">
+      <div class="calendar-container anim once fade float-up">
         <div class="section-title-sub">
             Contribution Graph
         </div>
@@ -31,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="stats anim fade float-up">
+      <div class="stats anim once fade float-up">
         <div class="section-title-sub">
             Stats
         </div>
@@ -71,12 +75,12 @@
       </div>
     </div>
     <div class="languages">
-      <div class="section-title-sub anim fade float-right">
+      <div class="section-title-sub anim once fade float-right">
           Most Used Languages
       </div>
       <div class="languages-container">
         {{#each ghLangs}}
-          <div class="lang anim" style="width: {{this.percent}}%">
+          <div class="lang anim once" style="width: {{this.percent}}%">
             <div class="box">|</div>
             <code><b>{{this.percent}}%</b></code>
             <div class="icon-text">

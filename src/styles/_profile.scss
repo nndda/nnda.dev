@@ -67,8 +67,36 @@
 .profile-pict {
   position: relative;
 
-  & > img, & > div {
-    border-radius: 24px;
+  & > .img-cont {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+
+    & > img, & > div {
+      border-radius: 24px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      border-radius: 21%;
+      z-index: -1;
+
+      transform-origin: bottom right;
+      transform: translate(1em, 1em) scale(.65);
+
+      @include polka-dots(
+        rgba($text-secondary, .6),
+        transparent,
+        20%,
+        12%,
+      );
+    }
   }
 
   & .status {

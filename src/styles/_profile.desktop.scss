@@ -1,6 +1,6 @@
 #profile {
   & .info-container {
-    grid-template-columns: 14.5em auto;
+    grid-template-columns: 15em auto;
     grid-template-rows: minmax(3em, .95fr) auto auto;
   }
 
@@ -10,7 +10,7 @@
 }
 
 .profile-pict {
-  & > img {
+  & > .img-cont > img {
     width: 12em;
     height: 12em;
   }

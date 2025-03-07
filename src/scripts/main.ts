@@ -6,7 +6,7 @@ import { initializeAnimations } from "./animations";
 //   msDay: number = msHr * 24; // 86400000
 
 function getLastUpdated(date: Date): string {
-  const hours: number = Math.floor(((new Date().getTime() - date.getTime()) % 864e5) / 36e5);
+  const hours: number = Math.floor((Date.now() - date.getTime()) / 36e5);
 
   return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
 };
@@ -15,19 +15,20 @@ export function init(d: Document): void {
   initializeAnimations(d);
 
   const
-    navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement,
-    navbarButton: HTMLElement = d.getElementById("navbar-button") as HTMLButtonElement,
-    navbarCollapseArea: HTMLElement = d.getElementById("collapse-trigger-area") as HTMLElement,
+    navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement
+  , navbarButton: HTMLElement = d.getElementById("navbar-button") as HTMLButtonElement
+  , navbarCollapseArea: HTMLElement = d.getElementById("collapse-trigger-area") as HTMLElement
 
-    lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement,
-    lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string);
+  , lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
+  , lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
+  ;
 
   function updateClock(): void {
     lastUpdateLabel.textContent = getLastUpdated(lastUpdateDate);
   }
 
   updateClock();
-  setInterval(updateClock, 3e5);
+  setInterval(updateClock, 5e5);
 
   function toggleNavMobile(): void {
     navbarMobile.classList.toggle("collapsed");
