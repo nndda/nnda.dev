@@ -1,16 +1,26 @@
+@use "variables" as *;
+
 .commits {
   display: grid;
-  grid-template-columns: auto 68% 25%;
-  grid-gap: 1.1em;
+  grid-template-columns: auto 64% 25%;
+  grid-gap: 1.5em;
   justify-content: center;
 
   & > .controls {
-    & button {
-      margin: 0;
-    }
+    margin-right: .3em;
 
     & > .inner {
+      height: 75%;
+
       padding-top: .5em;
+
+      @include diagonal-stripes(
+        rgba($text-secondary, .5),
+        // $tertiary,
+        transparent,
+        .2em,
+        .6em,
+      );
     }
   }
 }
