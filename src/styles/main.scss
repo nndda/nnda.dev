@@ -95,8 +95,8 @@ body {
 .cta-container {
   position: absolute;
   display: flex;
-  margin-right: 1em;
-  margin-bottom: 1em;
+  margin-right: 1.6em;
+  margin-bottom: 1.6em;
 
   & > small {
     margin-right: 1em;
@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 
   overflow: hidden;
-
+  backdrop-filter: blur(.6em);
   transition: ease .5s;
 
   & > svg {
@@ -268,10 +268,11 @@ body {
   .cta-container {
     flex-direction: column;
     margin: 0;
+    margin-bottom: 1.6em;
 
     & > small {
       margin-right: 0;
-      margin-bottom: 1em;
+      margin-bottom: 1.2em;
       text-align: center;
     }
   }
