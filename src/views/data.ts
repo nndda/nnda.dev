@@ -6,6 +6,7 @@ import { execSync } from "child_process";
 
 import { parse } from "yaml";
 import _ from "lodash";
+import cronParser from "cron-parser";
 
 import handlebarsHelpers from "./helpers";
 
@@ -20,6 +21,8 @@ const rootDir: string = createResolver(__dirname)("../../");
 function rootResolve(...paths: string[]): string {
   return pathResolve(rootDir, ...paths);
 }
+
+const currentDate: Date = new Date();
 
 console.log("Getting packages info...");
 import "../scripts/build/packages";
@@ -247,13 +250,18 @@ export default {
     },
   ],
 
-  buildTimetamp: new Date(),
+  buildTimetamp: currentDate,
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA.substring(0, 16),
 
+  nextUpdateDate: cronParser.parse(
+    "0 */12 * * *", // Match GH Actions cron deploy
+    { currentDate: currentDate },
+  ).next().toDate(),
+
   releaseDate: lastPublished,
 
-  year: new Date().getFullYear(),
+  year: currentDate.getFullYear(),
 
   ghLangs: ghLangsData,
   ghContribs: ghContribsData,
