@@ -112,8 +112,8 @@ try {
   );
   lastPublished = new Date(dateStr);
 
-} catch(_err) {
-  console.log(`Unable to get the commit date for: ${commitSHA}`);
+} catch(err) {
+  console.log(`Error: ${err} \nUnable to get the commit date for: ${commitSHA}`);
   lastPublished = new Date();
 }
 
