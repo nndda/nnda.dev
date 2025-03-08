@@ -115,11 +115,19 @@
         class="project card anim once"
         {{!-- data-project-cat="{{this.category}}" --}}
         {{!-- data-project-tags="{{this.tags}}" --}}
-        {{#if this.image}}
-          style="--img-bg: url({{this.image}});"
-        {{/if}}
       >
-        <div class="project-title">
+        {{#if this.image}}
+          <div class="project-image">
+            {{img this.image}}
+          </div>
+        {{/if}}
+
+        <div class="
+          project-title
+          {{#if this.image}}
+            with-image
+          {{/if}}
+          ">
           <a href="{{this.url}}"
             target="_blank"
             rel="noopener noreferrer"
