@@ -1,6 +1,8 @@
 export function initScroll(d: Document) {
   const
-    header: HTMLElement = d.querySelector("body > header") as HTMLElement
+    documentWindow: Window = document.defaultView as Window
+
+  , headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
 
   , sections: HTMLElement[] = [
       d.getElementById("projects"),
@@ -16,24 +18,32 @@ export function initScroll(d: Document) {
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
   ;
 
-  let scrollPosition: number = 0;
+  let
+    scrollPosition: number = 0
+  , toggleHeader: boolean = false
+  ;
 
   backTop.addEventListener("click", () => {
-    window.scrollTo({
+    documentWindow.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   });
 
+  function deactivateClass(classes: DOMTokenList): void {
+    classes.remove("active")
+  }
+
   function deactivateLinks(): void {
-    navLinksClass.forEach(n => n.remove("active"));
+    navLinksClass.forEach(deactivateClass);
   }
 
   function scrollEv(): void {
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
+    toggleHeader = scrollPosition > documentWindow.innerHeight;
 
-    header.classList.toggle("active", scrollPosition > window.innerHeight);
-    backTop.classList.toggle("active", scrollPosition > window.innerHeight);
+    headerClasses.toggle("active", toggleHeader);
+    backTop.classList.toggle("active", toggleHeader);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {
@@ -52,5 +62,5 @@ export function initScroll(d: Document) {
 
   scrollEv();
 
-  window.addEventListener("scroll", scrollEv);
+  documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 }

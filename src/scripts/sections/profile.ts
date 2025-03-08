@@ -3,7 +3,7 @@ import "../build/icons/profile";
 const
   timezoneClock: HTMLElement = document.getElementById("clock-timezone") as HTMLElement
 , timezoneOpt: Intl.DateTimeFormatOptions = {
-    timeZone: timezoneClock.getAttribute("data-timezone") || "Asia/Jakarta",
+    timeZone: timezoneClock.getAttribute("data-timezone") as string,
     hour12: false,
   }
 ;
