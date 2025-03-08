@@ -8,11 +8,16 @@
 
 <meta name="author" content="{{ site.author }}">
 
+<link rel="preload" as="style" href="/styles/critical.scss">
+<link rel="preload" as="style" href="/styles/main.scss">
+
 {{ stylesheet "/styles/critical.scss" "" }}
 {{ stylesheet "/styles/main.scss" "" }}
 
 {{ stylesheet "/styles/main.desktop.scss" "(min-width: 700px)" }}
 {{ stylesheet "/styles/main.mobile.scss" "(max-width: 700px)" }}
+
+<link rel="preload" as="script" href="/scripts/critical.ts">
 
 {{ script "/scripts/critical.ts" false }}
 
