@@ -1,5 +1,7 @@
 const
-  elements: NodeListOf<HTMLElement> = document.querySelectorAll("#illustrations .img > *")
+  documentWindow: Window = document.defaultView as Window
+
+, elements: NodeListOf<HTMLElement> = document.querySelectorAll("#illustrations .img > *")
 , easedRatios: Map<HTMLElement, number> = new Map()
 , targetRatios: Map<HTMLElement, number> = new Map()
 , scrollOffset: number = .8
@@ -24,16 +26,24 @@ function updateIllustHeight(): void {
 
 updateIllustHeight();
 
+function updateEasedRatios(el: HTMLElement): void {
+  let easedRatio: number = easedRatios.get(el) ?? 0;
+
+  easedRatio += ((targetRatios.get(el) ?? 0) - easedRatio) * 0.1;
+  easedRatios.set(el, clamp(easedRatio, -1, 1));
+  el.style.transform = `translateY(${clamp(easedRatio, -1, 1) * (el.clientHeight * scrollOffsetV)}px)`;
+}
+
+function filterEasedRatios(el: HTMLElement): boolean {
+  return Math.abs(
+    (easedRatios.get(el) ?? 0) - (targetRatios.get(el) ?? 0)
+  ) > 0.001
+}
+
 function updateIllustScroll(): void {
-  elements.forEach(el => {
-    let easedRatio: number = easedRatios.get(el) ?? 0;
+  elements.forEach(updateEasedRatios);
 
-    easedRatio += ((targetRatios.get(el) ?? 0) - easedRatio) * 0.1;
-    easedRatios.set(el, clamp(easedRatio, -1, 1));
-    el.style.transform = `translateY(${clamp(easedRatio, -1, 1) * (el.clientHeight * scrollOffsetV)}px)`;
-  });
-
-  if ([...targetRatios.keys()].some(el => Math.abs((easedRatios.get(el) ?? 0) - (targetRatios.get(el) ?? 0)) > 0.001)) {
+  if ([...targetRatios.keys()].some(filterEasedRatios)) {
     requestAnimationFrame(updateIllustScroll);
   } else {
     ticking = false;
@@ -42,20 +52,22 @@ function updateIllustScroll(): void {
 
 updateIllustScroll();
 
-window.addEventListener("scroll", () => {
-  elements.forEach(el => {
-    const rect: DOMRect = el.getBoundingClientRect();
+function updateTargetRatios(el: HTMLElement): void {
+  const rect: DOMRect = el.getBoundingClientRect();
 
-    targetRatios.set(el, 1 - ((rect.top + rect.height * .5) / window.innerHeight) * 2);
-  });
+  targetRatios.set(el, 1 - ((rect.top + rect.height * .5) / documentWindow.innerHeight) * 2);
+}
+
+function scrollEv(): void {
+  elements.forEach(updateTargetRatios);
 
   if (!ticking) {
     ticking = true;
     requestAnimationFrame(updateIllustScroll);
   }
-});
+}
+
+documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 
 // TODO: optimize this
-window.addEventListener("resize", () => {
-  updateIllustHeight();
-});
+documentWindow.addEventListener("resize", updateIllustHeight);

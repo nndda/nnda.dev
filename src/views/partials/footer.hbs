@@ -17,7 +17,7 @@
           </a>
           <br>
           <small>
-            source code only
+            Source code only
           </small>
         </span>
       </div>
@@ -35,6 +35,11 @@
           >
             {{buildCommitSHA}}
           </a>
+          <br>
+          <small>
+            Last published
+            <abbr id="last-published-label" title="{{releaseDate}}"></abbr>
+          </small>
         </span>
       </div>
       {{/if}}
@@ -44,6 +49,11 @@
         <span>
           Last updated
           <abbr id="last-updated-label" title="{{buildTimetamp}}"></abbr>
+          <br>
+          <small>
+            Next update in
+            <abbr id="next-update-label" title="{{nextUpdateDate}}"></abbr>
+          </small>
         </span>
       </div>
 

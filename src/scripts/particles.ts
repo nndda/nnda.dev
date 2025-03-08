@@ -1,4 +1,4 @@
-import { tsParticles } from "@tsparticles/engine";
+import { tsParticles, type Container } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 import { loadEmittersPlugin } from "@tsparticles/plugin-emitters";
 import { loadFireflyPreset } from "@tsparticles/preset-firefly";
@@ -127,4 +127,39 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
       autoPlay: true,
     },
   });
+
+  const
+    particlesDomItem: Container = tsParticles.domItem(0) as Container
+  , documentWindow: Window = document.defaultView as Window
+  ;
+
+  let
+    isPaused: boolean = false
+  , ticking: boolean = false
+  ;
+
+  function updateState(): void {
+    if (documentWindow.scrollY > 620) {
+
+      if (!isPaused) {
+        particlesDomItem.pause();
+        isPaused = true;
+      }
+
+    } else if (isPaused) {
+      particlesDomItem.play();
+      isPaused = false;
+    }
+
+    ticking = false;
+  }
+
+  function scrollEv(): void {
+    if (!ticking) {
+      requestAnimationFrame(updateState);
+      ticking = true;
+    }
+  }
+
+  documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 })();

@@ -4,7 +4,7 @@ export function initializeAnimations(d: Document): void {
     threshold: 0,
   };
 
-  if (d.defaultView?.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+  if ((d.defaultView as Window).matchMedia("(prefers-reduced-motion: no-preference)").matches) {
     const observerScrollAnim = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           entry.target.classList.toggle("on", entry.isIntersecting);

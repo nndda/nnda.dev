@@ -2,8 +2,11 @@
 
 import "dotenv/config";
 
+import { execSync } from "child_process";
+
 import { parse } from "yaml";
 import _ from "lodash";
+import cronParser from "cron-parser";
 
 import handlebarsHelpers from "./helpers";
 
@@ -18,6 +21,8 @@ const rootDir: string = createResolver(__dirname)("../../");
 function rootResolve(...paths: string[]): string {
   return pathResolve(rootDir, ...paths);
 }
+
+const currentDate: Date = new Date();
 
 console.log("Getting packages info...");
 import "../scripts/build/packages";
@@ -95,8 +100,22 @@ const repoURL = urlStr(siteData.repoURL);
 const commitSHA = (
   process.env.CF_PAGES_COMMIT_SHA ??
   process.env.COMMIT_SHA ??
-  ""
+  "12345abcdef"
 );
+
+let lastPublished: Date;
+
+try {
+  const dateStr: string = execSync(
+    `git --no-pager log -1 --format=%cd --date=iso ${commitSHA}`,
+    { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+  );
+  lastPublished = new Date(dateStr);
+
+} catch(err) {
+  console.log(`Error: ${err} \nUnable to get the commit date for: ${commitSHA}`);
+  lastPublished = new Date();
+}
 
 console.log("Processing links & URLs...");
 
@@ -231,11 +250,18 @@ export default {
     },
   ],
 
-  buildTimetamp: new Date(),
+  buildTimetamp: currentDate,
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA.substring(0, 16),
 
-  year: new Date().getFullYear(),
+  nextUpdateDate: cronParser.parse(
+    "0 */12 * * *", // Match GH Actions cron deploy
+    { currentDate: currentDate },
+  ).next().toDate(),
+
+  releaseDate: lastPublished,
+
+  year: currentDate.getFullYear(),
 
   ghLangs: ghLangsData,
   ghContribs: ghContribsData,
