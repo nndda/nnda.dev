@@ -2,6 +2,8 @@
 
 import "dotenv/config";
 
+import { execSync } from "child_process";
+
 import { parse } from "yaml";
 import _ from "lodash";
 
@@ -95,8 +97,22 @@ const repoURL = urlStr(siteData.repoURL);
 const commitSHA = (
   process.env.CF_PAGES_COMMIT_SHA ??
   process.env.COMMIT_SHA ??
-  ""
+  "12345abcdef"
 );
+
+let lastPublished: Date;
+
+try {
+  const dateStr: string = execSync(
+    `git --no-pager log -1 --format=%cd --date=iso ${commitSHA}`,
+    { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
+  );
+  lastPublished = new Date(dateStr);
+
+} catch(err) {
+  console.log(`Unable to get the commit date for: ${commitSHA}`);
+  lastPublished = new Date();
+}
 
 console.log("Processing links & URLs...");
 
@@ -234,6 +250,8 @@ export default {
   buildTimetamp: new Date(),
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA.substring(0, 16),
+
+  releaseDate: lastPublished,
 
   year: new Date().getFullYear(),
 

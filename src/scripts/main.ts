@@ -5,10 +5,22 @@ import { initializeAnimations } from "./animations";
 //   msHr: number = 1e3 * 60 * 60, // 3600000
 //   msDay: number = msHr * 24; // 86400000
 
-function getLastUpdated(date: Date): string {
+function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((Date.now() - date.getTime()) / 36e5);
 
   return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
+};
+
+function getLastUpdatedDays(date: Date): string {
+  const
+    ms: number = Date.now() - date.getTime()
+  , days: number = Math.floor(ms / 864e5)
+  , hours: number = Math.floor((ms % 864e5) / 36e5)
+  ;
+
+  return days <= 0
+    ? (hours <= 0 ? "less than an hour ago" : `${hours} hours ago`)
+    : `${days} days, ${hours} hours ago`;
 };
 
 export function init(d: Document): void {
@@ -21,10 +33,14 @@ export function init(d: Document): void {
 
   , lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
   , lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
+
+  , lastPublishLabel: HTMLElement = d.getElementById("last-published-label") as HTMLElement
+  , lastPublishDate: Date = new Date(lastPublishLabel.getAttribute("title") as string)
   ;
 
   function updateClock(): void {
-    lastUpdateLabel.textContent = getLastUpdated(lastUpdateDate);
+    lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
+    lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
   }
 
   updateClock();
