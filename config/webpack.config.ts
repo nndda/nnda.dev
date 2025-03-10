@@ -82,6 +82,7 @@ export default {
         copyToDist("misc/_redirects"),
         copyToDist("misc/ai.txt"),
         copyToDist("misc/robots.txt"),
+        copyToDist("assets/NNDA_ASSET_LICENSE.txt"),
       ],
     }),
   ],
