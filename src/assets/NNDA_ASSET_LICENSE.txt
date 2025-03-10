@@ -1,0 +1,16 @@
+- nnda's Asset Pack License v1 -
+
+By purchasing, downloading, or using this asset pack, you are agree to the following license:
+
+✅ You are allowed to:
+- Use the assets in non-commercial and comercial project, including games, artworks, or other creative means.
+- Edit, modify, or build upon the assets.
+
+🚫 You are not allowed to:
+- Resell, repackage, or redistribute the assets, even if modified.
+- Use the assets to train AI models.
+- Use the assets for NFT or crypto projects.
+
+Credit/attribution is not necessary, but greatly appreciated. If you'd like to credit me, use my itch.io username 'nnda', and link to the one of the following:
+  - nnda.itch.io
+  - nnda.pages.dev
