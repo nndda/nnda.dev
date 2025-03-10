@@ -1,3 +1,4 @@
+import packageJSON from "./build/packages.json" with { type: "json" };
 import { initializeInputs } from "./input";
 import { initializeAnimations } from "./animations";
 
@@ -33,9 +34,11 @@ export function init(d: Document): void {
   initializeAnimations(d);
 
   const
+
     navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement
   , navbarButton: HTMLElement = d.getElementById("navbar-button") as HTMLButtonElement
   , navbarCollapseArea: HTMLElement = d.getElementById("collapse-trigger-area") as HTMLElement
+
 
   , lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
   , lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
@@ -46,6 +49,35 @@ export function init(d: Document): void {
   , nextUpdateLabel: HTMLElement = d.getElementById("next-update-label") as HTMLElement
   , nextUpdateDate: Date = new Date(nextUpdateLabel.getAttribute("title") as string)
   ;
+  ;
+
+  function toggleNavMobile(): void {
+    navbarMobile.classList.toggle("collapsed");
+    navbarCollapseArea.classList.toggle("hidden");
+  }
+
+  navbarMobile.querySelectorAll(".nav-link").forEach(el => {
+    el.addEventListener("click", toggleNavMobile);
+  });
+
+  navbarButton.addEventListener("click", toggleNavMobile);
+  navbarCollapseArea.addEventListener("click", toggleNavMobile);
+
+
+  initializeInputs(d);
+
+
+  d.querySelector("footer>.packages>.inner")!.innerHTML =
+    (packageJSON as string[]).map(pkg => {
+      const pkgName: string = pkg.slice(0, -5);
+      return `<a
+href="https://www.npmjs.com/package/${pkgName}"
+target="_blank"
+rel="nofollow noopener noreferrer"
+referrerpolicy="no-referrer"
+class="${pkg.slice(-5)}"> ${pkgName} </a>`;
+    }).join("");
+
 
   function updateClock(): void {
     lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
@@ -54,19 +86,5 @@ export function init(d: Document): void {
   }
 
   updateClock();
-  setInterval(updateClock, 5e5);
-
-  function toggleNavMobile(): void {
-    navbarMobile.classList.toggle("collapsed");
-    navbarCollapseArea.classList.toggle("hidden");
-  }
-
-  navbarMobile.querySelectorAll(".nav-link").forEach((elem) => {
-    elem.addEventListener("click", toggleNavMobile);
-  });
-
-  navbarButton.addEventListener("click", toggleNavMobile);
-  navbarCollapseArea.addEventListener("click", toggleNavMobile);
-
-  initializeInputs(d);
+  setInterval(updateClock, 1e6);
 }
