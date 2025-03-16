@@ -31,7 +31,7 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
 
           speed: {
             min: .5,
-            max: 1.5,
+            max: 1.7,
           },
 
           // trail: {
@@ -46,10 +46,10 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
         },
 
         number: {
-          value: 26,
+          value: 26 + 5,
 
           limit: {
-            value: 26,
+            value: 26 + 5,
             mode: "wait",
           },
         },
@@ -64,7 +64,7 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
 
             value: {
               min: 7,
-              max: 14,
+              max: 26 + 5,
             },
           },
         },
@@ -75,16 +75,13 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
             max: 4,
           },
 
-          // animation: {
-          //   enable: true,
-          //   speed: 10,
-          //   startValue: "max",
-          //   destroy: "min",
-          //   sync: false,
-          //   count: 1,
-          //   decay: 0.05,
-          //   // mode: "decrease",
-          // },
+          animation: {
+            enable: true,
+            startValue: "max",
+            destroy: "min",
+            speed: 3,
+            sync: false,
+          },
         },
       },
 
