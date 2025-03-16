@@ -1,0 +1,20 @@
+name: Clean up old GitHub Actions workflows
+
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clean up workflows
+        run: chmod +x ./util/gh-workflow-cleanup.sh && ./util/gh-workflow-cleanup.sh
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          SITE_REPO: ${{ github.repository }}
