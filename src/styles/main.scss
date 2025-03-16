@@ -3,12 +3,12 @@
 @use "components";
 @use "utils";
 
-@use "header";
-@use "footer";
-@use "profile";
-@use "overview";
-@use "projects";
-@use "illustrations";
+@use "sections/header";
+@use "sections/footer";
+@use "sections/profile";
+@use "sections/overview";
+@use "sections/projects";
+@use "sections/illustrations";
 @use "links";
 @use "input";
 @use "extra";

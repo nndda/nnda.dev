@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "../variables" as *;
 
 @mixin style {
 @media (width <= 700px) {
