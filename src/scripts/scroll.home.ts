@@ -36,7 +36,6 @@ export function initScroll(d: Document) {
   function deactivateLinks(activeNavClass: DOMTokenList | null = null): void {
     requestAnimationFrame(() => {
       navLinksClass.forEach(deactivateClass);
-      mobileNavSectLabel.textContent = "";
 
       if (activeNavClass) {
         activeNavClass.add("active");
@@ -70,6 +69,7 @@ export function initScroll(d: Document) {
 
     } else {
       deactivateLinks();
+      mobileNavSectLabel.textContent = "";
     }
   }
 
