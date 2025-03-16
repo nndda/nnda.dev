@@ -20,7 +20,6 @@ export function initScroll(d: Document) {
 
   let
     scrollPosition: number = 0
-  , toggleHeader: boolean = false
   ;
 
   backTop.addEventListener("click", () => {
@@ -31,32 +30,46 @@ export function initScroll(d: Document) {
   });
 
   function deactivateClass(classes: DOMTokenList): void {
-    classes.remove("active")
+    classes.remove("active");
   }
 
-  function deactivateLinks(): void {
-    navLinksClass.forEach(deactivateClass);
+  function deactivateLinks(activeNavClass: DOMTokenList | null = null): void {
+    requestAnimationFrame(() => {
+      navLinksClass.forEach(deactivateClass);
+      mobileNavSectLabel.textContent = "";
+
+      if (activeNavClass) {
+        activeNavClass.add("active");
+      }
+    });
+  }
+
+  function toggleHeaderFn(toggle: boolean): void {
+    requestAnimationFrame(() => {
+      headerClasses.toggle("active", toggle);
+      backTop.classList.toggle("active", toggle);
+    });
   }
 
   function scrollEv(): void {
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
-    toggleHeader = scrollPosition > documentWindow.innerHeight;
 
-    headerClasses.toggle("active", toggleHeader);
-    backTop.classList.toggle("active", toggleHeader);
+    toggleHeaderFn(scrollPosition > documentWindow.innerHeight);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {
         if (sections[i].offsetTop <= scrollPosition) {
-          deactivateLinks();
-          navLinksClass[i].add("active");
-          mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
+          requestAnimationFrame(() => {
+            deactivateLinks(navLinksClass[i]);
+            mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
+          });
+        } else {
+          break;
         }
       }
 
     } else {
       deactivateLinks();
-      mobileNavSectLabel.textContent = "";
     }
   }
 

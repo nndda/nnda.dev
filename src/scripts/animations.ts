@@ -1,21 +1,26 @@
 export function initializeAnimations(d: Document): void {
-  const intersectionObserverOptions: IntersectionObserverInit = {
+  const intersectionObserverOptions: Readonly<IntersectionObserverInit> = Object.freeze({
     root: null,
     threshold: 0,
-  };
+  });
 
   if ((d.defaultView as Window).matchMedia("(prefers-reduced-motion: no-preference)").matches) {
-    const observerScrollAnim = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          entry.target.classList.toggle("on", entry.isIntersecting);
+    const
+      observerScrollAnim = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+          for (let i: number = entries.length; i-- > 0;) {
+            const entry: IntersectionObserverEntry = entries[i];
+            entry.target.classList.toggle("on", entry.isIntersecting);
 
-          if (entry.isIntersecting && entry.target.classList.contains("once")) {
-            observerScrollAnim.unobserve(entry.target);          }
-        });
-      },
-      intersectionObserverOptions,
-    );
+            if (entry.isIntersecting && entry.target.classList.contains("once")) {
+              observerScrollAnim.unobserve(entry.target);
+            }
+          }
+        },
+        intersectionObserverOptions,
+      )
+    , observer = observerScrollAnim.observe.bind(observerScrollAnim)
+    ;
 
-    d.querySelectorAll(".anim").forEach(el => observerScrollAnim.observe(el));
+    d.querySelectorAll(".anim").forEach(observer);
   }
 }
