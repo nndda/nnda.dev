@@ -13,3 +13,7 @@
 section > .heading-left-sticky {
   padding-top: 1.25em;
 }
+
+section.with-aside > aside {
+  display: none;
+}

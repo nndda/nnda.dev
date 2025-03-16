@@ -1,3 +1,10 @@
+#projects {
+  & > .section-inner {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+}
+
 .project-card {
   margin-bottom: 1em;
 }

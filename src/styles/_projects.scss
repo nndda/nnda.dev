@@ -2,8 +2,6 @@
 @use "sass:color";
 
 #projects {
-  padding-bottom: 3em;
-
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
   @include shadow-black;
@@ -95,17 +93,15 @@
   }
 
   & > .labels-container {
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-top: .5em;
+    padding-left: .5em;
+    padding-right: .5em;
     font-size: 1.1em;
   }
 
   & > p {
     margin: 0;
-    // max-width: 326px;
-    padding: 1.5em 1.2em;
-    padding-top: 1em;
+    padding: .9em;
     color: color.mix($text, $background, 80%);
     font-weight: 300;
     letter-spacing: .08em;
