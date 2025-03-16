@@ -7,7 +7,9 @@ if [ -f "./.env" ]; then
 fi
 
 deployments_count=$(
-  curl -s -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
+  curl -s \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
     "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/deployments" \
   | jq -r ".result_info.total_count" \
   | bc
@@ -20,16 +22,22 @@ echo "Deleting $deployments_count deployments..."
 
 purge_deployments() {
   for id in $(
-    curl -s -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
+    curl -s \
+      -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+      -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
       "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/deployments" \
       | jq -r ".result[].id"
   ); do
-    response=$(curl -s -X DELETE -H "X-Auth-Email: $CLOUDFLARE_EMAIL" -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
+
+    response=$(curl -s \
+      -X DELETE \
+      -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+      -H "X-Auth-Key: $CLOUDFLARE_API_GLOBAL" \
       "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project/deployments/$id?force=true")
 
-    if [ $(echo "$response" | jq -r ".success") != "true" ]; then
-      if [ $(echo "$response" | jq -r ".errors[0].code") != "8000034" ]; then
-        messages=$(echo "$response" | jq -r ".errors")
+    if [ "$(jq -r ".success" <<< "$response")" != "true" ]; then
+      if [ "$(jq -r ".errors[0].code" <<< "$response")" != "8000034" ]; then
+        messages="$(jq -r ".errors" <<< "$response")"
         echo "Failed to delete deployment $deployments_deleted/$deployments_total: $messages"
       fi
     else
