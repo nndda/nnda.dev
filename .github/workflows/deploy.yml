@@ -7,6 +7,21 @@ on:
     branches:
       - main
       - dev
+    paths:
+      - '**/*.py'
+      - '**/*.ts'
+      - '**/*.js'
+      - '**/*.scss'
+      - '**/*.hbs'
+      - 'src/'
+      - '.github/workflows/deploy.yml'
+      - 'package*.json'
+      - 'config/tsconfig.*.json'
+      - 'config/webpack.common.ts'
+      - 'config/webpack.config.ts'
+      - 'requirements.txt'
+      - 'site-config.yaml'
+      - 'wrangler.toml'
   workflow_dispatch:
 
 jobs:
