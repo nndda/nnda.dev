@@ -50,6 +50,7 @@ jobs:
           npm install --no-save \
             jiti \
             @eslint/js \
+            @eslint/compat \
             eslint \
             globals \
             typescript-eslint
