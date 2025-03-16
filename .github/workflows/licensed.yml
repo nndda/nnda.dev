@@ -51,7 +51,7 @@ jobs:
         run: echo "GEM_PATH=$GEM_PATH:$(pwd)/vendor/bundle" >> $GITHUB_ENV
 
       - name: Install project dependencies
-        run: npm install --omit=dev
+        run: npm ci --omit=dev
 
       - name: Check licenses
         run: |
