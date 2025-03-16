@@ -1,7 +1,8 @@
 const
-  documentWindow: Window = document.defaultView as Window
+  d: Document = document
+, documentWindow: Window = d.defaultView as Window
 
-, elements: NodeListOf<HTMLElement> = document.querySelectorAll("#illustrations .img > *")
+, elements: NodeListOf<HTMLElement> = d.querySelectorAll("#illustrations .img > *")
 , easedRatios: Map<HTMLElement, number> = new Map()
 , targetRatios: Map<HTMLElement, number> = new Map()
 , scrollOffset: number = .8
@@ -23,8 +24,6 @@ function updateIllustHeight(): void {
     el.style.top = `-${el.clientHeight * scrollOffsetV}px`;
   });
 }
-
-updateIllustHeight();
 
 function updateEasedRatios(el: HTMLElement): void {
   let easedRatio: number = easedRatios.get(el) ?? 0;
@@ -68,6 +67,17 @@ function scrollEv(): void {
 }
 
 documentWindow.addEventListener("scroll", scrollEv, { passive: true });
+documentWindow.addEventListener("resize", updateIllustHeight, { passive: true });
 
-// TODO: optimize this
-documentWindow.addEventListener("resize", updateIllustHeight);
+(
+  d.querySelectorAll("#illustrations .img img") as NodeListOf<HTMLImageElement>
+).forEach((el: HTMLImageElement) => {
+  if (el.complete) {
+    updateIllustHeight();
+  } else {
+    el.addEventListener("load", updateIllustHeight, {
+      once: true,
+      passive: true,
+    });
+  }
+});
