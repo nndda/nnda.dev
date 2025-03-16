@@ -19,9 +19,9 @@ on:
       - 'config/tsconfig.*.json'
       - 'config/webpack.common.ts'
       - 'config/webpack.config.ts'
+      - 'config/wrangler.toml'
       - 'requirements.txt'
       - 'site-config.yaml'
-      - 'wrangler.toml'
   workflow_dispatch:
 
 jobs:
@@ -59,4 +59,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy --commit-dirty=true
+          command: pages --config ./config/wrangler.toml deploy --commit-dirty=true
