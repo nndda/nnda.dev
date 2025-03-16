@@ -81,7 +81,7 @@
       rgba($background-light, .7) 30%,
       transparent 90%
     );
-    font-size: 1.25em;
+    font-size: 1.15em;
     letter-spacing: .08em;
 
     &.with-image {
@@ -99,7 +99,6 @@
     padding-top: .5em;
     padding-left: .5em;
     padding-right: .5em;
-    font-size: 1.1em;
   }
 
   & > p {
@@ -107,6 +106,7 @@
     padding: .9em;
     color: color.mix($text, $background, 80%);
     font-weight: 300;
+    font-size: .85em;
     letter-spacing: .08em;
     word-spacing: .1em;
   }
