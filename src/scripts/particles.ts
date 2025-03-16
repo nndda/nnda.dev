@@ -11,6 +11,8 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
   await tsParticles.load({
     id: "tsparticles",
     options: {
+      fullScreen: false,
+
       preset: "firefly",
 
       particles: {
@@ -44,6 +46,8 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
         },
 
         number: {
+          value: 26,
+
           limit: {
             value: 26,
             mode: "wait",
