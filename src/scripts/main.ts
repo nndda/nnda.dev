@@ -9,13 +9,13 @@ import { initializeAnimations } from "./animations";
 function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((Date.now() - date.getTime()) / 36e5);
 
-  return hours <= 0 ? "less than an hour ago" : `${hours} hours ago`;
+  return hours <= 0 ? "<1 hour ago" : `${hours} hours ago`;
 }
 
 function getFutureUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((date.getTime() - Date.now()) / 36e5);
 
-  return hours <= 0 ? "in less than an hour" : `in ${hours} hours`;
+  return hours <= 0 ? "in <1 hour" : `in ${hours} hours`;
 }
 
 function getLastUpdatedDays(date: Date): string {
@@ -26,7 +26,7 @@ function getLastUpdatedDays(date: Date): string {
   ;
 
   return days <= 0
-    ? (hours <= 0 ? "less than an hour ago" : `${hours} hours ago`)
+    ? (hours <= 0 ? "<1 hour ago" : `${hours} hours ago`)
     : `${days} days, ${hours} hours ago`;
 }
 
