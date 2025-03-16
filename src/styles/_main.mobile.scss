@@ -1,9 +1,5 @@
-@use "header.mobile";
-@use "profile.mobile";
-@use "overview.mobile";
-@use "projects.mobile";
-@use "footer.mobile";
-
+@mixin style {
+@media (width <= 700px) {
 #overview,
 #links {
   padding-left: 1.5em;
@@ -16,4 +12,6 @@ section > .heading-left-sticky {
 
 section.with-aside > aside {
   display: none;
+}
+}
 }

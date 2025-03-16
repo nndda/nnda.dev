@@ -13,6 +13,9 @@
 @use "input";
 @use "extra";
 
+@use "main.mobile" as mobile;
+@use "main.desktop" as desktop;
+
 @use "sass:color";
 
 ::selection{
@@ -297,3 +300,6 @@ canvas[data-generated="true"] {
     max-height: 920px;
   }
 }
+
+@include mobile.style;
+@include desktop.style;

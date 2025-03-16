@@ -1,6 +1,9 @@
 @use "variables" as *;
 @use "sass:color";
 
+@use "overview.mobile" as mobile;
+@use "overview.desktop" as desktop;
+
 #overview {
   padding-top: 1em;
   background: $background-dark;
@@ -177,3 +180,6 @@
     }
   }
 }
+
+@include mobile.style;
+@include desktop.style;

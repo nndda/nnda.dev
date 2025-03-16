@@ -2,12 +2,8 @@
 
 @use "sass:color";
 
-@use "header.desktop";
-@use "profile.desktop";
-@use "overview.desktop";
-@use "projects.desktop";
-@use "illustrations.desktop";
-
+@mixin style {
+@media (width >= 700px) {
 body {
   & > main {
     & > section {
@@ -42,4 +38,6 @@ body {
       }
     }
   }
+}
+}
 }

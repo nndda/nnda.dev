@@ -1,6 +1,9 @@
 @use "variables" as *;
 @use "sass:color";
 
+@use "projects.mobile" as mobile;
+@use "projects.desktop" as desktop;
+
 #projects {
   background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
@@ -161,3 +164,6 @@
   }
   /* stylelint-enable */
 }
+
+@include mobile.style;
+@include desktop.style;

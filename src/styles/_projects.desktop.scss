@@ -1,3 +1,5 @@
+@mixin style {
+@media (width >= 700px) {
 #projects {
   & > .section-inner {
     display: grid;
@@ -10,4 +12,6 @@
       min-height: 20em;
     }
   }
+}
+}
 }

@@ -1,3 +1,5 @@
+@mixin style {
+@media (width <= 700px) {
 .commits {
   & > .controls {
     display: none;
@@ -11,4 +13,6 @@
   & > div {
     margin-top: 1em;
   }
+}
+}
 }

@@ -1,5 +1,8 @@
 @use "variables" as *;
 
+@use "header.mobile" as mobile;
+@use "header.desktop" as desktop;
+
 header {
   position: fixed;
   top: 0;
@@ -156,3 +159,6 @@ header {
     transform: translateY(-35%);
   }
 }
+
+@include mobile.style;
+@include desktop.style;
