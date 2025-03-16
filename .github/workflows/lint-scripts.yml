@@ -48,6 +48,7 @@ jobs:
       - name: Install linting dependencies
         run: |
           npm install --no-save \
+            jiti \
             @eslint/js \
             eslint \
             globals \

@@ -8,7 +8,7 @@
     "compile-configs": "tsc --project ./config/tsconfig.build.json",
     "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
     "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
-    "lint-scripts": "eslint --config ./config/eslint.config.mjs .",
+    "lint-scripts": "eslint --config ./config/eslint.config.ts .",
     "fetch-gh": "python ./src/api/gh.py",
     "fetch-data-ext": "python ./src/api/data-ext.py"
   },
@@ -43,6 +43,7 @@
     "handlebars": "^4.7.8",
     "html-bundler-webpack-plugin": "^4.18.2",
     "image-size": "^1.2.0",
+    "jiti": "^2.4.2",
     "lodash": "^4.17.21",
     "marked": "^15.0.7",
     "sass": "^1.85.1",
