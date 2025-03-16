@@ -1,5 +1,7 @@
-@use "variables" as *;
+@use "../variables" as *;
 
+@mixin style {
+@media (width <= 700px) {
 .navbar-button {
   width: 1.5em;
 
@@ -97,4 +99,6 @@ header {
 
 #navbar-desktop-header {
   display: none;
+}
+}
 }

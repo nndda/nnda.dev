@@ -1,3 +1,4 @@
+@mixin style {
 @media (width <= 600px) {
   footer {
     & > .footer-body {
@@ -11,4 +12,5 @@
       max-width: 100% !important;
     }
   }
+}
 }

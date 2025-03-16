@@ -1,110 +1,107 @@
-<section id="projects" data-nav-name="Projects">
+<section id="projects" data-nav-name="Projects" class="with-aside">
+  <aside>
+    <div>
+      <h1>プロジェクト</h1>
+
+      <hr class="hr">
+
+      {{!-- PROJECT CATEGORY ------------------------------------------------------------------------ --}}
+
+      <div class="dropdown">
+        <button
+          id="project-cat-button"
+          aria-expanded="false"
+        >
+          {{{icons.filter}}}
+          <span class="text">Category:</span>
+          <span class="text text-display">All</span>
+          <div class="flex-space"></div>
+        </button>
+
+        <div
+          class="items"
+          aria-hidden="true"
+          role="menu"
+        >
+          {{#each projectData.categories}}
+            <label
+              for="project-cat-{{this.id}}"
+              class="input-group"
+              role="menuitemradio"
+              {{#if this.default}}
+                data-default=""
+              {{/if}}
+            >
+              <input
+                type="radio"
+                name="project-cat"
+                id="project-cat-{{this.id}}"
+                class="item-input"
+                data-cat="{{this.name}}"
+              >
+              <span class="checked">
+                {{{@root.icons.check}}}
+              </span>
+              <span class="text">
+                {{this.name}}
+              </span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+
+      {{!-- PROJECT PLATFORM ------------------------------------------------------------------------ --}}
+
+      <div class="dropdown">
+        <button
+          id="project-platform-button"
+          aria-expanded="false"
+        >
+          {{{icons.desktop}}}
+          <span class="text">Platform:</span>
+          <span class="text" id="project-platform-display">All</span>
+          <div class="flex-space"></div>
+        </button>
+
+        <div
+          class="items"
+          aria-hidden="true"
+          role="menu"
+        >
+          {{#each projectData.platforms}}
+            <label
+              for="project-platform-{{this.id}}"
+              class="input-group"
+              role="menuitem"
+              {{#if this.default}}
+                data-default=""
+              {{/if}}
+            >
+              <input
+                type="checkbox"
+                name="project-platform"
+                id="project-platform-{{this.id}}"
+                class="item-input"
+                data-cat="{{this.name}}"
+              >
+              <span class="checked">
+                {{{@root.icons.check}}}
+              </span>
+              <span class="text">
+                {{this.name}}
+              </span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  {{!-- 
   <h1 class="heading-left-sticky">
     <div>プロジェクト</div>
   </h1>
-
-  <!--
-
-  <div class="section-controls scrollbar-secondary">
-
-    {{!-- PROJECT CATEGORY ------------------------------------------------------------------------ --}}
-
-    <div class="dropdown">
-      <button
-        id="project-cat-button"
-        aria-expanded="false"
-      >
-        {{{icons.filter}}}
-        <span class="text">Category:</span>
-        <span class="text text-display">All</span>
-      </button>
-
-      <div
-        class="items"
-        aria-hidden="true"
-        role="menu"
-      >
-        {{#each projectData.categories}}
-          <label
-            for="project-cat-{{this.id}}"
-            class="input-group"
-            role="menuitemradio"
-            {{#if this.default}}
-              data-default=""
-            {{/if}}
-          >
-            <input
-              type="radio"
-              name="project-cat"
-              id="project-cat-{{this.id}}"
-              class="item-input"
-              data-cat="{{this.name}}"
-            >
-            <span class="checked">
-              {{{@root.icons.check}}}
-            </span>
-            <span class="text">
-              {{this.name}}
-            </span>
-          </label>
-        {{/each}}
-      </div>
-    </div>
-
-    {{!-- PROJECT PLATFORM ------------------------------------------------------------------------ --}}
-
-    <div class="dropdown">
-      <button
-        id="project-platform-button"
-        aria-expanded="false"
-      >
-        {{{icons.desktop}}}
-        <span class="text">Platform:</span>
-        <span class="text" id="project-platform-display">All</span>
-      </button>
-
-      <div
-        class="items"
-        aria-hidden="true"
-        role="menu"
-      >
-        {{#each projectData.platforms}}
-          <label
-            for="project-platform-{{this.id}}"
-            class="input-group"
-            role="menuitem"
-            {{#if this.default}}
-              data-default=""
-            {{/if}}
-          >
-            <input
-              type="checkbox"
-              name="project-platform"
-              id="project-platform-{{this.id}}"
-              class="item-input"
-              data-cat="{{this.name}}"
-            >
-            <span class="checked">
-              {{{@root.icons.check}}}
-            </span>
-            <span class="text">
-              {{this.name}}
-            </span>
-          </label>
-        {{/each}}
-      </div>
-    </div>
-
-    {{!-- PROJECT TAGS SEARCH --------------------------------------------------------------------- --}}
-
-    <div class="input-group">
-      {{{icons.tag}}}
-      <div id="project-tag-cont" class="tags-cont"></div>
-      <textarea id="project-tag-input" class="one-line" placeholder="web, games, app,"></textarea>
-    </div>
-  </div>
-
-  -->
+  --}}
 
   <div class="section-inner">
 

@@ -1,5 +1,7 @@
-@use "variables" as *;
+@use "../variables" as *;
 @use "sass:color";
+
+@use "footer.mobile" as mobile;
 
 footer {
 	background: $background-dark;
@@ -142,3 +144,5 @@ footer {
 		color: $text-secondary;
 	}
 }
+
+@include mobile.style;

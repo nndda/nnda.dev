@@ -1,12 +1,17 @@
+@mixin style {
+@media (width >= 700px) {
 #projects {
   & > .section-inner {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(4, 25%);
+    padding: 2em;
 
     & >:nth-child(1), & >:nth-child(2) {
       grid-column: span 2;
       min-height: 20em;
     }
   }
+}
+}
 }

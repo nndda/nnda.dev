@@ -3,15 +3,18 @@
 @use "components";
 @use "utils";
 
-@use "header";
-@use "footer";
-@use "profile";
-@use "overview";
-@use "projects";
-@use "illustrations";
+@use "sections/header";
+@use "sections/footer";
+@use "sections/profile";
+@use "sections/overview";
+@use "sections/projects";
+@use "sections/illustrations";
 @use "links";
 @use "input";
 @use "extra";
+
+@use "main.mobile" as mobile;
+@use "main.desktop" as desktop;
 
 @use "sass:color";
 
@@ -89,6 +92,20 @@ body {
       padding-left: .5em;
       padding-right: .5em;
     }
+  }
+}
+
+canvas[data-generated="true"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: fade-in 1.3s ease forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
   }
 }
 
@@ -283,3 +300,6 @@ body {
     max-height: 920px;
   }
 }
+
+@include mobile.style;
+@include desktop.style;

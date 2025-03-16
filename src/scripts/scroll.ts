@@ -5,11 +5,6 @@ export function initScroll(d: Document) {
   , documentWindow: Window = document.defaultView as Window
   ;
 
-  let
-    scrollPosition: number = 0
-  , toggleHeader: boolean = false
-  ;
-
   backTop.addEventListener("click", () => {
     documentWindow.scrollTo({
       top: 0,
@@ -17,12 +12,15 @@ export function initScroll(d: Document) {
     });
   });
 
-  function scrollEv(): void {
-    scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
-    toggleHeader = scrollPosition > 30.0;
+  function toggleHeaderFn(toggle: boolean): void {
+    requestAnimationFrame(() => {
+      headerClasses.toggle("active", toggle);
+      backTop.classList.toggle("active", toggle);
+    });
+  }
 
-    headerClasses.toggle("active", toggleHeader);
-    backTop.classList.toggle("active", toggleHeader);
+  function scrollEv(): void {
+    toggleHeaderFn((d.documentElement.scrollTop || d.body.scrollTop) > 30.0);
   }
 
   scrollEv();

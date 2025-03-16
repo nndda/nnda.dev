@@ -1,5 +1,8 @@
-@use "variables" as *;
+@use "../variables" as *;
 @use "sass:color";
+
+@use "profile.mobile" as mobile;
+@use "profile.desktop" as desktop;
 
 #profile {
   bottom: -3em;
@@ -159,3 +162,6 @@
     }
   }
 }
+
+@include mobile.style;
+@include desktop.style;

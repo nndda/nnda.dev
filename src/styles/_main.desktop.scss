@@ -1,0 +1,43 @@
+@use "variables" as *;
+
+@use "sass:color";
+
+@mixin style {
+@media (width >= 700px) {
+body {
+  & > main {
+    & > section {
+      padding-left: 2em;
+      padding-right: 2em;
+
+      &.with-aside {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+
+        & > aside {
+          min-width: 20%;
+          max-width: 250px;
+          padding: 2em 1em;
+          border-right: 2px dashed color.mix($text, $background-dark, 19%);
+
+          & > div {
+            // position: sticky;
+            // top: 1em;
+
+            & > h1 {
+              margin: 0;
+              font-size: 1.6em;
+            }
+
+            & > hr {
+              margin: 1em 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+}
+}
