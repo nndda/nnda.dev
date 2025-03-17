@@ -31,7 +31,7 @@ export function updateSocialRedirects(data: any[]): void {
     return;
   }
 
-  writeTextFile(abs("../misc/_redirects"),
+  writeTextFile(abs("../../misc/_redirects"),
     sourceStr.replace(
       /(#SOCIAL_REDIRECTS_START\s*\n)([\s\S]*?)(\n?#SOCIAL_REDIRECTS_ENDS)/,
       `$1${updatedContents}$3`
