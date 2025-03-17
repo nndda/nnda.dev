@@ -148,7 +148,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
 
 console.log("Finished processing links & URLs");
 
-import { updateSocialRedirects } from "../scripts/redirects";
+import { updateSocialRedirects } from "../scripts/build/redirects";
 const socialRedirData = [] as any[];
 siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
 updateSocialRedirects(socialRedirData);
