@@ -26,6 +26,19 @@ My personal static site. (Almost) vanilla, framework-free, modular, &amp; backen
   <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/handlebarsdotjs/d6dce2">
   <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/handlebarsdotjs/1f2328">
 </picture>
+<br>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/cloudflarepages/d6dce2">
+  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/cloudflarepages/1f2328">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/cloudflareworkers/d6dce2">
+  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/cloudflareworkers/1f2328">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/githubactions/d6dce2">
+  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/githubactions/1f2328">
+</picture>
 
 ## Features
 

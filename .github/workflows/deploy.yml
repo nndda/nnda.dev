@@ -47,7 +47,7 @@ jobs:
         run: pip install -r ./config/requirements.txt
 
       - name: Build website
-        run: npm run build
+        run: npm run build && cp ./config/wrangler.toml ./
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           GH_PAT_EXT: ${{ secrets.GH_PAT_EXT }}
@@ -59,4 +59,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages --config ./config/wrangler.toml deploy --commit-dirty=true
+          command: pages deploy --commit-dirty=true
