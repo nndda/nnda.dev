@@ -237,4 +237,3 @@ update_contribs_data(format_contribs(fetch_contribs_all()), "all")
 update_contribs_data(format_contribs(fetch_contribs_ranged()), "yearly")
 
 write_txt_file(os.path.join(script_dir, "contribs.json"), json.dumps(contribs_data))
-write_txt_file(os.path.join(script_dir, "contribs-commits.json"), json.dumps(contribs_data["arr"]["yearly"]))
