@@ -9,7 +9,7 @@ const abs: DirResolver = createResolver(__dirname);
 
 export function updateSocialRedirects(data: any[]): void {
   const
-    sourceStr: string = readTextFile(abs("../misc/_redirects")),
+    sourceStr: string = readTextFile(abs("../../misc/_redirects")),
     startComment: string = '#SOCIAL_REDIRECTS_START',
     endComment: string = '#SOCIAL_REDIRECTS_ENDS';
 
