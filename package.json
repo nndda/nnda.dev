@@ -33,7 +33,7 @@
     "@types/webpack": "^5.28.5",
     "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^13.0.0",
-    "cron-parser": "^5.0.4",
+    "cron-parser": "^5.0.5",
     "cspell": "^8.17.5",
     "css-loader": "^7.1.2",
     "dotenv": "^16.4.7",
