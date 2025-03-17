@@ -34,7 +34,7 @@ export default {
           as: "style",
         },
         {
-          test: /\.woff2$/,
+          test: /^zen-kaku-gothic.+\.woff2$/,
           as: "font",
           attributes: { crossorigin: true },
         },
