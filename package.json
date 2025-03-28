@@ -19,7 +19,7 @@
   "author": "nnda",
   "license": " GPL-3.0-or-later",
   "engines": {
-    "node": ">=23.8.0"
+    "node": ">=23.10.0"
   },
   "bugs": {
     "url": "https://github.com/nndda/website/issues"
