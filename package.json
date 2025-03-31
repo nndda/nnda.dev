@@ -58,7 +58,7 @@
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
-    "wrangler": "^4.5.1",
+    "wrangler": "^4.6.0",
     "yaml": "^2.7.0"
   },
   "dependencies": {
