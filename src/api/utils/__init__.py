@@ -29,14 +29,18 @@ def cleanup_dir(cleanup_path: str) -> None:
 
 
 def cp(target: str, dest: str) -> None:
-    for item in os.listdir(target):
-        a: str = os.path.join(target, item)
-        b: str = os.path.join(dest, item)
+    if not os.path.isdir(target):
+        shutil.copy2(target, dest)
 
-        if os.path.isdir(a):
-            if os.path.exists(b):
-                cp(a, b)
+    else:
+        for item in os.listdir(target):
+            a: str = os.path.join(target, item)
+            b: str = os.path.join(dest, item)
+
+            if os.path.isdir(a):
+                if os.path.exists(b):
+                    cp(a, b)
+                else:
+                    shutil.copytree(a, b)
             else:
-                shutil.copytree(a, b)
-        else:
-            shutil.copy2(a, b)
+                shutil.copy2(a, b)
