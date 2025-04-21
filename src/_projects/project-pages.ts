@@ -58,6 +58,10 @@ export function buildProjectPage(absPath: string): void {
     .replace(/{DESC}/g, `"${page.data.desc ?? ""}"`)
     ;
 
+  if (page.data.withoutHeader) {
+    page.content = template.replace(/{{\s*include\s+"header"\s*}}/, "")
+  }
+
   writeTextFile(out, page.content);
   console.log(`Finished building project '${base}'`)
 }
