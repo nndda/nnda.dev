@@ -53,9 +53,9 @@ export function buildProjectPage(absPath: string): void {
     page: GrayMatterFile<string> = matter(readTextFile(pagePath));
 
   page.content = template
-    .replace("{CONTENT}", page.content)
-    .replace("{TITLE}", `"${page.data.title ?? ""}"`)
-    .replace("{DESC}", `"${page.data.desc ?? ""}"`)
+    .replace(/{CONTENT}/g, page.content)
+    .replace(/{TITLE}/g, `"${page.data.title ?? ""}"`)
+    .replace(/{DESC}/g, `"${page.data.desc ?? ""}"`)
     ;
 
   writeTextFile(out, page.content);
