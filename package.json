@@ -27,17 +27,17 @@
   "homepage": "https://github.com/nndda/website#readme",
   "devDependencies": {
     "@eslint/compat": "^1.2.8",
-    "@eslint/js": "^9.25.0",
+    "@eslint/js": "^9.25.1",
     "@types/lodash": "^4.17.16",
     "@types/node": "^22.14.1",
     "@types/webpack": "^5.28.5",
     "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^13.0.0",
     "cron-parser": "^5.1.1",
-    "cspell": "^8.19.1",
+    "cspell": "^8.19.2",
     "css-loader": "^7.1.2",
     "dotenv": "^16.5.0",
-    "eslint": "^9.25.0",
+    "eslint": "^9.25.1",
     "favicons": "^7.2.0",
     "globals": "^16.0.0",
     "gray-matter": "^4.0.3",
@@ -46,19 +46,19 @@
     "image-size": "^1.2.0",
     "jiti": "^2.4.2",
     "lodash": "^4.17.21",
-    "marked": "^15.0.8",
-    "sass": "^1.86.3",
+    "marked": "^15.0.10",
+    "sass": "^1.87.0",
     "sass-loader": "^16.0.5",
     "sharp": "^0.34.1",
-    "stylelint": "^16.18.0",
+    "stylelint": "^16.19.0",
     "stylelint-config-standard-scss": "^14.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.30.1",
+    "typescript-eslint": "^8.31.0",
     "webpack": "^5.99.6",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
-    "wrangler": "^4.12.0",
+    "wrangler": "^4.13.0",
     "yaml": "^2.7.1"
   },
   "dependencies": {
@@ -72,6 +72,6 @@
     "@tsparticles/preset-firefly": "^3.2.0",
     "@tsparticles/slim": "^3.8.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^14.12.2"
+    "simple-icons": "^14.12.3"
   }
 }
