@@ -1,5 +1,6 @@
 import Handlebars from "handlebars";
-import sizeOf from "image-size";
+import { readFileSync } from "fs";
+import { imageSize } from "image-size";
 import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 
 import path from "path";
@@ -77,13 +78,13 @@ export default {
   img: (src: string) => {
     const
       srcAbs: string = srcResolve(src)
-    , imgdata: ISizeCalculationResult = sizeOf(srcAbs)
+    , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
     ;
 
     if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
 
     return new Handlebars.SafeString(`
-      <img src="${src}" width="${imgdata.width}" height="${imgdata.height}" loading="lazy" alt="">
+      <img src="${src}" width="${dimensions.width}" height="${dimensions.height}" loading="lazy" alt="">
     `);
   },
 }
