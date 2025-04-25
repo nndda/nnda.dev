@@ -31,6 +31,18 @@ export default {
     `);
   },
 
+  preloadFont: (file: string) => {
+    return new Handlebars.SafeString(`
+      <link
+        rel="preload"
+        href="${file}"
+        as="font"
+        type="font/woff2"
+        crossorigin=""
+      >
+    `);
+  },
+
   stylesheet: (file: string, media: string = "") => {
     return new Handlebars.SafeString(`
       <link rel="stylesheet" type="text/css" href="${file}" ${media !== "" ? `media="${media}"` : ``}>
