@@ -33,11 +33,6 @@ export default {
           test: /(fonts)\.s?css$/,
           as: "style",
         },
-        {
-          test: /^zen-kaku-gothic.+\.woff2$/,
-          as: "font",
-          attributes: { crossorigin: true },
-        },
         // {
         //   test: /\.(png|webp|svg)$/,
         //   as: "image",
