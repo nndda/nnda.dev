@@ -52,4 +52,4 @@ jobs:
             stylelint-config-standard-scss
 
       - name: Lint stylesheets
-        run: npm run lint-styles
+        run: npm run lint:styles
