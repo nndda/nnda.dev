@@ -1,30 +1,20 @@
 {
-  "name": "nnda-website",
-  "version": "1.0.0",
-  "description": "nnda's personal website",
+  "name": "nnda.dev",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --port 9000",
-    "build": "npm run compile-configs && npm run fetch-gh && npm run fetch-data-ext && webpack --no-devtool --config ./config/webpack.config.js",
-    "compile-configs": "tsc --project ./config/tsconfig.build.json",
-    "watch-project": "ts-node ./src/_projects/project-pages.ts --watch",
-    "lint-styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
-    "lint-scripts": "eslint --config ./config/eslint.config.ts .",
-    "fetch-gh": "python ./src/api/gh.py",
-    "fetch-data-ext": "python ./src/api/data-ext.py"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nndda/website.git"
+    "build": "npm run build:config && npm run fetch:gh && npm run fetch:data-ext && webpack --no-devtool --config ./config/webpack.config.js",
+    "build:config": "tsc --project ./config/tsconfig.build.json",
+    "watch:project": "ts-node ./src/_projects/project-pages.ts --watch",
+    "lint:styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
+    "lint:scripts": "eslint --config ./config/eslint.config.ts .",
+    "fetch:gh": "python ./src/api/gh.py",
+    "fetch:data-ext": "python ./src/api/data-ext.py"
   },
   "author": "nnda",
   "license": " GPL-3.0-or-later",
   "engines": {
     "node": ">=23.11.0"
   },
-  "bugs": {
-    "url": "https://github.com/nndda/website/issues"
-  },
-  "homepage": "https://github.com/nndda/website#readme",
   "devDependencies": {
     "@eslint/compat": "^1.2.8",
     "@eslint/js": "^9.25.1",

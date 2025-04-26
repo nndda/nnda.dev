@@ -1,15 +1,6 @@
 name: CodeQL analysis
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-    paths:
-      - '**/*.ts'
-      - '**/*.js'
-      - '**/*.py'
-      - '.github/workflows/codeql.yml'
   pull_request:
     branches:
       - main

@@ -56,4 +56,4 @@ jobs:
             typescript-eslint
 
       - name: Lint scripts
-        run: npm run lint-scripts
+        run: npm run lint:scripts

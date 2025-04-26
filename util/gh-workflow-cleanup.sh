@@ -48,7 +48,7 @@ while read -r workflow; do
       #     "$status" != "\"waiting\"" || \
       #     "$status" != "\"in_progress\"" \
       #   ]]; then
-        if [ "$(($(date -d "$(echo $runs | jq ".updated_at" | tr -d "\"")" +%s) - $(date +%s)))" -ge 259200 ]; then # 3 days
+        if [ "$(($(date +%s) - $(date -d "$(echo $runs | jq ".updated_at" | tr -d "\"")" +%s)))" -ge 259200 ]; then # 3 days
           queued_workflow+=("$(jq -r '.id' <<< "$runs")")
         fi
       # fi
