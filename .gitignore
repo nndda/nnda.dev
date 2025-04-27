@@ -1,6 +1,7 @@
 # Compiled, pre-build scripts and data
 **/*.js
 **/*.js.map
+**/*.json.gz
 **/*.json
 
 # Proprietary configs, and assets
