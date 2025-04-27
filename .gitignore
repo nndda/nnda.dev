@@ -6,6 +6,7 @@
 
 # Proprietary configs, and assets
 !config/**/*.json
+wrangler.toml
 site-config-ext.yaml
 secret_*
 secret-*
@@ -23,6 +24,7 @@ src/_projects/**/*.hbs
 
 # Output directory
 dist/
+dist*/
 
 # Cloudflare Workers/Pages
 .wrangler/
