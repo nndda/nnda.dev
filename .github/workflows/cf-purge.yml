@@ -1,4 +1,4 @@
-name: Purge Cloudflare Pages deployments
+name: Purge CF Pages deployments
 
 on:
   schedule:

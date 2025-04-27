@@ -1,11 +1,17 @@
 import os
 import shutil
 import requests
+import gzip
 from typing import Optional, Any
 
 
 def write_txt_file(file_path: str, content: str) -> None:
     with open(file_path, "w", encoding="utf-8") as file:
+        file.write(content)
+
+
+def write_txt_gzipped_file(file_path: str, content: str) -> None:
+    with gzip.open(file_path, "wt", compresslevel=9, encoding="utf-8") as file:
         file.write(content)
 
 
@@ -22,7 +28,8 @@ def cleanup_dir(cleanup_path: str) -> None:
     for entry in os.scandir(cleanup_path):
         if entry.is_file() and (
             entry.name.endswith(".js") or
-            entry.name.endswith(".json")
+            entry.name.endswith(".json") or
+            entry.name.endswith(".json.gz")
         ):
             print("Removing:", entry.name)
             os.remove(os.path.join(cleanup_path, entry.name))

@@ -1,4 +1,4 @@
-name: Deploy site to Cloudflare Pages
+name: Deploy to CF Pages
 
 on:
   schedule:

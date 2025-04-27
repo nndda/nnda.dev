@@ -21,6 +21,11 @@ export function initializeAnimations(d: Document): void {
     , observer = observerScrollAnim.observe.bind(observerScrollAnim)
     ;
 
-    d.querySelectorAll(".anim").forEach(observer);
+    const animEls: NodeListOf<HTMLElement> = d.querySelectorAll(".anim");
+    for (let i: number = animEls.length; i-- > 0;) {
+      observer(animEls[i]);
+    }
+
+    // d.querySelectorAll(".anim").forEach(observer);
   }
 }

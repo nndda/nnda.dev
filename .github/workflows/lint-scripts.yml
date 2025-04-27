@@ -1,4 +1,4 @@
-name: Lint scripts with ESLint
+name: ESLint
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Clean up old GitHub Actions workflows
+name: Clean up Actions workflows
 
 on:
   schedule:
