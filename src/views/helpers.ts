@@ -39,7 +39,7 @@ export default {
         href="${file}"
         as="font"
         type="font/woff2"
-        crossorigin=""
+        crossorigin="anonymous"
       >
     `);
   },
