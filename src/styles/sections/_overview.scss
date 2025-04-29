@@ -172,11 +172,14 @@
     }
 
     & > .icon-text {
-      display: block;
+      display: flex;
       color: $text-secondary;
+      width: 100%;
 
-      text-overflow: ellipsis;
-      overflow: hidden;
+      & > span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
   }
 }
