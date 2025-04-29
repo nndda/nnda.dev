@@ -148,9 +148,13 @@
     $color: $secondary;
 
     & > .box {
-      max-height: .8em;
+      // max-height: .8em;
+      padding: .25em 0;
+      padding-left: .25em;
       background: color.mix($color, $background, 20%);
-      color: transparent;
+      color: $background;
+      font-size: .8em;
+      line-height: .65em;
     }
 
     @for $i from 1 through 4 {
@@ -161,15 +165,15 @@
       }
     }
 
-    & > code {
-      position: absolute;
-      top: 0;
-      padding-left: .5em;
-      color: $background;
-      font-size: .8em;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
+    // & > code {
+    //   position: absolute;
+    //   top: 0;
+    //   padding-left: .5em;
+    //   color: $background;
+    //   font-size: .8em;
+    //   text-overflow: ellipsis;
+    //   overflow: hidden;
+    // }
 
     & > .icon-text {
       display: flex;
