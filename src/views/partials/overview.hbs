@@ -81,8 +81,9 @@
       <div class="languages-container">
         {{#each ghLangs}}
           <div class="lang anim once" style="width: {{this.percent}}%">
-            <div class="box">|</div>
-            <code><b>{{this.percent}}%</b></code>
+            <div class="box">
+              <code><b>{{this.percent}}%</b></code>
+            </div>
             <div class="icon-text">
               {{#if this.icon}}
                 {{{this.icon}}}
