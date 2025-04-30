@@ -164,10 +164,10 @@
       line-height: .65em;
     }
 
-    @for $i from 1 through 4 {
+    @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
         & > .box {
-          background: color.mix($color, $background, (5 - $i) * 20%);
+          background: color.mix($color, $background, (6 - $i) * 20%);
         }
       }
     }

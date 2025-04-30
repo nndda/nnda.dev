@@ -86,7 +86,7 @@
     }
   }
 
-  @include nth-loop(1, 9) using ($i) {
+  @include nth-loop(1, 5) using ($i) {
     transition-delay: 0s + (.17 * $i);
 
     & > .icon-text {
