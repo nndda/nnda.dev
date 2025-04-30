@@ -77,7 +77,7 @@
   }
 }
 
-.languages-container > .lang {
+.lang {
   &.on {
     transition: .7s ease-out;
 
@@ -86,7 +86,7 @@
     }
   }
 
-  @include nth-loop(1, 9) using ($i) {
+  @include nth-loop(1, 5) using ($i) {
     transition-delay: 0s + (.17 * $i);
 
     & > .icon-text {
@@ -103,6 +103,14 @@
     & > .icon-text {
       transform: translateY(-2em);
       opacity: 0;
+    }
+  }
+}
+
+.stacks-lists {
+  & .icon {
+    @include nth-loop(1, 7) using ($i) {
+      transition-delay: 0s + (.13 * $i);
     }
   }
 }

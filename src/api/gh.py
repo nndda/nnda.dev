@@ -167,7 +167,7 @@ for lang, lang_bytes in lang_data["perByte"].items():
             "icon": f'<i class="overview" data-i="{lang}"></i>',
         }
 
-write_txt_file(os.path.join(script_dir, "langs.json"), json.dumps(lang_data["frontEnd"]))
+write_txt_file(os.path.join(script_dir, "langs.json"), json.dumps({n: lang_data["frontEnd"][n] for n in list(lang_data["frontEnd"])[:5]}))
 
 
 # Contribution calendar

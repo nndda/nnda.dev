@@ -77,7 +77,10 @@ function scrollEv(): void {
   for (let i: number = elements.length; i-- > 0;) {
     const rect: DOMRect = elements[i].getBoundingClientRect();
 
-    targetRatios.set(elements[i], 1 - ((rect.top + rect.height * .5) / documentWindow.innerHeight) * 2);
+    targetRatios.set(elements[i], 1 - (2 * rect.top + rect.height) / documentWindow.innerHeight);
+
+    // 1 - ((a + b * .5) / c) * 2
+    // 1 - (2 * a + b) / c
   }
 
   if (!ticking) {
@@ -89,15 +92,16 @@ function scrollEv(): void {
 documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 documentWindow.addEventListener("resize", updateIllustHeight, { passive: true });
 
-(
-  d.querySelectorAll("#illustrations .img img") as NodeListOf<HTMLImageElement>
-).forEach((el: HTMLImageElement) => {
-  if (el.complete) {
+// Recalculate height when the images loaded
+const imgEls: NodeListOf<HTMLImageElement> = d.querySelectorAll("#illustrations .img img");
+for (let i: number = imgEls.length; i-- > 0;) {
+  if (imgEls[i].complete) {
     updateIllustHeight();
+
   } else {
-    el.addEventListener("load", updateIllustHeight, {
+    imgEls[i].addEventListener("load", updateIllustHeight, {
       once: true,
       passive: true,
     });
   }
-});
+}

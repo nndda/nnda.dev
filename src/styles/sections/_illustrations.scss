@@ -39,6 +39,8 @@
       display: block;
       width: inherit;
       height: auto;
+      will-change: transform;
+      contain: paint layout;
     }
 
     &::after {
