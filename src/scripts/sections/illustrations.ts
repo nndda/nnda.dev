@@ -92,15 +92,16 @@ function scrollEv(): void {
 documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 documentWindow.addEventListener("resize", updateIllustHeight, { passive: true });
 
-(
-  d.querySelectorAll("#illustrations .img img") as NodeListOf<HTMLImageElement>
-).forEach((el: HTMLImageElement) => {
-  if (el.complete) {
+// Recalculate height when the images loaded
+const imgEls: NodeListOf<HTMLImageElement> = d.querySelectorAll("#illustrations .img img");
+for (let i: number = imgEls.length; i-- > 0;) {
+  if (imgEls[i].complete) {
     updateIllustHeight();
+
   } else {
-    el.addEventListener("load", updateIllustHeight, {
+    imgEls[i].addEventListener("load", updateIllustHeight, {
       once: true,
       passive: true,
     });
   }
-});
+}
