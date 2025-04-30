@@ -2,9 +2,19 @@
 
 @mixin style {
 @media (width >= 700px) {
+#overview {
+  padding-bottom: 1em;
+
+  & > .section-inner > div {
+    max-width: 1080px;
+    margin: auto;
+    margin-top: 2em;
+  }
+}
+
 .commits {
   display: grid;
-  grid-template-columns: auto 64% 25%;
+  grid-template-columns: auto 64% 23%;
   grid-gap: 1.5em;
   justify-content: center;
 

@@ -79,13 +79,13 @@
       grid-template-columns: repeat(52, $sqr-w + $sqr-w-gap);
     }
   }
-
   & .inner {
     position: relative;
     // min-height: 150px;
     padding: .8em;
     overflow-x: auto;
 
+    /*
     & > .icon-bg {
       position: absolute;
       bottom: 0;
@@ -94,6 +94,7 @@
       font-size: 8em;
       opacity: .09;
     }
+    */
   }
 }
 
@@ -114,10 +115,15 @@
     margin: .25em 0;
     color: color.mix($text-secondary, $background, 70%);
 
+    & > div {
+      margin-right: 1em;
+      color: color.mix($text, $secondary, 40%);
+    }
+
     &.title {
       margin: .5em 0;
       padding-left: 0;
-      color: $primary;
+      color: color.mix($text, $secondary, 60%);
 
       &:first-child {
         margin-top: 0;
@@ -138,6 +144,7 @@
   & > .lang {
     position: relative;
     display: inline-block;
+    flex-grow: 1;
 
     margin: 0 .2em;
 
