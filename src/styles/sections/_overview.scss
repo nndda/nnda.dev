@@ -188,5 +188,25 @@
   }
 }
 
+.stacks-lists {
+  & ul {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 1em;
+  }
+
+  & .title {
+    margin-top: .4em;
+    color: $text-secondary;
+  }
+
+  & svg {
+    height: 1.8em;
+    margin-right: .7em;
+  }
+}
+
 @include mobile.style;
 @include desktop.style;

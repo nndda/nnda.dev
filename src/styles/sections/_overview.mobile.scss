@@ -14,5 +14,19 @@
     margin-top: 1em;
   }
 }
+
+.stacks-lists {
+  & > ul {
+    flex-direction: column;
+
+    & ul {
+      justify-content: flex-start;
+    }
+  }
+
+  & .title {
+    padding-bottom: 1.35em;
+  }
+}
 }
 }
