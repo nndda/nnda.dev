@@ -77,7 +77,10 @@ function scrollEv(): void {
   for (let i: number = elements.length; i-- > 0;) {
     const rect: DOMRect = elements[i].getBoundingClientRect();
 
-    targetRatios.set(elements[i], 1 - ((rect.top + rect.height * .5) / documentWindow.innerHeight) * 2);
+    targetRatios.set(elements[i], 1 - (2 * rect.top + rect.height) / documentWindow.innerHeight);
+
+    // 1 - ((a + b * .5) / c) * 2
+    // 1 - (2 * a + b) / c
   }
 
   if (!ticking) {
