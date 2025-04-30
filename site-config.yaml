@@ -95,10 +95,10 @@ socials:
         username: '@nnda_dev'
 
       - name: Bluesky
-        url: bsky.app/profile/nndda.bsky.social
+        url: bsky.app/profile/nnda.dev
         icon: bluesky
         redirect: /bsky
-        username: 'nndda'
+        username: '@nnda.dev'
 
 # -------------------------------------------------------------------------------------------------
 
