@@ -39,5 +39,4 @@ with open(zip_path, "wb") as file:
 with zipfile.ZipFile(zip_path, "r") as zip_ref:
     zip_ref.extractall(temp_dir)
 
-
-cp(os.path.join(temp_dir, os.listdir(temp_dir)[0]), os.getcwd())
+cp(os.path.join(temp_dir, next(n for n in os.listdir(temp_dir) if not n == "repo.zip")), os.getcwd())
