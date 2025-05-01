@@ -78,10 +78,6 @@ body {
 
   letter-spacing: .05em;
 
-  & h1 {
-    font-weight: 200;
-  }
-
   & > main {
     flex-grow: 1;
     overflow-x: clip;
@@ -93,6 +89,10 @@ body {
       padding-right: .5em;
     }
   }
+}
+
+h1 {
+  font-weight: 200;
 }
 
 canvas[data-generated="true"] {

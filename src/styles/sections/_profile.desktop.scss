@@ -1,14 +1,12 @@
 @mixin style {
 @media (width >= 700px) {
-#profile {
-  & .info-container {
-    grid-template-columns: 15em auto;
-    grid-template-rows: minmax(3em, .95fr) auto auto;
-  }
+.info-container {
+  grid-template-columns: 15em auto;
+  grid-template-rows: minmax(3em, .95fr) auto auto;
+}
 
-  & .pfp-cont {
-    grid-row: span 3;
-  }
+.pfp-cont {
+  grid-row: span 3;
 }
 
 .profile-pict {

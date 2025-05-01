@@ -117,27 +117,27 @@ header {
   &.active {
     transform: translateY(0);
   }
+}
 
-  & > .chv-l {
-    animation: bg-up-l 2s ease infinite;
-  }
+.chv-l {
+  animation: bg-up-l 2s ease infinite;
+}
 
-  & > .chv-r {
-    animation: bg-up-r 2s ease infinite;
-  }
+.chv-r {
+  animation: bg-up-r 2s ease infinite;
+}
 
-  & > .chv-l, & > .chv-r {
-    position: relative;
-    height: 300%;
-    backdrop-filter: blur(7px);
+.chv-l, .chv-r {
+  position: relative;
+  height: 300%;
+  backdrop-filter: blur(7px);
 
-    @include diagonal-stripes(
-      var(--col),
-      transparent,
-      .2em,
-      .8em,
-    );
-  }
+  @include diagonal-stripes(
+    var(--col),
+    transparent,
+    .2em,
+    .8em,
+  );
 }
 
 @keyframes bg-up-l {

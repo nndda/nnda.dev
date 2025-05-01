@@ -1,22 +1,21 @@
 @mixin style {
 @media (width <= 700px) {
-#profile {
-  & .info-container {
-    grid-template-columns: auto 1fr;
-  }
 
-  & .name-cont {
-    margin-left: 2em;
-  }
+.info-container {
+  grid-template-columns: auto 1fr;
+}
 
-  & .desc-cont {
-    grid-column: span 2;
-    margin-top: 1.25em;
-  }
+.name-cont {
+  margin-left: 2em;
+}
 
-  & .user-metadata {
-    grid-column: span 2;
-  }
+.desc-cont {
+  grid-column: span 2;
+  margin-top: 1.25em;
+}
+
+.user-metadata {
+  grid-column: span 2;
 }
 
 .profile-pict {
