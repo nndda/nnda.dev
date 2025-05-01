@@ -4,7 +4,6 @@ import { type Configuration } from "webpack";
 import _ from "lodash";
 import common from "./webpack.common";
 
-import cssnano from "cssnano";
 import autoprefixer from "autoprefixer";
 
 export default {
