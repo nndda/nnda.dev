@@ -72,8 +72,6 @@
   }
 }
 
-// 
-
 .default {
   @include link-style(black, white);
 }
@@ -113,8 +111,6 @@
   font-size: 1em;
   @include link-style(#FF5E5B);
 }
-
-// 
 
 .social-icon {
   grid-column: 1;
