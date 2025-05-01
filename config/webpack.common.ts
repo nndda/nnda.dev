@@ -76,10 +76,6 @@ export default {
       exclude: /node_modules/,
     },
     {
-      test: /\.s?css$/,
-      use: ["css-loader", "sass-loader"],
-    },
-    {
       test: /\.woff2$/,
       type: "asset/resource",
       generator: {

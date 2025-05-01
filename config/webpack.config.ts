@@ -7,6 +7,9 @@ import common, { abs, copyToDist } from "./webpack.common";
 import CopyPlugin from "copy-webpack-plugin";
 import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
 
+import cssnano from "cssnano";
+import autoprefixer from "autoprefixer";
+
 export default {
   mode: "production",
 
@@ -91,6 +94,24 @@ export default {
         generator: {
           filename: "[hash:6][ext][query]",
         },
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  autoprefixer(),
+                  cssnano({ preset: "default", }),
+                ],
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
