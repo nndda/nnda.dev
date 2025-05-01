@@ -30,7 +30,12 @@ body {
 
       & > h1 {
         margin: 0;
-        font-size: 1.6em;
+        font-size: 1.75em;
+        // color: $secondary;
+
+        & > small {
+          opacity: .65;
+        }
       }
 
       & > hr {
