@@ -22,8 +22,8 @@ body {
           border-right: 2px dashed color.mix($text, $background-dark, 19%);
 
           & > div {
-            // position: sticky;
-            // top: 1em;
+            position: sticky;
+            top: 3.5em;
 
             & > h1 {
               margin: 0;
