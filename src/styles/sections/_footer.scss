@@ -13,44 +13,44 @@ footer {
 	& > div {
   	padding: .5em 1.2em;
 	}
+}
 
-	& .footer-heading {
-		letter-spacing: .1em;
-	}
+.footer-heading {
+	letter-spacing: .1em;
+}
 
-	& > .packages {
-		position: relative;
-		padding-bottom: 1.5em;
-		white-space: nowrap;
-		font-size: .8em;
-		overflow: hidden;
+.packages {
+	position: relative;
+	padding-bottom: 1.5em;
+	white-space: nowrap;
+	font-size: .8em;
+	overflow: hidden;
 
-		& > .inner {
-			animation: pkg 50s linear infinite alternate;
+	& > .inner {
+		animation: pkg 50s linear infinite alternate;
 
-			&:hover {
-  			animation-play-state: paused;
-			}
-		}
-
-		& a {
-			display: inline-block;
-			margin: 0 .25em;
-			font-family: "Oxygen Mono", monospace;
-
-			&:not(:hover) {
-				text-decoration: none;
-			}
-		}
-
-		& .pkg-d {
-			color: color.mix($secondary, $text, 30%);
-		}
-
-		& .pkg-r {
-			color: color.mix($primary, $text, 30%);
+		&:hover {
+			animation-play-state: paused;
 		}
 	}
+
+	& a {
+		display: inline-block;
+		margin: 0 .25em;
+		font-family: "Oxygen Mono", monospace;
+
+		&:not(:hover) {
+			text-decoration: none;
+		}
+	}
+}
+
+.pkg-d {
+	color: color.mix($secondary, $text, 30%);
+}
+
+.pkg-r {
+	color: color.mix($primary, $text, 30%);
 }
 
 @keyframes pkg {
@@ -72,13 +72,13 @@ footer {
 		margin-right: .3em;
 		height: 1em;
 	}
+}
 
-	& > .links-section {
-		padding: .5em;
+.links-section {
+	padding: .5em;
 
-		& > ul {
-			padding-top: 1em;
-		}
+	& > ul {
+		padding-top: 1em;
 	}
 }
 
@@ -123,11 +123,11 @@ footer {
 
 .this-site {
 	max-width: 380px;
+}
 
-	& > .package-info {
-		margin-top: 2em;
-		font-weight: lighter;
-	}
+.package-info {
+	margin-top: 2em;
+	font-weight: lighter;
 }
 
 .site-opt {

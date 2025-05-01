@@ -60,47 +60,6 @@
     outline: 1px solid color.mix($text, $background, 80%);
   }
 
-  & > .project-image {
-    overflow: hidden;
-
-    & > img {
-      display: block;
-      width: 100%;
-      max-height: 230px;
-      object-position: center;
-      object-fit: cover;
-    }
-  }
-
-  & > .project-title {
-    margin: 0;
-    padding: .5em;
-    padding-left: 1em;
-    background: linear-gradient(
-      to right,
-      rgba($background-light, .7) 30%,
-      transparent 90%
-    );
-    font-size: 1.15em;
-    letter-spacing: .08em;
-
-    &.with-image {
-      position: absolute;
-      width: 100%;
-      margin-top: -2em;
-    }
-
-    & a {
-      text-decoration: none;
-    }
-  }
-
-  & > .labels-container {
-    padding-top: .5em;
-    padding-left: .5em;
-    padding-right: .5em;
-  }
-
   & > p {
     margin: 0;
     padding: .9em;
@@ -110,6 +69,47 @@
     letter-spacing: .08em;
     word-spacing: .1em;
   }
+}
+
+.project-image {
+  overflow: hidden;
+
+  & > img {
+    display: block;
+    width: 100%;
+    max-height: 230px;
+    object-position: center;
+    object-fit: cover;
+  }
+}
+
+.project-title {
+  margin: 0;
+  padding: .5em;
+  padding-left: 1em;
+  background: linear-gradient(
+    to right,
+    rgba($background-light, .7) 30%,
+    transparent 90%
+  );
+  font-size: 1.15em;
+  letter-spacing: .08em;
+
+  &.with-image {
+    position: absolute;
+    width: 100%;
+    margin-top: -2em;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+}
+
+.labels-container {
+  padding-top: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
 }
 
 #project-cat-display, #project-platform-display {

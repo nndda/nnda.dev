@@ -9,46 +9,10 @@
   padding: 0;
   padding-top: 5em;
 
-  & > .bg-cover {
-    padding-bottom: 1em;
-    background: $background-dark;
-
-    box-shadow: 0 0 7em -.1em color.adjust($background-dark, $lightness: -2.5%);
-  }
-
   & .section-inner {
     max-width: 1150px;
     margin: auto;
     padding: 0 2em;
-  }
-
-  & .info-container {
-    position: relative;
-    top: -4em;
-    display: grid;
-  }
-
-  & .name-cont {
-    display: flex;
-    align-items: end;
-  }
-
-  & h1.name {
-    margin: 0;
-    color: $text-secondary;
-    font-size: 2.5em;
-  }
-
-  & p.about {
-    margin: .5em 0;
-    margin-bottom: .7em;
-    color: $text-secondary;
-  }
-
-  & .user-metadata {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
   }
 
   & .icon-text {
@@ -60,6 +24,42 @@
       color: color.mix($text-secondary, $background-dark, 85%);
     }
   }
+}
+
+.bg-cover {
+  padding-bottom: 1em;
+  background: $background-dark;
+
+  box-shadow: 0 0 7em -.1em color.adjust($background-dark, $lightness: -2.5%);
+}
+
+.info-container {
+  position: relative;
+  top: -4em;
+  display: grid;
+}
+
+.name-cont {
+  display: flex;
+  align-items: end;
+}
+
+h1.name {
+  margin: 0;
+  color: $text-secondary;
+  font-size: 2.5em;
+}
+
+p.about {
+  margin: .5em 0;
+  margin-bottom: .7em;
+  color: $text-secondary;
+}
+
+.user-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 #clock-timezone {

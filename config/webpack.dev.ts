@@ -4,6 +4,8 @@ import { type Configuration } from "webpack";
 import _ from "lodash";
 import common from "./webpack.common";
 
+import autoprefixer from "autoprefixer";
+
 export default {
   mode: "development",
 
@@ -33,6 +35,23 @@ export default {
         generator: {
           filename: '[name].[hash:6][ext][query]',
         },
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  autoprefixer(),
+                ],
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
