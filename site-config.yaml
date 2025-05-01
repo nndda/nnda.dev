@@ -164,13 +164,21 @@ projects:
 
     image: /assets/project-pitch.avif
 
-  - name: This website
-    url: https://github.com/nndda/website
-    tags: [ Web, TypeScript, SCSS, Handlebars ]
+  - name: Obscura
+    url: https://nnda.itch.io/obscura
+    tags: [ Web, Rust, TypeScript ]
     category: Web Project
     platform: Web
     description: |
-      My personal website, written in TypeScript, SCSS, and Handlebars, bundled with webpack.
+      😶‍🌫️ Image obfuscation library for the web. 
+
+  - name: This website
+    url: https://github.com/nndda/website
+    tags: [ Web, TypeScript, SCSS ]
+    category: Web Project
+    platform: Web
+    description: |
+      🌸 My personal static site and an all-in-one hub for my social presence. (Almost) vanilla, framework-free, modular, & backend-less.
 
   - name: itchio-profile
     url: https://github.com/nndda/itchio-profile
