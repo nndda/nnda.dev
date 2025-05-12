@@ -66,6 +66,6 @@
     "@tsparticles/preset-firefly": "^3.2.0",
     "@tsparticles/slim": "^3.8.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^14.12.3"
+    "simple-icons": "^14.13.0"
   }
 }
