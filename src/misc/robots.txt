@@ -22,6 +22,7 @@ User-agent: facebookexternalhit
 User-agent: Factset_spyderbot
 User-agent: FirecrawlAgent
 User-agent: FriendlyCrawler
+User-agent: Google-CloudVertexBot
 User-agent: Google-Extended
 User-agent: GoogleOther
 User-agent: GoogleOther-Image
@@ -34,7 +35,9 @@ User-agent: img2dataset
 User-agent: imgproxy
 User-agent: ISSCyberRiskCrawler
 User-agent: Kangaroo Bot
+User-agent: meta-externalagent
 User-agent: Meta-ExternalAgent
+User-agent: meta-externalfetcher
 User-agent: Meta-ExternalFetcher
 User-agent: NovaAct
 User-agent: OAI-SearchBot
@@ -45,6 +48,7 @@ User-agent: PanguBot
 User-agent: Perplexity-User
 User-agent: PerplexityBot
 User-agent: PetalBot
+User-agent: QualifiedBot
 User-agent: Scrapy
 User-agent: SemrushBot
 User-agent: SemrushBot-OCOB
