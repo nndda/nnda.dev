@@ -13,7 +13,7 @@
   "author": "nnda",
   "license": " GPL-3.0-or-later",
   "engines": {
-    "node": ">=23.11.0"
+    "node": ">=23.11.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.9",
