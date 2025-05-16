@@ -13,13 +13,13 @@
   "author": "nnda",
   "license": " GPL-3.0-or-later",
   "engines": {
-    "node": ">=23.11.0"
+    "node": ">=23.11.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.26.0",
     "@types/lodash": "^4.17.16",
-    "@types/node": "^22.15.17",
+    "@types/node": "^22.15.18",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.21",
     "chokidar": "^4.0.3",
@@ -41,7 +41,7 @@
     "marked": "^15.0.11",
     "postcss": "^8.5.3",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.88.0",
+    "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
     "sharp": "^0.34.1",
     "stylelint": "^16.19.1",
@@ -52,8 +52,8 @@
     "webpack": "^5.99.8",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
-    "wrangler": "^4.15.0",
-    "yaml": "^2.7.1"
+    "wrangler": "^4.15.2",
+    "yaml": "^2.8.0"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans-jp": "^5.2.5",
