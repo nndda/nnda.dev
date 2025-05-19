@@ -40,6 +40,12 @@ $text-secondary: color.mix($text, $background, 80%);
   box-shadow: 0 0 2em -.2em color.adjust($background-dark, $lightness: -2.5%);
 }
 
+@mixin shadow-black-drop {
+  filter: drop-shadow(
+    0 0 2em color.adjust($background-dark, $lightness: -2.5%),
+  );
+}
+
 @mixin style-scrollbar($col: $primary) {
   scrollbar-color: $col $background;
   scrollbar-width: thin;
