@@ -63,8 +63,8 @@ stacks:
       - CSS
       - SCSS
       - Cloudflare
-      - Cloudflare Pages
-      - Cloudflare Workers
+      # - Cloudflare Pages
+      # - Cloudflare Workers
 
   - group: ツール
     icon: toolbox
