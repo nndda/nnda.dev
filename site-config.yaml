@@ -51,7 +51,7 @@ stacks:
     icon: code
     items:
       - TypeScript
-      - JavaScript
+      # - JavaScript
       - Python
       - Rust
 
@@ -60,7 +60,7 @@ stacks:
     items:
       - Node.js
       - webpack
-      - CSS
+      # - CSS
       - SCSS
       - Cloudflare
       # - Cloudflare Pages
