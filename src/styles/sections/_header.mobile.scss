@@ -47,7 +47,8 @@ header {
   }
 
   & > .nav-button-container {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
     margin-right: 1.25em;
 
     text-align: right;
@@ -58,11 +59,15 @@ header {
     }
   }
 
+
+  .nav-vertical {
+    padding: 1em 0;
+  }
+
   & > ul {
     padding-right: 2em;
 
     & > li {
-      margin: 0 1.25em;
       // width: 100%;
 
       letter-spacing: .1em;
@@ -71,6 +76,7 @@ header {
       & > a {
         display: inline-block;
         width: 100%;
+        padding: 0 1.25em;
       }
     }
   }
