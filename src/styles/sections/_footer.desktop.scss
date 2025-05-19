@@ -1,0 +1,23 @@
+@mixin style {
+@media (width >= 700px) {
+
+.logos {
+  & > .inner {
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 0;
+
+    justify-content: center;
+
+    padding-left: 1em;
+    padding-right: 1em;
+
+    & > img {
+      height: 100%;
+      max-height: 160px;
+      width: auto;
+    }
+  }
+}
+
+}
+}

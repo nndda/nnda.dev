@@ -2,6 +2,7 @@
 @use "sass:color";
 
 @use "footer.mobile" as mobile;
+@use "footer.desktop" as desktop;
 
 footer {
 	background: $background-dark;
@@ -67,6 +68,7 @@ footer {
 	display: flex;
 	justify-content: space-evenly;
 	padding: 3em 1em;
+	padding-bottom: 1em;
 
 	& svg {
 		margin-right: .3em;
@@ -145,4 +147,20 @@ footer {
 	}
 }
 
+.logos {
+	padding-bottom: 1.5em;
+
+	& > .inner {
+		display: grid;
+		justify-items: center;
+		grid-gap: 1em;
+
+		& > img {
+			width: 80%;
+			height: auto;
+		}
+	}
+}
+
 @include mobile.style;
+@include desktop.style;
