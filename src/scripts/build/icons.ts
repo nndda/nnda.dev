@@ -208,7 +208,9 @@ createIconDefsGrouped(
   ],
   [
     siArtstation,
+    siBluesky,
     siGithub,
     siItchdotio,
+    siMastodon,
   ],
 );

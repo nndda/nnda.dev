@@ -2,13 +2,22 @@
 
 @mixin style {
 @media (width >= 700px) {
-#overview {
-  padding-bottom: 1em;
+#overview > .section-inner > div,
+.overview-socials > .inner {
+  max-width: 1080px;
+  margin: auto;
+  margin-top: 2em;
+}
 
-  & > .section-inner > div {
-    max-width: 1080px;
-    margin: auto;
-    margin-top: 2em;
+#overview {
+  padding-bottom: 3em;
+
+  & .heading-left-sticky {
+    z-index: 3;
+  }
+
+  & .section-inner {
+    padding-bottom: 2em;
   }
 }
 
