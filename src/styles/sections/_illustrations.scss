@@ -39,6 +39,7 @@
       display: block;
       width: inherit;
       height: auto;
+      transition: 1.5s transform cubic-bezier(0.25, 1, 0.5, 1);
       will-change: transform;
       contain: paint layout;
     }

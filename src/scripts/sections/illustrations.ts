@@ -1,14 +1,22 @@
+interface illustElementData {
+  [elementIndex: number]: {
+    topRel: number,
+    height: number,
+    intersecting: boolean,
+  },
+}
+
 const
   d: Document = document
 , documentWindow: Window = d.defaultView as Window
 
 , elements: NodeListOf<HTMLElement> = d.querySelectorAll("#illustrations .img > *")
-, easedRatios: Map<HTMLElement, number> = new Map()
-, targetRatios: Map<HTMLElement, number> = new Map()
-, scrollOffset: number = .8
+
+, illustData: illustElementData = { }
+
+, scrollOffset: number = .75
 , scrollOffsetV: number = (1 - scrollOffset) * .5
 ;
-let ticking: boolean = false;
 
 function clamp(num: number, min: number, max: number): number {
   return num <= min 
@@ -18,90 +26,87 @@ function clamp(num: number, min: number, max: number): number {
       : num
 }
 
-function updateIllustHeight(): void {
+requestAnimationFrame(() => {
+  const
+    intersectionObserverOptions: Readonly<IntersectionObserverInit> = Object.freeze({
+      root: null,
+      threshold: 0,
+  });
 
-  for (let i: number = elements.length; i-- > 0;) {
-    (elements[i].parentElement as HTMLElement).style.height = `${elements[i].clientHeight * scrollOffset}px`;
-    elements[i].style.top = `-${elements[i].clientHeight * scrollOffsetV}px`;
-  }
-
-  // elements.forEach(el => {
-  //   (el.parentElement as HTMLElement).style.height = `${el.clientHeight * scrollOffset}px`;
-  //   el.style.top = `-${el.clientHeight * scrollOffsetV}px`;
-  // });
-}
-
-// function updateEasedRatios(el: HTMLElement): void {
-//   let easedRatio: number = easedRatios.get(el) ?? 0;
-
-//   easedRatio += ((targetRatios.get(el) ?? 0) - easedRatio) * 0.1;
-//   easedRatios.set(el, clamp(easedRatio, -1, 1));
-//   el.style.transform = `translateY(${clamp(easedRatio, -1, 1) * (el.clientHeight * scrollOffsetV)}px)`;
-// }
-
-function filterEasedRatios(el: HTMLElement): boolean {
-  return Math.abs(
-    (easedRatios.get(el) ?? 0) - (targetRatios.get(el) ?? 0)
-  ) > 0.001
-}
-
-function updateIllustScroll(): void {
-  // elements.forEach(updateEasedRatios);
-
-  for (let i: number = elements.length; i-- > 0;) {
-    let easedRatio: number = easedRatios.get(elements[i]) ?? 0;
-
-    easedRatio += ((targetRatios.get(elements[i]) ?? 0) - easedRatio) * 0.1;
-    easedRatios.set(elements[i], clamp(easedRatio, -1, 1));
-    elements[i].style.transform = `translateY(${clamp(easedRatio, -1, 1) * (elements[i].clientHeight * scrollOffsetV)}px)`;
-  }
-
-  if ([...targetRatios.keys()].some(filterEasedRatios)) {
-    requestAnimationFrame(updateIllustScroll);
-  } else {
-    ticking = false;
-  }
-}
-
-updateIllustScroll();
-
-// function updateTargetRatios(el: HTMLElement): void {
-//   const rect: DOMRect = el.getBoundingClientRect();
-
-//   targetRatios.set(el, 1 - ((rect.top + rect.height * .5) / documentWindow.innerHeight) * 2);
-// }
-
-function scrollEv(): void {
-  // elements.forEach(updateTargetRatios);
-
-  for (let i: number = elements.length; i-- > 0;) {
+  function initializeIllustElement(i: number): void {
     const rect: DOMRect = elements[i].getBoundingClientRect();
 
-    targetRatios.set(elements[i], 1 - (2 * rect.top + rect.height) / documentWindow.innerHeight);
+    illustData[i].height = rect.height;
 
-    // 1 - ((a + b * .5) / c) * 2
-    // 1 - (2 * a + b) / c
+    (elements[i].parentElement as HTMLElement).style.height = `${illustData[i].height * scrollOffset}px`;
+    elements[i].style.top = `-${illustData[i].height * scrollOffsetV}px`;
+
+    illustData[i].topRel = (rect.top + (illustData[i].height * .5)) + documentWindow.scrollY;
   }
 
-  if (!ticking) {
-    ticking = true;
-    requestAnimationFrame(updateIllustScroll);
-  }
-}
+  for (let i: number = elements.length; i-- > 0;) {
+    illustData[i] = {
+      topRel: 0,
+      height: 0,
+      intersecting: false,
+    };
 
-documentWindow.addEventListener("scroll", scrollEv, { passive: true });
-documentWindow.addEventListener("resize", updateIllustHeight, { passive: true });
+    initializeIllustElement(i);
 
-// Recalculate height when the images loaded
-const imgEls: NodeListOf<HTMLImageElement> = d.querySelectorAll("#illustrations .img img");
-for (let i: number = imgEls.length; i-- > 0;) {
-  if (imgEls[i].complete) {
-    updateIllustHeight();
+    // TODO
+    (elements[i] as HTMLImageElement).addEventListener("load", () => {
 
-  } else {
-    imgEls[i].addEventListener("load", updateIllustHeight, {
+      initializeIllustElement(i);
+
+    }, {
+
       once: true,
       passive: true,
+
     });
+
+    new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+        for (let k: number = entries.length; k-- > 0;) {
+          illustData[i].intersecting = entries[k].isIntersecting;
+        }
+      },
+      intersectionObserverOptions,
+    ).observe(elements[i]);
+  }
+
+  documentWindow.addEventListener("resize", () => {
+    for (let i: number = elements.length; i-- > 0;) {
+      initializeIllustElement(i);
+    }
+  }, { passive: true });
+});
+
+function updateIllustScroll(): void {
+  const
+    docScrollY: number = documentWindow.scrollY
+  , docInnerHeight: number = documentWindow.innerHeight
+  ;
+
+  for (let i: number = elements.length; i-- > 0;) {
+    if (illustData[i].intersecting) {
+      elements[i].style.transform = `translateY(${
+        clamp(
+          1 - ( 2 * (illustData[i].topRel - docScrollY) + illustData[i].height ) / docInnerHeight,
+          -1, 1,
+        )
+          * 
+        (
+          illustData[i].height * scrollOffsetV
+        )
+      }px)`;
+    }
   }
 }
+
+function scrollEv(): void {
+  requestAnimationFrame(updateIllustScroll);
+}
+
+scrollEv();
+
+documentWindow.addEventListener("scroll", scrollEv, { passive: true });
