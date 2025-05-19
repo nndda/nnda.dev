@@ -20,7 +20,7 @@ writeTextFile(abs("./packages.json"), JSON.stringify(_.shuffle([
 
   ...[
     "SAWARATSUKI/KawaiiLogos"
-  ].map(i => "   gh"),
+  ].map(i => i + "   gh"),
 
 ])));
 

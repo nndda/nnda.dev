@@ -1,6 +1,5 @@
 @mixin style {
 @media (width >= 700px) {
-
 .logos {
   & > .inner {
     grid-template-columns: repeat(3, auto);
