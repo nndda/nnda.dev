@@ -19,7 +19,7 @@
     "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.26.0",
     "@types/lodash": "^4.17.16",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.15.19",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.21",
     "chokidar": "^4.0.3",
