@@ -75,7 +75,7 @@ export default {
     `);
   },
 
-  img: (src: string) => {
+  img: (src: string, alt: string = "") => {
     const
       srcAbs: string = srcResolve(src)
     , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
@@ -84,7 +84,7 @@ export default {
     if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
 
     return new Handlebars.SafeString(`
-      <img src="${src}" width="${dimensions.width}" height="${dimensions.height}" loading="lazy" alt="">
+      <img src="${src}" width="${dimensions.width}" height="${dimensions.height}" loading="lazy" alt="${alt}">
     `);
   },
 }
