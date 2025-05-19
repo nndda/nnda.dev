@@ -14,7 +14,6 @@
   & > .section-inner {
     max-width: 1100px;
     padding-top: 2.5em;
-    padding-bottom: 2.5em;
     margin: auto;
     column-count: 2;
   }
@@ -39,6 +38,7 @@
       display: block;
       width: inherit;
       height: auto;
+      transition: 1.5s transform cubic-bezier(0.25, 1, 0.5, 1);
       will-change: transform;
       contain: paint layout;
     }

@@ -22,7 +22,8 @@ import { loadFireflyPreset } from "@tsparticles/preset-firefly";
         },
 
         color: {
-          value: "#f5cf0e",
+          value: "#3ae5f9",
+          // value: "#f5cf0e",
         },
 
         move: {

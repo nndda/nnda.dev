@@ -66,18 +66,45 @@ export function init(d: Document): void {
 
   initializeInputs(d);
 
+  requestAnimationFrame(() => {
+    const
+      pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages") as HTMLElement
+    , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner") as HTMLElement
+    ;
 
-  d.querySelector("footer>.packages>.inner")!.innerHTML =
-    (packageJSON as string[]).map(pkg => {
-      const pkgName: string = pkg.slice(0, -5);
-      return `<a
-href="https://www.npmjs.com/package/${pkgName}"
+    pkgAttrEl.innerHTML =
+      (packageJSON as string[]).map(pkg => {
+        const
+          pkgName: string = pkg.slice(0, -5)
+        , pkgId: string = pkg.slice(-5)
+        ;
+
+        let pkgUrl: string = "";
+
+        if (pkgId.startsWith("pkg")) {
+          pkgUrl = `www.npmjs.com/package/${pkgName}`;
+        } else if (pkgId === "pythn") {
+          pkgUrl = `pypi.org/project/${pkgName}`;
+        } else if (pkgId === "   gh") {
+          pkgUrl = `github.com/${pkgName}`;
+        }
+
+        return `<a
+href="https://${pkgUrl}"
 target="_blank"
 rel="nofollow noopener noreferrer"
 referrerpolicy="no-referrer"
-class="${pkg.slice(-5)}"> ${pkgName} </a>`;
-    }).join("");
+class="${pkgId}"> ${pkgName} </a>`;
+      }).join("");
 
+    function updatePkgElSize(): void {
+      pkgAttrEl.style.setProperty("--width", `${(pkgAttrEl.scrollWidth - pkgAttrElCont.clientWidth) * -1}px`);
+    }
+
+    updatePkgElSize();
+
+    new ResizeObserver(updatePkgElSize).observe(pkgAttrElCont);
+  });
 
   function updateClock(): void {
     lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);

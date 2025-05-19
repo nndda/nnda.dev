@@ -51,7 +51,7 @@ stacks:
     icon: code
     items:
       - TypeScript
-      - JavaScript
+      # - JavaScript
       - Python
       - Rust
 
@@ -60,11 +60,11 @@ stacks:
     items:
       - Node.js
       - webpack
-      - CSS
+      # - CSS
       - SCSS
       - Cloudflare
-      - Cloudflare Pages
-      - Cloudflare Workers
+      # - Cloudflare Pages
+      # - Cloudflare Workers
 
   - group: ツール
     icon: toolbox
@@ -93,13 +93,13 @@ socials:
       - name: GitHub
         url: github.com/nndda
         icon: github
-        redirect: /github
+        redirect: /gh
         username: nndda
 
       - name: itch.io
         url: nnda.itch.io
         icon: itchdotio
-        redirect: /itchio
+        redirect: /itch
         username: nnda
 
       - name: Patreon
@@ -113,7 +113,7 @@ socials:
       - name: ArtStation
         url: artstation.com/nnda
         icon: artstation
-        redirect: /artstation
+        redirect: /artstion
         username: nnda
 
       - name: cara.app
@@ -126,13 +126,13 @@ socials:
       - name: Mastodon
         url: mastodon.art/@nnda
         icon: mastodon
-        redirect: /mastodon
+        redirect: /mstdn
         username: '@nnda'
 
       - name: Twitter/X
         url: twitter.com/@nnda_dev
         icon: x
-        redirect: /twitter
+        redirect: /twt
         username: '@nnda_dev'
 
       - name: Bluesky

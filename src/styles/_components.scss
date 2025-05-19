@@ -2,7 +2,8 @@
 @use "sass:color";
 
 .icon-text {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-right: 1em;
   margin-top: .5em;
   white-space: nowrap;
