@@ -110,7 +110,7 @@ header {
 
     & > .chv-l, & > .chv-r {
       animation-timing-function: linear;
-      animation-duration: .7s;
+      animation-duration: 1s;
     }
   }
 
@@ -120,16 +120,12 @@ header {
 }
 
 .chv-l {
-  animation: bg-up-l 2s ease infinite;
-}
-
-.chv-r {
-  animation: bg-up-r 2s ease infinite;
+  transform: scaleX(-1.0);
 }
 
 .chv-l, .chv-r {
   position: relative;
-  height: 300%;
+  height: 100%;
   backdrop-filter: blur(7px);
 
   @include diagonal-stripes(
@@ -138,25 +134,13 @@ header {
     .2em,
     .8em,
   );
+
+  animation: bg-up 2s ease infinite;
 }
 
-@keyframes bg-up-l {
-  0% {
-    transform: translateY(0) scaleX(-1);
-  }
-
-  100% {
-    transform: translateY(-35%) scaleX(-1);
-  }
-}
-
-@keyframes bg-up-r {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-35%);
+@keyframes bg-up {
+  to {
+    background-position-y: -6em;
   }
 }
 
