@@ -77,6 +77,7 @@ requestAnimationFrame(() => {
   documentWindow.addEventListener("resize", () => {
     for (let i: number = elements.length; i-- > 0;) {
       initializeIllustElement(i);
+      scrollEv();
     }
   }, { passive: true });
 });
