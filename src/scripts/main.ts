@@ -82,7 +82,7 @@ export function init(d: Document): void {
         let pkgUrl: string = "";
 
         if (pkgId.startsWith("pkg")) {
-          pkgUrl = `www.npmjs.com/package/${pkgName}"`;
+          pkgUrl = `www.npmjs.com/package/${pkgName}`;
         } else if (pkgId === "pythn") {
           pkgUrl = `pypi.org/project/${pkgName}`;
         } else if (pkgId === "   gh") {
