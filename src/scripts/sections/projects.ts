@@ -78,17 +78,17 @@ function initContentCategory(
 
 window.addEventListener("DOMContentLoaded", () => {
   const
-    headerElem: HTMLElement = d.querySelector("body > header") as HTMLElement,
-    projCtrlElem: HTMLElement = d.querySelector("#projects > .section-controls") as HTMLElement,
+  //   headerElem: HTMLElement = d.querySelector("body > header") as HTMLElement,
+    // projCtrlElem: HTMLElement = d.querySelector("#projects > .section-controls") as HTMLElement,
 
     tagsInput: HTMLTextAreaElement = d.getElementById("project-tag-input") as HTMLTextAreaElement,
     tagsCont: HTMLTextAreaElement = d.getElementById("project-tag-cont") as HTMLTextAreaElement;
 
-  projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
+  // projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
 
-  window.addEventListener("scroll", () => {
-    projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
-  });
+  // window.addEventListener("scroll", () => {
+  //   projCtrlElem.style.top = `${headerElem.offsetHeight}px`;
+  // });
 
   // Category -------------------------------------------------------------------------------------
 
