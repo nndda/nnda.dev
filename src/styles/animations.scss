@@ -1,7 +1,10 @@
 @use "variables" as *;
 
 .anim {
-  transition: .5s ease;
+  transition:
+    transform .5s ease
+  , opacity .5s ease
+  ;
   will-change: tranform, opacity;
 
   &.fade {
