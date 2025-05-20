@@ -75,7 +75,7 @@ export default {
     `);
   },
 
-  img: (src: string, alt: string = "") => {
+  img: (src: string, alt: string) => {
     const
       srcAbs: string = srcResolve(src)
     , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
