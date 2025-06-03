@@ -19,7 +19,7 @@
     "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.27.0",
     "@types/lodash": "^4.17.17",
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.15.29",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.21",
     "chokidar": "^4.0.3",
@@ -29,9 +29,9 @@
     "css-loader": "^7.1.2",
     "cssnano": "^7.0.7",
     "dotenv": "^16.5.0",
-    "eslint": "^9.27.0",
+    "eslint": "^9.28.0",
     "favicons": "^7.2.0",
-    "globals": "^16.1.0",
+    "globals": "^16.2.0",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
     "html-bundler-webpack-plugin": "^4.20.2",
@@ -39,9 +39,9 @@
     "jiti": "^2.4.2",
     "lodash": "^4.17.21",
     "marked": "^15.0.12",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.4",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.89.0",
+    "sass": "^1.89.1",
     "sass-loader": "^16.0.5",
     "sharp": "^0.34.2",
     "stylelint": "^16.19.1",
@@ -52,7 +52,7 @@
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1",
-    "wrangler": "^4.16.1",
+    "wrangler": "^4.17.0",
     "yaml": "^2.8.0"
   },
   "dependencies": {
@@ -66,6 +66,6 @@
     "@tsparticles/preset-firefly": "^3.2.0",
     "@tsparticles/slim": "^3.8.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^14.14.0"
+    "simple-icons": "^15.0.0"
   }
 }
