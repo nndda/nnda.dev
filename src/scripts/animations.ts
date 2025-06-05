@@ -17,7 +17,7 @@ export default function (d: Document): void {
       )
     ;
 
-    const animEls: NodeListOf<HTMLElement> = d.querySelectorAll(".anim");
+    const animEls: NodeListOf<HTMLElement> = d.querySelectorAll(".anim:not(.on)");
     for (let i: number = animEls.length; i-- > 0;) {
       observer(animEls[i]);
     }
