@@ -25,28 +25,9 @@ export function init(d: Document): void {
 
   initializeInputs(d);
 
-  function importFooter(): void {
-    import("./sections/footer")
-      .then(({default: initializeFooter}) => {
-        initializeFooter(d);
-      })
-      .catch(() => {
-        importFooter();
-      });
-  }
-
-  window.observe(
-    (
-      entry: IntersectionObserverEntry,
-      observerObj: IntersectionObserver,
-    ): void => {
-      if (entry.isIntersecting) {
-        importFooter();
-
-        observerObj.unobserve(entry.target);
-      }
-    },
-  )(
-    d.querySelector("body > footer") as HTMLElement
+  window.importLazy( d,
+    import("./sections/footer"),
+    d.querySelector("body > footer") as HTMLElement,
   );
+
 }
