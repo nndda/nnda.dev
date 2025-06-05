@@ -236,4 +236,5 @@ def update_contribs_data(contribs: Any, type: str) -> None:
 update_contribs_data(format_contribs(fetch_contribs_all()), "all")
 update_contribs_data(format_contribs(fetch_contribs_ranged()), "yearly")
 
+write_txt_file(os.path.join(script_dir, "contribs-yearly.json"), json.dumps(contribs_data["arr"]["yearly"]))
 write_txt_file(os.path.join(script_dir, "contribs.json"), json.dumps(contribs_data))
