@@ -11,6 +11,12 @@ interface Window { // eslint-disable-line
     ) => void,
     initThreshold?: number | number[] | undefined,
   ) => (target: Element) => void,
+
+  importLazy: (
+    d: Document,
+    importFn: Promise<any>,
+    element: Element,
+  ) => void,
 }
 
 // Load and populate lazy-loaded icons
@@ -52,4 +58,37 @@ window.observe = function (
   ;
 
   return observer.observe.bind(observer);
+}
+
+window.importLazy = function (
+  d: Document,
+  importFn: Promise<any>,
+  element: Element,
+): void {
+
+  function importInit(): void {
+    importFn
+      .then(({default: init}) => {
+        init(d);
+      })
+      .catch(() => {
+        importInit();
+      });
+  }
+
+  window.observe(
+    (
+      entry: IntersectionObserverEntry,
+      observerObj: IntersectionObserver,
+    ): void => {
+      if (entry.isIntersecting) {
+        importInit();
+
+        observerObj.unobserve(entry.target);
+      }
+    },
+  )(
+    element
+  );
+
 }
