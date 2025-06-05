@@ -1,8 +1,7 @@
 import initializeInputs from "./input";
-import initializeAnimations from "./animations";
 
 export default function (d: Document): void {
-  initializeAnimations(d);
+  window.initAnim(d);
 
   const
     navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement
