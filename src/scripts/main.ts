@@ -26,7 +26,7 @@ export default function (d: Document): void {
   initializeInputs(d);
 
   window.importLazy( d,
-    import("./sections/footer"),
+    (): Promise<any> => import("./sections/footer"),
     d.querySelector("body > footer") as HTMLElement,
   );
 

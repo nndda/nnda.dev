@@ -14,7 +14,7 @@ interface Window { // eslint-disable-line
 
   importLazy: (
     d: Document,
-    importFn: Promise<any>,
+    importFn: () => Promise<any>,
     element: Element,
   ) => void,
 }
@@ -62,12 +62,12 @@ window.observe = function (
 
 window.importLazy = function (
   d: Document,
-  importFn: Promise<any>,
+  importFn: () => Promise<any>,
   element: Element,
 ): void {
 
   function importInit(): void {
-    importFn
+    importFn()
       .then(({default: init}) => {
         init(d);
       })

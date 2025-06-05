@@ -10,6 +10,6 @@ import initScroll from "./scroll.home";
 initScroll(d);
 
 window.importLazy( d,
-  import("./sections/overview"),
+  (): Promise<any> => import("./sections/overview"),
   d.getElementById("overview") as HTMLElement,
 );
