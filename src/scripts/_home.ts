@@ -12,4 +12,5 @@ initScroll(d);
 window.importLazy( d,
   (): Promise<any> => import("./sections/overview"),
   d.getElementById("overview") as HTMLElement,
+  "25px",
 );

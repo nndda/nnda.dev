@@ -9,13 +9,14 @@ interface Window { // eslint-disable-line
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
     ) => void,
-    initThreshold?: number | number[] | undefined,
+    rootMargin?: string,
   ) => (target: Element) => void,
 
   importLazy: (
     d: Document,
     importFn: () => Promise<any>,
     element: Element,
+    rootMargin?: string,
   ) => void,
 }
 
@@ -42,7 +43,7 @@ window.observe = function (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
     ) => void,
-    initThreshold: number | number[] | undefined = undefined
+    rootMargin: string | undefined = undefined,
 ) {
   const
     observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
@@ -52,7 +53,8 @@ window.observe = function (
       },
       {
         root: null,
-        threshold: initThreshold,
+        threshold: 0,
+        rootMargin: rootMargin,
       },
     )
   ;
@@ -64,6 +66,7 @@ window.importLazy = function (
   d: Document,
   importFn: () => Promise<any>,
   element: Element,
+  rootMargin: string | undefined = undefined,
 ): void {
 
   function importInit(): void {
@@ -86,7 +89,7 @@ window.importLazy = function (
 
         observerObj.unobserve(entry.target);
       }
-    },
+    }, rootMargin
   )(
     element
   );
