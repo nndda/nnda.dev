@@ -131,7 +131,7 @@ function createIconDefsGrouped(
   iconsOther: Record<string, string> = {},
   ): void {
   writeTextFile(abs(`./icons/${groupName}.js`),
-    `window.p("i.${groupName}",{`
+    `export default () => {window.p("i.${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
@@ -146,7 +146,7 @@ function createIconDefsGrouped(
         }),
     ].join(",")
     +
-    "});"
+    "});};"
   );
 }
 
