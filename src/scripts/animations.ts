@@ -1,4 +1,4 @@
-export function initializeAnimations(d: Document): void {
+export default function (d: Document): void {
 
   if ((d.defaultView as Window).matchMedia("(prefers-reduced-motion: no-preference)").matches) {
 

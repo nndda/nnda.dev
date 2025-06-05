@@ -1,4 +1,4 @@
-export function initScroll(d: Document) {
+export default function (d: Document): void {
   const
     documentWindow: Window = document.defaultView as Window
 

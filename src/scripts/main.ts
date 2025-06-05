@@ -1,7 +1,7 @@
-import { initializeInputs } from "./input";
-import { initializeAnimations } from "./animations";
+import initializeInputs from "./input";
+import initializeAnimations from "./animations";
 
-export function init(d: Document): void {
+export default function (d: Document): void {
   initializeAnimations(d);
 
   const

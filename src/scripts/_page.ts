@@ -3,8 +3,8 @@ const d: Document = document;
 
 import "./build/icons/global";
 
-import { init } from "./main";
+import init from "./main";
 init(d);
 
-import { initScroll } from "./scroll";
+import initScroll from "./scroll";
 initScroll(d);

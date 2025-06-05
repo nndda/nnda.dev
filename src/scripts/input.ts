@@ -1,6 +1,6 @@
 import { iconCaretDown } from "./build/icons/icons";
 
-export function initializeInputs(d: Document): void {
+export default function (d: Document): void {
 
   // Dropdown -------------------------------------------------------------------------------------
 
