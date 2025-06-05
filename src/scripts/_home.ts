@@ -8,3 +8,8 @@ init(d);
 
 import { initScroll } from "./scroll.home";
 initScroll(d);
+
+window.importLazy( d,
+  import("./sections/overview"),
+  d.getElementById("overview") as HTMLElement,
+);
