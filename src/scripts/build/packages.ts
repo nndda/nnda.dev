@@ -22,5 +22,9 @@ writeTextFile(abs("./packages.json"), JSON.stringify(_.shuffle([
     "SAWARATSUKI/KawaiiLogos"
   ].map(i => i + "   gh"),
 
+  ...[
+    "css-loaders.com"
+  ],
+
 ])));
 

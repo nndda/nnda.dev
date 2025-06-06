@@ -1,13 +1,31 @@
 <section id="home">
   <div class="content" id="tsparticles">
 
-    {{!-- 
+    <div class="self-cont">
+      <div class="inner">
+        <div class="name-cont">
+          {{img "/assets/logo.webp"}}
+        </div>
+        <div>
+          <div class="title">
+            Web Dev.
+          </div>
+          <div class="title">
+            Game Dev.
+          </div>
+          <div class="title">
+            Illustrator
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="illust-cont">
       <div class="fg"></div>
-      <img src="/assets/secret_home_bg.webp">
+      <img src="">
     </div>
-    --}}
 
+    {{!-- 
     <div id="in-dev-stat">
       <div class="icon">
         {{{icons.road_barrier}}}
@@ -20,21 +38,25 @@
         </small>
       </div>
     </div>
-
+    --}}
     <div class="cta-container">
-      <small>Support me and my works, <br>&amp; get access to exclusive contents</small>
-      <a
-        id="cta-button"
-        href="https://patreon.com/nnda"
-        target="_blank"
-        rel="noopener noreferrer"
-        referrerpolicy="origin"
-      >
-        {{{brands.patreon}}}
-        Become A Patron!
-      </a>
+      <div class="cta-inner">
+        <a
+          id="cta-button"
+          href="https://patreon.com/nnda"
+          target="_blank"
+          rel="noopener noreferrer"
+          referrerpolicy="origin"
+        >
+          {{{brands.patreon}}}
+          Become A Patron!
+        </a>
+        <small>
+          Support me and my works, <br>&amp; get access to exclusive contents
+        </small>
+      </div>
     </div>
   </div>
 </section>
 
-{{ script "/scripts/particles.ts" true }}
+{{!-- {{ script "/scripts/particles.ts" true }} --}}

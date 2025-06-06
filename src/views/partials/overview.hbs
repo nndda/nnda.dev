@@ -28,24 +28,25 @@
       </div>
       --}}
 
-      <div class="controls anim once fade float-up">
+      <div class="controls">
         <div class="section-title-sub">-</div>
         <div class="inner bg-scroll">
         </div>
       </div>
 
-      <div class="calendar-container anim once fade float-up">
+      <div class="calendar-container">
         <div class="section-title-sub">
             Contribution Graph
         </div>
         <div class="inner card scrollbar-secondary">
-          <div class="grid">
+          <div class="grid has-loader anim fade on">
+            <div class="loader"><div></div></div>
             {{!-- {{#each ghContribs.arr.yearly}}<i class="c{{this}}"></i>{{/each}} --}}
           </div>
         </div>
       </div>
 
-      <div class="stats anim once fade float-up">
+      <div class="stats anim once">
         <div class="section-title-sub">
             Stats
         </div>
@@ -88,12 +89,12 @@
     </div>
 
     <div class="languages">
-      <div class="section-title-sub anim once fade float-right">
+      <div class="section-title-sub anim man once fade float-right">
           Most Used Languages
       </div>
       <div class="languages-container">
         {{#each ghLangs}}
-          <div class="lang anim once" style="width: {{this.percent}}%">
+          <div class="lang anim man once" style="width: {{this.percent}}%">
             <div class="box">
               <code><b>{{this.percent}}%</b></code>
             </div>
@@ -112,21 +113,21 @@
     </div>
 
     <div class="stacks">
-      <div class="section-title-sub anim once fade float-right">
-          Stacks
+      <div class="section-title-sub anim man fade float-right">
+          Tech Stacks
       </div>
       <div class="stacks-lists">
         <ul class="nostyle">
           {{#each stacks}}
-            <li class="anim once fade float-up">
+            <li class="anim man fade float-up">
               <ul class="nostyle">
                 {{#each this.items}}
-                  <li class="icon anim once fade float-right">
+                  <li class="icon anim man fade float-right">
                     {{{icon "overview" this}}}
                   </li>
                 {{/each}}
               </ul>
-              <div class="title anim once fade float-down">{{this.group}}</div>
+              <div class="title anim man fade float-down">{{this.group}}</div>
             </li>
           {{/each}}
         </ul>

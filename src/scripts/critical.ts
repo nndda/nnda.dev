@@ -115,7 +115,7 @@ window.initAnim = function (d: Document): void {
       )
     ;
 
-    for (const animEls of d.querySelectorAll(".anim:not(.on)")) {
+    for (const animEls of d.querySelectorAll(".anim:not(.on, .man)")) {
       observer(animEls);
     }
   }

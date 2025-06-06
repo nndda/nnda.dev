@@ -10,17 +10,14 @@
   padding-top: 1.25em;
 }
 
-.heading-mobile {
-  padding: 1.5em;
-
-  & > h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-}
-
 .with-aside > aside {
   display: none;
+}
+
+.illust-cont {
+  & > img {
+    object-position: 35%;
+  }
 }
 }
 }

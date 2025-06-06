@@ -41,18 +41,18 @@
   }
 }
 
-.commits { // =====================================================================================
-  &.anim {
-    @include nth-loop(1, 3) using ($i) {
-      transition-delay: 0s + (.15 * $i);
-    }
+// .commits { // =====================================================================================
+//   &.anim {
+//     @include nth-loop(1, 3) using ($i) {
+//       transition-delay: 0s + (.15 * $i);
+//     }
 
-    &:not(.on) {
-      transition: .09s ease-out;
-      transition-delay: 0;
-    }
-  }
-}
+//     &:not(.on) {
+//       transition: .09s ease-out;
+//       transition-delay: 0;
+//     }
+//   }
+// }
 
 .stats.anim {
   &.on {
