@@ -89,7 +89,7 @@ window.importLazy = function (
       if (entry.isIntersecting) {
         importInit();
 
-        observerObj.unobserve(entry.target);
+        observerObj.disconnect();
       }
     }, rootMargin
   )(
