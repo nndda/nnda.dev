@@ -27,7 +27,7 @@ export default function (d: Document): void {
   window.importLazy( d,
     (): Promise<any> => import("./sections/footer"),
     d.querySelector("body > footer") as HTMLElement,
-    "50px",
+    "80px",
   );
 
 }
