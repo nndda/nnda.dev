@@ -116,10 +116,6 @@ footer {
 		color: color.mix($text-secondary, $background-dark, 80%);
 		text-align: justify;
 		letter-spacing: .05em;
-
-		& > small {
-			opacity: .7;
-		}
 	}
 }
 

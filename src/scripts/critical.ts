@@ -9,14 +9,17 @@ interface Window { // eslint-disable-line
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
     ) => void,
-    initThreshold?: number | number[] | undefined,
+    rootMargin?: string,
   ) => (target: Element) => void,
 
   importLazy: (
     d: Document,
-    importFn: Promise<any>,
+    importFn: () => Promise<any>,
     element: Element,
+    rootMargin?: string,
   ) => void,
+
+  initAnim: (d: Document) => void;
 }
 
 // Load and populate lazy-loaded icons
@@ -42,7 +45,7 @@ window.observe = function (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
     ) => void,
-    initThreshold: number | number[] | undefined = undefined
+    rootMargin: string | undefined = undefined,
 ) {
   const
     observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
@@ -52,7 +55,8 @@ window.observe = function (
       },
       {
         root: null,
-        threshold: initThreshold,
+        threshold: 0,
+        rootMargin: rootMargin,
       },
     )
   ;
@@ -62,12 +66,13 @@ window.observe = function (
 
 window.importLazy = function (
   d: Document,
-  importFn: Promise<any>,
+  importFn: () => Promise<any>,
   element: Element,
+  rootMargin: string | undefined = undefined,
 ): void {
 
   function importInit(): void {
-    importFn
+    importFn()
       .then(({default: init}) => {
         init(d);
       })
@@ -84,11 +89,34 @@ window.importLazy = function (
       if (entry.isIntersecting) {
         importInit();
 
-        observerObj.unobserve(entry.target);
+        observerObj.disconnect();
       }
-    },
+    }, rootMargin
   )(
     element
   );
 
 }
+
+window.initAnim = function (d: Document): void {
+  if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    const
+      observer: (target: Element) => void = window.observe(
+        (
+          entry: IntersectionObserverEntry,
+          observerObj: IntersectionObserver,
+        ): void => {
+          entry.target.classList.toggle("on", entry.isIntersecting);
+
+          if (entry.isIntersecting && entry.target.classList.contains("once")) {
+            observerObj.unobserve(entry.target);
+          }
+        },
+      )
+    ;
+
+    for (const animEls of d.querySelectorAll(".anim:not(.on)")) {
+      observer(animEls);
+    }
+  }
+};

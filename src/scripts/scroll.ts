@@ -1,4 +1,4 @@
-export function initScroll(d: Document) {
+export default function (d: Document) {
   const
     headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement

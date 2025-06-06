@@ -1,15 +1,23 @@
 export {};
 const d: Document = document;
 
-import "./build/icons/global";
-
-import { init } from "./main";
+import init from "./main";
 init(d);
 
-import { initScroll } from "./scroll.home";
+import initIcon from "./build/icons/global";
+initIcon();
+
+import initScroll from "./scroll.home";
 initScroll(d);
 
 window.importLazy( d,
-  import("./sections/overview"),
+  (): Promise<any> => import("./sections/overview"),
   d.getElementById("overview") as HTMLElement,
+  "25px",
+);
+
+window.importLazy( d,
+  (): Promise<any> => import("./sections/links"),
+  d.getElementById("links") as HTMLElement,
+  "120px",
 );

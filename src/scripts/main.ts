@@ -1,8 +1,7 @@
-import { initializeInputs } from "./input";
-import { initializeAnimations } from "./animations";
+import initializeInputs from "./input";
 
-export function init(d: Document): void {
-  initializeAnimations(d);
+export default function (d: Document): void {
+  window.initAnim(d);
 
   const
     navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement
@@ -26,8 +25,9 @@ export function init(d: Document): void {
   initializeInputs(d);
 
   window.importLazy( d,
-    import("./sections/footer"),
+    (): Promise<any> => import("./sections/footer"),
     d.querySelector("body > footer") as HTMLElement,
+    "80px",
   );
 
 }
