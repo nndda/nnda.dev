@@ -59,6 +59,8 @@ export default function (d: Document): void {
           pkgUrl = `pypi.org/project/${pkgName}`;
         } else if (pkgId === "   gh") {
           pkgUrl = `github.com/${pkgName}`;
+        } else {
+          pkgUrl = pkgName;
         }
 
         return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId}"> ${pkgName} </a>`;
