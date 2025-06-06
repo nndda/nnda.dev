@@ -13,6 +13,7 @@ import handlebarsHelpers from "./helpers";
 import {
   exists,
   readTextFile,
+  writeTextFile,
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
@@ -137,8 +138,7 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
     if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
       siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
       siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
-        ["github"].includes(socialLink.icon) ?
-        "global" : "links",
+        "links",
         socialLink.icon as string
       );
     }
@@ -207,6 +207,13 @@ updateSocialRedirects(socialRedirData);
 
 import ghLangsData from "../api/langs.json";
 import ghContribsData from "../api/contribs.json";
+
+// =======================================================================================
+
+writeTextFile(
+  rootResolve("./src/scripts/build/links.json"),
+  JSON.stringify(siteData.socials),
+);
 
 // =======================================================================================
 
