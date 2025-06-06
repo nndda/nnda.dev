@@ -16,10 +16,18 @@ export default function (d: Document): void {
   , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
 
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
+
+  , illustContStyle: CSSStyleDeclaration = (d.querySelector(".illust-cont > img") as HTMLElement).style
+  , selfTitleContStyle: CSSStyleDeclaration = (d.querySelector(".self-cont") as HTMLElement).style
+  , selfTitle1Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(1)") as HTMLElement).style
+  , selfTitle2Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(2)") as HTMLElement).style
+  , selfTitle3Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(3)") as HTMLElement).style
+
   ;
 
   let
     scrollPosition: number = 0
+  , scrollRatio: number = 0
   ;
 
   backTop.addEventListener("click", () => {
@@ -51,6 +59,16 @@ export default function (d: Document): void {
   }
 
   function scrollEv(): void {
+
+    scrollRatio = window.scrollY / window.innerHeight;
+
+    illustContStyle.transform = `translateY(-${scrollRatio * 250}px)`;
+    selfTitleContStyle.transform = `translateY(-${scrollRatio * 170}px)`;
+
+    selfTitle1Style.transform = `translateY(-${scrollRatio * 30}px)`;
+    selfTitle2Style.transform = `translateY(-${scrollRatio * 60}px)`;
+    selfTitle3Style.transform = `translateY(-${scrollRatio * 90}px)`;
+
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
 
     toggleHeaderFn(scrollPosition > documentWindow.innerHeight);
