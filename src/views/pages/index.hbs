@@ -6,6 +6,8 @@
 
   {{ include "head" }}
 
+  {{ stylesheet "/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }}
+
   <meta property="og:type" content="website">
 </head>
 
@@ -22,9 +24,6 @@
   </main>
 
   {{ include "footer" }}
-
-  {{ stylesheet "/styles/animations.scss" "(prefers-reduced-motion: no-preference)" }}
-  {{ stylesheet "/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }}
 
   {{ script "/scripts/_home.ts" true }}
 </body>
