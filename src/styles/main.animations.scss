@@ -1,45 +1,45 @@
 @use "variables" as *;
 
-.project.card { // ================================================================================
-  &.on,
-  & > .project-title,
-  & > p {
-    transition: .3s ease-out;
-  }
+// .project.card { // ================================================================================
+//   &.on,
+//   & > .project-title,
+//   & > p {
+//     transition: .3s ease-out;
+//   }
 
-  & .project-label {
-    transition: .2s ease;
+//   & .project-label {
+//     transition: .2s ease;
 
-    @include nth-loop(1, 4) using ($i) {
-      transition-delay: 0s + (.15 * $i);
-    }
-  }
+//     @include nth-loop(1, 4) using ($i) {
+//       transition-delay: 0s + (.15 * $i);
+//     }
+//   }
 
-  &:not(.on) {
-    transform: translateY(1.5em);
-    opacity: 0;
+//   &:not(.on) {
+//     transform: translateY(1.5em);
+//     opacity: 0;
 
-    & > .project-title,
-    & > p,
-    & .project-label {
-      transition: .09s ease;
-    }
+//     & > .project-title,
+//     & > p,
+//     & .project-label {
+//       transition: .09s ease;
+//     }
 
-    & > .project-title {
-      transform: translateX(2.5em);
-    }
+//     & > .project-title {
+//       transform: translateX(2.5em);
+//     }
 
-    & > p {
-      transform: translateY(2em);
-    }
+//     & > p {
+//       transform: translateY(2em);
+//     }
 
-    & .project-label {
-      transform: translateX(2.5em);
-      transition-delay: 0 !important;
-      opacity: 0;
-    }
-  }
-}
+//     & .project-label {
+//       transform: translateX(2.5em);
+//       transition-delay: 0 !important;
+//       opacity: 0;
+//     }
+//   }
+// }
 
 // .commits { // =====================================================================================
 //   &.anim {
