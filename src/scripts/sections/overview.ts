@@ -34,8 +34,7 @@ export default function (d: Document): void {
 
     requestAnimationFrame((): void => {
       contribsGridEl.innerHTML = contribsGridElRaw;
+      contribsGridEl.classList.add("on");
     });
-
-    contribsGridEl.classList.add("on");
   }, 500);
 }
