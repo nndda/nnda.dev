@@ -223,7 +223,7 @@ canvas[data-generated="true"] {
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
     will-change: tranform;
 
-    &:first-letter {
+    &::first-letter {
       font-weight: bold;
     }
   }
