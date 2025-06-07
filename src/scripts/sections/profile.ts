@@ -15,3 +15,8 @@ function updateClock(): void {
 
 updateClock();
 setInterval(updateClock, 1e3);
+
+window.initAnim(
+  document.getElementById("profile") as HTMLElement,
+  "-210px 0px",
+);
