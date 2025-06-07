@@ -8,30 +8,24 @@ const contribsGridElRaw: string = contribsGrid.map((val: number): string => {
 export default function (d: Document): void {
   const
     contribsGridEl: HTMLElement = d.querySelector(".calendar-container .grid") as HTMLElement
-
-  , sectLang: HTMLElement = d.querySelector("#overview .languages") as HTMLElement
-  , sectStack: HTMLElement = d.querySelector("#overview .stacks") as HTMLElement
   ;
 
+  window.initAnim(
+    d.querySelector("#overview .commits") as HTMLElement,
+    "-120px 0px",
+  );
 
   initIcon();
 
-  window.observe((entry: IntersectionObserverEntry): void => {
-    if (entry.isIntersecting) {
-      for (const animEl of sectLang.querySelectorAll(".anim.man")) {
-        animEl.classList.add("on");
-      }
-    }
-  }, "-120px 0px" )(sectLang);
+  window.initAnim(
+    d.querySelector("#overview .languages") as HTMLElement,
+    "-120px 0px",
+  );
 
-  window.observe((entry: IntersectionObserverEntry): void => {
-    if (entry.isIntersecting) {
-      for (const animEl of sectStack.querySelectorAll(".anim.man")) {
-        animEl.classList.add("on");
-      }
-    }
-  }, "-120px 0px" )(sectStack);
-
+  window.initAnim(
+    d.querySelector("#overview .stacks") as HTMLElement,
+    "-120px 0px",
+  );
 
   contribsGridEl.classList.remove("on");
 

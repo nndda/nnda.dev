@@ -19,7 +19,11 @@ interface Window { // eslint-disable-line
     rootMargin?: string,
   ) => void,
 
-  initAnim: (d: Document) => void;
+  initAnim: (
+    el: Element,
+    rootMargin?: string,
+    cb?: (() => void) | null,
+  ) => void;
 }
 
 // Load and populate lazy-loaded icons
@@ -98,25 +102,18 @@ window.importLazy = function (
 
 }
 
-window.initAnim = function (d: Document): void {
-  if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
-    const
-      observer: (target: Element) => void = window.observe(
-        (
-          entry: IntersectionObserverEntry,
-          observerObj: IntersectionObserver,
-        ): void => {
-          entry.target.classList.toggle("on", entry.isIntersecting);
+window.initAnim = function (
+  el: Element,
+  rootMargin: string | undefined = undefined,
+  cb: (() => void) | null = null,
+): void {
+  window.observe((entry: IntersectionObserverEntry): void => {
+    if (entry.isIntersecting) {
+      if (cb) cb();
 
-          if (entry.isIntersecting && entry.target.classList.contains("once")) {
-            observerObj.unobserve(entry.target);
-          }
-        },
-      )
-    ;
-
-    for (const animEls of d.querySelectorAll(".anim:not(.on, .man)")) {
-      observer(animEls);
+      for (const animEl of el.querySelectorAll(".anim:not(.on)")) {
+        animEl.classList.add("on");
+      }
     }
-  }
+  }, rootMargin )(el);
 };

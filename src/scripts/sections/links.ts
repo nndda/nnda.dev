@@ -16,7 +16,11 @@ interface LinkGroupItem {
 }
 
 export default function (d: Document): void { requestAnimationFrame((): void => {
-  (d.querySelector("#links>.section-inner") as HTMLElement).innerHTML =
+  const
+    linkSectInner: HTMLElement = d.querySelector("#links>.section-inner") as HTMLElement
+  ;
+
+  linkSectInner.innerHTML =
   linksData.map((data: LinkGroup): string => {
     return `
       <div class="links-group">
@@ -60,5 +64,5 @@ export default function (d: Document): void { requestAnimationFrame((): void => 
 
   initIcon();
 
-  window.initAnim(d);
+  window.initAnim(linkSectInner);
 });}
