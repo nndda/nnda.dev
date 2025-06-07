@@ -24,5 +24,7 @@
 }
 
 .has-loader {
-  display: block !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
