@@ -35,7 +35,6 @@ export default {
     entry: {
       index: abs("./src/views/pages/index.hbs"),
       "404": abs("./src/views/pages/404.hbs"),
-      links: abs("./src/views/pages/links.hbs"),
       ... projectEntries,
     },
 
