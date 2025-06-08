@@ -161,6 +161,7 @@ createIconDefs(
 createIconDefsGrouped(
   "profile",
   [
+    faClock,
     faLanguage,
     faLocationDot,
     faUserTag,
@@ -196,7 +197,7 @@ createIconDefsGrouped(
 );
 
 createIconDefsGrouped(
-  "global",
+  "footer",
   [
     faBox,
     faBug,
@@ -207,11 +208,15 @@ createIconDefsGrouped(
     faScaleBalanced,
     faStar,
   ],
+);
+
+createIconDefsGrouped(
+  "global",
+  [
+  ],
   [
     siArtstation,
-    siBluesky,
     siGithub,
     siItchdotio,
-    siMastodon,
   ],
 );

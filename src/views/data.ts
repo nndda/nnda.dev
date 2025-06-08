@@ -246,17 +246,17 @@ export default {
 
   siteOptions: [
     {
-      icon: handlebarsHelpers.icon("global", "star"),
+      icon: handlebarsHelpers.icon("footer", "star"),
       name: "Star",
       url: `${repoURL}`,
     },
     {
-      icon: handlebarsHelpers.icon("global", "code-fork"),
+      icon: handlebarsHelpers.icon("footer", "code-fork"),
       name: "Fork",
       url: `${repoURL}/fork`,
     },
     {
-      icon: handlebarsHelpers.icon("global", "bug"),
+      icon: handlebarsHelpers.icon("footer", "bug"),
       name: "Issues",
       url: `${repoURL}/issues`,
     },
