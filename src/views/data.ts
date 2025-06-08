@@ -215,6 +215,11 @@ writeTextFile(
   JSON.stringify(siteData.socials),
 );
 
+writeTextFile(
+  rootResolve("./src/scripts/build/projects.json"),
+  JSON.stringify(siteData.projects),
+);
+
 // =======================================================================================
 
 console.log("Finished processing data");
