@@ -6,6 +6,7 @@ User-agent: Andibot
 User-agent: anthropic-ai
 User-agent: Applebot
 User-agent: Applebot-Extended
+User-agent: bedrockbot
 User-agent: Brightbot 1.0
 User-agent: Bytespider
 User-agent: CCBot
@@ -49,11 +50,15 @@ User-agent: omgili
 User-agent: omgilibot
 User-agent: Operator
 User-agent: PanguBot
+User-agent: Panscient
+User-agent: panscient.com
 User-agent: Perplexity-User
 User-agent: PerplexityBot
 User-agent: PetalBot
 User-agent: PhindBot
 User-agent: QualifiedBot
+User-agent: QuillBot
+User-agent: quillbot.com
 User-agent: SBIntuitionsBot
 User-agent: Scrapy
 User-agent: SemrushBot

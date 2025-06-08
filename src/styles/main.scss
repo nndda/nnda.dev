@@ -3,6 +3,9 @@
 @use "components";
 @use "utils";
 
+@use "animations";
+@use "main.animations";
+
 @use "sections/header";
 @use "sections/footer";
 @use "sections/profile";

@@ -71,17 +71,17 @@
   }
 }
 
-.project-image {
-  overflow: hidden;
+// .project-image {
+//   overflow: hidden;
 
-  & > img {
-    display: block;
-    width: 100%;
-    max-height: 230px;
-    object-position: center;
-    object-fit: cover;
-  }
-}
+//   & > img {
+//     display: block;
+//     width: 100%;
+//     max-height: 230px;
+//     object-position: center;
+//     object-fit: cover;
+//   }
+// }
 
 .project-title {
   margin: 0;
@@ -95,11 +95,11 @@
   font-size: 1.15em;
   letter-spacing: .08em;
 
-  &.with-image {
-    position: absolute;
-    width: 100%;
-    margin-top: -2em;
-  }
+  // &.with-image {
+  //   position: absolute;
+  //   width: 100%;
+  //   margin-top: -2em;
+  // }
 
   & a {
     text-decoration: none;

@@ -113,15 +113,17 @@
     </h1>
   </div>
 
-  <div class="section-inner">
+  <div class="section-inner has-loader anim fade on">
+    <div class="loader"><div></div></div>
 
     {{!-- PROJECT CONTENTS ------------------------------------------------------------------------ --}}
 
+    {{!--
     {{#each projects}}
       <div
         class="project card"
-        {{!-- data-project-cat="{{this.category}}" --}}
-        {{!-- data-project-tags="{{this.tags}}" --}}
+        data-project-cat="{{this.category}}"
+        data-project-tags="{{this.tags}}"
       >
         {{#if this.image}}
           <div class="project-image">
@@ -151,6 +153,7 @@
         <p>{{this.description}}</p>
       </div>
     {{/each}}
+    --}}
   </div>
 </section>
 
