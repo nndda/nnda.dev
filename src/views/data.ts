@@ -220,6 +220,34 @@ writeTextFile(
   JSON.stringify(siteData.projects),
 );
 
+// Illustration pre-process
+// what. the. fuck.
+
+writeTextFile(
+  rootResolve("./src/scripts/sections/illustrations.build.js"),
+  siteData.illustrations.map((val: any, i: number) => {
+    return `import i${i} from "../..${val.src}";\n`;
+  }).join("") +
+  `
+    export default [
+      ${
+        siteData.illustrations.map((_: any, i: number) => {
+          return `i${i}`;
+        }).join(", ")
+      }
+    ]
+  `,
+);
+
+siteData.illustrations.forEach((_: any, i: number) => {
+  delete siteData.illustrations[i].src;
+});
+
+writeTextFile(
+  rootResolve("./src/scripts/build/illustrations.json"),
+  JSON.stringify(siteData.illustrations),
+);
+
 // =======================================================================================
 
 console.log("Finished processing data");

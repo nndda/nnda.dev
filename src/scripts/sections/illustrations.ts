@@ -111,3 +111,51 @@
 // scrollEv();
 
 // documentWindow.addEventListener("scroll", scrollEv, { passive: true });
+
+import illustPaths from "./illustrations.build";
+import illustrationsData from "../build/illustrations.json" with { type: "json" };
+
+interface IllustrationItem {
+  title: string,
+  chr: string[],
+}
+
+const
+  illustsStrEl: string =
+    illustrationsData.map((data: IllustrationItem, i: number): string => {
+      return `
+      <div class="illust">
+        <div class="img">
+          <img src="${illustPaths[i]}" loading="lazy" alt="">
+        </div>
+
+        <small class="chr">
+          ${
+            data.chr.map((chr: string) => {
+              return `<span>${chr}</span>`;
+            }).join("")
+          }
+        </small>
+
+        <div class="title">${data.title}</div>
+      </div>
+        `;
+    }).join("");
+;
+
+export default function (d: Document): void {
+  const
+    illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
+  ;
+
+  illustSectInner.classList.remove("on");
+
+  setTimeout((): void => {
+    requestAnimationFrame((): void => {
+      illustSectInner.innerHTML = illustsStrEl;
+      illustSectInner.classList.remove("has-loader");
+
+      illustSectInner.classList.add("on");
+    });
+  }, 500);  
+}
