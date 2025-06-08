@@ -11,8 +11,8 @@
 {{!-- {{ preloadFont "@fonts/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-400-normal.woff2" }} --}}
 {{!-- {{ preloadFont "@fonts/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-300-normal.woff2" }} --}}
 
-{{!-- <link rel="preload" as="style" href="/styles/critical.scss"> --}}
-{{!-- <link rel="preload" as="style" href="/styles/main.scss"> --}}
+<link rel="preload" as="style" href="/styles/critical.scss">
+<link rel="preload" as="style" href="/styles/main.scss">
 
 {{ stylesheet "/styles/critical.scss" "" }}
 {{ stylesheet "/styles/main.scss" "" }}
@@ -21,7 +21,7 @@
 
 {{!-- <link rel="preload" as="script" href="/scripts/critical.ts"> --}}
 
-{{ script "/scripts/critical.ts" false }}
+{{ script "/scripts/critical.ts" true }}
 
 <link href="/assets/favicon.png" rel="icon"/>
 
