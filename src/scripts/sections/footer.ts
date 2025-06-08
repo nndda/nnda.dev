@@ -1,4 +1,5 @@
 import packageJSON from "../build/packages.json" with { type: "json" };
+import initIcon from "../build/icons/footer";
 
 function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((Date.now() - date.getTime()) / 36e5);
@@ -23,6 +24,8 @@ function getLastUpdatedDays(date: Date): string {
     ? (hours <= 0 ? "<1 hour ago" : `${hours} hours ago`)
     : `${days} days, ${hours} hours ago`;
 }
+
+initIcon();
 
 export default function (d: Document): void {
   const

@@ -23,6 +23,12 @@ window.importLazy( d,
 );
 
 window.importLazy( d,
+  (): Promise<any> => import("./sections/illustrations"),
+  d.getElementById("illustrations") as HTMLElement,
+  "175px",
+);
+
+window.importLazy( d,
   (): Promise<any> => import("./sections/links"),
   d.getElementById("links") as HTMLElement,
   "120px",

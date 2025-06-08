@@ -21,7 +21,9 @@
     </h1>
   </div>
 
-  <div class="section-inner">
+  <div class="section-inner has-loader anim fade on">
+    <div class="loader"><div></div></div>
+    {{!--
     {{#each illustrations }}
       <div class="illust">
         <div class="img">
@@ -35,7 +37,6 @@
         <div class="title">{{ this.title }}</div>
       </div>
     {{/each}}
+    --}}
   </div>
 </section>
-
-{{!-- {{ script "/scripts/sections/illustrations.ts" true }} --}}
