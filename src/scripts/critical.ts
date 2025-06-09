@@ -23,6 +23,8 @@ interface Window { // eslint-disable-line
     rootMargin?: string,
     cb?: (() => void) | null,
   ) => void;
+
+  loadCSS: (url: string) => Promise<void>,
 }
 
 // Load and populate lazy-loaded icons
@@ -119,3 +121,20 @@ window.initAnim = function (
     }
   }, rootMargin )(el);
 };
+
+window.loadCSS = function (url: string): Promise<void> {
+  return new Promise((resolve: () => void, reject: () => void) => {
+    const style = document.createElement("link");
+    style.href = url;
+    style.rel = "stylesheet";
+    document.head.appendChild(style);
+
+    style.addEventListener("load", (): void => {
+      resolve();
+    });
+
+    style.addEventListener("error", (): void => {
+      reject();
+    });
+  });
+}
