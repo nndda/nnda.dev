@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans-jp": "^5.2.5",
-    "@fontsource/oxygen-mono": "^5.2.5",
+    "@fontsource/oxygen-mono": "^5.2.6",
     "@fontsource/zen-kaku-gothic-new": "^5.2.5",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
