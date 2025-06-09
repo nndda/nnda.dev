@@ -10,26 +10,34 @@ initIcon();
 import initScroll from "./scroll.home";
 initScroll(d);
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/overview"),
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/overview"),
+  ],
   d.getElementById("overview") as HTMLElement,
   "25px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/projects"),
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/projects"),
+  ],
   d.getElementById("projects") as HTMLElement,
   "150px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/illustrations"),
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/illustrations"),
+  ],
   d.getElementById("illustrations") as HTMLElement,
   "175px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/links"),
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/links"),
+  ],
   d.getElementById("links") as HTMLElement,
   "120px",
 );

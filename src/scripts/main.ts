@@ -23,8 +23,10 @@ export default function (d: Document): void {
 
   initializeInputs(d);
 
-  window.importLazy( d,
-    (): Promise<any> => import("./sections/footer"),
+  window.importLazy(
+    [
+      (): Promise<any> => import("./sections/footer"),
+    ],
     d.querySelector("body > footer") as HTMLElement,
     "80px",
   );

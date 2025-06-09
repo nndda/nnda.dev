@@ -1,40 +1,42 @@
 import contribsGrid from "../../api/contribs-yearly.json" with { type: "json" };
 import initIcon from "../build/icons/overview";
 
-const contribsGridElRaw: string = contribsGrid.map((val: number): string => {
-  return `<i class="c${val}"></i>`;
-}).join("");
+const
+  d: Document = document
 
-export default function (d: Document): void {
-  const
-    contribsGridEl: HTMLElement = d.querySelector(".calendar-container .grid") as HTMLElement
-  ;
+, contribsGridElRaw: string = contribsGrid.map((val: number): string => {
+    return `<i class="c${val}"></i>`;
+  }).join("")
 
-  window.initAnim(
-    d.querySelector("#overview .commits") as HTMLElement,
-    "-120px 0px",
-  );
+, contribsGridEl: HTMLElement = d.querySelector(".calendar-container .grid") as HTMLElement
+;
 
-  initIcon();
+window.initAnim(
+  d.querySelector("#overview .commits") as HTMLElement,
+  "-120px 0px",
+);
 
-  window.initAnim(
-    d.querySelector("#overview .languages") as HTMLElement,
-    "-120px 0px",
-  );
+initIcon();
 
-  window.initAnim(
-    d.querySelector("#overview .stacks") as HTMLElement,
-    "-120px 0px",
-  );
+window.initAnim(
+  d.querySelector("#overview .languages") as HTMLElement,
+  "-120px 0px",
+);
 
-  contribsGridEl.classList.remove("on");
+window.initAnim(
+  d.querySelector("#overview .stacks") as HTMLElement,
+  "-120px 0px",
+);
 
-  setTimeout((): void => {
-    contribsGridEl.classList.remove("has-loader");
+contribsGridEl.classList.remove("on");
 
-    requestAnimationFrame((): void => {
-      contribsGridEl.innerHTML = contribsGridElRaw;
-      contribsGridEl.classList.add("on");
-    });
-  }, 500);
-}
+setTimeout((): void => {
+  contribsGridEl.classList.remove("has-loader");
+
+  requestAnimationFrame((): void => {
+    contribsGridEl.innerHTML = contribsGridElRaw;
+    contribsGridEl.classList.add("on");
+  });
+}, 500);
+
+export default {};
