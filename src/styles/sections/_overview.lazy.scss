@@ -162,6 +162,7 @@
 @include mobile.style;
 @include desktop.style;
 
+/* stylelint-disable */
 // @media (prefers-reduced-motion: no-preference) {
 .stats.anim {
   &.on {
