@@ -11,25 +11,29 @@ import initScroll from "./scroll.home";
 initScroll(d);
 
 
-import style from "../styles/sections/_overview.lazy.scss?url";
+import styleOverview from "../styles/sections/_overview.lazy.scss?url";
 
 window.importLazy(
   [
     (): Promise<any> => import("./sections/overview"),
-    (): Promise<any> => window.loadCSS(style),
+    (): Promise<any> => window.loadCSS(styleOverview),
   ],
   d.getElementById("overview") as HTMLElement,
   "25px",
 );
 
 
+import styleProjects from "../styles/sections/_projects.lazy.scss?url";
+
 window.importLazy(
   [
     (): Promise<any> => import("./sections/projects"),
+    (): Promise<any> => window.loadCSS(styleProjects),
   ],
   d.getElementById("projects") as HTMLElement,
   "150px",
 );
+
 
 window.importLazy(
   [
