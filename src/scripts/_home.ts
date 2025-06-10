@@ -47,9 +47,12 @@ window.importLazy(
 );
 
 
+import styleLinks from "../styles/sections/_links.lazy.scss?url";
+
 window.importLazy(
   [
     (): Promise<any> => import("./sections/links"),
+    (): Promise<any> => window.loadCSS(styleLinks),
   ],
   d.getElementById("links") as HTMLElement,
   "120px",

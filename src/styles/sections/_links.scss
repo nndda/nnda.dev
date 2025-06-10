@@ -1,0 +1,14 @@
+@use "../variables" as *;
+@use "sass:color";
+
+#links {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background: $background-dark;
+
+  & > .section-inner {
+    max-width: 1100px;
+    min-height: 350px;
+    margin: auto;
+  }
+}
