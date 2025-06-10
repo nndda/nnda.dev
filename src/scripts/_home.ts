@@ -35,13 +35,17 @@ window.importLazy(
 );
 
 
+import styleIllustrations from "../styles/sections/_illustrations.lazy.scss?url";
+
 window.importLazy(
   [
     (): Promise<any> => import("./sections/illustrations"),
+    (): Promise<any> => window.loadCSS(styleIllustrations),
   ],
   d.getElementById("illustrations") as HTMLElement,
   "175px",
 );
+
 
 window.importLazy(
   [

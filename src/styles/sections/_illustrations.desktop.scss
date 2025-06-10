@@ -1,13 +1,13 @@
 @mixin style {
 @media (width >= 700px) {
-#illustrations {
-  & > .section-inner {
-    padding: 2em;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-    column-count: 3;
-  }
-}
+// #illustrations {
+//   & > .section-inner {
+//     padding: 2em;
+//     padding-top: 2.5em;
+//     padding-bottom: 2.5em;
+//     column-count: 3;
+//   }
+// }
 
 .illust {
   & > .title {
