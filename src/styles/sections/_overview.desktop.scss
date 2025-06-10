@@ -1,49 +1,49 @@
-@use "../variables" as *;
+// @use "../variables" as *;
 
 @mixin style {
-@media (width >= 700px) {
-#overview > .section-inner > div,
-.overview-socials > .inner {
-  max-width: 1080px;
-  margin: auto;
-  margin-top: 2em;
-}
+// @media (width >= 700px) {
+// #overview > .section-inner > div {
+// // .overview-socials > .inner {
+//   max-width: 1080px;
+//   margin: auto;
+//   margin-top: 2em;
+// }
 
-#overview {
-  padding-bottom: 3em;
+// #overview {
+//   padding-bottom: 3em;
 
-  & .heading-left-sticky {
-    z-index: 3;
-  }
+//   & .heading-left-sticky {
+//     z-index: 3;
+//   }
 
-  & .section-inner {
-    padding-bottom: 2em;
-  }
-}
+//   & .section-inner {
+//     padding-bottom: 2em;
+//   }
+// }
 
-.commits {
-  display: grid;
-  grid-template-columns: auto 64% 23%;
-  grid-gap: 1.5em;
-  justify-content: center;
+// .commits {
+//   display: grid;
+//   grid-template-columns: auto 64% 23%;
+//   grid-gap: 1.5em;
+//   justify-content: center;
 
-  & > .controls {
-    margin-right: .3em;
+//   & > .controls {
+//     margin-right: .3em;
 
-    & > .inner {
-      height: 75%;
+//     & > .inner {
+//       height: 75%;
 
-      padding-top: .5em;
+//       padding-top: .5em;
 
-      @include diagonal-stripes(
-        rgba($text-secondary, .5),
-        // $tertiary,
-        transparent,
-        .2em,
-        .6em,
-      );
-    }
-  }
-}
-}
+//       @include diagonal-stripes(
+//         rgba($text-secondary, .5),
+//         // $tertiary,
+//         transparent,
+//         .2em,
+//         .6em,
+//       );
+//     }
+//   }
+// }
+// }
 }

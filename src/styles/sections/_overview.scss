@@ -1,8 +1,11 @@
 @use "../variables" as *;
 @use "sass:color";
 
-@use "overview.mobile" as mobile;
-@use "overview.desktop" as desktop;
+.section-title-sub {
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: .6em;
+}
 
 #overview {
   padding-top: 1em;
@@ -14,12 +17,6 @@
     margin-top: 1.5em;
     padding-bottom: 1em;
   }
-}
-
-.section-title-sub {
-  font-size: 1.2em;
-  font-weight: lighter;
-  margin-bottom: .6em;
 }
 
 .commits {
@@ -150,64 +147,14 @@
 
 .languages-container {
   display: flex;
+  min-height: 2.4em;
 
   margin-bottom: 2em;
 }
 
-.lang {
-  position: relative;
-  display: inline-block;
-  flex-grow: 1;
-
-  margin: 0 .2em;
-
-  font-size: .9em;
-
-  white-space: nowrap;
-
-  $color: $secondary;
-
-  & > .box {
-    // max-height: .8em;
-    padding: .25em 0;
-    padding-left: .25em;
-    background: color.mix($color, $background, 20%);
-    color: $background;
-    font-size: .8em;
-    line-height: .65em;
-  }
-
-  @for $i from 1 through 5 {
-    &:nth-child(#{$i}) {
-      & > .box {
-        background: color.mix($color, $background, (6 - $i) * 20%);
-      }
-    }
-  }
-
-  // & > code {
-  //   position: absolute;
-  //   top: 0;
-  //   padding-left: .5em;
-  //   color: $background;
-  //   font-size: .8em;
-  //   text-overflow: ellipsis;
-  //   overflow: hidden;
-  // }
-
-  & > .icon-text {
-    display: flex;
-    color: $text-secondary;
-    width: 100%;
-
-    & > span {
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-  }
-}
-
 .stacks-lists {
+  min-height: 3.5em;
+
   & ul {
     position: relative;
     display: flex;
@@ -215,89 +162,76 @@
     justify-content: space-between;
     margin-right: 1em;
   }
+}
 
-  & li li {
-    height: 1.8em;
-    width: 1.8em;
-    margin-right: .7em;
+@media (width <= 700px) {
+.commits {
+  & > .controls {
+    display: none;
+
+    & > ul {
+      display: flex;
+      align-items: end;
+    }
   }
 
-  & .title {
-    margin-top: .4em;
-    color: $text-secondary;
-  }
-
-  & svg {
-    height: 100%;
-    width: 100%;
+  & > div {
+    margin-top: 1em;
   }
 }
 
-// Social media overview section
-
-.overview-socials {
-  position: relative;
-
-  & > .inner {
-    position: relative;
-    padding-top: 1.5em;
-
-    @include shadow-black-drop;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1em;
-    left: -2em;
-    width: calc(100% + 4em);
-    height: calc(100% + 4em);
-    background: rgba($background-light, .55);
-
-    // @include polka-dots(
-    //   rgba($text-secondary, .25),
-    //   // rgba($background-light, .65),
-    //   transparent,
-    //   1px,
-    //   1.25em,
-    // );
-  }
-}
-
-.socials-lists {
+.stacks-lists {
   padding-bottom: 1em;
-  overflow-x: scroll;
-
-  mask-image: linear-gradient(90deg, #000 65%, transparent);
-  mask-mode: alpha;
-  mask-repeat: no-repeat;
-
-  @include style-scrollbar;
 
   & > ul {
-    display: flex;
-    width: max-content;
-    gap: 1.25em;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+}
+
+@media (width >= 700px) {
+#overview > .section-inner > div {
+// .overview-socials > .inner {
+  max-width: 1080px;
+  margin: auto;
+  margin-top: 2em;
+}
+
+#overview {
+  padding-bottom: 3em;
+
+  & .heading-left-sticky {
+    z-index: 3;
   }
 
-  & .card {
-    display: flex;
-    flex-direction: column;
-
-    // width: min-content;
-    min-width: 6em;
-    max-width: 15em;
-
-    height: 9em;
-
-    box-shadow: none;
-  }
-
-  & .actions {
-    display: flex;
-    gap: .75em;
+  & .section-inner {
+    padding-bottom: 2em;
   }
 }
 
-@include mobile.style;
-@include desktop.style;
+.commits {
+  display: grid;
+  grid-template-columns: auto 64% 23%;
+  grid-gap: 1.5em;
+  justify-content: center;
+
+  & > .controls {
+    margin-right: .3em;
+
+    & > .inner {
+      height: 75%;
+
+      padding-top: .5em;
+
+      @include diagonal-stripes(
+        rgba($text-secondary, .5),
+        // $tertiary,
+        transparent,
+        .2em,
+        .6em,
+      );
+    }
+  }
+}
+}

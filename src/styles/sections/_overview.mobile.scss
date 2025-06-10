@@ -1,38 +1,24 @@
 @mixin style {
 @media (width <= 700px) {
-.commits {
-  & > .controls {
-    display: none;
-
-    & > ul {
-      display: flex;
-      align-items: end;
-    }
-  }
-
-  & > div {
-    margin-top: 1em;
-  }
-}
 
 .stacks-lists {
-  padding-bottom: 1em;
+  // padding-bottom: 1em;
 
-  & > ul {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
+  // & > ul {
+  //   flex-wrap: wrap;
+  //   justify-content: flex-start;
+  // }
 
   & .title {
     padding-bottom: 1.35em;
   }
 }
 
-.overview-socials {
-  & > .inner {
-    padding-top: 1em;
-    padding-bottom: 1.75em;
-  }
-}
+// .overview-socials {
+//   & > .inner {
+//     padding-top: 1em;
+//     padding-bottom: 1.75em;
+//   }
+// }
 }
 }

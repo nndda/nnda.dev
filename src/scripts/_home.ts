@@ -10,13 +10,18 @@ initIcon();
 import initScroll from "./scroll.home";
 initScroll(d);
 
+
+import style from "../styles/sections/_overview.lazy.scss?url";
+
 window.importLazy(
   [
     (): Promise<any> => import("./sections/overview"),
+    (): Promise<any> => window.loadCSS(style),
   ],
   d.getElementById("overview") as HTMLElement,
   "25px",
 );
+
 
 window.importLazy(
   [
