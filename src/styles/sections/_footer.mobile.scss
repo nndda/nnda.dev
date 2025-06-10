@@ -1,16 +1,16 @@
 @mixin style {
-@media (width <= 600px) {
-  footer {
-    & > .footer-body {
-      flex-direction: column-reverse;
-    }
-  }
+// @media (width <= 600px) {
+//   footer {
+//     & > .footer-body {
+//       flex-direction: column-reverse;
+//     }
+//   }
 
-  .links-section {
-    &:nth-child(2) {
-      padding-bottom: 2em;
-      max-width: 100% !important;
-    }
-  }
-}
+//   .links-section {
+//     &:nth-child(2) {
+//       padding-bottom: 2em;
+//       max-width: 100% !important;
+//     }
+//   }
+// }
 }

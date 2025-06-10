@@ -27,63 +27,63 @@ function getLastUpdatedDays(date: Date): string {
 
 initIcon();
 
-export default function (d: Document): void {
+const
+  d: Document = document
+
+, lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
+, lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
+
+, lastPublishLabel: HTMLElement = d.getElementById("last-published-label") as HTMLElement
+, lastPublishDate: Date = new Date(lastPublishLabel.getAttribute("title") as string)
+
+, nextUpdateLabel: HTMLElement = d.getElementById("next-update-label") as HTMLElement
+, nextUpdateDate: Date = new Date(nextUpdateLabel.getAttribute("title") as string)
+;
+
+requestAnimationFrame(() => {
   const
-    lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
-  , lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
-
-  , lastPublishLabel: HTMLElement = d.getElementById("last-published-label") as HTMLElement
-  , lastPublishDate: Date = new Date(lastPublishLabel.getAttribute("title") as string)
-
-  , nextUpdateLabel: HTMLElement = d.getElementById("next-update-label") as HTMLElement
-  , nextUpdateDate: Date = new Date(nextUpdateLabel.getAttribute("title") as string)
+    pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages") as HTMLElement
+  , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner") as HTMLElement
   ;
 
-  requestAnimationFrame(() => {
-    const
-      pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages") as HTMLElement
-    , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner") as HTMLElement
-    ;
+  pkgAttrEl.innerHTML =
+    (packageJSON as string[]).map((pkg: string) => {
+      const
+        pkgName: string = pkg.slice(0, -5)
+      , pkgId: string = pkg.slice(-5)
+      ;
 
-    pkgAttrEl.innerHTML =
-      (packageJSON as string[]).map((pkg: string) => {
-        const
-          pkgName: string = pkg.slice(0, -5)
-        , pkgId: string = pkg.slice(-5)
-        ;
+      let
+        pkgUrl: string = ""
+      ;
 
-        let
-          pkgUrl: string = ""
-        ;
+      if (pkgId.startsWith("pkg")) {
+        pkgUrl = `www.npmjs.com/package/${pkgName}`;
+      } else if (pkgId === "pythn") {
+        pkgUrl = `pypi.org/project/${pkgName}`;
+      } else if (pkgId === "   gh") {
+        pkgUrl = `github.com/${pkgName}`;
+      } else {
+        pkgUrl = pkgName;
+      }
 
-        if (pkgId.startsWith("pkg")) {
-          pkgUrl = `www.npmjs.com/package/${pkgName}`;
-        } else if (pkgId === "pythn") {
-          pkgUrl = `pypi.org/project/${pkgName}`;
-        } else if (pkgId === "   gh") {
-          pkgUrl = `github.com/${pkgName}`;
-        } else {
-          pkgUrl = pkgName;
-        }
+      return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId}"> ${pkgName} </a>`;
+    }).join("");
 
-        return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId}"> ${pkgName} </a>`;
-      }).join("");
-
-    function updatePkgElSize(): void {
-      pkgAttrEl.style.setProperty("--width", `${(pkgAttrEl.scrollWidth - pkgAttrElCont.clientWidth) * -1}px`);
-    }
-
-    updatePkgElSize();
-
-    new ResizeObserver(updatePkgElSize).observe(pkgAttrElCont);
-  });
-
-  function updateClock(): void {
-    lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
-    lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
-    nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
+  function updatePkgElSize(): void {
+    pkgAttrEl.style.setProperty("--width", `${(pkgAttrEl.scrollWidth - pkgAttrElCont.clientWidth) * -1}px`);
   }
 
-  updateClock();
-  setInterval(updateClock, 1e6);
+  updatePkgElSize();
+
+  new ResizeObserver(updatePkgElSize).observe(pkgAttrElCont);
+});
+
+function updateClock(): void {
+  lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
+  lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
+  nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
 }
+
+updateClock();
+setInterval(updateClock, 1e6);
