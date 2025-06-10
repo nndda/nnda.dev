@@ -1,17 +1,5 @@
-@use "variables" as *;
+@use "../variables" as *;
 @use "sass:color";
-
-#links {
-  padding-top: 4em;
-  padding-bottom: 4em;
-  background: $background-dark;
-
-  & > .section-inner {
-    max-width: 1100px;
-    min-height: 350px;
-    margin: auto;
-  }
-}
 
 .links-group {
   padding-bottom: 1.15em;
@@ -49,7 +37,7 @@
       color.mix($color, white, 50%)
     );
 
-    & > .social-icon > svg {
+    & svg {
       fill: if(
         $color_override != null,
         $color_override,
