@@ -198,23 +198,18 @@ const
       </div>
 
         `;
-    }).join("");
+    }).join("")
+
+, projectSectInner: HTMLElement = document.querySelector("#projects>.section-inner") as HTMLElement
 ;
 
+projectSectInner.classList.remove("on");
 
-export default function (d: Document): void {
-  const
-    projectSectInner: HTMLElement = d.querySelector("#projects>.section-inner") as HTMLElement
-  ;
+setTimeout((): void => {
+  requestAnimationFrame((): void => {
+    projectSectInner.innerHTML = projectsStrEl;
+    projectSectInner.classList.remove("has-loader");
 
-  projectSectInner.classList.remove("on");
-
-  setTimeout((): void => {
-    requestAnimationFrame((): void => {
-      projectSectInner.innerHTML = projectsStrEl;
-      projectSectInner.classList.remove("has-loader");
-
-      projectSectInner.classList.add("on");
-    });
-  }, 500);  
-}
+    projectSectInner.classList.add("on");
+  });
+}, 500);

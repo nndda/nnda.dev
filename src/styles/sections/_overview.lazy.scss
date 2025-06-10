@@ -1,0 +1,163 @@
+@use "../variables" as *;
+@use "sass:color";
+
+@use "overview.mobile" as mobile;
+@use "overview.desktop" as desktop;
+
+// .languages {
+//   margin-top: 1.5em;
+// }
+
+// .languages-container {
+//   display: flex;
+
+//   margin-bottom: 2em;
+// }
+
+.lang {
+  position: relative;
+  display: inline-block;
+  flex-grow: 1;
+
+  margin: 0 .2em;
+
+  font-size: .9em;
+
+  white-space: nowrap;
+
+  $color: $secondary;
+
+  & > .box {
+    // max-height: .8em;
+    padding: .25em 0;
+    padding-left: .25em;
+    background: color.mix($color, $background, 20%);
+    color: $background;
+    font-size: .8em;
+    line-height: .65em;
+  }
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      & > .box {
+        background: color.mix($color, $background, (6 - $i) * 20%);
+      }
+    }
+  }
+
+  // & > code {
+  //   position: absolute;
+  //   top: 0;
+  //   padding-left: .5em;
+  //   color: $background;
+  //   font-size: .8em;
+  //   text-overflow: ellipsis;
+  //   overflow: hidden;
+  // }
+
+  & > .icon-text {
+    display: flex;
+    color: $text-secondary;
+    width: 100%;
+
+    & > span {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+.stacks-lists {
+  & ul {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 1em;
+  }
+
+  & li li {
+    height: 1.8em;
+    width: 1.8em;
+    margin-right: .7em;
+  }
+
+  & .title {
+    margin-top: .4em;
+    color: $text-secondary;
+  }
+
+  & svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// Social media overview section
+
+// .overview-socials {
+//   position: relative;
+
+//   & > .inner {
+//     position: relative;
+//     padding-top: 1.5em;
+
+//     @include shadow-black-drop;
+//   }
+
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: -1em;
+//     left: -2em;
+//     width: calc(100% + 4em);
+//     height: calc(100% + 4em);
+//     background: rgba($background-light, .55);
+
+//     // @include polka-dots(
+//     //   rgba($text-secondary, .25),
+//     //   // rgba($background-light, .65),
+//     //   transparent,
+//     //   1px,
+//     //   1.25em,
+//     // );
+//   }
+// }
+
+// .socials-lists {
+//   padding-bottom: 1em;
+//   overflow-x: scroll;
+
+//   mask-image: linear-gradient(90deg, #000 65%, transparent);
+//   mask-mode: alpha;
+//   mask-repeat: no-repeat;
+
+//   @include style-scrollbar;
+
+//   & > ul {
+//     display: flex;
+//     width: max-content;
+//     gap: 1.25em;
+//   }
+
+//   & .card {
+//     display: flex;
+//     flex-direction: column;
+
+//     // width: min-content;
+//     min-width: 6em;
+//     max-width: 15em;
+
+//     height: 9em;
+
+//     box-shadow: none;
+//   }
+
+//   & .actions {
+//     display: flex;
+//     gap: .75em;
+//   }
+// }
+
+@include mobile.style;
+@include desktop.style;

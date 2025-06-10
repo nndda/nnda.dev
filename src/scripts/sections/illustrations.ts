@@ -121,7 +121,9 @@ interface IllustrationItem {
 }
 
 const
-  illustsStrEl: string =
+  d: Document = document
+
+, illustsStrEl: string =
     illustrationsData.map((data: IllustrationItem, i: number): string => {
       return `
       <div class="illust">
@@ -140,22 +142,18 @@ const
         <div class="title">${data.title}</div>
       </div>
         `;
-    }).join("");
+    }).join("")
+
+, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
 ;
 
-export default function (d: Document): void {
-  const
-    illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
-  ;
+illustSectInner.classList.remove("on");
 
-  illustSectInner.classList.remove("on");
+setTimeout((): void => {
+  requestAnimationFrame((): void => {
+    illustSectInner.innerHTML = illustsStrEl;
+    illustSectInner.classList.remove("has-loader");
 
-  setTimeout((): void => {
-    requestAnimationFrame((): void => {
-      illustSectInner.innerHTML = illustsStrEl;
-      illustSectInner.classList.remove("has-loader");
-
-      illustSectInner.classList.add("on");
-    });
-  }, 500);  
-}
+    illustSectInner.classList.add("on");
+  });
+}, 500);

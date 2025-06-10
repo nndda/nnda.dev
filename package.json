@@ -24,7 +24,7 @@
     "autoprefixer": "^10.4.21",
     "chokidar": "^4.0.3",
     "copy-webpack-plugin": "^13.0.0",
-    "cron-parser": "^5.2.0",
+    "cron-parser": "^5.3.0",
     "cspell": "^9.0.2",
     "css-loader": "^7.1.2",
     "cssnano": "^7.0.7",
@@ -41,14 +41,15 @@
     "marked": "^15.0.12",
     "postcss": "^8.5.4",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.89.1",
+    "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
     "sharp": "^0.34.2",
+    "style-loader": "^4.0.0",
     "stylelint": "^16.19.1",
     "stylelint-config-standard-scss": "^15.0.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1",
+    "typescript-eslint": "^8.34.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
@@ -56,9 +57,9 @@
     "yaml": "^2.8.0"
   },
   "dependencies": {
-    "@fontsource/ibm-plex-sans-jp": "^5.2.5",
-    "@fontsource/oxygen-mono": "^5.2.5",
-    "@fontsource/zen-kaku-gothic-new": "^5.2.5",
+    "@fontsource/ibm-plex-sans-jp": "^5.2.6",
+    "@fontsource/oxygen-mono": "^5.2.6",
+    "@fontsource/zen-kaku-gothic-new": "^5.2.6",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@tsparticles/engine": "^3.8.1",
@@ -66,6 +67,6 @@
     "@tsparticles/preset-firefly": "^3.2.0",
     "@tsparticles/slim": "^3.8.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^15.0.0"
+    "simple-icons": "^15.1.0"
   }
 }

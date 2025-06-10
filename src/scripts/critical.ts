@@ -13,8 +13,7 @@ interface Window { // eslint-disable-line
   ) => (target: Element) => void,
 
   importLazy: (
-    d: Document,
-    importFn: () => Promise<any>,
+    imports: (() => Promise<any>)[],
     element: Element,
     rootMargin?: string,
   ) => void,
@@ -24,6 +23,8 @@ interface Window { // eslint-disable-line
     rootMargin?: string,
     cb?: (() => void) | null,
   ) => void;
+
+  loadCSS: (url: string) => Promise<void>,
 }
 
 // Load and populate lazy-loaded icons
@@ -69,20 +70,23 @@ window.observe = function (
 }
 
 window.importLazy = function (
-  d: Document,
-  importFn: () => Promise<any>,
+  imports: (() => Promise<any>)[],
   element: Element,
   rootMargin: string | undefined = undefined,
 ): void {
 
+  let retry: number = 0;
+
   function importInit(): void {
-    importFn()
-      .then(({default: init}) => {
-        init(d);
-      })
-      .catch(() => {
+    Promise.all(
+      imports.map((val: () => Promise<any>): Promise<any> => val())
+    )
+    .catch((): void => {
+      if (retry < 5) {
+        retry += 1;
         importInit();
-      });
+      }
+    });
   }
 
   window.observe(
@@ -117,3 +121,20 @@ window.initAnim = function (
     }
   }, rootMargin )(el);
 };
+
+window.loadCSS = function (url: string): Promise<void> {
+  return new Promise((resolve: () => void, reject: () => void) => {
+    const style = document.createElement("link");
+    style.href = url;
+    style.rel = "stylesheet";
+    document.head.appendChild(style);
+
+    style.addEventListener("load", (): void => {
+      resolve();
+    });
+
+    style.addEventListener("error", (): void => {
+      reject();
+    });
+  });
+}

@@ -1,9 +1,6 @@
 @use "../variables" as *;
 @use "sass:color";
 
-@use "footer.mobile" as mobile;
-@use "footer.desktop" as desktop;
-
 footer {
 	background: $background-dark;
 
@@ -18,50 +15,6 @@ footer {
 
 .footer-heading {
 	letter-spacing: .1em;
-}
-
-.packages {
-	position: relative;
-	padding-bottom: 1.5em;
-	white-space: nowrap;
-	font-size: .8em;
-	overflow: hidden;
-
-	& > .inner {
-		animation: pkg 100s linear infinite alternate;
-
-		&:hover {
-			animation-play-state: paused;
-		}
-	}
-
-	& a {
-		display: inline-block;
-		margin: 0 .25em;
-		font-family: "Oxygen Mono", monospace;
-
-		&:not(:hover) {
-			text-decoration: none;
-		}
-	}
-}
-
-.pkg-d {
-	color: color.mix($secondary, $text, 30%);
-}
-
-.pkg-r {
-	color: color.mix($primary, $text, 30%);
-}
-
-@keyframes pkg {
-	0% {
-		transform: translateX(var(--width));
-	}
-
-	100% {
-		transform: translateX(0%);
-	}
 }
 
 .footer-body {
@@ -158,5 +111,38 @@ footer {
 	}
 }
 
-@include mobile.style;
-@include desktop.style;
+@media (width >= 700px) {
+.logos {
+  & > .inner {
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 0;
+
+    justify-content: center;
+
+    padding-left: 1em;
+    padding-right: 1em;
+
+    & > img {
+      height: 100%;
+      max-height: 160px;
+      width: auto;
+    }
+  }
+}
+
+}
+
+@media (width <= 600px) {
+  footer {
+    & > .footer-body {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .links-section {
+    &:nth-child(2) {
+      padding-bottom: 2em;
+      max-width: 100% !important;
+    }
+  }
+}

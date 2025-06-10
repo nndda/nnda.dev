@@ -1,4 +1,5 @@
 import initializeInputs from "./input";
+import styleFooter from "../styles/sections/_footer.lazy.scss?url";
 
 export default function (d: Document): void {
 
@@ -23,8 +24,11 @@ export default function (d: Document): void {
 
   initializeInputs(d);
 
-  window.importLazy( d,
-    (): Promise<any> => import("./sections/footer"),
+  window.importLazy(
+    [
+      (): Promise<any> => import("./sections/footer"),
+      (): Promise<any> => window.loadCSS(styleFooter),
+    ],
     d.querySelector("body > footer") as HTMLElement,
     "80px",
   );

@@ -16,7 +16,9 @@ interface LinkGroupItem {
 }
 
 const
-  linksStrEl: string =
+  d: Document = document
+
+, linksStrEl: string =
     linksData.map((data: LinkGroup): string => {
       return `
         <div class="links-group">
@@ -56,26 +58,22 @@ const
           </ul>
         </div>
         `;
-    }).join("");
-  ;
+    }).join("")
 
-export default function (d: Document): void {
-  const
-    linkSectInner: HTMLElement = d.querySelector("#links>.section-inner") as HTMLElement
-  ;
+, linkSectInner: HTMLElement = d.querySelector("#links>.section-inner") as HTMLElement
+;
 
-  linkSectInner.classList.remove("on");
+linkSectInner.classList.remove("on");
 
-  setTimeout((): void => {
-    requestAnimationFrame((): void => {
-      linkSectInner.innerHTML = linksStrEl;
-      linkSectInner.classList.remove("has-loader");
+setTimeout((): void => {
+  requestAnimationFrame((): void => {
+    linkSectInner.innerHTML = linksStrEl;
+    linkSectInner.classList.remove("has-loader");
 
-      initIcon();
+    initIcon();
 
-      linkSectInner.classList.add("on");
+    linkSectInner.classList.add("on");
 
-      window.initAnim(linkSectInner);
-    });
-  }, 500);
-}
+    window.initAnim(linkSectInner);
+  });
+}, 500);

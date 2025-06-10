@@ -10,26 +10,47 @@ initIcon();
 import initScroll from "./scroll.home";
 initScroll(d);
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/overview"),
+
+import styleOverview from "../styles/sections/_overview.lazy.scss?url";
+
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/overview"),
+    (): Promise<any> => window.loadCSS(styleOverview),
+  ],
   d.getElementById("overview") as HTMLElement,
   "25px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/projects"),
+
+import styleProjects from "../styles/sections/_projects.lazy.scss?url";
+
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/projects"),
+    (): Promise<any> => window.loadCSS(styleProjects),
+  ],
   d.getElementById("projects") as HTMLElement,
   "150px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/illustrations"),
+
+import styleIllustrations from "../styles/sections/_illustrations.lazy.scss?url";
+
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/illustrations"),
+    (): Promise<any> => window.loadCSS(styleIllustrations),
+  ],
   d.getElementById("illustrations") as HTMLElement,
   "175px",
 );
 
-window.importLazy( d,
-  (): Promise<any> => import("./sections/links"),
+
+window.importLazy(
+  [
+    (): Promise<any> => import("./sections/links"),
+  ],
   d.getElementById("links") as HTMLElement,
   "120px",
 );
