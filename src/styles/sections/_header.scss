@@ -7,32 +7,46 @@ header {
   position: fixed;
   top: 0;
   left: auto;
-  padding: 2em;
+  padding: 0 2em;
 
   width: 100%;
   max-width: 1700px;
 
-  background: transparent;
+  // background: transparent;
 
   font-size: 1em;
 
-  will-change:
-    padding,
-    background;
-  transition:
-    padding .6s ease,
-    background .9s ease;
+  will-change: transform;
+  transition: transform .6s ease;
 
   z-index: 9;
 
-  &.active {
-    padding: 0 1em;
+  transform: translateY(2em);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: -2em;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 2em);
 
     background: rgba($background-dark, .8);
-    // background: $background-dark;
     backdrop-filter: blur(.5em);
 
-    @include shadow-black;
+    z-index: -1;
+    opacity: 0;
+
+    will-change: opacity;
+    transition: opacity .8s ease;
+  }
+
+  &.active {
+    transform: translateY(0);
+
+    &::after {
+      opacity: 1;
+    }
   }
 
   & > .header-inner {

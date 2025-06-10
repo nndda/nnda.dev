@@ -152,6 +152,22 @@
   margin-bottom: 2em;
 }
 
+
+.lang {
+  &:not(.on) {
+    transition: .05s ease-out;
+    transition-delay: 0;
+    transform: translateX(-3em);
+    opacity: 0;
+
+    & > .icon-text {
+      transform: translateY(-2em);
+      opacity: 0;
+    }
+  }
+}
+
+
 .stacks-lists {
   min-height: 3.5em;
 

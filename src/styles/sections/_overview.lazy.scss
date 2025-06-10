@@ -161,3 +161,67 @@
 
 @include mobile.style;
 @include desktop.style;
+
+/* stylelint-disable */
+// @media (prefers-reduced-motion: no-preference) {
+.stats.anim {
+  &.on {
+    & .stats-list > li {
+      transition: .2s ease-out;
+    }
+  }
+
+    & .stats-list > li {
+      @include nth-loop(1, 5) using ($i) {
+        transition-delay: 0s + (.2 * $i);
+      }
+    }
+
+  &:not(.on) {
+    & .stats-list > li {
+      transition: .05s ease-out;
+      transition-delay: 0;
+      transform: translateX(-3em);
+      opacity: 0;
+    }
+  }
+}
+
+.lang {
+  &.on {
+    transition: .7s ease-out;
+
+    & > .icon-text {
+      transition: .3s ease-out;
+    }
+  }
+
+  @include nth-loop(1, 5) using ($i) {
+    transition-delay: 0s + (.17 * $i);
+
+    & > .icon-text {
+      transition-delay: inherit;
+    }
+  }
+
+  // &:not(.on) {
+  //   transition: .05s ease-out;
+  //   transition-delay: 0;
+  //   transform: translateX(-3em);
+  //   opacity: 0;
+
+  //   & > .icon-text {
+  //     transform: translateY(-2em);
+  //     opacity: 0;
+  //   }
+  // }
+}
+
+.stacks-lists {
+  & .icon {
+    @include nth-loop(1, 7) using ($i) {
+      transition-delay: 0s + (.13 * $i);
+    }
+  }
+}
+// }

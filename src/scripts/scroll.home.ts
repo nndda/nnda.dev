@@ -51,12 +51,23 @@ export default function (d: Document): void {
     });
   }
 
-  function toggleHeaderFn(toggle: boolean): void {
-    requestAnimationFrame(() => {
-      headerClasses.toggle("active", toggle);
-      backTop.classList.toggle("active", toggle);
-    });
-  }
+
+  // function toggleHeaderFn(toggle: boolean): void {
+  //   requestAnimationFrame(() => {
+  //     headerClasses.toggle("active", toggle);
+  //     backTop.classList.toggle("active", toggle);
+  //   });
+  // }
+
+  window.observe((
+    entry: IntersectionObserverEntry,
+    ): void => {
+      requestAnimationFrame((): void => {
+        headerClasses.toggle("active", !entry.isIntersecting);
+        backTop.classList.toggle("active", !entry.isIntersecting);
+      });
+  })(d.getElementById("home") as HTMLElement);
+
 
   function scrollEv(): void {
 
@@ -70,8 +81,6 @@ export default function (d: Document): void {
     selfTitle3Style.transform = `translateY(-${scrollRatio * 90}px)`;
 
     scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
-
-    toggleHeaderFn(scrollPosition > documentWindow.innerHeight);
 
     if (sections[0].offsetTop <= scrollPosition) {
       for (let i = 0; i < sections.length; i++) {
