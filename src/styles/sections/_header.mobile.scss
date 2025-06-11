@@ -20,10 +20,6 @@ header {
 
   transform: translateY(1em);
 
-  &.active {
-
-  }
-
   &::after {
     top: -1em;
     height: calc(100% + 1em);
