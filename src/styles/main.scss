@@ -201,7 +201,7 @@ h1 {
 .self-cont {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1em;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -234,11 +234,12 @@ h1 {
   & .name-cont {
     position: relative;
 
-    & > img {
+    & > svg {
       position: absolute;
-      top: -.35em;
-      left: -.5em;
-      font-size: 15em;
+      top: -2em;
+      left: -13em;
+      // font-size: 15em;
+      height: 15em;
       opacity: .25;
     }
   }
