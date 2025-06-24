@@ -5,7 +5,7 @@
     transform .5s ease
   , opacity .5s ease
   ;
-  will-change: tranform, opacity;
+  // will-change: tranform, opacity;
 
   &.fade {
     &:not(.on) {
