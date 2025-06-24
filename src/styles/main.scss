@@ -211,7 +211,7 @@ h1 {
   pointer-events: none;
 
   transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: tranform;
+  // will-change: tranform;
 
   & > .inner {
     margin-right: 3em;
@@ -224,7 +224,7 @@ h1 {
     opacity: .8;
 
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: tranform;
+    // will-change: tranform;
 
     &::first-letter {
       font-weight: bold;
@@ -268,7 +268,7 @@ h1 {
     , linear-gradient(0deg, #000 2%, transparent 15%)
     , radial-gradient(circle at 0% 0%, #000 2%, transparent 35%)
     ;
-    will-change: tranform;
+    // will-change: tranform;
     z-index: 1;
   }
 
@@ -280,7 +280,7 @@ h1 {
     z-index: 0;
 
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: tranform;
+    // will-change: tranform;
   }
 }
 
