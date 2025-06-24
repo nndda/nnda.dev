@@ -1,15 +1,5 @@
-/links    links.html
-/link     links.html
 
 #SOCIAL_REDIRECTS_START
 
-/github    https://github.com/nndda    301
-/itchio    https://nnda.itch.io    301
-/patreon    https://patreon.com/nnda    301
-/artstation    https://artstation.com/nnda    301
-/cara    https://cara.app/nnda    301
-/mastodon    https://mastodon.art/@nnda    301
-/twitter    https://twitter.com/@nnda_dev    301
-/bsky    https://bsky.app/profile/nndda.bsky.social    301
 
 #SOCIAL_REDIRECTS_ENDS
