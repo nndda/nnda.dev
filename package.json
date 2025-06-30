@@ -2,13 +2,14 @@
   "name": "nnda.dev",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.js --port 9000",
-    "build": "npm run build:config && npm run fetch:gh && npm run fetch:data-ext && webpack --no-devtool --config ./config/webpack.config.js",
+    "build": "npm run build:config && npm run fetch:gh && npm run fetch:data-ext && webpack --no-devtool --config ./config/webpack.config.js && npm run post:build",
     "build:config": "tsc --project ./config/tsconfig.build.json",
     "watch:project": "ts-node ./src/_projects/project-pages.ts --watch",
     "lint:styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
     "lint:scripts": "eslint --config ./config/eslint.config.ts .",
     "fetch:gh": "python ./src/api/gh.py",
-    "fetch:data-ext": "python ./src/api/data-ext.py"
+    "fetch:data-ext": "python ./src/api/data-ext.py",
+    "post:build": "python ./src/post/post_build.py"
   },
   "author": "nnda",
   "license": " GPL-3.0-or-later",
