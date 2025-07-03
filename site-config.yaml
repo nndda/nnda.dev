@@ -106,12 +106,6 @@ socials:
         redirect: /itch
         username: nnda
 
-      - name: Patreon
-        url: patreon.com/nnda
-        icon: patreon
-        redirect: /patreon
-        username: nnda
-
   - group: Artworks & Illustrations
     links:
       - name: ArtStation
