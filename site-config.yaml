@@ -139,6 +139,26 @@ socials:
         redirect: /bsky
         username: '@nnda.dev'
 
+  - group: Support
+    links:
+      - name: Patreon
+        url: patreon.com/nnda
+        icon: patreon
+        redirect: /patreon
+        username: nnda
+
+      - name: Ko-fi
+        url: ko-fi.com/nnda
+        icon: kofi
+        redirect: /kofi
+        username: nnda
+
+      - name: Liberapay
+        url: liberapay.com/nnda
+        icon: liberapay
+        redirect: /liberapay
+        username: 'nnda'
+
 # -------------------------------------------------------------------------------------------------
 
 projects:
