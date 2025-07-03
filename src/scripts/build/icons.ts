@@ -214,13 +214,13 @@ createIconDefsGrouped(
   ],
 );
 
-createIconDefsGrouped(
-  "global",
-  [
-  ],
-  [
-    siArtstation,
-    siGithub,
-    siItchdotio,
-  ],
-);
+// createIconDefsGrouped(
+//   "global",
+//   [
+//   ],
+//   [
+//     siArtstation,
+//     siGithub,
+//     siItchdotio,
+//   ],
+// );

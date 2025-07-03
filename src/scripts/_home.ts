@@ -4,8 +4,8 @@ const d: Document = document;
 import init from "./main";
 init(d);
 
-import initIcon from "./build/icons/global";
-initIcon();
+// import initIcon from "./build/icons/global";
+// initIcon();
 
 import initScroll from "./scroll.home";
 initScroll(d);
