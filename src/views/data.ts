@@ -223,24 +223,42 @@ writeTextFile(
 // Illustration pre-process
 // what. the. fuck.
 
+interface IllustrationItem {
+  title: string,
+  chr: string[],
+  src: string,
+}
+
+interface IllustrationGallery {
+  col: number,
+  items: IllustrationItem[],
+}
+
+let illustCount: number = 0;
+
 writeTextFile(
   rootResolve("./src/scripts/sections/illustrations.build.js"),
-  siteData.illustrations.map((val: any, i: number) => {
-    return `import i${i} from "../..${val.src}";\n`;
-  }).join("") +
-  `
-    export default [
-      ${
-        siteData.illustrations.map((_: any, i: number) => {
-          return `i${i}`;
-        }).join(", ")
-      }
-    ]
-  `,
-);
 
-siteData.illustrations.forEach((_: any, i: number) => {
-  delete siteData.illustrations[i].src;
+  siteData.illustrations.map((gall: IllustrationGallery): string => {
+    return gall.items.map((itm: IllustrationItem): string => {
+      return `import i${illustCount++} from "../..${itm.src}";`;
+    }).join("\n")
+  }).join("")
+    +
+  `\n\nexport default [\n${
+    Array.from(
+      { length: illustCount },
+      (_, i: number): string => {
+        return `  i${i++}`
+      }
+    ).join(',\n')
+  }\n]`,
+)
+
+siteData.illustrations.forEach((val: IllustrationGallery, i: number) => {
+  val.items.forEach((_, n: number) => {
+    delete siteData.illustrations[i].items[n].src;
+  });
 });
 
 writeTextFile(
