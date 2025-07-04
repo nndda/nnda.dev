@@ -10,9 +10,32 @@
     margin: auto;
   }
 
-  // &:nth-child(3) {
-  //   font-size: .8em;
-  // }
+  &.link-0 {
+    font-size: 1.2em;
+
+    & .links-title {
+      font-weight: bold;
+    }
+  }
+
+  &.link-3 {
+    margin-top: 1.15em;
+
+    & .links-title {
+      color: color.mix($primary, $background-dark, 70%);
+      border-bottom: 1px dashed color.mix($primary, $background-dark, 50%);
+
+      font-weight: bold;
+
+      & > svg {
+        display: inline-block;
+        fill: $primary;
+
+        width: .85em;
+        margin-right: .15em;
+      }
+    }
+  }
 }
 
 .links-title {
@@ -54,13 +77,16 @@
   border-radius: 8px;
 
   & > a {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+    display: flex;
 
     &:not(:hover) {
       text-decoration: none;
     }
+  }
+
+  & svg {
+    width: 1.15em;
+    height: 1.15em;
   }
 }
 
@@ -109,23 +135,22 @@
 }
 
 .social-icon {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-
   display: flex;
   align-items: center;
-  min-width: 1.5em;
+  min-width: 1.6em;
+  height: 3rem;
   padding-right: .5em;
 }
 
-.social-name {
-  grid-column: 2;
-  grid-row: 1;
+.social-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 3rem;
 }
 
 .username {
-  grid-column: 2;
-  grid-row: 2;
+  display: block;
   margin-top: .2em;
 
   font-family: "Oxygen Mono", monospace;
@@ -134,6 +159,20 @@
 
 .username, .social-name {
   transition: color .15s ease !important;
+}
+
+.heartbeat {
+  transform-origin: center;
+  animation: heartbeat 1.2s ease infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1.25);
+  }
+  50% {
+    transform: scale(1.0);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
