@@ -31,7 +31,7 @@ import "../scripts/build/packages";
 // ---------------------------------------------------------------------------------------
 
 console.log("Building fonts...");
-execSync(`python ${rootResolve("./src/scripts/build/fonts.py")}`);
+execSync(`python3 ${rootResolve("./src/scripts/build/fonts.py")}`);
 
 // =======================================================================================
 
