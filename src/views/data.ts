@@ -30,6 +30,11 @@ import "../scripts/build/packages";
 
 // ---------------------------------------------------------------------------------------
 
+console.log("Building fonts...");
+execSync(`python ${rootResolve("./src/scripts/build/fonts.py")}`);
+
+// =======================================================================================
+
 console.log("Building icons...");
 import "../scripts/build/icons";
 
