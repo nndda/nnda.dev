@@ -59,6 +59,8 @@ import {
   siInkscape,
   siItchdotio,
   siJavascript,
+  siKofi,
+  siLiberapay,
   siLinux,
   siMastodon,
   siMedibangpaint,
@@ -190,6 +192,8 @@ createIconDefsGrouped(
     siBluesky,
     siGithub,
     siItchdotio,
+    siKofi,
+    siLiberapay,
     siMastodon,
     siPatreon,
     siX,
@@ -210,13 +214,13 @@ createIconDefsGrouped(
   ],
 );
 
-createIconDefsGrouped(
-  "global",
-  [
-  ],
-  [
-    siArtstation,
-    siGithub,
-    siItchdotio,
-  ],
-);
+// createIconDefsGrouped(
+//   "global",
+//   [
+//   ],
+//   [
+//     siArtstation,
+//     siGithub,
+//     siItchdotio,
+//   ],
+// );

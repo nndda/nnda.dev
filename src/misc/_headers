@@ -1,6 +1,31 @@
 /*
   Content-Security-Policy: default-src 'none'; child-src 'none'; style-src 'self'; style-src-attr 'unsafe-inline'; script-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+#
+  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
+  Cross-Origin-Opener-Policy: same-origin
+#
+  X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
+#
+  X-Robots-Tag: noimageindex
+  X-Robots-Tag: notranslate
+#
   X-Robots-Tag: noimageai
   X-Robots-Tag: noai
   tdm-reservation: 1
+
+
+# STATICS START
+
+/*.<ext>
+  ! Content-Security-Policy
+  Cache-Control: public, max-age=15778476, immutable
+  X-Robots-Tag: nosnippet
+  X-Robots-Tag: none
+
+# STATICS END
+
+
+https://*.pages.dev/*
+  X-Robots-Tag: none

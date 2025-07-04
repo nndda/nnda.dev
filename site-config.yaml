@@ -36,12 +36,16 @@ nav:
       url: nnda.itch.io
       external: true
 
-    - icon: artstation
-      url: www.artstation.com/nnda
-      external: true
+    # - icon: artstation
+    #   url: www.artstation.com/nnda
+    #   external: true
 
     - icon: github
       url: github.com/nndda
+      external: true
+
+    - icon: bluesky
+      url: bsky.app/profile/nnda.dev
       external: true
 
 # -------------------------------------------------------------------------------------------------
@@ -102,12 +106,6 @@ socials:
         redirect: /itch
         username: nnda
 
-      - name: Patreon
-        url: patreon.com/nnda
-        icon: patreon
-        redirect: /patreon
-        username: nnda
-
   - group: Artworks & Illustrations
     links:
       - name: ArtStation
@@ -140,6 +138,26 @@ socials:
         icon: bluesky
         redirect: /bsky
         username: '@nnda.dev'
+
+  - group: Support
+    links:
+      - name: Patreon
+        url: patreon.com/nnda
+        icon: patreon
+        redirect: /patreon
+        username: nnda
+
+      - name: Ko-fi
+        url: ko-fi.com/nnda
+        icon: kofi
+        redirect: /kofi
+        username: nnda
+
+      - name: Liberapay
+        url: liberapay.com/nnda
+        icon: liberapay
+        redirect: /liberapay
+        username: 'nnda'
 
 # -------------------------------------------------------------------------------------------------
 
@@ -191,7 +209,8 @@ projects:
 # -------------------------------------------------------------------------------------------------
 
 illustrations:
-
-  # - title: Illustration's Title
-  #   chr: [ Character/Subject ]
-  #   src: /assets/illust-file.webp
+  # - col: 2
+  #   items:
+  #   - title: Illustration's Title
+  #     chr: [ Character/Subject ]
+  #     src: /assets/illust-file.webp

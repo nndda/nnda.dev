@@ -120,28 +120,43 @@ interface IllustrationItem {
   chr: string[],
 }
 
+interface IllustrationGallery {
+  col: number,
+  items: IllustrationItem[],
+}
+
+illustPaths.reverse();
+
 const
   d: Document = document
 
 , illustsStrEl: string =
-    illustrationsData.map((data: IllustrationItem, i: number): string => {
+    illustrationsData.map((data: IllustrationGallery): string => {
       return `
-      <div class="illust">
-        <div class="img">
-          <img src="${illustPaths[i]}" loading="lazy" alt="">
-        </div>
-
-        <small class="chr">
+        <div class="illust-gall col-${data.col}">
           ${
-            data.chr.map((chr: string) => {
-              return `<span>${chr}</span>`;
+            data.items.map((itm: IllustrationItem): string => {
+              return `
+                <div class="illust">
+                  <div class="img">
+                    <img src="${illustPaths.pop()}" loading="lazy" alt="">
+                  </div>
+
+                  <small class="chr">
+                    ${
+                      itm.chr.map((chr: string): string => {
+                        return `<span>${chr}</span>`;
+                      }).join("")
+                    }
+                  </small>
+
+                  <div class="title">${itm.title}</div>
+                </div>
+              `;
             }).join("")
           }
-        </small>
-
-        <div class="title">${data.title}</div>
-      </div>
-        `;
+        </div>
+      `;
     }).join("")
 
 , illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement

@@ -19,7 +19,10 @@ writeTextFile(abs("./packages.json"), JSON.stringify(_.shuffle([
     .map(i => i.split("==")[0] + "pythn"),
 
   ...[
-    "SAWARATSUKI/KawaiiLogos"
+    "googlefonts/zen-kakugothic",
+    "canonical/Ubuntu-Sans-Mono-fonts",
+    "IBM/plex",
+    "SAWARATSUKI/KawaiiLogos",
   ].map(i => i + "   gh"),
 
   ...[

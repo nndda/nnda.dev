@@ -14,8 +14,19 @@
     min-height: 1180px;
     padding-top: 2.5em;
     margin: auto;
-    column-count: 2;
   }
+}
+
+.illust-gall {
+  gap: .6em;
+}
+
+.col-3 {
+  column-count: 2;
+}
+
+.col-2 {
+  column-count: 1;
 }
 
 @media (width >= 700px) {
@@ -24,7 +35,14 @@
     padding: 2em;
     padding-top: 2.5em;
     padding-bottom: 2.5em;
-    column-count: 3;
   }
+}
+
+.col-3 {
+  column-count: 3;
+}
+
+.col-2 {
+  column-count: 2;
 }
 }
