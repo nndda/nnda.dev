@@ -26,7 +26,7 @@ export default {
   resolve: {
     extensions: [".js", ".ts", ".json"],
     alias: {
-      "@fonts": abs("./node_modules/@fontsource/"),
+      "@fonts": abs("./src/assets/fonts/"),
       "@node_modules": abs("./node_modules/"),
     },
   } as Configuration["resolve"],
