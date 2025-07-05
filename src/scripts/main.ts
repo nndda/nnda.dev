@@ -30,7 +30,7 @@ export default function (d: Document): void {
       (): Promise<any> => window.loadCSS(styleFooter),
     ],
     d.querySelector("body > footer") as HTMLElement,
-    "80px",
+    "300px",
   );
 
 }
