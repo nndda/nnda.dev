@@ -124,7 +124,7 @@ function createIconDefs(filename: string, icons: IconDefinition[]): void {
   );
 }
 
-const reAttr: RegExp = /(\sdata-(prefix|icon)="[^"]*"|\s(class|role|xmlns|aria-hidden|focusable)="[^"]*"|<title>.*?<\/title>)/g;
+const reAttr: RegExp = /(^<svg\s|<\/svg>$|\s*data-(prefix|icon)="[^"]*"|\s*(class|role|xmlns|aria-hidden|focusable)="[^"]*"|<title>.*?<\/title>)/g;
 
 function createIconDefsGrouped(
   groupName: string,
