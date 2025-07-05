@@ -31,7 +31,7 @@ window.importLazy(
     (): Promise<any> => window.loadCSS(styleProjects),
   ],
   d.getElementById("projects") as HTMLElement,
-  "150px",
+  "180px",
 );
 
 
@@ -43,7 +43,7 @@ window.importLazy(
     (): Promise<any> => window.loadCSS(styleIllustrations),
   ],
   d.getElementById("illustrations") as HTMLElement,
-  "175px",
+  "200px",
 );
 
 
@@ -55,5 +55,5 @@ window.importLazy(
     (): Promise<any> => window.loadCSS(styleLinks),
   ],
   d.getElementById("links") as HTMLElement,
-  "120px",
+  "200px",
 );

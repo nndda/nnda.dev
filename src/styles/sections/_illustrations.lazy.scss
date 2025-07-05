@@ -60,15 +60,20 @@
     position: absolute;
     left: .5em;
     bottom: 3.5em;
+    margin: .25em;
     font-family: "Ubuntu Sans Mono", monospace;
     font-size: .7em;
     opacity: .7;
+
+    & > span {
+      margin: .25em;
+    }
   }
 
   & > .title {
-    padding-top: .3em;
-    padding-bottom: .5em;
-    font-family: "IBM Plex Sans JP", sans-serif;
+    padding: .5em;
+    padding-bottom: .65em;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: .9em;
   }
 }

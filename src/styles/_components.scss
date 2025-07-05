@@ -26,6 +26,8 @@
 .heading-left-sticky {
   margin-top: 0;
 
+  color: color.mix($text, $background-dark, 70%);
+
   font-family: "IBM Plex Sans JP", sans-serif;
   font-weight: 200;
   text-transform: uppercase;

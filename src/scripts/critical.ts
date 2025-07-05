@@ -33,13 +33,15 @@ window.p = function (selector: string, iconSets: Record<string, string>): void {
     const iconEls: NodeListOf<Element> = document.querySelectorAll(selector);
 
     for (let i: number = iconEls.length; i-- > 0;) {
-      iconEls[i].outerHTML = iconSets[
-        (iconEls[i].getAttribute("data-i") as string)
-        .replace(
-          "<svg",
-          `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"`
-        )
-      ];
+      iconEls[i].outerHTML =
+        `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" `
+          +
+        iconSets[
+          (iconEls[i].getAttribute("data-i") as string)
+        ]
+          +
+        "</svg>"
+      ;
     }
   });
 };
