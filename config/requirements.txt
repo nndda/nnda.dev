@@ -1,7 +1,7 @@
 Brotli==1.1.0
-certifi==2025.6.15
+certifi==2025.7.14
 charset-normalizer==3.4.2
-fonttools==4.58.5
+fonttools==4.59.0
 idna==3.10
 python-dotenv==1.1.1
 requests==2.32.4
