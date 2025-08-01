@@ -130,11 +130,25 @@ input[type="checkbox"], input[type="radio"], {
     display: inline-block;
     min-width: 1em;
     margin-right: .8em;
+
+    & + .checked-not {
+      display: none;
+    }
   }
 
   &:not(:checked) + .checked {
-    opacity: 0;
+    display: none;
+
+    & + .checked-not {
+      display: inline-block;
+    }
   }
+}
+
+.checkbox {
+  display: flex;
+  width: 1em;
+  margin: .5em;
 }
 
 .tags-cont {

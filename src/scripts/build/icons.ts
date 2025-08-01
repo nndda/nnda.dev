@@ -24,7 +24,10 @@ import {
   faBug,
   faCalendar,
   faCaretDown,
+  faCaretUp,
   faChartArea,
+  faCheckSquare,
+  faCircleCheck,
   faClock,
   faCode,
   faCodeFork,
@@ -39,6 +42,11 @@ import {
   faVolumeHigh,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faSquare,
+  faCircle,
+} from "@fortawesome/free-regular-svg-icons";
 
 // ----------------------------------------------------------------------------
 
@@ -156,6 +164,11 @@ createIconDefs(
   "icons",
   [
     faCaretDown,
+    faCaretUp,
+    faCheckSquare,
+    faCircle,
+    faCircleCheck,
+    faSquare,
     faX,
   ],
 );
