@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  {{ title "nnda's artwork commission" }}
+  {{ desc "Artwork commission form" }}
+
+  {{ include "head" }}
+
+  {{ stylesheet "/styles/_pages/comm.scss" "" }}
+</head>
+
+<body>
+  {{ include "header" }}
+
+  <main>
+    <section class="form-container">
+      <h1><span>nnda's</span> Artwork<br>Commission Form</h1>
+
+      {{!-- <hr> --}}
+      {{!-- <br> --}}
+
+      <fieldset>
+
+        <label class="form-item">
+          <span class="flex-space">
+            Character count<br>
+            <span>
+              How many characters would you like
+            </span>
+          </span>
+
+          <input type="number" name="" min="1" max="5">
+
+          <span>* $10</span>
+        </label>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h2 class="field-heading">Base</h2>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Line art
+          </span>
+
+          <span>
+            $5
+          </span>
+        </label>
+
+        <label class="form-item sub">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            + Shading
+          </span>
+
+          <span>
+            $10
+          </span>
+        </label>
+
+        <label class="form-item sub">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            + Full color
+          </span>
+
+          <span>
+            $20
+          </span>
+        </label>
+
+      </fieldset>
+
+
+      <fieldset>
+
+        <h2 class="field-heading">Background</h2>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="radio" name="background-type">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Solid color
+          </span>
+
+          <span>
+            Free
+          </span>
+        </label>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="radio" name="background-type">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Minimal background
+          </span>
+
+          <span>
+            $10
+          </span>
+        </label>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="radio" name="background-type">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Full background
+          </span>
+
+          <span>
+            $45
+          </span>
+        </label>
+
+      </fieldset>
+
+
+
+      <fieldset>
+
+        <h2 class="field-heading">Usage Rights</h2>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Commercial use
+          </span>
+
+          <span>
+            $15
+          </span>
+        </label>
+
+        <p class="form-item-desc">
+          You may use the artwork for commercial use.
+        </p>
+
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Private
+          </span>
+
+          <span>
+            $20
+          </span>
+        </label>
+
+        <p class="form-item-desc">
+          Artist will not redistribute or repost the artwork for marketing, promotion, showcase in portfolio, or other purposes.
+        </p>
+
+      </fieldset>
+
+
+
+      <fieldset>
+
+        <h2 class="field-heading">Other</h2>
+
+        <label class="form-item">
+          <span class="checkbox">
+            <input type="checkbox" name="">
+            <span class="checked"></span>
+            <span class="checked-not"></span>
+          </span>
+
+          <span class="flex-space">
+            Raw <code>.mdp</code> (FireAlpaca) file
+          </span>
+
+          <span>
+            $25
+          </span>
+        </label>
+
+        <p class="form-item-desc">
+          The FireAlpaca <code>.mdp</code> file will be provided. Complete with layers and sketches.
+        </p>
+
+      </fieldset>
+
+
+
+      <fieldset>
+
+        <h2 class="field-heading">Description</h2>
+
+        <p>
+          Description of the illustration, and any additional notes.
+        </p>
+
+        <textarea placeholder="..."></textarea>
+
+      </fieldset>
+    </section>
+
+    <section>
+      <div id="price-total">$55</div>
+    </section>
+  </main>
+
+  {{ include "footer" }}
+
+  {{ script "/scripts/_page.ts" true }}
+</body>
+</html>
