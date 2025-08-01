@@ -47,21 +47,22 @@
     "stylelint": "^16.23.0",
     "stylelint-config-standard-scss": "^15.0.1",
     "ts-loader": "^9.5.2",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "typescript-eslint": "^8.38.0",
     "webpack": "^5.101.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
-    "wrangler": "^4.26.1",
+    "wrangler": "^4.27.0",
     "yaml": "^2.8.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
+    "@fortawesome/free-regular-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
-    "@tsparticles/engine": "^3.8.1",
-    "@tsparticles/plugin-emitters": "^3.8.1",
+    "@tsparticles/engine": "^3.9.0",
+    "@tsparticles/plugin-emitters": "^3.9.0",
     "@tsparticles/preset-firefly": "^3.2.0",
-    "@tsparticles/slim": "^3.8.1",
+    "@tsparticles/slim": "^3.9.0",
     "modern-normalize": "^3.0.1",
     "simple-icons": "^15.4.0"
   }
