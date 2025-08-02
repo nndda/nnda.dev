@@ -12,4 +12,5 @@ reviewed:
   npm:
     - '@fortawesome/fontawesome-common-types'
     - '@fortawesome/fontawesome-svg-core'
+    - '@fortawesome/free-regular-svg-icons'
     - '@fortawesome/free-solid-svg-icons'
