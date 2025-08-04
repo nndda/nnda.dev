@@ -1,249 +1,621 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
 <head>
-  {{ title "nnda's artwork commission" }}
-  {{ desc "Artwork commission form" }}
+  {{ title "nnda's Illustration Commission Page" }}
+  {{ desc "Artwork commission page" }}
 
   {{ include "head" }}
 
   {{ stylesheet "/styles/_pages/comm.scss" "" }}
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
 </head>
 
 <body>
   {{ include "header" }}
 
+  <section id="comm-home">
+    <h1><b>nnda's</b> Illustration Commission Page</h1>
+
+    <div class="slots">
+      {{#each commissSlot}}
+        <div class="slot 
+          {{#if this}}
+            available
+          {{else}}
+            taken
+          {{/if}}"
+        >
+          {{#if this}}
+
+            {{{@root.icons.calendar_check}}}
+            <div class="title">Available</div>
+
+          {{else}}
+
+            {{{@root.icons.calendar_xmark}}}
+            <div class="title">Taken</div>
+
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="dos-donts">
+      <div>
+        <h2 class="do">{{{icons.check}}} Do's</h2>
+        <ul class="nostyle labels-cont do">
+          <li>Anime</li>
+          <li>Anime Girl</li>
+          <li>Chibi</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="dont">{{{icons.xmark}}} Can'ts</h2>
+        <ul class="nostyle labels-cont dont">
+          <li>Male Characters</li>
+          <li>Furry</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <main>
     <section class="form-container">
-      <h1><span>nnda's</span> Artwork<br>Commission Form</h1>
+
+      <h1>Submission Form</h1>
 
       {{!-- <hr> --}}
       {{!-- <br> --}}
 
-      <fieldset>
+      <form id="commission-form" autocomplete="off" method="post" action="/api/illust">
+      {{!-- 
+        <fieldset>
 
-        <label class="form-item">
-          <span class="flex-space">
-            Character count<br>
-            <span>
-              How many characters would you like
+          <label class="form-item" for="form-localstorage">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="form-localstorage"
+                id="form-localstorage"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
             </span>
-          </span>
 
-          <input type="number" name="" min="1" max="5">
+            <span class="flex-space">
+              Save your input to the browser's local storage
+            </span>
+          </label>
 
-          <span>* $10</span>
-        </label>
+          <p class="form-item-desc">
+            Avoid re-typing your input for future requests, and accidental lost of the data inputted when you get out of the page.
+          </p>
 
-      </fieldset>
+        </fieldset>
+        --}}
 
-      <fieldset>
-
-        <h2 class="field-heading">Base</h2>
-
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            Line art
-          </span>
-
-          <span>
-            $5
-          </span>
-        </label>
-
-        <label class="form-item sub">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            + Shading
-          </span>
-
-          <span>
-            $10
-          </span>
-        </label>
-
-        <label class="form-item sub">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            + Full color
-          </span>
-
-          <span>
-            $20
-          </span>
-        </label>
-
-      </fieldset>
+        <hr class="dashed">
 
 
-      <fieldset>
+        <fieldset>
 
-        <h2 class="field-heading">Background</h2>
+          <label class="form-item" for="character-count">
+            <span class="flex-space">
+              Character count
+            </span>
 
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="radio" name="background-type">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
+            <input
+              type="number"
+              name="character-count"
+              id="character-count"
+              min="1"
+              max="5"
+              value="1"
+            >
 
-          <span class="flex-space">
-            Solid color
-          </span>
+            <span>
+              =
+              <span id="character-count-price" class="price-dollar"></span>
+            </span>
+          </label>
 
-          <span>
-            Free
-          </span>
-        </label>
+          <p class="form-item-desc ml-0">
+            How many characters to include (1-5).
+          </p>
 
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="radio" name="background-type">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            Minimal background
-          </span>
-
-          <span>
-            $10
-          </span>
-        </label>
-
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="radio" name="background-type">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            Full background
-          </span>
-
-          <span>
-            $45
-          </span>
-        </label>
-
-      </fieldset>
+        </fieldset>
 
 
 
-      <fieldset>
+        <fieldset>
 
-        <h2 class="field-heading">Usage Rights</h2>
+          <h2 class="field-heading">Base</h2>
 
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
+          <label class="form-item" for="base-line-art">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="base-line-art"
+                id="base-line-art"
+                checked
+                disabled
+              >
 
-          <span class="flex-space">
-            Commercial use
-          </span>
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
 
-          <span>
-            $15
-          </span>
-        </label>
+            <span class="flex-space">
+              Line art
+              <small>
+                (required)
+              </small>
+            </span>
 
-        <p class="form-item-desc">
-          You may use the artwork for commercial use.
-        </p>
+            <span>
+              <span id="base-line-art-price" class="price-dollar"></span>
+            </span>
+          </label>
 
+          <label class="form-item sub" for="base-add-shading">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="base-add-shading"
+                id="base-add-shading"
+                checked
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
 
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
+            <span class="flex-space">
+              + Shading
+            </span>
 
-          <span class="flex-space">
-            Private
-          </span>
+            <span>
+              <span id="base-add-shading-price" class="price-dollar"></span>
+            </span>
+          </label>
 
-          <span>
-            $20
-          </span>
-        </label>
+          <label class="form-item sub" for="base-add-full-color">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                id="base-add-full-color"
+                name="base-add-full-color"
+                checked
+              >
 
-        <p class="form-item-desc">
-          Artist will not redistribute or repost the artwork for marketing, promotion, showcase in portfolio, or other purposes.
-        </p>
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
 
-      </fieldset>
+            <span class="flex-space">
+              + Full color
+            </span>
 
+            <span>
+              <span id="base-add-full-color-price" class="price-dollar"></span>
+            </span>
+          </label>
 
-
-      <fieldset>
-
-        <h2 class="field-heading">Other</h2>
-
-        <label class="form-item">
-          <span class="checkbox">
-            <input type="checkbox" name="">
-            <span class="checked"></span>
-            <span class="checked-not"></span>
-          </span>
-
-          <span class="flex-space">
-            Raw <code>.mdp</code> (FireAlpaca) file
-          </span>
-
-          <span>
-            $25
-          </span>
-        </label>
-
-        <p class="form-item-desc">
-          The FireAlpaca <code>.mdp</code> file will be provided. Complete with layers and sketches.
-        </p>
-
-      </fieldset>
+        </fieldset>
 
 
 
-      <fieldset>
+        <fieldset>
 
-        <h2 class="field-heading">Description</h2>
+          <h2 class="field-heading">Background</h2>
 
-        <p>
-          Description of the illustration, and any additional notes.
-        </p>
+          <label class="form-item" for="background-type-solid">
+            <span class="checkbox">
+              <input
+                type="radio"
+                name="background-type"
+                id="background-type-solid"
+                checked
+              >
 
-        <textarea placeholder="..."></textarea>
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
 
-      </fieldset>
+            <span class="flex-space">
+              Solid color
+            </span>
+
+            <span>
+              Free
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Single flat color, simple gradient, or transparent background.
+          </p>
+
+          <label class="form-item" for="background-type-minimal">
+            <span class="checkbox">
+              <input
+                type="radio"
+                name="background-type"
+                id="background-type-minimal"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Minimal background
+            </span>
+
+            <span>
+              <span id="background-type-minimal-price" class="price-dollar"></span>
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Abstract or minimal backdrop, like shapes or light patterns.
+          </p>
+
+          <label class="form-item" for="background-type-full">
+            <span class="checkbox">
+              <input
+                type="radio"
+                name="background-type"
+                id="background-type-full"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Full background
+            </span>
+
+            <span>
+              <span id="background-type-full-price" class="price-dollar"></span>
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Fully illustrated scene with detailed environment elements.
+          </p>
+
+        </fieldset>
+
+
+
+        <fieldset>
+
+          <h2 class="field-heading">Usage Rights</h2>
+
+          <label class="form-item" for="usage-right-commercial">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="usage-right-commercial"
+                id="usage-right-commercial"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Commercial use
+            </span>
+
+            <span>
+              <span id="usage-right-commercial-price" class="price-dollar"></span>
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Use the illustration for merchandise, advertising, or other profit-driven projects.
+          </p>
+
+
+          <label class="form-item" for="usage-right-private">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="usage-right-private"
+                id="usage-right-private"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Private
+            </span>
+
+            <span>
+              <span id="usage-right-private-price" class="price-dollar"></span>
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Artist will not redistribute, repost, or share the illustration for marketing, promotion, portfolio showcase, or other purposes.
+          </p>
+
+        </fieldset>
+
+
+
+        <fieldset>
+
+          <h2 class="field-heading">Other</h2>
+
+          <label class="form-item" for="other-rawfile">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="other-rawfile"
+                id="other-rawfile"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Raw <code>.mdp</code> (FireAlpaca) file
+            </span>
+
+            <span>
+              <span id="other-rawfile-price" class="price-dollar"></span>
+            </span>
+          </label>
+
+          <p class="form-item-desc">
+            Receive the original FireAlpaca illustration file <code>(.mdp)</code> with all layers and sketches.
+          </p>
+
+        </fieldset>
+
+
+
+        <fieldset>
+
+          <h2 class="field-heading">Description</h2>
+
+          <p>
+            Detailed instructions for the illustration, and any additional notes.
+          </p>
+
+          <textarea placeholder="..." id="description-note" name="description-note"></textarea>
+
+        </fieldset>
+
+
+
+        <fieldset>
+
+          <h2 class="field-heading">Contact</h2>
+
+          <p>
+            Contact info for discussing the work.
+          </p>
+
+          {{!-- <h3 class="field-heading">Required</h3> --}}
+
+          <label class="form-item" for="contact-opt-email">
+            <span class="flex-space">
+              {{{icons.envelope}}}
+              E-mail
+              <small>(required)</small>
+            </span>
+
+            <input
+              type="email"
+              class="text"
+              placeholder="mail@example.com"
+              name="contact-opt-email"
+              id="contact-opt-email"
+            ></input>
+          </label>
+
+          <hr class="dashed">
+
+          <p><b>Optionally</b>, add any other platforms you're more comfortable with.</p>
+
+          {{!-- <h3 class="field-heading">Optional</h3> --}}
+
+          <label class="form-item" for="contact-opt-discord">
+            <span class="flex-space">
+              {{{brands.discord}}}
+              Discord
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="username1234"
+              name="contact-opt-discord"
+              id="contact-opt-discord"
+            ></input>
+          </label>
+
+          <label class="form-item" for="contact-opt-matrix">
+            <span class="flex-space">
+              {{{brands.matrix}}}
+              Matrix
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="@username:matrix.org"
+              name="contact-opt-matrix"
+              id="contact-opt-matrix"
+            ></input>
+          </label>
+
+          <label class="form-item" for="contact-opt-bsky">
+            <span class="flex-space">
+              {{{brands.bluesky}}}
+              Bluesky
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="@username.bsky.social"
+              name="contact-opt-bsky"
+              id="contact-opt-bsky"
+            ></input>
+          </label>
+
+          <label class="form-item" for="contact-opt-twitter">
+            <span class="flex-space">
+              {{{brands.x}}}
+              X/Twitter
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="@username"
+              name="contact-opt-twitter"
+              id="contact-opt-twitter"
+            ></input>
+          </label>
+
+        </fieldset>
+
+
+
+        <fieldset>
+          <h2 class="field-heading">Payment</h2>
+
+          <p>
+            For now, only PayPal is the supported payment processor :(
+          </p>
+
+          <label class="form-item" for="payment-paypal-confirm">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="payment-paypal-confirm"
+                id="payment-paypal-confirm"
+                checked
+                disabled
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              I have PayPal <small>(required)</small>
+            </span>
+          </label>
+
+          <label class="form-item" for="payment-paypal-mail-is-contact">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="payment-paypal-mail-is-contact"
+                id="payment-paypal-mail-is-contact"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              My PayPal e-mail is the same as my contact e-mail
+            </span>
+          </label>
+
+          <hr class="dashed">
+
+          <label class="form-item" for="payment-paypal-email">
+            <span class="flex-space">
+              {{{brands.paypal}}}
+              PayPal E-mail
+            </span>
+
+            <input
+              type="email"
+              class="text"
+              placeholder="mail@example.com"
+              name="payment-paypal-email"
+              id="payment-paypal-email"
+            ></input>
+          </label>
+
+          <hr class="dashed">
+          <br>
+
+          <div class="deposit">
+            <div id="deposit-half"></div>
+            <div>
+              <p>
+                First 50% deposit will be invoiced to your PayPal, when your request has been approved.
+              </p>
+              <p>
+                The other half will be invoiced when the work is finished.
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+
+
+        <blockquote class="admonition">
+          <b>
+            Please review your input above before submitting!!!
+          </b>
+        </blockquote>
+
+
+
+        <fieldset>
+
+          <label class="form-item">
+            <span class="checkbox">
+              <input
+                type="checkbox"
+                name="cf-tunstile-verify"
+                id="cf-tunstile-verify"
+              >
+              <span class="checked"></span>
+              <span class="checked-not"></span>
+            </span>
+
+            <span class="flex-space">
+              Verify you're human
+            </span>
+          </label>
+
+          <div class="cf-turnstile-cont">
+            <div class="cf-logo">
+              {{{brands.cloudflare}}}
+            </div>
+
+            <div
+              id="cf-turnstile" class="hidden"
+            ></div>
+          </div>
+
+        </fieldset>
+
+        <button id="submit-button" type="submit" disabled>{{{icons.paper_plane}}} Submit your request</button>
+
+      </form>
     </section>
 
     <section>
-      <div id="price-total">$55</div>
+      <div id="price-total" class="price-dollar">0</div>
     </section>
   </main>
+
+  <div id="site-ver" data-site-ver="{{buildCommitSHAFull}}"></div>
 
   {{ include "footer" }}
 
   {{ script "/scripts/_page.ts" true }}
+  {{ script "/scripts/_pages/comm.ts" true }}
 </body>
 </html>

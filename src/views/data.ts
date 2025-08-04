@@ -102,6 +102,10 @@ console.log("Finished parsing site data");
 
 // ---------------------------------------------------------------------------------------
 
+import commissSlot from "../data/commission-slots.json";
+
+// ---------------------------------------------------------------------------------------
+
 const repoURL = urlStr(siteData.repoURL);
 const commitSHA = (
   process.env.CF_PAGES_COMMIT_SHA ??
@@ -328,6 +332,8 @@ export default {
 
   ghLangs: ghLangsData,
   ghContribs: ghContribsData,
+
+  commissSlot: commissSlot,
 
   ...siteData,
 }
