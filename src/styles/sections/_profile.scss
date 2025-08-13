@@ -16,9 +16,10 @@
   }
 
   & .icon-text {
-    // & > svg {
-    //   color: color.mix($primary, $background-dark, 95%);
-    // }
+    & > svg {
+      color: color.mix($primary, $background-dark, 90%);
+      margin-right: .5em;
+    }
 
     & > span {
       color: color.mix($text-secondary, $background-dark, 85%);
@@ -46,8 +47,23 @@
 
 h1.name {
   margin: 0;
+  // margin: 0 -.5em;
+  // padding: 0 1em;
+
+  // color: $background-dark;
   color: $text-secondary;
+
   font-size: 2.5em;
+  // font-weight: 600;
+
+  // background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=3ae5f9);
+  // background-repeat: no-repeat;
+  // background-position: center center;
+
+  &::first-letter {
+    color: $primary;
+    font-weight: 600;
+  }
 }
 
 p.about {
@@ -76,29 +92,42 @@ p.about {
     height: fit-content;
 
     & > img, & > div {
+      position: relative;
       border-radius: 24px;
+      z-index: 1;
     }
 
-    &::after {
+    &::after, &::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-
       border-radius: 21%;
-      z-index: -1;
 
       transform-origin: bottom right;
-      transform: translate(1em, 1em) scale(.65);
+
+      z-index: 0;
+    }
+
+    &::after {
+      transform: translate(1.3em, 1.3em) scale(.65);
 
       @include polka-dots(
-        rgba($text-secondary, .6),
+        rgba($primary, .9),
+        // rgba($text-secondary, .6),
         transparent,
         20%,
         12%,
       );
+    }
+
+    &::before {
+      transform: translate(.5em, .5em) scale(.7);
+
+      background: $background-dark;
+      z-index: 1;
     }
   }
 
@@ -110,36 +139,43 @@ p.about {
     padding: .2em .9em;
     padding-bottom: .6em;
 
-    background: color.mix($text, $background-light, 3%);
+    background: $text;
+    // background: color.mix($text, $background-light, 3%);
+    color: $background-dark;
     border-radius: 16px;
     font-size: .9em;
     line-height: 1em;
     white-space: nowrap;
 
+    outline: 7px solid $background-dark;
+
+    z-index: 3;
+
     & > span {
       font-size: 1.5em;
     }
 
-    &::after {
+    &::after, &::before {
       content: "";
       position: absolute;
-      top: -.5em;
-      left: -.7em;
       background: inherit;
       border-radius: 50%;
-      width: 1.4em;
-      height: 1.4em;
+    }
+
+    &::after {
+      top: -.5em;
+      left: -.7em;
+      width: 1.5em;
+      height: 1.5em;
+      z-index: 1;
     }
 
     &::before {
-      content: "";
-      position: absolute;
       top: -1em;
       left: .4em;
-      background: inherit;
-      border-radius: 50%;
-      width: .7em;
-      height: .7em;
+      width: .95em;
+      height: .95em;
+      outline: inherit;
     }
   }
 }
