@@ -83,6 +83,7 @@ body {
 
   & > main {
     flex-grow: 1;
+    min-height: 100vh;
     overflow-x: clip;
     z-index: 3;
 
@@ -132,21 +133,32 @@ h1 {
 
 .cta-inner {
   display: flex;
-  height: fit-content;
-  margin: 1.6em;
+  width: 100%;
+  // height: fit-content;
+  margin: 2em;
   margin-bottom: 3em;
-
-  & > small {
-    margin-left: 1em;
-  }
 }
 
-#cta-button {
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1em;
+}
+
+.cta-label {
+  margin-top: .5em;
+//   margin: 0 1em;
+}
+
+.cta-button {
   position: relative;
   display: flex;
 
   align-items: center;
   justify-content: center;
+
+  width: fit-content;
+  // margin: 0 1em;
 
   box-sizing: border-box;
 
@@ -157,18 +169,24 @@ h1 {
   border: 1px solid $text;
   border-radius: 16px;
 
+  // font-weight: 600;
+  letter-spacing: 1px;
   text-decoration: none;
 
   cursor: pointer;
 
   overflow: hidden;
   backdrop-filter: blur(.6em);
+
+  background: rgba($background-dark, 0.5);
+
+  // box-shadow: 0 0 2em $background-dark;
+
   transition: ease .5s;
 
   & > svg {
     height: 1em;
     margin-right: .5em;
-    fill: $text;
   }
 
   &:hover {
@@ -195,6 +213,98 @@ h1 {
     transition: ease .25s;
     z-index: -1;
     transform: translateX(-100%);
+  }
+}
+
+#cta-comm {
+  // border-color: $primary;
+  border-bottom: 2px $primary dashed;
+
+  & > svg > path{
+    fill: $primary;
+  }
+
+  &::after {
+    background: $primary-gradient;
+  }
+}
+
+#cta-patreon {
+  // border-color: $secondary;
+  border-bottom: 2px $secondary dashed;
+
+  & > svg {
+    fill: $secondary;
+  }
+}
+
+#cta-comm, #cta-patreon {
+  &:hover {
+    & > svg, & > svg > path {
+      fill: $background-dark;
+    }
+  }
+}
+
+.down-indicator-cont {
+  flex-grow: 1;
+  align-items: end;
+  // margin-right: 3em;
+}
+
+.down-indicator {
+  position: relative;
+  width: 3.5em;
+  height: 3.5em;
+
+  & > svg {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    margin: auto;
+
+    animation: 2s mouse-wiggle ease infinite;
+  }
+
+  & > .arrows > svg {
+    position: absolute;
+    display: block;
+    width: inherit;
+    height: inherit;
+
+    animation: 2s arrow-down ease-out infinite;
+
+    opacity: 0;
+
+    &:nth-child(2) {
+      animation-delay: .3s;
+    }
+    &:nth-child(3) {
+      animation-delay: .6s;
+    }
+  }
+}
+
+@keyframes arrow-down {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+}
+
+@keyframes mouse-wiggle {
+  0%, 100% {
+    transform: translateY(-4.5em);
+  }
+  50% {
+    transform: translateY(-3.5em);
   }
 }
 
@@ -325,7 +435,8 @@ h1 {
 }
 
 #home {
-  height: 100vh;
+  height: 100dvh;
+  // height: 100vh;
   min-height: 620px;
   width: 100%;
   max-width: 1700px;
