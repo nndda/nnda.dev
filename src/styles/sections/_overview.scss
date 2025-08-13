@@ -11,11 +11,23 @@
   padding-top: 1em;
   background: $background-dark;
 
+  // & hr {
+  //   border-color: $secondary;
+  // }
+
+  & .heading-left-sticky {
+    color: rgba($secondary, 75%);
+  }
+
   & > .section-inner {
     max-width: 1100px;
     margin: auto;
     margin-top: 1.5em;
     padding-bottom: 1em;
+  }
+
+  & .card {
+    background: 0;
   }
 }
 

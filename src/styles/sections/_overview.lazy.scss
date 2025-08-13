@@ -31,7 +31,7 @@
     // max-height: .8em;
     padding: .25em 0;
     padding-left: .25em;
-    background: color.mix($color, $background, 20%);
+    // background: color.mix($color, $background, 20%);
     color: $background;
     font-size: .8em;
     line-height: .65em;
@@ -134,6 +134,15 @@
 
 //   @include style-scrollbar;
 
+//   & .content {
+//     & > .text {
+//       width: 100%;
+//       height: 100%;
+//       overflow: hidden;
+//       // text-overflow: ellipsis;
+//     }
+//   }
+
 //   & > ul {
 //     display: flex;
 //     width: max-content;
@@ -148,9 +157,11 @@
 //     min-width: 6em;
 //     max-width: 15em;
 
-//     height: 9em;
+//     height: 10em;
 
 //     box-shadow: none;
+
+//     overflow: hidden;
 //   }
 
 //   & .actions {
