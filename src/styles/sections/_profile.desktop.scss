@@ -1,6 +1,7 @@
 @mixin style {
 @media (width >= 700px) {
 .info-container {
+  display: grid;
   grid-template-columns: 15em auto;
   grid-template-rows: minmax(3em, .95fr) auto auto;
 }
@@ -14,6 +15,11 @@
     width: 12em;
     height: 12em;
   }
+}
+
+.desc-cont {
+  grid-column: unset;
+  margin-top: 0;
 }
 
 @media (height >= 920px) {

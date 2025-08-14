@@ -1,7 +1,7 @@
 @use "../variables" as *;
 @use "sass:color";
 
-@use "profile.mobile" as mobile;
+// @use "profile.mobile" as mobile;
 @use "profile.desktop" as desktop;
 
 #profile {
@@ -37,18 +37,28 @@
 .info-container {
   position: relative;
   top: -4em;
-  display: grid;
+  display: block;
 }
 
 .name-cont {
   display: flex;
   align-items: end;
+
+  margin: 1.5em 0 0;
+  // margin-bottom: .25em;
+}
+
+.desc-cont {
+  grid-column: span 2;
+  margin-top: 1.25em;
 }
 
 h1.name {
+  // left: -.5em;
   margin: 0;
   // margin: 0 -.5em;
-  // padding: 0 1em;
+  // margin-left: -.5em;
+  padding: 0 .5em;
 
   // color: $background-dark;
   color: $text-secondary;
@@ -59,6 +69,15 @@ h1.name {
   // background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=3ae5f9);
   // background-repeat: no-repeat;
   // background-position: center center;
+
+  background: $background-dark;
+
+  // border: .5em solid $background-dark;
+  border-radius: 16px;
+
+  // box-sizing: content-box;
+
+  transform: translateX(-.5em);
 
   &::first-letter {
     color: $primary;
@@ -75,6 +94,7 @@ p.about {
 
 .user-metadata {
   display: flex;
+  // grid-column: span 2;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -94,6 +114,8 @@ p.about {
 
     & > img, & > div {
       position: relative;
+      width: 176px;
+      height: 176px;
       border-radius: 24px;
       z-index: 1;
     }
@@ -116,7 +138,8 @@ p.about {
       transform: translate(1.3em, 1.3em) scale(.65);
 
       @include polka-dots(
-        rgba($primary, .9),
+        color.mix($primary, $background-dark, 90%),
+        // rgba($primary, .9),
         // rgba($text-secondary, .6),
         transparent,
         20%,
@@ -200,5 +223,5 @@ p.about {
   }
 }
 
-@include mobile.style;
+// @include mobile.style;
 @include desktop.style;
