@@ -1,8 +1,8 @@
 @use "../variables" as *;
 @use "sass:color";
 
-@use "overview.mobile" as mobile;
-@use "overview.desktop" as desktop;
+// @use "overview.mobile" as mobile;
+// @use "overview.desktop" as desktop;
 
 // .languages {
 //   margin-top: 1.5em;
@@ -72,7 +72,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin-right: 1em;
   }
 
@@ -170,8 +170,8 @@
 //   }
 // }
 
-@include mobile.style;
-@include desktop.style;
+// @include mobile.style;
+// @include desktop.style;
 
 /* stylelint-disable */
 // @media (prefers-reduced-motion: no-preference) {
