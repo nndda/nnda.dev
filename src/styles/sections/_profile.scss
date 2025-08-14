@@ -62,6 +62,7 @@ h1.name {
 
   &::first-letter {
     color: $primary;
+    font-family: "Ubuntu Sans Mono", sans-serif;
     font-weight: 600;
   }
 }
