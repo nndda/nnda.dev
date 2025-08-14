@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import math
 import requests
 from datetime import datetime, timezone
 from typing import Any
@@ -167,7 +168,25 @@ for lang, lang_bytes in lang_data["perByte"].items():
             "icon": f'<i class="overview" data-i="{lang}"></i>',
         }
 
-write_txt_file(os.path.join(script_dir, "langs.json"), json.dumps({n: lang_data["frontEnd"][n] for n in list(lang_data["frontEnd"])[:5]}))
+lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:5]
+lang_data_top_5_sum: float = sum(
+    math.sqrt(lang_data["frontEnd"][n]["percent"])
+    for n in lang_data_top_5_arr
+)
+
+write_txt_file(
+    os.path.join(script_dir, "langs.json"),
+    json.dumps({
+        n: {
+            **lang_data["frontEnd"][n],
+            "percentScaled": (
+                math.sqrt(lang_data["frontEnd"][n]["percent"])
+                / lang_data_top_5_sum
+                * 100.
+            ),
+        } for n in lang_data_top_5_arr
+    }),
+)
 
 
 # Contribution calendar
