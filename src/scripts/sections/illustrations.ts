@@ -130,16 +130,29 @@ illustPaths.reverse();
 const
   d: Document = document
 
-, illustsStrEl: string =
+, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
+, illustSectContWidth: number = illustSectInner.clientWidth
+, illustSectContGap: number = parseFloat(getComputedStyle(illustSectInner).fontSize) * 0.6
+
+, illustSectItemW: {[key: number]: number} = {
+    2: (illustSectContWidth - illustSectContGap) / 2,
+    3: (illustSectContWidth - illustSectContGap * 2) / 3,
+  };
+
+const illustsStrEl: string =
     illustrationsData.map((data: IllustrationGallery): string => {
       return `
         <div class="illust-gall col-${data.col}">
           ${
             data.items.map((itm: IllustrationItem): string => {
+              const
+                {s, w, h}: {s: string, w: number, h: number} = illustPaths.pop() as {s: string, w: number, h: number}
+              ;
+
               return `
                 <div class="illust">
                   <div class="img">
-                    <img src="${illustPaths.pop()}" loading="lazy" alt="">
+                    <img src="${s}" width="${illustSectItemW[data.col]}" height="${(h / w) * illustSectItemW[data.col]}" loading="lazy" alt="">
                   </div>
 
                   <small class="chr">
@@ -158,8 +171,6 @@ const
         </div>
       `;
     }).join("")
-
-, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
 ;
 
 illustSectInner.classList.remove("on");
