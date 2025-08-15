@@ -62,7 +62,7 @@
   }
 
   & > .calendar-container {
-    $sqr-w: .7em;
+    $sqr-w: .8em;
     $sqr-h: .8em;
     $sqr-w-gap: .1em;
     $sqr-h-gap: .1em;
@@ -95,12 +95,32 @@
     }
 
     & .grid {
+      position: relative;
       display: grid;
+      // width: 100%;
       height: 7 * ($sqr-h + $sqr-h-gap);
       grid-auto-flow: column;
       grid-gap: 0;
       grid-template-rows: repeat(7, $sqr-h + $sqr-h-gap);
       grid-template-columns: repeat(52, $sqr-w + $sqr-w-gap);
+    
+      // mask-mode: alpha;
+      // mask: linear-gradient(90deg, #0000, #000 50%);
+    }
+
+    & > .inner {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, $background-dark, #0000 50%);
+        z-index: 1;
+      }
     }
   }
 
@@ -109,8 +129,10 @@
     // min-height: 150px;
     // height: 100%;
     padding: .8em;
+
     overflow-x: auto;
 
+    contain: content;
     /*
     & > .icon-bg {
       position: absolute;
