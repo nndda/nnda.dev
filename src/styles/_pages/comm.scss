@@ -100,6 +100,7 @@
   &.do > li {
     @include style-label($secondary);
   }
+
   &.dont > li {
     @include style-label($primary);
   }
@@ -242,6 +243,7 @@ textarea {
   opacity: .85;
   font-size: .9em;
 }
+
 .ml-0 {
   margin-left: 0;
   // margin-right: 9em;
