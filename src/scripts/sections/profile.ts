@@ -2,7 +2,7 @@ import initIcon from "../build/icons/profile";
 
 window.initAnim(
   document.getElementById("profile") as HTMLElement,
-  "-210px 0px",
+  window.matchMedia("media (width >= 700px) and (height >= 920px)").matches ? "-210px 0px" : "0px 0px",
   (): void => {
     initIcon();
 

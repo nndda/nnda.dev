@@ -23,6 +23,15 @@
 }
 
 @media (height >= 920px) {
+  .cta-inner {
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
+
+  .cta-label {
+    margin-bottom: 1.5em;
+  }
+
   #profile {
     bottom: 0;
     margin-bottom: -3em;
