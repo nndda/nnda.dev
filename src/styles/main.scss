@@ -254,8 +254,8 @@ h1 {
 
 .down-indicator {
   position: relative;
-  width: 3.5em;
-  height: 3.5em;
+  width: 2.25em;
+  height: 2.25em;
 
   & > svg {
     display: block;
@@ -376,9 +376,10 @@ h1 {
     mask-image:
       linear-gradient(195deg, #000 10%, transparent 49%)
     , linear-gradient(0deg, #000 2%, transparent 15%)
+    , linear-gradient(17.5deg, #000 9.5%, transparent 23.5%)
     , radial-gradient(circle at 0% 0%, #000 2%, transparent 35%)
     ;
-    // will-change: tranform;
+    will-change: tranform;
     z-index: 1;
   }
 
@@ -390,7 +391,7 @@ h1 {
     z-index: 0;
 
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
-    // will-change: tranform;
+    will-change: tranform;
   }
 }
 
@@ -480,13 +481,25 @@ h1 {
     // }
   }
 
+  .cta-group {
+    margin-bottom: 1em;
+  }
+
   .cta-inner {
-    text-align: center;
+    margin: 0;
+    // text-align: center;
     flex-direction: column;
 
     & > small {
       margin-top: 1em;
     }
+  }
+
+  .down-indicator-cont {
+    // margin-right: 2em;
+    // margin-bottom: 2em;
+    font-size: .7em;
+    transform: translate(-1.5em, -20vh);
   }
 };
 
