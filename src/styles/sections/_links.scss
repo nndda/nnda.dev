@@ -6,6 +6,27 @@
   padding-bottom: 4em;
   background: $background-dark;
 
+  & > .heading-left-sticky {
+    & > .jp {
+      padding: .25em 0;
+      background: $background-dark;
+      z-index: 1;
+    }
+
+    & > .line {
+      height: 100%;
+      width: 5px;
+
+      @include diagonal-stripes(
+        rgba($text-secondary, .4),
+        // $tertiary,
+        transparent,
+        .2em,
+        .25em,
+      );
+    }
+  }
+
   & > .section-inner {
     max-width: 1100px;
     min-height: 533px;

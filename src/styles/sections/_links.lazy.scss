@@ -13,9 +13,9 @@
   &.link-0 {
     font-size: 1.2em;
 
-    & .links-title {
-      font-weight: bold;
-    }
+    // & .links-title {
+    //   font-weight: bold;
+    // }
   }
 
   &.link-3 {
@@ -43,7 +43,7 @@
 
   color: color.mix($text, $background-dark, 70%);
 
-  font-size: 1.5em;
+  font-size: 1.35em;
   font-weight: 200;
   letter-spacing: .2ch;
 
@@ -79,7 +79,7 @@
 .link-item {
   margin: .5em;
   padding: .2em .3em;
-  font-size: 1.1em;
+  // font-size: 1.1em;
   border-radius: 8px;
 
   & > a {
@@ -136,7 +136,7 @@
 }
 
 .kofi {
-  font-size: 1em;
+  // font-size: 1em;
   @include link-style(#FF5E5B);
 }
 
