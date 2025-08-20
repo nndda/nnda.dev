@@ -3,6 +3,7 @@ import initIcon from "../build/icons/links";
 
 interface LinkGroup {
   group: string,
+  desc: string,
   links: LinkGroupItem[],
 }
 
@@ -37,6 +38,9 @@ const
             }
             ${data.group}
           </div>
+          <p class="links-desc">
+            ${data.desc}
+          </p>
           <ul class="nostyle">
             ${
               data.links.map(

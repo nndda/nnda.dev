@@ -50,6 +50,12 @@
   border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
 }
 
+.links-desc {
+  margin: 0;
+  margin-top: .5em;
+  color: color.mix($text, $background-dark, 60%);
+}
+
 @mixin link-style($color, $color_override: null) {
   color: $color;
 

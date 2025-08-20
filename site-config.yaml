@@ -93,6 +93,8 @@ stacks:
 
 socials:
   - group: My Main Works
+    desc: |
+      Everything I do.
     links:
       - name: GitHub
         url: github.com/nndda
@@ -107,6 +109,8 @@ socials:
         username: nnda
 
   - group: Artworks & Illustrations
+    desc: |
+      Where I dump all of the stuff and things I drawed.
     links:
       - name: ArtStation
         url: artstation.com/nnda
@@ -120,6 +124,8 @@ socials:
         username: nnda
 
   - group: Socials
+    desc: |
+      Places to yell at me.
     links:
       - name: Mastodon
         url: mastodon.art/@nnda
@@ -140,6 +146,8 @@ socials:
         username: '@nnda.dev'
 
   - group: Support
+    desc: |
+      Gimme mone plzzz.
     links:
       - name: Patreon
         url: patreon.com/nnda
