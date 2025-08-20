@@ -31,6 +31,7 @@ import {
   faCircleCheck,
   faClock,
   faCode,
+  faCodeCommit,
   faCodeFork,
   faComputerMouse,
   faFire,
@@ -250,14 +251,15 @@ createIconDefsGrouped(
 createIconDefsGrouped(
   "footer",
   [
-    faBox,
-    faBug,
+    // faBox,
+    // faBug,
     faClock,
     faCode,
-    faCodeFork,
+    faCodeCommit,
+    // faCodeFork,
     faNoteSticky,
     faScaleBalanced,
-    faStar,
+    // faStar,
   ],
 );
 
