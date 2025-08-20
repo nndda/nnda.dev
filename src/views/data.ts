@@ -148,7 +148,8 @@ siteData!.socials.forEach((socialLinkData: any, i: number) => {
       siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
       siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
         "links",
-        socialLink.icon as string
+        socialLink.icon as string,
+        19,
       );
     }
   });

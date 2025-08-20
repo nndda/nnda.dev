@@ -20,9 +20,11 @@ function srcResolve(src: string): string {
 }
 
 export default {
-  icon: (group: string, name: string) => {
+  icon: (group: string, name: string, width: number = -1, height: number = -1) => {
     return `
-      <i class="${group}" data-i="${name}"></i>
+      <svg class="${group}" data-i="${name}" ${
+      width === -1 ? "" : `width="${width}" height="${height === -1 ? width : height
+      }"`}></svg>
     `;
   },
 

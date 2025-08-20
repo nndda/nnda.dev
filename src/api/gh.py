@@ -165,7 +165,7 @@ for lang, lang_bytes in lang_data["perByte"].items():
             "name": lang,
             "percent": percent,
             "bytes": lang_bytes,
-            "icon": f'<i class="overview" data-i="{lang}"></i>',
+            "icon": f'<svg class="overview" data-i="{lang}" width="17" height="17"></svg>',
         }
 
 lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:5]

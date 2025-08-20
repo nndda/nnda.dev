@@ -20,6 +20,7 @@ import {
 } from "@fortawesome/fontawesome-svg-core";
 
 import {
+  faAngleDown,
   faBox,
   faBug,
   faCalendar,
@@ -31,11 +32,13 @@ import {
   faClock,
   faCode,
   faCodeFork,
+  faComputerMouse,
   faFire,
   faLanguage,
   faLink,
   faLocationDot,
   faNoteSticky,
+  faPaintBrush,
   faScaleBalanced,
   faStar,
   faUserTag,
@@ -132,7 +135,23 @@ function createIconDefs(filename: string, icons: IconDefinition[]): void {
   );
 }
 
-const reAttr: RegExp = /(^<svg\s|<\/svg>$|\s*data-(prefix|icon)="[^"]*"|\s*(class|role|xmlns|aria-hidden|focusable)="[^"]*"|<title>.*?<\/title>)/g;
+const
+  reOuterSvg: RegExp = /(^<svg\s[^>]*>|<\/svg>$|<title>.*?<\/title>)/g
+, reVb: RegExp = /viewBox="(?<vb>[\s0-9]+?)"/
+;
+
+function parseCompressSvg(svgStr: string): string {
+  return `["`
+    +
+    ((reVb.exec(svgStr) as RegExpExecArray).groups as {[key: string]: string})["vb"]
+    +
+    `",\``
+    +
+    svgStr.replace(reOuterSvg, "")
+    +
+    `\`]`
+  ;
+}
 
 function createIconDefsGrouped(
   groupName: string,
@@ -141,18 +160,21 @@ function createIconDefsGrouped(
   iconsOther: Record<string, string> = {},
   ): void {
   writeTextFile(abs(`./icons/${groupName}.js`),
-    `export default () => {window.p("i.${groupName}",{`
+    `export default () => {window.p("${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
-        return `"${ico.iconName}": \`${fa2HTML(ico).replace(reAttr, "")}\``
+        return `"${ico.iconName}": ${parseCompressSvg(fa2HTML(ico))}`
+        // return `"${ico.iconName}": \`${fa2HTML(ico).replace(reAttr, "")}\``
       }),
       ...siIcons.map(ico => {
-        return `"${ico.slug}": \`${ico.svg.replace(reAttr, "")}\``
+        return `"${ico.slug}": ${parseCompressSvg(ico.svg)}`
+        // return `"${ico.slug}": \`${ico.svg.replace(reAttr, "")}\``
       }),
       ...Object.entries(iconsOther)
         .map(([ico, svg]) => {
-          return `"${ico}": \`${svg.replace(reAttr, "")}\``
+          return `"${ico}": ${parseCompressSvg(svg)}`
+          // return `"${ico}": \`${svg.replace(reAttr, "")}\``
         }),
     ].join(",")
     +
@@ -171,6 +193,18 @@ createIconDefs(
     faSquare,
     faX,
   ],
+);
+
+createIconDefsGrouped(
+  "home",
+  [
+    faAngleDown,
+    faComputerMouse,
+    faPaintBrush,
+  ],
+  [
+    siPatreon,
+  ]
 );
 
 createIconDefsGrouped(
