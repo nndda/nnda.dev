@@ -190,8 +190,8 @@ projects:
     description: |
       😶‍🌫️ Image obfuscation library for the web. 
 
-  - name: This website
-    url: https://github.com/nndda/website
+  - name: nnda.dev
+    url: https://github.com/nndda/nnda.dev
     tags: [ Web, TypeScript, SCSS ]
     category: Web Project
     platform: Web
@@ -204,7 +204,7 @@ projects:
     category: Web Project
     platform: Web
     description: |
-      Source code for my itch.io profile page.
+      Source code for my itch.io profile page @ nnda.itch.io
 
 # -------------------------------------------------------------------------------------------------
 
