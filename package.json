@@ -30,7 +30,6 @@
     "cssnano": "^7.1.0",
     "dotenv": "^17.2.1",
     "eslint": "^9.33.0",
-    "favicons": "^7.2.0",
     "globals": "^16.3.0",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
@@ -38,7 +37,6 @@
     "image-size": "^2.0.2",
     "jiti": "^2.5.1",
     "lodash": "^4.17.21",
-    "marked": "^16.1.2",
     "postcss": "^8.5.6",
     "postcss-loader": "^8.1.1",
     "sass": "^1.90.0",
@@ -48,22 +46,18 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.1",
-    "webpack": "^5.101.2",
+    "typescript-eslint": "^8.40.0",
+    "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
-    "wrangler": "^4.30.0",
+    "wrangler": "^4.31.0",
     "yaml": "^2.8.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-regular-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
-    "@tsparticles/engine": "^3.9.1",
-    "@tsparticles/plugin-emitters": "^3.9.1",
-    "@tsparticles/preset-firefly": "^3.2.0",
-    "@tsparticles/slim": "^3.9.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^15.10.0"
+    "simple-icons": "^15.11.0"
   }
 }

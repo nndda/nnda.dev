@@ -5,7 +5,7 @@ import _ from "lodash";
 import common, { abs, copyToDist } from "./webpack.common";
 
 import CopyPlugin from "copy-webpack-plugin";
-import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
+// import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
 
 import cssnano from "cssnano";
 import autoprefixer from "autoprefixer";
@@ -59,20 +59,20 @@ export default {
       integrity: "auto",
     })),
 
-    new FaviconsBundlerPlugin({
-      enabled: true,
-      faviconOptions: {
-        path: "/",
-        icons: {
-          favicons: true,
-          android: false,
-          appleIcon: false,
-          appleStartup: false,
-          windows: false,
-          yandex: false,
-        },
-      },
-    }),
+    // new FaviconsBundlerPlugin({
+    //   enabled: true,
+    //   faviconOptions: {
+    //     path: "/",
+    //     icons: {
+    //       favicons: true,
+    //       android: false,
+    //       appleIcon: false,
+    //       appleStartup: false,
+    //       windows: false,
+    //       yandex: false,
+    //     },
+    //   },
+    // }),
 
     new CopyPlugin({
       patterns: [
