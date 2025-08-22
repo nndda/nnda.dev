@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  {{ title "nnda's Shop Page" }}
+  {{ desc "nnda's Shop Page" }}
+
+  {{ include "head" }}
+
+  {{ stylesheet "/styles/_pages/shop/index.scss" "" }}
+</head>
+
+<body>
+  {{ include "header" }}
+
+  <section id="shop-banner">
+    <h1>
+      <span class="name">nnda</span>'s shop
+    </h1>
+  </section>
+
+  <main>
+    <section>
+      <h2 class="px-title">
+        <span>
+          Indie Games
+        </span>
+        <small>
+          インディーゲーム
+        </small>
+      </h2>
+      <div class="carousel" id="indie-games-cont">
+      </div>
+    </section>
+
+    <section>
+      <h2 class="px-title">
+        <span>Tools</span>
+        <small>ツール</small>
+      </h2>
+      <div class="carousel" id="tools-plugins-cont">
+      </div>
+    </section>
+  </main>
+
+  {{ include "footer" }}
+
+  {{ script "/scripts/_page.ts" true }}
+  {{ script "/scripts/_pages/shop/index.ts" true }}
+</body>
+</html>

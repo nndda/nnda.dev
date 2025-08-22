@@ -1,0 +1,212 @@
+@use "../../variables" as *;
+
+@use "sass:color";
+
+@font-face {
+  font-family: "Bytesized";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("@fonts/bytesized/400.woff2") format("woff2");
+}
+
+#shop-banner {
+  display: flex;
+  min-height: 50dvh;
+  margin: 2em;
+  margin-top: 5em;
+  background: $background-dark;
+
+  & > h1 {
+    width: 100%;
+    flex-grow: 1;
+    align-content: end;
+    font-size: 2.5em;
+
+    color: $text-secondary;
+
+    &::first-letter {
+      color: $primary;
+      font-family: "Ubuntu Sans Mono", sans-serif;
+      font-weight: 600;
+    }
+  }
+}
+
+main {
+  background: color.mix($background, $background-light, 70%);
+
+  @include shadow-black;
+
+  & > section {
+    margin: 1.5em;
+    margin-bottom: 3em;
+    padding-bottom: 2.5em;
+    border-bottom: 1px solid color.mix($background, $text-secondary, 70%);
+  }
+}
+
+h2 {
+  display: flex;
+  column-gap: .5em;
+  align-items: center;
+  font-size: 1.75em;
+  margin-bottom: 1.2em;
+  letter-spacing: .05em;
+
+  & > small {
+    // margin-left: .25em;
+    font-family: "IBM Plex Sans JP";
+    font-weight: 200;
+  }
+}
+
+.p {
+  color: $primary;
+}
+
+.s {
+  color: $secondary;
+}
+
+.px-title {
+  font-family: "Bytesized";
+
+  & > span {
+    font-size: 1.2em;
+    color: $secondary;
+
+    // text-shadow:
+    //   2px 2px $primary
+    // , -2px -2px $primary
+    // , -2px 2px $primary
+    // , 2px -2px $primary
+    // ;
+    transform: translateY(-.1em);
+
+    &::first-letter {
+      color: $primary;
+    }
+  }
+}
+
+.h2-tools-plugins {
+  & > code {
+    font-weight: 400;
+  }
+}
+
+.thumb-link {
+  display: block;
+
+  &:hover ~ .data > .title > a {
+    color: $secondary;
+  }
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  height: 210px;
+  margin: 0;
+  object-fit: cover;
+}
+
+.data {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+
+  min-height: 12em;
+
+  padding: 1em;
+
+  font-size: .85em;
+
+  // box-shadow: 0 0 2em 0 color.adjust($background-dark, $lightness: -5.5%);
+
+  & > .title {
+    margin: 0;
+    margin-bottom: .5em;
+    // letter-spacing: .2ch;
+  }
+
+  & > p {
+    margin: 0;
+  }
+
+  & > hr {
+    margin: 1em 0;
+    border: 0;
+    border-top: 2px dashed color.mix($text-secondary, $background-dark, 50%);
+  }
+}
+
+.item {
+  width: 240px;
+}
+
+.card {
+  padding: 0;
+  margin-bottom: .8em;
+
+  background: $background-dark;
+
+  border-color: color.mix($text-secondary, $background-dark, 25%);
+
+  box-shadow: 0 0 2em -.05em color.adjust($background-dark, $lightness: -5.5%);
+
+  overflow: hidden;
+}
+
+.platforms {
+  & > svg {
+    width: 1.2em;
+    height: 1.2em;
+
+    margin: .25em;
+
+    fill: $primary;
+  }
+}
+
+
+.buy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: .5em;
+  font-size: 1.15em;
+}
+
+.price {
+  // flex-grow: 1;
+}
+
+.buy-platforms {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: .5em;
+  // background: red;
+  // flex-grow: 1;
+
+  & > small {
+    font-size: .7em;
+  }
+}
+
+.buy-btn {
+  margin: 0;
+  padding: .3em .5em;
+
+  // & > svg {
+  //   margin-right: 0;
+  // }
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2em;
+}
