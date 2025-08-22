@@ -43,6 +43,16 @@ fonts: Any = {
       "text": alpha + num + punc,
       "weights": [400, 700],
     },
+
+    # Decorative
+    "bytesized": {
+      "text": alpha + num + punc + kana + "".join([
+        "Indie Games",
+        "Tools",
+      ]),
+      "weights": [400],
+    },
+
 }
 
 print("Subsetting fonts...")
