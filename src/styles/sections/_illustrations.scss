@@ -22,7 +22,7 @@
   gap: .6em;
 }
 
-.col-3 {
+.col-4, .col-3 {
   column-count: 2;
 }
 
@@ -37,6 +37,10 @@
     padding-top: 2.5em;
     padding-bottom: 2.5em;
   }
+}
+
+.col-4 {
+  column-count: 4;
 }
 
 .col-3 {
