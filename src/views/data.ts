@@ -215,7 +215,6 @@ try {
 
 // =======================================================================================
 
-import ghLangsData from "../api/langs.json";
 import ghContribsData from "../api/contribs.json";
 
 // =======================================================================================
@@ -331,7 +330,6 @@ export default {
 
   year: currentDate.getFullYear(),
 
-  ghLangs: ghLangsData,
   ghContribs: ghContribsData,
 
   commissSlot: commissSlot,

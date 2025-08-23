@@ -96,29 +96,6 @@ import {
   type SimpleIcon,
 } from "simple-icons";
 
-const siAliases: Record<string, string> = {
-  "Aseprite": siAseprite.svg,
-  "Cloudflare": siCloudflare.svg,
-  // "Cloudflare Pages": siCloudflarepages.svg,
-  // "Cloudflare Workers": siCloudflareworkers.svg,
-  "CSS": siCss.svg,
-  "GDScript": siGodotengine.svg,
-  "Git": siGit.svg,
-  "GitHub Actions": siGithubactions.svg,
-  "Handlebars": siHandlebarsdotjs.svg,
-  "HTML": siHtml5.svg,
-  "Inkscape": siInkscape.svg,
-  "JavaScript": siJavascript.svg,
-  "Linux": siLinux.svg,
-  "Medibang Paint": siMedibangpaint.svg,
-  "Node.js": siNodedotjs.svg,
-  "Python": siPython.svg,
-  "SCSS": siSass.svg,
-  "Rust": siRust.svg,
-  "TypeScript": siTypescript.svg,
-  "webpack": siWebpack.svg,
-}
-
 // ----------------------------------------------------------------------------
 
 function toHTML(name: IconDefinition): string {
@@ -253,16 +230,16 @@ createIconDefsGrouped(
   ],
 );
 
-createIconDefsGrouped(
-  "overview",
-  [
-    faCalendar,
-    faChartArea,
-    faFire,
-  ],
-  [],
-  siAliases
-);
+// createIconDefsGrouped(
+//   "overview",
+//   [
+//     faCalendar,
+//     faChartArea,
+//     faFire,
+//   ],
+//   [],
+//   siAliases
+// );
 
 // createIconDefsGrouped(
 //   "links",
@@ -307,6 +284,29 @@ createIconDefsGrouped(
 //     siItchdotio,
 //   ],
 // );
+
+createMiniIconDefs("overview", {
+  "Aseprite": siAseprite.svg,
+  "Cloudflare": siCloudflare.svg,
+  // "Cloudflare Pages": siCloudflarepages.svg,
+  // "Cloudflare Workers": siCloudflareworkers.svg,
+  "CSS": siCss.svg,
+  "GDScript": siGodotengine.svg,
+  "Git": siGit.svg,
+  "GitHub Actions": siGithubactions.svg,
+  "Handlebars": siHandlebarsdotjs.svg,
+  "HTML": siHtml5.svg,
+  "Inkscape": siInkscape.svg,
+  // "JavaScript": siJavascript.svg,
+  "Linux": siLinux.svg,
+  "Medibang Paint": siMedibangpaint.svg,
+  "Node.js": siNodedotjs.svg,
+  "Python": siPython.svg,
+  "SCSS": siSass.svg,
+  "Rust": siRust.svg,
+  "TypeScript": siTypescript.svg,
+  "webpack": siWebpack.svg,
+});
 
 createMiniIconDefs("links", {
   "links": toHTML(faLink),

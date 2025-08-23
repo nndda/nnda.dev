@@ -154,37 +154,27 @@ for lang, lang_bytes in lang_data["perByte"].items():
     percent: float = round(lang_bytes / lang_data["total"] * 100, 2)
     lang_data["perCent"][lang] = percent
 
-    if percent < 1.0:
-        other = lang_data["frontEnd"].get("Other", {"percent": 0, "bytes": 0})
-        other["percent"] += percent
-        other["bytes"] += lang_bytes
-        lang_data["frontEnd"]["Other"] = other
+#   [ percent, percent scaled ]
 
-    else:
-        lang_data["frontEnd"][lang] = {
-            "name": lang,
-            "percent": percent,
-            "bytes": lang_bytes,
-            "icon": f'<svg class="overview" data-i="{lang}" width="17" height="17"></svg>',
-        }
+    lang_data["frontEnd"][lang] = [percent]
 
 lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:5]
 lang_data_top_5_sum: float = sum(
-    math.sqrt(lang_data["frontEnd"][n]["percent"])
+    math.sqrt(lang_data["frontEnd"][n][0])
     for n in lang_data_top_5_arr
 )
 
 write_txt_file(
-    os.path.join(script_dir, "langs.json"),
+    os.path.join(script_dir, "out/langs.json"),
     json.dumps({
-        n: {
-            **lang_data["frontEnd"][n],
-            "percentScaled": (
-                math.sqrt(lang_data["frontEnd"][n]["percent"])
+        lang: [
+            lang_data["frontEnd"][lang][0],
+            round(
+                math.sqrt(lang_data["frontEnd"][lang][0])
                 / lang_data_top_5_sum
                 * 100.
-            ),
-        } for n in lang_data_top_5_arr
+            , 2),
+        ] for lang in lang_data_top_5_arr
     }),
 )
 

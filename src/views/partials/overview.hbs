@@ -8,26 +8,6 @@
   <div class="section-inner">
     <div class="commits">
 
-      {{!--
-      <div class="stacks anim once fade float-up">
-        <div class="section-title-sub">Stacks</div>
-        <ul class="inner nostyle card">
-          {{#each stacks}}
-            <li>
-              <b>{{{icon "overview" this.icon}}}</b>
-              <ul class="icons">
-                {{#each this.items}}
-                  <li>
-                    {{{icon "overview" this}}}
-                  </li>
-                {{/each}}
-              </ul>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-      --}}
-
       <div class="controls">
         <div class="section-title-sub">-</div>
         <div class="inner bg-scroll">
@@ -41,7 +21,6 @@
         <div class="inner card scrollbar-secondary">
           <div class="grid has-loader anim fade on">
             <div class="loader"><div></div></div>
-            {{!-- {{#each ghContribs.arr.yearly}}<i class="c{{this}}"></i>{{/each}} --}}
           </div>
         </div>
       </div>
@@ -51,11 +30,6 @@
             Stats
         </div>
         <div class="inner card">
-          {{!-- 
-          <div class="icon-bg">
-            {{{icon "overview" "fire"}}}
-          </div>
-          --}}
           <ul class="stats-list nostyle">
 
             <li class="title">
@@ -93,21 +67,6 @@
           Most Used Languages
       </div>
       <div class="languages-container">
-        {{#each ghLangs}}
-          <div class="lang anim once" style="width: {{this.percentScaled}}%">
-            <div class="box">
-              <code><b>{{this.percent}}%</b></code>
-            </div>
-            <div class="icon-text">
-              {{#if this.icon}}
-                {{{this.icon}}}
-              {{/if}}
-              <span>
-                {{this.name}}
-              </span>
-            </div>
-          </div>
-        {{/each}}
         <br>
       </div>
     </div>
@@ -118,18 +77,6 @@
       </div>
       <div class="stacks-lists">
         <ul class="nostyle">
-          {{#each stacks}}
-            <li class="anim fade float-up">
-              <ul class="nostyle">
-                {{#each this.items}}
-                  <li class="icon anim fade float-right">
-                    {{{icon "overview" this 29 29}}}
-                  </li>
-                {{/each}}
-              </ul>
-              <div class="title anim fade float-down">{{this.group}}</div>
-            </li>
-          {{/each}}
         </ul>
       </div>
     </div>
