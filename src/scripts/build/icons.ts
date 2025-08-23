@@ -36,6 +36,7 @@ import {
   faComputerMouse,
   faFire,
   faGlobe,
+  faHeart,
   faLanguage,
   faLink,
   faLocationDot,
@@ -54,6 +55,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 import {
+    faTwitter,
   faWindows
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -262,23 +264,23 @@ createIconDefsGrouped(
   siAliases
 );
 
-createIconDefsGrouped(
-  "links",
-  [
-    faLink,
-  ],
-  [
-    siArtstation,
-    siBluesky,
-    siGithub,
-    siItchdotio,
-    siKofi,
-    siLiberapay,
-    siMastodon,
-    siPatreon,
-    siX,
-  ],
-);
+// createIconDefsGrouped(
+//   "links",
+//   [
+//     faLink,
+//   ],
+//   [
+//     siArtstation,
+//     siBluesky,
+//     siGithub,
+//     siItchdotio,
+//     siKofi,
+//     siLiberapay,
+//     siMastodon,
+//     siPatreon,
+//     siX,
+//   ],
+// );
 
 createIconDefsGrouped(
   "footer",
@@ -305,6 +307,20 @@ createIconDefsGrouped(
 //     siItchdotio,
 //   ],
 // );
+
+createMiniIconDefs("links", {
+  "links": toHTML(faLink),
+  "heart": toHTML(faHeart),
+  "github": siGithub.svg,
+  "itchdotio": siItchdotio.svg,
+  "artstation": siArtstation.svg,
+  "mastodon": siMastodon.svg,
+  "x": toHTML(faTwitter),
+  "bluesky": siBluesky.svg,
+  "patreon": siPatreon.svg,
+  "kofi": siKofi.svg,
+  "liberapay": siLiberapay.svg,
+});
 
 createMiniIconDefs("shop", {
   "globe": toHTML(faGlobe),

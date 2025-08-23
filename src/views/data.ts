@@ -127,41 +127,41 @@ try {
   lastPublished = new Date();
 }
 
-console.log("Processing links & URLs...");
+// console.log("Processing links & URLs...");
 
-siteData!.nav.links.forEach((navLinkData: any, i: number) => {
-  siteData.nav.links[i]!.url = urlStr(navLinkData.url);
+// siteData!.nav.links.forEach((navLinkData: any, i: number) => {
+//   siteData.nav.links[i]!.url = urlStr(navLinkData.url);
 
-  if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
-    siteData.nav.links[i].iconSlug = navLinkData.icon as string;
-    siteData.nav.links[i].iconLazy = handlebarsHelpers.icon("global", navLinkData.icon as string);
-    siteData.nav.links[i].icon = siIcons[(navLinkData.icon as string)];
-  }
-});
+//   if (Object.prototype.hasOwnProperty.call(navLinkData, "icon")) {
+//     siteData.nav.links[i].iconSlug = navLinkData.icon as string;
+//     siteData.nav.links[i].iconLazy = handlebarsHelpers.icon("global", navLinkData.icon as string);
+//     siteData.nav.links[i].icon = siIcons[(navLinkData.icon as string)];
+//   }
+// });
 
-siteData!.socials.forEach((socialLinkData: any, i: number) => {
-  socialLinkData.links.forEach((socialLink: any, n: number) => {
-    siteData.socials[i].links[n].urlS = socialLink.url;
-    siteData.socials[i].links[n].url = urlStr(socialLink.url);
+// siteData!.socials.forEach((socialLinkData: any, i: number) => {
+//   socialLinkData.links.forEach((socialLink: any, n: number) => {
+//     siteData.socials[i].links[n].urlS = socialLink.url;
+//     siteData.socials[i].links[n].url = urlStr(socialLink.url);
 
-    if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
-      siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
-      siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
-        "links",
-        socialLink.icon as string,
-        19,
-      );
-    }
-  });
+//     if (Object.prototype.hasOwnProperty.call(socialLink, "icon")) {
+//       siteData.socials[i].links[n].iconSlug = socialLink.icon as string;
+//       siteData.socials[i].links[n].icon = handlebarsHelpers.icon(
+//         "links",
+//         socialLink.icon as string,
+//         19,
+//       );
+//     }
+//   });
 
-});
+// });
 
-console.log("Finished processing links & URLs");
+// console.log("Finished processing links & URLs");
 
-import { updateSocialRedirects } from "../scripts/build/redirects";
-const socialRedirData = [] as any[];
-siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
-updateSocialRedirects(socialRedirData);
+// import { updateSocialRedirects } from "../scripts/build/redirects";
+// const socialRedirData = [] as any[];
+// siteData.socials.forEach((item: any) => {socialRedirData.push(...item.links)});
+// updateSocialRedirects(socialRedirData);
 
 // =======================================================================================
 
@@ -287,8 +287,8 @@ export default {
     links: [ ],
   },
 
-  socials: [
-  ],
+  // socials: [
+  // ],
 
   projects: [ ],
   // temporarily disabled
