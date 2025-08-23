@@ -1,3 +1,7 @@
+const
+  nnda: string = "nnda" // Common username
+;
+
 export default [
   { // ------------------------------------------------------------------------
     group: "My Main Works",
@@ -13,7 +17,7 @@ export default [
         name: "itch.io",
         url: "nnda.itch.io",
         icon: "itchdotio",
-        username: "nnda",
+        username: nnda,
       },
     ],
   },
@@ -25,12 +29,12 @@ export default [
         name: "ArtStation",
         url: "artstation.com/nnda",
         icon: "artstation",
-        username: "nnda",
+        username: nnda,
       },
       {
         name: "cara.app",
         url: "cara.app/nnda",
-        username: "nnda",
+        username: nnda,
       },
     ],
   },
@@ -42,7 +46,7 @@ export default [
         name: "Mastodon",
         url: "mastodon.art/@nnda",
         icon: "mastodon",
-        username: "@nnda",
+        username: "@nnda@mastodon.art",
       },
       {
         name: "Twitter",
@@ -66,19 +70,19 @@ export default [
         name: "Patreon",
         url: "patreon.com/nnda",
         icon: "patreon",
-        username: "nnda",
+        username: nnda,
       },
       {
         name: "Ko-fi",
         url: "ko-fi.com/nnda",
         icon: "kofi",
-        username: "nnda",
+        username: nnda,
       },
       {
         name: "Liberapay",
         url: "liberapay.com/nnda",
         icon: "liberapay",
-        username: "nnda",
+        username: nnda,
       },
     ],
   },
