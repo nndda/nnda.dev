@@ -1,17 +1,13 @@
 import icons from "../../build/icons/shop";
 import type { ShopItem } from "./d";
 
-function buildSvg(viewBoxPath: string[], width: number, height: number, classes: string = ""): string {
-  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
-}
-
 const shopItem: Record<string, Record<string, string>> = {
   iconsPlatforms: ["Godot", "Linux", "MacOS", "Windows", "CSS"].reduce(
     (
       acc: Record<string, string>,
       val: string
     ): Record<string, string> => {
-      acc[val] = buildSvg(icons[val], 18, 18);
+      acc[val] = window.buildSvg(icons[val], 18, 18);
       return acc;
     },
     {} as Record<string, string>,
@@ -21,7 +17,7 @@ const shopItem: Record<string, Record<string, string>> = {
       acc: Record<string, string>,
       val: string
     ): Record<string, string> => {
-      acc[val] = buildSvg(icons[val], 16, 16);
+      acc[val] = window.buildSvg(icons[val], 16, 16);
       return acc;
     },
     {} as Record<string, string>,

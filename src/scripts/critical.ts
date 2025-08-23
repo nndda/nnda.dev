@@ -25,6 +25,13 @@ interface Window { // eslint-disable-line
   ) => void;
 
   loadCSS: (url: string) => Promise<void>,
+
+  buildSvg: (
+    viewBoxPath: string[],
+    width: number,
+    height: number,
+    classes?: string
+  ) => string,
 }
 
 const svgAttr: Record<string, string> = {
@@ -164,4 +171,8 @@ window.loadCSS = function (url: string): Promise<void> {
       reject();
     });
   });
+}
+
+window.buildSvg = function (viewBoxPath: string[], width: number, height: number, classes: string = ""): string {
+  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
 }

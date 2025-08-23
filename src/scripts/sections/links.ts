@@ -14,10 +14,6 @@ interface LinkGroupItem {
   icon?: string,
 }
 
-function buildSvg(viewBoxPath: string[], width: number, height: number, classes: string = ""): string {
-  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
-}
-
 const
   d: Document = document
 
@@ -26,7 +22,7 @@ const
       return `
         <div class="links-group link-${i}">
           <div class="links-title anim once fade float-up">
-            ${data.group === "Support" ? buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
+            ${data.group === "Support" ? window.buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
             ${data.group}
           </div>
           <p class="links-desc">
@@ -50,7 +46,7 @@ const
                         aria-label="${link.name}"
                       >
                         <div class="social-icon">
-                          ${buildSvg(icons[((link.icon === undefined) ? "links" : link.icon)], 19, 19, "links")}
+                          ${window.buildSvg(icons[((link.icon === undefined) ? "links" : link.icon)], 19, 19, "links")}
                         </div>
 
                         <div class="social-info">
