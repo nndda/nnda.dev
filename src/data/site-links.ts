@@ -46,7 +46,7 @@ export default [
         name: "Mastodon",
         url: "mastodon.art/@nnda",
         icon: "mastodon",
-        username: "@nnda@mastodon.art",
+        username: "@nnda",
       },
       {
         name: "Twitter",
