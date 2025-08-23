@@ -199,8 +199,9 @@ h2 {
   // }
 }
 
-.carousel {
+.collection {
   display: flex;
   flex-direction: row;
   column-gap: 2em;
+  min-height: 440px;
 }
