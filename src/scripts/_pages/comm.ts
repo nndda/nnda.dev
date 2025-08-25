@@ -427,7 +427,7 @@ function updateFormData() {
 }
 
 
-// @ts-ignore
+// @ts-expect-error idk turnstile typing
 window.onloadTurnstileCallback = function () {
   const cfCheckInput: HTMLInputElement = d.getElementById("cf-tunstile-verify") as HTMLInputElement;
 
@@ -439,7 +439,7 @@ window.onloadTurnstileCallback = function () {
     cfTurnstileCont.classList.toggle("hidden", false);
     (d.querySelector(".cf-logo") as HTMLElement).classList.toggle("hidden", true);
 
-    // @ts-ignore
+    // @ts-expect-error idk turnstile typing
     turnstile.render(cfTurnstileCont, {
       sitekey: "1x00000000000000000000AA",
       theme: "light",

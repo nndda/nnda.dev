@@ -11,7 +11,7 @@ import {
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
-import _ from "lodash";
+// import _ from "lodash";
 // const sortBy = _.sortBy; // eslint-disable-line
 const srcDir: string = createResolver(__dirname)("../../src/");
 

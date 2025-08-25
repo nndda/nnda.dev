@@ -1,6 +1,6 @@
 import {
   iconCaretDown,
-  iconCaretUp,
+  // iconCaretUp,
   iconCircle,
   iconCircleCheck,
   iconSquare,
