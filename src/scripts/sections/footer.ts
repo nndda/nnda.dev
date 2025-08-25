@@ -1,4 +1,4 @@
-import packageJSON from "../build/packages.json" with { type: "json" };
+import packageJSON from "../build/out/attribution.json" with { type: "json" };
 import initIcon from "../build/icons/footer";
 
 function getLastUpdatedHrs(date: Date): string {

@@ -7,7 +7,7 @@ export function copyToDist(path: string): CopyPlugin.Pattern {
   return { from: abs("./src/" + path), to: abs("./dist/") }
 }
 
-import handlebarsData from "../src/views/data";
+import handlebarsData from "../src/data/site";
 import handlebarsHelpers from "../src/views/helpers";
 
 import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";

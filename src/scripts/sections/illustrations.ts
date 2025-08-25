@@ -112,20 +112,22 @@
 
 // documentWindow.addEventListener("scroll", scrollEv, { passive: true });
 
-import illustPaths from "./illustrations.build";
-import illustrationsData from "../build/illustrations.json" with { type: "json" };
+// import illustPaths from "./illustrations.build";
+// import illustrationsData from "../build/illustrations.json" with { type: "json" };
+import illustrationsHomeData from "../build/out/illust.home";
 
 interface IllustrationItem {
   title: string,
   chr: string[],
+  src: string,
+  w: number,
+  h: number,
 }
 
 interface IllustrationGallery {
   col: number,
   items: IllustrationItem[],
 }
-
-illustPaths.reverse();
 
 const
   d: Document = document
@@ -140,19 +142,15 @@ const
   };
 
 const illustsStrEl: string =
-    illustrationsData.map((data: IllustrationGallery): string => {
+    illustrationsHomeData.map((data: IllustrationGallery): string => {
       return `
         <div class="illust-gall col-${data.col}">
           ${
             data.items.map((itm: IllustrationItem): string => {
-              const
-                {s, w, h}: {s: string, w: number, h: number} = illustPaths.pop() as {s: string, w: number, h: number}
-              ;
-
               return `
                 <div class="illust">
                   <div class="img">
-                    <img src="${s}" width="${illustSectItemW[data.col]}" height="${(h / w) * illustSectItemW[data.col]}" loading="lazy" alt="">
+                    <img src="${itm.src}" width="${illustSectItemW[data.col]}" height="${(itm.h / itm.w) * illustSectItemW[data.col]}" loading="lazy" alt="">
                   </div>
 
                   <small class="chr">

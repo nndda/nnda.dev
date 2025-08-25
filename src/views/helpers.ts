@@ -1,18 +1,18 @@
 import Handlebars from "handlebars";
 import { readFileSync } from "fs";
 import { imageSize } from "image-size";
-import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
+// import type { ISizeCalculationResult } from "image-size/types/interface";
 
 import path from "path";
 
 import {
-  ls, // eslint-disable-line
+  // ls, // eslint-disable-line
   exists,
   pathResolve,
   createResolver,
 } from "../scripts/build/utils";
 import _ from "lodash";
-const sortBy = _.sortBy; // eslint-disable-line
+// const sortBy = _.sortBy; // eslint-disable-line
 const srcDir: string = createResolver(__dirname)("../../src/");
 
 function srcResolve(src: string): string {
@@ -80,7 +80,7 @@ export default {
   img: (src: string, alt: string) => {
     const
       srcAbs: string = srcResolve(src)
-    , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
+    , dimensions: any = imageSize(readFileSync(srcAbs))
     ;
 
     if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
