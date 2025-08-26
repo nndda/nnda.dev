@@ -31,7 +31,7 @@ illustHomeDataPromise.then((illustHomeData: { illustrations: IllustGallery[] }) 
       items: gall.items.map((illustItem: IllustItem, iI: number): IllustItem => {
         const
           id: string = `i${iG}${iI}`
-        , srcAbs: string = srcResolve(illustItem.src)
+        , srcAbs: string = srcResolve("./" + illustItem.src)
         , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
         ;
 
