@@ -1,5 +1,6 @@
 @use "../variables" as *;
 @use "sass:color";
+@use "sass:math";
 
 // @use "overview.mobile" as mobile;
 // @use "overview.desktop" as desktop;
@@ -13,6 +14,46 @@
 
 //   margin-bottom: 2em;
 // }
+
+.lang-stacks {
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.stats-list {
+  position: relative;
+  font-size: .9em;
+
+  & > li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    margin: .25em 0;
+    color: color.mix($text-secondary, $background, 70%);
+
+    & > div {
+      margin-right: 1em;
+      color: color.mix($text, $secondary, 40%);
+    }
+
+    &.title {
+      margin: .5em 0;
+      padding-left: 0;
+      color: color.mix($text, $secondary, 60%);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.languages-container {
+  display: flex;
+  min-height: 2.4em;
+
+  margin-bottom: 1em;
+}
 
 .lang {
   position: relative;
@@ -37,10 +78,10 @@
     line-height: .65em;
   }
 
-  @for $i from 1 through 5 {
+  @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
       & > .box {
-        background: color.mix($color, $background, (6 - $i) * 20%);
+        background: color.mix($color, $background, (7 - $i) * math.div(100%, 7));
       }
     }
   }
@@ -183,7 +224,7 @@
   }
 
     & .stats-list > li {
-      @include nth-loop(1, 5) using ($i) {
+      @include nth-loop(1, 6) using ($i) {
         transition-delay: 0s + (.2 * $i);
       }
     }
@@ -207,7 +248,7 @@
     }
   }
 
-  @include nth-loop(1, 5) using ($i) {
+  @include nth-loop(1, 6) using ($i) {
     transition-delay: 0s + (.17 * $i);
 
     & > .icon-text {

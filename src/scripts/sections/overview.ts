@@ -1,4 +1,4 @@
-import contribsGrid from "../../api/contribs-yearly.json" with { type: "json" };
+import contribsGrid from "../../api/out/contribs.json" with { type: "json" };
 import icons from "../build/icons/overview";
 
 import langsData from "../../api/out/langs.json" with { type: "json" };
@@ -9,12 +9,25 @@ interface LangsData {
 
 import stacksData, { type StacksData } from "../../data/site-stacks";
 
-const
-  overviewEl: HTMLElement = document.getElementById("overview") as HTMLElement
+function formatDate(d: Date): string {
+  const
+    day: number = d.getDate()
+  ;
+  return `<div class="date">${day}<small>${day % 10 < 4 && (day < 10 || day > 20) ? suf[day % 10] : suf[0]}</small> ${mon[d.getMonth()]}</div>`;
+}
 
-, contribsGridElRaw: string = contribsGrid.map((val: number): string => {
-    return `<i class="c${val}"></i>`;
-  }).join("")
+const
+  mon: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+, suf: string[] = ["th", "st", "nd", "rd"]
+
+, overviewEl: HTMLElement = document.getElementById("overview") as HTMLElement
+
+, contribsGridElRaw: string =
+  formatDate(new Date(contribsGrid["first"])) +
+    contribsGrid["arr"].map((val: number): string => {
+      return `<i class="c${val}"></i>`;
+    }).join("") +
+  formatDate(new Date(contribsGrid["last"]))
 
 , contribsGridEl: HTMLElement = overviewEl.querySelector(".calendar-container .grid") as HTMLElement
 ;
