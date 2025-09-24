@@ -9,7 +9,7 @@
 
 
 
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "skipLibCheck": true,
   },
   "extends": "./tsconfig.base.json",
