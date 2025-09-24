@@ -14,7 +14,18 @@ export default {
   plugins: [
     ...common.plugins,
 
-    new HtmlBundlerPlugin(_.merge(common.HtmlBundlerPluginConfig, { hotUpdate: true })),
+    new HtmlBundlerPlugin(_.merge(common.HtmlBundlerPluginConfig, {
+      js: {
+        filename: "[name].js",
+      },
+      css: {
+        filename: "[name].css",
+      },
+
+      minify: false,
+
+      hotUpdate: true,
+    })),
   ],
 
   devServer: {
@@ -33,7 +44,7 @@ export default {
         test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: '[name].[hash:6][ext][query]',
+          filename: '[name].[ext][query]',
         },
       },
       {
