@@ -29,7 +29,7 @@ export default [
     items: [
       "Linux",
       "Git",
-      "GitHub Actions",
+      // "GitHub Actions",
     ],
   },
   {
