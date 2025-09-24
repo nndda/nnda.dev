@@ -1,13 +1,13 @@
 import linksData from "../../data/site-links";
 import icons from "../build/icons/links";
 
-interface LinkGroup {
+export interface LinkGroup {
   group: string,
   desc: string,
-  links: LinkGroupItem[],
+  links: (LinkGroupItem | "br")[],
 }
 
-interface LinkGroupItem {
+export interface LinkGroupItem {
   name: string,
   url: string,
   username: string,
@@ -25,13 +25,15 @@ const
             ${data.group === "Support" ? window.buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
             ${data.group}
           </div>
-          <p class="links-desc">
+          <p class="links-desc anim once fade float-up">
             ${data.desc}
           </p>
           <ul class="nostyle">
             ${
               data.links.map(
-                (link: LinkGroupItem) => {
+                (link: LinkGroupItem | "br") => {
+                  if (link === "br") return `<div class="flex-break"></div>`;
+
                   return `
                     <li class="
                         anim once

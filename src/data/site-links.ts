@@ -1,6 +1,22 @@
+import type {
+  LinkGroup,
+  LinkGroupItem,
+} from "../scripts/sections/links";
+
 const
-  nnda: string = "nnda" // Common username
+  // Common usernames
+  nnda: string = "nnda"
+, nndda: string = "nndda"
+, at_nnda_dev: string = "@nnda_dev"
 ;
+
+// duplicates
+const patreon: LinkGroupItem = {
+  name: "Patreon",
+  url: "patreon.com/nnda",
+  icon: "patreon",
+  username: nnda,
+};
 
 export default [
   { // ------------------------------------------------------------------------
@@ -11,7 +27,7 @@ export default [
         name: "GitHub",
         url: "github.com/nndda",
         icon: "github",
-        username: "nndda",
+        username: nndda,
       },
       {
         name: "itch.io",
@@ -19,6 +35,20 @@ export default [
         icon: "itchdotio",
         username: nnda,
       },
+      patreon,
+      // "br",
+      // {
+      //   name: "YouTube",
+      //   url: "youtube.com/@nnda_dev",
+      //   icon: "youtube",
+      //   username: at_nnda_dev,
+      // },
+      // {
+      //   name: "TikTok",
+      //   url: "tiktok.com/@nnda_dev",
+      //   icon: "tiktok",
+      //   username: at_nnda_dev,
+      // },
     ],
   },
   { // ------------------------------------------------------------------------
@@ -51,8 +81,8 @@ export default [
       {
         name: "Twitter",
         url: "twitter.com/@nnda_dev",
-        icon: "x",
-        username: "@nnda_dev",
+        icon: "twitter",
+        username: at_nnda_dev,
       },
       {
         name: "Bluesky",
@@ -62,16 +92,23 @@ export default [
       },
     ],
   },
+  {
+    group: "Gaming",
+    desc: "Not much, besides smashing drums",
+    links: [
+      {
+        name: "OSU!",
+        url: "",
+        icon: "osu",
+        username: "nnda",
+      },
+    ],
+  },
   { // ------------------------------------------------------------------------
     group: "Support",
     desc: "Gimme mone plzzz.",
     links: [
-      {
-        name: "Patreon",
-        url: "patreon.com/nnda",
-        icon: "patreon",
-        username: nnda,
-      },
+      patreon,
       {
         name: "Ko-fi",
         url: "ko-fi.com/nnda",
@@ -84,15 +121,12 @@ export default [
         icon: "liberapay",
         username: nnda,
       },
+      {
+        name: "GitHub Sponsors",
+        url: "github.com/sponsors/nndda?frequency=patreon",
+        icon: "githubsponsors",
+        username: nndda,
+      },
     ],
   },
-] as {
-  group: string,
-  desc: string,
-  links: {
-    name: string,
-    url: string,
-    icon: string,
-    username: string,
-  }[]
-}[];
+] as LinkGroup[];
