@@ -11,11 +11,16 @@
 	font-size: .8em;
 	overflow: hidden;
 
+	contain: strict;
+
 	& > .inner {
 		animation: pkg 100s linear infinite alternate;
+		// animation-play-state: running;
+
+		will-change: transform;
 
 		&:hover {
-			animation-play-state: paused;
+			animation-play-state: paused !important;
 		}
 	}
 
