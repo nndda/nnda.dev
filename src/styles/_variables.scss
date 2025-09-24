@@ -76,6 +76,14 @@ $text-secondary: color.mix($text, $background, 80%);
   }
 }
 
+@mixin nth-type-loop($start, $end) {
+  @for $i from $start through $end {
+    &:nth-of-type(#{$i}) {
+      @content($i);
+    }
+  }
+}
+
 // BACKGROUNDS
 
 @mixin diagonal-stripes(
