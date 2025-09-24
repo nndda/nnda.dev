@@ -86,3 +86,7 @@ function updateClock(): void {
 
 updateClock();
 setInterval(updateClock, 1e6);
+
+window.observe((entry: IntersectionObserverEntry): void => {
+  pkgAttrEl.style.animationPlayState = entry.isIntersecting ? "running" : "paused" ;
+})(pkgAttrElCont);
