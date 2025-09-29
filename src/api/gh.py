@@ -160,25 +160,25 @@ for lang, lang_bytes in lang_data["perByte"].items():
 
     lang_data["frontEnd"][lang] = [percent]
 
-lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:6]
+lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:5]
 lang_data_top_5_sum: float = sum(
     math.sqrt(lang_data["frontEnd"][n][0])
     for n in lang_data_top_5_arr
 )
 
-write_txt_file(
-    os.path.join(script_dir, "out/langs.json"),
-    json.dumps({
-        lang: [
-            lang_data["frontEnd"][lang][0],
-            round(
-                math.sqrt(lang_data["frontEnd"][lang][0])
-                / lang_data_top_5_sum
-                * 100.
-            , 2),
-        ] for lang in lang_data_top_5_arr
-    }),
-)
+# write_txt_file(
+#     os.path.join(script_dir, "out/langs.json"),
+#     json.dumps({
+#         lang: [
+#             lang_data["frontEnd"][lang][0],
+#             round(
+#                 math.sqrt(lang_data["frontEnd"][lang][0])
+#                 / lang_data_top_5_sum
+#                 * 100.
+#             , 2),
+#         ] for lang in lang_data_top_5_arr
+#     }),
+# )
 
 
 # Contribution calendar
@@ -250,10 +250,34 @@ update_contribs_data(format_contribs(fetch_contribs_ranged()), "yearly")
 # write_txt_file(os.path.join(script_dir, "contribs-yearly.json"), json.dumps(contribs_data["arr"]["yearly"]))
 # write_txt_file(os.path.join(script_dir, "contribs.json"), json.dumps(contribs_data))
 
+suf = ["th", "st", "nd", "rd"]
+
+def format_date(d: datetime) -> str:
+    day = d.day
+    return f"{day}<small>{suf[day % 10] if day % 10 < 4 and (day < 10 or day > 20) else suf[0]}</small> {d.strftime("%B")}"
+
 contrib_graph_grids: int = 16 * 10
 
-write_txt_file(os.path.join(script_dir, "out/contribs.json"), json.dumps({
-    "first": (now - timedelta(contrib_graph_grids)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "last": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
+# write_txt_file(os.path.join(script_dir, "out/contribs.json"), json.dumps({
+#     "first": format_date(now - timedelta(contrib_graph_grids)),
+#     "last": format_date(now),
+#     "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
+# }))
+
+write_txt_file(os.path.join(script_dir, "out/overview-stats.json"), json.dumps({
+    "contribs": {
+        "first": format_date(now - timedelta(contrib_graph_grids)),
+        "last": format_date(now),
+        "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
+    },
+    "langs": {
+        lang: [
+            lang_data["frontEnd"][lang][0],
+            round(
+                math.sqrt(lang_data["frontEnd"][lang][0])
+                / lang_data_top_5_sum
+                * 100.
+            , 2),
+        ] for lang in lang_data_top_5_arr
+    },
 }))

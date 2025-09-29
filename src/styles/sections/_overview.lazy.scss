@@ -114,13 +114,14 @@
     display: flex;
     flex-direction: row;
     // justify-content: space-between;
-    margin-right: 1em;
+    margin-right: 0;
+    gap: .7em;
   }
 
   & li li {
     height: 1.8em;
     width: 1.8em;
-    margin-right: .7em;
+    // margin-right: .7em;
   }
 
   & .title {
@@ -165,51 +166,207 @@
 //   }
 // }
 
-// .socials-lists {
-//   padding-bottom: 1em;
-//   overflow-x: scroll;
+$action-bg: color.mix($background, $background-dark, 50%);;
+.socials-lists {
+  $border-col: color.mix($text, $background-dark, 11.5%);
 
-//   mask-image: linear-gradient(90deg, #000 65%, transparent);
-//   mask-mode: alpha;
-//   mask-repeat: no-repeat;
+  padding-bottom: 1em;
+  overflow-x: scroll;
 
-//   @include style-scrollbar;
+  $shadow-col: rgba($background-dark, 80%);
+  background: $shadow-col;
+  box-shadow: 0 0 1em 1em $shadow-col;
 
-//   & .content {
-//     & > .text {
-//       width: 100%;
-//       height: 100%;
-//       overflow: hidden;
-//       // text-overflow: ellipsis;
-//     }
-//   }
+      // filter: drop-shadow(0 0 1em $background-dark) drop-shadow(0 0 .5em $background);
+  // mask-image: linear-gradient(90deg, #000 65%, transparent);
+  // mask-mode: alpha;
+  // mask-repeat: no-repeat;
 
-//   & > ul {
-//     display: flex;
-//     width: max-content;
-//     gap: 1.25em;
-//   }
+  @include style-scrollbar;
 
-//   & .card {
-//     display: flex;
-//     flex-direction: column;
+  & .tag {
+    color: $secondary;
 
-//     // width: min-content;
-//     min-width: 6em;
-//     max-width: 15em;
+    &::before {
+      content: "#";
+      color: $primary;
+    }
+  }
 
-//     height: 10em;
+  & .content-container {
 
-//     box-shadow: none;
+    // & > .text {
+    //   width: 100%;
+    //   height: 100%;
+    //   color: $text-secondary;
+    //   overflow: hidden;
+    //   // text-overflow: ellipsis;
+    // }
 
-//     overflow: hidden;
-//   }
+    & h3, & h4 {
+      padding: 0 .7em;
+      margin: 0;
+      margin-bottom: .5em;
+    }
+    
+    & h3 {
+      padding-top: .5em;
+    }
+  }
 
-//   & .actions {
-//     display: flex;
-//     gap: .75em;
-//   }
-// }
+  & .content {
+    padding: .7em;
+    margin: 0;
+  }
+
+  & .release-title {
+    color: $secondary;
+  }
+
+  & .release-ver {
+    color: $primary;
+  }
+
+  & .media {
+    flex-grow: 1;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  & > ul {
+    // display: flex;
+    column-count: 4;
+    column-width: 25%;
+    column-fill: balance;
+    // column-rule: 1px solid $primary;
+    // column-width: calc(25% - 3em);
+    // width: max-content;
+    gap: 1em;
+    // row-gap: 1em;
+
+    & > li {
+      margin-bottom: .8em;
+
+      overflow: hidden;
+    }
+  }
+
+  & .card {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    // width: 25%;
+
+    // width: min-content;
+    // min-width: 6em;
+    // height: 13em;
+    // &.s0 {
+    //   width: 13em;
+    // }
+    // &.s1 {
+    //   width: 17em;
+    // }
+
+    padding: 0;
+    margin-bottom: .2em;
+
+    background: $background-dark;
+    border: 1px solid $border-col;
+
+    overflow: hidden;
+  }
+
+  & .sources {
+    & svg {
+      fill: color.mix($text, $background, 52.5%);
+      font-size: .8em;
+
+    }
+  }
+
+  & .stats {
+    display: flex;
+    gap: .7em;
+    font-size: .7em;
+  }
+
+  & .actions {
+    display: flex;
+    gap: 1em;
+    padding: .3em 1em;
+    background: $action-bg;
+    border-top: 1px solid $border-col;
+  }
+
+  & .timestamp {
+    color: color.mix($text-secondary, $background-dark, 60%);;
+    margin-left: .5em;
+    letter-spacing: .15ch;
+  }
+}
+
+
+.post-illust {
+  & .card {
+    min-height: 21em;
+  }
+}
+
+.post-announcement {
+  column-span: all;
+
+  & .content-container {
+    background: color.mix($background-dark, $tertiary, 87.5%);
+  }
+
+  & .content {
+    background: $background-dark;
+  }
+
+  & .card {
+    border-color: color.mix($background-dark, $tertiary, 45%);
+  }
+}
+
+.icon- {
+  &likes {
+    fill: $text-secondary;
+//     fill: color.mix($text, color.mix($action-bg, $primary, 35%), 55%);
+  }
+//   // &replies {
+//   //   fill: $secondary;
+//   // }
+  &shares {
+    fill: $text-secondary;
+//     // fill: $secondary;
+//     fill: color.mix($text, color.mix($action-bg, $secondary, 35%), 55%);
+  }
+}
+
+.socials-lists > ul.anim {
+  &:not(.on) {
+    & > li {
+      transform: translateX(-2em);
+      opacity: 0;
+    }
+  }
+
+  &.on {
+    & > li {
+      transition: .2s ease-out;
+      // transition-delay: 0;
+
+      @include nth-loop(1, 6) using ($i) {
+        transition-delay: 0s + (.125 * $i);
+      }
+
+    }
+  }
+}
 
 // @include mobile.style;
 // @include desktop.style;
