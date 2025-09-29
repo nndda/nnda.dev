@@ -44,37 +44,47 @@ const svgAttr: Record<string, string> = {
 // Load and populate lazy-loaded icons
 window.p = function (selector: string, iconSets: Record<string, string[]>): void {
   requestAnimationFrame((): void => {
-    const iconEls: NodeListOf<Element> = document.querySelectorAll("svg." + selector);
-
-    for (let i: number = iconEls.length; i-- > 0;) {
-      const iData: string[] = iconSets[(iconEls[i].getAttribute("data-i") as string)];
+    for (const iconEl of document.querySelectorAll("svg." + selector + ":not(.loaded)")) {
+      const iData: string[] = iconSets[iconEl.getAttribute("data-i") as string]
 
       for (const attr in svgAttr) {
-        iconEls[i].setAttribute(attr, svgAttr[attr]);
+        iconEl.setAttribute(attr, svgAttr[attr]);
       }
 
-      iconEls[i].setAttribute("viewBox", iData[0]);
-      iconEls[i].innerHTML = iData[1];
-      iconEls[i].classList.toggle("loaded", true);
-
-      // iconEls[i].outerHTML =
-      //   `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="`
-      //     +
-      //   iconEls[i].getAttribute("data-w")
-      //     +
-      //   `" height="`
-      //     +
-      //   iconEls[i].getAttribute("data-h")
-      //     +
-      //   `" `
-      //     +
-      //   iconSets[
-      //     (iconEls[i].getAttribute("data-i") as string)
-      //   ]
-      //     +
-      //   "</svg>"
-      // ;
+      iconEl.setAttribute("viewBox", iData[0]);
+      iconEl.innerHTML = iData[1];
+      iconEl.classList.toggle("loaded", true);
     }
+
+    // for (let i: number = iconEls.length; i-- > 0;) {
+    //   const iData: string[] = iconSets[(iconEls[i].getAttribute("data-i") as string)];
+
+    //   for (const attr in svgAttr) {
+    //     iconEls[i].setAttribute(attr, svgAttr[attr]);
+    //   }
+
+    //   iconEls[i].setAttribute("viewBox", iData[0]);
+    //   iconEls[i].innerHTML = iData[1];
+    //   iconEls[i].classList.toggle("loaded", true);
+
+    //   // iconEls[i].outerHTML =
+    //   //   `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="`
+    //   //     +
+    //   //   iconEls[i].getAttribute("data-w")
+    //   //     +
+    //   //   `" height="`
+    //   //     +
+    //   //   iconEls[i].getAttribute("data-h")
+    //   //     +
+    //   //   `" `
+    //   //     +
+    //   //   iconSets[
+    //   //     (iconEls[i].getAttribute("data-i") as string)
+    //   //   ]
+    //   //     +
+    //   //   "</svg>"
+    //   // ;
+    // }
   });
 };
 

@@ -1,6 +1,9 @@
 import initializeInputs from "./input";
 import styleFooter from "../styles/sections/_footer.lazy.scss?url";
 
+import initIcon from "./build/icons/global";
+       initIcon();
+
 export default function (d: Document): void {
 
   const
@@ -32,5 +35,4 @@ export default function (d: Document): void {
     d.querySelector("body > footer") as HTMLElement,
     "300px",
   );
-
 }

@@ -44,17 +44,20 @@ const DATA: any = async () => { return _.merge({
         url: "#illustrations",
       },
       {
-        icon: iconSI["itchdotio"],
+        // icon: iconSI["itchdotio"],
+        icon: `<svg data-i="itchdotio" class="global" height="18" width="18"></svg>`,
         url: "nnda.itch.io",
         external: true,
       },
       {
-        icon: iconSI["github"],
+        // icon: iconSI["github"],
+        icon: `<svg data-i="github" class="global" height="18" width="18"></svg>`,
         url: "github.com/nndda",
         external: true,
       },
       {
-        icon: iconSI["bluesky"],
+        // icon: iconSI["bluesky"],
+        icon: `<svg data-i="bluesky" class="global" height="18" width="18"></svg>`,
         url: "bsky.app/profile/nnda.dev",
         external: true,
       },
