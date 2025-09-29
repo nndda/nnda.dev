@@ -4,7 +4,12 @@
 #links {
   padding-top: 4em;
   padding-bottom: 4em;
-  background: $background-dark;
+  background: $background;
+
+  & .jp {
+    color: $tertiary;
+    background: $background;
+  }
 
   & > .section-inner {
     max-width: 1050px;

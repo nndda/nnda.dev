@@ -9,6 +9,11 @@
 
   @include shadow-black;
 
+  & .jp {
+    color: $primary;
+    background: $background-dark;
+  }
+
   & > .section-inner {
     width: 100%;
     max-width: 1100px;

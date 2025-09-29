@@ -106,3 +106,8 @@
     }
   }
 }
+@media (width < 1150px) {
+  .heading-left-sticky {
+    display: none;
+  }
+}
