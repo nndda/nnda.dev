@@ -2,22 +2,28 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: npm # See documentation for possible values
+    directory: / # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: daily
     versioning-strategy: auto
-    target-branch: "dev"
+    target-branch: dev
+    cooldown:
+      default-days: 7
 
-  - package-ecosystem: "pip"
-    directory: "config/"
+  - package-ecosystem: pip
+    directory: config/
     schedule:
-      interval: "weekly"
+      interval: daily
     versioning-strategy: auto
-    target-branch: "dev"
+    target-branch: dev
+    cooldown:
+      default-days: 7
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
-    target-branch: "main"
+      interval: daily
+    target-branch: main
+    cooldown:
+      default-days: 7
