@@ -4,7 +4,7 @@
   {{ title "nnda's Illustration Commission Page" }}
   {{ desc "Artwork commission page" }}
 
-  {{ include "head" }}
+  {{> "head" }}
 
   {{ stylesheet "/styles/_pages/comm.scss" "" }}
 
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  {{ include "header" }}
+  {{> "header" }}
 
   <section id="comm-home">
     <h1><b>nnda's</b> Illustration Commission Page</h1>
@@ -613,7 +613,7 @@
 
   <div id="site-ver" data-site-ver="{{buildCommitSHAFull}}"></div>
 
-  {{ include "footer" }}
+  {{> "footer" }}
 
   {{ script "/scripts/_page.ts" true }}
   {{ script "/scripts/_pages/comm.ts" true }}

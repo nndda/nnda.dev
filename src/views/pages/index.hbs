@@ -4,7 +4,7 @@
   {{ title site.title }}
   {{ desc site.description }}
 
-  {{ include "head" }}
+  {{> "head" }}
 
   {{!-- {{ stylesheet "/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }} --}}
 
@@ -14,18 +14,18 @@
 </head>
 
 <body>
-  {{ include "header" }}
-  {{ include "home" }}
+  {{> "header" }}
+  {{> "home" }}
 
   <main>
-    {{ include "profile" }}
-    {{ include "overview" }}
-    {{ include "projects" }}
-    {{ include "illustrations" }}
-    {{ include "links" }}
+    {{> "profile" }}
+    {{> "overview" }}
+    {{> "projects" }}
+    {{> "illustrations" }}
+    {{> "links" }}
   </main>
 
-  {{ include "footer" }}
+  {{> "footer" }}
 
   {{ script "/scripts/_home.ts" true }}
 </body>

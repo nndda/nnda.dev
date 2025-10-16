@@ -4,13 +4,13 @@
   {{ title "nnda's Shop Page" }}
   {{ desc "nnda's Shop Page" }}
 
-  {{ include "head" }}
+  {{> "head" }}
 
   {{ stylesheet "/styles/_pages/shop/index.scss" "" }}
 </head>
 
 <body>
-  {{ include "header" }}
+  {{> "header" }}
 
   <section id="shop-banner">
     <h1>
@@ -42,7 +42,7 @@
     </section>
   </main>
 
-  {{ include "footer" }}
+  {{> "footer" }}
 
   {{ script "/scripts/_page.ts" true }}
   {{ script "/scripts/_pages/shop/index.ts" true }}

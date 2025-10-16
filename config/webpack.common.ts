@@ -22,6 +22,8 @@ export function abs(path: string): string {
   return pathResolve(absRel, path);
 }
 
+import partialsDefinition from "../src/views/generate-partials-def";
+
 export default {
   resolve: {
     extensions: [".js", ".ts", ".json"],
@@ -49,6 +51,7 @@ export default {
       views: [
         abs("./src/views/partials"),
       ],
+      partials: partialsDefinition,
     },
 
     loaderOptions: {

@@ -4,7 +4,7 @@
   {{ title "404 :(" }}
   {{ desc "Page Not Found" }}
 
-  {{ include "head" }}
+  {{> "head" }}
 
   <meta property="og:type" content="website">
 
@@ -38,7 +38,7 @@
 </head>
 
 <body>
-  {{ include "header" }}
+  {{> "header" }}
 
   <main>
     <h1>
@@ -48,7 +48,7 @@
     </h1>
   </main>
 
-  {{ include "footer" }}
+  {{> "footer" }}
 
   {{ stylesheet "/styles/animations.scss" "(prefers-reduced-motion: no-preference)" }}
 
