@@ -5,7 +5,7 @@ updates:
   - package-ecosystem: npm # See documentation for possible values
     directory: / # Location of package manifests
     schedule:
-      interval: daily
+      interval: weekly
     versioning-strategy: auto
     target-branch: dev
     cooldown:
@@ -14,7 +14,7 @@ updates:
   - package-ecosystem: pip
     directory: config/
     schedule:
-      interval: daily
+      interval: weekly
     versioning-strategy: auto
     target-branch: dev
     cooldown:
@@ -23,7 +23,7 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: daily
+      interval: weekly
     target-branch: main
     cooldown:
       default-days: 7
