@@ -11,7 +11,7 @@ const abs: DirResolver = createResolver(__dirname);
 
 import packageJSON from "../../../package.json";
 
-writeTextFile(abs("./out/attribution.json"), JSON.stringify(_.shuffle([
+writeTextFile(abs("./out/attribution.json"), JSON.stringify(_.sortBy([
 
   ..._.entries(packageJSON.devDependencies).map(i => i[0] + "pkg-d"),
   ..._.entries(packageJSON.dependencies).map(i => i[0] + "pkg-r"),
