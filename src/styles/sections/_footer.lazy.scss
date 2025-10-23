@@ -5,32 +5,34 @@
 @use "footer.desktop" as desktop;
 
 .packages {
-	position: relative;
-	padding-bottom: 1.5em;
-	white-space: nowrap;
-	font-size: .8em;
-	overflow: hidden;
+	// position: relative;
+	// padding-bottom: 1.5em;
+	// white-space: nowrap;
+	// font-size: .8em;
+	// overflow: hidden;
+	text-align: center;
 
-	contain: strict;
+	// contain: strict;
 
-	& > .inner {
-		animation: pkg 100s linear infinite alternate;
-		// animation-play-state: running;
+	// & > .inner {
+	// 	animation: pkg 100s linear infinite alternate;
+	// 	// animation-play-state: running;
 
-		will-change: transform;
+	// 	will-change: transform;
 
-		&:hover {
-			animation-play-state: paused !important;
-		}
-	}
+	// 	&:hover {
+	// 		animation-play-state: paused !important;
+	// 	}
+	// }
 
 	& a {
 		display: inline-block;
-		margin: 0 .25em;
+		margin: .3em;
 		font-family: "Ubuntu Sans Mono", monospace;
+		text-decoration: none;
 
-		&:not(:hover) {
-			text-decoration: none;
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 }
@@ -43,15 +45,15 @@
 	color: color.mix($primary, $text, 30%);
 }
 
-@keyframes pkg {
-	0% {
-		transform: translateX(var(--width));
-	}
+// @keyframes pkg {
+// 	0% {
+// 		transform: translateX(var(--width));
+// 	}
 
-	100% {
-		transform: translateX(0%);
-	}
-}
+// 	100% {
+// 		transform: translateX(0%);
+// 	}
+// }
 
 @include mobile.style;
 @include desktop.style;
