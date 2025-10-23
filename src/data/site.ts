@@ -79,9 +79,9 @@ const DATA: any = async () => { return _.merge({
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA?.substring(0, 16),
 
-  iconSI: iconSI,
-  iconFAS: iconFAS,
-  iconFAB: iconFAB,
+  // iconSI: iconSI,
+  // iconFAS: iconFAS,
+  // iconFAB: iconFAB,
 
 }, exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
 
@@ -105,45 +105,45 @@ const siteExtPath: string = createResolver(__dirname)("./site-ext.js");
 
 // ============================================================================
 
-type IconDefs = Record<string, string>;
+// type IconDefs = Record<string, string>;
 
 // ----------------------------------------------------------------------------
 
-import * as siIconsRaw from "simple-icons";
-import { type SimpleIcon } from "simple-icons";
+// import * as siIconsRaw from "simple-icons";
+// import { type SimpleIcon } from "simple-icons";
 
-const iconSI: IconDefs = Object.keys(siIconsRaw).reduce(
-  (acc: IconDefs, val: string): IconDefs => {
-    const icon: SimpleIcon = siIconsRaw[val];
-    acc[icon.slug] = icon.svg;
+// const iconSI: IconDefs = Object.keys(siIconsRaw).reduce(
+//   (acc: IconDefs, val: string): IconDefs => {
+//     const icon: SimpleIcon = siIconsRaw[val];
+//     acc[icon.slug] = icon.svg;
 
-    return acc;
-  }, {} as IconDefs,
-);
+//     return acc;
+//   }, {} as IconDefs,
+// );
 
 // ----------------------------------------------------------------------------
 
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+// import { icon } from "@fortawesome/fontawesome-svg-core";
+// import { fas } from "@fortawesome/free-solid-svg-icons";
+// import { fab } from "@fortawesome/free-brands-svg-icons";
 
-const iconFAS: IconDefs = Object.keys(fas).reduce(
-  (acc: IconDefs, val: string): IconDefs => {
-    acc[
-      fas[val].iconName.replace("-", "_")
-    ] = icon(fas[val]).html.join();
-    return acc;
-  }, {} as IconDefs,
-);
+// const iconFAS: IconDefs = Object.keys(fas).reduce(
+//   (acc: IconDefs, val: string): IconDefs => {
+//     acc[
+//       fas[val].iconName.replace("-", "_")
+//     ] = icon(fas[val]).html.join();
+//     return acc;
+//   }, {} as IconDefs,
+// );
 
-const iconFAB: IconDefs = Object.keys(fab).reduce(
-  (acc: IconDefs, val: string): IconDefs => {
-    acc[
-      fab[val].iconName.replace("-", "_")
-    ] = icon(fab[val]).html.join();
-    return acc;
-  }, {} as IconDefs,
-);
+// const iconFAB: IconDefs = Object.keys(fab).reduce(
+//   (acc: IconDefs, val: string): IconDefs => {
+//     acc[
+//       fab[val].iconName.replace("-", "_")
+//     ] = icon(fab[val]).html.join();
+//     return acc;
+//   }, {} as IconDefs,
+// );
 
 
 // ============================================================================

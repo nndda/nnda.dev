@@ -10,7 +10,10 @@
       <div class="vseparator"></div>
       <div id="mobile-nav-sect-label"></div>
       <div class="flex-space"></div>
-      <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">{{{iconFAS.bars}}}</button>
+      <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">
+        {{!-- {{{iconFAS.bars}}} --}}
+        <svg data-i="bars" height="18" width="20"></svg>
+      </button>
     </div>
 
     <div id="navbar-desktop-header">
@@ -30,7 +33,8 @@
 
           <li>
             <a href="#" class="nav-link nav-link-btn">
-              {{{iconFAS.basket_shopping}}}
+              {{!-- {{{iconFAS.basket_shopping}}} --}}
+              <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
               Shop
             </a>
           </li>
