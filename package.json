@@ -64,6 +64,6 @@
     "@fortawesome/free-regular-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^15.16.1"
+    "simple-icons": "^15.17.0"
   }
 }
