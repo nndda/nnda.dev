@@ -23,7 +23,7 @@
     "@eslint/js": "^9.36.0",
     "@swc/html": "^1.13.20",
     "@types/lodash": "^4.17.20",
-    "@types/node": "^24.6.2",
+    "@types/node": "^24.9.0",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.21",
     "chokidar": "^4.0.3",
