@@ -1,0 +1,325 @@
+@use "../variables" as *;
+
+#comm-home {
+  min-height: 100vh;
+  padding: 1.5em;
+  background: $background;
+  border-bottom: 2px $primary dashed;
+
+  & > h1 {
+    margin: .5em;
+    // margin-left: .5em;
+    margin-top: 2em;
+    font-size: 2.5em;
+  }
+}
+
+.slots {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 6em;
+  height: 6em;
+  margin: 1em;
+  border: 1px $text solid;
+  border-radius: 6px;
+
+  & > svg {
+    flex-grow: 1;
+    margin: .8em;
+  }
+
+  &.available {
+    border-color: $secondary;
+
+    & > svg > path {
+      fill: $secondary;
+    }
+  }
+
+  &.taken {
+    border-color: $primary;
+
+    & > svg > path {
+      fill: $primary;
+    }
+  }
+
+  & > .title {
+    margin: .5em;
+  }
+}
+
+.dos-donts {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  font-size: 1.5em;
+
+  & h2 {
+    font-weight: 300;
+
+    &.do {
+      & > svg > path {
+        fill: $secondary;
+      }
+    }
+
+    &.dont {
+      & > svg > path {
+        fill: $primary;
+      }
+    }
+  }
+
+  & > div {
+    margin: 1em;
+  }
+}
+
+@mixin style-label($col) {
+  background: rgba($col, .2);
+  border: 1px rgba($col, .6) solid;
+}
+
+.labels-cont {
+  & > li {
+    display: inline-block;
+    padding: .15em .45em;
+    font-size: .8em;
+    border-radius: 6px;
+    // border-left-width: 3px !important;
+  }
+
+  &.do > li {
+    @include style-label($secondary);
+  }
+
+  &.dont > li {
+    @include style-label($primary);
+  }
+}
+
+main {
+  background: $background-dark;
+  // max-width: 600px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  // & section > h1 {
+  //   margin: 2em;
+  //   margin-top: 3em;
+
+  //   & > span {
+  //     font-weight: 400;
+  //   }
+  // }
+}
+
+.admonition {
+  margin: 3em auto;
+  padding: 2em;
+  background: rgba($primary, .15);
+  border: 1px $primary solid;
+  border-radius: 6px;
+}
+
+hr.dashed {
+  border: 0;
+  border-top: 1px rgba($text, .3) dashed;
+  margin: 1em 0;
+}
+
+.price-dollar {
+  position: sticky;
+  top: 1.5em;
+  margin-top: 1em;
+
+  &::before {
+    content: "$";
+    color: $primary;
+  }
+}
+
+#price-total {
+  font-size: 3.5em;
+
+  &::before {
+    font-weight: 300;
+    opacity: .8;
+  }
+}
+
+input[disabled] {
+  opacity: .8;
+  cursor: not-allowed;
+}
+
+.form-item:has( input[disabled]) {
+  opacity: .8;
+  cursor: not-allowed;
+  // filter: grayscale(100%);
+}
+
+input[type="number"] {
+  width: 2.5em;
+  margin: 0 .5em;
+  background: 0;
+  border: 0;
+  // outline: 0;
+}
+
+input.text {
+  width: 20em;
+  padding-left: .5em;
+  background: $background;
+  border: 1px rgba($text, .3) solid;
+  border-radius: 6px;
+}
+
+textarea {
+  width: 100%;
+  height: 15em;
+  padding: .8em;
+  background: $background;
+  border: 1px rgba($text, .3) solid;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.field-heading {
+  margin: 0;
+  padding-bottom: .5em;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: $secondary;
+}
+
+.form-container {
+  background: $background;
+  padding-bottom: 3em;
+
+  & > form > fieldset {
+    margin: 2em 0;
+    padding: 1em 1.5em;
+
+    border: 1px rgba($text, .1) solid;
+    border-radius: 6px;
+
+    & p {
+      max-width: calc(100% - 12em);
+      opacity: .85;
+    }
+  }
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  // margin: 0;
+  margin: .8em 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.sub {
+    margin-left: 2em;
+  }
+}
+
+.form-item-desc {
+  margin-top: .5em;
+  margin-left: 2em;
+  // margin-right: 9em;
+  max-width: calc(100% - 12em);
+  opacity: .85;
+  font-size: .9em;
+}
+
+.ml-0 {
+  margin-left: 0;
+  // margin-right: 9em;
+}
+
+.checked, .checked-not {
+  & > svg, path {
+    fill: $secondary;
+  }
+}
+
+.deposit {
+  display: grid;
+  grid-template-columns: auto 20em;
+
+  & p {
+    max-width: 100% !important;
+  }
+}
+
+#deposit-half {
+  font-size: 5em;
+  font-weight: 300;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+
+  &::before {
+    content: "$";
+    color: $primary;
+    font-weight: 400;
+    opacity: .7;
+  }
+}
+
+.cf-turnstile-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 4.5em;
+
+  margin-top: .5em;
+
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.cf-logo {
+  display: flex;
+
+  & > svg {
+    width: 4em;
+    height: 4em;
+    margin: auto;
+    fill: $background;
+  }
+}
+
+#cf-turnstile {
+  display: flex;
+  justify-content: center;
+}
+
+#submit-button {
+  width: 100%;
+  font-size: 1.15em;
+  padding: .5em 1.5em;
+  justify-content: center;
+
+  background: rgba($primary, .35);
+
+  &:hover {
+    background: rgba($primary, .75);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

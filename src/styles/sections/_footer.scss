@@ -15,6 +15,10 @@ footer {
 
 .footer-heading {
 	letter-spacing: .1em;
+
+	& > code {
+		color: $secondary;
+	}
 }
 
 .footer-body {
@@ -81,6 +85,12 @@ footer {
 	font-weight: lighter;
 }
 
+.packages {
+	padding-bottom: 1.5em;
+	font-size: .8em;
+	min-height: calc((1lh + .6em) * 7.5);
+}
+
 .site-opt {
 	display: grid;
 	grid-template-columns: 1.5em auto;
@@ -97,6 +107,7 @@ footer {
 }
 
 .logos {
+	min-height: 160px;
 	padding-bottom: 1.5em;
 
 	& > .inner {

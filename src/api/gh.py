@@ -1,8 +1,9 @@
 import os
 import sys
 import json
+import math
 import requests
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any
 from dotenv import load_dotenv
 from utils import fetch_json, cleanup_dir, write_txt_file
@@ -16,14 +17,16 @@ if not os.getenv("GH_PAT"):
 
 
 script_dir: str = os.path.dirname(os.path.abspath(__file__))
-cleanup_dir(script_dir)
+# cleanup_dir(script_dir)
 
 
 user: str = "nndda"
 pat: str = os.getenv("GH_PAT")
 
+now: datetime = datetime.now(timezone.utc)
+
 start_year: int = 2021
-current_time: int = int(datetime.now(timezone.utc).timestamp() * 1000)
+current_time: int = int(now.timestamp() * 1000)
 
 gh_headers: dict[str, str] = {
   "Accept": "application/vnd.github+json",
@@ -153,21 +156,29 @@ for lang, lang_bytes in lang_data["perByte"].items():
     percent: float = round(lang_bytes / lang_data["total"] * 100, 2)
     lang_data["perCent"][lang] = percent
 
-    if percent < 1.0:
-        other = lang_data["frontEnd"].get("Other", {"percent": 0, "bytes": 0})
-        other["percent"] += percent
-        other["bytes"] += lang_bytes
-        lang_data["frontEnd"]["Other"] = other
+#   [ percent, percent scaled ]
 
-    else:
-        lang_data["frontEnd"][lang] = {
-            "name": lang,
-            "percent": percent,
-            "bytes": lang_bytes,
-            "icon": f'<i class="overview" data-i="{lang}"></i>',
-        }
+    lang_data["frontEnd"][lang] = [percent]
 
-write_txt_file(os.path.join(script_dir, "langs.json"), json.dumps({n: lang_data["frontEnd"][n] for n in list(lang_data["frontEnd"])[:5]}))
+lang_data_top_5_arr: dict = list(lang_data["frontEnd"])[:5]
+lang_data_top_5_sum: float = sum(
+    math.sqrt(lang_data["frontEnd"][n][0])
+    for n in lang_data_top_5_arr
+)
+
+# write_txt_file(
+#     os.path.join(script_dir, "out/langs.json"),
+#     json.dumps({
+#         lang: [
+#             lang_data["frontEnd"][lang][0],
+#             round(
+#                 math.sqrt(lang_data["frontEnd"][lang][0])
+#                 / lang_data_top_5_sum
+#                 * 100.
+#             , 2),
+#         ] for lang in lang_data_top_5_arr
+#     }),
+# )
 
 
 # Contribution calendar
@@ -197,16 +208,16 @@ def fetch_contribs_ranged(from_date: str = "", to_date: str = "") -> list[Any] |
 def fetch_contribs_all() -> list[Any] | None:
     all_contributions: list[Any] = []
 
-    for year in range(start_year, datetime.now(timezone.utc).year + 1):
+    for year in range(start_year, now.year + 1):
         all_contributions.extend(fetch_contribs_ranged(
             f"{year}-01-01T00:00:00Z",
             f"{year}-12-31T23:59:59Z"
         ))
 
     return all_contributions[
-        next((i for i, item in enumerate(all_contributions) if item['contributionCount'] > 0), None)
+        next((i for i, item in enumerate(all_contributions) if item["contributionCount"] > 0), None)
         :
-        next((i for i, item in enumerate(all_contributions) if item['date'] == datetime.now(timezone.utc).strftime('%Y-%m-%d')), len(all_contributions) - 1)
+        next((i for i, item in enumerate(all_contributions) if item["date"] == now.strftime("%Y-%m-%d")), len(all_contributions) - 1)
         + 1
     ]
 
@@ -233,8 +244,40 @@ def update_contribs_data(contribs: Any, type: str) -> None:
     contribs_data["arr"][type] = normalize_contribs(contribs)
 
 
-update_contribs_data(format_contribs(fetch_contribs_all()), "all")
+# update_contribs_data(format_contribs(fetch_contribs_all()), "all")
 update_contribs_data(format_contribs(fetch_contribs_ranged()), "yearly")
 
-write_txt_file(os.path.join(script_dir, "contribs-yearly.json"), json.dumps(contribs_data["arr"]["yearly"]))
-write_txt_file(os.path.join(script_dir, "contribs.json"), json.dumps(contribs_data))
+# write_txt_file(os.path.join(script_dir, "contribs-yearly.json"), json.dumps(contribs_data["arr"]["yearly"]))
+# write_txt_file(os.path.join(script_dir, "contribs.json"), json.dumps(contribs_data))
+
+suf = ["th", "st", "nd", "rd"]
+
+def format_date(d: datetime) -> str:
+    day = d.day
+    return f"{day}<small>{suf[day % 10] if day % 10 < 4 and (day < 10 or day > 20) else suf[0]}</small> {d.strftime("%B")}"
+
+contrib_graph_grids: int = 16 * 10
+
+# write_txt_file(os.path.join(script_dir, "out/contribs.json"), json.dumps({
+#     "first": format_date(now - timedelta(contrib_graph_grids)),
+#     "last": format_date(now),
+#     "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
+# }))
+
+write_txt_file(os.path.join(script_dir, "out/overview-stats.json"), json.dumps({
+    "contribs": {
+        "first": format_date(now - timedelta(contrib_graph_grids)),
+        "last": format_date(now),
+        "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
+    },
+    "langs": {
+        lang: [
+            lang_data["frontEnd"][lang][0],
+            round(
+                math.sqrt(lang_data["frontEnd"][lang][0])
+                / lang_data_top_5_sum
+                * 100.
+            , 2),
+        ] for lang in lang_data_top_5_arr
+    },
+}))

@@ -32,7 +32,11 @@ fonts: Any = {
             "サマリー",
             "プロジェクト",
             "イラスト",
-            "エスエヌエス",
+            # "エスエヌエス",
+            "リンクス",
+            "インディーゲーム",
+            "ツール",
+            "プラグイン",
         ]),
         "weights": [200],
     },
@@ -42,6 +46,16 @@ fonts: Any = {
       "text": alpha + num + punc,
       "weights": [400, 700],
     },
+
+    # Decorative
+    "bytesized": {
+      "text": alpha + num + punc + kana + "".join([
+        "Indie Games",
+        "Tools",
+      ]),
+      "weights": [400],
+    },
+
 }
 
 print("Subsetting fonts...")

@@ -31,7 +31,9 @@
     position: relative;
     width: 100%;
     border-radius: .3em;
+    background: $background-light;
     overflow: hidden;
+    contain: paint layout;
 
     & > img, & > div {
       position: relative;
@@ -39,8 +41,8 @@
       width: inherit;
       height: auto;
       transition: 1.5s transform cubic-bezier(0.25, 1, 0.5, 1);
+      // object-fit: cover;
       // will-change: transform;
-      contain: paint layout;
     }
 
     &::after {

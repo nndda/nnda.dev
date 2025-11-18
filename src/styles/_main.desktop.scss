@@ -27,10 +27,30 @@ body {
   padding: 0;
 
   & > aside {
+    position: relative;
     min-width: 20%;
-    max-width: 250px;
+    max-width: 260px;
     padding: 2em 1em;
-    border-right: 2px dashed color.mix($text, $background-dark, 19%);
+    padding-right: 1.5em;
+    // border-right: 2px dashed color.mix($text, $background-dark, 19%);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 5px;
+      height: 100%;
+      // background: red;
+
+      @include diagonal-stripes(
+        rgba($text-secondary, .4),
+        // $tertiary,
+        transparent,
+        .325em,
+        .65em,
+      );
+    }
 
     & > div {
       position: sticky;

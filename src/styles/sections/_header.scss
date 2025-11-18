@@ -1,5 +1,7 @@
 @use "../variables" as *;
 
+@use "sass:color";
+
 @use "header.mobile" as mobile;
 @use "header.desktop" as desktop;
 
@@ -101,6 +103,13 @@ header {
   & > li {
     display: inline-block;
   }
+}
+
+.nav-link-btn {
+  padding: .2em .8em;
+
+  border: 1px solid color.mix($text-secondary, $background-light, 40%);
+  border-radius: 16px;
 }
 
 .back-top-cont {

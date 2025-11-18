@@ -1,140 +1,46 @@
 <section id="overview">
-  <hr class="hr">
-
-  <h1 class="heading-left-sticky">
-    <div>サマリー</div>
-  </h1>
-
-  <div class="section-inner">
-    <div class="commits">
-
-      {{!--
-      <div class="stacks anim once fade float-up">
-        <div class="section-title-sub">Stacks</div>
-        <ul class="inner nostyle card">
-          {{#each stacks}}
-            <li>
-              <b>{{{icon "overview" this.icon}}}</b>
-              <ul class="icons">
-                {{#each this.items}}
-                  <li>
-                    {{{icon "overview" this}}}
-                  </li>
-                {{/each}}
-              </ul>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-      --}}
-
-      <div class="controls">
-        <div class="section-title-sub">-</div>
-        <div class="inner bg-scroll">
-        </div>
-      </div>
-
-      <div class="calendar-container">
-        <div class="section-title-sub">
-            Contribution Graph
-        </div>
-        <div class="inner card scrollbar-secondary">
-          <div class="grid has-loader anim fade on">
-            <div class="loader"><div></div></div>
-            {{!-- {{#each ghContribs.arr.yearly}}<i class="c{{this}}"></i>{{/each}} --}}
-          </div>
-        </div>
-      </div>
-
-      <div class="stats anim once">
-        <div class="section-title-sub">
-            Stats
-        </div>
-        <div class="inner card">
-          {{!-- 
-          <div class="icon-bg">
-            {{{icon "overview" "fire"}}}
-          </div>
-          --}}
-          <ul class="stats-list nostyle">
-
-            <li class="title">
-              <span></span>
-              <span>Yearly</span>
-              <span>All Time</span>
-            </li>
-            <li>
-              <div>Total</div>
-              <span>{{ghContribs.stats.total.yearly}}</span>
-              <span>{{ghContribs.stats.total.all}}</span>
-            </li>
-            <li>
-              <div>Highest</div>
-              <span>{{ghContribs.stats.highest.yearly}}</span>
-              <span>{{ghContribs.stats.highest.all}}</span>
-            </li>
-            <li>
-              <div>Streaks</div>
-              <span>{{ghContribs.stats.streaks.yearly}}</span>
-              <span>{{ghContribs.stats.streaks.all}}</span>
-            </li>
-            <li>
-              <div>Average</div>
-              <span>{{ghContribs.stats.avg.daily.yearly}}</span>
-              <span>{{ghContribs.stats.avg.daily.all}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="languages">
-      <div class="section-title-sub anim once fade float-right">
-          Most Used Languages
-      </div>
-      <div class="languages-container">
-        {{#each ghLangs}}
-          <div class="lang anim once" style="width: {{this.percent}}%">
-            <div class="box">
-              <code><b>{{this.percent}}%</b></code>
-            </div>
-            <div class="icon-text">
-              {{#if this.icon}}
-                {{{this.icon}}}
-              {{/if}}
-              <span>
-                {{this.name}}
-              </span>
-            </div>
-          </div>
-        {{/each}}
-        <br>
-      </div>
-    </div>
-
-    <div class="stacks">
-      <div class="section-title-sub anim fade float-right">
-          Tech Stacks
-      </div>
-      <div class="stacks-lists">
-        <ul class="nostyle">
-          {{#each stacks}}
-            <li class="anim fade float-up">
-              <ul class="nostyle">
-                {{#each this.items}}
-                  <li class="icon anim fade float-right">
-                    {{{icon "overview" this}}}
-                  </li>
-                {{/each}}
-              </ul>
-              <div class="title anim fade float-down">{{this.group}}</div>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+  <div class="heading-left-sticky">
+    <div class="jp">サマリー</div>
+    <div class="line"></div>
   </div>
 
-  {{!-- {{ include "overview_socials" }} --}}
+  <div class="section-inner">
+    <hr class="hr">
 
+    <div class="commits">
+      <div class="calendar-container">
+        <div class="section-title-sub">
+            Contrib. Graph
+        </div>
+        <div class="inner scrollbar-secondary">
+          <div class="grid has-loader anim fade on">
+            <div class="loader"><div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lang-stacks">
+        <div class="languages">
+          <div class="section-title-sub anim once fade float-right">
+              Most Used Languages
+          </div>
+          <div class="languages-container">
+            <br>
+          </div>
+        </div>
+
+        <div class="stacks">
+          <div class="section-title-sub anim fade float-right">
+              Tech Stacks
+          </div>
+          <div class="stacks-lists">
+            <ul class="nostyle">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{> "overview_socials" }}
+  </div>
 </section>

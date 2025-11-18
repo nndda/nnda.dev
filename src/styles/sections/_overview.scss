@@ -1,5 +1,8 @@
 @use "../variables" as *;
 @use "sass:color";
+@use "sass:math";
+
+@use "overview.desktop" as desktop;
 
 .section-title-sub {
   font-size: 1.2em;
@@ -8,18 +11,62 @@
 }
 
 #overview {
-  padding-top: 1em;
-  background: $background-dark;
+  // padding-top: 1em;
+  // background: $background-dark;
+
+  $s: 50px;  /* control the size of the grid */
+  $n: 4;     /* control the granularity */
+  $t: 2px;   /* the thickness */
+  $g: 10px;  /* the gap between dashes */
+
+  $sn: math.div($s, $n);
+  
+  --c: #{color.mix($text, $background, 10%)} 25%,#0000 0;
+  background: 
+    linear-gradient(270deg, $background-dark -10%, #0000 5%),
+    linear-gradient(180deg, $background-dark -10%, #0000 25%),
+    linear-gradient(90deg, $background-dark -10%, #0000 5%),
+    linear-gradient(0deg, $background-dark -10%, #0000 25%),
+
+    conic-gradient(at $g $t,var(--c))
+     #{math.div( ($sn - $g + $t), 2 ) 0} /
+     #{$sn $s},
+
+    conic-gradient(from 180deg at $t $g,var(--c))
+     #{0 math.div( ($sn - $g + $t), 2 )} /
+     #{$s $sn},
+
+    linear-gradient($background-dark, $background-dark)
+     ;
+  /* you probably don't need to set any size in your case */
+  // width: calc(round(down,100%,$s) + $t);
+  // height: calc(4*$s + $t);
+  background-position: -1px;
 
   & > .section-inner {
-    max-width: 1100px;
+    max-width: 1050px;
+    min-height: 445px;
     margin: auto;
     margin-top: 1.5em;
     padding-bottom: 1em;
   }
+
+  & .heading-left-sticky {
+    color: rgba($secondary, 75%);
+
+    & > .jp {
+      background: $background-dark;
+    }
+  }
+
+  // & .card {
+  //   background: 0;
+  // }
 }
 
 .commits {
+  padding: 1.5em 0;
+
   & ul {
     padding: 0;
     margin: 0;
@@ -35,40 +82,69 @@
     }
   }
 
-  & > .controls {
-    padding: 0;
-
-    & > .section-title-sub {
-      opacity: 0;
-    }
-
-    & button {
-      font-size: 1.1em;
-    }
-  }
-
   & > .calendar-container {
-    $sqr-w: .7em;
-    $sqr-h: .8em;
+    $c: 16 + 2;
+    $r: 10;
+
+    $sqr-w: 1em;
+    $sqr-h: 1em;
     $sqr-w-gap: .1em;
     $sqr-h-gap: .1em;
 
-    // & > .inner {
-    //   border-bottom: 2px solid $secondary;
-    // }
+    display: flex;
+    flex-direction: row;
 
-    & > .inner.card > .grid > i {
+    min-width: 0;
+
+    & .section-title-sub {
+      margin-bottom: 0;
+      margin-right: .6em;
+      writing-mode: sideways-rl;
+    }
+
+    & > .inner {
+      border: 1px solid color.mix($text, $background-light, 5%);
+      border-radius: 3px;
+
+      background: $background-dark;
+    }
+
+
+    & .date {
+      grid-row: span $r;
+      color: $text-secondary;
+      // font-family: monospace;
+
+      &:first-child {
+        padding-right: .5em;
+        writing-mode: sideways-rl;
+      }
+
+      &:last-child {
+        padding-left: .5em;
+        writing-mode: sideways-lr;
+      }
+    }
+
+    & > .inner > .grid > i {
       height: $sqr-h;
       width: $sqr-w;
       padding: 0;
       margin: 0;
-      // background: color.mix($text, $background-light, 3%);
       border-radius: 3px;
       transition: .2s ease;
 
-      &:hover {
-        transform: scale(2.0);
+      &:not(:nth-last-child(-n+#{$c * $r})) {
+        display: none;
       }
+
+      &:nth-child(2), &:nth-last-child(2) {
+        outline: 2px solid color.mix($text, $background, 75%);
+      }
+    }
+
+    & i {
+      background: color.mix($text, $background, 2%);
     }
 
     @for $i from 1 through 5 {
@@ -78,80 +154,28 @@
     }
 
     & .grid {
+      position: relative;
       display: grid;
-      height: 100%;
+      // width: 100%;
+      height: $r * ($sqr-h + $sqr-h-gap);
+      width: $c * ($sqr-h + $sqr-h-gap);
       grid-auto-flow: column;
       grid-gap: 0;
-      grid-template-rows: repeat(7, $sqr-h + $sqr-h-gap);
-      grid-template-columns: repeat(52, $sqr-w + $sqr-w-gap);
+      grid-template-rows: repeat($r, $sqr-h + $sqr-h-gap);
+      grid-template-columns: repeat($c, $sqr-w + $sqr-w-gap);
+      justify-items: center;
     }
   }
 
   & .inner {
     position: relative;
-    // min-height: 150px;
-    // height: 100%;
     padding: .8em;
+
     overflow-x: auto;
 
-    /*
-    & > .icon-bg {
-      position: absolute;
-      bottom: 0;
-      left: -.1em;
-      color: $primary;
-      font-size: 8em;
-      opacity: .09;
-    }
-    */
+    contain: content;
   }
 }
-
-// .stats {
-//   & > .inner {
-//     border-bottom: 2px solid $primary;
-//   }
-// }
-
-.stats-list {
-  position: relative;
-  font-size: .9em;
-
-  & > li {
-    display: grid;
-    grid-template-columns: auto 4.5em 4.5em;
-
-    margin: .25em 0;
-    color: color.mix($text-secondary, $background, 70%);
-
-    & > div {
-      margin-right: 1em;
-      color: color.mix($text, $secondary, 40%);
-    }
-
-    &.title {
-      margin: .5em 0;
-      padding-left: 0;
-      color: color.mix($text, $secondary, 60%);
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-}
-
-.languages {
-  margin-top: 1.5em;
-}
-
-.languages-container {
-  display: flex;
-  min-height: 2.4em;
-
-  margin-bottom: 2em;
-}
-
 
 .lang {
   &:not(.on) {
@@ -175,22 +199,17 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     margin-right: 1em;
   }
 }
 
+.socials-lists {
+  min-height: #{13em + 1em};
+}
+
 @media (width <= 700px) {
 .commits {
-  & > .controls {
-    display: none;
-
-    & > ul {
-      display: flex;
-      align-items: end;
-    }
-  }
-
   & > div {
     margin-top: 1em;
   }
@@ -201,12 +220,11 @@
 
   & > ul {
     flex-wrap: wrap;
-    justify-content: flex-start;
   }
 }
 }
 
-@media (width >= 700px) {
+@media (width > 700px) {
 #overview > .section-inner > div {
 // .overview-socials > .inner {
   max-width: 1080px;
@@ -227,27 +245,10 @@
 }
 
 .commits {
-  display: grid;
-  grid-template-columns: auto 64% 23%;
-  grid-gap: 1.5em;
-  justify-content: center;
-
-  & > .controls {
-    margin-right: .3em;
-
-    & > .inner {
-      height: 75%;
-
-      padding-top: .5em;
-
-      @include diagonal-stripes(
-        rgba($text-secondary, .5),
-        // $tertiary,
-        transparent,
-        .2em,
-        .6em,
-      );
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 }
+
+@include desktop.style;

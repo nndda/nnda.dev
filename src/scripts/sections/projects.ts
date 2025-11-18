@@ -154,7 +154,7 @@
 // });
 // }
 
-import projectsData from "../build/projects.json" with { type: "json" };
+import projectsData from "../../data/site-projects";
 
 interface ProjectItem {
   name: string,

@@ -3,6 +3,7 @@
 
 .links-group {
   padding-bottom: 1.15em;
+  font-size: 1.075rem;
 
   & > ul {
     display: flex;
@@ -11,14 +12,17 @@
   }
 
   &.link-0 {
-    font-size: 1.2em;
+    font-size: 1.35em;
 
-    & .links-title {
-      font-weight: bold;
+    & .flex-break ~ .link-item {
+      font-size: 1rem;
     }
+    // & .links-title {
+    //   font-weight: bold;
+    // }
   }
 
-  &.link-3 {
+  &.link-4 {
     margin-top: 1.15em;
 
     & .links-title {
@@ -43,11 +47,17 @@
 
   color: color.mix($text, $background-dark, 70%);
 
-  font-size: 1.5em;
+  font-size: 1.35em;
   font-weight: 200;
   letter-spacing: .2ch;
 
   border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
+}
+
+.links-desc {
+  margin: 0;
+  margin-top: .5em;
+  color: color.mix($text, $background-dark, 60%);
 }
 
 @mixin link-style($color, $color_override: null) {
@@ -73,7 +83,6 @@
 .link-item {
   margin: .5em;
   padding: .2em .3em;
-  font-size: 1.1em;
   border-radius: 8px;
 
   & > a {
@@ -102,6 +111,10 @@
 //   @include link-style(#181717, white);
 // }
 
+.githubsponsors {
+  @include link-style(#EA4AAA);
+}
+
 .artstation {
   @include link-style(#13AFF0);
 }
@@ -123,6 +136,7 @@
 }
 
 // &.codepen,
+.tiktok,
 .github,
 .x,
 .patreon {
@@ -130,8 +144,21 @@
 }
 
 .kofi {
-  font-size: 1em;
+  // font-size: 1em;
   @include link-style(#FF5E5B);
+}
+
+.osu {
+  @include link-style(#FF66AA);
+}
+
+.twitter {
+  @include link-style(#009ef7);
+}
+
+.youtube {
+  // font-size: 1em;
+  @include link-style(color.mix($text, #FF0000, 20%));
 }
 
 .social-icon {
@@ -177,7 +204,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .link-item {
+  .link-item.anim {
     &.on {
       transition: .25s ease-out;
 
@@ -186,7 +213,7 @@
       }
     }
 
-    @include nth-loop(1, 3) using ($i) {
+    @include nth-type-loop(1, 5) using ($i) {
       transition-delay: 0s + (.15 * $i);
 
       & .social-name, .username {

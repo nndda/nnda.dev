@@ -1,7 +1,16 @@
 // @use "../variables" as *;
 
 @mixin style {
-// @media (width >= 700px) {
+@media (width >= 700px) {
+  .stacks-lists {
+    // & .title {
+    //   padding-bottom: 0;
+    // }
+
+    & ul {
+      justify-content: space-between;
+    }
+  }
 // #overview > .section-inner > div {
 // // .overview-socials > .inner {
 //   max-width: 1080px;
@@ -21,7 +30,8 @@
 //   }
 // }
 
-// .commits {
+.commits {
+  flex-direction: row;
 //   display: grid;
 //   grid-template-columns: auto 64% 23%;
 //   grid-gap: 1.5em;
@@ -44,6 +54,6 @@
 //       );
 //     }
 //   }
-// }
-// }
+}
+}
 }

@@ -1,42 +1,103 @@
-import contribsGrid from "../../api/contribs-yearly.json" with { type: "json" };
-import initIcon from "../build/icons/overview";
+import icons from "../build/icons/overview";
+import stacksData, { type StacksData } from "../../data/site-stacks";
 
-const
-  d: Document = document
+import("../../api/out/overview-stats.json").then((res): void => {
 
-, contribsGridElRaw: string = contribsGrid.map((val: number): string => {
-    return `<i class="c${val}"></i>`;
-  }).join("")
+  interface LangsData {
+    [lang: string]: number[],
+  }
 
-, contribsGridEl: HTMLElement = d.querySelector(".calendar-container .grid") as HTMLElement
-;
+  const
+    overviewEl: HTMLElement = document.getElementById("overview") as HTMLElement
 
-window.initAnim(
-  d.querySelector("#overview .commits") as HTMLElement,
-  "-120px 0px",
-);
+  , contribsGrid = res.default["contribs"]
 
-initIcon();
+  , contribsGridEl: HTMLElement = overviewEl.querySelector(".calendar-container .grid") as HTMLElement
+  , contribsGridHTML: string =
+    `<div class="date">` + contribsGrid["first"] + "</div>" +
+      contribsGrid["arr"].map((val: number): string => {
+        return `<i class="c${val}"></i>`;
+      }).join("") +
+    `<div class="date">` + contribsGrid["last"] + "</div>"
 
-window.initAnim(
-  d.querySelector("#overview .languages") as HTMLElement,
-  "-120px 0px",
-);
+  , langsEl: HTMLElement = overviewEl.querySelector(".languages-container") as HTMLElement
+  , langsHTML: string = Object.entries(res.default.langs as LangsData).map(
+      (
+    //  lang: language, [percent, percent scaled]
+        lang: [string, number[]]
+      ): string => {
+        return `
+          <div class="lang anim once" style="width: ${lang[1][1]}%">
+            <div class="box">
+              <code><b>${lang[1][0]}%</b></code>
+            </div>
+            <div class="icon-text">
+              ${lang[0] in icons ? window.buildSvg(icons[lang[0]], 17, 17) : ""}
+              <span>
+                ${lang[0]}
+              </span>
+            </div>
+          </div>
+        `;
+    }).join("")
 
-window.initAnim(
-  d.querySelector("#overview .stacks") as HTMLElement,
-  "-120px 0px",
-);
+  , stacksEl: HTMLElement = overviewEl.querySelector(".stacks-lists>ul") as HTMLElement
+  , stacksHTML: string = stacksData.map(
+      (
+        data: StacksData
+      ): string => {
+        return `
+          <li class="anim fade float-up">
+            <ul class="nostyle">
+              ${
+                data.items.map((item: string): string => {
+                  return `
+                    <li class="icon anim fade float-right">
+                      ${window.buildSvg(icons[item], 29, 29)}
+                    </li>
+                  `;
+                }).join("")
+              }
+            </ul>
+            <div class="title anim fade float-down">${data.group}</div>
+          </li>
+        `;
+    }).join("");
+  ;
 
-contribsGridEl.classList.remove("on");
+  // Fade in contribution graph
+  // contribsGridEl.classList.remove("on");
 
-setTimeout((): void => {
-  contribsGridEl.classList.remove("has-loader");
+  setTimeout((): void => {
+    contribsGridEl.classList.remove("has-loader");
 
-  requestAnimationFrame((): void => {
-    contribsGridEl.innerHTML = contribsGridElRaw;
-    contribsGridEl.classList.add("on");
-  });
-}, 500);
+    requestAnimationFrame((): void => {
+
+      // Commits heatmap
+      contribsGridEl.innerHTML = contribsGridHTML;
+      // contribsGridEl.classList.add("on");
+
+      // Language stats
+      langsEl.innerHTML = langsHTML;
+
+      // Tech stacks showcase
+      stacksEl.innerHTML = stacksHTML;
+
+      requestAnimationFrame((): void => {
+        for (const animEl of (overviewEl.querySelector(".commits") as HTMLElement).querySelectorAll(".anim:not(.on)")) {
+          animEl.classList.add("on");
+        }
+      });
+
+      // window.initAnim(
+      //   overviewEl.querySelector(".commits") as HTMLElement,
+      //   "-120px 0px",
+      // );
+    });
+  }, 500);
+});
+
+import socials from "./overview.socials";
+socials();
 
 export default {};

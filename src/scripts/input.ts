@@ -1,4 +1,11 @@
-import { iconCaretDown } from "./build/icons/icons";
+import {
+  iconCaretDown,
+  // iconCaretUp,
+  iconCircle,
+  iconCircleCheck,
+  iconSquare,
+  iconSquareCheck,
+} from "./build/icons/icons";
 
 export default function (d: Document): void {
 
@@ -39,6 +46,14 @@ export default function (d: Document): void {
           (elem as HTMLInputElement).checked = true;
         }
       })
+  });
+
+  // Checkbox
+
+  d.querySelectorAll(".checkbox").forEach(e => {
+    const isRadio: boolean = (e.querySelector("input") as HTMLInputElement).type === "radio";
+    (e.querySelector(".checked") as HTMLElement).innerHTML = isRadio ? iconCircleCheck : iconSquareCheck;
+    (e.querySelector(".checked-not") as HTMLElement).innerHTML = isRadio ? iconCircle : iconSquare;
   });
 }
 

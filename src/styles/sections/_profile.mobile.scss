@@ -1,27 +1,28 @@
-@mixin style {
-@media (width <= 700px) {
-.info-container {
-  grid-template-columns: auto 1fr;
-}
+// @mixin style {
+// // @media (width <= 700px) {
+// // // .info-container {
+// // //   display: block;
+// //   // grid-template-columns: auto 1fr;
+// // // }
 
-.name-cont {
-  margin-left: 2em;
-}
+// // // .name-cont {
+// // //   margin-left: 2em;
+// // // }
 
-.desc-cont {
-  grid-column: span 2;
-  margin-top: 1.25em;
-}
+// // // .desc-cont {
+// // //   grid-column: span 2;
+// // //   margin-top: 1.25em;
+// // // }
 
-.user-metadata {
-  grid-column: span 2;
-}
+// // // .user-metadata {
+// // //   grid-column: span 2;
+// // // }
 
-.profile-pict {
-  & > .img-cont > img {
-    width: 11em;
-    height: 11em;
-  }
-}
-}
-}
+// // // .profile-pict {
+// // //   & > .img-cont > img {
+// // //     width: 11em;
+// // //     height: 11em;
+// // //   }
+// // // }
+// // }
+// }

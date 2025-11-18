@@ -17,6 +17,8 @@
     max-width: 1100px;
 
     z-index: 9;
+  & .jp {
+    background: $background-light;
   }
 
   & > .section-inner {
@@ -24,6 +26,7 @@
     max-width: 1100px;
     min-height: 576px;
   }
+}
 }
 
 @media (width <= 700px) {

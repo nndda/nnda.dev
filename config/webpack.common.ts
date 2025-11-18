@@ -7,7 +7,7 @@ export function copyToDist(path: string): CopyPlugin.Pattern {
   return { from: abs("./src/" + path), to: abs("./dist/") }
 }
 
-import handlebarsData from "../src/views/data";
+import handlebarsData from "../src/data/site";
 import handlebarsHelpers from "../src/views/helpers";
 
 import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
@@ -22,6 +22,8 @@ export function abs(path: string): string {
   return pathResolve(absRel, path);
 }
 
+import partialsDefinition from "../src/views/generate-partials-def";
+
 export default {
   resolve: {
     extensions: [".js", ".ts", ".json"],
@@ -35,6 +37,8 @@ export default {
     entry: {
       index: abs("./src/views/pages/index.hbs"),
       "404": abs("./src/views/pages/404.hbs"),
+      "comm": abs("./src/views/pages/comm.hbs"),
+      "shop": abs("./src/views/pages/shop/index.hbs"),
       ... projectEntries,
     },
 
@@ -47,6 +51,7 @@ export default {
       views: [
         abs("./src/views/partials"),
       ],
+      partials: partialsDefinition,
     },
 
     loaderOptions: {

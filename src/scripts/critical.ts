@@ -1,7 +1,7 @@
 interface Window { // eslint-disable-line
   p: (
     selector: string,
-    iconSets: Record<string, string>,
+    iconSets: Record<string, string[]>,
   ) => void,
 
   observe: (
@@ -25,24 +25,66 @@ interface Window { // eslint-disable-line
   ) => void;
 
   loadCSS: (url: string) => Promise<void>,
+
+  buildSvg: (
+    viewBoxPath: string[],
+    width: number,
+    height: number,
+    classes?: string
+  ) => string,
 }
 
-// Load and populate lazy-loaded icons
-window.p = function (selector: string, iconSets: Record<string, string>): void {
-  requestAnimationFrame((): void => {
-    const iconEls: NodeListOf<Element> = document.querySelectorAll(selector);
+const svgAttr: Record<string, string> = {
+  "role": "img",
+  "aria-hidden": "true",
+  "focusable": "false",
+  "xmlns": "http://www.w3.org/2000/svg",
+};
 
-    for (let i: number = iconEls.length; i-- > 0;) {
-      iconEls[i].outerHTML =
-        `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" `
-          +
-        iconSets[
-          (iconEls[i].getAttribute("data-i") as string)
-        ]
-          +
-        "</svg>"
-      ;
+// Load and populate lazy-loaded icons
+window.p = function (selector: string, iconSets: Record<string, string[]>): void {
+  requestAnimationFrame((): void => {
+    for (const iconEl of document.querySelectorAll("svg." + selector + ":not(.loaded)")) {
+      const iData: string[] = iconSets[iconEl.getAttribute("data-i") as string]
+
+      for (const attr in svgAttr) {
+        iconEl.setAttribute(attr, svgAttr[attr]);
+      }
+
+      iconEl.setAttribute("viewBox", iData[0]);
+      iconEl.innerHTML = iData[1];
+      iconEl.classList.toggle("loaded", true);
     }
+
+    // for (let i: number = iconEls.length; i-- > 0;) {
+    //   const iData: string[] = iconSets[(iconEls[i].getAttribute("data-i") as string)];
+
+    //   for (const attr in svgAttr) {
+    //     iconEls[i].setAttribute(attr, svgAttr[attr]);
+    //   }
+
+    //   iconEls[i].setAttribute("viewBox", iData[0]);
+    //   iconEls[i].innerHTML = iData[1];
+    //   iconEls[i].classList.toggle("loaded", true);
+
+    //   // iconEls[i].outerHTML =
+    //   //   `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="`
+    //   //     +
+    //   //   iconEls[i].getAttribute("data-w")
+    //   //     +
+    //   //   `" height="`
+    //   //     +
+    //   //   iconEls[i].getAttribute("data-h")
+    //   //     +
+    //   //   `" `
+    //   //     +
+    //   //   iconSets[
+    //   //     (iconEls[i].getAttribute("data-i") as string)
+    //   //   ]
+    //   //     +
+    //   //   "</svg>"
+    //   // ;
+    // }
   });
 };
 
@@ -139,4 +181,8 @@ window.loadCSS = function (url: string): Promise<void> {
       reject();
     });
   });
+}
+
+window.buildSvg = function (viewBoxPath: string[], width: number, height: number, classes: string = ""): string {
+  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
 }

@@ -2,10 +2,13 @@ import os
 import shutil
 import requests
 import gzip
+from pathlib import Path
 from typing import Optional, Any
 
 
 def write_txt_file(file_path: str, content: str) -> None:
+    Path(file_path).parent.mkdir(parents=True, exist_ok=True)
+
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(content)
 

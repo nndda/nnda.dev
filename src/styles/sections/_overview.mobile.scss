@@ -1,23 +1,23 @@
-@mixin style {
-@media (width <= 700px) {
-.stacks-lists {
-  // padding-bottom: 1em;
+// @mixin style {
+// // @media (width <= 700px) {
+// // .stacks-lists {
+// //   // padding-bottom: 1em;
 
-  // & > ul {
-  //   flex-wrap: wrap;
-  //   justify-content: flex-start;
-  // }
+// //   // & > ul {
+// //   //   flex-wrap: wrap;
+// //   //   justify-content: flex-start;
+// //   // }
 
-  & .title {
-    padding-bottom: 1.35em;
-  }
-}
+// //   & .title {
+// //     padding-bottom: 1.35em;
+// //   }
+// // }
 
-// .overview-socials {
-//   & > .inner {
-//     padding-top: 1em;
-//     padding-bottom: 1.75em;
-//   }
+// // // .overview-socials {
+// // //   & > .inner {
+// // //     padding-top: 1em;
+// // //     padding-bottom: 1.75em;
+// // //   }
+// // // }
+// // }
 // }
-}
-}

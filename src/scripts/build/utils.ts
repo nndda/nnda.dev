@@ -10,6 +10,8 @@ export function readTextFile(filePath: string): string {
 }
 
 export function writeTextFile(filePath: string, content: string): void {
+  const dir: string = path.dirname(filePath);
+  if (!exists(dir)) mkdir(dir);
   fs.writeFileSync(filePath, content, textEncoding);
 }
 
@@ -54,6 +56,10 @@ export function exists(whatPath: fs.PathLike): boolean {
 
 export function pathResolve(...paths: string[]): string {
   return path.resolve(...paths);
+}
+
+export function resolveRelative(from: string, to: string): string {
+  return path.relative(from, to);
 }
 
 export type DirResolver = (pathBase: string) => string;
