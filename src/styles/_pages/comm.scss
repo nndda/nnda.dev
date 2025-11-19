@@ -2,9 +2,11 @@
 
 #comm-home {
   min-height: 100vh;
+  // max-height: 550px;
+
   padding: 1.5em;
   background: $background;
-  border-bottom: 2px $primary dashed;
+  border-bottom: 2px $text-secondary dashed;
 
   & > h1 {
     margin: .5em;

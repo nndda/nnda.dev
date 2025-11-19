@@ -28,49 +28,6 @@
 //   }
 // }
 
-.project.card {
-  position: relative;
-  min-height: 15em;
-  padding: 0;
-  margin: .5em;
-
-  background:
-    radial-gradient(
-      circle at 80% 160%,
-      transparent,
-      rgba($background, 0.4) 40%,
-      rgba($background, 0.6) 50%,
-      rgba($background, 0.8) 60%,
-      $background 70%
-    ),
-    var(--img-bg, $background);
-  background-size: auto;
-  background-position: bottom right;
-  background-repeat: no-repeat;
-
-  outline: 1px solid transparent;
-
-  transition:
-    outline .15s ease,
-    transform .23s ease !important;
-
-  overflow: hidden;
-
-  &:hover {
-    outline: 1px solid color.mix($text, $background, 80%);
-  }
-
-  & > p {
-    margin: 0;
-    padding: .9em;
-    color: color.mix($text, $background, 80%);
-    font-weight: 300;
-    font-size: .85em;
-    letter-spacing: .08em;
-    word-spacing: .1em;
-  }
-}
-
 // .project-image {
 //   overflow: hidden;
 
@@ -86,13 +43,15 @@
 .project-title {
   margin: 0;
   padding: .5em;
-  padding-left: 1em;
-  background: linear-gradient(
-    to right,
-    rgba($background-light, .7) 30%,
-    transparent 90%
-  );
+  padding-left: 0;
+  // padding-left: 1em;
+  // background: linear-gradient(
+  //   to right,
+  //   rgba($background-light, .7) 30%,
+  //   transparent 90%
+  // );
   font-size: 1.15em;
+  font-weight: 300;
   letter-spacing: .08em;
 
   // &.with-image {
@@ -106,21 +65,21 @@
   }
 }
 
-.labels-container {
-  padding-top: .5em;
-  padding-left: .5em;
-  padding-right: .5em;
-}
+// .labels-container {
+//   padding-top: .5em;
+//   padding-left: .5em;
+//   padding-right: .5em;
+// }
 
-#project-cat-display, #project-platform-display {
-  display: inline-block;
-  width: 2em;
-  margin-left: .6em;
-  margin-right: .6em;
-  text-align: left;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
+// #project-cat-display, #project-platform-display {
+//   display: inline-block;
+//   width: 2em;
+//   margin-left: .6em;
+//   margin-right: .6em;
+//   text-align: left;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+// }
 
 @mixin project-label-style($color) {
   color: $color;
@@ -164,6 +123,32 @@
   }
   /* stylelint-enable */
 }
+
+.project {
+  display: flex;
+  flex-direction: column;
+
+  & .xtra {
+    flex-grow: 1;
+    // filter: blur(5px);
+  }
+  // &.theatre {
+  //   background: #121018;
+  //   // border-color: cyan;
+  // }
+
+  & > p {
+    color: $text-secondary;
+    font-size: .9em;
+  }
+}
+
+// .buy-platforms {
+//   display: flex;
+//   align-items: center;
+//   justify-content: end;
+//   column-gap: .5em;
+// }
 
 @include mobile.style;
 @include desktop.style;

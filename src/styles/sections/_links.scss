@@ -7,13 +7,13 @@
   background: $background;
 
   & .jp {
-    color: $tertiary;
+    // color: $tertiary;
     background: $background;
   }
 
   & > .section-inner {
     max-width: 1050px;
     min-height: 820px;
-    margin: auto;
+    // margin: auto;
   }
 }

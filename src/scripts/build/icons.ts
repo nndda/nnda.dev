@@ -37,6 +37,7 @@ import {
   faComment,
   // faCodeFork,
   faComputerMouse,
+  faEnvelope,
   // faFire,
   faGlobe,
   faHeart,
@@ -59,8 +60,8 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 import {
-    faTwitter,
-  faWindows
+  faTwitter,
+  faWindows,
 } from "@fortawesome/free-brands-svg-icons";
 
 // ----------------------------------------------------------------------------
@@ -74,6 +75,7 @@ import {
   // siCloudflarepages,
   // siCloudflareworkers,
   siCss,
+  siDiscord,
   siGit,
   siGithub,
   // siGithubactions,
@@ -90,9 +92,11 @@ import {
   // siMacos,
   siMastodon,
   siMedibangpaint,
+  siMatrix,
   siNodedotjs,
   siOsu,
   siPatreon,
+  siPaypal,
   siPython,
   siRust,
   siSass,
@@ -293,6 +297,20 @@ createIconDefsGrouped(
     siBluesky,
     siGithub,
     siItchdotio,
+  ],
+);
+
+createIconDefsGrouped(
+  "comm",
+  [
+    faEnvelope,
+    faTwitter,
+  ],
+  [
+    siBluesky,
+    siDiscord,
+    siMatrix,
+    siPaypal,
   ],
 );
 

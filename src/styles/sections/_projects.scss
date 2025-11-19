@@ -2,31 +2,68 @@
 @use "sass:color";
 
 #projects {
-  background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
+  background: $background-light;
+  // background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
   @include shadow-black;
 
-  & > .section-controls {
-    position: sticky;
-    top: 0;
+  // & > .section-controls {
+  //   position: sticky;
+  //   top: 0;
 
-    padding-top: 1em;
-    padding-bottom: 1em;
+  //   padding-top: 1em;
+  //   padding-bottom: 1em;
 
-    margin: auto;
-    max-width: 1100px;
+  //   margin: auto;
+  //   max-width: 1100px;
 
-    z-index: 9;
+  //   z-index: 9;
+  // }
+
   & .jp {
     background: $background-light;
   }
 
-  & > .section-inner {
-    margin: auto;
-    max-width: 1100px;
-    min-height: 576px;
-  }
+  // & > .section-inner {
+  //   width: 100%;
+  //   margin: auto;
+  //   max-width: 980px;
+  //   min-height: 576px;
+  // }
 }
+
+
+.project {
+  // background:
+  //   radial-gradient(
+  //     circle at 80% 160%,
+  //     transparent,
+  //     rgba($background, 0.4) 40%,
+  //     rgba($background, 0.6) 50%,
+  //     rgba($background, 0.8) 60%,
+  //     $background 70%
+  //   )
+  // ;
+  // background-size: auto;
+  // background-position: bottom right;
+  // background-repeat: no-repeat;
+
+  outline: 1px solid transparent;
+
+  // aspect-ratio: 1 / 1;
+
+  transition:
+    outline .2s ease,
+    transform .23s ease !important;
+
+  overflow: hidden;
+  // contain: strict;
+
+  // outline: 1px solid #0000;
+
+  // &:hover {
+  //   outline-color: color.mix($text, $background, 60%);
+  // }
 }
 
 @media (width <= 700px) {
@@ -41,10 +78,39 @@
 @media (width >= 700px) {
 #projects {
   & > .section-inner {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(4, 25%);
-    padding: 2em;
+    & > .project-items {
+      display: grid;
+      grid-template-areas: 
+        "theatre theatre itch  website"
+        "theatre theatre pitch pitch"
+        "filler  obscura pitch pitch"
+      ;
+      grid-gap: 1.1em;
+      padding: 2em 1em;
+    }
   }
+}
+
+.project[data-name="Pitch"] {
+  grid-area: pitch;
+  min-height: 350px;
+  // max-height: 350px;
+}
+
+.project[data-name="Theatre"] {
+  grid-area: theatre;
+  min-height: 350px;
+  // max-height: 350px;
+}
+.project[data-name="My itch.io profile page"] {
+  grid-area: itch;
+}
+
+.project[data-name="nnda.dev"] {
+  grid-area: website;
+}
+
+.project[data-name="Obscura"] {
+  grid-area: obscura;
 }
 }

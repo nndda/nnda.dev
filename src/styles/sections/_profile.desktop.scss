@@ -3,7 +3,7 @@
 .info-container {
   display: grid;
   grid-template-columns: 15em auto;
-  grid-template-rows: minmax(3em, .95fr) auto auto;
+  grid-template-rows: minmax(3em, 1fr) auto auto;
 }
 
 .pfp-cont {

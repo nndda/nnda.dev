@@ -80,17 +80,25 @@ body {
   @include shadow-black;
 
   letter-spacing: .05em;
+}
 
-  & > main {
-    flex-grow: 1;
-    min-height: 100vh;
-    overflow-x: clip;
-    z-index: 3;
+main {
+  flex-grow: 1;
+  min-height: 100vh;
+  overflow-x: clip;
+  z-index: 3;
 
-    & > section {
-      position: relative;
-      padding-left: .5em;
-      padding-right: .5em;
+  & > section {
+    position: relative;
+    padding-left: .5em;
+    padding-right: .5em;
+
+    & > .section-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      padding-left: 1em;
+      padding-right: 1em;
     }
   }
 }
@@ -340,9 +348,9 @@ h1 {
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
     // will-change: tranform;
 
-    &::first-letter {
-      font-weight: bold;
-    }
+    // &::first-letter {
+    //   font-weight: bold;
+    // }
   }
 
   & .name-cont {

@@ -58,34 +58,39 @@ export default function(): void {
                 </p>
               </div>
             </div>
-            ${
-              post.type === "announcement" ? "" : `
-              <div class="actions">
-                <div class="sources">
-                    ${
-                      post.type === "release" ? "<small>New release</small>" : ""
-                    }
-                </div>
-                <div class="flex-space"></div>
-                <ul class="stats nostyle">
-                  <li>
-                    ${icons["likes"]}
-                    <span>1</span>
-                  </li>
-                  <li>
-                    ${icons["shares"]}
-                    <span>2</span>
-                  </li>
-                </ul>
-              </div>
-              `
-            }
           </div>
           <small class="timestamp">
-            32 days ago  
+            32 days ago
           </small>
         </li>`;
       }).join("");
+
+// ${
+//               post.type === "announcement" ? "" : `
+//               <div class="actions">
+//                 <div class="sources">
+//                     ${
+//                       post.type === "release" ? "<small>New release</small>" : ""
+//                     }
+//                 </div>
+//                 <div class="flex-space"></div>
+
+//                 <ul class="stats nostyle">
+//                   <!--
+//                   <li>
+//                     ${icons["likes"]}
+//                     <span>1</span>
+//                   </li>
+//                   <li>
+//                     ${icons["shares"]}
+//                     <span>2</span>
+//                   </li>
+//                   -->
+//                 </ul>
+
+//               </div>
+//               `
+//             }
 
     requestAnimationFrame((): void => {
       socialListEl.innerHTML = socialListHTML;

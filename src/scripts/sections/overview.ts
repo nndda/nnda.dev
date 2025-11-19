@@ -24,9 +24,9 @@ import("../../api/out/overview-stats.json").then((res): void => {
   , langsHTML: string = Object.entries(res.default.langs as LangsData).map(
       (
     //  lang: language, [percent, percent scaled]
-        lang: [string, number[]]
+        lang: [string, number[]], i: number,
       ): string => {
-        return `
+        return ((i == 2) ? `<div class="flex-br"></div>` : "") + `
           <div class="lang anim once" style="width: ${lang[1][1]}%">
             <div class="box">
               <code><b>${lang[1][0]}%</b></code>

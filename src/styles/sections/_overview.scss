@@ -12,41 +12,41 @@
 
 #overview {
   // padding-top: 1em;
-  // background: $background-dark;
+  background-color: $background-dark;
 
-  $s: 50px;  /* control the size of the grid */
-  $n: 4;     /* control the granularity */
-  $t: 2px;   /* the thickness */
-  $g: 10px;  /* the gap between dashes */
+  // $s: 50px;  /* control the size of the grid */
+  // $n: 4;     /* control the granularity */
+  // $t: 2px;   /* the thickness */
+  // $g: 10px;  /* the gap between dashes */
 
-  $sn: math.div($s, $n);
+  // $sn: math.div($s, $n);
   
-  --c: #{color.mix($text, $background, 10%)} 25%,#0000 0;
-  background: 
-    linear-gradient(270deg, $background-dark -10%, #0000 5%),
-    linear-gradient(180deg, $background-dark -10%, #0000 25%),
-    linear-gradient(90deg, $background-dark -10%, #0000 5%),
-    linear-gradient(0deg, $background-dark -10%, #0000 25%),
+  // --c: #{color.mix($text, $background, 10%)} 25%,#0000 0;
+  // background: 
+  //   linear-gradient(270deg, $background-dark -10%, #0000 5%),
+  //   linear-gradient(180deg, $background-dark -10%, #0000 25%),
+  //   linear-gradient(90deg, $background-dark -10%, #0000 5%),
+  //   linear-gradient(0deg, $background-dark -10%, #0000 25%),
 
-    conic-gradient(at $g $t,var(--c))
-     #{math.div( ($sn - $g + $t), 2 ) 0} /
-     #{$sn $s},
+  //   conic-gradient(at $g $t,var(--c))
+  //    #{math.div( ($sn - $g + $t), 2 ) 0} /
+  //    #{$sn $s},
 
-    conic-gradient(from 180deg at $t $g,var(--c))
-     #{0 math.div( ($sn - $g + $t), 2 )} /
-     #{$s $sn},
+  //   conic-gradient(from 180deg at $t $g,var(--c))
+  //    #{0 math.div( ($sn - $g + $t), 2 )} /
+  //    #{$s $sn},
 
-    linear-gradient($background-dark, $background-dark)
-     ;
-  /* you probably don't need to set any size in your case */
-  // width: calc(round(down,100%,$s) + $t);
-  // height: calc(4*$s + $t);
-  background-position: -1px;
+  //   linear-gradient($background-dark, $background-dark)
+  //    ;
+  // /* you probably don't need to set any size in your case */
+  // // width: calc(round(down,100%,$s) + $t);
+  // // height: calc(4*$s + $t);
+  // background-position: -1px;
 
   & > .section-inner {
     max-width: 1050px;
     min-height: 445px;
-    margin: auto;
+    // margin: auto;
     margin-top: 1.5em;
     padding-bottom: 1em;
   }
@@ -103,7 +103,7 @@
     }
 
     & > .inner {
-      border: 1px solid color.mix($text, $background-light, 5%);
+      // border: 1px solid color.mix($text, $background-light, 5%);
       border-radius: 3px;
 
       background: $background-dark;
@@ -112,7 +112,7 @@
 
     & .date {
       grid-row: span $r;
-      color: $text-secondary;
+      color: color.mix($text, $background, 50%);
       // font-family: monospace;
 
       &:first-child {
@@ -177,6 +177,10 @@
   }
 }
 
+.flex-br {
+  display: none;
+}
+
 .lang {
   &:not(.on) {
     transition: .05s ease-out;
@@ -208,7 +212,23 @@
   min-height: #{13em + 1em};
 }
 
+#social-see-more {
+  margin: auto;
+}
+
 @media (width <= 700px) {
+#overview {
+  & > .section-inner {
+    padding: 0;
+    // padding-left: .1em;
+    // padding-right: .1em;
+  }
+}
+
+.section-title-sub {
+  margin-bottom: 1.25em;
+}
+
 .commits {
   & > div {
     margin-top: 1em;
@@ -218,29 +238,51 @@
 .stacks-lists {
   padding-bottom: 1em;
 
-  & > ul {
+  & > ul.nostyle {
     flex-wrap: wrap;
+    gap: 1.5em;
+  }
+}
+
+.lang-stacks {
+  min-height: 365px;
+  gap: 1em;
+}
+
+.languages-container {
+  flex-wrap: wrap;
+}
+
+.flex-br {
+  display: block;
+  flex-basis: 100%;
+  margin: .5em;
+}
+
+
+.socials-lists {
+  & > ul.nostyle {
+    column-count: 2;
   }
 }
 }
 
 @media (width > 700px) {
-#overview > .section-inner > div {
-// .overview-socials > .inner {
-  max-width: 1080px;
-  margin: auto;
-  margin-top: 2em;
-}
-
 #overview {
   padding-bottom: 3em;
 
-  & .heading-left-sticky {
-    z-index: 3;
+  & > .section-inner {
+    padding-bottom: 2em;
+
+    & > div {
+      max-width: 1080px;
+      margin: auto;
+      margin-top: 2em;
+    }
   }
 
-  & .section-inner {
-    padding-bottom: 2em;
+  & .heading-left-sticky {
+    z-index: 3;
   }
 }
 

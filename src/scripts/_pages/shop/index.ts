@@ -1,5 +1,5 @@
 import icons from "../../build/icons/shop";
-import type { ShopItem } from "./d";
+import type { ShopItem, ShopItemAddon } from "./d";
 
 const shopItem: Record<string, Record<string, string>> = {
   iconsPlatforms: ["Godot", "Linux", "MacOS", "Windows", "CSS"].reduce(
@@ -29,7 +29,7 @@ import("../../../data/shop/catalogue").then((catalogueData: any): void => {
   for (const contId in catalogueData.default) {
     (document.getElementById(contId) as HTMLElement).innerHTML = catalogueData.default[contId].map((data: ShopItem): string => {
       return `
-        <div class="item">
+        <div class="item" data-item-name="${data.name}">
           <div class="card">
             <a class="thumb-link" href="${data.mainURL}">
               <img class="thumb" src="${data.thumb}" alt="">
@@ -53,9 +53,7 @@ import("../../../data/shop/catalogue").then((catalogueData: any): void => {
 
           <div class="buy-row">
             <div class="price">
-              <span>
                 $<b>${data.price}</b>
-              </span>
             </div>
 
             <div class="buy-platforms">
@@ -71,6 +69,27 @@ import("../../../data/shop/catalogue").then((catalogueData: any): void => {
               }
             </div>
           </div>
+
+          ${
+            // Object.prototype.hasOwnProperty.call(data, "addons") ? 
+            "addons" in data ? 
+              `<hr class="buy-hr">` + (data.addons as ShopItemAddon[]).map((dataAddons: ShopItemAddon): string => {
+                return `
+                  <div class="buy-row">
+                    <div class="price">
+                      <span>
+                        $<b>${dataAddons.price}</b>
+                      </span>
+                    </div>
+
+                    <div class="addon-item">
+                      ${dataAddons.name}
+                    </div>
+                  </div>
+                `;
+              }).join("")
+            : ""
+          }
         </div>
       `;
     }).join("");

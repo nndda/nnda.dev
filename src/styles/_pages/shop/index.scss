@@ -70,11 +70,12 @@ h2 {
 }
 
 .px-title {
-  font-family: Bytesized, sans-serif;
+  font-family: Zen Kaku Gothic New;
+  // font-family: Bytesized, sans-serif;
 
   & > span {
     font-size: 1.2em;
-    color: $secondary;
+    // color: $secondary;
 
     // text-shadow:
     //   2px 2px $primary
@@ -84,9 +85,9 @@ h2 {
     // ;
     transform: translateY(-.1em);
 
-    &::first-letter {
-      color: $primary;
-    }
+    // &::first-letter {
+    //   color: $primary;
+    // }
   }
 }
 
@@ -132,7 +133,7 @@ h2 {
   & > hr {
     margin: 1em 0;
     border: 0;
-    border-top: 2px dashed color.mix($text-secondary, $background-dark, 50%);
+    border-top: 1px dashed color.mix($text-secondary, $background-dark, 50%);
   }
 }
 
@@ -144,7 +145,7 @@ h2 {
   padding: 0;
   margin-bottom: .8em;
 
-  background: $background-dark;
+  background: var(--bg, $background-dark);
 
   border-color: color.mix($text-secondary, $background-dark, 25%);
 
@@ -160,7 +161,7 @@ h2 {
 
     margin: .25em;
 
-    fill: $primary;
+    fill: var(--col, $primary);
   }
 }
 
@@ -174,6 +175,10 @@ h2 {
 }
 
 .price {
+  &:first-letter {
+    color: $text-secondary;
+    margin-right: .25em;
+  }
   // flex-grow: 1;
 }
 
@@ -188,6 +193,16 @@ h2 {
   & > small {
     font-size: .7em;
   }
+}
+
+.buy-hr {
+  border-color: color.mix($text-secondary, $background-light, 10%);
+  // border-style: dashed;
+  margin: .5em 0;
+}
+
+.addon-item {
+  font-size: .85em;
 }
 
 .buy-btn {
@@ -205,3 +220,21 @@ h2 {
   column-gap: 2em;
   min-height: 440px;
 }
+
+
+// .item {
+//   &[data-item-name="Timekeeper"] {
+//     --bg: #0d0905;
+//     --col: #ffff8f;
+//   }
+
+//   &[data-item-name="In Plain Sight"] {
+//     --bg: #08041d;
+//     --col: #c3aeee;
+//   }
+
+//   &[data-item-name="Paws & Plates"] {
+//     --bg: #2e222f;
+//     --col: #fdc756;
+//   }
+// }

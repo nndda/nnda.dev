@@ -1,7 +1,7 @@
 // import { eventForElements } from "../input";
 // import { iconX } from "../build/icons/icons";
 
-// const d = document;
+const d = document;
 
 // function initContentControls(
 //   btnCategories: HTMLElement[] | NodeListOf<Element>,
@@ -30,7 +30,7 @@
 //   });
 // }
 
-// // Category -------------------------------------------------------------------------------------
+// Category -------------------------------------------------------------------------------------
 
 // function initContentCategory(
 //   catsDropdownBtn: HTMLElement,
@@ -163,6 +163,9 @@ interface ProjectItem {
   tags: string[],
   category: string,
   platform: string,
+  classes?: string,
+  xtraHTML?: string,
+  // size?: "large" | "medium",
 }
 
 const
@@ -170,7 +173,7 @@ const
     projectsData.map((data: ProjectItem): string => {
       return `
       <div
-        class="project card"
+        class="project card ${Object.hasOwn(data, "classes") ? data.classes : ""}" data-name="${data.name}"
       >
 
         <div class="
@@ -185,6 +188,14 @@ const
           </a>
         </div>
 
+        ${
+          Object.hasOwn(data, "xtraHTML") ? `
+            <div class="xtra">
+              ${data.xtraHTML}
+            </div>
+          ` : ""
+        }
+
         <div class="labels-container">
           ${
             data.tags.map((val: string) => {
@@ -194,13 +205,14 @@ const
             }).join("")
           }
         </div>
+
         <p>${data.description}</p>
       </div>
 
         `;
     }).join("")
 
-, projectSectInner: HTMLElement = document.querySelector("#projects>.section-inner") as HTMLElement
+, projectSectInner: HTMLElement = document.querySelector("#projects .project-items") as HTMLElement
 ;
 
 projectSectInner.classList.remove("on");

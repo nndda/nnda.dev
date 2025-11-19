@@ -10,17 +10,22 @@
   @include shadow-black;
 
   & .jp {
-    color: $primary;
+    // color: $primary;
     background: $background-dark;
   }
 
-  & > .section-inner {
-    width: 100%;
-    max-width: 1100px;
-    min-height: 1180px;
-    padding-top: 2.5em;
-    margin: auto;
-  }
+  // & > .section-inner {
+    // width: 100%;
+    // max-width: 1100px;
+    // min-height: 1180px;
+    // padding-top: 2.5em;
+    // padding-top: 0;
+    // margin: auto;
+  // }
+}
+
+.illust-items {
+  padding-top: 2em;
 }
 
 .illust-gall {
@@ -38,8 +43,8 @@
 @media (width >= 700px) {
 #illustrations {
   & > .section-inner {
-    padding: 2em;
-    padding-top: 2.5em;
+    // padding: 2em;
+    // padding-top: 0;
     padding-bottom: 2.5em;
   }
 }

@@ -53,7 +53,7 @@ export default [
   },
   { // ------------------------------------------------------------------------
     group: "Artworks & Illustrations",
-    desc: "Where I dump all of the stuff and things I drawed.",
+    desc: "Anime girls drawing.",
     links: [
       {
         name: "ArtStation",
@@ -98,7 +98,7 @@ export default [
     links: [
       {
         name: "OSU!",
-        url: "",
+        url: "osu.ppy.sh/users/10614731",
         icon: "osu",
         username: "nnda",
       },

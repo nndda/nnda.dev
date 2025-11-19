@@ -8,8 +8,9 @@ export default [
     ],
     category: "Game Development",
     platform: "N/A",
-    description: "🎭 Yet another (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text. Compatible with Godot 4.3.",
-    image: "/assets/project-theatre.avif"
+    description: "🎭 A (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text. Compatible with Godot 4.4",
+    image: "/assets/project-theatre.avif",
+    xtraHTML: "",
   },
   {
     name: "Pitch",
@@ -22,7 +23,8 @@ export default [
     category: "Web Project",
     platform: "Web",
     description: "🧩 Collection of UI components and tweaks, designed specifically for itch.io project pages.",
-    image: "/assets/project-pitch.avif"
+    image: "/assets/project-pitch.avif",
+    xtraHTML: "",
   },
   {
     name: "Obscura",
@@ -42,22 +44,22 @@ export default [
     tags: [
       "Web",
       "TypeScript",
-      "SCSS"
+      "SCSS",
     ],
     category: "Web Project",
     platform: "Web",
-    description: "🌸 My personal static site and an all-in-one hub for my social presence. (Almost) vanilla, framework-free, modular, & backend-less."
+    description: "🌸 My personal static site. (Almost) vanilla, framework-free, modular, & backend-less."
   },
   {
-    name: "itchio-profile",
+    name: "My itch.io profile page",
     url: "https://github.com/nndda/itchio-profile",
     tags: [
       "Node",
       "JavaScript",
-      "SCSS"
+      "SCSS",
     ],
     category: "Web Project",
     platform: "Web",
-    description: "Source code for my itch.io profile page @ nnda.itch.io"
+    description: "🕹️ Source code for my itch.io profile page @ nnda.itch.io"
   }
 ];

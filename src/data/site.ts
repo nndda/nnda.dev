@@ -6,10 +6,7 @@ const DATA: any = async () => { return _.merge({
   site: {
     author: "nnda",
     title: "nnda's Archive",
-    note: `
-      This website is licensed under the GNU GPLv3.
-      The source code is available in the public repository.
-    `,
+    note: `This website is licensed under the GNU GPLv3.\nThe source code is available in the public repository.`,
 
     authorProfile: {
       status: {
@@ -17,11 +14,7 @@ const DATA: any = async () => { return _.merge({
         text: "eepy",
       },
 
-      description: `
-        <s>(self-proclaimed)</s> game developer,
-        front-end web dev,
-        &amp; digital artist/illustrator.
-      `,
+      description: `A <s>(self-proclaimed)</s> <span class="lists"><b>game developer</b> <b>front-end web dev</b> <b>digital illustrator</b></span>`,
 
       pronouns: "he/him",
       pronunciation: "/ˈnæn.də/",
