@@ -5,11 +5,8 @@ const DATA: any = async () => { return _.merge({
 
   site: {
     author: "nnda",
-    title: "nnda's Archive",
-    note: `
-      This website is licensed under the GNU GPLv3.
-      The source code is available in the public repository.
-    `,
+    title: "nnda's corner of the internet",
+    note: `This website is licensed under the GNU GPLv3.\nThe source code is available in the public repository.`,
 
     authorProfile: {
       status: {
@@ -17,11 +14,7 @@ const DATA: any = async () => { return _.merge({
         text: "eepy",
       },
 
-      description: `
-        <s>(self-proclaimed)</s> game developer,
-        front-end web dev,
-        &amp; digital artist/illustrator.
-      `,
+      description: `A <s>(self-proclaimed)</s> <span class="lists"><b>game developer</b> <b>front-end web dev</b> <b>digital illustrator</b></span>`,
 
       pronouns: "he/him",
       pronunciation: "/ˈnæn.də/",
@@ -90,6 +83,8 @@ const DATA: any = async () => { return _.merge({
 import {
   exists,
   createResolver,
+  writeTextFile,
+  type DirResolver,
 } from "../scripts/build/utils";
 
 import "dotenv/config";
@@ -101,7 +96,10 @@ import {
 import cronParser from "cron-parser";
 import _ from "lodash";
 
-const siteExtPath: string = createResolver(__dirname)("./site-ext.js");
+const
+  abs: DirResolver = createResolver(__dirname)
+, siteExtPath: string = abs("./site-ext.js")
+;
 
 // ============================================================================
 
@@ -170,5 +168,8 @@ const
     ),
   )
 ;
+
+import postsFeed from "./social-posts";
+writeTextFile(abs("../public/posts-feed.json"), JSON.stringify(postsFeed));
 
 export default DATA();

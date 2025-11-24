@@ -2,18 +2,20 @@
 @use "sass:color";
 
 #links {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  // padding-top: 4em;
+  // padding-bottom: 4em;
   background: $background;
 
   & .jp {
-    color: $tertiary;
+    // color: $tertiary;
     background: $background;
   }
 
   & > .section-inner {
     max-width: 1050px;
     min-height: 820px;
-    margin: auto;
+    padding: 1em;
+    padding-top: 2.5em;
+    // margin: auto;
   }
 }

@@ -53,7 +53,7 @@ export default [
   },
   { // ------------------------------------------------------------------------
     group: "Artworks & Illustrations",
-    desc: "Where I dump all of the stuff and things I drawed.",
+    desc: "Anime girls drawing.",
     links: [
       {
         name: "ArtStation",
@@ -94,13 +94,13 @@ export default [
   },
   {
     group: "Gaming",
-    desc: "Not much, besides smashing drums",
+    desc: "Not much, besides smashing drums.",
     links: [
       {
         name: "OSU!",
-        url: "",
+        url: "osu.ppy.sh/users/10614731",
         icon: "osu",
-        username: "nnda",
+        username: nnda,
       },
     ],
   },
@@ -121,12 +121,12 @@ export default [
         icon: "liberapay",
         username: nnda,
       },
-      {
-        name: "GitHub Sponsors",
-        url: "github.com/sponsors/nndda?frequency=patreon",
-        icon: "githubsponsors",
-        username: nndda,
-      },
+      // {
+      //   name: "GitHub Sponsors",
+      //   url: "github.com/sponsors/nndda?frequency=patreon",
+      //   icon: "githubsponsors",
+      //   username: nndda,
+      // },
     ],
   },
 ] as LinkGroup[];

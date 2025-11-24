@@ -1,7 +1,7 @@
 // import { eventForElements } from "../input";
 // import { iconX } from "../build/icons/icons";
 
-// const d = document;
+const d = document;
 
 // function initContentControls(
 //   btnCategories: HTMLElement[] | NodeListOf<Element>,
@@ -30,7 +30,7 @@
 //   });
 // }
 
-// // Category -------------------------------------------------------------------------------------
+// Category -------------------------------------------------------------------------------------
 
 // function initContentCategory(
 //   catsDropdownBtn: HTMLElement,
@@ -158,11 +158,15 @@ import projectsData from "../../data/site-projects";
 
 interface ProjectItem {
   name: string,
+  logo?: string,
   url: string,
   description: string,
   tags: string[],
   category: string,
   platform: string,
+  classes?: string,
+  xtraHTML?: string,
+  // size?: "large" | "medium",
 }
 
 const
@@ -170,10 +174,10 @@ const
     projectsData.map((data: ProjectItem): string => {
       return `
       <div
-        class="project card"
+        class="project card ${Object.hasOwn(data, "classes") ? data.classes : ""}" data-name="${data.name}"
       >
 
-        <div class="
+        <h2 class="
           project-title
           ">
           <a href="${data.url}"
@@ -181,9 +185,22 @@ const
             rel="noopener noreferrer"
             referrerpolicy="origin"
           >
+            ${
+              Object.hasOwn(data, "logo") ? `
+                <img src="${data.logo}">
+              ` : ""
+            }
             ${data.name}
           </a>
-        </div>
+        </h2>
+
+        ${
+          Object.hasOwn(data, "xtraHTML") ? `
+            <div class="xtra">
+              ${data.xtraHTML}
+            </div>
+          ` : ""
+        }
 
         <div class="labels-container">
           ${
@@ -194,13 +211,14 @@ const
             }).join("")
           }
         </div>
+
         <p>${data.description}</p>
       </div>
 
         `;
     }).join("")
 
-, projectSectInner: HTMLElement = document.querySelector("#projects>.section-inner") as HTMLElement
+, projectSectInner: HTMLElement = document.querySelector("#projects .project-items") as HTMLElement
 ;
 
 projectSectInner.classList.remove("on");

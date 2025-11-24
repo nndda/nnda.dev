@@ -45,12 +45,47 @@
   align-items: end;
 
   margin: 1.5em 0 0;
+  padding-top: .5em;
   // margin-bottom: .25em;
 }
 
 .desc-cont {
   grid-column: span 2;
   margin-top: 1.25em;
+  font-size: 1.35em;
+}
+
+.lists {
+  align-items: start;
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.3em;
+  justify-content: start;
+  line-height: 1em;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+
+  & > b {
+    animation: c 3.5s infinite;
+    margin: .15em 0;
+    font-weight: 400;
+  }
+}
+
+@keyframes c {
+  0%,
+  20% {
+    transform:translateY(0)
+  }
+  40%,
+  60% {
+    transform:translateY(-1.3em)
+  }
+  80%,
+  90% {
+    transform:translateY(-1.3em * 2)
+  }
 }
 
 h1.name {
@@ -204,7 +239,7 @@ p.about {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+// @media (prefers-reduced-motion: no-preference) {
   #profile .icon-text {
     transition:
       opacity .3s ease-out,
@@ -221,7 +256,7 @@ p.about {
       opacity: 0;
     }
   }
-}
+// }
 
 // @include mobile.style;
 @include desktop.style;

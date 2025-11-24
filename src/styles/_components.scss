@@ -27,6 +27,9 @@
   // position: relative;
   padding: .8em;
   margin: 0;
+  padding-top: 0;
+  margin-top: .65em;
+  margin-bottom: .5em;
   color: color.mix($text, $background-dark, 70%);
   border-bottom: 2px dashed color.mix($text, $background-dark, 30%);
 

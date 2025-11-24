@@ -37,6 +37,7 @@ import {
   faComment,
   // faCodeFork,
   faComputerMouse,
+  faEnvelope,
   // faFire,
   faGlobe,
   faHeart,
@@ -59,8 +60,8 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 import {
-    faTwitter,
-  faWindows
+  faTwitter,
+  faWindows,
 } from "@fortawesome/free-brands-svg-icons";
 
 // ----------------------------------------------------------------------------
@@ -74,6 +75,7 @@ import {
   // siCloudflarepages,
   // siCloudflareworkers,
   siCss,
+  siDiscord,
   siGit,
   siGithub,
   // siGithubactions,
@@ -90,9 +92,11 @@ import {
   // siMacos,
   siMastodon,
   siMedibangpaint,
+  siMatrix,
   siNodedotjs,
   siOsu,
   siPatreon,
+  siPaypal,
   siPython,
   siRust,
   siSass,
@@ -296,6 +300,20 @@ createIconDefsGrouped(
   ],
 );
 
+createIconDefsGrouped(
+  "comm",
+  [
+    faEnvelope,
+    faTwitter,
+  ],
+  [
+    siBluesky,
+    siDiscord,
+    siMatrix,
+    siPaypal,
+  ],
+);
+
 createMiniIconDefs("overview", {
   "Aseprite": siAseprite.svg,
   "Cloudflare": siCloudflare.svg,
@@ -323,7 +341,7 @@ createMiniIconDefs("links", {
   "links": toHTML(faLink),
   "heart": toHTML(faHeart),
   "github": siGithub.svg,
-  "githubsponsors": siGithubsponsors.svg,
+  // "githubsponsors": siGithubsponsors.svg,
   "itchdotio": siItchdotio.svg,
   "artstation": siArtstation.svg,
   "mastodon": siMastodon.svg,
@@ -333,8 +351,8 @@ createMiniIconDefs("links", {
   "patreon": siPatreon.svg,
   "kofi": siKofi.svg,
   "liberapay": siLiberapay.svg,
-  "tiktok": siTiktok.svg,
-  "youtube": siYoutube.svg,
+  // "tiktok": siTiktok.svg,
+  // "youtube": siYoutube.svg,
 });
 
 createMiniIconDefs("shop", {

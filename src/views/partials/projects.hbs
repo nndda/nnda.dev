@@ -1,159 +1,23 @@
-<section id="projects" data-nav-name="Projects" class="with-aside">
-  <aside>
-    <div>
-      <h1>
-        <small>
-          プロジェクト
-        </small>
-        <br>
-        Projects
-      </h1>
-
-      <hr class="hr">
-
-      {{!-- PROJECT CATEGORY ------------------------------------------------------------------------ --}}
-
-      <div class="dropdown">
-        <button
-          id="project-cat-button"
-          aria-expanded="false"
-        >
-          {{{icons.filter}}}
-          <span class="text">Category:</span>
-          <span class="text text-display">All</span>
-          <div class="flex-space"></div>
-        </button>
-
-        <div
-          class="items"
-          aria-hidden="true"
-          role="menu"
-        >
-          {{#each projectData.categories}}
-            <label
-              for="project-cat-{{this.id}}"
-              class="input-group"
-              role="menuitemradio"
-              {{#if this.default}}
-                data-default=""
-              {{/if}}
-            >
-              <input
-                type="radio"
-                name="project-cat"
-                id="project-cat-{{this.id}}"
-                class="item-input"
-                data-cat="{{this.name}}"
-              >
-              <span class="checked">
-                {{{@root.icons.check}}}
-              </span>
-              <span class="text">
-                {{this.name}}
-              </span>
-            </label>
-          {{/each}}
-        </div>
-      </div>
-
-      {{!-- PROJECT PLATFORM ------------------------------------------------------------------------ --}}
-
-      <div class="dropdown">
-        <button
-          id="project-platform-button"
-          aria-expanded="false"
-        >
-          {{{icons.desktop}}}
-          <span class="text">Platform:</span>
-          <span class="text" id="project-platform-display">All</span>
-          <div class="flex-space"></div>
-        </button>
-
-        <div
-          class="items"
-          aria-hidden="true"
-          role="menu"
-        >
-          {{#each projectData.platforms}}
-            <label
-              for="project-platform-{{this.id}}"
-              class="input-group"
-              role="menuitem"
-              {{#if this.default}}
-                data-default=""
-              {{/if}}
-            >
-              <input
-                type="checkbox"
-                name="project-platform"
-                id="project-platform-{{this.id}}"
-                class="item-input"
-                data-cat="{{this.name}}"
-              >
-              <span class="checked">
-                {{{@root.icons.check}}}
-              </span>
-              <span class="text">
-                {{this.name}}
-              </span>
-            </label>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <div class="heading-mobile">
-    <h1>
-      Projects
-      <br>
-      <small>
-        プロジェクト
-      </small>
-    </h1>
+<section id="projects" data-nav-name="Projects">
+  <div class="heading-left-sticky">
+    <div class="jp">プロジェクト</div>
+    <div class="line"></div>
   </div>
 
-  <div class="section-inner has-loader anim fade on">
-    <div class="loader"><div></div></div>
+  <div class="section-inner">
+    <h1 class="heading-hr">
+      <span>
+        Projects
+      </span>
+    </h1>
 
-    {{!-- PROJECT CONTENTS ------------------------------------------------------------------------ --}}
-
-    {{!--
-    {{#each projects}}
-      <div
-        class="project card"
-        data-project-cat="{{this.category}}"
-        data-project-tags="{{this.tags}}"
-      >
-        {{#if this.image}}
-          <div class="project-image">
-            {{ img this.image "" }}
-          </div>
-        {{/if}}
-
-        <div class="
-          project-title
-          {{#if this.image}}
-            with-image
-          {{/if}}
-          ">
-          <a href="{{this.url}}"
-            target="_blank"
-            rel="noopener noreferrer"
-            referrerpolicy="origin"
-          >
-            {{this.name}}
-          </a>
-        </div>
-        <div class="labels-container">
-          {{#each this.tags}}
-            <span class="project-label {{this}}" data-tag="{{this}}">{{this}}</span>
-          {{/each}}
-        </div>
-        <p>{{this.description}}</p>
-      </div>
-    {{/each}}
-    --}}
+    <div class="project-items">
+      {{!--
+      {{#each home.projects.partials}}
+        {{ include this }}
+      {{/each}}
+      --}}
+    </div>
   </div>
 </section>
 

@@ -123,6 +123,9 @@ interface FormJSONData {
   total_price: number,
 }
 
+import initIcon from "../../scripts/build/icons/comm";
+initIcon();
+
 const
   d: Document = document
 
@@ -294,7 +297,7 @@ const
 
 
 function updatePricingCharacterCount(): void {
-  const chrCount: number = p.characterCount.element.value as unknown as number;
+  const chrCount: number = parseInt(p.characterCount.element.value);
 
   p.characterCount.current = p.characterCount.price * chrCount;
   p.characterCount.priceEl.textContent = `${p.characterCount.current}`;
@@ -358,9 +361,8 @@ clientDescEl.addEventListener("input", (): void => {
 
 function updateFormData() {
 
-  formJSONData.character_count = p.characterCount.element.value as unknown as number;
+  formJSONData.character_count = parseInt(p.characterCount.element.value);
   formJSONData.character_count_price_base = p.characterCount.price;
-
 
   formJSONData.base_shading = p.bases.shading.element.checked;
   formJSONData.base_shading_price_base = p.bases.shading.price;
@@ -403,7 +405,9 @@ function updateFormData() {
 
   const priceTotal: number = (
 
-    p.characterCount.current +
+    (
+      p.characterCount.current
+    ) +
 
     p.bases.lineart.price +
     ( p.bases.shading.element.checked ? p.bases.shading.current : 0 ) +

@@ -132,7 +132,7 @@ interface IllustrationGallery {
 const
   d: Document = document
 
-, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner") as HTMLElement
+, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner>.illust-items") as HTMLElement
 , illustSectContWidth: number = illustSectInner.clientWidth
 , illustSectContGap: number = parseFloat(getComputedStyle(illustSectInner).fontSize) * 0.6
 

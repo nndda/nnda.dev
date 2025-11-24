@@ -48,6 +48,7 @@
           <li>Anime</li>
           <li>Anime Girl</li>
           <li>Chibi</li>
+          <li>Pixel Art</li>
         </ul>
       </div>
 
@@ -56,8 +57,36 @@
         <ul class="nostyle labels-cont dont">
           <li>Male Characters</li>
           <li>Furry</li>
+          <li>Realism</li>
+          <li>NSFW</li>
         </ul>
       </div>
+    </div>
+
+    <div>
+      <h2>
+        Terms &amp; Conditions
+      </h2>
+
+      <ul>
+        <li>
+          No refunds after the works begin.
+        </li>
+        <li>
+          Free 5 revisions, and +$5 afterwards.
+        </li>
+        <li>
+          Artist do not consent for their works to be used...:
+          <ul>
+            <li>For training AI models</li>
+            <li>In NFT/crypto projects</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>
+        If you have more questions, email me at <code>talk [at] nnda.dev</code>, or DM me in my Bluesky or Discord.
+      </p>
     </div>
   </section>
 
@@ -338,7 +367,7 @@
           </label>
 
           <p class="form-item-desc">
-            Artist will not redistribute, repost, or share the illustration for marketing, promotion, portfolio showcase, or other purposes.
+            Artist will NOT redistribute, repost, or share the illustration for marketing, promotion, portfolio showcase, or other purposes.
           </p>
 
         </fieldset>
@@ -403,7 +432,7 @@
 
           <label class="form-item" for="contact-opt-email">
             <span class="flex-space">
-              {{{icons.envelope}}}
+              {{{icon "comm" "envelope" 18 18}}}
               E-mail
               <small>(required)</small>
             </span>
@@ -423,39 +452,9 @@
 
           {{!-- <h3 class="field-heading">Optional</h3> --}}
 
-          <label class="form-item" for="contact-opt-discord">
-            <span class="flex-space">
-              {{{brands.discord}}}
-              Discord
-            </span>
-
-            <input
-              type="text"
-              class="text"
-              placeholder="username1234"
-              name="contact-opt-discord"
-              id="contact-opt-discord"
-            ></input>
-          </label>
-
-          <label class="form-item" for="contact-opt-matrix">
-            <span class="flex-space">
-              {{{brands.matrix}}}
-              Matrix
-            </span>
-
-            <input
-              type="text"
-              class="text"
-              placeholder="@username:matrix.org"
-              name="contact-opt-matrix"
-              id="contact-opt-matrix"
-            ></input>
-          </label>
-
           <label class="form-item" for="contact-opt-bsky">
             <span class="flex-space">
-              {{{brands.bluesky}}}
+              {{{icon "comm" "bluesky" 18 18}}}
               Bluesky
             </span>
 
@@ -468,9 +467,39 @@
             ></input>
           </label>
 
+          <label class="form-item" for="contact-opt-matrix">
+            <span class="flex-space">
+              {{{icon "comm" "matrix" 18 18}}}
+              Matrix
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="@username:matrix.org"
+              name="contact-opt-matrix"
+              id="contact-opt-matrix"
+            ></input>
+          </label>
+
+          <label class="form-item" for="contact-opt-discord">
+            <span class="flex-space">
+              {{{icon "comm" "discord" 18 18}}}
+              Discord
+            </span>
+
+            <input
+              type="text"
+              class="text"
+              placeholder="username1234"
+              name="contact-opt-discord"
+              id="contact-opt-discord"
+            ></input>
+          </label>
+
           <label class="form-item" for="contact-opt-twitter">
             <span class="flex-space">
-              {{{brands.x}}}
+              {{{icon "comm" "twitter" 18 18}}}
               X/Twitter
             </span>
 
@@ -532,7 +561,7 @@
 
           <label class="form-item" for="payment-paypal-email">
             <span class="flex-space">
-              {{{brands.paypal}}}
+              {{{icon "comm" "paypal" 18 18}}}
               PayPal E-mail
             </span>
 
