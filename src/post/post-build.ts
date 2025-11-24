@@ -31,7 +31,7 @@ for ( const htmlFile of [
 
   minifyHTML(readTextFile(htmlPath), {
     collapseBooleanAttributes: true,
-    collapseWhitespaces: "all",
+    // collapseWhitespaces: "all",
     filename: htmlFile,
     minifyCss: true,
     minifyJs: true,
