@@ -25,29 +25,30 @@
 }
 
 .illust-items {
-  padding-top: 2em;
+  padding: 1em 0;
 }
 
 .illust-gall {
   gap: .6em;
 }
 
-.col-4, .col-3 {
+.col-4 {
   column-count: 2;
 }
 
+.col-3,
 .col-2 {
   column-count: 1;
 }
 
 @media (width >= 700px) {
-#illustrations {
-  & > .section-inner {
-    // padding: 2em;
-    // padding-top: 0;
-    padding-bottom: 2.5em;
-  }
-}
+// #illustrations {
+//   & > .section-inner {
+//     // padding: 2em;
+//     // padding-top: 0;
+//     padding-bottom: 2.5em;
+//   }
+// }
 
 .col-4 {
   column-count: 4;

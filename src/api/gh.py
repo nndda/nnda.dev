@@ -264,7 +264,7 @@ contrib_graph_grids: int = 16 * 10
 #     "arr": contribs_data["arr"]["yearly"][-contrib_graph_grids:],
 # }))
 
-write_txt_file(os.path.join(script_dir, "out/overview-stats.json"), json.dumps({
+final_json_str: str = json.dumps({
     "contribs": {
         "first": format_date(now - timedelta(contrib_graph_grids)),
         "last": format_date(now),
@@ -280,4 +280,7 @@ write_txt_file(os.path.join(script_dir, "out/overview-stats.json"), json.dumps({
             , 2),
         ] for lang in lang_data_top_5_arr
     },
-}))
+}, separators=(",", ":"))
+
+write_txt_file(os.path.join(script_dir, "out/overview-stats.json"), final_json_str)
+write_txt_file(os.path.join(script_dir, "../public/overview-stats.json"), final_json_str)

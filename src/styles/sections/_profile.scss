@@ -67,7 +67,7 @@
   white-space: nowrap;
 
   & > b {
-    animation: c 7.5s infinite;
+    animation: c 3.5s infinite;
     margin: .15em 0;
     font-weight: 400;
   }
@@ -239,7 +239,7 @@ p.about {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+// @media (prefers-reduced-motion: no-preference) {
   #profile .icon-text {
     transition:
       opacity .3s ease-out,
@@ -256,7 +256,7 @@ p.about {
       opacity: 0;
     }
   }
-}
+// }
 
 // @include mobile.style;
 @include desktop.style;

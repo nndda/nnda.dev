@@ -5,7 +5,7 @@ const DATA: any = async () => { return _.merge({
 
   site: {
     author: "nnda",
-    title: "nnda's Archive",
+    title: "nnda's corner of the internet",
     note: `This website is licensed under the GNU GPLv3.\nThe source code is available in the public repository.`,
 
     authorProfile: {
@@ -83,6 +83,8 @@ const DATA: any = async () => { return _.merge({
 import {
   exists,
   createResolver,
+  writeTextFile,
+  type DirResolver,
 } from "../scripts/build/utils";
 
 import "dotenv/config";
@@ -94,7 +96,10 @@ import {
 import cronParser from "cron-parser";
 import _ from "lodash";
 
-const siteExtPath: string = createResolver(__dirname)("./site-ext.js");
+const
+  abs: DirResolver = createResolver(__dirname)
+, siteExtPath: string = abs("./site-ext.js")
+;
 
 // ============================================================================
 
@@ -163,5 +168,8 @@ const
     ),
   )
 ;
+
+import postsFeed from "./social-posts";
+writeTextFile(abs("../public/posts-feed.json"), JSON.stringify(postsFeed));
 
 export default DATA();

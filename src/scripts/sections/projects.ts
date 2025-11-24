@@ -158,6 +158,7 @@ import projectsData from "../../data/site-projects";
 
 interface ProjectItem {
   name: string,
+  logo?: string,
   url: string,
   description: string,
   tags: string[],
@@ -176,7 +177,7 @@ const
         class="project card ${Object.hasOwn(data, "classes") ? data.classes : ""}" data-name="${data.name}"
       >
 
-        <div class="
+        <h2 class="
           project-title
           ">
           <a href="${data.url}"
@@ -184,9 +185,14 @@ const
             rel="noopener noreferrer"
             referrerpolicy="origin"
           >
+            ${
+              Object.hasOwn(data, "logo") ? `
+                <img src="${data.logo}">
+              ` : ""
+            }
             ${data.name}
           </a>
-        </div>
+        </h2>
 
         ${
           Object.hasOwn(data, "xtraHTML") ? `

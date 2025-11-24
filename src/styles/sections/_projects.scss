@@ -66,51 +66,15 @@
   // }
 }
 
-@media (width <= 700px) {
-#projects {
-  & > .section-inner {
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-}
+.project-items {
+  min-height: 610px;
 }
 
-@media (width >= 700px) {
-#projects {
-  & > .section-inner {
-    & > .project-items {
-      display: grid;
-      grid-template-areas: 
-        "theatre theatre itch  website"
-        "theatre theatre pitch pitch"
-        "filler  obscura pitch pitch"
-      ;
-      grid-gap: 1.1em;
-      padding: 2em 1em;
-    }
-  }
-}
-
-.project[data-name="Pitch"] {
-  grid-area: pitch;
-  min-height: 350px;
-  // max-height: 350px;
-}
-
-.project[data-name="Theatre"] {
-  grid-area: theatre;
-  min-height: 350px;
-  // max-height: 350px;
-}
-.project[data-name="My itch.io profile page"] {
-  grid-area: itch;
-}
-
-.project[data-name="nnda.dev"] {
-  grid-area: website;
-}
-
-.project[data-name="Obscura"] {
-  grid-area: obscura;
-}
-}
+// @media (width <= 700px) {
+// #projects {
+//   & > .section-inner {
+//     padding-top: 2em;
+//     padding-bottom: 2em;
+//   }
+// }
+// }

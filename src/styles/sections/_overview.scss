@@ -199,13 +199,13 @@
 .stacks-lists {
   min-height: 3.5em;
 
-  & ul {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    margin-right: 1em;
-  }
+//   & ul {
+//     position: relative;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: start;
+//     margin-right: 1em;
+//   }
 }
 
 .socials-lists {
@@ -238,10 +238,14 @@
 .stacks-lists {
   padding-bottom: 1em;
 
-  & > ul.nostyle {
-    flex-wrap: wrap;
-    gap: 1.5em;
-  }
+  // & > ul.nostyle {
+  //   flex-wrap: wrap;
+  //   gap: 1.5em;
+  // }
+
+  // & ul > li {
+  //   flex-grow: 1;
+  // }
 }
 
 .lang-stacks {
@@ -269,10 +273,10 @@
 
 @media (width > 700px) {
 #overview {
-  padding-bottom: 3em;
+  // padding-bottom: 3em;
 
   & > .section-inner {
-    padding-bottom: 2em;
+    // padding-bottom: 2em;
 
     & > div {
       max-width: 1080px;

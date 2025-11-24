@@ -7,8 +7,32 @@
 //   }
 // }
 
+.project-items {
+  display: grid;
+  grid-template-columns: auto auto;
+  // grid-template-areas: 
+  //   "theatre theatre"
+  //   "pitch pitch"
+  //   "itch website"
+  //   "obscura filler"
+  // ;
+  grid-gap: 1em;
+  padding: 1em 0;
+  // padding: 2em 1em;
+}
+
+.project {
+  font-size: .85em;
+}
+
+.project[data-name="Pitch"],
+.project[data-name="Theatre"] {
+  grid-column: span 2;
+  font-size: unset;
+}
+
 .project.card {
-  margin-bottom: 1.5em;
+  // margin-bottom: 1.5em;
 }
 }
 }

@@ -1,16 +1,31 @@
 @mixin style {
 @media (width <= 700px) {
-#overview,
-#links {
+
+// main {
+//   & > section {
+//     & > .section-inner {
+//       padding-top: 2em;
+//       padding-bottom: 2em;
+//     }
+//   }
+// }
+
+// .heading-hr {
+//   padding-top: 0;
+//   margin-bottom: 1em;
+// }
+
+#overview {
+// #links {
   padding-left: 1.25em;
   padding-right: 1.25em;
 }
 
-#links {
-  & .section-inner {
-    padding: 0;
-  }
-}
+// #links {
+//   & .section-inner {
+//     padding: 0;
+//   }
+// }
 
 .heading-left-sticky {
   padding-top: 1.25em;

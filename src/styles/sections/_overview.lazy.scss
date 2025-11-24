@@ -101,7 +101,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
+    justify-content: space-between;
     margin-right: 0;
     gap: .7em;
   }
@@ -158,7 +158,8 @@ $action-bg: color.mix($background, $background-dark, 50%);;
   $border-col: color.mix($text, $background-dark, 11.5%);
 
   padding-bottom: 1em;
-  overflow-x: scroll;
+  overflow: hidden;
+  // overflow-y: scroll;
 
   // $shadow-col: rgba($background-dark, 80%);
   // background: $shadow-col;
@@ -201,6 +202,27 @@ $action-bg: color.mix($background, $background-dark, 50%);;
     & h3 {
       padding-top: .5em;
     }
+
+    & pre {
+      white-space: wrap;
+      overflow: auto;
+      display: block;
+      background: $background-dark;
+      margin: .5em 0;
+      padding: 1em .5em;
+    }
+
+    & .content {
+      & > a {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // filter: blur(5px);
+        color: $secondary;
+      }
+    }
   }
 
   & .content {
@@ -230,10 +252,11 @@ $action-bg: color.mix($background, $background-dark, 50%);;
 
   & > ul {
     column-count: 4;
-    column-width: 25%;
     column-fill: balance;
     column-rule: 1px solid color.mix($text, $background-dark, 7.5%);
     gap: 1.25em;
+
+    // padding-right: 1.25em;
 
     & > li {
       margin-bottom: .8em;
@@ -414,6 +437,39 @@ $action-bg: color.mix($background, $background-dark, 50%);;
   // }
 }
 
+// .social-see-more {
+//   display: flex;
+//   align-items: center;
+//   gap: 1em;
+
+//   & > .hr {
+//     flex-grow: 1;
+//   }
+
+//   & > label {
+//     width: fit-content;
+//     margin: auto;
+//   }
+
+//   .open {
+//     display: none;
+//   }
+// }
+
+// #social-see-more {
+//   &:checked {
+//     & + label {
+//       & > .closed {
+//         display: none;
+//       }
+
+//       & > .open {
+//         display: inline;
+//       }
+//     }
+//   }
+// }
+
 .stacks-lists {
   & .icon {
     @include nth-loop(1, 7) using ($i) {
@@ -422,3 +478,21 @@ $action-bg: color.mix($background, $background-dark, 50%);;
   }
 }
 // }
+
+@media (width <= 700px) {
+.content-container {
+  font-size: .85em;
+}
+
+.stacks-lists {
+  & > ul.nostyle {
+    flex-wrap: wrap;
+    gap: 1.5em;
+  }
+
+  & ul > li {
+    flex-grow: 1;
+  }
+}
+
+}

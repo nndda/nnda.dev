@@ -341,7 +341,7 @@ createMiniIconDefs("links", {
   "links": toHTML(faLink),
   "heart": toHTML(faHeart),
   "github": siGithub.svg,
-  "githubsponsors": siGithubsponsors.svg,
+  // "githubsponsors": siGithubsponsors.svg,
   "itchdotio": siItchdotio.svg,
   "artstation": siArtstation.svg,
   "mastodon": siMastodon.svg,
@@ -351,8 +351,8 @@ createMiniIconDefs("links", {
   "patreon": siPatreon.svg,
   "kofi": siKofi.svg,
   "liberapay": siLiberapay.svg,
-  "tiktok": siTiktok.svg,
-  "youtube": siYoutube.svg,
+  // "tiktok": siTiktok.svg,
+  // "youtube": siYoutube.svg,
 });
 
 createMiniIconDefs("shop", {

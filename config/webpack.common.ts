@@ -66,6 +66,11 @@ export default {
   } as HtmlBundlerPlugin.PluginOptions,
 
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        abs("./src/public/"),
+      ],
+    }),
   ] as unknown as webpack.DefinePlugin[],
 
   moduleRules: [
