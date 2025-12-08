@@ -22,7 +22,7 @@
     "@eslint/compat": "^2.0.0",
     "@eslint/js": "^9.39.1",
     "@swc/html": "^1.15.3",
-    "@types/lodash": "^4.17.20",
+    "@types/lodash": "^4.17.21",
     "@types/node": "^24.10.1",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.22",
@@ -46,7 +46,7 @@
     "sass": "^1.94.2",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
-    "stylelint": "^16.25.0",
+    "stylelint": "^16.26.0",
     "stylelint-config-standard-scss": "^16.0.0",
     "ts-loader": "^9.5.4",
     "tsx": "^4.20.6",
@@ -64,6 +64,6 @@
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^15.21.0"
+    "simple-icons": "^15.22.0"
   }
 }
