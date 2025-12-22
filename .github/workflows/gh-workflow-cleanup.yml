@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Clean up workflows
         run: chmod +x ./util/gh-workflow-cleanup.sh && ./util/gh-workflow-cleanup.sh
