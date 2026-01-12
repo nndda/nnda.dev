@@ -51,7 +51,7 @@
     "ts-loader": "^9.5.4",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0",
+    "typescript-eslint": "^8.50.1",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
@@ -64,6 +64,6 @@
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^16.2.0"
+    "simple-icons": "^16.3.0"
   }
 }
