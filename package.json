@@ -16,17 +16,17 @@
   "author": "nnda",
   "license": " GPL-3.0-or-later",
   "engines": {
-    "node": ">=25.2.1"
+    "node": ">=25.5.0"
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/js": "^9.39.2",
     "@swc/html": "^1.15.5",
     "@types/lodash": "^4.17.21",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.0.10",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.23",
-    "chokidar": "^4.0.3",
+    "chokidar": "^5.0.0",
     "concurrently": "^9.2.1",
     "copy-webpack-plugin": "^13.0.1",
     "cron-parser": "^5.4.0",
@@ -34,7 +34,7 @@
     "cssnano": "^7.1.2",
     "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
-    "globals": "^16.5.0",
+    "globals": "^17.2.0",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
     "html-bundler-webpack-plugin": "^4.22.0",
@@ -46,8 +46,8 @@
     "sass": "^1.96.0",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
-    "stylelint": "^16.26.1",
-    "stylelint-config-standard-scss": "^16.0.0",
+    "stylelint": "^17.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
     "ts-loader": "^9.5.4",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
@@ -64,6 +64,6 @@
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "modern-normalize": "^3.0.1",
-    "simple-icons": "^15.21.0"
+    "simple-icons": "^16.6.1"
   }
 }
