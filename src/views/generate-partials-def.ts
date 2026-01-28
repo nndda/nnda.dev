@@ -19,7 +19,7 @@ console.log("Scanning for Handlebars partials...")
 const
   abs: DirResolver = createResolver(__dirname)
 , partialsPath: string = abs("./partials/")
-, reHbs: RegExp = new RegExp("\.hbs$")
+, reHbs: RegExp = /\.hbs$/
 
 , partialsObj: Record<string, string> = {}
 ;
