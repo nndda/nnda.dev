@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.2",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
@@ -37,7 +37,7 @@
     "css-loader": "^7.1.2",
     "cssnano": "^7.1.2",
     "dotenv": "^17.2.3",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "globals": "^17.3.0",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
