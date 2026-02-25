@@ -13,19 +13,18 @@ import packageJSON from "../../../package.json";
 
 writeTextFile(abs("./out/attribution.json"), JSON.stringify(_.sortBy([
 
-  ..._.entries(packageJSON.devDependencies).map(i => i[0] + "pkg-d"),
-  ..._.entries(packageJSON.dependencies).map(i => i[0] + "pkg-r"),
+  ..._.entries(packageJSON.devDependencies).map(i => i[0] + "1"),
 
   ...readTextFile(abs("../../../config/requirements.txt"))
     .split("\n")
-    .map(i => i.split("==")[0] + "pythn"),
+    .map(i => i.split("==")[0] + "2"),
 
   ...[
     "googlefonts/zen-kakugothic",
     "canonical/Ubuntu-Sans-Mono-fonts",
     "IBM/plex",
     "SAWARATSUKI/KawaiiLogos",
-  ].map(i => i + "   gh"),
+  ].map(i => i + "3"),
 
   ...[
     "css-loaders.com"

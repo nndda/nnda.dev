@@ -8,7 +8,7 @@
 	// position: relative;
 	// padding-bottom: 1.5em;
 	// white-space: nowrap;
-	font-size: .7em;
+	font-size: .75em;
 	// overflow: hidden;
 	text-align: center;
 
@@ -28,22 +28,34 @@
 	& a {
 		display: inline-block;
 		margin: .3em;
+		opacity: .9;
 		font-family: "Ubuntu Sans Mono", monospace;
 		text-decoration: none;
 
 		&:hover {
 			text-decoration: underline;
 		}
+
+		& > svg {
+			height: 1em;
+			width: 1em;
+			margin-right: .5em;
+		}
+
+		// &.has-icon {
+		// 	opacity: 1;
+		// 	font-weight: bold;
+		// }
 	}
 }
 
-.pkg-d {
-	color: color.mix($secondary, $text, 30%);
-}
+// .pkg-d {
+// 	color: color.mix($secondary, $text, 30%);
+// }
 
-.pkg-r {
-	color: color.mix($primary, $text, 30%);
-}
+// .pkg-r {
+// 	color: color.mix($primary, $text, 30%);
+// }
 
 // @keyframes pkg {
 // 	0% {

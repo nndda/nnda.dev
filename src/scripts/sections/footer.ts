@@ -1,6 +1,8 @@
 import packageJSON from "../build/out/attribution.json" with { type: "json" };
 import initIcon from "../build/icons/footer";
 
+import iconsAttr from "../build/icons/footer.attributions";
+
 function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((now - date.getTime()) / 36e5);
 
@@ -46,25 +48,29 @@ const
 
 , pkgAttrHTMLStr: string = (packageJSON as string[]).map((pkg: string) => {
     const
-      pkgName: string = pkg.slice(0, -5)
-    , pkgId: string = pkg.slice(-5)
+      pkgName: string = pkg.slice(0, -1)
+    , pkgId: string = pkg.slice(-1)
+
+    , hasIcon: boolean = pkgName in iconsAttr
     ;
 
     let
       pkgUrl: string = ""
     ;
 
-    if (pkgId.startsWith("pkg")) {
+    if (pkgId == "1") {
       pkgUrl = `www.npmjs.com/package/${pkgName}`;
-    } else if (pkgId === "pythn") {
+    } else if (pkgId == "2") {
       pkgUrl = `pypi.org/project/${pkgName}`;
-    } else if (pkgId === "   gh") {
+    } else if (pkgId == "3") {
       pkgUrl = `github.com/${pkgName}`;
     } else {
       pkgUrl = pkgName;
     }
 
-    return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId}"> ${pkgName} </a>`;
+    return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId} ${hasIcon ? "has-icon" : ""}">${
+      (hasIcon) ? window.buildSvg(iconsAttr[pkgName], 13, 13) : ""
+    }${pkgName} </a>`;
   }).join("")
 ;
 

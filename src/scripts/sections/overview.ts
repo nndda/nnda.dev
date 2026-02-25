@@ -100,5 +100,5 @@ fetch("/overview-stats.json")
   })
 ;
 
-import socials from "./overview.socials";
-socials();
+// import socials from "./overview.socials";
+// socials();

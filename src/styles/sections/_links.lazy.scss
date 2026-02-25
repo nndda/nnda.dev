@@ -64,18 +64,18 @@
   color: $color;
 
   & > a {
-    color: if(
-      $color_override != null,
-      $color_override,
-      color.mix($color, white, 50%)
-    );
+    @if $color_override != null {
+      color: $color_override;
+    } @else {
+      color: color.mix($color, white, 50%);
+    }
 
     & svg {
-      fill: if(
-        $color_override != null,
-        $color_override,
-        $color
-      );
+      @if $color_override != null {
+        fill: $color_override;
+      } @else {
+        fill: $color;
+      }
     }
   }
 }
