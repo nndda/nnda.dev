@@ -12,7 +12,7 @@
       <div class="flex-space"></div>
       <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">
         {{!-- {{{iconFAS.bars}}} --}}
-        <svg data-i="bars" height="18" width="20"></svg>
+        <svg data-i="bars" class="global" height="18" width="20"></svg>
       </button>
     </div>
 
@@ -85,13 +85,13 @@
       {{#each nav.links}}
         {{#if this.external}}
           <li>
-            <a href="{{this.url}}" class="nav-link"
+            <a href="https://{{this.url}}" class="nav-link"
               aria-label="{{this.url}}"
               target="_blank"
               rel="nofollow noopener noreferrer"
               referrerpolicy="no-referrer"
             >
-              {{{this.iconLazy}}}
+              {{{this.icon}}}
               {{{this.name}}}
             </a>
           </li>
