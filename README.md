@@ -54,6 +54,6 @@ My personal static site. (Almost) vanilla, framework-free, modular, &amp; backen
 
 ## License
 
-This website is licensed under [GNU GPLv3](LICENSE).
+This website is licensed under [GNU AGPLv3](LICENSE).
 
 Dual-licensed under proprietary, all-rights-reserved license for my own build 🙃
