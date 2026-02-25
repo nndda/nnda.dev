@@ -106,6 +106,15 @@ import {
   siYoutube,
   // siX,
   type SimpleIcon,
+  siFontawesome,
+  siAutoprefixer,
+  siDotenv,
+  siEslint,
+  siLodash,
+  siPostcss,
+  siSimpleicons,
+  siStylelint,
+  siYaml,
 } from "simple-icons";
 
 // ----------------------------------------------------------------------------
@@ -378,6 +387,23 @@ createMiniIconDefs("overview.socials", {
   "likes": toHTML(faHeart),
   "replies": toHTML(faComment),
   "shares": toHTML(faRetweet),
+});
+
+createMiniIconDefs("footer.attributions", {
+  "@fortawesome/fontawesome-svg-core": siFontawesome.svg,
+  "autoprefixer": siAutoprefixer.svg,
+  // "dotenv": siDotenv.svg,
+  // "eslint": siEslint.svg,
+  "handlebars": siHandlebarsdotjs.svg,
+  // "lodash": siLodash.svg,
+  "postcss": siPostcss.svg,
+  "sass": siSass.svg,
+  "simple-icons": siSimpleicons.svg,
+  "stylelint": siStylelint.svg,
+  "typescript": siTypescript.svg,
+  "webpack": siWebpack.svg,
+  // "yaml": siYaml.svg,
+  "wrangler": siCloudflare.svg,
 });
 
 console.log("Finished updating & tree-shaking icons.");
