@@ -6,7 +6,9 @@ const DATA: any = async () => { return _.merge({
   site: {
     author: "nnda",
     title: "nnda's corner of the internet",
-    note: `This website is licensed under the GNU GPLv3.\nThe source code is available in the public repository.`,
+    description: "My little slice of the internet. An all-in-one hub for my stuff. Where I dump my projects, illusts., and my yapping.",
+
+    note: `This website is licensed under the GNU AGPLv3.\nThe source code is available in the public repository.`,
 
     authorProfile: {
       status: {

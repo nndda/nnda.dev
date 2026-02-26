@@ -178,7 +178,7 @@
   border-radius: 9px;
   overflow: auto;
 
-  @include style-scrollbar;
+  @include style-scrollbar($secondary);
 }
 .dlg-scope,
 .dlg-actor {
