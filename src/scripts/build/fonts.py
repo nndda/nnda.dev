@@ -57,6 +57,14 @@ fonts: Any = {
       "weights": [400],
     },
 
+    # Decorative
+    "hi-melody": {
+      "text": "".join([
+        "です",
+        "~!",
+      ]),
+      "weights": [400],
+    },
 }
 
 print("Subsetting fonts...")
