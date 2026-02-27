@@ -1,6 +1,6 @@
 export default function (d: Document): void {
   const
-    documentWindow: Window = document.defaultView as Window
+    documentWindow: Window = d.defaultView as Window
 
   , headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
 
@@ -28,9 +28,11 @@ export default function (d: Document): void {
   let
     scrollPosition: number = 0
   , scrollRatio: number = 0
+
+  , ticking: boolean = false
   ;
 
-  backTop.addEventListener("click", () => {
+  backTop.addEventListener("click", (): void => {
     documentWindow.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -51,14 +53,6 @@ export default function (d: Document): void {
     });
   }
 
-
-  // function toggleHeaderFn(toggle: boolean): void {
-  //   requestAnimationFrame(() => {
-  //     headerClasses.toggle("active", toggle);
-  //     backTop.classList.toggle("active", toggle);
-  //   });
-  // }
-
   window.observe((
     entry: IntersectionObserverEntry,
     ): void => {
@@ -68,35 +62,43 @@ export default function (d: Document): void {
       });
   })(d.getElementById("home") as HTMLElement);
 
+  function scrollTransform(): void {
+    scrollRatio = scrollPosition / window.innerHeight;
+
+    if (scrollPosition / window.innerHeight <= 1) {
+      illustContStyle.transform = `translateY(-${scrollRatio * 250}px)`;
+      selfTitleContStyle.transform = `translateY(-${scrollRatio * 170}px)`;
+
+      selfTitle1Style.transform = `translateY(-${scrollRatio * 30}px)`;
+      selfTitle2Style.transform = `translateY(-${scrollRatio * 60}px)`;
+      selfTitle3Style.transform = `translateY(-${scrollRatio * 90}px)`;
+    }
+    ticking = false;
+  }
 
   function scrollEv(): void {
+    if (!ticking) {
+      scrollPosition = window.scrollY;
+      ticking = true;
 
-    scrollRatio = window.scrollY / window.innerHeight;
+      requestAnimationFrame(scrollTransform);
 
-    illustContStyle.transform = `translateY(-${scrollRatio * 250}px)`;
-    selfTitleContStyle.transform = `translateY(-${scrollRatio * 170}px)`;
-
-    selfTitle1Style.transform = `translateY(-${scrollRatio * 30}px)`;
-    selfTitle2Style.transform = `translateY(-${scrollRatio * 60}px)`;
-    selfTitle3Style.transform = `translateY(-${scrollRatio * 90}px)`;
-
-    scrollPosition = d.documentElement.scrollTop || d.body.scrollTop;
-
-    if (sections[0].offsetTop <= scrollPosition) {
-      for (let i = 0; i < sections.length; i++) {
-        if (sections[i].offsetTop <= scrollPosition) {
-          requestAnimationFrame(() => {
-            deactivateLinks(navLinksClass[i]);
-            mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
-          });
-        } else {
-          break;
+      if (sections[0].offsetTop <= scrollPosition) {
+        for (let i = 0; i < sections.length; i++) {
+          if (sections[i].offsetTop <= scrollPosition) {
+            requestAnimationFrame((): void => {
+              deactivateLinks(navLinksClass[i]);
+              mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
+            });
+          } else {
+            break;
+          }
         }
-      }
 
-    } else {
-      deactivateLinks();
-      mobileNavSectLabel.textContent = "";
+      } else {
+        deactivateLinks();
+        mobileNavSectLabel.textContent = "";
+      }
     }
   }
 
