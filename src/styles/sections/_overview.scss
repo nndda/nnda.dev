@@ -164,6 +164,7 @@
       grid-template-rows: repeat($r, $sqr-h + $sqr-h-gap);
       grid-template-columns: repeat($c, $sqr-w + $sqr-w-gap);
       justify-items: center;
+      margin: auto;
     }
   }
 
@@ -246,6 +247,10 @@
   // & ul > li {
   //   flex-grow: 1;
   // }
+}
+
+.mobile-br {
+  flex-basis: 100%;
 }
 
 .lang-stacks {

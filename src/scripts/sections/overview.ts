@@ -45,9 +45,9 @@ fetch("/overview-stats.json")
     , stacksEl: HTMLElement = overviewEl.querySelector(".stacks-lists>ul") as HTMLElement
     , stacksHTML: string = stacksData.map(
         (
-          data: StacksData
+          data: StacksData | "mobile-br"
         ): string => {
-          return `
+          return data == "mobile-br" ? `<li class="mobile-br"></li>` : `
             <li class="anim fade float-up">
               <ul class="nostyle">
                 ${

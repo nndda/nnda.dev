@@ -25,9 +25,9 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "@swc/html": "^1.15.13",
+    "@swc/html": "^1.15.17",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^25.3.1",
+    "@types/node": "^25.3.2",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.4.27",
     "chokidar": "^5.0.0",
@@ -57,10 +57,10 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
-    "webpack": "^5.105.2",
+    "webpack": "^5.105.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
-    "wrangler": "^4.68.1",
+    "wrangler": "^4.69.0",
     "yaml": "^2.8.2"
   }
 }

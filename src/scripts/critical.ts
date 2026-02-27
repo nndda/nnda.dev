@@ -173,13 +173,8 @@ window.loadCSS = function (url: string): Promise<void> {
     style.rel = "stylesheet";
     document.head.appendChild(style);
 
-    style.addEventListener("load", (): void => {
-      resolve();
-    });
-
-    style.addEventListener("error", (): void => {
-      reject();
-    });
+    style.addEventListener("load", resolve);
+    style.addEventListener("error", reject);
   });
 }
 
