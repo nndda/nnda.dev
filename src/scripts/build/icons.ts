@@ -231,7 +231,6 @@ createIconDefs(
 createIconDefsGrouped(
   "home",
   [
-    faAngleDown,
     faComputerMouse,
     faPaintBrush,
   ],
@@ -298,6 +297,7 @@ createIconDefsGrouped(
 createIconDefsGrouped(
   "global",
   [
+    faAngleDown,
     faBars,
     faBasketShopping,
   ],
