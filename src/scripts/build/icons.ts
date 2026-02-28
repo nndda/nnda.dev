@@ -228,6 +228,16 @@ createIconDefs(
   ],
 );
 
+createMiniIconDefs("input", {
+  // "down": toHTML(faCaretDown),
+  // "up": toHTML(faCaretUp),
+  "sq": toHTML(faSquare),
+  "sqChk": toHTML(faCheckSquare),
+  "cir": toHTML(faCircle),
+  "cirChk": toHTML(faCircleCheck),
+  // "x": toHTML(faX),
+});
+
 createIconDefsGrouped(
   "home",
   [
