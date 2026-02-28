@@ -21,37 +21,28 @@
   }
 }
 
-#navbar-desktop-header {
+#navbar {
   display: flex;
+  justify-content: end;
   flex-grow: 1;
 
-  & > nav {
-    & > ul {
-      display: flex;
+  & > ul {
+    display: flex;
 
-      & > li {
-        padding: .8em;
-        box-sizing: border-box;
+    & > li {
+      padding: .8em;
+      box-sizing: border-box;
 
-        letter-spacing: .1em;
+      letter-spacing: .1em;
 
-        & svg { /* stylelint-disable-line */
-          height: 1.1em;
-        }
+      & svg { /* stylelint-disable-line */
+        height: 1.1em;
       }
     }
   }
 }
 
-#navbar-button {
-  display: none;
-}
-
-#navbar-mobile-header {
-  display: none;
-}
-
-#navbar-mobile {
+#navbar-button, #navbar-collapse {
   display: none;
 }
 
