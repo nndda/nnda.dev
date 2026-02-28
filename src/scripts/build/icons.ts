@@ -180,16 +180,16 @@ function createIconDefsGrouped(
     +
     [
       ...faIcons.map(ico => {
-        return `"${ico.iconName}": ${parseCompressSvg(fa2HTML(ico))}`
+        return `"${ico.iconName}": ${JSON.stringify(svgMin2path(fa2HTML(ico)))}`
         // return `"${ico.iconName}": \`${fa2HTML(ico).replace(reAttr, "")}\``
       }),
       ...siIcons.map(ico => {
-        return `"${ico.slug}": ${parseCompressSvg(ico.svg)}`
+        return `"${ico.slug}": ${JSON.stringify(svgMin2path(ico.svg))}`
         // return `"${ico.slug}": \`${ico.svg.replace(reAttr, "")}\``
       }),
       ...Object.entries(iconsOther)
         .map(([ico, svg]) => {
-          return `"${ico}": ${parseCompressSvg(svg)}`
+          return `"${ico}": ${JSON.stringify(svgMin2path(svg))}`
           // return `"${ico}": \`${svg.replace(reAttr, "")}\``
         }),
     ].join(",")
