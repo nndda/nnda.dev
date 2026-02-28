@@ -40,10 +40,14 @@
 //   }
 // }
 
+// .project:has(.project-title a:hover) {
+//   outline: 1px solid $text-secondary;
+// }
+
 .project-title {
   margin: 0;
-  padding: .5em;
-  padding-left: 0;
+  padding: 0;
+  padding-bottom: .5em;
   // padding-left: 1em;
   // background: linear-gradient(
   //   to right,
@@ -64,12 +68,32 @@
     display: flex;
     align-items: center;
     gap: .5em;
-    text-decoration: none;
+    text-decoration-color: color.mix($text, $background-dark, 70%);
+
+    &:not(:hover) {
+      text-decoration: none;
+    }
   }
 
   & img {
     max-height: 2em;
   }
+}
+
+.project[data-name="Theatre"] .project-title a {
+  color: #3fd4f2;
+}
+.project[data-name="Pitch"] .project-title a {
+  color: #fc3a78;
+}
+
+:is(
+  .project[data-name="Theatre"],
+  .project[data-name="Pitch"]
+) .project-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: .1em;
 }
 
 // .labels-container {
