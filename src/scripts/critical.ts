@@ -52,8 +52,9 @@ window.p = function (selector: string, iconSets: Record<string, string[]>): void
       }
 
       iconEl.setAttribute("viewBox", iData[0]);
-      iconEl.innerHTML = iData[1];
-      iconEl.classList.toggle("loaded", true);
+      iconEl.innerHTML = `<path fill="currentColor" d="` + iData[1] + `"></path>`;
+      // iconEl.classList.toggle("loaded", true);
+      iconEl.classList.add("loaded");
     }
 
     // for (let i: number = iconEls.length; i-- > 0;) {
