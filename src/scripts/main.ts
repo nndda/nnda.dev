@@ -5,25 +5,27 @@ import initIcon from "./build/icons/global";
        initIcon();
 
 export default function (d: Document): void {
-
   const
-    navbarMobile: HTMLElement = d.getElementById("navbar-mobile") as HTMLElement
-  , navbarButton: HTMLElement = d.getElementById("navbar-button") as HTMLButtonElement
-  , navbarCollapseArea: HTMLElement = d.getElementById("collapse-trigger-area") as HTMLElement
-
+    navbarClasses: DOMTokenList = (d.getElementById("navbar") as HTMLElement).classList
+  , collapseArea: HTMLElement = (d.getElementById("collapse-area") as HTMLElement)
   ;
 
-  function toggleNavMobile(): void {
-    navbarMobile.classList.toggle("collapsed");
-    navbarCollapseArea.classList.toggle("hidden");
-  }
-
-  navbarMobile.querySelectorAll(".nav-link").forEach(el => {
-    el.addEventListener("click", toggleNavMobile);
+  (d.getElementById("navbar-button") as HTMLButtonElement).addEventListener("click", (): void => {
+    navbarClasses.add("toggled");
+    collapseArea.classList.remove("hidden-o");
   });
 
-  navbarButton.addEventListener("click", toggleNavMobile);
-  navbarCollapseArea.addEventListener("click", toggleNavMobile);
+  function closeMobileNavbar(): void {
+    navbarClasses.remove("toggled");
+    collapseArea.classList.add("hidden-o");
+  }
+
+  (d.getElementById("navbar-collapse") as HTMLButtonElement).addEventListener("click", closeMobileNavbar);
+  collapseArea.addEventListener("click", closeMobileNavbar);
+
+  for (const navLink of d.querySelectorAll("#navbar .nav-link")) {
+    navLink.addEventListener("click", closeMobileNavbar);
+  }
 
   initializeInputs(d);
 

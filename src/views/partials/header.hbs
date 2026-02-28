@@ -6,101 +6,62 @@
       </a>
     </div>
 
-    <div id="navbar-mobile-header">
+    <div id="mobile-nav-sect-label"></div>
+
+    <nav id="navbar" class="shown">
+      <ul class="nostyle">
+        {{#each nav.links}}
+          {{#unless this.external}}
+            <li class="scrollspy">
+              <a href="/{{this.url}}" class="nav-link">
+                {{{this.icon}}}
+                {{{this.name}}}
+              </a>
+            </li>
+          {{/unless}}
+        {{/each}}
+
+        <li>
+          <a href="404.html" class="nav-link nav-link-btn">
+            <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
+            Shop
+          </a>
+        </li>
+      </ul>
+
       <div class="vseparator"></div>
-      <div id="mobile-nav-sect-label"></div>
-      <div class="flex-space"></div>
-      <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">
-        {{!-- {{{iconFAS.bars}}} --}}
-        <svg data-i="bars" class="global" height="18" width="20"></svg>
+
+      <ul class="nostyle ext-links">
+        {{#each nav.links}}
+          {{#if this.external}}
+            <li>
+              <a href="https://{{this.url}}" class="nav-link"
+                target="_blank"
+                rel="me nofollow noopener noreferrer"
+                referrerpolicy="no-referrer"
+                aria-label="{{this.url}}"
+              >
+                {{{this.icon}}}
+                {{{this.name}}}
+              </a>
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+
+      <button aria-label="Close Navbar Button" class="nav-link-btn icon-only" id="navbar-collapse">
+        {{{icon "home" "angle-down" 36 48}}}
       </button>
-    </div>
+    </nav>
 
-    <div id="navbar-desktop-header">
-      <div class="flex-space"></div>
-      <nav>
-        <ul class="nav-inner-center nostyle">
-          {{#each nav.links}}
-            {{#unless this.external}}
-              <li class="scrollspy">
-                <a href="/{{this.url}}" class="nav-link">
-                  {{{this.icon}}}
-                  {{{this.name}}}
-                </a>
-              </li>
-            {{/unless}}
-          {{/each}}
-
-          <li>
-            <a href="404.html" class="nav-link nav-link-btn">
-              {{!-- {{{iconFAS.basket_shopping}}} --}}
-              <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
-              Shop
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="vseparator"></div>
-
-      <nav>
-        <ul class="nav-inner-right nostyle">
-          {{#each nav.links}}
-            {{#if this.external}}
-              <li>
-                <a href="https://{{this.url}}" class="nav-link"
-                  target="_blank"
-                  rel="me nofollow noopener noreferrer"
-                  referrerpolicy="no-referrer"
-                  aria-label="{{this.url}}"
-                >
-                  {{{this.icon}}}
-                  {{{this.name}}}
-                </a>
-              </li>
-            {{/if}}
-          {{/each}}
-        </ul>
-      </nav>
-    </div>
+    <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">
+      {{{icon "global" "bars" 18 20}}}
+    </button>
   </div>
-
-  <nav id="navbar-mobile" class="collapsed">
-    <div class="nav-button-container">
-      <button aria-label="Close Button" class="nav-item navbar-button nav-link icon-only blank">{{{iconFAS.xmark}}}</button>
-    </div>
-    <ul class="nostyle">
-      {{#each nav.links}}
-        {{#unless this.external}}
-          <li>
-            <a href="{{this.url}}" class="nav-link">
-              {{{this.icon}}}
-              {{{this.name}}}
-            </a>
-          </li>
-        {{/unless}}
-      {{/each}}
-    </ul>
-    <ul class="nav-vertical nostyle">
-      {{#each nav.links}}
-        {{#if this.external}}
-          <li>
-            <a href="https://{{this.url}}" class="nav-link"
-              aria-label="{{this.url}}"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              referrerpolicy="no-referrer"
-            >
-              {{{this.icon}}}
-              {{{this.name}}}
-            </a>
-          </li>
-        {{/if}}
-      {{/each}}
-    </ul>
-  </nav>
 </header>
-<div id="collapse-trigger-area" class="hidden"></div>
+
+<div id="collapse-area" class="hidden-o"></div>
+
 <div class="back-top-cont">
   <button id="back-top" aria-label="Back to top">
     <div class="chv-l"></div>

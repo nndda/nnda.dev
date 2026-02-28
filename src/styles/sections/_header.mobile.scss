@@ -2,17 +2,13 @@
 
 @mixin style {
 @media (width <= 700px) {
-.navbar-button {
-  width: 1.5em;
 
-  & > svg {
-    fill: $text;
-  }
+.nav-link-btn {
+  margin-top: .5em;
 }
 
-#navbar-mobile-header {
+.ext-links {
   display: flex;
-  flex-grow: 1;
 }
 
 header {
@@ -24,26 +20,28 @@ header {
     top: -1em;
     height: calc(100% + 1em);
   }
-
-  & > .header-inner {
-    & > nav {
-      & > ul {
-        display: none;
-      }
-    }
-  }
 }
 
-#navbar-mobile {
-  position: absolute;
+.header-inner {
+  justify-content: space-between;
+}
+
+#navbar.toggled {
+  transform: translateY(var(--stick-off, -1em));
+}
+
+#navbar {
+  transform: translateY(calc(-100% - 1em));
+  position: fixed;
+
   top: 0;
   right: 0;
 
   width: 100%;
 
-  padding-top: 1em;
+  padding: 1em;
 
-  background: rgba($background-light, 0.6);
+  background: rgba($background-light, 0.8);
   backdrop-filter: blur(.5em);
 
   transition: ease .2s;
@@ -51,34 +49,14 @@ header {
   overflow: hidden;
   z-index: 99;
 
-  &.collapsed {
-    transform: translateY(calc(-100% - 1em));
-  }
-
-  & > .nav-button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 1.25em;
-
-    text-align: right;
-
-    & > .navbar-button {
-      width: fit-content;
-      font-size: 1.2em;
-    }
-  }
-
-
-  .nav-vertical {
-    padding: 1em 0;
+  & .vseparator {
+    width: 100%;
+    margin: 1em 0;
+    height: 1px;
   }
 
   & > ul {
-    padding-right: 2em;
-
     & > li {
-      // width: 100%;
-
       letter-spacing: .1em;
       line-height: 2.2em;
 
@@ -91,16 +69,35 @@ header {
   }
 }
 
-#collapse-trigger-area {
+#navbar-collapse {
+  width: 100%;
+  margin-top: 1em;
+
+  & > svg {
+    height: 1.2em;
+    margin: auto;
+    transform: scaleY(-1);
+  }
+}
+
+#collapse-area {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba($background, 0.4);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
   z-index: 7;
+
+  transition: ease .5s opacity;
+
+  &.hidden-o {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
+
 
 #mobile-nav-sect-label {
   margin: .5em 0;
@@ -112,8 +109,5 @@ header {
   padding: 1em;
 }
 
-#navbar-desktop-header {
-  display: none;
-}
 }
 }
