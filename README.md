@@ -3,8 +3,8 @@
 My personal static site. (Almost) vanilla, framework-free, modular, &amp; backend-less. Bundled with <code><img height="12" width="12" src="https://cdn.simpleicons.org/webpack" alt=""/> webpack</code>, deployed on (and designed for) <code><img height="12" width="12" src="https://cdn.simpleicons.org/cloudflarepages" alt=""/> Cloudflare Pages</code>, made with ❤, sweats, &amp; tears.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/nodedotjs/d6dce2">
-  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/nodedotjs/1f2328">
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/bun/d6dce2">
+  <img alt="" height="24" width="24" src="https://cdn.simpleicons.org/bun/1f2328">
 </picture>
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/python/d6dce2">
