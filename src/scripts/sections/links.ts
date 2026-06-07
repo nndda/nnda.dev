@@ -21,10 +21,10 @@ const
     linksData.map((data: LinkGroup, i: number): string => {
       return `
         <div class="links-group link-${i}">
-          <div class="links-title anim once fade float-up">
+          <h3 class="links-title anim once fade float-up">
             ${data.group === "Support" ? window.buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
             ${data.group}
-          </div>
+          </h3>
           <p class="links-desc anim once fade float-up">
             ${data.desc}
           </p>

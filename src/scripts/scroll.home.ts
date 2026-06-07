@@ -4,16 +4,16 @@ export default function (d: Document): void {
 
   , headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
 
-  , sections: HTMLElement[] = [
-      d.getElementById("projects"),
-      d.getElementById("illustrations"),
-    ] as HTMLElement[]
+  // , sections: HTMLElement[] = [
+  //     d.getElementById("projects"),
+  //     d.getElementById("illustrations"),
+  //   ] as HTMLElement[]
 
-  , navLinksClass: DOMTokenList[] = Array.from(
-      d.querySelectorAll(".scrollspy")
-    ).map(n => n.classList)
+  // , navLinksClass: DOMTokenList[] = Array.from(
+  //     d.querySelectorAll(".scrollspy")
+  //   ).map(n => n.classList)
 
-  , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
+  // , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
 
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
 
@@ -39,19 +39,19 @@ export default function (d: Document): void {
     });
   });
 
-  function deactivateClass(classes: DOMTokenList): void {
-    classes.remove("active");
-  }
+  // function deactivateClass(classes: DOMTokenList): void {
+  //   classes.remove("active");
+  // }
 
-  function deactivateLinks(activeNavClass: DOMTokenList | null = null): void {
-    requestAnimationFrame(() => {
-      navLinksClass.forEach(deactivateClass);
+  // function deactivateLinks(activeNavClass: DOMTokenList | null = null): void {
+  //   requestAnimationFrame(() => {
+  //     navLinksClass.forEach(deactivateClass);
 
-      if (activeNavClass) {
-        activeNavClass.add("active");
-      }
-    });
-  }
+  //     if (activeNavClass) {
+  //       activeNavClass.add("active");
+  //     }
+  //   });
+  // }
 
   window.observe((
     entry: IntersectionObserverEntry,
@@ -83,22 +83,22 @@ export default function (d: Document): void {
 
       requestAnimationFrame(scrollTransform);
 
-      if (sections[0].offsetTop <= scrollPosition) {
-        for (let i = 0; i < sections.length; i++) {
-          if (sections[i].offsetTop <= scrollPosition) {
-            requestAnimationFrame((): void => {
-              deactivateLinks(navLinksClass[i]);
-              mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
-            });
-          } else {
-            break;
-          }
-        }
+      // if (sections[0].offsetTop <= scrollPosition) {
+      //   for (let i = 0; i < sections.length; i++) {
+      //     if (sections[i].offsetTop <= scrollPosition) {
+      //       requestAnimationFrame((): void => {
+      //         deactivateLinks(navLinksClass[i]);
+      //         mobileNavSectLabel.textContent = sections[i].getAttribute("data-nav-name");
+      //       });
+      //     } else {
+      //       break;
+      //     }
+      //   }
 
-      } else {
-        deactivateLinks();
-        mobileNavSectLabel.textContent = "";
-      }
+      // } else {
+      //   deactivateLinks();
+      //   mobileNavSectLabel.textContent = "";
+      // }
     }
   }
 
