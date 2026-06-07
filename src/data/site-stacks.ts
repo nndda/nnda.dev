@@ -15,7 +15,10 @@ export default [
     // icon: "server",
     items: [
       "Node.js",
+      "Bun",
       "webpack",
+      "Vite",
+      "Svelte",
       // "CSS",
       "SCSS",
       "Cloudflare",

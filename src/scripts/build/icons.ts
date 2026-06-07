@@ -72,6 +72,7 @@ import {
   siAseprite,
   siAutoprefixer,
   siBluesky,
+  siBun,
   siCloudflare,
   // siCloudflarepages,
   // siCloudflareworkers,
@@ -108,8 +109,10 @@ import {
   siSass,
   siSimpleicons,
   siStylelint,
+  siSvelte,
   siTiktok,
   siTypescript,
+  siVite,
   siWebpack,
   siYaml,
   siYoutube,
@@ -335,6 +338,7 @@ createIconDefsGrouped(
 
 createMiniIconDefs("overview", {
   "Aseprite": siAseprite.svg,
+  "Bun": siBun.svg,
   "Cloudflare": siCloudflare.svg,
   // "Cloudflare Pages": siCloudflarepages.svg,
   // "Cloudflare Workers": siCloudflareworkers.svg,
@@ -352,7 +356,9 @@ createMiniIconDefs("overview", {
   "Python": siPython.svg,
   "SCSS": siSass.svg,
   "Rust": siRust.svg,
+  "Svelte": siSvelte.svg,
   "TypeScript": siTypescript.svg,
+  "Vite": siVite.svg,
   "webpack": siWebpack.svg,
 });
 
