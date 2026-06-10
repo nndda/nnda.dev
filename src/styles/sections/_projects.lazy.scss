@@ -134,22 +134,10 @@
   @include project-label-style($text);
 
   /* stylelint-disable */
-  &.SCSS {
+  &.Web {
     @include project-label-style(#fc56a8);
   }
-  &.TypeScript {
-    @include project-label-style(#3b93f5);
-  }
-  &.JavaScript {
-    @include project-label-style(#f7df1e);
-  }
-  &.Node {
-    @include project-label-style(#5fa04e);
-  }
-  &.Handlebars {
-    @include project-label-style(#ff9b26);
-  }
-  &.Godot, &.GDScript {
+  &.Godot {
     @include project-label-style(#66b2f2);
   }
   /* stylelint-enable */

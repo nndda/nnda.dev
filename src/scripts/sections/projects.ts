@@ -156,7 +156,7 @@ const d = document;
 
 import projectsData from "../../data/site-projects";
 
-interface ProjectItem {
+export interface ProjectItem {
   name: string,
   logo?: string,
   url: string,

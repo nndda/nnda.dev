@@ -2,6 +2,7 @@
 @use "sass:color";
 
 #projects {
+  padding-block: 3em;
   background: $background;
   // background: radial-gradient(circle at 50% 0%, $background-light -10%, $background 80%);
 
@@ -30,6 +31,10 @@
   //   max-width: 980px;
   //   min-height: 576px;
   // }
+
+  & .heading-hr {
+    margin-bottom: 1em;
+  }
 }
 
 

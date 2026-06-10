@@ -5,7 +5,7 @@
     // & > .project-items {
     .project-items {
       display: grid;
-      grid-template-areas: 
+      grid-template-areas:
         "theatre theatre itch  website"
         "theatre theatre pitch pitch"
         "filler  obscura pitch pitch"
@@ -20,14 +20,16 @@
   grid-area: pitch;
   min-height: 350px;
   // max-height: 350px;
+  transform: translate(1em, 1em);
 }
 
 .project[data-name="Theatre"] {
   grid-area: theatre;
   min-height: 350px;
   // max-height: 350px;
+  transform: translate(-1em, -1em);
 }
-.project[data-name="My itch.io profile page"] {
+.project[data-name="nnda.itch.io"] {
   grid-area: itch;
 }
 
