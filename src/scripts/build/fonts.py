@@ -78,10 +78,8 @@ for ft in fonts:
 
         opts: subset.Options = subset.Options()
 
-        opts.unicodes = sorted({ord(c) for c in fonts[ft]["text"]})
-
-        opts.layout_features = "*"
-        opts.no_hinting = True
+        opts.layout_features = []
+        opts.hinting = False
         opts.desubroutinize = True
         opts.flavor = "woff2"
         opts.ignore_missing_glyphs = True
@@ -90,20 +88,9 @@ for ft in fonts:
         font: TTFont = subset.load_font(font_path + ".ttf", options=opts)
 
         subsetter: subset.Subsetter = subset.Subsetter(options=opts)
-        subsetter.populate(unicodes=opts.unicodes)
+        subsetter.populate(
+          unicodes=sorted({ord(c) for c in fonts[ft]["text"]})
+        )
         subsetter.subset(font)
 
         subset.save_font(font, font_path + ".woff2", options=opts)
-
-        # subset.main([
-        #     font_path + ".ttf",
-        #     "--unicodes=" + sorted({ord(c) for c in fonts[ft]["text"]}),
-        #     "--ignore-missing-glyphs",
-        #     "--ignore-missing-unicodes",
-        #     "--layout-features=*",
-        #     "--no-hinting",
-        #     "--desubroutinize",
-        #     "--verbose",
-        #     "--flavor=woff2",
-        #     "--output-file=" + font_path + ".woff2",
-        # ])
