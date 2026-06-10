@@ -6,7 +6,7 @@ import iconsAttr from "../build/icons/footer.attributions";
 function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((now - date.getTime()) / 36e5);
 
-  return hours <= 0 ? "<1 hour ago" : `${hours} hours ago`;
+  return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours == 1 ? "" : "s"} ago`;
 }
 
 function getFutureUpdatedHrs(date: Date): string {
