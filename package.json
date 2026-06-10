@@ -32,7 +32,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "@swc/html": "^1.15.40",
+    "@swc/html": "^1.15.41",
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.9.2",
     "@types/webpack": "^5.28.5",
@@ -56,18 +56,21 @@
     "postcss-loader": "^8.2.1",
     "sass": "^1.100.0",
     "sass-loader": "^17.0.0",
-    "simple-icons": "^16.22.0",
+    "simple-icons": "^16.23.0",
     "style-loader": "^4.0.0",
-    "stylelint": "^17.12.0",
+    "stylelint": "^17.13.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "ts-loader": "^9.6.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.1",
+    "typescript-eslint": "^8.61.0",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
     "webpack-dev-server": "^5.2.4",
-    "wrangler": "^4.98.0",
+    "wrangler": "^4.99.0",
     "yaml": "^2.9.0"
+  },
+  "overrides": {
+    "uuid": "^14.0.0"
   }
 }
