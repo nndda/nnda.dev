@@ -12,6 +12,7 @@
 
 #overview {
   // padding-top: 1em;
+  padding-bottom: 2em;
   background-color: $background-dark;
 
   // $s: 50px;  /* control the size of the grid */
@@ -20,9 +21,9 @@
   // $g: 10px;  /* the gap between dashes */
 
   // $sn: math.div($s, $n);
-  
+
   // --c: #{color.mix($text, $background, 10%)} 25%,#0000 0;
-  // background: 
+  // background:
   //   linear-gradient(270deg, $background-dark -10%, #0000 5%),
   //   linear-gradient(180deg, $background-dark -10%, #0000 25%),
   //   linear-gradient(90deg, $background-dark -10%, #0000 5%),

@@ -526,6 +526,86 @@ h1 {
   }
 };
 
+@property --opac {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.nkmm-div {
+  $size: 5em;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  column-gap: $size;
+  margin-top: -$size;
+  border-bottom: 5px solid $primary;
+  /* background: $background-dark; */
+  z-index: 99;
+
+  & > svg {
+    height: $size;
+    width: $size;
+    margin-bottom: -0.65em;
+    transform-origin: 50% 100%;
+
+    animation: flatten 3s infinite alternate cubic-bezier(.175,.885,.32,1.275);
+
+    &:last-of-type {
+      scale: -1 1;
+    }
+  }
+
+  & > div {
+    display: block;
+    position: absolute;
+    font-size: 4em;
+    font-family: Lato;
+    bottom: calc(-100% - .25em);
+
+    & > span {
+      position: relative;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+
+      animation: blink 2s infinite alternate;
+      animation-timing-function: steps(1, end);
+
+      & > b {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &.closed {
+          opacity: calc(1 - var(--opac));
+        }
+        &.open {
+          opacity: var(--opac);
+        }
+      }
+    }
+  }
+}
+@keyframes blink {
+  0%, 15% {
+    --opac: 1;
+  }
+  5% {
+    --opac: 0;
+  }
+}
+@keyframes flatten {
+  0%, 20% {
+    transform: rotateX(0) skewX(0);
+  }
+  10% {
+    transform: rotateX(60deg) skewX(30deg);
+  }
+}
+
+
 @media (width >= 1200px) {
   #home {
     max-height: 920px;
