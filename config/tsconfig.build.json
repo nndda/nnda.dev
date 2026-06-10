@@ -15,6 +15,7 @@
   "extends": "./tsconfig.base.json",
   "include": [
     "./build.d.ts",
+    "../src/global.d.ts",
     "./webpack.dev.ts",
     "./webpack.config.ts"
   ],
