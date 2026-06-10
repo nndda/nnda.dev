@@ -3,7 +3,7 @@
 
 .links-group {
   padding-bottom: 1.15em;
-  font-size: 1.075rem;
+  font-size: 1.15em;
 
   & > ul {
     display: flex;
@@ -12,14 +12,14 @@
   }
 
   &.link-0 {
-    font-size: 1.35em;
+    font-size: 1.4em;
 
     & .flex-break ~ .link-item {
       font-size: 1rem;
     }
-    // & .links-title {
-    //   font-weight: bold;
-    // }
+    & .links-title {
+      font-weight: 400;
+    }
   }
 
   &.link-4 {
@@ -94,79 +94,37 @@
     }
   }
 
-  & svg {
+  & :is(svg, img) {
     width: 1.15em;
     height: 1.15em;
   }
-}
 
-.default {
+  /* Default */
   @include link-style(black, white);
-}
 
-.itchdotio {
-  @include link-style(#FA5C5C);
-}
-
-// &.github {
-//   @include link-style(#181717, white);
-// }
-
-.githubsponsors {
-  @include link-style(#EA4AAA);
-}
-
-.artstation {
-  @include link-style(#13AFF0);
-}
-
-.mastodon {
-  @include link-style(#6364FF);
-}
-
-// &.reddit {
-//   @include link-style(#ff4500);
-// }
-
-.bluesky {
-  @include link-style(#0285FF);
-}
-
-.liberapay {
-  @include link-style(#F6C915);
-}
-
-// &.codepen,
-.tiktok,
-.github,
-.x,
-.patreon {
-  @include link-style(#000000, $text);
-}
-
-.kofi {
-  // font-size: 1em;
-  @include link-style(#FF5E5B);
-}
-
-.osu {
-  @include link-style(#FF66AA);
-}
-
-.twitter {
-  @include link-style(#009ef7);
-}
-
-.youtube {
-  // font-size: 1em;
-  @include link-style(color.mix($text, #FF0000, 20%));
+  @each $link_name, $color in (
+    "itch.io": #FA5C5C,
+    "ArtStation": #13AFF0,
+    "Mastodon": #6364FF,
+    "Bluesky": #0285FF,
+    "Liberapay": #F6C915,
+    "Ko-fi": #FF6433,
+    "OSU!": #FF66AA,
+    "Twitter": #009ef7,
+    "VGen": #b8ff26,
+    "YouTube": color.mix($text, #FF0000, 20%),
+  ) {
+    &[data-link-name="#{$link_name}"] {
+      @include link-style($color);
+    }
+  }
 }
 
 .social-icon {
   display: flex;
   align-items: center;
   min-width: 1.6em;
-  height: 3rem;
+  /* height: 3rem; */
   padding-right: .5em;
 }
 
@@ -174,7 +132,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 3rem;
+  height: 3em;
 }
 
 .username {

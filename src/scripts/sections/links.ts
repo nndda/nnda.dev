@@ -11,7 +11,7 @@ export interface LinkGroupItem {
   name: string,
   url: string,
   username: string,
-  icon?: string,
+  icon?: keyof typeof icons,
 }
 
 const
@@ -35,20 +35,22 @@ const
                   if (link === "br") return `<div class="flex-break"></div>`;
 
                   return `
-                    <li class="
-                        anim once
-                        link-item
-                        ${link.icon || "default"}
-                      "
-                    >
+                    <li class="anim once link-item" data-link-name="${link.name}">
                       <a href="https://${link.url}"
                         target="_blank"
                         rel="me nofollow noopener noreferrer"
                         referrerpolicy="no-referrer"
-                        aria-label="${link.name}"
                       >
                         <div class="social-icon">
-                          ${window.buildSvg(icons[((link.icon === undefined) ? "links" : link.icon)], 19, 19, "links")}
+                          ${
+                            (link.icon ?? "links") in icons
+                              ? window.buildSvg(
+                                  icons[link.icon ?? "links"],
+                                  19, 19,
+                                  "links",
+                                )
+                              : `<img src="${link.icon}" alt="" width="19" height="19">`
+                          }
                         </div>
 
                         <div class="social-info">

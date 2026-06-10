@@ -7,7 +7,8 @@ const
   // Common usernames
   nnda: string = "nnda"
 , nndda: string = "nndda"
-, at_nnda_dev: string = "@nnda_dev"
+, at_nnda: string = "@nnda"
+, at_nnda_dev: string = at_nnda + "_dev"
 ;
 
 // duplicates
@@ -17,6 +18,11 @@ const patreon: LinkGroupItem = {
   icon: "patreon",
   username: nnda,
 };
+
+// Raster icons
+import vgen from "../assets/icons/vgen.avif"
+import kofi from "../assets/icons/ko-fi.avif"
+import osu from "../assets/icons/osu.avif"
 
 export default [
   { // ------------------------------------------------------------------------
@@ -62,6 +68,12 @@ export default [
         username: nnda,
       },
       {
+        name: "VGen",
+        url: "vgen.co/nnda",
+        icon: vgen,
+        username: at_nnda,
+      },
+      {
         name: "cara.app",
         url: "cara.app/nnda",
         username: nnda,
@@ -76,7 +88,7 @@ export default [
         name: "Mastodon",
         url: "mastodon.art/@nnda",
         icon: "mastodon",
-        username: "@nnda",
+        username: at_nnda,
       },
       {
         name: "Twitter",
@@ -94,12 +106,12 @@ export default [
   },
   {
     group: "Gaming",
-    desc: "Not much, besides smashing drums.",
+    desc: "Occasional & recreational drum smashing.",
     links: [
       {
         name: "OSU!",
         url: "osu.ppy.sh/users/10614731",
-        icon: "osu",
+        icon: osu,
         username: nnda,
       },
     ],
@@ -112,7 +124,7 @@ export default [
       {
         name: "Ko-fi",
         url: "ko-fi.com/nnda",
-        icon: "kofi",
+        icon: kofi,
         username: nnda,
       },
       {
