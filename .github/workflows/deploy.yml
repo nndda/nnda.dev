@@ -53,6 +53,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           sparse-checkout: |
+            .github/actions/setup-bun/action.yml
             bun.lock
             package.json
           sparse-checkout-cone-mode: false
