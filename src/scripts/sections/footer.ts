@@ -1,3 +1,5 @@
+import { buildSvg } from "../framework";
+
 import packageJSON from "../build/out/attribution.json" with { type: "json" };
 import initIcon from "../build/icons/footer";
 
@@ -69,7 +71,7 @@ const
     }
 
     return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId} ${hasIcon ? "has-icon" : ""}">${
-      (hasIcon) ? window.buildSvg(iconsAttr[pkgName], 13, 13) : ""
+      (hasIcon) ? buildSvg(iconsAttr[(pkgName as keyof typeof iconsAttr)], 13, 13) : ""
     }${pkgName} </a>`;
   }).join("")
 ;

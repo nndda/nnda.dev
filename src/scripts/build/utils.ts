@@ -43,7 +43,11 @@ export function ls(whatPath: string): string[] {
 
 export function cleanupDir(cleanupPath: string): void {
   fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
-    if (val.isFile() && (val.name.endsWith(".js") || val.name.endsWith(".json"))) {
+    if (val.isFile() && (
+      val.name.endsWith(".js") ||
+      val.name.endsWith(".json") ||
+      val.name.endsWith(".ts"))
+    ) {
       console.log("Removing: ", val.name);
       fs.unlinkSync(path.resolve(cleanupPath, val.name));
     };

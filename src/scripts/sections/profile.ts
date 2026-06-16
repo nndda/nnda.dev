@@ -1,3 +1,5 @@
+import { initAnim } from "../framework";
+
 import initIcon from "../build/icons/profile";
 
 initIcon();
@@ -17,7 +19,7 @@ function updateClock(): void {
 updateClock();
 setInterval(updateClock, 1e3);
 
-window.initAnim(
+initAnim(
   document.getElementById("profile") as HTMLElement,
   window.matchMedia("media (width >= 700px) and (height >= 920px)").matches ? "-210px 0px" : "0px 0px",
 );

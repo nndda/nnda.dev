@@ -1,3 +1,5 @@
+import { buildSvg } from "../framework";
+
 import icons from "../build/icons/overview";
 import stacksData, { type StacksData } from "../../data/site-stacks";
 
@@ -33,7 +35,7 @@ fetch("/overview-stats.json")
                 <code><b>${lang[1][0]}%</b></code>
               </div>
               <div class="icon-text">
-                ${lang[0] in icons ? window.buildSvg(icons[lang[0]], 17, 17) : ""}
+                ${lang[0] in icons ? buildSvg(icons[(lang[0] as keyof typeof icons)], 17, 17) : ""}
                 <span>
                   ${lang[0]}
                 </span>
@@ -54,7 +56,7 @@ fetch("/overview-stats.json")
                   data.items.map((item: string): string => {
                     return `
                       <li class="icon anim fade float-right">
-                        ${window.buildSvg(icons[item], 29, 29)}
+                        ${buildSvg(icons[(item as keyof typeof icons)], 29, 29)}
                       </li>
                     `;
                   }).join("")

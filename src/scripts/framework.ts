@@ -1,15 +1,23 @@
-const svgAttr: Record<string, string> = {
-  "role": "img",
-  "aria-hidden": "true",
-  "focusable": "false",
-  "xmlns": "http://www.w3.org/2000/svg",
-};
+const
+  svgAttr: Record<string, string> = {
+    "role": "img",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "xmlns": "http://www.w3.org/2000/svg",
+  }
+;
+
 
 // Load and populate lazy-loaded icons
-window.p = function (selector: string, iconSets: Record<string, string[]>): void {
+export function initIcons(
+  selector: string,
+  iconSets: Record<string, string[]>,
+): void {
   requestAnimationFrame((): void => {
     for (const iconEl of document.querySelectorAll("svg." + selector + ":not(.loaded)")) {
-      const iData: string[] = iconSets[iconEl.getAttribute("data-i") as string]
+      const
+        iData: string[] = iconSets[iconEl.getAttribute("data-i") as string]
+      ;
 
       for (const attr in svgAttr) {
         iconEl.setAttribute(attr, svgAttr[attr]);
@@ -17,44 +25,14 @@ window.p = function (selector: string, iconSets: Record<string, string[]>): void
 
       iconEl.setAttribute("viewBox", iData[0]);
       iconEl.innerHTML = `<path fill="currentColor" d="` + iData[1] + `"></path>`;
-      // iconEl.classList.toggle("loaded", true);
       iconEl.classList.add("loaded");
     }
-
-    // for (let i: number = iconEls.length; i-- > 0;) {
-    //   const iData: string[] = iconSets[(iconEls[i].getAttribute("data-i") as string)];
-
-    //   for (const attr in svgAttr) {
-    //     iconEls[i].setAttribute(attr, svgAttr[attr]);
-    //   }
-
-    //   iconEls[i].setAttribute("viewBox", iData[0]);
-    //   iconEls[i].innerHTML = iData[1];
-    //   iconEls[i].classList.toggle("loaded", true);
-
-    //   // iconEls[i].outerHTML =
-    //   //   `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="`
-    //   //     +
-    //   //   iconEls[i].getAttribute("data-w")
-    //   //     +
-    //   //   `" height="`
-    //   //     +
-    //   //   iconEls[i].getAttribute("data-h")
-    //   //     +
-    //   //   `" `
-    //   //     +
-    //   //   iconSets[
-    //   //     (iconEls[i].getAttribute("data-i") as string)
-    //   //   ]
-    //   //     +
-    //   //   "</svg>"
-    //   // ;
-    // }
   });
 };
 
+
 // Helper function to create intersection observer
-window.observe = function (
+export function observe(
     intersectionCb: (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
@@ -78,10 +56,11 @@ window.observe = function (
   return observer.observe.bind(observer);
 }
 
-window.importLazy = function (
+
+export function importLazy(
   imports: (() => Promise<any>)[],
   element: Element,
-  rootMargin: string | undefined = undefined,
+  rootMargin?: string,
 ): void {
 
   let retry: number = 0;
@@ -98,7 +77,7 @@ window.importLazy = function (
     });
   }
 
-  window.observe(
+  observe(
     (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
@@ -112,15 +91,15 @@ window.importLazy = function (
   )(
     element
   );
-
 }
 
-window.initAnim = function (
+
+export function initAnim(
   el: Element,
   rootMargin: string | undefined = undefined,
   cb: (() => void) | null = null,
 ): void {
-  window.observe((entry: IntersectionObserverEntry): void => {
+  observe((entry: IntersectionObserverEntry): void => {
     if (entry.isIntersecting) {
       if (cb) cb();
 
@@ -131,8 +110,14 @@ window.initAnim = function (
   }, rootMargin )(el);
 };
 
-window.loadCSS = function (url: string): Promise<void> {
-  return new Promise((resolve: () => void, reject: () => void) => {
+
+export function loadCSS(
+  url: string,
+): Promise<void> {
+  return new Promise((
+    resolve: () => void,
+    reject: () => void,
+  ) => {
     const style = document.createElement("link");
     style.href = url;
     style.rel = "stylesheet";
@@ -143,6 +128,12 @@ window.loadCSS = function (url: string): Promise<void> {
   });
 }
 
-window.buildSvg = function (viewBoxPath: string[], width: number, height: number, classes: string = ""): string {
+
+export function buildSvg(
+  viewBoxPath: string[],
+  width: number,
+  height: number,
+  classes: string = "",
+): string {
   return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
 }

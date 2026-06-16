@@ -1,3 +1,5 @@
+import { buildSvg } from "../../framework";
+
 import icons from "../../build/icons/shop";
 import type { ShopItem, ShopItemAddon } from "./d";
 
@@ -7,7 +9,7 @@ const shopItem: Record<string, Record<string, string>> = {
       acc: Record<string, string>,
       val: string
     ): Record<string, string> => {
-      acc[val] = window.buildSvg(icons[val], 18, 18);
+      acc[val] = buildSvg(icons[(val as keyof typeof icons)], 18, 18);
       return acc;
     },
     {} as Record<string, string>,
@@ -17,7 +19,7 @@ const shopItem: Record<string, Record<string, string>> = {
       acc: Record<string, string>,
       val: string
     ): Record<string, string> => {
-      acc[val] = window.buildSvg(icons[val], 16, 16);
+      acc[val] = buildSvg(icons[(val as keyof typeof icons)], 16, 16);
       return acc;
     },
     {} as Record<string, string>,
@@ -57,7 +59,7 @@ import("../../../data/shop/catalogue").then((catalogueData: any): void => {
             </div>
 
             <div class="buy-platforms">
-              <small>Available on</small> 
+              <small>Available on</small>
               ${
                 Object.entries(data.platformsGet).map((val: [string, string]): string => {
                   return `
@@ -71,8 +73,8 @@ import("../../../data/shop/catalogue").then((catalogueData: any): void => {
           </div>
 
           ${
-            // Object.prototype.hasOwnProperty.call(data, "addons") ? 
-            "addons" in data ? 
+            // Object.prototype.hasOwnProperty.call(data, "addons") ?
+            "addons" in data ?
               `<hr class="buy-hr">` + (data.addons as ShopItemAddon[]).map((dataAddons: ShopItemAddon): string => {
                 return `
                   <div class="buy-row">

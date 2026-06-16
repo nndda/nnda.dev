@@ -1,3 +1,5 @@
+import { observe } from "./framework";
+
 export default function (d: Document): void {
   const
     documentWindow: Window = d.defaultView as Window
@@ -53,7 +55,7 @@ export default function (d: Document): void {
   //   });
   // }
 
-  window.observe((
+  observe((
     entry: IntersectionObserverEntry,
     ): void => {
       requestAnimationFrame((): void => {

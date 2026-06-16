@@ -1,3 +1,5 @@
+import { buildSvg, initAnim } from "../framework";
+
 import linksData from "../../data/site-links";
 import icons from "../build/icons/links";
 
@@ -22,7 +24,7 @@ const
       return `
         <div class="links-group link-${i}">
           <h3 class="links-title anim once fade float-up">
-            ${data.group === "Support" ? window.buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
+            ${data.group === "Support" ? buildSvg(icons["heart"], 22, 26, "heartbeat") : ""}
             ${data.group}
           </h3>
           <p class="links-desc anim once fade float-up">
@@ -44,7 +46,7 @@ const
                         <div class="social-icon">
                           ${
                             (link.icon ?? "links") in icons
-                              ? window.buildSvg(
+                              ? buildSvg(
                                   icons[link.icon ?? "links"],
                                   19, 19,
                                   "links",
@@ -83,6 +85,6 @@ setTimeout((): void => {
 
     linkSectInner.classList.add("on");
 
-    window.initAnim(linkSectInner);
+    initAnim(linkSectInner);
   });
 }, 500);

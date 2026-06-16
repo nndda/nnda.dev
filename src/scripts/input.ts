@@ -7,6 +7,8 @@
 //   iconSquareCheck,
 // } from "./build/icons/icons";
 
+import { buildSvg } from "./framework";
+
 import icons from "./build/icons/input";
 
 const
@@ -14,7 +16,7 @@ const
 ;
 
 for (const i in icons) {
-  iconsCompiled[i] = window.buildSvg(icons[(i as keyof typeof icons)], 18, 18);
+  iconsCompiled[i] = buildSvg(icons[(i as keyof typeof icons)], 18, 18);
 }
 
 export default function (d: Document): void {

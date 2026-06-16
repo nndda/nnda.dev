@@ -178,8 +178,10 @@ function createIconDefsGrouped(
   siIcons: SimpleIcon[] = [],
   iconsOther: Record<string, string> = {},
   ): void {
-  writeTextFile(abs(`./icons/${groupName}.js`),
-    `export default () => {window.p("${groupName}",{`
+  writeTextFile(abs(`./icons/${groupName}.ts`),
+    `import { initIcons } from "../../framework";`
+    +
+    `export default () => {initIcons("${groupName}",{`
     +
     [
       ...faIcons.map(ico => {
