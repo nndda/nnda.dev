@@ -54,6 +54,14 @@
   src: url("@fonts/hi-melody/400.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("@fonts/lato/400.woff2") format("woff2");
+}
+
 // html {
 //   font-family: "Zen Kaku Gothic New", sans-serif;
 //   font-weight: 400;

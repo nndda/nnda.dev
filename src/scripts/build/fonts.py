@@ -65,6 +65,14 @@ fonts: Any = {
       ]),
       "weights": [400],
     },
+
+    # Decorative
+    "lato": {
+      "text": "".join([
+        "≈•>ω<",
+      ]),
+      "weights": [400],
+    },
 }
 
 print("Subsetting fonts...")
