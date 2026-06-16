@@ -46,14 +46,14 @@
 
   & > .section-inner {
     max-width: 1050px;
-    min-height: 330px;
+    min-height: 365px;
     // margin: auto;
     margin-top: 1.5em;
     padding-bottom: 1em;
   }
 
   & .heading-left-sticky {
-    color: rgba($secondary, 75%);
+    color: color.mix($secondary, $background-dark, 50%);
 
     & > .jp {
       background: $background-dark;

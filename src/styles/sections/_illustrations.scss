@@ -2,15 +2,20 @@
 @use "sass:color";
 
 #illustrations {
-  position: relative;
+  $col: color.mix(color.mix($primary, $text-secondary, 70%), $background-dark, 70%);
+
+  /* position: relative; */
   z-index: 1;
   min-height: 50em;
   background: $background-dark;
+
+  border-top: 1px solid $col;
 
   @include shadow-black;
 
   & .jp {
     // color: $primary;
+    color: $col;
     background: $background-dark;
   }
 

@@ -98,10 +98,10 @@ main {
     & > .section-inner {
       width: 100%;
       max-width: 1100px;
-      margin: auto;
+      margin: 0 auto;
       // padding-left: 1em;
       // padding-right: 1em;
-      padding: 1em;
+      padding: 2em 1em;
     }
   }
 }
@@ -277,6 +277,10 @@ h1 {
     animation: 2s mouse-wiggle ease infinite;
   }
 
+  & > .arrows {
+    width: 100%;
+  }
+
   & > .arrows > svg {
     position: absolute;
     display: block;
@@ -347,7 +351,6 @@ h1 {
   & .title {
     font-size: 3em;
     margin: 0;
-    text-transform: uppercase;
     opacity: .8;
 
     transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
@@ -525,6 +528,7 @@ h1 {
     // margin-bottom: 2em;
     // font-size: .7em;
     transform: translate(-.5em, -10vh);
+    pointer-events: none;
   }
 };
 
