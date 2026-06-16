@@ -14,7 +14,7 @@ const
 ;
 
 for (const i in icons) {
-  iconsCompiled[i] = window.buildSvg(icons[i], 18, 18);
+  iconsCompiled[i] = window.buildSvg(icons[(i as keyof typeof icons)], 18, 18);
 }
 
 export default function (d: Document): void {
@@ -62,7 +62,7 @@ export default function (d: Document): void {
 
   for (const el of d.querySelectorAll(".checkbox")) {
     const isRadio: boolean = (el.querySelector("input") as HTMLInputElement).type === "radio";
-    (el.querySelector(".checked") as HTMLElement).innerHTML = isRadio ? iconsCompiled["cirCh"] : iconsCompiled["sqCh"];
+    (el.querySelector(".checked") as HTMLElement).innerHTML = isRadio ? iconsCompiled["cirChk"] : iconsCompiled["sqChk"];
     (el.querySelector(".checked-not") as HTMLElement).innerHTML = isRadio ? iconsCompiled["cir"] : iconsCompiled["sq"];
   }
   // d.querySelectorAll(".checkbox").forEach(e => {
