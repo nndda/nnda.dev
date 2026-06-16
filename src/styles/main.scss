@@ -60,8 +60,8 @@ hr.hr {
 }
 
 html {
-  color-scheme: dark only !important;
-  scroll-behavior: smooth !important;
+  color-scheme: dark only;
+  scroll-behavior: smooth;
 
   @include style-scrollbar;
 }
@@ -76,6 +76,8 @@ body {
   margin: auto;
 
   color: $text;
+
+  font-size: 0.875em; // 14 / 16
 
   @include shadow-black;
 
