@@ -1,12 +1,23 @@
 name: Setup Bun
 description: Set up Bun and install dependencies
 
+inputs:
+  install-deps:
+    description: Install dependencies too
+    required: false
+    default: yes
+  cache:
+    description: Install dependencies too
+    required: false
+    default: yes
+
 runs:
   using: composite
   steps:
     - uses: oven-sh/setup-bun@v2
 
     - uses: actions/cache@v5.0.5
+      if: ${{ inputs.cache == "yes" }}
       with:
         path: ~/.bun/install/cache
         key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
@@ -14,4 +25,5 @@ runs:
           ${{ runner.os }}-bun-
 
     - run: bun ci
+      if: ${{ inputs.install-deps == "yes" }}
       shell: bash
