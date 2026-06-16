@@ -1,5 +1,6 @@
 name: Deploy to CF Pages
 
+
 on:
   schedule:
     - cron: '0 */12 * * *'
@@ -15,18 +16,65 @@ on:
       - '**/*.hbs'
       - 'src/'
       - '.github/workflows/deploy.yml'
-      - 'package*.json'
+      - 'bun.lock'
+      - 'package.json'
       - 'config/tsconfig.*.json'
       - 'config/webpack.common.ts'
       - 'config/webpack.config.ts'
       - 'config/wrangler.toml'
-      - 'requirements.txt'
-      - 'site-config.yaml'
+      - 'config/requirements.txt'
   workflow_dispatch:
 
+
 jobs:
-  deploy:
+  check-pip:
+    name: Check pip/requirements.txt
+
     runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            config/requirements.txt
+          sparse-checkout-cone-mode: false
+
+      - uses: pypa/gh-action-pip-audit@v1.1.0
+        with:
+          inputs: config/requirements.txt
+
+
+  check-bun:
+    name: Check Bun/package.json
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            bun.lock
+            package.json
+          sparse-checkout-cone-mode: false
+
+      - uses: ./.github/actions/setup-bun
+        with:
+          cache: no
+          install-deps: no
+
+      - name: Audit Bun dependencies
+        run: |
+          bun audit --audit-level moderate
+
+
+  deploy:
+    name: Deploy to Cloudflare
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - check-bun
+      - check-pip
 
     steps:
       - name: Checkout repository
