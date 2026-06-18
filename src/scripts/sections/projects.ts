@@ -24,7 +24,7 @@ const d = document;
 // function filterTags(tags: string[]): void {
 //   tagsData.forEach(item => {
 //     item.elem.classList.toggle("hidden",
-//       tags.length > 0 ? 
+//       tags.length > 0 ?
 //       !item.tags.some(tag => tags.includes(tag)) : false
 //     );
 //   });
@@ -39,8 +39,8 @@ const d = document;
 // ): void {
 //   const
 //     catsData: Record<string, HTMLElement[]> = {},
-//     catDisplay: HTMLElement = catsDropdownBtn.querySelector(".text-display") as HTMLElement,
-//     catToggles: NodeListOf<Element> = (catsDropdownBtn.parentElement as HTMLElement).querySelectorAll("input[type=\"radio\"]");
+//     catDisplay: HTMLElement = catsDropdownBtn.querySelector(".text-display")!,
+//     catToggles: NodeListOf<Element> = (catsDropdownBtn.parentElement!).querySelectorAll("input[type=\"radio\"]");
 
 //   let currentCat: string = "";
 
@@ -51,7 +51,7 @@ const d = document;
 //       catsData[catName] = []
 //     }
 
-//     catsData[catName].push(elem as HTMLElement);
+//     catsData[catName].push(elem!);
 //   });
 
 //   function toggleCatElem(elem: HTMLElement, cat: string, catName: string): void {
@@ -79,8 +79,8 @@ const d = document;
 // function initInputs(): void {
 // window.addEventListener("DOMContentLoaded", () => {
 //   const
-//   //   headerElem: HTMLElement = d.querySelector("body > header") as HTMLElement,
-//     // projCtrlElem: HTMLElement = d.querySelector("#projects > .section-controls") as HTMLElement,
+//   //   headerElem: HTMLElement = d.querySelector("body > header")!,
+//     // projCtrlElem: HTMLElement = d.querySelector("#projects > .section-controls")!,
 
 //     tagsInput: HTMLTextAreaElement = d.getElementById("project-tag-input") as HTMLTextAreaElement,
 //     tagsCont: HTMLTextAreaElement = d.getElementById("project-tag-cont") as HTMLTextAreaElement;
@@ -102,7 +102,7 @@ const d = document;
 
 //   d.querySelectorAll("[data-project-tags]").forEach(elem => {
 //     tagsData.push({
-//       elem: elem as HTMLElement,
+//       elem: elem!,
 //       tags: (elem.getAttribute("data-project-tags") as string)
 //         .split(',')
 //         .map(tag => tag.trim().toLowerCase())
@@ -218,7 +218,7 @@ const
         `;
     }).join("")
 
-, projectSectInner: HTMLElement = document.querySelector("#projects .project-items") as HTMLElement
+, projectSectInner: HTMLElement = document.querySelector("#projects .project-items")!
 ;
 
 projectSectInner.classList.remove("on");

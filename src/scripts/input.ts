@@ -1,12 +1,3 @@
-// import {
-//   // iconCaretDown,
-//   // iconCaretUp,
-//   iconCircle,
-//   iconCircleCheck,
-//   iconSquare,
-//   iconSquareCheck,
-// } from "./build/icons/icons";
-
 import { buildSvg } from "./framework";
 
 import icons from "./build/icons/input";
@@ -20,58 +11,16 @@ for (const i in icons) {
 }
 
 export default function (d: Document): void {
-
-  // Dropdown -------------------------------------------------------------------------------------
-
-  // d.querySelectorAll(".dropdown").forEach(e => {
-  //   const
-  //     button: HTMLButtonElement = e.querySelector("button") as HTMLButtonElement,
-  //     items: HTMLElement = e.querySelector(".items") as HTMLElement;
-
-  //     button.insertAdjacentHTML("beforeend", iconCaretDown);
-  //     items.classList.add("hidden");
-
-  //     function toggleItem(): void {
-  //       items.classList.toggle("hidden");
-  //       const toggleStr: boolean = items.classList.contains("hidden");
-
-  //       items.setAttribute("aria-hidden", `${toggleStr}`);
-  //       button.setAttribute("aria-expanded", `${!toggleStr}`);
-  //     }
-
-  //     button.addEventListener("click", e => {
-  //       e.stopPropagation();
-  //       toggleItem();
-  //     });
-
-  //     d.addEventListener("click", e => {
-  //       if (
-  //           !items.contains(e.target as Node) &&
-  //           !items.classList.contains("hidden")
-  //         ) {
-  //         toggleItem();
-  //       }
-  //     });
-
-  //     items.querySelectorAll(".item-input").forEach(elem => {
-  //       if (elem.getAttribute("checked") !== null) {
-  //         (elem as HTMLInputElement).checked = true;
-  //       }
-  //     })
-  // });
-
   // Checkbox
 
   for (const el of d.querySelectorAll(".checkbox")) {
-    const isRadio: boolean = (el.querySelector("input") as HTMLInputElement).type === "radio";
-    (el.querySelector(".checked") as HTMLElement).innerHTML = isRadio ? iconsCompiled["cirChk"] : iconsCompiled["sqChk"];
-    (el.querySelector(".checked-not") as HTMLElement).innerHTML = isRadio ? iconsCompiled["cir"] : iconsCompiled["sq"];
+    const
+      isRadio: boolean = (el.querySelector("input") as HTMLInputElement).type === "radio"
+    ;
+
+    el.querySelector(".checked")!.innerHTML = isRadio ? iconsCompiled["cirChk"] : iconsCompiled["sqChk"];
+    el.querySelector(".checked-not")!.innerHTML = isRadio ? iconsCompiled["cir"] : iconsCompiled["sq"];
   }
-  // d.querySelectorAll(".checkbox").forEach(e => {
-  //   const isRadio: boolean = (e.querySelector("input") as HTMLInputElement).type === "radio";
-  //   (e.querySelector(".checked") as HTMLElement).innerHTML = isRadio ? iconCircleCheck : iconSquareCheck;
-  //   (e.querySelector(".checked-not") as HTMLElement).innerHTML = isRadio ? iconCircle : iconSquare;
-  // });
 }
 
 // export function eventForElements(

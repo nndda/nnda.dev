@@ -7,7 +7,7 @@ const
   //   return accum;
   // }, {} as Record<string, string>)
 
-  socialListEl: HTMLElement = document.querySelector(".socials-lists>ul") as HTMLElement
+  socialListEl: HTMLElement = document.querySelector(".socials-lists>ul")!
 ;
 
         // ${"bsky" in post.syndicate ? icons["bsky"] : ""}
@@ -86,7 +86,7 @@ export default function(): void {
       requestAnimationFrame((): void => {
         socialListEl.innerHTML = socialListHTML;
 
-        // (document.querySelector(".socials-lists") as HTMLElement).insertAdjacentHTML("afterend", `
+        // (document.querySelector(".socials-lists")!).insertAdjacentHTML("afterend", `
         //   <div class="social-see-more">
         //     <hr class="hr">
 

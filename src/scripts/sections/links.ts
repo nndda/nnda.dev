@@ -73,7 +73,7 @@ const
         `;
     }).join("")
 
-, linkSectInner: HTMLElement = d.querySelector("#links>.section-inner") as HTMLElement
+, linkSectInner: HTMLElement = d.querySelector("#links>.section-inner")!
 ;
 
 linkSectInner.classList.remove("on");

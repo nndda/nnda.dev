@@ -129,9 +129,9 @@ initIcon();
 const
   d: Document = document
 
-, siteVer: string = (d.getElementById("site-ver") as HTMLElement).getAttribute("data-site-ver") as string
+, siteVer: string = d.getElementById("site-ver")!.getAttribute("data-site-ver") as string
 
-, halfDepositEl: HTMLElement = d.getElementById("deposit-half") as HTMLElement
+, halfDepositEl: HTMLElement = d.getElementById("deposit-half")!
 
 , clientDescEl: HTMLTextAreaElement = d.getElementById("description-note") as HTMLTextAreaElement
 
@@ -185,13 +185,13 @@ const
   }
 
 , p: PricingData = {
-    priceDisplay: d.getElementById("price-total") as HTMLElement,
+    priceDisplay: d.getElementById("price-total")!,
 
     characterCount: {
       current: 0,
 
       price: 9,
-      priceEl: d.getElementById("character-count-price") as HTMLElement,
+      priceEl: d.getElementById("character-count-price")!,
       element: d.getElementById("character-count") as HTMLInputElement,
       max: 5,
     },
@@ -203,7 +203,7 @@ const
         current: 5,
 
         price: 5,
-        priceEl: d.getElementById("base-line-art-price") as HTMLElement,
+        priceEl: d.getElementById("base-line-art-price")!,
         multChr: (chrCount: number, basePrice: number): number => {
           return basePrice + [
             0, 2, 5, 9, 14
@@ -215,7 +215,7 @@ const
         current: 0,
 
         price: 7,
-        priceEl: d.getElementById("base-add-shading-price") as HTMLElement,
+        priceEl: d.getElementById("base-add-shading-price")!,
         element: d.getElementById("base-add-shading") as HTMLInputElement,
         multChr: (chrCount: number, basePrice: number): number => {
           return basePrice + [
@@ -228,7 +228,7 @@ const
         current: 0,
 
         price: 18,
-        priceEl: d.getElementById("base-add-full-color-price") as HTMLElement,
+        priceEl: d.getElementById("base-add-full-color-price")!,
         element: d.getElementById("base-add-full-color") as HTMLInputElement,
         multChr: (chrCount: number, basePrice: number): number => {
           return basePrice + [
@@ -249,7 +249,7 @@ const
         current: 0,
 
         price: 10,
-        priceEl: d.getElementById("background-type-minimal-price") as HTMLElement,
+        priceEl: d.getElementById("background-type-minimal-price")!,
         element: d.getElementById("background-type-minimal") as HTMLInputElement,
       },
 
@@ -257,7 +257,7 @@ const
         current: 0,
 
         price: 45,
-        priceEl: d.getElementById("background-type-full-price") as HTMLElement,
+        priceEl: d.getElementById("background-type-full-price")!,
         element: d.getElementById("background-type-full") as HTMLInputElement,
       },
     },
@@ -269,7 +269,7 @@ const
         current: 0,
 
         price: 20,
-        priceEl: d.getElementById("usage-right-commercial-price") as HTMLElement,
+        priceEl: d.getElementById("usage-right-commercial-price")!,
         element: d.getElementById("usage-right-commercial") as HTMLInputElement,
       },
 
@@ -277,7 +277,7 @@ const
         current: 0,
 
         price: 20,
-        priceEl: d.getElementById("usage-right-private-price") as HTMLElement,
+        priceEl: d.getElementById("usage-right-private-price")!,
         element: d.getElementById("usage-right-private") as HTMLInputElement,
       },
     },
@@ -287,7 +287,7 @@ const
         current: 0,
 
         price: 20,
-        priceEl: d.getElementById("other-rawfile-price") as HTMLElement,
+        priceEl: d.getElementById("other-rawfile-price")!,
         element: d.getElementById("other-rawfile") as HTMLInputElement,
       },
     },
@@ -373,7 +373,7 @@ function updateFormData() {
   formJSONData.base_fullcolor_price_calculated = p.bases.fullcolor.current;
 
 
-  formJSONData.background = 
+  formJSONData.background =
     p.background.minimal.element.checked ? "minimal"
   : p.background.full.element.checked ? "full"
   : "solid"
@@ -436,18 +436,18 @@ window.onloadTurnstileCallback = function () {
   const cfCheckInput: HTMLInputElement = d.getElementById("cf-tunstile-verify") as HTMLInputElement;
 
   cfCheckInput.addEventListener("click", () => {
-    const cfTurnstileCont: HTMLElement = d.getElementById("cf-turnstile") as HTMLElement;
+    const cfTurnstileCont: HTMLElement = d.getElementById("cf-turnstile")!;
 
     cfCheckInput.disabled = true;
 
     cfTurnstileCont.classList.toggle("hidden", false);
-    (d.querySelector(".cf-logo") as HTMLElement).classList.toggle("hidden", true);
+    (d.querySelector(".cf-logo")!).classList.toggle("hidden", true);
 
     // @ts-expect-error idk turnstile typing
     turnstile.render(cfTurnstileCont, {
       sitekey: "1x00000000000000000000AA",
       theme: "light",
-      callback: function (token) {
+      callback: function (token: any) {
         formJSONData.turnstile_token = token;
         submitBtnEl.disabled = false;
       },

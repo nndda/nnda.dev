@@ -29,7 +29,7 @@ const shopItem: Record<string, Record<string, string>> = {
 import("../../../data/shop/catalogue").then((catalogueData: any): void => {
 // function populateItems(catalogueData: Record<string, ShopItem[]>): void {
   for (const contId in catalogueData.default) {
-    (document.getElementById(contId) as HTMLElement).innerHTML = catalogueData.default[contId].map((data: ShopItem): string => {
+    document.getElementById(contId)!.innerHTML = catalogueData.default[contId].map((data: ShopItem): string => {
       return `
         <div class="item" data-item-name="${data.name}">
           <div class="card">

@@ -6,7 +6,7 @@ import stacksData, { type StacksData } from "../../data/site-stacks";
 type OverviewStats = typeof import("../../public/overview-stats.json");
 
 fetch("/overview-stats.json")
-  .then((res: Response): Promise<OverviewStats> => {return res.json()})
+  .then((res: Response): Promise<OverviewStats> => res.json())
   .then((data: OverviewStats): void => {
 
     interface LangsData {
@@ -14,9 +14,9 @@ fetch("/overview-stats.json")
     }
 
     const
-      overviewEl: HTMLElement = document.getElementById("overview") as HTMLElement
+      overviewEl: HTMLElement = document.getElementById("overview")!
 
-    , contribsGridEl: HTMLElement = overviewEl.querySelector(".calendar-container .grid") as HTMLElement
+    , contribsGridEl: HTMLElement = overviewEl.querySelector(".calendar-container .grid")!
     , contribsGridHTML: string =
       `<div class="date">` + data.contribs["first"] + "</div>" +
         data.contribs["arr"].map((val: number): string => {
@@ -24,7 +24,7 @@ fetch("/overview-stats.json")
         }).join("") +
       `<div class="date">` + data.contribs["last"] + "</div>"
 
-    , langsEl: HTMLElement = overviewEl.querySelector(".languages-container") as HTMLElement
+    , langsEl: HTMLElement = overviewEl.querySelector(".languages-container")!
     , langsHTML: string = Object.entries(data.langs as LangsData).map(
         (
           lang: [string, number[]], i: number,
@@ -44,7 +44,7 @@ fetch("/overview-stats.json")
           `;
       }).join("")
 
-    , stacksEl: HTMLElement = overviewEl.querySelector(".stacks-lists>ul") as HTMLElement
+    , stacksEl: HTMLElement = overviewEl.querySelector(".stacks-lists>ul")!
     , stacksHTML: string = stacksData.map(
         (
           data: StacksData | "mobile-br"
@@ -87,15 +87,10 @@ fetch("/overview-stats.json")
         stacksEl.innerHTML = stacksHTML;
 
         requestAnimationFrame((): void => {
-          for (const animEl of (overviewEl.querySelector(".commits") as HTMLElement).querySelectorAll(".anim:not(.on)")) {
+          for (const animEl of overviewEl.querySelector(".commits")!.querySelectorAll(".anim:not(.on)")) {
             animEl.classList.add("on");
           }
         });
-
-        // window.initAnim(
-        //   overviewEl.querySelector(".commits") as HTMLElement,
-        //   "-120px 0px",
-        // );
       });
     }, 560);
 

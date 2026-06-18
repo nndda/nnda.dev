@@ -8,8 +8,8 @@ import initIcon from "./build/icons/global";
 
 export default function (d: Document): void {
   const
-    navbarClasses: DOMTokenList = (d.getElementById("navbar") as HTMLElement).classList
-  , collapseArea: HTMLElement = (d.getElementById("collapse-area") as HTMLElement)
+    navbarClasses: DOMTokenList = d.getElementById("navbar")!.classList
+  , collapseArea: HTMLElement = d.getElementById("collapse-area")!
   ;
 
   (d.getElementById("navbar-button") as HTMLButtonElement).addEventListener("click", (): void => {
@@ -36,7 +36,7 @@ export default function (d: Document): void {
       (): Promise<any> => import("./sections/footer"),
       (): Promise<any> => loadCSS(styleFooter),
     ],
-    d.querySelector("body > footer") as HTMLElement,
+    d.querySelector("body > footer")!,
     "300px",
   );
 }

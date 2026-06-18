@@ -36,17 +36,17 @@ const
 
 , now: number = Date.now()
 
-, lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label") as HTMLElement
+, lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label")!
 , lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
 
-, lastPublishLabel: HTMLElement = d.getElementById("last-published-label") as HTMLElement
+, lastPublishLabel: HTMLElement = d.getElementById("last-published-label")!
 , lastPublishDate: Date = new Date(lastPublishLabel.getAttribute("title") as string)
 
-, nextUpdateLabel: HTMLElement = d.getElementById("next-update-label") as HTMLElement
+, nextUpdateLabel: HTMLElement = d.getElementById("next-update-label")!
 , nextUpdateDate: Date = new Date(nextUpdateLabel.getAttribute("title") as string)
 
-, pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages") as HTMLElement
-// , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner") as HTMLElement
+, pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages")!
+// , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner")!
 
 , pkgAttrHTMLStr: string = (packageJSON as string[]).map((pkg: string) => {
     const

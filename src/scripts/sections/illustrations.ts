@@ -19,10 +19,10 @@
 // ;
 
 // function clamp(num: number, min: number, max: number): number {
-//   return num <= min 
-//     ? min 
-//     : num >= max 
-//       ? max 
+//   return num <= min
+//     ? min
+//     : num >= max
+//       ? max
 //       : num
 // }
 
@@ -38,7 +38,7 @@
 
 //     illustData[i].height = rect.height;
 
-//     (elements[i].parentElement as HTMLElement).style.height = `${illustData[i].height * scrollOffset}px`;
+//     elements[i].parentElement!.style.height = `${illustData[i].height * scrollOffset}px`;
 //     elements[i].style.top = `-${illustData[i].height * scrollOffsetV}px`;
 
 //     illustData[i].topRel = (rect.top + (illustData[i].height * .5)) + documentWindow.scrollY;
@@ -95,7 +95,7 @@
 //           1 - ( 2 * (illustData[i].topRel - docScrollY) + illustData[i].height ) / docInnerHeight,
 //           -1, 1,
 //         )
-//           * 
+//           *
 //         (
 //           illustData[i].height * scrollOffsetV
 //         )
@@ -132,7 +132,7 @@ interface IllustrationGallery {
 const
   d: Document = document
 
-, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner>.illust-items") as HTMLElement
+, illustSectInner: HTMLElement = d.querySelector("#illustrations>.section-inner>.illust-items")!
 , illustSectContWidth: number = illustSectInner.clientWidth
 , illustSectContGap: number = parseFloat(getComputedStyle(illustSectInner).fontSize) * 0.6
 

@@ -1,8 +1,6 @@
 export default function (d: Document) {
   const
-    documentWindow: Window = d.defaultView as Window
-
-  , headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
+    headerClasses: DOMTokenList = (d.querySelector("body > header")!).classList
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
   ;
 
@@ -12,7 +10,7 @@ export default function (d: Document) {
   ;
 
   backTop.addEventListener("click", (): void => {
-    documentWindow.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
@@ -35,5 +33,5 @@ export default function (d: Document) {
 
   scrollEv();
 
-  documentWindow.addEventListener("scroll", scrollEv, { passive: true });
+  window.addEventListener("scroll", scrollEv, { passive: true });
 };

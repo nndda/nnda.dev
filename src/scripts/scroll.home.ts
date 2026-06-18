@@ -2,20 +2,18 @@ import { observe } from "./framework";
 
 export default function (d: Document): void {
   const
-    documentWindow: Window = d.defaultView as Window
-
-  , headerClasses: DOMTokenList = (d.querySelector("body > header") as HTMLElement).classList
+    headerClasses: DOMTokenList = (d.querySelector("body > header")!).classList
 
   // , sections: HTMLElement[] = [
   //     d.getElementById("projects"),
   //     d.getElementById("illustrations"),
-  //   ] as HTMLElement[]
+  //   ]![]
 
   // , navLinksClass: DOMTokenList[] = Array.from(
   //     d.querySelectorAll(".scrollspy")
   //   ).map(n => n.classList)
 
-  // , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label") as HTMLElement
+  // , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label")!
 
   , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
 
@@ -35,7 +33,7 @@ export default function (d: Document): void {
   ;
 
   backTop.addEventListener("click", (): void => {
-    documentWindow.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
@@ -62,7 +60,7 @@ export default function (d: Document): void {
         headerClasses.toggle("active", !entry.isIntersecting);
         backTop.classList.toggle("active", !entry.isIntersecting);
       });
-  })(d.getElementById("home") as HTMLElement);
+  })(d.getElementById("home")!);
 
   function scrollTransform(): void {
     scrollRatio = scrollPosition / window.innerHeight;
@@ -106,5 +104,5 @@ export default function (d: Document): void {
 
   scrollEv();
 
-  documentWindow.addEventListener("scroll", scrollEv, { passive: true });
+  window.addEventListener("scroll", scrollEv, { passive: true });
 }

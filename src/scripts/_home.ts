@@ -21,7 +21,7 @@ importLazy(
     (): Promise<any> => import("./sections/overview"),
     (): Promise<any> => loadCSS(styleOverview),
   ],
-  d.getElementById("overview") as HTMLElement,
+  d.getElementById("overview")!,
   "25px",
 );
 
@@ -33,7 +33,7 @@ importLazy(
     (): Promise<any> => import("./sections/projects"),
     (): Promise<any> => loadCSS(styleProjects),
   ],
-  d.getElementById("projects") as HTMLElement,
+  d.getElementById("projects")!,
   "180px",
 );
 
@@ -45,7 +45,7 @@ importLazy(
     (): Promise<any> => import("./sections/illustrations"),
     (): Promise<any> => loadCSS(styleIllustrations),
   ],
-  d.getElementById("illustrations") as HTMLElement,
+  d.getElementById("illustrations")!,
   "200px",
 );
 
@@ -57,6 +57,6 @@ importLazy(
     (): Promise<any> => import("./sections/links"),
     (): Promise<any> => loadCSS(styleLinks),
   ],
-  d.getElementById("links") as HTMLElement,
+  d.getElementById("links")!,
   "200px",
 );

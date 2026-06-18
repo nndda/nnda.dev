@@ -95,19 +95,33 @@ export function importLazy(
 
 
 export function initAnim(
-  el: Element,
+  element: Element,
   rootMargin: string | undefined = undefined,
   cb: (() => void) | null = null,
 ): void {
-  observe((entry: IntersectionObserverEntry): void => {
+  const
+    animEls = element.querySelectorAll(".anim:not(.on)")
+  ;
+
+  observe(
+    (
+      entry: IntersectionObserverEntry,
+      observerObj: IntersectionObserver,
+    ): void => {
     if (entry.isIntersecting) {
       if (cb) cb();
 
-      for (const animEl of el.querySelectorAll(".anim:not(.on)")) {
-        animEl.classList.add("on");
-      }
+      requestAnimationFrame((): void => {
+        for (const animEl of animEls) {
+          animEl.classList.add("on");
+        }
+      });
+
+      observerObj.disconnect();
     }
-  }, rootMargin )(el);
+  }, rootMargin )(
+    element
+  );
 };
 
 
