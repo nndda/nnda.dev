@@ -8,13 +8,13 @@ import iconsAttr from "../build/icons/footer.attributions";
 function getLastUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((now - date.getTime()) / 36e5);
 
-  return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours == 1 ? "" : "s"} ago`;
+  return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`;
 }
 
 function getFutureUpdatedHrs(date: Date): string {
   const hours: number = Math.floor((date.getTime() - now) / 36e5);
 
-  return hours <= 0 ? "in <1 hour" : `in ${hours} hours`;
+  return hours <= 0 ? "in <1 hour" : `in ${hours} hour${hours === 1 ? "" : "s"}`;
 }
 
 function getLastUpdatedDays(date: Date): string {
@@ -25,8 +25,8 @@ function getLastUpdatedDays(date: Date): string {
   ;
 
   return days <= 0
-    ? (hours <= 0 ? "<1 hour ago" : `${hours} hours ago`)
-    : `${days} days, ${hours} hours ago`;
+    ? (hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`)
+    : `${days} days, ${hours} hour${hours === 1 ? "" : "s"} ago`;
 }
 
 initIcon();
