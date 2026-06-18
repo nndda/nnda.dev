@@ -67,7 +67,7 @@
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
     "webpack-dev-server": "^5.2.5",
-    "wrangler": "^4.100.0",
+    "wrangler": "^4.102.0",
     "yaml": "^2.9.0"
   },
   "overrides": {
@@ -75,6 +75,7 @@
     "esbuild": "^0.28.1",
     "launch-editor": "^2.14.1",
     "ws": "^8.21.0",
-    "js-yaml": "^4.2.0"
+    "js-yaml": "^4.2.0",
+    "http-proxy-middleware": "^4.1.1"
   }
 }
