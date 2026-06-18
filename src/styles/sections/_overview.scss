@@ -287,7 +287,11 @@
     & > div {
       max-width: 1080px;
       margin: auto;
-      margin-top: 2em;
+      /* margin-top: 2em; */
+    }
+
+    & .tab {
+      margin-bottom: 1.5em;
     }
   }
 

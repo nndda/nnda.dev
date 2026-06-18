@@ -128,8 +128,8 @@ input[type="checkbox"], input[type="radio"] {
 
   & + .checked {
     display: inline-block;
-    min-width: 1em;
-    margin-right: .8em;
+    /* min-width: 1em; */
+    /* margin-right: .8em; */
 
     & + .checked-not {
       display: none;
@@ -147,7 +147,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .checkbox {
   display: flex;
-  width: 1em;
+  /* width: 1em; */
   margin: .5em;
 }
 
@@ -179,4 +179,52 @@ input[type="checkbox"], input[type="radio"] {
 
 #tag-project-cont {
   display: flex;
+}
+
+.tab {
+  $border-col: rgba($text-secondary, 55%);
+
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  & > input {
+    & + label {
+      border-bottom-color: $border-col;
+      margin-inline: -1px;
+    }
+
+    &:not(checked) + label {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    &:checked + label {
+      color: $primary;
+      font-weight: 700;
+
+      border-style: solid;
+      border-color: $primary;
+      border-bottom-color: #0000;
+      box-sizing: border-box;
+    }
+
+  }
+
+  & > label, &::after, &::before {
+    border: 2px dashed #0000;
+    /* border-bottom-color: #0000; */
+    /* border-bottom: 0; */
+    border-radius: 3px 3px 0 0;
+    padding: .35em 1.5em;
+    padding-bottom: .6em;
+  }
+
+  &::after, &::before {
+    content: "";
+    flex-grow: 1;
+    border-bottom-color: $border-col;
+  }
 }
