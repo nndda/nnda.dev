@@ -22,7 +22,7 @@ const
 , absRoot: DirResolver = createResolver(abs("../../../"))
 
 , tsconfigPath: string = absRoot("./config/tsconfig.build.json")
-, tsBin: string = absRoot("./node_modules/.bin/tsx")
+, tsBin: string = "bun"
 , pyBin: string = "python3"
 
 , spawnSyncOpt: SpawnSyncOptionsWithStringEncoding = {
@@ -80,7 +80,7 @@ function execScript(script: string, pref: string): void {
     spawnSync(
       (isTs ? tsBin : pyBin),
       [
-        ...(isTs ? ["--tsconfig", tsconfigPath,] : []),
+        ...(isTs ? ["run", `--tsconfig-override=${tsconfigPath}`,] : []),
         script,
       ],
       spawnSyncOpt,

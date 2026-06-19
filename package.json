@@ -11,7 +11,7 @@
     "dev": "bun run start",
     "start": "bun run build:config && bun run build:data && concurrently 'webpack-dev-server --config ./config/webpack.dev.js --port 9000' 'bun run watch:data'",
     "build": "bun run build:config && bun run fetch:gh && bun run fetch:data-ext && bun run build:data && webpack --no-devtool --config ./config/webpack.config.js && bun run post:build",
-    "build:data": "tsx --tsconfig ./config/tsconfig.build.json ./src/scripts/build/index.ts",
+    "build:data": "bun run --tsconfig-override=./config/tsconfig.build.json ./src/scripts/build/index.ts",
     "build:config": "tsc --project ./config/tsconfig.build.json",
     "watch:project": "ts-node ./src/_projects/project-pages.ts --watch",
     "watch:data": "bun run build:data -- --watching",
@@ -19,7 +19,7 @@
     "lint:scripts": "eslint --config ./config/eslint.config.ts .",
     "fetch:gh": "python ./src/api/gh.py",
     "fetch:data-ext": "python ./src/api/data-ext.py",
-    "post:build": "python ./src/post/post_build.py && tsx --tsconfig ./config/tsconfig.build.json ./src/post/post-build.ts"
+    "post:build": "python ./src/post/post_build.py && bun run --tsconfig-override=./config/tsconfig.build.json ./src/post/post-build.ts"
   },
   "engines": {
     "bun": "^1.3.14"
@@ -61,7 +61,6 @@
     "stylelint": "^17.13.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "ts-loader": "^9.6.1",
-    "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.1",
     "webpack": "^5.107.2",
