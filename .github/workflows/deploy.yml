@@ -110,6 +110,7 @@ jobs:
         with:
           sparse-checkout: |
             .github/actions/build-docker-image/action.yml
+            config/Dockerfile
           sparse-checkout-cone-mode: false
 
       - uses: ./.github/actions/build-docker-image
