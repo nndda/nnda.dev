@@ -1,4 +1,4 @@
-name: Deploy to CF Pages
+name: Deployment
 
 
 on:
@@ -100,6 +100,7 @@ jobs:
     needs:
       - check-bun
       - check-pip
+      - deps-changes
 
     runs-on: ubuntu-latest
 
