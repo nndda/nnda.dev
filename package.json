@@ -10,6 +10,7 @@
   "os": [
     "linux"
   ],
+  "private": true,
   "scripts": {
     "dev": "bun run start",
     "start": "bun run build:config && bun run build:data && concurrently 'webpack-dev-server --config ./config/webpack.dev.js --port 9000' 'bun run watch:data'",
