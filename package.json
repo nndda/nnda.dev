@@ -7,6 +7,9 @@
     "url": "https://nnda.dev"
   },
   "license": "AGPL-3.0-or-later",
+  "os": [
+    "linux"
+  ],
   "scripts": {
     "dev": "bun run start",
     "start": "bun run build:config && bun run build:data && concurrently 'webpack-dev-server --config ./config/webpack.dev.js --port 9000' 'bun run watch:data'",
