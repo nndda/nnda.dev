@@ -23,6 +23,7 @@ on:
       - 'config/webpack.config.ts'
       - 'config/wrangler.toml'
       - 'config/requirements.txt'
+      - 'config/Dockerfile'
   workflow_dispatch:
 
 
