@@ -27,7 +27,7 @@ on:
 
 
 jobs:
-  check-pip:
+  check-pip: # ----------------------------------------------------------------
     name: Check pip/requirements.txt
 
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
           inputs: config/requirements.txt
 
 
-  check-bun:
+  check-bun: # ----------------------------------------------------------------
     name: Check Bun/package.json
 
     runs-on: ubuntu-latest
@@ -68,32 +68,89 @@ jobs:
           bun audit --audit-level moderate
 
 
-  deploy:
-    name: Deploy to Cloudflare
-
+  deps-changes: # -------------------------------------------------------------
     runs-on: ubuntu-latest
+
+    outputs:
+      changed: ${{ steps.filter.outputs.deps }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            deps:
+            - 'config/Dockerfile'
+            - 'config/requirements.txt'
+            - 'package.json'
+            - 'bun.lock'
+
+
+  docker-image: # -------------------------------------------------------------
+    name: Build & push Docker image
+    if: |
+      ${{
+        github.event_name == 'push' &&
+        github.ref == 'refs/heads/main' &&
+
+        needs.deps-changes.outputs.changed == 'true'
+      }}
 
     needs:
       - check-bun
       - check-pip
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6.0.2
+    runs-on: ubuntu-latest
 
+    steps:
       - uses: ./.github/actions/setup-bun
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.13'
-          cache: pip
-          cache-dependency-path: 'config/requirements.txt'
-      - name: Install Python dependencies
-        run: pip install -r ./config/requirements.txt
 
+  deploy: # -------------------------------------------------------------------
+    name: Deploy to Cloudflare
+
+    runs-on: ubuntu-latest
+
+    if: |
+      ${{
+        always() &&
+        needs.deps-changes.result == 'success' &&
+        (
+          needs.docker-image.result == 'success' ||
+          needs.docker-image.result == 'skipped'
+        )
+      }}
+
+    needs:
+      - check-bun
+      - check-pip
+      - deps-changes
+
+    container:
+      image: nndda/nnda.dev:latest
+      credentials:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    steps:
       - name: Build website
-        run: bun run build && cp ./config/wrangler.toml ./
+        run: |
+          git clone https://github.com/nndda/nnda.dev.git . --depth 1
+
+          cp -arT . /nnda.dev
+          cd /nnda.dev
+
+          git config --global --add safe.directory /nnda.dev
+
+          python -m venv .
+          source bin/activate
+
+          bun run build
+
+          cp config/wrangler.toml .
+
+        shell: bash
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           GH_PAT_EXT: ${{ secrets.GH_PAT_EXT }}
