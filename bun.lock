@@ -29,7 +29,6 @@
         "handlebars": "^4.7.9",
         "html-bundler-webpack-plugin": "^4.23.2",
         "image-size": "^2.0.2",
-        "jiti": "^2.7.0",
         "lodash": "^4.18.1",
         "postcss": "^8.5.15",
         "postcss-loader": "^8.2.1",
