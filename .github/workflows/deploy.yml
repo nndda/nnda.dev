@@ -111,7 +111,11 @@ jobs:
           sparse-checkout: |
             .github/actions/build-docker-image/action.yml
           sparse-checkout-cone-mode: false
+
       - uses: ./.github/actions/build-docker-image
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          token: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
   deploy: # -------------------------------------------------------------------
