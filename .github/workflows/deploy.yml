@@ -142,10 +142,9 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     steps:
+      - uses: actions/checkout@v6
       - name: Build website
         run: |
-          git clone https://github.com/nndda/nnda.dev.git . --depth 1
-
           cp -arT . /nnda.dev
           cd /nnda.dev
 
