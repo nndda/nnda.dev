@@ -34,7 +34,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@swc/html": "^1.15.41",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^25.9.4",
+    "@types/node": "^26.0.0",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.5.0",
     "chokidar": "^5.0.0",
