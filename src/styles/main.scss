@@ -136,12 +136,16 @@ h1 {
 
 .cta-container {
   position: absolute;
+  bottom: 0;
   display: flex;
-  align-items: end;
-  width: 100%;
-  height: 100%;
+  gap: 1.5em;
+  margin: 2em;
+  /* align-items: end; */
+  /* width: 100%; */
+  /* height: 100%; */
 }
 
+/*
 .cta-inner {
   display: flex;
   width: 100%;
@@ -149,19 +153,23 @@ h1 {
   margin: 2em;
   margin-bottom: 3em;
 }
+*/
 
 .cta-group {
   display: flex;
   flex-direction: column;
-  margin: 0 1em;
+  /* margin: 0 1em; */
+  /* margin: 2em; */
+  /* margin-bottom: 2em; */
 }
-
+/*
 .cta-label {
   margin-top: .5em;
 //   margin: 0 1em;
 }
+*/
 
-.cta-button {
+.cta-group > a {
   position: relative;
   display: flex;
 
@@ -258,34 +266,41 @@ h1 {
 }
 
 .down-indicator-cont {
-  flex-grow: 1;
-  align-items: end;
+  position: absolute;
+  bottom: 0;
+  font-size: 2em;
+  /* padding: 2em; */
+  /* width: 5em; */
+  /* height: 5em; */
+  z-index: 3;
+  /* flex-grow: 1; */
+  /* align-items: end; */
   // margin-right: 3em;
 }
 
 .down-indicator {
-  position: relative;
-  width: 2.25em;
-  height: 2.25em;
+  /* position: relative; */
 
   & > svg {
-    display: block;
-    width: 1.5em;
-    height: 1.5em;
+    /* display: block; */
+    /* width: 1.5em; */
+    /* height: 1.5em; */
     margin: auto;
 
     animation: 2s mouse-wiggle ease infinite;
   }
 
   & > .arrows {
+    margin: auto;
     width: 100%;
+    height: 100%;
   }
 
   & > .arrows > svg {
     position: absolute;
     display: block;
-    width: inherit;
-    height: inherit;
+    /* width: inherit; */
+    /* height: inherit; */
 
     animation: 2s arrow-down ease-out infinite;
 
@@ -341,19 +356,21 @@ h1 {
 
   // mix-blend-mode: plus-lighter;
 
-  transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
+  transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
+  /* transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1); */
   // will-change: tranform;
 
   & > .inner {
     margin-right: 3em;
   }
 
-  & .title {
+  & .titles > li {
     font-size: 3em;
     margin: 0;
     opacity: .8;
 
-    transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
+    transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
+    /* transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1); */
     // will-change: tranform;
 
     // &::first-letter {
@@ -399,7 +416,7 @@ h1 {
     , linear-gradient(17.5deg, #000 9%, transparent 23.5%)
     , radial-gradient(circle at 0% 0%, #000 2%, transparent 35%)
     ;
-    will-change: tranform;
+    will-change: translate;
     z-index: 1;
     background: rgba($background-dark, 0.6);
   }
@@ -411,8 +428,8 @@ h1 {
     object-position: center;
     z-index: 0;
 
-    transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: tranform;
+    transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: translate;
   }
 }
 
@@ -513,6 +530,7 @@ h1 {
   //   margin-bottom: 1em;
   // }
 
+  /*
   .cta-inner {
     margin: 0;
     // text-align: center;
@@ -522,6 +540,7 @@ h1 {
       margin-top: 1em;
     }
   }
+  */
 
   .down-indicator-cont {
     // margin-right: 2em;

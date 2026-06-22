@@ -1,12 +1,18 @@
 <header>
   <div class="header-inner">
-    <div class="logo">
-      <a href="/">
-        <img src="/assets/logo.svg" height="40" width="40" alt="ん.">
-      </a>
-    </div>
+    <a
+      href="/"
+      class="logo"
+    >
+      <img
+        src="/assets/logo.svg"
+        height="40"
+        width="40"
+        alt=""
+      >
+    </a>
 
-    <div id="mobile-nav-sect-label"></div>
+    <!--<div id="mobile-nav-sect-label"></div>-->
 
     <nav id="navbar" class="shown">
       <ul class="nostyle">
@@ -49,18 +55,29 @@
         {{/each}}
       </ul>
 
-      <button aria-label="Close Navbar Button" class="nav-link-btn icon-only" id="navbar-collapse">
+      <button
+        aria-label="Close navbar button"
+        class="nav-link-btn icon-only"
+        id="navbar-collapse"
+      >
         {{{icon "global" "angle-down" 36 48}}}
       </button>
     </nav>
 
-    <button aria-label="Navbar Menu" class="navbar-button icon-only blank" id="navbar-button">
+    <button
+      aria-label="Navbar menu"
+      class="navbar-button icon-only blank"
+      id="navbar-button"
+    >
       {{{icon "global" "bars" 18 20}}}
     </button>
   </div>
 </header>
 
-<div id="collapse-area" class="hidden-o"></div>
+<div
+  id="collapse-area"
+  class="hidden-o"
+></div>
 
 <div class="back-top-cont">
   <button id="back-top" aria-label="Back to top">

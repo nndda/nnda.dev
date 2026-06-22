@@ -18,9 +18,9 @@ import { imageSize } from "image-size";
 import type { ISizeCalculationResult } from "image-size/types/interface";
 
 const
-  abs: DirResolver = createResolver(__dirname)
-, dirOut: string = abs("./out/")
-, srcResolve: DirResolver = createResolver(abs("../../"))
+  abs = createResolver(__dirname)
+, dirOut = abs("./out/")
+, srcResolve = createResolver(abs("../../"))
 , illustPaths: Record<string, string> = {}
 ;
 
@@ -59,6 +59,3 @@ illustHomeDataPromise.then((illustHomeData: { illustrations: IllustGallery[] }) 
 
   console.log("Finished updating illustrations data...");
 });
-
-
-

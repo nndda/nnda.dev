@@ -170,7 +170,7 @@ export interface ProjectItem {
 }
 
 const
-  projectsStrEl: string =
+  projectsStrEl =
     projectsData.map((data: ProjectItem): string => {
       return `
       <div
@@ -223,8 +223,8 @@ const
 
 projectSectInner.classList.remove("on");
 
-setTimeout((): void => {
-  requestAnimationFrame((): void => {
+setTimeout(() => {
+  requestAnimationFrame(() => {
     projectSectInner.innerHTML = projectsStrEl;
     projectSectInner.classList.remove("has-loader");
 

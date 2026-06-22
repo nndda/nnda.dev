@@ -17,9 +17,9 @@ export interface LinkGroupItem {
 }
 
 const
-  d: Document = document
+  d = document
 
-, linksStrEl: string =
+, linksStrEl =
     linksData.map((data: LinkGroup, i: number): string => {
       return `
         <div class="links-group link-${i}">
@@ -78,8 +78,8 @@ const
 
 linkSectInner.classList.remove("on");
 
-setTimeout((): void => {
-  requestAnimationFrame((): void => {
+setTimeout(() => {
+  requestAnimationFrame(() => {
     linkSectInner.innerHTML = linksStrEl;
     linkSectInner.classList.remove("has-loader");
 

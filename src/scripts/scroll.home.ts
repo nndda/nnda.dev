@@ -1,8 +1,8 @@
 import { observe } from "./framework";
 
-export default function (d: Document): void {
+export default function (d: Document) {
   const
-    headerClasses: DOMTokenList = (d.querySelector("body > header")!).classList
+    headerClasses = d.querySelector("body > header")!.classList
 
   // , sections: HTMLElement[] = [
   //     d.getElementById("projects"),
@@ -15,24 +15,24 @@ export default function (d: Document): void {
 
   // , mobileNavSectLabel: HTMLElement = d.getElementById("mobile-nav-sect-label")!
 
-  , backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
+  , backTop = d.getElementById("back-top") as HTMLButtonElement
 
-  , illustContStyle: CSSStyleDeclaration = (d.querySelector(".illust-cont > img") as HTMLElement).style
-  , selfTitleContStyle: CSSStyleDeclaration = (d.querySelector(".self-cont") as HTMLElement).style
-  , selfTitle1Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(1)") as HTMLElement).style
-  , selfTitle2Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(2)") as HTMLElement).style
-  , selfTitle3Style: CSSStyleDeclaration = (d.querySelector(".self-cont .title:nth-child(3)") as HTMLElement).style
+  , illustContStyle = (d.querySelector(".illust-cont > img") as HTMLElement).style
+  , selfTitleContStyle = (d.querySelector(".self-cont") as HTMLElement).style
+  , selfTitle1Style = (d.querySelector(".self-cont .titles>:nth-child(1)") as HTMLElement).style
+  , selfTitle2Style = (d.querySelector(".self-cont .titles>:nth-child(2)") as HTMLElement).style
+  , selfTitle3Style = (d.querySelector(".self-cont .titles>:nth-child(3)") as HTMLElement).style
 
   ;
 
   let
-    scrollPosition: number = 0
-  , scrollRatio: number = 0
+    scrollPosition = 0
+  , scrollRatio = 0
 
-  , ticking: boolean = false
+  , ticking = false
   ;
 
-  backTop.addEventListener("click", (): void => {
+  backTop.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -53,30 +53,34 @@ export default function (d: Document): void {
   //   });
   // }
 
+
   observe((
     entry: IntersectionObserverEntry,
-    ): void => {
-      requestAnimationFrame((): void => {
+    ) => {
+      requestAnimationFrame(() => {
         headerClasses.toggle("active", !entry.isIntersecting);
         backTop.classList.toggle("active", !entry.isIntersecting);
       });
   })(d.getElementById("home")!);
 
-  function scrollTransform(): void {
+
+  function scrollTransform() {
     scrollRatio = scrollPosition / window.innerHeight;
 
-    if (scrollPosition / window.innerHeight <= 1) {
-      illustContStyle.transform = `translateY(-${scrollRatio * 250}px)`;
-      selfTitleContStyle.transform = `translateY(-${scrollRatio * 170}px)`;
+    if (scrollRatio <= 1) {
+      illustContStyle.translate = `0 -${scrollRatio * 250}px`;
+      selfTitleContStyle.translate = `0 -${scrollRatio * 170}px`;
 
-      selfTitle1Style.transform = `translateY(-${scrollRatio * 30}px)`;
-      selfTitle2Style.transform = `translateY(-${scrollRatio * 60}px)`;
-      selfTitle3Style.transform = `translateY(-${scrollRatio * 90}px)`;
+      selfTitle1Style.translate = `0 -${scrollRatio * 30}px`;
+      selfTitle2Style.translate = `0 -${scrollRatio * 60}px`;
+      selfTitle3Style.translate = `0 -${scrollRatio * 90}px`;
     }
+
     ticking = false;
   }
 
-  function scrollEv(): void {
+
+  function scrollEv() {
     if (!ticking) {
       scrollPosition = window.scrollY;
       ticking = true;

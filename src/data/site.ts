@@ -1,7 +1,7 @@
 // Build-side configuration:
 // Exported data will be used in the Handlebars templating directly
 const DATA: any = async () => { return _.merge({
-  repoURL: "https://github.com/nndda/website",
+  repoURL: "https://github.com/nndda/nnda.dev",
 
   site: {
     author: "nnda",
@@ -39,19 +39,16 @@ const DATA: any = async () => { return _.merge({
         url: "#illustrations",
       },
       {
-        // icon: iconSI["itchdotio"],
         icon: `<svg data-i="itchdotio" class="global" height="18" width="18"></svg>`,
         url: "nnda.itch.io",
         external: true,
       },
       {
-        // icon: iconSI["github"],
         icon: `<svg data-i="github" class="global" height="18" width="18"></svg>`,
         url: "github.com/nndda",
         external: true,
       },
       {
-        // icon: iconSI["bluesky"],
         icon: `<svg data-i="bluesky" class="global" height="18" width="18"></svg>`,
         url: "bsky.app/profile/nnda.dev",
         external: true,
@@ -73,10 +70,6 @@ const DATA: any = async () => { return _.merge({
   buildTimetamp: currentDate,
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA?.substring(0, 16),
-
-  // iconSI: iconSI,
-  // iconFAS: iconFAS,
-  // iconFAB: iconFAB,
 
 }, exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
 
@@ -102,49 +95,6 @@ const
   abs: DirResolver = createResolver(__dirname)
 , siteExtPath: string = abs("./site-ext.js")
 ;
-
-// ============================================================================
-
-// type IconDefs = Record<string, string>;
-
-// ----------------------------------------------------------------------------
-
-// import * as siIconsRaw from "simple-icons";
-// import { type SimpleIcon } from "simple-icons";
-
-// const iconSI: IconDefs = Object.keys(siIconsRaw).reduce(
-//   (acc: IconDefs, val: string): IconDefs => {
-//     const icon: SimpleIcon = siIconsRaw[val];
-//     acc[icon.slug] = icon.svg;
-
-//     return acc;
-//   }, {} as IconDefs,
-// );
-
-// ----------------------------------------------------------------------------
-
-// import { icon } from "@fortawesome/fontawesome-svg-core";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
-// import { fab } from "@fortawesome/free-brands-svg-icons";
-
-// const iconFAS: IconDefs = Object.keys(fas).reduce(
-//   (acc: IconDefs, val: string): IconDefs => {
-//     acc[
-//       fas[val].iconName.replace("-", "_")
-//     ] = icon(fas[val]).html.join();
-//     return acc;
-//   }, {} as IconDefs,
-// );
-
-// const iconFAB: IconDefs = Object.keys(fab).reduce(
-//   (acc: IconDefs, val: string): IconDefs => {
-//     acc[
-//       fab[val].iconName.replace("-", "_")
-//     ] = icon(fab[val]).html.join();
-//     return acc;
-//   }, {} as IconDefs,
-// );
-
 
 // ============================================================================
 

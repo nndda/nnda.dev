@@ -5,27 +5,27 @@ import fs from "fs";
 
 export const textEncoding: fs.ObjectEncodingOptions = {encoding: "utf-8"};
 
-export function readTextFile(filePath: string): string {
+export function readTextFile(filePath: string) {
   return fs.readFileSync(filePath, textEncoding) as string;
 }
 
-export function writeTextFile(filePath: string, content: string): void {
+export function writeTextFile(filePath: string, content: string) {
   const dir: string = path.dirname(filePath);
   if (!exists(dir)) mkdir(dir);
   fs.writeFileSync(filePath, content, textEncoding);
 }
 
-export function mkdir(dir: string): void {
+export function mkdir(dir: string) {
   fs.mkdirSync(dir, {recursive: true});
 }
 
-export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath: string): void {
+export function rm(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath: string) {
   if (exists(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath)) {
     fs.rmSync(pathButICantCallItPathDirectlyBecauseTheresAlreadyAVariableNamedPath, {recursive: true});
   }
 }
 
-export function mv(pathFrom: string, pathTo: string): void {
+export function mv(pathFrom: string, pathTo: string) {
   if (fs.lstatSync(pathFrom).isDirectory()) {
     const pathTarget: string = path.resolve(pathTo, path.basename(pathFrom));
 
@@ -41,7 +41,7 @@ export function ls(whatPath: string): string[] {
   return fs.readdirSync(whatPath);
 }
 
-export function cleanupDir(cleanupPath: string): void {
+export function cleanupDir(cleanupPath: string) {
   fs.readdirSync(cleanupPath, {withFileTypes: true}).forEach(val => {
     if (val.isFile() && (
       val.name.endsWith(".js") ||
@@ -58,11 +58,11 @@ export function exists(whatPath: fs.PathLike): boolean {
   return fs.existsSync(whatPath);
 }
 
-export function pathResolve(...paths: string[]): string {
+export function pathResolve(...paths: string[]) {
   return path.resolve(...paths);
 }
 
-export function resolveRelative(from: string, to: string): string {
+export function resolveRelative(from: string, to: string) {
   return path.relative(from, to);
 }
 

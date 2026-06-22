@@ -5,23 +5,23 @@ import initIcon from "../build/icons/footer";
 
 import iconsAttr from "../build/icons/footer.attributions";
 
-function getLastUpdatedHrs(date: Date): string {
-  const hours: number = Math.floor((now - date.getTime()) / 36e5);
+function getLastUpdatedHrs(date: Date) {
+  const hours = Math.floor((now - date.getTime()) / 36e5);
 
   return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`;
 }
 
-function getFutureUpdatedHrs(date: Date): string {
-  const hours: number = Math.floor((date.getTime() - now) / 36e5);
+function getFutureUpdatedHrs(date: Date) {
+  const hours = Math.floor((date.getTime() - now) / 36e5);
 
   return hours <= 0 ? "in <1 hour" : `in ${hours} hour${hours === 1 ? "" : "s"}`;
 }
 
-function getLastUpdatedDays(date: Date): string {
+function getLastUpdatedDays(date: Date) {
   const
-    ms: number = now - date.getTime()
-  , days: number = Math.floor(ms / 864e5)
-  , hours: number = Math.floor((ms % 864e5) / 36e5)
+    ms = now - date.getTime()
+  , days = Math.floor(ms / 864e5)
+  , hours = Math.floor((ms % 864e5) / 36e5)
   ;
 
   return days <= 0
@@ -32,32 +32,32 @@ function getLastUpdatedDays(date: Date): string {
 initIcon();
 
 const
-  d: Document = document
+  d = document
 
-, now: number = Date.now()
+, now = Date.now()
 
 , lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label")!
-, lastUpdateDate: Date = new Date(lastUpdateLabel.getAttribute("title") as string)
+, lastUpdateDate = new Date(lastUpdateLabel.getAttribute("title")!)
 
 , lastPublishLabel: HTMLElement = d.getElementById("last-published-label")!
-, lastPublishDate: Date = new Date(lastPublishLabel.getAttribute("title") as string)
+, lastPublishDate = new Date(lastPublishLabel.getAttribute("title")!)
 
 , nextUpdateLabel: HTMLElement = d.getElementById("next-update-label")!
-, nextUpdateDate: Date = new Date(nextUpdateLabel.getAttribute("title") as string)
+, nextUpdateDate = new Date(nextUpdateLabel.getAttribute("title")!)
 
 , pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages")!
 // , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner")!
 
-, pkgAttrHTMLStr: string = (packageJSON as string[]).map((pkg: string) => {
+, pkgAttrHTMLStr = packageJSON.map(pkg => {
     const
-      pkgName: string = pkg.slice(0, -1)
-    , pkgId: string = pkg.slice(-1)
+      pkgName = pkg.slice(0, -1)
+    , pkgId = pkg.slice(-1)
 
-    , hasIcon: boolean = pkgName in iconsAttr
+    , hasIcon = pkgName in iconsAttr
     ;
 
     let
-      pkgUrl: string = ""
+      pkgUrl = ""
     ;
 
     if (pkgId == "1") {
@@ -76,7 +76,7 @@ const
   }).join("")
 ;
 
-requestAnimationFrame((): void => {
+requestAnimationFrame(() => {
   pkgAttrElCont.innerHTML = pkgAttrHTMLStr;
 
   lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);

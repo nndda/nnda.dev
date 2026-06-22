@@ -21,9 +21,9 @@
       margin-right: .5em;
     }
 
-    & > span {
+    /* & > span {
       color: color.mix($text-secondary, $background-dark, 85%);
-    }
+    } */
   }
 }
 
@@ -40,19 +40,15 @@
   display: block;
 }
 
-.name-cont {
-  display: flex;
-  align-items: end;
-
-  margin: 1.5em 0 0;
-  padding-top: .5em;
-  // margin-bottom: .25em;
-}
-
-.desc-cont {
+.author-desc {
+  width: fit-content;
   grid-column: span 2;
   margin-top: 1.25em;
   font-size: 1.35em;
+
+  & > s {
+    opacity: .8;
+  }
 }
 
 .lists {
@@ -88,29 +84,22 @@
   }
 }
 
-h1.name {
-  // left: -.5em;
+.author-name {
+  width: min-content;
+  height:min-content;
+
+  align-self: end;
+
   margin: 0;
-  // margin: 0 -.5em;
-  // margin-left: -.5em;
   padding: 0 .5em;
 
-  // color: $background-dark;
   color: $text-secondary;
-
-  font-size: 2.5em;
-  // font-weight: 600;
-
-  // background: url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=3ae5f9);
-  // background-repeat: no-repeat;
-  // background-position: center center;
-
   background: $background-dark;
 
-  // border: .5em solid $background-dark;
-  border-radius: 16px;
+  font-size: 2.5em;
+  white-space:nowrap;
 
-  // box-sizing: content-box;
+  border-radius: 16px;
 
   transform: translateX(-.5em);
 
@@ -125,18 +114,20 @@ h1.name {
     color: $tertiary;
   }
 }
-
+/*
 p.about {
   margin: .5em 0;
   margin-bottom: .7em;
   color: $text-secondary;
-}
+} */
 
-.user-metadata {
+.author-info {
   display: flex;
   // grid-column: span 2;
   flex-wrap: wrap;
   width: 100%;
+
+  color: color.mix($text-secondary, $background-dark, 85%);
 }
 
 #clock-timezone {

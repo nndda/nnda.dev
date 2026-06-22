@@ -10,7 +10,7 @@ for (const i in icons) {
   iconsCompiled[i] = buildSvg(icons[(i as keyof typeof icons)], 18, 18);
 }
 
-export default function (d: Document): void {
+export default function (d: Document) {
   // Checkbox
 
   for (const el of d.querySelectorAll(".checkbox")) {

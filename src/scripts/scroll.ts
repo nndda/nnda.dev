@@ -9,18 +9,18 @@ export default function (d: Document) {
   , ticking: boolean = false
   ;
 
-  backTop.addEventListener("click", (): void => {
+  backTop.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   });
 
-  function scrollEv(): void {
+  function scrollEv() {
     if (!ticking) {
       ticking = true
 
-      requestAnimationFrame((): void => {
+      requestAnimationFrame(() => {
         toggled = (window.scrollY / window.innerHeight) > 0.6
 
         headerClasses.toggle("active", toggled);

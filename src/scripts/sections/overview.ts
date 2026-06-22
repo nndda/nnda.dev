@@ -7,7 +7,7 @@ type OverviewStats = typeof import("../../public/overview-stats.json");
 
 fetch("/overview-stats.json")
   .then((res: Response): Promise<OverviewStats> => res.json())
-  .then((data: OverviewStats): void => {
+  .then((data: OverviewStats) => {
 
     interface LangsData {
       [lang: string]: number[],
@@ -71,10 +71,10 @@ fetch("/overview-stats.json")
     // Fade in contribution graph
     contribsGridEl.classList.remove("on");
 
-    setTimeout((): void => {
+    setTimeout(() => {
       contribsGridEl.classList.remove("has-loader");
 
-      requestAnimationFrame((): void => {
+      requestAnimationFrame(() => {
 
         // Commits heatmap
         contribsGridEl.innerHTML = contribsGridHTML;
@@ -86,7 +86,7 @@ fetch("/overview-stats.json")
         // Tech stacks showcase
         stacksEl.innerHTML = stacksHTML;
 
-        requestAnimationFrame((): void => {
+        requestAnimationFrame(() => {
           for (const animEl of overviewEl.querySelector(".commits")!.querySelectorAll(".anim:not(.on)")) {
             animEl.classList.add("on");
           }

@@ -12,11 +12,11 @@ const
 export function initIcons(
   selector: string,
   iconSets: Record<string, string[]>,
-): void {
-  requestAnimationFrame((): void => {
+) {
+  requestAnimationFrame(() => {
     for (const iconEl of document.querySelectorAll("svg." + selector + ":not(.loaded)")) {
       const
-        iData: string[] = iconSets[iconEl.getAttribute("data-i") as string]
+        iData = iconSets[iconEl.getAttribute("data-i") as string]
       ;
 
       for (const attr in svgAttr) {
@@ -61,15 +61,15 @@ export function importLazy(
   imports: (() => Promise<any>)[],
   element: Element,
   rootMargin?: string,
-): void {
+) {
 
-  let retry: number = 0;
+  let retry = 0;
 
-  function importInit(): void {
+  function importInit() {
     Promise.all(
       imports.map((val: () => Promise<any>): Promise<any> => val())
     )
-    .catch((): void => {
+    .catch(() => {
       if (retry < 5) {
         retry += 1;
         importInit();
@@ -81,7 +81,7 @@ export function importLazy(
     (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
-    ): void => {
+    ) => {
       if (entry.isIntersecting) {
         importInit();
 
@@ -98,7 +98,7 @@ export function initAnim(
   element: Element,
   rootMargin: string | undefined = undefined,
   cb: (() => void) | null = null,
-): void {
+) {
   const
     animEls = element.querySelectorAll(".anim:not(.on)")
   ;
@@ -107,11 +107,11 @@ export function initAnim(
     (
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
-    ): void => {
+    ) => {
     if (entry.isIntersecting) {
       if (cb) cb();
 
-      requestAnimationFrame((): void => {
+      requestAnimationFrame(() => {
         for (const animEl of animEls) {
           animEl.classList.add("on");
         }
@@ -148,6 +148,6 @@ export function buildSvg(
   width: number,
   height: number,
   classes: string = "",
-): string {
+) {
   return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
 }

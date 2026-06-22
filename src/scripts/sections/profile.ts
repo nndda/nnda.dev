@@ -12,7 +12,7 @@ const
   }
 ;
 
-function updateClock(): void {
+function updateClock() {
   timezoneClock.textContent = new Date().toLocaleTimeString("en-US", timezoneOpt);
 }
 

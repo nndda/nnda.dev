@@ -17,7 +17,7 @@ const
         //   <span>2</span>
         // </li>
 
-export default function(): void {
+export default function() {
   fetch("/posts-feed.json")
     .then((res: Response): Promise<Post[]> => {return res.json()})
     .then((data: Post[]): void => {
@@ -83,7 +83,7 @@ export default function(): void {
   //               `
   //             }
 
-      requestAnimationFrame((): void => {
+      requestAnimationFrame(() => {
         socialListEl.innerHTML = socialListHTML;
 
         // (document.querySelector(".socials-lists")!).insertAdjacentHTML("afterend", `
@@ -100,7 +100,7 @@ export default function(): void {
         //   </div>
         // `);
 
-        requestAnimationFrame((): void => {
+        requestAnimationFrame(() => {
           socialListEl.classList.add("on");
         });
 

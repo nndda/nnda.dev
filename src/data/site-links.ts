@@ -5,10 +5,10 @@ import type {
 
 const
   // Common usernames
-  nnda: string = "nnda"
-, nndda: string = "nndda"
-, at_nnda: string = "@nnda"
-, at_nnda_dev: string = at_nnda + "_dev"
+  nnda = "nnda"
+, nndda = "nndda"
+, at_nnda = "@nnda"
+, at_nnda_dev = at_nnda + "_dev"
 ;
 
 // duplicates

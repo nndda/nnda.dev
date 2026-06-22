@@ -66,11 +66,11 @@ header {
 
       transition: transform .8s ease;
 
-      & > a {
+      /* & > a { */
         display: flex;
         align-items: center;
         height: 100%;
-      }
+      /* } */
     }
   }
 }
@@ -116,7 +116,7 @@ header {
 
   transition:
     .2s ease
-  , transform .7s ease 
+  , transform .7s ease
   ;
   transform: translateY(8em);
   overflow: hidden;

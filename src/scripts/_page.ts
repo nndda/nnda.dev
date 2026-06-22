@@ -1,5 +1,5 @@
 export {};
-const d: Document = document;
+const d = document;
 
 import init from "./main";
 init(d);

@@ -7,7 +7,6 @@ import {
 import {
   createResolver,
   exists,
-  type DirResolver,
 } from "./utils";
 
 import chokidar from "chokidar";
@@ -18,12 +17,12 @@ type ScriptDeps = Record<string, string[]>;
 
 const
   // So fucking dumb
-  abs: DirResolver = createResolver(__dirname)
-, absRoot: DirResolver = createResolver(abs("../../../"))
+  abs = createResolver(__dirname)
+, absRoot = createResolver(abs("../../../"))
 
-, tsconfigPath: string = absRoot("./config/tsconfig.build.json")
-, tsBin: string = "bun"
-, pyBin: string = "python3"
+, tsconfigPath = absRoot("./config/tsconfig.build.json")
+, tsBin = "bun"
+, pyBin = "python3"
 
 , spawnSyncOpt: SpawnSyncOptionsWithStringEncoding = {
     stdio: "pipe",
@@ -51,7 +50,9 @@ const
       "illustrations.ts",
     ],
   }).reduce((acc: ScriptDeps, val: [string, string[]]): ScriptDeps => {
-    const absPath: string = absRoot(val[0]);
+    const
+      absPath = absRoot(val[0])
+    ;
 
     if (exists(absPath)) {
       acc[absPath] = val[1];
@@ -70,7 +71,7 @@ const
   )
 ;
 
-function execScript(script: string, pref: string): void {
+function execScript(script: string, pref: string) {
   const
     isTs: boolean = script.endsWith(".ts")
   ;
@@ -119,7 +120,7 @@ if (process.argv.includes("--watching")) {
       persistent: true,
     })
 
-    .on("change", (path: string): void => {
+    .on("change", (path: string) => {
       const
         filename: string = nodePath.basename(path)
       ;

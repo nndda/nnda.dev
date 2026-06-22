@@ -2,6 +2,7 @@
 @media (width >= 700px) {
 .info-container {
   display: grid;
+  /* column-gap: 1em; */
   grid-template-columns: 15em auto;
   grid-template-rows: minmax(3em, 1fr) auto auto;
 }
@@ -17,20 +18,23 @@
   }
 }
 
-.desc-cont {
+.author-desc {
   grid-column: unset;
   margin-top: 0;
 }
 
 @media (height >= 920px) {
+  /*
   .cta-inner {
     flex-direction: column;
     margin-bottom: 2em;
   }
-
+  */
+  /*
   .cta-label {
     margin-bottom: 1.5em;
   }
+  */
 
   #profile {
     bottom: 0;

@@ -2,60 +2,60 @@
   <div class="bg-cover">
     <div class="section-inner">
       <div class="info-container">
+
         <div class="pfp-cont">
           <div class="profile-pict anim once fade float-up">
             <div class="img-cont">
               {{ img "/assets/avatar.avif" "" }}
             </div>
+
             <div class="status">
-              <span>{{site.authorProfile.status.icon}}</span>
-              {{site.authorProfile.status.text}}
+              <span>{{ site.authorProfile.status.icon }}</span>
+              {{ site.authorProfile.status.text }}
             </div>
           </div>
         </div>
-        <div class="name-cont anim once fade float-right">
-          <h1 class="name">
-            {{site.author}}
-            <small>です~!</small>
-          </h1>
-        </div>
-        <div class="desc-cont anim once fade float-up">
-          <p class="about">
-            {{{site.authorProfile.description}}}
-          </p>
-        </div>
-        <ul class="user-metadata nostyle">
+
+        <h1 class="author-name anim once fade float-right">
+          {{ site.author }}
+          <small>です~!</small>
+        </h1>
+
+        <p class="author-desc anim once fade float-up">
+          {{{ site.authorProfile.description }}}
+        </p>
+
+        <ul class="author-info nostyle">
           <li class="icon-text anim once">
-            {{{icon "profile" "volume-high" 20 20}}}
-            <span>
-              {{{site.authorProfile.pronunciation}}}
-            </span>
+            {{{ icon "profile" "volume-high" 20 20 }}}
+            {{{ site.authorProfile.pronunciation }}}
           </li>
+
           <li class="icon-text anim once">
-            {{{icon "profile" "user-tag" 20 20}}}
-            <span>
-              {{{site.authorProfile.pronouns}}}
-            </span>
+            {{{ icon "profile" "user-tag" 20 20 }}}
+            {{{ site.authorProfile.pronouns }}}
           </li>
+
           <li class="icon-text anim once">
             {{{icon "profile" "clock" 20 20}}}
             <span id="clock-timezone" data-timezone="{{site.authorProfile.timezone}}">
               00:00:00
             </span>
           </li>
+
           <li class="icon-text anim once">
-            {{{icon "profile" "location-dot" 20 20}}}
+            {{{ icon "profile" "location-dot" 20 20 }}}
+            {{{ site.authorProfile.location }}}
             <span>
-              {{{site.authorProfile.location}}}
             </span>
           </li>
+
           <li class="icon-text anim once">
-            {{{icon "profile" "language" 20 20}}}
-            <span>
-              {{{site.authorProfile.languages}}}
-            </span>
+            {{{ icon "profile" "language" 20 20 }}}
+            {{{ site.authorProfile.languages }}}
           </li>
         </ul>
+
       </div>
     </div>
   </div>
