@@ -156,6 +156,8 @@ jobs:
           bun run build
 
           cp config/wrangler.toml .
+
+        shell: bash
         env:
           COMMIT_SHA: ${{ github.sha }}
 
