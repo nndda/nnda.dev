@@ -1,5 +1,5 @@
 # cant escape node
-FROM node:26.4-alpine3.24
+FROM node:26.4-slim
 
 WORKDIR /nnda.dev
 
@@ -8,6 +8,17 @@ COPY \
   bun.lock \
   config/requirements.txt \
   ./
+
+# RUN \
+#   apk update && \
+#   apk add --no-cache \
+#   bash \
+#   ca-certificates \
+#   git \
+#   python3 \
+#   py3-pip \
+#   curl \
+#   unzip
 
 SHELL [ "/bin/bash", "-c" ]
 
