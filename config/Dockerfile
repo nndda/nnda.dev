@@ -1,5 +1,5 @@
 # cant escape node
-FROM node:26.3.1-trixie
+FROM node:26.4-alpine3.24
 
 WORKDIR /nnda.dev
 
