@@ -20,7 +20,7 @@
 
 /*.<ext>
   ! Content-Security-Policy
-  Cache-Control: public, max-age=15778476, immutable
+  Cache-Control: public, max-age=14400, immutable
   X-Robots-Tag: nosnippet
   X-Robots-Tag: none
 
