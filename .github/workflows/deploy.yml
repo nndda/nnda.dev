@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
         with:
           sparse-checkout: |
             config/requirements.txt
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
         with:
           sparse-checkout: |
             .github/actions/setup-bun/action.yml
@@ -77,8 +77,8 @@ jobs:
       changed: ${{ steps.filter.outputs.deps }}
 
     steps:
-      - uses: actions/checkout@v6.0.3
-      - uses: dorny/paths-filter@v4
+      - uses: actions/checkout@v7.0.0
+      - uses: dorny/paths-filter@v4.0.1
         id: filter
         with:
           filters: |
@@ -107,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
       - uses: ./.github/actions/build-docker-image
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -142,7 +142,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v6.0.3
+      - uses: actions/checkout@v7.0.0
       - name: Build website
         run: |
           cp -arT . /nnda.dev
