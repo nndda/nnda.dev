@@ -10,8 +10,10 @@ export function copyToDist(path: string): CopyPlugin.Pattern {
 import handlebarsData from "../src/data/site";
 import handlebarsHelpers from "../src/views/helpers";
 
-import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
-buildProjectPages();
+// NOTE: disabled temporarily
+// seems like gray-matter is not working very well with... idk with what, but it just won't work :/
+// import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
+// buildProjectPages();
 
 import {
   pathResolve,
@@ -39,7 +41,7 @@ export default {
       "404": abs("./src/views/pages/404.hbs"),
       "comm": abs("./src/views/pages/comm.hbs"),
       "shop": abs("./src/views/pages/shop/index.hbs"),
-      ... projectEntries,
+      // ... projectEntries,
     },
 
     data: handlebarsData,

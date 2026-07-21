@@ -7,7 +7,6 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
     "types": [
       "node",
