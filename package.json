@@ -56,7 +56,7 @@
     "html-bundler-webpack-plugin": "^4.23.2",
     "image-size": "^2.0.2",
     "lodash": "^4.18.1",
-    "postcss": "^8.5.21",
+    "postcss": "^8.5.22",
     "postcss-loader": "^8.2.1",
     "sass": "^1.101.3",
     "sass-loader": "^17.0.0",
@@ -70,16 +70,20 @@
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0",
-    "wrangler": "^4.112.0",
+    "wrangler": "^4.113.0",
     "yaml": "^2.9.0"
   },
   "overrides": {
     "brace-expansion": "^5.0.7",
     "esbuild": "^0.28.1",
+    "fast-uri": "^4.1.1",
     "http-proxy-middleware": "^4.2.0",
+    "immutable": "^5.1.9",
     "js-yaml": "^5.2.1",
     "launch-editor": "^2.14.1",
+    "sharp": "^0.35.3",
     "shell-quote": "^1.10.0",
+    "svgo": "^4.0.2",
     "uuid": "^14.0.1",
     "ws": "^8.21.1"
   }
