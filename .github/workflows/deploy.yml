@@ -66,7 +66,7 @@ jobs:
 
       - name: Audit Bun dependencies
         run: |
-          bun audit --audit-level moderate
+          bun run audit --audit-level=moderate
 
 
   deps-changes: # -------------------------------------------------------------

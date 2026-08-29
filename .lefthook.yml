@@ -20,7 +20,7 @@ pre-commit:
 pre-push:
   jobs:
     - name: Packages audit
-      run: bun audit --audit-level=critical
+      run: bun run audit --audit-level=moderate
       glob:
         - package.json
         - bun.lock
