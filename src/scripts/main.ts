@@ -1,10 +1,10 @@
-import { importLazy, loadCSS } from "./framework";
+import { importLazy, initIcons, loadCSS } from "./framework";
 
 import initializeInputs from "./input";
 import styleFooter from "../styles/sections/_footer.lazy.scss?url";
 
-import initIcon from "./build/icons/global";
-       initIcon();
+import icons from "./build/icons/global";
+initIcons("global", icons);
 
 export default function (d: Document) {
   const

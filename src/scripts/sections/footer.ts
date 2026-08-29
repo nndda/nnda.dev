@@ -1,8 +1,8 @@
-import { buildSvg } from "../framework";
+import { buildSvg, initIcons } from "../framework";
 
 import packageJSON from "../build/out/attribution.json" with { type: "json" };
-import initIcon from "../build/icons/footer";
 
+import icons from "../build/icons/footer";
 import iconsAttr from "../build/icons/footer.attributions";
 
 function getLastUpdatedHrs(date: Date) {
@@ -29,7 +29,7 @@ function getLastUpdatedDays(date: Date) {
     : `${days} days, ${hours} hour${hours === 1 ? "" : "s"} ago`;
 }
 
-initIcon();
+initIcons("footer", icons);
 
 const
   d = document

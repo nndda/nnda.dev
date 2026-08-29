@@ -123,8 +123,10 @@ interface FormJSONData {
   total_price: number,
 }
 
-import initIcon from "../../scripts/build/icons/comm";
-initIcon();
+import { initIcons } from "../framework";
+
+import icons from "../../scripts/build/icons/comm";
+initIcons("comm", icons);
 
 const
   d: Document = document

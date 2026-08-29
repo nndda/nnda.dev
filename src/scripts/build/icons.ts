@@ -179,27 +179,22 @@ function createIconDefsGrouped(
   iconsOther: Record<string, string> = {},
   ): void {
   writeTextFile(abs(`./icons/${groupName}.ts`),
-    `import { initIcons } from "../../framework";`
-    +
-    `export default () => {initIcons("${groupName}",{`
+    `export default {`
     +
     [
       ...faIcons.map(ico => {
         return `"${ico.iconName}": ${JSON.stringify(svgMin2path(fa2HTML(ico)))}`
-        // return `"${ico.iconName}": \`${fa2HTML(ico).replace(reAttr, "")}\``
       }),
       ...siIcons.map(ico => {
         return `"${ico.slug}": ${JSON.stringify(svgMin2path(ico.svg))}`
-        // return `"${ico.slug}": \`${ico.svg.replace(reAttr, "")}\``
       }),
       ...Object.entries(iconsOther)
         .map(([ico, svg]) => {
           return `"${ico}": ${JSON.stringify(svgMin2path(svg))}`
-          // return `"${ico}": \`${svg.replace(reAttr, "")}\``
         }),
     ].join(",")
     +
-    "});};"
+    `}`
   );
 }
 

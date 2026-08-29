@@ -1,8 +1,7 @@
-import { initAnim } from "../framework";
+import { initAnim, initIcons } from "../framework";
 
-import initIcon from "../build/icons/profile";
-
-initIcon();
+import icons from "../build/icons/profile";
+initIcons("profile", icons);
 
 const
   timezoneClock: HTMLElement = document.getElementById("clock-timezone")!

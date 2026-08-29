@@ -1,4 +1,4 @@
-import { importLazy, loadCSS } from "./framework";
+import { importLazy, initIcons, loadCSS } from "./framework";
 
 const
   d = document
@@ -7,8 +7,8 @@ const
 import init from "./main";
 init(d);
 
-import initIcon from "./build/icons/home";
-initIcon();
+import icons from "./build/icons/home";
+initIcons("home", icons);
 
 import initScroll from "./scroll.home";
 initScroll(d);
