@@ -1,5 +1,5 @@
 const
-  svgAttr: Record<string, string> = {
+  svgAttr = {
     "role": "img",
     "aria-hidden": "true",
     "focusable": "false",
@@ -13,18 +13,22 @@ export function initIcons(
   selector: string,
   iconSets: Record<string, string[]>,
 ) {
+  const
+    iconEls = document.querySelectorAll("svg." + selector + "[data-i]:not(.loaded)")
+  ;
+
   requestAnimationFrame(() => {
-    for (const iconEl of document.querySelectorAll("svg." + selector + ":not(.loaded)")) {
+    for (const iconEl of iconEls) {
       const
-        iData = iconSets[iconEl.getAttribute("data-i") as string]
+        [ viewBox, pathD ] = iconSets[iconEl.getAttribute("data-i")!]
       ;
 
       for (const attr in svgAttr) {
         iconEl.setAttribute(attr, svgAttr[attr]);
       }
 
-      iconEl.setAttribute("viewBox", iData[0]);
-      iconEl.innerHTML = `<path fill="currentColor" d="` + iData[1] + `"></path>`;
+      iconEl.setAttribute("viewBox", viewBox);
+      iconEl.innerHTML = `<path fill="currentColor" d="` + pathD + `"></path>`;
       iconEl.classList.add("loaded");
     }
   });
@@ -37,10 +41,10 @@ export function observe(
       entry: IntersectionObserverEntry,
       observerObj: IntersectionObserver,
     ) => void,
-    rootMargin: string | undefined = undefined,
+    rootMargin?: string,
 ) {
   const
-    observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+    observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         for (let i: number = entries.length; i-- > 0;) {
           intersectionCb(entries[i], observer);
         }
@@ -62,7 +66,7 @@ export function importLazy(
   element: Element,
   rootMargin?: string,
 ) {
-
+  // NOTE: a little questionable
   let retry = 0;
 
   function importInit() {
@@ -96,12 +100,18 @@ export function importLazy(
 
 export function initAnim(
   element: Element,
-  rootMargin: string | undefined = undefined,
-  cb: (() => void) | null = null,
+  rootMargin?: string,
+  cb?: () => void,
 ) {
   const
     animEls = element.querySelectorAll(".anim:not(.on)")
   ;
+
+  function animCb(): void {
+    for (const animEl of animEls) {
+      animEl.classList.add("on");
+    }
+  }
 
   observe(
     (
@@ -111,11 +121,7 @@ export function initAnim(
     if (entry.isIntersecting) {
       if (cb) cb();
 
-      requestAnimationFrame(() => {
-        for (const animEl of animEls) {
-          animEl.classList.add("on");
-        }
-      });
+      requestAnimationFrame(animCb);
 
       observerObj.disconnect();
     }
@@ -144,10 +150,10 @@ export function loadCSS(
 
 
 export function buildSvg(
-  viewBoxPath: string[],
+  [ viewBox, pathD ]: string[],
   width: number,
   height: number,
   classes: string = "",
 ) {
-  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBoxPath[0]}" width="${width}" height="${height}" class="${classes}"><path d="${viewBoxPath[1]}"></path></svg>`;
+  return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="${width}" height="${height}" class="${classes}"><path d="${pathD}"></path></svg>`;
 }
