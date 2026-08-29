@@ -43,7 +43,7 @@
 .author-desc {
   width: fit-content;
   grid-column: span 2;
-  margin-top: 1.25em;
+  margin-block: .75em;
   font-size: 1.35em;
 
   & > s {
@@ -86,7 +86,7 @@
 
 .author-name {
   width: min-content;
-  height:min-content;
+  height: min-content;
 
   align-self: end;
 

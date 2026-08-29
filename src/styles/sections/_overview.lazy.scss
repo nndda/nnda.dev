@@ -47,8 +47,10 @@
 
 .lang {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
   flex-grow: 1;
+  gap: .75em;
 
   margin: 0 .2em;
 
@@ -198,7 +200,7 @@ $action-bg: color.mix($background, $background-dark, 50%);;
       margin: 0;
       margin-bottom: .5em;
     }
-    
+
     & h3 {
       padding-top: .5em;
     }
