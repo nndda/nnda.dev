@@ -121,13 +121,44 @@ p.about {
   color: $text-secondary;
 } */
 
-.author-info {
+ul.author-info {
   display: flex;
   // grid-column: span 2;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
   width: 100%;
 
-  color: color.mix($text-secondary, $background-dark, 85%);
+  // color: color.mix($text-secondary, $background-dark, 85%);
+  color: $text-secondary;
+  margin-top: .5em;
+
+  &::before, &::after, & > li::after {
+    font-family: "Ubuntu Sans Mono";
+    font-size: 2em;
+    opacity: .6;
+  }
+
+  &::before {
+    content: "[";
+  }
+
+  &::after {
+    content: "]";
+  }
+
+  & > li {
+    position: relative;
+    padding: .5em .75em;
+    background: $background-light;
+    border-radius: 9px;
+
+    &:not(:last-child)::after {
+      content: ",";
+      position: absolute;
+      right: -.5em;
+    }
+  }
 }
 
 #clock-timezone {
@@ -241,7 +272,7 @@ p.about {
       opacity .3s ease-out,
       transform .25s ease-out;
 
-    @include nth-loop(1, 5) using ($i) {
+    @include nth-loop(1, 6) using ($i) {
       transition-delay: 0s + (.09 * $i);
     }
 
