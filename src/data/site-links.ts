@@ -7,7 +7,7 @@ const
   // Common usernames
   nnda = "nnda"
 , nndda = "nndda"
-, at_nnda = "@nnda"
+, at_nnda = "@" + nnda
 , at_nnda_dev = at_nnda + "_dev"
 ;
 
