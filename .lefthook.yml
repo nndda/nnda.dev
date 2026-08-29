@@ -15,7 +15,7 @@ pre-commit:
     - name: Stylelint
       run: bun lint:styles
       glob:
-        - src/styles.css
+        - '*.scss'
 
 pre-push:
   jobs:
