@@ -16,7 +16,7 @@ const DATA: any = async () => { return _.merge({
         text: "eepy",
       },
 
-      description: `A <s>(self-proclaimed)</s> <span class="lists"><b>game developer</b> <b>front-end web dev</b> <b>digital illustrator</b></span>`,
+      description: `👈 A <s>self-proclaimed</s> <ul class="nostyle lists"><li>game developer</li><li>front-end web dev</li><li>digital illustrator</li></ul>`,
 
       pronouns: "he/him",
       pronunciation: "/ˈnæn.də/",
