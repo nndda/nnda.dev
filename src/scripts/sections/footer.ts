@@ -61,11 +61,11 @@ const
     ;
 
     if (pkgId == "1") {
-      pkgUrl = `www.npmjs.com/package/${pkgName}`;
+      pkgUrl = `www.npmjs.com/package/` + pkgName;
     } else if (pkgId == "2") {
-      pkgUrl = `pypi.org/project/${pkgName}`;
+      pkgUrl = `pypi.org/project/` + pkgName;
     } else if (pkgId == "3") {
-      pkgUrl = `github.com/${pkgName}`;
+      pkgUrl = `github.com/` + pkgName;
     } else {
       pkgUrl = pkgName;
     }
