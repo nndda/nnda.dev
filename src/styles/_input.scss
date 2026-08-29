@@ -194,7 +194,7 @@ input[type="checkbox"], input[type="radio"] {
       margin-inline: -1px;
     }
 
-    &:not(checked) + label {
+    &:not(:checked) + label {
       &:hover {
         text-decoration: underline;
         cursor: pointer;

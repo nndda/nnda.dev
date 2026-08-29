@@ -155,7 +155,8 @@
 //   }
 // }
 
-$action-bg: color.mix($background, $background-dark, 50%);;
+$action-bg: color.mix($background, $background-dark, 50%);
+
 .socials-lists {
   $border-col: color.mix($text, $background-dark, 11.5%);
 

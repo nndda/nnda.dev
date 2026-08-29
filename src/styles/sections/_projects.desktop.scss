@@ -10,41 +10,44 @@
         "theatre theatre pitch pitch"
         "filler  obscura pitch pitch"
       ;
-      grid-gap: 1.1em;
+      gap: 1.1em;
       padding: 1em;
     }
   // }
 // }
 
-.project[data-name="Pitch"] {
-  grid-area: pitch;
-  min-height: 350px;
-  // max-height: 350px;
-  /* transform-origin: top left;
-  transform:
-    translate(1em, 1em)
-  ; */
-}
+.project {
+  &[data-name="Pitch"] {
+    grid-area: pitch;
+    min-height: 350px;
+    // max-height: 350px;
+    /* transform-origin: top left;
+    transform:
+      translate(1em, 1em)
+    ; */
+  }
 
-.project[data-name="Theatre"] {
-  grid-area: theatre;
-  min-height: 350px;
-  // max-height: 350px;
-  /* transform-origin: bottom right;
-  transform:
-    translate(-1em, -1em)
-  ; */
-}
-.project[data-name="nnda.itch.io"] {
-  grid-area: itch;
-}
+  &[data-name="Theatre"] {
+    grid-area: theatre;
+    min-height: 350px;
+    // max-height: 350px;
+    /* transform-origin: bottom right;
+    transform:
+      translate(-1em, -1em)
+    ; */
+  }
 
-.project[data-name="nnda.dev"] {
-  grid-area: website;
-}
+  &[data-name="nnda.itch.io"] {
+    grid-area: itch;
+  }
 
-.project[data-name="Obscura"] {
-  grid-area: obscura;
+  &[data-name="nnda.dev"] {
+    grid-area: website;
+  }
+
+  &[data-name="Obscura"] {
+    grid-area: obscura;
+  }
 }
 }
 }

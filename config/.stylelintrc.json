@@ -5,6 +5,8 @@
     "no-descending-specificity": null,
     "scss/double-slash-comment-empty-line-before": null,
     "scss/dollar-variable-empty-line-before": null,
-    "at-rule-empty-line-before": null
+    "at-rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "property-no-vendor-prefix": null
   }
 }

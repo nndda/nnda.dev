@@ -9,7 +9,6 @@ import {
   writeTextFile,
   createResolver,
   resolveRelative,
-  type DirResolver,
 } from "./utils";
 
 import { readFileSync } from "fs";

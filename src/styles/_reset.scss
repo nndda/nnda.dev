@@ -31,7 +31,7 @@ Use a better box model (opinionated).
 
 html {
   /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
-  font-family: "Zen Kaku Gothic New";
+  font-family: "Zen Kaku Gothic New", sans-serif;
     // system-ui,
     // 'Segoe UI',
     // Roboto,
@@ -79,7 +79,7 @@ code,
 kbd,
 // samp,
 pre {
-  font-family: "Ubuntu Sans Mono";
+  font-family: "Ubuntu Sans Mono", monospace;
     // ui-monospace,
     // SFMono-Regular,
     // Consolas,

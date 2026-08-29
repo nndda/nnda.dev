@@ -160,8 +160,8 @@
       // width: 100%;
       height: $r * ($sqr-h + $sqr-h-gap);
       width: $c * ($sqr-h + $sqr-h-gap);
+      gap: 0;
       grid-auto-flow: column;
-      grid-gap: 0;
       grid-template-rows: repeat($r, $sqr-h + $sqr-h-gap);
       grid-template-columns: repeat($c, $sqr-w + $sqr-w-gap);
       justify-items: center;

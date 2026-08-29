@@ -78,13 +78,13 @@ import {
   // siCloudflareworkers,
   siCss,
   siDiscord,
-  siDotenv,
-  siEslint,
+  // siDotenv,
+  // siEslint,
   siFontawesome,
   siGit,
   siGithub,
   // siGithubactions,
-  siGithubsponsors,
+  // siGithubsponsors,
   siGodotengine,
   siHandlebarsdotjs,
   siHtml5,
@@ -94,7 +94,7 @@ import {
   siKofi,
   siLiberapay,
   siLinux,
-  siLodash,
+  // siLodash,
   // siMacos,
   siMastodon,
   siMedibangpaint,
@@ -110,12 +110,12 @@ import {
   siSimpleicons,
   siStylelint,
   siSvelte,
-  siTiktok,
+  // siTiktok,
   siTypescript,
   siVite,
   siWebpack,
-  siYaml,
-  siYoutube,
+  // siYaml,
+  // siYoutube,
   // siX,
   type SimpleIcon,
 } from "simple-icons";
@@ -151,19 +151,6 @@ const
 , reVb: RegExp = /viewBox="(?<vb>[\s0-9]+?)"/
 , rePathD: RegExp = /d="(?<d>.+?)"/
 ;
-
-function parseCompressSvg(svgStr: string): string {
-  return `["`
-    +
-    ((reVb.exec(svgStr) as RegExpExecArray).groups as {[key: string]: string})["vb"]
-    +
-    `",\``
-    +
-    svgStr.replace(reOuterSvg, "")
-    +
-    `\`]`
-  ;
-}
 
 function svgMin2path(svgStr: string): [string, string] {
   return [

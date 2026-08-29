@@ -113,7 +113,7 @@ footer {
 	& > .inner {
 		display: grid;
 		justify-items: center;
-		grid-gap: 1em;
+		gap: 1em;
 
 		& > img {
 			width: 70%;
@@ -126,7 +126,7 @@ footer {
 .logos {
   & > .inner {
     grid-template-columns: repeat(3, auto);
-    grid-gap: 0;
+    gap: 0;
 
     justify-content: center;
 

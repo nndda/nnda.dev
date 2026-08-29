@@ -74,10 +74,12 @@
   20% {
     transform:translateY(0)
   }
+
   40%,
   60% {
     transform:translateY(-1.3em)
   }
+
   80%,
   90% {
     transform:translateY(-1.3em * 2)
@@ -110,7 +112,7 @@
   }
 
   & > small {
-    font-family: "Hi Melody";
+    font-family: "Hi Melody", cursive;
     color: $tertiary;
   }
 }
@@ -134,7 +136,7 @@ ul.author-info {
   margin-top: .5em;
 
   &::before, &::after, & > li::after {
-    font-family: "Ubuntu Sans Mono";
+    font-family: "Ubuntu Sans Mono", monospace;
     font-size: 2em;
     opacity: .6;
   }

@@ -17,6 +17,7 @@
     & .flex-break ~ .link-item {
       font-size: 1rem;
     }
+
     & .links-title {
       font-weight: 400;
     }
@@ -65,14 +66,14 @@
   color: $color;
 
   & > a {
-    @if $color_override != null {
+    @if $color_override {
       color: $color_override;
     } @else {
       color: color.mix($color, white, 50%);
     }
 
     & svg {
-      @if $color_override != null {
+      @if $color_override {
         fill: $color_override;
       } @else {
         fill: $color;

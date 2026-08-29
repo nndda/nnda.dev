@@ -10,13 +10,13 @@
 .project-items {
   display: grid;
   grid-template-columns: auto auto;
-  // grid-template-areas: 
+  // grid-template-areas:
   //   "theatre theatre"
   //   "pitch pitch"
   //   "itch website"
   //   "obscura filler"
   // ;
-  grid-gap: 1em;
+  gap: 1em;
   padding: 1em 0;
   // padding: 2em 1em;
 }

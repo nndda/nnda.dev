@@ -57,7 +57,7 @@ const
     ;
 
     let
-      pkgUrl = ""
+      pkgUrl: string
     ;
 
     if (pkgId == "1") {

@@ -1,6 +1,6 @@
 @use "variables" as *;
 
-@use "critical.scss";
+@use "critical";
 
 @use "components";
 @use "utils";
@@ -274,7 +274,6 @@ h1 {
 }
 
 .scroll-down {
-
   & > svg {
     margin: auto;
 
@@ -575,7 +574,7 @@ h1 {
     display: block;
     position: absolute;
     font-size: 4em;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
     bottom: calc(-100% - .25em);
 
     & > span {
@@ -592,9 +591,11 @@ h1 {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
         &.closed {
           opacity: calc(1 - var(--opac));
         }
+
         &.open {
           opacity: var(--opac);
         }
@@ -602,18 +603,22 @@ h1 {
     }
   }
 }
+
 @keyframes blink {
   0%, 15% {
     --opac: 1;
   }
+
   5% {
     --opac: 0;
   }
 }
+
 @keyframes flatten {
   0%, 20% {
     transform: rotateX(0) skewX(0);
   }
+
   10% {
     transform: rotateX(60deg) skewX(30deg);
   }

@@ -70,7 +70,7 @@ h2 {
 }
 
 .px-title {
-  font-family: Zen Kaku Gothic New;
+  font-family: "Zen Kaku Gothic New", sans-serif;
   // font-family: Bytesized, sans-serif;
 
   & > span {
@@ -175,7 +175,7 @@ h2 {
 }
 
 .price {
-  &:first-letter {
+  &::first-letter {
     color: $text-secondary;
     margin-right: .25em;
   }

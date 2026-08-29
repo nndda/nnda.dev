@@ -1,7 +1,7 @@
 // import { eventForElements } from "../input";
 // import { iconX } from "../build/icons/icons";
 
-const d = document;
+// const d = document;
 
 // function initContentControls(
 //   btnCategories: HTMLElement[] | NodeListOf<Element>,
