@@ -16,48 +16,39 @@ initScroll(d);
 
 import styleOverview from "../styles/sections/_overview.lazy.scss?url";
 
-
 importLazy(
-  [
-    () => import("./sections/overview"),
-    () => loadCSS(styleOverview),
-  ],
   d.getElementById("overview")!,
   "25px",
+  () => import("./sections/overview"),
+  () => loadCSS(styleOverview),
 );
 
 
 import styleProjects from "../styles/sections/_projects.lazy.scss?url";
 
 importLazy(
-  [
-    () => import("./sections/projects"),
-    () => loadCSS(styleProjects),
-  ],
   d.getElementById("projects")!,
   "180px",
+  () => import("./sections/projects"),
+  () => loadCSS(styleProjects),
 );
 
 
 import styleIllustrations from "../styles/sections/_illustrations.lazy.scss?url";
 
 importLazy(
-  [
-    () => import("./sections/illustrations"),
-    () => loadCSS(styleIllustrations),
-  ],
   d.getElementById("illustrations")!,
   "200px",
+  () => import("./sections/illustrations"),
+  () => loadCSS(styleIllustrations),
 );
 
 
 import styleLinks from "../styles/sections/_links.lazy.scss?url";
 
 importLazy(
-  [
-    () => import("./sections/links"),
-    () => loadCSS(styleLinks),
-  ],
   d.getElementById("links")!,
   "200px",
+  () => import("./sections/links"),
+  () => loadCSS(styleLinks),
 );
