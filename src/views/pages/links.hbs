@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  {{ title "nnda on the internet" }}
+  {{ desc "me on the internet" }}
+
+  {{> "head" }}
+
+  {{ stylesheet "/styles/_pages/links.scss" "" }}
+
+  <link rel="preload" as="image" href="/assets/logo.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+</head>
+
+<body>
+  <main>
+    <!--<div id="link-bg"></div>-->
+    {{> "profile" }}
+
+    <div class="nkmm-div" aria-hidden="true">
+      <!--
+        Material Design Icons (https://pictogrammers.com/library/mdi/) by the Pictogrammers (https://pictogrammers.com/) licensed under Apache 2.0 (https://pictogrammers.com/docs/general/license/)
+      -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fc3a78" d="M1,21H23L12,2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fc3a78" d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z"/></svg>
+
+      <div>
+        ≈<span><b class="open">•</b><b class="closed">&gt;</b></span>ω<span><b class="open">•</b><b class="closed">&lt;</b></span>≈
+      </div>
+    </div>
+
+    {{> "links" }}
+  </main>
+
+  {{> "footer" }}
+
+  {{ script "/scripts/_pages/links.ts" true }}
+  {{ script "/scripts/_page.ts" true }}
+</body>
+</html>
