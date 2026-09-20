@@ -110,12 +110,12 @@ import {
   siSimpleicons,
   siStylelint,
   siSvelte,
-  // siTiktok,
+  siTiktok,
   siTypescript,
   siVite,
   siWebpack,
   // siYaml,
-  // siYoutube,
+  siYoutube,
   // siX,
   type SimpleIcon,
 } from "simple-icons";
@@ -360,8 +360,8 @@ createMiniIconDefs("links", {
   "patreon": siPatreon.svg,
   "kofi": siKofi.svg,
   "liberapay": siLiberapay.svg,
-  // "tiktok": siTiktok.svg,
-  // "youtube": siYoutube.svg,
+  "tiktok": siTiktok.svg,
+  "youtube": siYoutube.svg,
 });
 
 createMiniIconDefs("shop", {
