@@ -27,8 +27,8 @@
     }
 
     &.title {
-      margin: .5em 0;
       padding-left: 0;
+      margin: .5em 0;
       color: color.mix($text, $secondary, 60%);
 
       &:first-child {
@@ -48,8 +48,8 @@
 .lang {
   position: relative;
   display: inline-flex;
-  flex-direction: column;
   flex-grow: 1;
+  flex-direction: column;
   gap: .75em;
 
   margin: 0 .2em;
@@ -63,9 +63,9 @@
   & > .box {
     padding: .25em 0;
     padding-left: .25em;
-    color: $background;
     font-size: .8em;
     line-height: .65em;
+    color: $background;
   }
 
   @for $i from 1 through 6 {
@@ -88,12 +88,12 @@
 
   & > .icon-text {
     display: flex;
-    color: $text-secondary;
     width: 100%;
+    color: $text-secondary;
 
     & > span {
-      text-overflow: ellipsis;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -103,14 +103,14 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    gap: .7em;
     justify-content: space-between;
     margin-right: 0;
-    gap: .7em;
   }
 
   & li li {
-    height: 1.8em;
     width: 1.8em;
+    height: 1.8em;
   }
 
   & .title {
@@ -119,8 +119,8 @@
   }
 
   & svg {
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -207,12 +207,12 @@ $action-bg: color.mix($background, $background-dark, 50%);
     }
 
     & pre {
-      white-space: wrap;
-      overflow: auto;
       display: block;
-      background: $background-dark;
-      margin: .5em 0;
       padding: 1em .5em;
+      margin: .5em 0;
+      overflow: auto;
+      white-space: wrap;
+      background: $background-dark;
     }
 
     & .content {
@@ -221,9 +221,9 @@ $action-bg: color.mix($background, $background-dark, 50%);
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
         // filter: blur(5px);
         color: $secondary;
+        white-space: nowrap;
       }
     }
   }
@@ -247,17 +247,17 @@ $action-bg: color.mix($background, $background-dark, 50%);
     flex-grow: 1;
 
     & > img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
   & > ul {
     column-count: 4;
     column-fill: balance;
-    column-rule: 1px solid color.mix($text, $background-dark, 7.5%);
     gap: 1.25em;
+    column-rule: 1px solid color.mix($text, $background-dark, 7.5%);
 
     // padding-right: 1.25em;
 
@@ -286,10 +286,10 @@ $action-bg: color.mix($background, $background-dark, 50%);
     padding-bottom: .5em;
     margin-bottom: .2em;
 
+    overflow: hidden;
+
     background: $background;
     border: 1px solid $border-col;
-
-    overflow: hidden;
   }
 
   // & .sources {
@@ -315,8 +315,8 @@ $action-bg: color.mix($background, $background-dark, 50%);
   // }
 
   & .timestamp {
-    color: color.mix($text-secondary, $background-dark, 60%);;
     margin-left: .5em;
+    color: color.mix($text-secondary, $background-dark, 60%);
     letter-spacing: .15ch;
   }
 }

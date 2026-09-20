@@ -28,17 +28,17 @@
 	& a {
 		display: inline-block;
 		margin: .3em;
-		opacity: .9;
 		font-family: "Ubuntu Sans Mono", monospace;
 		text-decoration: none;
+		opacity: .9;
 
 		&:hover {
 			text-decoration: underline;
 		}
 
 		& > svg {
-			height: 1em;
 			width: 1em;
+			height: 1em;
 			margin-right: .5em;
 		}
 

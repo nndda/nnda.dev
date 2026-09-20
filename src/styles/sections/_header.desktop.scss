@@ -23,15 +23,15 @@
 
 #navbar {
   display: flex;
-  justify-content: end;
   flex-grow: 1;
+  justify-content: end;
 
   & > ul {
     display: flex;
 
     & > li {
-      padding: .8em;
       box-sizing: border-box;
+      padding: .8em;
 
       letter-spacing: .1em;
 

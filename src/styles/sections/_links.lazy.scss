@@ -27,17 +27,16 @@
     margin-top: 1.15em;
 
     & .links-title {
+      font-weight: bold;
       color: color.mix($primary, $background-dark, 70%);
       border-bottom: 1px dashed color.mix($primary, $background-dark, 50%);
 
-      font-weight: bold;
-
       & > svg {
         display: inline-block;
-        fill: $primary;
 
         width: .85em;
         margin-right: .15em;
+        fill: $primary;
       }
     }
   }
@@ -47,10 +46,10 @@
   padding-bottom: .2em;
   margin-block: .5em;
 
-  color: color.mix($text, $background-dark, 70%);
-
   font-size: 1.35em;
   font-weight: 200;
+
+  color: color.mix($text, $background-dark, 70%);
   letter-spacing: .2ch;
 
   border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
@@ -83,8 +82,8 @@
 }
 
 .link-item {
-  margin: .5em;
   padding: .2em .3em;
+  margin: .5em;
   border-radius: 8px;
 
   & > a {
@@ -182,15 +181,15 @@
     }
 
     &:not(.on) {
+      opacity: 0;
+      transform: translateX(-1em);
       transition: .09s ease-out;
       transition-delay: 0;
-      transform: translateX(-1em);
-      opacity: 0;
 
       & .social-name, .username {
+        opacity: 0;
         transition: .09s ease-out;
         transition-delay: 0;
-        opacity: 0;
       }
 
       & .social-name {

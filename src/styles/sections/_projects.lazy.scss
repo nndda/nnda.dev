@@ -45,9 +45,9 @@
 // }
 
 .project-title {
-  margin: 0;
   padding: 0;
   padding-bottom: .5em;
+  margin: 0;
   // padding-left: 1em;
   // background: linear-gradient(
   //   to right,
@@ -66,8 +66,8 @@
 
   & a {
     display: flex;
-    align-items: center;
     gap: .5em;
+    align-items: center;
     text-decoration-color: color.mix($text, $background-dark, 70%);
 
     &:not(:hover) {
@@ -132,8 +132,8 @@
   margin: 0 .25em;
   font-size: .65em;
   letter-spacing: .1em;
-  border-radius: 9px;
   cursor: pointer;
+  border-radius: 9px;
   @include project-label-style($text);
 
   /* stylelint-disable */
@@ -160,8 +160,8 @@
   // }
 
   & > p {
-    color: $text-secondary;
     font-size: .9em;
+    color: $text-secondary;
   }
 }
 
@@ -174,24 +174,24 @@
 
 .theatre-snip {
   display: flex;
+  align-items: center;
   // flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-block: .5em;
   height: 100%;
+  padding-block: .5em;
 }
 
 .theatre-dlg {
-  height: 100%;
   // width: 70%;
   flex-grow: 1;
+  height: 100%;
   padding: 1.5em 1em;
-  background: $background-dark;
-  color: $text-secondary;
-  line-height: 1.3lh;
-  font-size: .8em;
-  border-radius: 9px;
   overflow: auto;
+  font-size: .8em;
+  line-height: 1.3lh;
+  color: $text-secondary;
+  background: $background-dark;
+  border-radius: 9px;
 
   @include style-scrollbar($secondary);
 }
@@ -224,12 +224,12 @@
 
 .pitch-snip {
   max-height: 220px;
-  overflow: hidden;
   padding: 1.25em;
+  margin-bottom: .5em;
+  overflow: hidden;
   // border: 1px solid $text-secondary;
   background-color: #121118;
   border-radius: 9px;
-  margin-bottom: .5em;
 }
 
 .pitch-comp {
@@ -238,12 +238,12 @@
     "a b"
     "c c"
   ;
-  min-width: 560px;
   gap: 1.5em;
-
-  mask-image: radial-gradient(at top left, #000 35%, #fff0 70%);
+  min-width: 560px;
 
   font-size: .75em;
+
+  mask-image: radial-gradient(at top left, #000 35%, #fff0 70%);
 
   & > div {
     &:nth-child(1) {

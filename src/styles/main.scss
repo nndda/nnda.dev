@@ -24,17 +24,17 @@
 @use "sass:color";
 
 ::selection{
-  background: $secondary;
   color: $background;
+  background: $secondary;
 }
 
 svg {
+  box-sizing: content-box;
   display: inline-block;
   height: 1em;
-  box-sizing: content-box;
-  fill: $text;
-  vertical-align: -0.125em;
   overflow: visible;
+  vertical-align: -0.125em;
+  fill: $text;
 }
 
 a {
@@ -60,8 +60,8 @@ hr.hr {
 }
 
 html {
-  color-scheme: dark only;
   scroll-behavior: smooth;
+  color-scheme: dark only;
 
   @include style-scrollbar;
 }
@@ -70,45 +70,45 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  max-width: 1700px;
 
   min-height: 100vh;
-  max-width: 1700px;
   margin: auto;
+
+  font-size: 0.9375em; // 15 / 16
 
   color: $text;
 
-  font-size: 0.875em; // 14 / 16
+  letter-spacing: .05em;
 
   @include shadow-black;
-
-  letter-spacing: .05em;
 }
 
 main {
+  z-index: 3;
   flex-grow: 1;
   min-height: 100vh;
   overflow-x: clip;
-  z-index: 3;
 
   & > section {
     position: relative;
-    padding-left: .5em;
     padding-right: .5em;
+    padding-left: .5em;
 
     & > .section-inner {
       width: 100%;
       max-width: 1100px;
-      margin: 0 auto;
       // padding-left: 1em;
       // padding-right: 1em;
       padding: 2em 1em;
+      margin: 0 auto;
     }
   }
 }
 
 h1 {
-  font-weight: 200;
   font-size: 2em;
+  font-weight: 200;
 }
 
 .heading-mobile {
@@ -158,6 +158,7 @@ h1 {
 .cta-group {
   display: flex;
   flex-direction: column;
+  font-size: 1.1em;
   /* margin: 0 1em; */
   /* margin: 2em; */
   /* margin-bottom: 2em; */
@@ -171,22 +172,21 @@ h1 {
 
 .cta-group > a {
   position: relative;
+  // margin: 0 1em;
+
+  box-sizing: border-box;
   display: flex;
 
   align-items: center;
   justify-content: center;
 
   width: fit-content;
-  // margin: 0 1em;
-
-  box-sizing: border-box;
 
   padding: .35em .8em;
 
-  color: $text;
+  overflow: hidden;
 
-  border: 1px solid $text;
-  border-radius: 16px;
+  color: $text;
 
   // font-weight: 600;
   letter-spacing: 1px;
@@ -194,10 +194,11 @@ h1 {
 
   cursor: pointer;
 
-  overflow: hidden;
-  backdrop-filter: blur(.6em);
-
   background: rgba($background-dark, 0.5);
+
+  border: 1px solid $text;
+  border-radius: 16px;
+  backdrop-filter: blur(.6em);
 
   // box-shadow: 0 0 2em $background-dark;
 
@@ -222,16 +223,16 @@ h1 {
 
   &::after {
     position: absolute;
-    content: "";
     top: 0;
     left: 0;
-    background: $secondary-gradient;
+    z-index: -1;
     width: 100%;
     height: 100%;
+    content: "";
+    background: $secondary-gradient;
     border-radius: 16px;
-    transition: ease .25s;
-    z-index: -1;
     transform: translateX(-100%);
+    transition: ease .25s;
   }
 }
 
@@ -267,10 +268,10 @@ h1 {
 
 .scroll-down-cont {
   position: absolute;
-  bottom: 2em;
   right: 1em;
-  font-size: 2em;
+  bottom: 2em;
   z-index: 3;
+  font-size: 2em;
 }
 
 .scroll-down {
@@ -283,18 +284,18 @@ h1 {
   & > .arrows {
     display: flex;
     place-content: center;
-    margin: auto;
     width: 100%;
     height: 100%;
+    margin: auto;
   }
 
   & > .arrows > svg {
     position: absolute;
     display: block;
 
-    animation: 2s arrow-down ease-out infinite;
-
     opacity: 0;
+
+    animation: 2s arrow-down ease-out infinite;
 
     &:nth-child(2) {
       animation-delay: .3s;
@@ -308,8 +309,8 @@ h1 {
 
 @keyframes arrow-down {
   0% {
-    transform: translateY(-200%);
     opacity: 0;
+    transform: translateY(-200%);
   }
 
   50% {
@@ -317,8 +318,8 @@ h1 {
   }
 
   100% {
-    transform: translateY(50%);
     opacity: 0;
+    transform: translateY(50%);
   }
 }
 
@@ -338,10 +339,10 @@ h1 {
   left: 1em;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   align-items: end;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 
   // mix-blend-mode: plus-lighter;
@@ -355,8 +356,8 @@ h1 {
   }
 
   & .titles > li {
-    font-size: 3em;
     margin: 0;
+    font-size: 3em;
     opacity: .8;
 
     transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
@@ -383,40 +384,40 @@ h1 {
 }
 
 .illust-cont {
+  z-index: -1;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: -1;
 
   & > .fg {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
     width: 100%;
     min-height: 100%;
+    background: rgba($background-dark, 0.6);
     backdrop-filter: blur(13em) brightness(.8);
-    mask-mode: alpha;
     mask-image:
       linear-gradient(195deg, #000 var(--p1, 10%), transparent var(--p2, 49%))
     , linear-gradient(0deg, #000 2%, transparent 15%)
     , linear-gradient(17.5deg, #000 9%, transparent 23.5%)
     , radial-gradient(circle at 0% 0%, #000 2%, transparent 35%)
     ;
+    mask-mode: alpha;
     will-change: translate;
-    z-index: 1;
-    background: rgba($background-dark, 0.6);
   }
 
   & > img {
+    z-index: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: 0;
 
     transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
     will-change: translate;
@@ -465,25 +466,25 @@ h1 {
 
 #home {
   position: relative;
+  width: 100%;
+  max-width: 1700px;
   height: 100svh;
   // height: 100vh;
   min-height: 620px;
-  width: 100%;
-  max-width: 1700px;
   overflow: hidden;
 
   & > .content {
     position: fixed;
     top: 0;
 
-    display: flex;
+    z-index: 3;
 
-    height: inherit;
+    display: flex;
     width: inherit;
-    max-height: inherit;
     max-width: inherit;
 
-    z-index: 3;
+    height: inherit;
+    max-height: inherit;
   }
 }
 
@@ -534,8 +535,8 @@ h1 {
   */
 
   .scroll-down-cont {
-    transform: translate(-.5em, -10vh);
     pointer-events: none;
+    transform: translate(-.5em, -10vh);
   }
 };
 
@@ -549,17 +550,17 @@ h1 {
   $size: 5em;
 
   position: relative;
-  display: flex;
-  justify-content: center;
-  column-gap: $size;
-  margin-top: -$size;
-  border-bottom: 5px solid $primary;
   /* background: $background-dark; */
   z-index: 99;
+  display: flex;
+  column-gap: $size;
+  justify-content: center;
+  margin-top: -$size;
+  border-bottom: 5px solid $primary;
 
   & > svg {
-    height: $size;
     width: $size;
+    height: $size;
     margin-bottom: -0.65em;
     transform-origin: 50% 100%;
 
@@ -571,11 +572,11 @@ h1 {
   }
 
   & > div {
-    display: block;
     position: absolute;
-    font-size: 4em;
-    font-family: Lato, sans-serif;
     bottom: calc(-100% - .25em);
+    display: block;
+    font-family: Lato, sans-serif;
+    font-size: 4em;
 
     & > span {
       position: relative;
@@ -633,16 +634,16 @@ h1 {
 
 @media (width >= 1700px) {
   body::before {
-    content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    content: "";
     background: $background-dark;
     background-image: url(#{"https://s2.svgbox.net/heropatterns.svg?ic=hideout&color=eee1"});
-    background-size: 10vw;
     background-position-y: 100vw;
+    background-size: 10vw;
     animation: u 100s linear infinite;
   }
 

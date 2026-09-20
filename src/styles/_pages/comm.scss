@@ -109,10 +109,10 @@
 }
 
 main {
-  background: $background-dark;
   // max-width: 600px;
   display: grid;
   grid-template-columns: 50% 50%;
+  background: $background-dark;
 
   // & section > h1 {
   //   margin: 2em;
@@ -125,17 +125,17 @@ main {
 }
 
 .admonition {
-  margin: 3em auto;
   padding: 2em;
+  margin: 3em auto;
   background: rgba($primary, .15);
   border: 1px $primary solid;
   border-radius: 6px;
 }
 
 hr.dashed {
+  margin: 1em 0;
   border: 0;
   border-top: 1px rgba($text, .3) dashed;
-  margin: 1em 0;
 }
 
 .price-dollar {
@@ -144,8 +144,8 @@ hr.dashed {
   margin-top: 1em;
 
   &::before {
-    content: "$";
     color: $primary;
+    content: "$";
   }
 }
 
@@ -159,13 +159,13 @@ hr.dashed {
 }
 
 input[disabled] {
-  opacity: .8;
   cursor: not-allowed;
+  opacity: .8;
 }
 
 .form-item:has( input[disabled]) {
-  opacity: .8;
   cursor: not-allowed;
+  opacity: .8;
   // filter: grayscale(100%);
 }
 
@@ -189,26 +189,26 @@ textarea {
   width: 100%;
   height: 15em;
   padding: .8em;
+  resize: vertical;
   background: $background;
   border: 1px rgba($text, .3) solid;
   border-radius: 6px;
-  resize: vertical;
 }
 
 .field-heading {
-  margin: 0;
   padding-bottom: .5em;
+  margin: 0;
   font-weight: 200;
   color: $secondary;
 }
 
 .form-container {
-  background: $background;
   padding-bottom: 3em;
+  background: $background;
 
   & > form > fieldset {
-    margin: 2em 0;
     padding: 1em 1.5em;
+    margin: 2em 0;
 
     border: 1px rgba($text, .1) solid;
     border-radius: 6px;
@@ -237,12 +237,12 @@ textarea {
 }
 
 .form-item-desc {
-  margin-top: .5em;
-  margin-left: 2em;
   // margin-right: 9em;
   max-width: calc(100% - 12em);
-  opacity: .85;
+  margin-top: .5em;
+  margin-left: 2em;
   font-size: .9em;
+  opacity: .85;
 }
 
 .ml-0 {
@@ -266,22 +266,22 @@ textarea {
 }
 
 #deposit-half {
+  font-family: "Zen Kaku Gothic New", sans-serif;
   font-size: 5em;
   font-weight: 300;
-  font-family: "Zen Kaku Gothic New", sans-serif;
 
   &::before {
-    content: "$";
-    color: $primary;
     font-weight: 400;
+    color: $primary;
+    content: "$";
     opacity: .7;
   }
 }
 
 .cf-turnstile-cont {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   min-height: 4.5em;
 
@@ -308,10 +308,10 @@ textarea {
 }
 
 #submit-button {
-  width: 100%;
-  font-size: 1.15em;
-  padding: .5em 1.5em;
   justify-content: center;
+  width: 100%;
+  padding: .5em 1.5em;
+  font-size: 1.15em;
 
   background: rgba($primary, .35);
 
@@ -320,7 +320,7 @@ textarea {
   }
 
   &[disabled] {
-    cursor: not-allowed;
     pointer-events: none;
+    cursor: not-allowed;
   }
 }
