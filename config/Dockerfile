@@ -35,7 +35,7 @@ RUN apt update && \
     && ln -s /usr/bin/python3 /usr/bin/python
 
 # Bun
-RUN curl -fsSL https://bun.com/install | bash -s "bun-v1.3.14"
+RUN curl -fsSL https://bun.com/install | bash -s "bun-v1.4.2"
 
 ENV BUN_INSTALL="/root/.bun"
 ENV PATH="$BUN_INSTALL/bin:$PATH"
