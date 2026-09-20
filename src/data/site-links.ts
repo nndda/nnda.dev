@@ -42,24 +42,24 @@ export default [
         username: nnda,
       },
       patreon,
-      // "br",
-      // {
-      //   name: "YouTube",
-      //   url: "youtube.com/@nnda_dev",
-      //   icon: "youtube",
-      //   username: at_nnda_dev,
-      // },
-      // {
-      //   name: "TikTok",
-      //   url: "tiktok.com/@nnda_dev",
-      //   icon: "tiktok",
-      //   username: at_nnda_dev,
-      // },
+      "br",
+      {
+        name: "TikTok",
+        url: "tiktok.com/@nnda.dev",
+        icon: "tiktok",
+        username: "@nnda.dev",
+      },
+      {
+        name: "YouTube",
+        url: "youtube.com/@nnda_dev",
+        icon: "youtube",
+        username: at_nnda_dev,
+      },
     ],
   },
   { // ------------------------------------------------------------------------
     group: "Artworks & Illustrations",
-    desc: "Anime girls drawing.",
+    desc: "Anime girls, cats, and anime catgirls drawing.",
     links: [
       {
         name: "ArtStation",
