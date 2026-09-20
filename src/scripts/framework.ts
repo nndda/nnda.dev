@@ -1,20 +1,10 @@
-const
-  svgAttr = {
-    "role": "img",
-    "aria-hidden": "true",
-    "focusable": "false",
-    "xmlns": "http://www.w3.org/2000/svg",
-  }
-;
-
-
 // Load and populate lazy-loaded icons
 export function initIcons(
   selector: string,
   iconSets: Record<string, string[]>,
 ) {
   const
-    iconEls = document.querySelectorAll("svg." + selector + "[data-i]:not(.loaded)")
+    iconEls = document.querySelectorAll("svg." + selector + "[data-i]:not(.loaded)") as NodeListOf<SVGElement>
   ;
 
   requestAnimationFrame(() => {
@@ -23,10 +13,10 @@ export function initIcons(
         [ viewBox, pathD ] = iconSets[iconEl.getAttribute("data-i")!]
       ;
 
-      for (const attr in svgAttr) {
-        iconEl.setAttribute(attr, svgAttr[attr]);
-      }
-
+      iconEl.role = "img";
+      iconEl.ariaHidden = "true";
+      iconEl.setAttribute("focusable", "false");
+      iconEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
       iconEl.setAttribute("viewBox", viewBox);
       iconEl.innerHTML = `<path fill="currentColor" d="` + pathD + `"></path>`;
       iconEl.classList.add("loaded");
