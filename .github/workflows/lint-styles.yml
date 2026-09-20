@@ -31,4 +31,4 @@ jobs:
       - uses: ./.github/actions/setup-bun
 
       - name: Lint stylesheets
-        run: bun run lint:styles
+        run: bun run lint:styles "**/*.scss"

@@ -20,8 +20,8 @@
     "build:config": "tsc --project ./config/tsconfig.build.json",
     "watch:project": "ts-node ./src/_projects/project-pages.ts --watch",
     "watch:data": "bun run build:data -- --watching",
-    "lint:styles": "stylelint --config ./config/.stylelintrc.json \"**/*.scss\"",
-    "lint:scripts": "eslint --config ./config/eslint.config.ts .",
+    "lint:styles": "stylelint --config ./config/.stylelintrc.json",
+    "lint:scripts": "eslint --config ./config/eslint.config.ts",
     "fetch:gh": "python ./src/api/gh.py",
     "fetch:data-ext": "python ./src/api/data-ext.py",
     "post:build": "python ./src/post/post_build.py && bun run --tsconfig-override=./config/tsconfig.build.json ./src/post/post-build.ts"

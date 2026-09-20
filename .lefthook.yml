@@ -9,13 +9,16 @@ pre-commit:
   parallel: true
   jobs:
     - name: ESLint
-      run: bun lint:scripts
-      glob: '*.ts'
+      run: bun lint:scripts '{staged_files}'
+      glob:
+        - '*.ts'
+        - '*.js'
+      stage_fixed: true
 
     - name: Stylelint
-      run: bun lint:styles
-      glob:
-        - '*.scss'
+      run: bun lint:styles '{staged_files}'
+      glob: '*.scss'
+      stage_fixed: true
 
 pre-push:
   jobs:
