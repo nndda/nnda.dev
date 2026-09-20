@@ -35,8 +35,8 @@ export function observe(
 ) {
   const
     observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-        for (let i: number = entries.length; i-- > 0;) {
-          intersectionCb(entries[i], observer);
+        for (const entry of entries) {
+          intersectionCb(entry, observer);
         }
       },
       {
@@ -52,9 +52,9 @@ export function observe(
 
 
 export function importLazy(
-  imports: (() => Promise<any>)[],
   element: Element,
-  rootMargin?: string,
+  rootMargin: string,
+  ...imports: (() => Promise<any>)[]
 ) {
   // NOTE: a little questionable
   let retry = 0;
@@ -131,10 +131,10 @@ export function loadCSS(
     const style = document.createElement("link");
     style.href = url;
     style.rel = "stylesheet";
-    document.head.appendChild(style);
-
     style.addEventListener("load", resolve);
     style.addEventListener("error", reject);
+
+    document.head.appendChild(style);
   });
 }
 

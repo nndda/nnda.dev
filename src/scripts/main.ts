@@ -36,11 +36,9 @@ export default function (d: Document) {
 
 
   importLazy(
-    [
-      () => import("./sections/footer"),
-      () => loadCSS(styleFooter),
-    ],
     d.querySelector("body > footer")!,
     "300px",
+    () => import("./sections/footer"),
+    () => loadCSS(styleFooter),
   );
 }
