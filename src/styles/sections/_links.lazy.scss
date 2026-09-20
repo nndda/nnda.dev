@@ -15,7 +15,7 @@
     font-size: 1.4em;
 
     & .flex-break ~ .link-item {
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     & .links-title {
@@ -55,10 +55,15 @@
   border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
 }
 
+.link-0 {
+  & .links-title {
+    color: color.mix($primary, $background-dark, 80%);
+  }
+}
+
 .links-desc {
-  margin: 0;
-  margin-top: .5em;
-  color: color.mix($text, $background-dark, 60%);
+  margin: .5em 0;
+  color: color.mix($text, $background-dark, 70%);
 }
 
 @mixin link-style($color, $color_override: null) {
@@ -82,9 +87,11 @@
 }
 
 .link-item {
-  padding: .2em .3em;
+  // padding: .2em .3em;
+  padding: .25em 1em;
   margin: .5em;
-  border-radius: 8px;
+  background: $background-light;
+  border-radius: 9px;
 
   & > a {
     display: flex;

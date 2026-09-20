@@ -125,7 +125,6 @@ p.about {
 
 ul.author-info {
   display: flex;
-  // grid-column: span 2;
   flex-wrap: wrap;
   gap: 1em;
   align-items: center;
@@ -229,6 +228,7 @@ ul.author-info {
     padding: .2em .9em;
     padding-bottom: .6em;
     font-size: .9em;
+    font-weight: 700;
     line-height: 1em;
     // background: color.mix($text, $background-light, 3%);
     color: $background-dark;
@@ -236,7 +236,8 @@ ul.author-info {
 
     outline: 7px solid $background-dark;
 
-    background: $text;
+    background: $primary;
+    // background: $text;
     border-radius: 16px;
 
     & > span {
@@ -287,5 +288,14 @@ ul.author-info {
   }
 // }
 
+// @media (width <= 480px) {
+
+//   .profile-pict {
+//     & > .img-cont > img {
+//       width: 15em ;
+//       height: 15em;
+//     }
+//   }
+// }
 // @include mobile.style;
 @include desktop.style;
