@@ -2,9 +2,8 @@
 @use "sass:color";
 
 footer {
-	background: $background-dark;
-
   z-index: 3;
+	background: $background-dark;
 
 	@include shadow-black;
 
@@ -28,8 +27,8 @@ footer {
 	padding-bottom: 1em;
 
 	& svg {
-		margin-right: .3em;
 		height: 1em;
+		margin-right: .3em;
 	}
 }
 
@@ -46,10 +45,10 @@ footer {
 
 	padding: 1em 2em;
 
+	font-size: .85em;
+
 	color: $text-secondary;
 	background: $background-light;
-
-	font-size: .85em;
 
 	& a {
 		text-decoration-color: rgba($text, .3);
@@ -86,9 +85,9 @@ footer {
 }
 
 .packages {
+	min-height: calc((1lh + .6em) * 7.5);
 	padding-bottom: 1.5em;
 	font-size: .8em;
-	min-height: calc((1lh + .6em) * 7.5);
 }
 
 .site-opt {
@@ -112,8 +111,8 @@ footer {
 
 	& > .inner {
 		display: grid;
-		justify-items: center;
 		gap: 1em;
+		justify-items: center;
 
 		& > img {
 			width: 70%;
@@ -127,16 +126,14 @@ footer {
   & > .inner {
     grid-template-columns: repeat(3, auto);
     gap: 0;
-
     justify-content: center;
-
-    padding-left: 1em;
     padding-right: 1em;
+    padding-left: 1em;
 
     & > img {
+      width: auto;
       height: 100%;
       max-height: 160px;
-      width: auto;
     }
   }
 }
@@ -152,8 +149,8 @@ footer {
 
   .links-section {
     &:nth-child(2) {
-      padding-bottom: 2em;
       max-width: 100% !important;
+      padding-bottom: 2em;
     }
   }
 }

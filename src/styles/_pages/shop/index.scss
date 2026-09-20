@@ -5,9 +5,9 @@
 @font-face {
   font-family: Bytesized;
   font-style: normal;
-  font-display: swap;
   font-weight: 400;
   src: url("@fonts/bytesized/400.woff2") format("woff2");
+  font-display: swap;
 }
 
 #shop-banner {
@@ -18,17 +18,17 @@
   background: $background-dark;
 
   & > h1 {
-    width: 100%;
     flex-grow: 1;
     align-content: end;
+    width: 100%;
     font-size: 2.5em;
 
     color: $text-secondary;
 
     &::first-letter {
-      color: $primary;
       font-family: "Ubuntu Sans Mono", sans-serif;
       font-weight: 600;
+      color: $primary;
     }
   }
 }
@@ -39,9 +39,9 @@ main {
   @include shadow-black;
 
   & > section {
+    padding-bottom: 2.5em;
     margin: 1.5em;
     margin-bottom: 3em;
-    padding-bottom: 2.5em;
     border-bottom: 1px solid color.mix($background, $text-secondary, 70%);
   }
 }
@@ -50,8 +50,8 @@ h2 {
   display: flex;
   column-gap: .5em;
   align-items: center;
-  font-size: 1.75em;
   margin-bottom: 1.2em;
+  font-size: 1.75em;
   letter-spacing: .05em;
 
   & > small {
@@ -145,13 +145,13 @@ h2 {
   padding: 0;
   margin-bottom: .8em;
 
+  overflow: hidden;
+
   background: var(--bg, $background-dark);
 
   border-color: color.mix($text-secondary, $background-dark, 25%);
 
   box-shadow: 0 0 2em -.05em color.adjust($background-dark, $lightness: -5.5%);
-
-  overflow: hidden;
 }
 
 .platforms {
@@ -176,17 +176,17 @@ h2 {
 
 .price {
   &::first-letter {
-    color: $text-secondary;
     margin-right: .25em;
+    color: $text-secondary;
   }
   // flex-grow: 1;
 }
 
 .buy-platforms {
   display: flex;
+  column-gap: .5em;
   align-items: center;
   justify-content: end;
-  column-gap: .5em;
   // background: red;
   // flex-grow: 1;
 
@@ -196,9 +196,9 @@ h2 {
 }
 
 .buy-hr {
-  border-color: color.mix($text-secondary, $background-light, 10%);
   // border-style: dashed;
   margin: .5em 0;
+  border-color: color.mix($text-secondary, $background-light, 10%);
 }
 
 .addon-item {
@@ -206,8 +206,8 @@ h2 {
 }
 
 .buy-btn {
-  margin: 0;
   padding: .3em .5em;
+  margin: 0;
 
   // & > svg {
   //   margin-right: 0;

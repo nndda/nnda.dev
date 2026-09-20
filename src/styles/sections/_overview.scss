@@ -5,14 +5,14 @@
 @use "overview.desktop" as desktop;
 
 .section-title-sub {
+  margin-bottom: .6em;
   font-size: 1.2em;
   font-weight: lighter;
-  margin-bottom: .6em;
 }
 
 #overview {
   // padding-top: 1em;
-  padding-bottom: 2em;
+  padding-bottom: 3.5em;
   background-color: $background-dark;
 
   // $s: 50px;  /* control the size of the grid */
@@ -47,9 +47,9 @@
   & > .section-inner {
     max-width: 1050px;
     min-height: 365px;
+    padding-bottom: 1em;
     // margin: auto;
     margin-top: 1.5em;
-    padding-bottom: 1em;
   }
 
   & .heading-left-sticky {
@@ -98,16 +98,16 @@
     min-width: 0;
 
     & .section-title-sub {
-      margin-bottom: 0;
       margin-right: .6em;
+      margin-bottom: 0;
       writing-mode: sideways-rl;
     }
 
     & > .inner {
-      // border: 1px solid color.mix($text, $background-light, 5%);
-      border-radius: 3px;
 
       background: $background-dark;
+      // border: 1px solid color.mix($text, $background-light, 5%);
+      border-radius: 3px;
     }
 
 
@@ -128,8 +128,8 @@
     }
 
     & > .inner > .grid > i {
-      height: $sqr-h;
       width: $sqr-w;
+      height: $sqr-h;
       padding: 0;
       margin: 0;
       border-radius: 3px;
@@ -157,14 +157,14 @@
     & .grid {
       position: relative;
       display: grid;
-      // width: 100%;
-      height: $r * ($sqr-h + $sqr-h-gap);
-      width: $c * ($sqr-h + $sqr-h-gap);
-      gap: 0;
-      grid-auto-flow: column;
       grid-template-rows: repeat($r, $sqr-h + $sqr-h-gap);
       grid-template-columns: repeat($c, $sqr-w + $sqr-w-gap);
+      grid-auto-flow: column;
+      gap: 0;
       justify-items: center;
+      width: $c * ($sqr-h + $sqr-h-gap);
+      // width: 100%;
+      height: $r * ($sqr-h + $sqr-h-gap);
       margin: auto;
     }
   }
@@ -173,9 +173,9 @@
     position: relative;
     padding: .8em;
 
-    overflow-x: auto;
-
     contain: content;
+
+    overflow-x: auto;
   }
 }
 
@@ -185,14 +185,14 @@
 
 .lang {
   &:not(.on) {
+    opacity: 0;
+    transform: translateX(-3em);
     transition: .05s ease-out;
     transition-delay: 0;
-    transform: translateX(-3em);
-    opacity: 0;
 
     & > .icon-text {
-      transform: translateY(-2em);
       opacity: 0;
+      transform: translateY(-2em);
     }
   }
 }
@@ -255,8 +255,8 @@
 }
 
 .lang-stacks {
-  min-height: 365px;
   gap: 1em;
+  min-height: 365px;
 }
 
 .languages-container {

@@ -30,34 +30,36 @@ header {
 }
 
 #navbar {
-  transform: translateY(calc(-100% - 1em));
   position: fixed;
 
   top: 0;
   right: 0;
+  z-index: 99;
 
   width: 100%;
 
   padding: 1em;
 
+  overflow: hidden;
+
   background: rgba($background-light, 0.8);
+
   backdrop-filter: blur(.5em);
+
+  transform: translateY(calc(-100% - 1em));
 
   transition: ease .2s;
 
-  overflow: hidden;
-  z-index: 99;
-
   & .vseparator {
     width: 100%;
-    margin: 1em 0;
     height: 1px;
+    margin: 1em 0;
   }
 
   & > ul {
     & > li {
-      letter-spacing: .1em;
       line-height: 2.2em;
+      letter-spacing: .1em;
 
       & > a {
         display: inline-block;
@@ -83,17 +85,17 @@ header {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 7;
   width: 100%;
   height: 100%;
   background: rgba($background, 0.4);
   backdrop-filter: blur(6px);
-  z-index: 7;
 
   transition: ease .5s opacity;
 
   &.hidden-o {
-    opacity: 0;
     pointer-events: none;
+    opacity: 0;
   }
 }
 

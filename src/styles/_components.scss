@@ -7,8 +7,8 @@
   white-space: nowrap;
 
   & > svg {
-    margin-right: .3em;
     max-height: 1em;
+    margin-right: .3em;
   }
 }
 
@@ -24,8 +24,8 @@
 .heading-hr {
   // position: relative;
   padding: .8em;
-  margin: 0;
   padding-top: 0;
+  margin: 0;
   margin-top: .65em;
   margin-bottom: .5em;
   color: color.mix($text, $background-dark, 70%);
@@ -50,34 +50,34 @@
 .heading-left-sticky {
   position: absolute;
   top: 0;
-  margin-top: 0;
   padding: .8em;
-
-  color: color.mix($text, $background-dark, 50%);
+  margin-top: 0;
 
   // background: inherit;
 
   font-family: "IBM Plex Sans JP", sans-serif;
   font-weight: 200;
 
+  color: color.mix($text, $background-dark, 50%);
+
   /* text-wrap: nowrap; */
   /* opacity: .75; */
 
   & > .jp {
-    padding: .25em 0;
     // background: inherit;
     // background: $background-dark;
     z-index: 1;
+    padding: .25em 0;
   }
 
   &::before {
-    content: "";
     position: absolute;
     top: 0;
     left: 50%;
+    width: 5px;
     // transform: translateX(50%);
     height: 100%;
-    width: 5px;
+    content: "";
 
     @include diagonal-stripes(
       rgba($text-secondary, .4),
@@ -100,9 +100,9 @@
     writing-mode: vertical-lr;
 
     & > div {
-      display: inline-block;
       position: sticky;
       top: 1.5em;
+      display: inline-block;
       padding-bottom: 1.5em;
     }
   }

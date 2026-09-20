@@ -7,8 +7,8 @@
 body {
   & > main {
     & > section {
-      padding-left: 2em;
       padding-right: 2em;
+      padding-left: 2em;
     }
   }
 }
@@ -35,12 +35,12 @@ body {
     // border-right: 2px dashed color.mix($text, $background-dark, 19%);
 
     &::after {
-      content: "";
       position: absolute;
       top: 0;
       right: 0;
       width: 5px;
       height: 100%;
+      content: "";
       // background: red;
 
       @include diagonal-stripes(

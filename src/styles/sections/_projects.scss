@@ -39,6 +39,8 @@
 
 
 .project {
+
+  overflow: hidden;
   // background:
   //   radial-gradient(
   //     circle at 80% 160%,
@@ -60,8 +62,6 @@
   transition:
     outline .2s ease,
     transform .23s ease !important;
-
-  overflow: hidden;
   // contain: strict;
 
   // outline: 1px solid #0000;
