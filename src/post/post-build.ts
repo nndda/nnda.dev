@@ -3,43 +3,49 @@ import {
   pathResolve,
   readTextFile,
   writeTextFile,
-  type DirResolver,
 } from "../scripts/build/utils";
 
 import {
   minify as minifyHTML,
+  type Options,
 } from "@swc/html";
 
-import type {
-  TransformOutput,
-} from "@swc/html/binding";
-
 const
-  abs: DirResolver = createResolver(__dirname)
+  abs = createResolver(__dirname)
 , distDir: string = pathResolve(abs("../../dist/"))
-;
-
-for ( const htmlFile of [
-    "index.html",
-    "shop.html",
-    "404.html",
-    "comm.html",
-] as string[] ) {
-  const
-    htmlPath: string = pathResolve(distDir, htmlFile)
-  ;
-
-  minifyHTML(readTextFile(htmlPath), {
+, conf: Options = {
     collapseBooleanAttributes: true,
     // collapseWhitespaces: "all",
-    filename: htmlFile,
     minifyCss: true,
     minifyJs: true,
     minifyJson: true,
     quotes: false,
     removeComments: true,
     removeRedundantAttributes: "all",
-  }).then((val: TransformOutput) => {
-    writeTextFile(htmlPath, val.code);
-  });
+  }
+;
+
+// TODO: use glob instead
+for ( const htmlFile of [
+    "index.html",
+    "shop.html",
+    "404.html",
+    "comm.html",
+] ) {
+  const
+    htmlPath: string = pathResolve(distDir, htmlFile)
+  ;
+
+  console.log(`minifying '${htmlFile}'...`);
+
+  minifyHTML(
+    readTextFile(htmlPath), {
+      ... conf,
+      filename: htmlFile,
+    }
+  )
+  .then(res => {
+    writeTextFile(htmlPath, res.code);
+  })
+  ;
 }
