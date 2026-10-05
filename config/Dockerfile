@@ -1,5 +1,5 @@
 # cant escape node
-FROM node:26.4-slim
+FROM node:26.10-slim
 
 WORKDIR /nnda.dev
 
