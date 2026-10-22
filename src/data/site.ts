@@ -62,10 +62,10 @@ const DATA: any = async () => { return _.merge({
   releaseDate: releaseDate,
   year: currentDate.getFullYear(),
 
-  nextUpdateDate: cronParser.parse(
+  nextUpdateDate: Bun.cron.parse(
     "0 */12 * * *", // Match GH Actions cron deploy
-    { currentDate: currentDate },
-  ).next().toDate(),
+    currentDate,
+  ),
 
   buildTimetamp: currentDate,
   buildCommitSHAFull: commitSHA,
@@ -88,7 +88,6 @@ import {
   execSync,
   type ExecSyncOptionsWithStringEncoding
 } from "child_process";
-import cronParser from "cron-parser";
 import _ from "lodash";
 
 const

@@ -14,8 +14,8 @@
   "scripts": {
     "audit": "bun audit --ignore=GHSA-vfj7-8cjw-p6xm",
     "dev": "bun run start",
-    "start": "bun run build:config && bun run build:data && concurrently 'webpack-dev-server --config ./config/webpack.dev.js --port 9000' 'bun run watch:data'",
-    "build": "bun run build:config && bun run fetch:gh && bun run fetch:data-ext && bun run build:data && webpack --no-devtool --config ./config/webpack.config.js && bun run post:build",
+    "start": "bun --bun run build:config && bun --bun run build:data && concurrently 'bun --bun webpack-dev-server --config ./config/webpack.dev.js --port 9000' 'bun run watch:data'",
+    "build": "bun --bun run build:config && bun run fetch:gh && bun run fetch:data-ext && bun --bun run build:data && bun --bun webpack --no-devtool --config ./config/webpack.config.js && bun run post:build",
     "build:data": "bun run --tsconfig-override=./config/tsconfig.build.json ./src/scripts/build/index.ts",
     "build:config": "tsc --project ./config/tsconfig.build.json",
     "watch:project": "bun run --tsconfig-override=./config/tsconfig.build.json ./src/_projects/project-pages.ts -- --watch",
@@ -48,7 +48,6 @@
     "chokidar": "^5.0.0",
     "concurrently": "^10.0.6",
     "copy-webpack-plugin": "^14.0.0",
-    "cron-parser": "^5.10.2",
     "css-loader": "^7.1.5",
     "cssnano": "^8.0.10",
     "dedent": "^1.7.2",
