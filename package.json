@@ -27,9 +27,9 @@
     "post:build": "python ./src/post/post_build.py && bun run --tsconfig-override=./config/tsconfig.build.json ./src/post/post-build.ts"
   },
   "engines": {
-    "bun": "^1.4.2"
+    "bun": "^1.4.4"
   },
-  "packageManager": "bun@1.4.2",
+  "packageManager": "bun@1.4.4",
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
@@ -45,12 +45,11 @@
     "@types/node": "^26.6.5",
     "@types/webpack": "^5.28.5",
     "autoprefixer": "^10.6.1",
-    "chokidar": "^5.0.0",
+    "chokidar": "^6.0.0",
     "concurrently": "^10.0.6",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.5",
-    "cssnano": "^8.0.10",
-    "dedent": "^1.7.2",
+    "cssnano": "^9.9.0",
     "eslint": "^10.13.0",
     "feedsmith": "^3.0.1",
     "globals": "^17.13.0",
@@ -76,8 +75,7 @@
     "webpack": "5.111.1",
     "webpack-cli": "^7.2.3",
     "webpack-dev-server": "^6.1.0",
-    "wrangler": "^4.152.0",
-    "yaml": "^2.9.1"
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "brace-expansion": "^5.0.9",

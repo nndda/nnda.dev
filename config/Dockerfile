@@ -1,5 +1,5 @@
 # cant escape node
-FROM node:26.10-slim
+FROM node:26.12.1-slim
 
 WORKDIR /nnda.dev
 
@@ -35,7 +35,7 @@ RUN apt update && \
     && ln -s /usr/bin/python3 /usr/bin/python
 
 # Bun
-RUN curl -fsSL https://bun.com/install | bash -s "bun-v1.4.2"
+RUN curl -fsSL https://bun.com/install | bash -s "bun-v1.4.4"
 
 ENV BUN_INSTALL="/root/.bun"
 ENV PATH="$BUN_INSTALL/bin:$PATH"
