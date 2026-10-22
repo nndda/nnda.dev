@@ -82,8 +82,6 @@ import {
   type DirResolver,
 } from "../scripts/build/utils";
 
-import "dotenv/config";
-
 import {
   execSync,
   type ExecSyncOptionsWithStringEncoding

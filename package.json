@@ -51,7 +51,6 @@
     "css-loader": "^7.1.5",
     "cssnano": "^8.0.10",
     "dedent": "^1.7.2",
-    "dotenv": "^18.0.9",
     "eslint": "^10.13.0",
     "feedsmith": "^3.0.1",
     "globals": "^17.13.0",
