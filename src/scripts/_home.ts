@@ -14,14 +14,14 @@ import initScroll from "./scroll.home";
 initScroll(d);
 
 
-import styleOverview from "../styles/sections/_overview.lazy.scss?url";
-
-importLazy(
-  d.getElementById("overview")!,
-  "25px",
-  () => import("./sections/overview"),
-  () => loadCSS(styleOverview),
-);
+// import styleOverview from "../styles/sections/_overview.lazy.scss?url";
+//
+// importLazy(
+//   d.getElementById("overview")!,
+//   "25px",
+//   () => import("./sections/overview"),
+//   () => loadCSS(styleOverview),
+// );
 
 
 import styleProjects from "../styles/sections/_projects.lazy.scss?url";
