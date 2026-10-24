@@ -82,7 +82,7 @@ export default {
       use: {
         loader: "ts-loader",
         options: {
-          configFile: abs("./config/tsconfig.web.json"),
+          configFile: abs("./tsconfig.json"),
         },
       },
       exclude: /node_modules/,

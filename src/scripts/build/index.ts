@@ -20,7 +20,7 @@ const
   abs = createResolver(__dirname)
 , absRoot = createResolver(abs("../../../"))
 
-, tsconfigPath = absRoot("./config/tsconfig.build.json")
+// , tsconfigPath = absRoot("./config/tsconfig.build.json")
 , tsBin = "bun"
 , pyBin = "python3"
 
@@ -81,7 +81,7 @@ function execScript(script: string, pref: string) {
     spawnSync(
       (isTs ? tsBin : pyBin),
       [
-        ...(isTs ? ["run", `--tsconfig-override=${tsconfigPath}`,] : []),
+        // ...(isTs ? ["run", `--tsconfig-override=${tsconfigPath}`,] : []),
         script,
       ],
       spawnSyncOpt,

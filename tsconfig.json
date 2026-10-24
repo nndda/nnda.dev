@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "ignoreDeprecations": "6.0",
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "bun"
+    ],
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "./src/**/*.js",
+    "./node_modules/",
+    "./workers/",
+    "./dist/",
+    "./src/scripts/build/icons/**/*.js",
+    "./src/scripts/build/out/**/*.js"
+  ]
+}

@@ -8,6 +8,8 @@ share/
 **/*.json.gz
 **/*.json
 src/scripts/build/icons/**/*.ts
+!package.json
+!tsconfig*.json
 
 # Proprietary configs, and assets
 !config/**/*.json
