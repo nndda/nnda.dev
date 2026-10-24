@@ -5,21 +5,16 @@ import illustHomeDataPromise, {
   type IllustItem,
 } from "../../data/illustrations/home";
 
-import {
-  writeTextFile,
-  createResolver,
-  resolveRelative,
-} from "./utils";
-
-import { readFileSync } from "fs";
 import _ from "lodash";
 import { imageSize } from "image-size";
 import type { ISizeCalculationResult } from "image-size/types/interface";
 
+import { FS, Path } from "@dev/util";
+import { resolve } from "path";
+const relative = Path.createRelative(import.meta.dir);
+
 const
-  abs = createResolver(__dirname)
-, dirOut = abs("./out/")
-, srcResolve = createResolver(abs("../../"))
+  dirOut = relative("./out/")
 , illustPaths: Record<string, string> = {}
 ;
 
@@ -30,8 +25,8 @@ illustHomeDataPromise.then((illustHomeData: { illustrations: IllustGallery[] }) 
       items: gall.items.map((illustItem: IllustItem, iI: number): IllustItem => {
         const
           id: string = `i${iG}${iI}`
-        , srcAbs: string = srcResolve("./" + illustItem.src)
-        , dimensions: ISizeCalculationResult = imageSize(readFileSync(srcAbs))
+        , srcAbs: string = Path.abs("./src/" + illustItem.src)
+        , dimensions: ISizeCalculationResult = imageSize(FS.read.buffer(srcAbs))
         ;
 
         illustPaths[id] = srcAbs;
@@ -46,9 +41,9 @@ illustHomeDataPromise.then((illustHomeData: { illustrations: IllustGallery[] }) 
   });
 
 
-  writeTextFile(abs("./out/illust.home.js"), `${
+  FS.write.text(relative("./out/illust.home.js"), `${
       Object.entries(illustPaths).map((val: [string, string]): string => {
-        return `import ${val[0]} from "${resolveRelative(dirOut, val[1])}";`;
+        return `import ${val[0]} from "${resolve(dirOut, val[1])}";`;
 
       }).join("\n")
     }\nexport default ${

@@ -4,7 +4,6 @@
     "module": "esnext",
     "strict": true,
     "noImplicitAny": false,
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "ignoreDeprecations": "6.0",
@@ -13,12 +12,14 @@
       "node",
       "bun"
     ],
+    "paths": {
+      "@dev/util": ["./dev/util.ts"]
+    }
   },
   "include": [
     "./**/*.ts"
   ],
   "exclude": [
-    "./src/**/*.js",
     "./node_modules/",
     "./workers/",
     "./dist/",

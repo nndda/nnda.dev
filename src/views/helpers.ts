@@ -1,23 +1,12 @@
-import Handlebars from "handlebars";
 import { readFileSync } from "fs";
+import { basename, join } from "path";
+import { FS, Path } from "@dev/util";
+import Handlebars from "handlebars";
 import { imageSize } from "image-size";
 // import type { ISizeCalculationResult } from "image-size/types/interface";
 
-import path from "path";
-
-import {
-  // ls, // eslint-disable-line
-  exists,
-  pathResolve,
-  createResolver,
-} from "../scripts/build/utils";
 // import _ from "lodash";
 // const sortBy = _.sortBy; // eslint-disable-line
-const srcDir: string = createResolver(__dirname)("../../src/");
-
-function srcResolve(src: string): string {
-  return pathResolve(srcDir, "./" + src);
-}
 
 export default {
   icon: (group: string, name: string, width: number = -1, height: number = -1) => {
@@ -78,12 +67,11 @@ export default {
   },
 
   img: (src: string, alt: string) => {
-    const
-      srcAbs: string = srcResolve(src)
-    , dimensions: any = imageSize(readFileSync(srcAbs))
-    ;
+    const srcAbs: string = Path.abs(join("./src/", src));
 
-    if (!exists(srcAbs)) { throw Error(`Image ${path.basename(src)} doesn't exists`); }
+    if (!FS.exists(srcAbs)) { throw Error(`Image ${basename(src)} doesn't FS.exists`); }
+
+    const dimensions: any = imageSize(readFileSync(srcAbs));
 
     return new Handlebars.SafeString(`
       <img src="${src}" width="${dimensions.width}" height="${dimensions.height}" loading="lazy" alt="${alt}">

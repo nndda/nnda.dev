@@ -1,34 +1,20 @@
-import {
-  statSync,
-  type Stats,
-} from "fs";
-import {
-  extname,
-  relative,
-} from "path"
-
-import {
-  ls,
-  pathResolve,
-  createResolver,
-  type DirResolver,
-} from "../scripts/build/utils"
+import { statSync } from "fs";
+import { extname, relative, resolve } from "path";
+import { FS, Path } from "@dev/util";
 
 console.log("Scanning for Handlebars partials...")
 
 const
-  abs: DirResolver = createResolver(__dirname)
-, partialsPath: string = abs("./partials/")
+  partialsPath: string = Path.abs("./src/views/partials/")
 , reHbs: RegExp = /\.hbs$/
-
 , partialsObj: Record<string, string> = {}
 ;
 
-function processPartialDir(pathBase: string, dirs: string[] = []): void {
-  for (const path of ls(pathBase)) {
+function processPartialDir(pathBase: string, dirs: string[] = []) {
+  for (const path of FS.ls(pathBase)) {
     const
-      pathAbs: string = pathResolve(partialsPath, ...dirs, path)
-    , pathStat: Stats = statSync(pathAbs)
+      pathAbs = resolve(partialsPath, ...dirs, path)
+    , pathStat = statSync(pathAbs)
     ;
 
     if (pathStat.isDirectory()) {

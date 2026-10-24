@@ -1,30 +1,17 @@
-import nodePath from "path";
-import {
-  spawnSync,
-  type SpawnSyncOptionsWithStringEncoding,
-} from "child_process";
-
-import {
-  createResolver,
-  exists,
-} from "./utils";
-
+import { basename } from "path";
+import childProcess from "child_process";
 import chokidar from "chokidar";
+import { FS, Path } from "@dev/util";
+const relative = Path.createRelative(import.meta.dir);
 
 type ScriptExecCallable = Record<string, () => void>;
-
 type ScriptDeps = Record<string, string[]>;
 
 const
-  // So fucking dumb
-  abs = createResolver(__dirname)
-, absRoot = createResolver(abs("../../../"))
-
-// , tsconfigPath = absRoot("./config/tsconfig.build.json")
-, tsBin = "bun"
+  tsBin = "bun"
 , pyBin = "python3"
 
-, spawnSyncOpt: SpawnSyncOptionsWithStringEncoding = {
+, spawnSyncOpt: childProcess.SpawnSyncOptionsWithStringEncoding = {
     stdio: "pipe",
     encoding: "utf8",
   }
@@ -40,7 +27,7 @@ const
     "./config/requirements.txt": [
       "attributions.ts",
     ],
-    "./packages.json": [
+    "./package.json": [
       "attributions.ts",
     ],
     "./src/data/illustrations/home.ts": [
@@ -50,11 +37,9 @@ const
       "illustrations.ts",
     ],
   }).reduce((acc: ScriptDeps, val: [string, string[]]): ScriptDeps => {
-    const
-      absPath = absRoot(val[0])
-    ;
+    const absPath = Path.abs(val[0]);
 
-    if (exists(absPath)) {
+    if (FS.exists(absPath)) {
       acc[absPath] = val[1];
     }
 
@@ -64,7 +49,7 @@ const
 
 , execRun = execScripts.reduce(
     (acc: ScriptExecCallable, val: string): ScriptExecCallable => {
-      acc[val] = execScript.bind(null, abs("./" + val), val);
+      acc[val] = execScript.bind(null, relative(val), val);
       return acc;
     },
     {} as ScriptExecCallable,
@@ -78,7 +63,7 @@ function execScript(script: string, pref: string) {
 
   console.log(
     // I'm so sorry
-    spawnSync(
+    childProcess.spawnSync(
       (isTs ? tsBin : pyBin),
       [
         // ...(isTs ? ["run", `--tsconfig-override=${tsconfigPath}`,] : []),
@@ -109,8 +94,8 @@ function execScript(script: string, pref: string) {
 
 if (process.argv.includes("--watching")) {
   const arrWatch: string[] = [
-    ...execScripts.map(abs),
-    ...Object.keys(execScriptsDeps).map(abs),
+    ...execScripts.map(relative),
+    ...Object.keys(execScriptsDeps).map(relative),
   ];
 
   console.log("Watching for changes... @", arrWatch);
@@ -122,7 +107,7 @@ if (process.argv.includes("--watching")) {
 
     .on("change", (path: string) => {
       const
-        filename: string = nodePath.basename(path)
+        filename: string = basename(path)
       ;
 
       console.log(filename + " changed.");

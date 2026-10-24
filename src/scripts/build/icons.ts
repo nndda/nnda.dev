@@ -1,16 +1,9 @@
 console.log("Updating & tree-shaking icons...");
 
-import {
-  writeTextFile,
-  createResolver,
-  mkdir,
-  // cleanupDir,
-  type DirResolver,
-} from "./utils";
-const abs: DirResolver = createResolver(__dirname);
+import { FS, Path } from "@dev/util";
+const relative = Path.createRelative(import.meta.dir);
 
-mkdir(abs("./icons/"));
-// cleanupDir(abs("./icons/"));
+FS.mkdir(relative("./icons/"));
 
 // ----------------------------------------------------------------------------
 
@@ -139,7 +132,7 @@ function toPascalCase(str: string) {
 }
 
 function createIconDefs(filename: string, icons: IconDefinition[]): void {
-  writeTextFile(abs(`./icons/${filename}.js`),
+  FS.write.text(relative(`./icons/${filename}.js`),
     icons.map(ico => {
       return `export const icon${toPascalCase(ico.iconName)}=\`${toHTML(ico)}\``;
     }).join(";")
@@ -165,7 +158,7 @@ function createIconDefsGrouped(
   siIcons: SimpleIcon[] = [],
   iconsOther: Record<string, string> = {},
   ): void {
-  writeTextFile(abs(`./icons/${groupName}.ts`),
+  FS.write.text(relative(`./icons/${groupName}.ts`),
     `export default {`
     +
     [
@@ -186,7 +179,7 @@ function createIconDefsGrouped(
 }
 
 function createMiniIconDefs(filename: string, iconDefs: Record<string, string>): void {
-  writeTextFile(abs(`./icons/${filename}.js`), `export default ${
+  FS.write.text(relative(`./icons/${filename}.js`), `export default ${
     JSON.stringify(
       Object.entries(iconDefs).reduce(
         (

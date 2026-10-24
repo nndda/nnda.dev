@@ -7,21 +7,18 @@ import path from "path";
 import matter, { type GrayMatterFile } from "gray-matter";
 import chokidar from "chokidar";
 import { type EntryObject } from "webpack";
-
-import {
-  readTextFile,
-  writeTextFile,
-  createResolver,
-  type DirResolver,
-} from "../scripts/build/utils";
+import { FS, Path } from "@dev/util";
 
 const
-  abs: DirResolver = createResolver(__dirname),
-  template: string = readTextFile(abs("./project.hbs"));
+  projectPath = Path.abs("./src/_projects/")
+, relative = Path.createRelative(import.meta.dir)
+, template = FS.read.text(relative("./project.hbs"))
+;
+
 
 export function buildProjectPages(): void {
-  fs.readdirSync(abs("./")).forEach(dir => {
-    const subd: string = abs(dir);
+  fs.readdirSync(relative("./")).forEach(dir => {
+    const subd: string = relative(dir);
 
     if (fs.statSync(subd).isDirectory()) {
       if (fs.readdirSync(subd).includes("index.hbs")) {
@@ -31,8 +28,8 @@ export function buildProjectPages(): void {
   });
 }
 
-export const projectEntries: EntryObject = fs.readdirSync(abs("./")).reduce((acc, dir) => {
-  const subd: string = abs(dir);
+export const projectEntries: EntryObject = fs.readdirSync(projectPath).reduce((acc, dir) => {
+  const subd: string = relative(dir);
 
   if (fs.statSync(subd).isDirectory()) {
     if (fs.readdirSync(subd).includes(`${dir}.hbs`)) {
@@ -47,10 +44,11 @@ export function buildProjectPage(absPath: string): void {
   if (!fs.readdirSync(absPath).includes("index.hbs")) return;
 
   const
-    base: string = path.basename(absPath),
-    out: string = path.join(absPath, base + ".hbs"),
-    pagePath: string = path.join(absPath, "index.hbs"),
-    page: GrayMatterFile<string> = matter(readTextFile(pagePath));
+    base: string = path.basename(absPath)
+  , out: string = path.join(absPath, base + ".hbs")
+  , pagePath: string = path.join(absPath, "index.hbs")
+  , page: GrayMatterFile<string> = matter(FS.read.text(pagePath))
+  ;
 
   page.content = template
     .replace(/{CONTENT}/g, page.content)
@@ -62,7 +60,7 @@ export function buildProjectPage(absPath: string): void {
     page.content = template.replace(/{{\s*include\s+"header"\s*}}/, "")
   }
 
-  writeTextFile(out, page.content);
+  FS.write.text(out, page.content);
   console.log(`Finished building project '${base}'`)
 }
 
@@ -75,7 +73,7 @@ Finished initial building
 Watching for updates on project pages...`
   );
 
-  chokidar.watch(abs("./")).on("change", (projectPath) => {
+  chokidar.watch(projectPath).on("change", (projectPath) => {
     if (projectPath.endsWith("/index.hbs")) {
 
       console.log(`${path.basename(projectPath)} changed, updating...`);

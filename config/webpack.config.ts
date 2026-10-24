@@ -1,8 +1,9 @@
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
 import { type Configuration } from "webpack";
 
+import { Path } from "@dev/util";
 import _ from "lodash";
-import common, { abs, copyToDist } from "./webpack.common";
+import common, { copyToDist } from "./webpack.common";
 
 import CopyPlugin from "copy-webpack-plugin";
 // import { FaviconsBundlerPlugin } from "html-bundler-webpack-plugin/plugins";
@@ -14,7 +15,7 @@ export default {
   mode: "production",
 
   output: {
-    path: abs("./dist"),
+    path: Path.abs("./dist"),
     crossOriginLoading: "anonymous",
   },
 

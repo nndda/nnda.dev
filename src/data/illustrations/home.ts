@@ -16,17 +16,13 @@ const DATA: any = async (): Promise<{ illustrations: IllustGallery[]; }> => { re
     //   ],
     // },
   ]
-}, exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
-// 
-import {
-  exists,
-  createResolver,
-} from "../../scripts/build/utils";
+}, FS.exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
+
+import { resolve } from "path";
+import { FS } from "@dev/util";
 import _ from "lodash";
 
-const
-  siteExtPath: string = createResolver(__dirname)("./home.ext.js")
-;
+const siteExtPath = resolve(import.meta.dir, "./home.ext.js");
 
 export interface IllustItem {
   title: string,

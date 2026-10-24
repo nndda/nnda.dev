@@ -71,27 +71,20 @@ const DATA: any = async () => { return _.merge({
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA?.substring(0, 16),
 
-}, exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
+}, FS.exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
 
 // ============================================================================
 
-import {
-  exists,
-  createResolver,
-  writeTextFile,
-  type DirResolver,
-} from "../scripts/build/utils";
+import { FS, Path } from "@dev/util";
 
 import {
   execSync,
   type ExecSyncOptionsWithStringEncoding
 } from "child_process";
+import { resolve } from "path";
 import _ from "lodash";
 
-const
-  abs: DirResolver = createResolver(__dirname)
-, siteExtPath: string = abs("./site-ext.js")
-;
+const siteExtPath = resolve(import.meta.dir, "./site-ext.js");
 
 // ============================================================================
 
@@ -119,6 +112,6 @@ const
 ;
 
 import postsFeed from "./social-posts";
-writeTextFile(abs("../public/posts-feed.json"), JSON.stringify(postsFeed));
+FS.write.text(Path.abs("./src/public/posts-feed.json"), JSON.stringify(postsFeed));
 
 export default DATA();

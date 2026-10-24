@@ -1,18 +1,10 @@
-import {
-  createResolver,
-  pathResolve,
-  readTextFile,
-  writeTextFile,
-} from "../scripts/build/utils";
-
-import {
-  minify as minifyHTML,
-  type Options,
-} from "@swc/html";
+import { resolve } from "path";
+import { FS, Path } from "@dev/util";
+import { minify, type Options } from "@swc/html";
 
 const
-  abs = createResolver(__dirname)
-, distDir: string = pathResolve(abs("../../dist/"))
+  distDir = Path.abs("./dist/")
+
 , conf: Options = {
     collapseBooleanAttributes: true,
     // collapseWhitespaces: "all",
@@ -32,20 +24,16 @@ for ( const htmlFile of [
     "404.html",
     "comm.html",
 ] ) {
-  const
-    htmlPath: string = pathResolve(distDir, htmlFile)
-  ;
+  const htmlPath = resolve(distDir, htmlFile);
 
   console.log(`minifying '${htmlFile}'...`);
 
-  minifyHTML(
-    readTextFile(htmlPath), {
-      ... conf,
-      filename: htmlFile,
-    }
-  )
-  .then(res => {
-    writeTextFile(htmlPath, res.code);
-  })
-  ;
+  FS.write.text(htmlPath, (
+    await minify(
+      FS.read.text(htmlPath), {
+        ... conf,
+        filename: htmlFile,
+      }
+    )
+  ).code);
 }

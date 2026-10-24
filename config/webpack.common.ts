@@ -4,7 +4,7 @@ import type { Configuration, RuleSetRule } from "webpack";
 
 import CopyPlugin from "copy-webpack-plugin";
 export function copyToDist(path: string): CopyPlugin.Pattern {
-  return { from: abs("./src/" + path), to: abs("./dist/") }
+  return { from: Path.abs("./src/" + path), to: Path.abs("./dist/") }
 }
 
 import handlebarsData from "../src/data/site";
@@ -15,14 +15,7 @@ import handlebarsHelpers from "../src/views/helpers";
 // import { buildProjectPages, projectEntries } from "../src/_projects/project-pages";
 // buildProjectPages();
 
-import {
-  pathResolve,
-  createResolver,
-} from "../src/scripts/build/utils";
-const absRel: string = createResolver(__dirname)("../");
-export function abs(path: string): string {
-  return pathResolve(absRel, path);
-}
+import { Path } from "@dev/util";
 
 import partialsDefinition from "../src/views/generate-partials-def";
 
@@ -30,18 +23,18 @@ export default {
   resolve: {
     extensions: [".js", ".ts", ".json"],
     alias: {
-      "@fonts": abs("./src/assets/fonts/"),
-      "@node_modules": abs("./node_modules/"),
+      "@fonts": Path.abs("./src/assets/fonts/"),
+      "@node_modules": Path.abs("./node_modules/"),
     },
   } as Configuration["resolve"],
 
   HtmlBundlerPluginConfig: {
     entry: {
-      index: abs("./src/views/pages/index.hbs"),
-      "404": abs("./src/views/pages/404.hbs"),
-      "comm": abs("./src/views/pages/comm.hbs"),
-      "links": abs("./src/views/pages/links.hbs"),
-      "shop": abs("./src/views/pages/shop/index.hbs"),
+      index: Path.abs("./src/views/pages/index.hbs"),
+      "404": Path.abs("./src/views/pages/404.hbs"),
+      "comm": Path.abs("./src/views/pages/comm.hbs"),
+      "links": Path.abs("./src/views/pages/links.hbs"),
+      "shop": Path.abs("./src/views/pages/shop/index.hbs"),
       // ... projectEntries,
     },
 
@@ -49,16 +42,16 @@ export default {
 
     preprocessor: "handlebars",
     preprocessorOptions: {
-      root: abs("./src/views/"),
+      root: Path.abs("./src/views/"),
       helpers: handlebarsHelpers,
       views: [
-        abs("./src/views/partials"),
+        Path.abs("./src/views/partials"),
       ],
       partials: partialsDefinition,
     },
 
     loaderOptions: {
-      root: abs("./src"),
+      root: Path.abs("./src"),
       sources: [
         {
           tag: "div",
@@ -71,7 +64,7 @@ export default {
   plugins: [
     new CopyPlugin({
       patterns: [
-        abs("./src/public/"),
+        Path.abs("./src/public/"),
       ],
     }),
   ] as unknown as webpack.DefinePlugin[],
@@ -82,7 +75,7 @@ export default {
       use: {
         loader: "ts-loader",
         options: {
-          configFile: abs("./tsconfig.json"),
+          configFile: Path.abs("./tsconfig.json"),
         },
       },
       exclude: /node_modules/,
