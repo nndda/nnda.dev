@@ -1,53 +1,18 @@
 @mixin style {
-@media (width >= 700px) {
-// #projects {
-  // & > .section-inner {
-    // & > .project-items {
+  @media (width >= 700px) {
     .project-items {
       display: grid;
-      grid-template-areas:
-        "theatre theatre itch  website"
-        "theatre theatre pitch pitch"
-        "filler  obscura pitch pitch"
-      ;
+      grid-template-columns: repeat(4, calc(25% - 1.1em));
       gap: 1.1em;
+      justify-content: space-evenly;
       padding: 1em;
     }
-  // }
-// }
 
-.project {
-  &[data-name="Pitch"] {
-    grid-area: pitch;
-    min-height: 350px;
-    // max-height: 350px;
-    /* transform-origin: top left;
-    transform:
-      translate(1em, 1em)
-    ; */
+    .project {
+      &[data-name="Pitch"],
+      &[data-name="Theatre"] {
+        grid-column: span 2;
+      }
+    }
   }
-
-  &[data-name="Theatre"] {
-    grid-area: theatre;
-    min-height: 350px;
-    // max-height: 350px;
-    /* transform-origin: bottom right;
-    transform:
-      translate(-1em, -1em)
-    ; */
-  }
-
-  &[data-name="nnda.itch.io"] {
-    grid-area: itch;
-  }
-
-  &[data-name="nnda.dev"] {
-    grid-area: website;
-  }
-
-  &[data-name="Obscura"] {
-    grid-area: obscura;
-  }
-}
-}
 }

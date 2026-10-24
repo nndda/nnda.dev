@@ -1,38 +1,18 @@
 @mixin style {
-@media (width <= 700px) {
-// #projects {
-//   & > .section-inner {
-//     padding-top: 2em;
-//     padding-bottom: 2em;
-//   }
-// }
+  @media (width <= 700px) {
+    .project-items {
+      display: grid;
+      grid-template-columns: auto auto;
 
-.project-items {
-  display: grid;
-  grid-template-columns: auto auto;
-  // grid-template-areas:
-  //   "theatre theatre"
-  //   "pitch pitch"
-  //   "itch website"
-  //   "obscura filler"
-  // ;
-  gap: 1em;
-  padding: 1em 0;
-  // padding: 2em 1em;
-}
+      gap: 1em;
+      padding: 1em 0;
+    }
 
-.project {
-  font-size: .85em;
-}
+    .project[data-name="Pitch"],
+    .project[data-name="Theatre"] {
+      grid-column: span 2;
+      font-size: unset;
+    }
 
-.project[data-name="Pitch"],
-.project[data-name="Theatre"] {
-  grid-column: span 2;
-  font-size: unset;
-}
-
-.project.card {
-  // margin-bottom: 1.5em;
-}
-}
+  }
 }
