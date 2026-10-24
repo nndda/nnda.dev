@@ -51,7 +51,7 @@ const
                                   19, 19,
                                   "links",
                                 )
-                              : `<img src="${link.icon}" alt="" width="19" height="19">`
+                              : `<img src="${String(link.icon)}" alt="" width="19" height="19">`
                           }
                         </div>
 
