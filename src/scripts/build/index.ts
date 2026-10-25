@@ -1,8 +1,11 @@
+import { mkdirSync } from "fs";
 import { basename } from "path";
 import childProcess from "child_process";
 import chokidar from "chokidar";
 import { FS, Path } from "@dev/util";
 const relative = Path.createRelative(import.meta.dir);
+
+mkdirSync(Path.abs("./src/scripts/build/out/"), { recursive: true });
 
 type ScriptExecCallable = Record<string, () => void>;
 type ScriptDeps = Record<string, string[]>;
