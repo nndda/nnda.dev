@@ -401,7 +401,8 @@ h1 {
     width: 100%;
     min-height: 100%;
     background: rgba($background-dark, 0.6);
-    backdrop-filter: blur(13em) brightness(.8);
+    // NOTE: Disabled. Chrome absolutely despise this
+    // backdrop-filter: blur(13em) brightness(.8);
     mask-image:
       linear-gradient(195deg, #000 var(--p1, 10%), transparent var(--p2, 49%))
     , linear-gradient(0deg, #000 2%, transparent 15%)
