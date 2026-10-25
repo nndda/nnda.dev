@@ -1,4 +1,4 @@
-import { importLazy, initIcons, loadCSS } from "./framework";
+import { importLazy, initIcons, loadCSS } from "@runtime";
 
 const
   d = document

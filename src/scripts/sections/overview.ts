@@ -1,4 +1,4 @@
-import { buildSvg } from "../framework";
+import { buildSvg } from "@runtime";
 
 import icons from "../build/icons/overview";
 import stacksData, { type StacksData } from "../../data/site-stacks";

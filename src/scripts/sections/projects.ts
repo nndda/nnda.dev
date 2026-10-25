@@ -1,4 +1,4 @@
-import { initAnim } from "../framework";
+import { initAnim } from "@runtime";
 import projectsData from "../../data/site-projects";
 
 export interface ProjectItem {

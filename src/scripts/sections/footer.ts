@@ -1,4 +1,4 @@
-import { buildSvg, initIcons, observe } from "../framework";
+import { buildSvg, initIcons, observe } from "@runtime";
 
 import packageJSON from "../build/out/attribution.json" with { type: "json" };
 

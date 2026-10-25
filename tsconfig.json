@@ -13,7 +13,8 @@
       "bun"
     ],
     "paths": {
-      "@dev/util": ["./dev/util.ts"]
+      "@dev/util": ["./dev/util.ts"],
+      "@runtime": ["./src/scripts/runtime.ts"]
     }
   },
   "include": [

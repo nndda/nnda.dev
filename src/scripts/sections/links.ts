@@ -1,4 +1,4 @@
-import { buildSvg, initAnim } from "../framework";
+import { buildSvg, initAnim } from "@runtime";
 
 import linksData from "../../data/site-links";
 import icons from "../build/icons/links";

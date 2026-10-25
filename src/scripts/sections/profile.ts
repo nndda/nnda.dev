@@ -1,4 +1,4 @@
-import { initAnim, initIcons } from "../framework";
+import { initAnim, initIcons } from "@runtime";
 
 import icons from "../build/icons/profile";
 initIcons("profile", icons);

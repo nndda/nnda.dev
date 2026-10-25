@@ -1,4 +1,4 @@
-import { importLazy, initIcons, loadCSS } from "./framework";
+import { importLazy, initIcons, loadCSS } from "@runtime";
 
 import initializeInputs from "./input";
 import styleFooter from "../styles/sections/_footer.lazy.scss?url";

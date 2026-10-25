@@ -25,6 +25,7 @@ export default {
     alias: {
       "@fonts": Path.abs("./src/assets/fonts/"),
       "@node_modules": Path.abs("./node_modules/"),
+      "@runtime": Path.abs("./src/scripts/runtime.ts"),
     },
   } as Configuration["resolve"],
 

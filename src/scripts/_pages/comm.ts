@@ -123,7 +123,7 @@ interface FormJSONData {
   total_price: number,
 }
 
-import { initIcons } from "../framework";
+import { initIcons } from "@runtime";
 
 import icons from "../../scripts/build/icons/comm";
 initIcons("comm", icons);

@@ -1,4 +1,4 @@
-import { observe } from "./framework";
+import { observe } from "@runtime";
 
 export default function (d: Document) {
   const
