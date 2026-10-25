@@ -28,8 +28,8 @@
 
     & .links-title {
       font-weight: bold;
-      color: color.mix($primary, $background-dark, 70%);
-      border-bottom: 1px dashed color.mix($primary, $background-dark, 50%);
+      color: $primary;
+      border-bottom: 2px dashed $primary-dark-20;
 
       & > svg {
         display: inline-block;
@@ -43,27 +43,28 @@
 }
 
 .links-title {
-  padding-bottom: .2em;
+  padding-bottom: .35em;
   margin-block: .5em;
 
   font-size: 1.35em;
   font-weight: 200;
 
-  color: color.mix($text, $background-dark, 70%);
+  color: $text-secondary;
   letter-spacing: .2ch;
 
-  border-bottom: 1px dashed color.mix($text, $background-dark, 50%);
+  border-bottom: 2px dashed $border-dark-30;
 }
 
 .link-0 {
   & .links-title {
-    color: color.mix($primary, $background-dark, 80%);
+    color: $primary;
+    border-bottom: 2px dashed $primary-dark-20;
   }
 }
 
 .links-desc {
-  margin: .5em 0;
-  color: color.mix($text, $background-dark, 70%);
+  margin: 1em 0;
+  color: $text-secondary;
 }
 
 @mixin link-style($color, $color_override: null) {

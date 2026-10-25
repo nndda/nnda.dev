@@ -1,7 +1,5 @@
 @use "../variables" as *;
 
-@use "sass:color";
-
 @use "header.mobile" as mobile;
 @use "header.desktop" as desktop;
 
@@ -77,6 +75,10 @@ body > header {
       /* } */
     }
   }
+
+  & .vseparator {
+    background: $primary;
+  }
 }
 
 .nav-link {
@@ -91,7 +93,7 @@ body > header {
 .nav-link-btn {
   padding: .2em .8em;
 
-  border: 1px solid color.mix($text-secondary, $background-light, 40%);
+  border: 1px solid $border-dark-20;
   border-radius: 16px;
 }
 

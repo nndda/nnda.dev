@@ -1,8 +1,7 @@
 @use "../variables" as *;
-@use "sass:color";
 
 #illustrations {
-  $col: color.mix(color.mix($primary, $text-secondary, 70%), $background-dark, 70%);
+  $col: $primary;
 
   /* position: relative; */
   z-index: 1;
@@ -15,7 +14,7 @@
 
   & .jp {
     // color: $primary;
-    color: $col;
+    color: $primary-10;
     background: $background-dark;
   }
 

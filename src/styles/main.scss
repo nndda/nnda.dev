@@ -56,7 +56,7 @@ a {
 
 hr.hr {
   border: none;
-  border-top: 2px dashed color.mix($text, $background-dark, 19%);
+  border-top: 2px dashed $border-dark-30;
 }
 
 html {

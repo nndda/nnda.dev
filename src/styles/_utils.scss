@@ -1,5 +1,4 @@
 @use "variables" as *;
-@use "sass:color";
 
 .flex-space {
   flex-grow: 1;
@@ -28,7 +27,7 @@
 .vseparator {
   width: 1px;
   margin: .4em 1em;
-  background: color.mix($text-secondary, $background-light, 80%);
+  background: $border;
 }
 
 .flex-break {

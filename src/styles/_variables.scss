@@ -1,7 +1,16 @@
 @use "sass:color";
 
+$background: #15141b;
+$background-light: color.adjust($background, $lightness: 2.0%);
+$background-dark: color.adjust($background, $lightness: -2.0%);
+// $background-dark: #101218;
+
 $primary: #fc3a78;
 $primary-10: color.adjust($primary, $lightness: 10%);
+
+$primary-dark-10: color.mix($primary, $background, 90%);
+$primary-dark-20: color.mix($primary, $background, 80%);
+$primary-dark-30: color.mix($primary, $background, 70%);
 
 $secondary: #3ae5f9;
 $secondary-10: color.adjust($secondary, $lightness: 10%);
@@ -9,16 +18,17 @@ $secondary-20: color.adjust($secondary, $lightness: 20%);
 
 $tertiary: #f5cf0e;
 
-$background: #15141b;
-$background-light: color.adjust($background, $lightness: 2.0%);
-$background-dark: color.adjust($background, $lightness: -2.0%);
-// $background-dark: #101218;
-
 $primary-gradient: linear-gradient(90deg, $primary var(--offset, 0%), #b23ee0);
 $secondary-gradient: linear-gradient(90deg, $secondary var(--offset, 0%), #2a8aec);
 
 $text: #eee;
 $text-secondary: color.mix($text, $background, 80%);
+
+$border: color.mix($text, $background, 50%);
+$border-dark-10: color.mix($border, $background, 90%);
+$border-dark-20: color.mix($border, $background, 80%);
+$border-dark-30: color.mix($border, $background, 70%);
+$border-dark-80: color.mix($border, $background, 20%);
 
 @mixin no-select {
   user-select: none;

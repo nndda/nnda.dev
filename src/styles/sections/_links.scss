@@ -1,15 +1,10 @@
 @use "../variables" as *;
-@use "sass:color";
 
 #links {
-  // padding-top: 4em;
-  // padding-bottom: 4em;
   background: $background;
-
-  border-top: 1px solid color.mix($text, $background, 50%);
+  border-top: 1px solid $border-dark-30;
 
   & .jp {
-    // color: $tertiary;
     background: $background;
   }
 
@@ -18,6 +13,5 @@
     min-height: 820px;
     padding: 1em;
     padding-top: 2.5em;
-    // margin: auto;
   }
 }

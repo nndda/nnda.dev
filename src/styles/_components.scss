@@ -15,7 +15,7 @@
 .card {
   padding: 1em;
   background: $background;
-  border: 1px solid rgba($text-secondary, 8.5%);
+  border: 1px solid $border-dark-80;
   border-radius: 6px;
 
   @include shadow-black;
@@ -28,8 +28,8 @@
   margin: 0;
   margin-top: .65em;
   margin-bottom: .5em;
-  color: color.mix($text, $background-dark, 70%);
-  border-bottom: 2px dashed color.mix($text, $background-dark, 30%);
+  color: $text-secondary;
+  border-bottom: 2px dashed $border-dark-30;
 
   // & > span {
   //   position: relative;
@@ -58,7 +58,7 @@
   font-family: "IBM Plex Sans JP", sans-serif;
   font-weight: 200;
 
-  color: color.mix($text, $background-dark, 50%);
+  color: $border;
 
   /* text-wrap: nowrap; */
   /* opacity: .75; */
@@ -80,7 +80,7 @@
     content: "";
 
     @include diagonal-stripes(
-      rgba($text-secondary, .4),
+      rgba($border, .4),
       // $tertiary,
       transparent,
       .2em,

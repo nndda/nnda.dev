@@ -1,5 +1,4 @@
 @use "../variables" as *;
-@use "sass:color";
 
 @use "footer.desktop" as desktop;
 
@@ -84,7 +83,7 @@ body > footer {
 	}
 
 	& > p {
-		color: color.mix($text-secondary, $background-dark, 80%);
+		color: $text-secondary;
 		text-align: justify;
 		letter-spacing: .05em;
 	}

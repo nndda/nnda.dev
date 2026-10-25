@@ -16,7 +16,7 @@
 
   & .icon-text {
     & > svg {
-      color: color.mix($primary, $background-dark, 90%);
+      color: $primary-dark-10;
     }
   }
 }

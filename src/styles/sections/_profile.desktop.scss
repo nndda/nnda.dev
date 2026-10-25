@@ -3,7 +3,6 @@
 .info-container {
   display: grid;
   grid-template-rows: minmax(3em, 1fr) auto auto;
-  /* column-gap: 1em; */
   grid-template-columns: 15em auto;
 }
 
@@ -23,18 +22,6 @@
 }
 
 @media (height >= 920px) {
-  /*
-  .cta-inner {
-    flex-direction: column;
-    margin-bottom: 2em;
-  }
-  */
-  /*
-  .cta-label {
-    margin-bottom: 1.5em;
-  }
-  */
-
   #profile {
     bottom: 0;
     padding-top: 0;
