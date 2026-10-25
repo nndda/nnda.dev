@@ -79,11 +79,13 @@ requestAnimationFrame(() => {
   pkgAttrElCont.innerHTML = pkgAttrHTMLStr;
   pkgAttrElCont.style.setProperty("--pkg-len", `calc(-${pkgAttrElCont.scrollWidth}px + 100%)`);
 
+  const footerEl: HTMLElement = d.querySelector("body>footer")!;
+
   observe(entry => {
 
-    pkgAttrElCont.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+    footerEl.style.setProperty("--footer-anim-state", entry.isIntersecting ? "running" : "paused");
 
-  })(d.querySelector("body>footer")!);
+  })(footerEl);
 
   lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
   lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);

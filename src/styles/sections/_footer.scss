@@ -1,8 +1,11 @@
 @use "../variables" as *;
 @use "sass:color";
 
-footer {
+@use "footer.desktop" as desktop;
+
+body > footer {
   z-index: 3;
+	padding-top: 2em;
 	background: $background-dark;
 
 	@include shadow-black;
@@ -17,13 +20,21 @@ footer {
 
 	& > code {
 		color: $secondary;
+		animation: 1s dot-blink linear infinite;
+		animation-play-state: var(--footer-anim-state);
 	}
+}
+
+@keyframes dot-blink {
+  75%, 25% {
+    opacity: 0;
+  }
 }
 
 .footer-body {
 	display: flex;
-	justify-content: space-evenly;
-	padding: 3em 1em;
+	justify-content: space-between;
+	padding-block: 1em;
 
 	& svg {
 		height: 1em;
@@ -32,7 +43,7 @@ footer {
 }
 
 .links-section {
-	padding: .5em;
+	flex-grow: 1;
 
 	& > ul {
 		padding-top: 1em;
@@ -61,9 +72,14 @@ footer {
 	& .title {
 		margin: 1em 0;
 		font-size: 1.1em;
+		color: $primary-10;
 
 		&:first-child {
 			margin-top: 0;
+		}
+
+		& > svg path {
+		  fill: $primary;
 		}
 	}
 
@@ -76,11 +92,15 @@ footer {
 
 .this-site {
 	max-width: 380px;
+
+	& > li {
+	  margin-block: 1em;
+	}
 }
 
 .package-info {
-	margin-top: 2em;
-	font-weight: lighter;
+  margin-block: 2em;
+	text-align: center;
 }
 
 .packages {
@@ -91,17 +111,26 @@ footer {
 }
 
 .site-opt {
-	display: grid;
-	grid-template-columns: 1.5em auto;
-	padding-left: 1em;
-
 	& > svg {
-		width: 1em;
+		width: 1.25em;
 		margin-top: .1em;
+		margin-right: .5em;
+
+		& path {
+		  fill: $secondary;
+		}
 	}
 
 	& > span {
 		color: $text-secondary;
+	}
+
+	& a {
+	  color: $secondary-10;
+	}
+
+	& abbr {
+	  color: $secondary-20;
 	}
 }
 
@@ -122,35 +151,21 @@ footer {
 }
 
 @media (width >= 700px) {
-.logos {
-  & > .inner {
-    grid-template-columns: repeat(3, auto);
-    gap: 0;
-    justify-content: center;
-    padding-right: 1em;
-    padding-left: 1em;
+  .logos {
+    & > .inner {
+      grid-template-columns: repeat(3, auto);
+      gap: 0;
+      justify-content: center;
+      padding-right: 1em;
+      padding-left: 1em;
 
-    & > img {
-      width: auto;
-      height: 100%;
-      max-height: 160px;
+      & > img {
+        width: auto;
+        height: 100%;
+        max-height: 160px;
+      }
     }
   }
 }
 
-}
-
-@media (width <= 600px) {
-  footer {
-    & > .footer-body {
-      flex-direction: column-reverse;
-    }
-  }
-
-  .links-section {
-    &:nth-child(2) {
-      max-width: 100% !important;
-      padding-bottom: 2em;
-    }
-  }
-}
+@include desktop.style;

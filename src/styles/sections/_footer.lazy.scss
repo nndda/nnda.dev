@@ -2,7 +2,6 @@
 @use "sass:color";
 
 @use "footer.mobile" as mobile;
-@use "footer.desktop" as desktop;
 
 @keyframes pkg-scroll {
   to {
@@ -17,6 +16,7 @@
     display: flex;
   	gap: .6em;
     animation: 60s pkg-scroll linear infinite alternate-reverse;
+    animation-play-state: var(--footer-anim-state);
 
     &:hover {
       animation-play-state: paused !important;
@@ -43,4 +43,3 @@
 }
 
 @include mobile.style;
-@include desktop.style;

@@ -50,6 +50,7 @@ import {
 import {
   faSquare,
   faCircle,
+  faCopyright,
 } from "@fortawesome/free-regular-svg-icons";
 
 import {
@@ -278,6 +279,7 @@ createIconDefsGrouped(
     faCode,
     faCodeCommit,
     // faCodeFork,
+    faCopyright,
     faNoteSticky,
     faScaleBalanced,
     // faStar,

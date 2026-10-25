@@ -1,3 +1,7 @@
 @mixin style {
-  // :()
+  @media (width > 500px) {
+    .footer-heading {
+      writing-mode: sideways-lr;
+    }
+  }
 }

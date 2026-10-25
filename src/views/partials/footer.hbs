@@ -1,9 +1,11 @@
 <footer>
   <div class="footer-body">
-    <div class="links-section horizontal this-site">
-      <div class="footer-heading">nnda<code>.</code>dev</div>
+    <div class="links-section">
+      <h1 class="footer-heading">nnda<code>.</code>dev</h1>
+    </div>
 
-      <div class="icon-text site-opt">
+    <ul class="links-section nostyle horizontal this-site">
+      <li class="icon-text site-opt">
         {{{icon "footer" "scale-balanced" 16 16}}}
         <span>
           Licensed Under
@@ -11,7 +13,7 @@
             target="_blank"
             rel="nofollow noopener noreferrer"
             referrerpolicy="no-referrer"
-            aria-label="GNU AGPLv3 license text"
+            aria-label="GNU AGPLv3 license text link"
           >
             GNU AGPLv3
           </a>
@@ -20,20 +22,20 @@
             Source code only
           </small>
         </span>
-      </div>
+      </li>
 
       {{#if buildCommitSHA}}
-      <div class="icon-text site-opt">
+      <li class="icon-text site-opt">
         {{{icon "footer" "code-commit" 16 16}}}
         <span>
-          Version
+          Revision
           <a href="{{repoURL}}/commit/{{buildCommitSHAFull}}"
             target="_blank"
             rel="nofollow noopener noreferrer"
             referrerpolicy="no-referrer"
             aria-label="Build commit SHA"
           >
-            {{buildCommitSHA}}
+            <code>{{buildCommitSHA}}</code>
           </a>
           <br>
           <small>
@@ -41,10 +43,10 @@
             <abbr id="last-published-label" title="{{releaseDate}}"></abbr>
           </small>
         </span>
-      </div>
+      </li>
       {{/if}}
 
-      <div class="icon-text site-opt">
+      <li class="icon-text site-opt">
         {{{icon "footer" "clock" 16 16}}}
         <span>
           Last updated
@@ -55,11 +57,9 @@
             <abbr id="next-update-label" title="{{nextUpdateDate}}"></abbr>
           </small>
         </span>
-      </div>
-      <div class="package-info">
-        This website is made possible with these awesome tech, projects, &amp; libraries 👇️
-      </div>
-    </div>
+      </li>
+    </ul>
+
     <div class="links-section">
       <blockquote class="note">
         <div class="title">{{{icon "footer" "note-sticky" 16 16}}} Note</div>
@@ -68,13 +68,17 @@
     </div>
   </div>
 
+  <p class="package-info">
+    This website is made possible with these awesome tech, projects, &amp; libraries 👇️
+  </p>
+<!--
   <div class="logos">
     <div class="inner">
       {{ img "/assets/KawaiiLogos/Node.js.webp" "Node.js" }}
       {{ img "/assets/KawaiiLogos/Cloudflare.webp" "Cloudflare" }}
       {{ img "/assets/KawaiiLogos/TypeScript.webp" "TypeScript" }}
     </div>
-  </div>
+  </div>-->
 
   <div class="packages"><div class="inner"></div></div>
 
