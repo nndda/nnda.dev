@@ -1,4 +1,4 @@
-import { buildSvg, initIcons } from "../framework";
+import { buildSvg, initIcons, observe } from "../framework";
 
 import packageJSON from "../build/out/attribution.json" with { type: "json" };
 
@@ -45,8 +45,7 @@ const
 , nextUpdateLabel: HTMLElement = d.getElementById("next-update-label")!
 , nextUpdateDate = new Date(nextUpdateLabel.getAttribute("title")!)
 
-, pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages")!
-// , pkgAttrEl: HTMLElement = pkgAttrElCont.querySelector(".inner")!
+, pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages>.inner")!
 
 , pkgAttrHTMLStr = packageJSON.map(pkg => {
     const
@@ -78,29 +77,15 @@ const
 
 requestAnimationFrame(() => {
   pkgAttrElCont.innerHTML = pkgAttrHTMLStr;
+  pkgAttrElCont.style.setProperty("--pkg-len", `calc(-${pkgAttrElCont.scrollWidth}px + 100%)`);
+
+  observe(entry => {
+
+    pkgAttrElCont.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+
+  })(d.querySelector("body>footer")!);
 
   lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
   lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
   nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
 });
-
-// function updatePkgElSize(): void {
-//   pkgAttrEl.style.setProperty("--width", `-${(pkgAttrEl.scrollWidth - pkgAttrElCont.clientWidth)}px`);
-// }
-
-// updatePkgElSize();
-
-// new ResizeObserver(updatePkgElSize).observe(pkgAttrElCont);
-
-// function updateClock(): void {
-//   lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
-//   lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
-//   nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
-// }
-
-// updateClock();
-// setInterval(updateClock, 1e6);
-
-// window.observe((entry: IntersectionObserverEntry): void => {
-//   pkgAttrEl.style.animationPlayState = entry.isIntersecting ? "running" : "paused" ;
-// })(pkgAttrElCont);

@@ -24,7 +24,6 @@ footer {
 	display: flex;
 	justify-content: space-evenly;
 	padding: 3em 1em;
-	padding-bottom: 1em;
 
 	& svg {
 		height: 1em;
@@ -85,8 +84,9 @@ footer {
 }
 
 .packages {
-	min-height: calc((1lh + .6em) * 7.5);
-	padding-bottom: 1.5em;
+  height: 2lh;
+  margin-bottom: 1em;
+  contain: strict;
 	font-size: .8em;
 }
 

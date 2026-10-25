@@ -1,26 +1,9 @@
 @mixin style {
-@media (width <= 500px) {
-  .footer-end {
-    // display: block;
-    flex-direction: column;
-    gap: .5em;
-    align-items: center;
-
-    // & > .flex-space {
-    //   flex-basis: 100%;
-    // }
+  @media (width <= 500px) {
+    .footer-end {
+      flex-direction: column;
+      gap: .5em;
+      align-items: center;
+    }
   }
-//   footer {
-//     & > .footer-body {
-//       flex-direction: column-reverse;
-//     }
-//   }
-
-//   .links-section {
-//     &:nth-child(2) {
-//       padding-bottom: 2em;
-//       max-width: 100% !important;
-//     }
-//   }
-}
 }
