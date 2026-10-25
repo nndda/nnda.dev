@@ -1,13 +1,12 @@
 @use "../variables" as *;
 @use "sass:color";
 
-// @use "profile.mobile" as mobile;
 @use "profile.desktop" as desktop;
 
 #profile {
   bottom: -3em;
   padding: 0;
-  padding-top: 5em;
+  padding-top: 7em;
 
   & .section-inner {
     max-width: 1150px;
@@ -17,18 +16,13 @@
 
   & .icon-text {
     & > svg {
-      margin-right: .5em;
       color: color.mix($primary, $background-dark, 90%);
     }
-
-    /* & > span {
-      color: color.mix($text-secondary, $background-dark, 85%);
-    } */
   }
 }
 
 .bg-cover {
-  padding-bottom: 1em;
+  padding-bottom: 7em;
   background: $background-dark;
 
   box-shadow: 0 0 7em -.1em color.adjust($background-dark, $lightness: -2.5%);
@@ -47,6 +41,7 @@
   font-size: 1.35em;
 
   & > s {
+    margin-right: .5em;
     opacity: .8;
   }
 }
@@ -87,7 +82,6 @@
 }
 
 .author-name {
-
   align-self: end;
   width: min-content;
   height: min-content;
@@ -97,31 +91,19 @@
 
   font-size: 2.5em;
 
-  color: $text-secondary;
+  color: $primary;
   white-space:nowrap;
   background: $background-dark;
 
-  border-radius: 16px;
+  border-radius: 9px;
 
   transform: translateX(-.5em);
-
-  &::first-letter {
-    font-family: "Ubuntu Sans Mono", sans-serif;
-    font-weight: 600;
-    color: $primary;
-  }
 
   & > small {
     font-family: "Hi Melody", cursive;
     color: $tertiary;
   }
 }
-/*
-p.about {
-  margin: .5em 0;
-  margin-bottom: .7em;
-  color: $text-secondary;
-} */
 
 ul.author-info {
   display: flex;
@@ -131,34 +113,13 @@ ul.author-info {
   width: 100%;
   margin-top: .5em;
 
-  // color: color.mix($text-secondary, $background-dark, 85%);
   color: $text-secondary;
-
-  // &::before, &::after, & > li::after {
-  //   font-family: "Ubuntu Sans Mono", monospace;
-  //   font-size: 2em;
-  //   opacity: .6;
-  // }
-
-  // &::before {
-  //   content: "[";
-  // }
-
-  // &::after {
-  //   content: "]";
-  // }
 
   & > li {
     position: relative;
     padding: .5em .75em;
     background: $background-light;
-    border-radius: 9px;
-
-    // &:not(:last-child)::after {
-    //   position: absolute;
-    //   right: -.5em;
-    //   content: ",";
-    // }
+    border-radius: 4px;
   }
 }
 
@@ -202,8 +163,6 @@ ul.author-info {
 
       @include polka-dots(
         color.mix($primary, $background-dark, 90%),
-        // rgba($primary, .9),
-        // rgba($text-secondary, .6),
         transparent,
         20%,
         12%,
@@ -220,7 +179,7 @@ ul.author-info {
 
   & .status {
     position: absolute;
-    bottom: -.8em;
+    bottom: -1.5em;
     left: -.7em;
 
     z-index: 3;
@@ -230,41 +189,26 @@ ul.author-info {
     font-size: .9em;
     font-weight: 700;
     line-height: 1em;
-    // background: color.mix($text, $background-light, 3%);
     color: $background-dark;
     white-space: nowrap;
 
-    outline: 7px solid $background-dark;
-
     background: $primary;
-    // background: $text;
     border-radius: 16px;
 
     & > span {
       font-size: 1.5em;
     }
 
-    &::after, &::before {
-      position: absolute;
-      content: "";
-      background: inherit;
-      border-radius: 50%;
-    }
-
     &::after {
-      top: -.5em;
-      left: -.7em;
-      z-index: 1;
-      width: 1.5em;
-      height: 1.5em;
-    }
-
-    &::before {
-      top: -1em;
-      left: .4em;
-      width: .95em;
-      height: .95em;
-      outline: inherit;
+    	position: absolute;
+    	right: calc(25% - .5em);
+    	margin-top: -1.25em;
+    	margin-left: -.5em;
+    	content: "";
+    	border: 1.5em solid transparent;
+      border-top: 0;
+    	border-right: 0;
+    	border-bottom-color: $primary;
     }
   }
 }
@@ -286,16 +230,5 @@ ul.author-info {
       transition-delay: 0;
     }
   }
-// }
 
-// @media (width <= 480px) {
-
-//   .profile-pict {
-//     & > .img-cont > img {
-//       width: 15em ;
-//       height: 15em;
-//     }
-//   }
-// }
-// @include mobile.style;
 @include desktop.style;
