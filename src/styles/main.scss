@@ -102,6 +102,10 @@ main {
       // padding-right: 1em;
       padding: 2em 1em;
       margin: 0 auto;
+
+      & > p {
+        font-size: 1.1em;
+      }
     }
   }
 }
