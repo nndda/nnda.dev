@@ -1,5 +1,7 @@
 @use "../variables" as *;
 
+@use "./links.var" as links;
+
 #links {
   background: $background;
   border-top: 1px solid $border-dark-30;
@@ -9,9 +11,86 @@
   }
 
   & > .section-inner {
-    max-width: 1050px;
-    min-height: 820px;
-    padding: 1em;
-    padding-top: 2.5em;
+    & > ul {
+      padding-bottom: 1.5em;
+    }
+  }
+}
+
+.links-group {
+  padding-block: .65em;
+
+  & > h2 {
+    padding-bottom: .35em;
+    margin-block: .5em;
+
+    font-size: 1.25em;
+    font-weight: 200;
+
+    color: $text-secondary;
+    letter-spacing: .2ch;
+
+    border-bottom: 2px dashed $border-dark-30;
+  }
+
+  & > p {
+    color: $text-secondary;
+  }
+
+  & > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: auto;
+  }
+
+  &.link-0 {
+    font-size: 1.2em;
+
+    & > h2 {
+      font-weight: 400;
+    }
+  }
+
+  &.link-4 {
+    margin-top: 1.15em;
+
+    & > h2 {
+      font-weight: bold;
+      color: $primary;
+      border-bottom: 2px dashed $primary-dark-20;
+
+      & > svg {
+        display: inline-block;
+
+        width: .85em;
+        margin-right: .15em;
+        fill: $primary;
+      }
+    }
+  }
+}
+
+.link-0 {
+  & > h2 {
+    color: $primary;
+    border-bottom: 2px dashed $primary-dark-20;
+  }
+}
+
+@keyframes skeleton-post {
+  to {
+    opacity: 1;
+  }
+}
+
+.link-item {
+  min-width: 4em + $card-padding * 2;
+  // Precalc to avoid CLS
+  min-height: links.$icon-size + links.$item-gap + $card-padding * 2;
+
+  &.main, &:first-child {
+    flex-basis: calc(50% - 1em);
+    background: $background-light;
   }
 }

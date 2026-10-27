@@ -1,158 +1,87 @@
 @use "../variables" as *;
 @use "sass:color";
+@use "sass:math";
 
-.links-group {
-  padding-bottom: 1.15em;
-  font-size: 1.15em;
-
-  & > ul {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-  }
-
-  &.link-0 {
-    font-size: 1.4em;
-
-    & .flex-break ~ .link-item {
-      font-size: 1.05rem;
-    }
-
-    & .links-title {
-      font-weight: 400;
-    }
-  }
-
-  &.link-4 {
-    margin-top: 1.15em;
-
-    & .links-title {
-      font-weight: bold;
-      color: $primary;
-      border-bottom: 2px dashed $primary-dark-20;
-
-      & > svg {
-        display: inline-block;
-
-        width: .85em;
-        margin-right: .15em;
-        fill: $primary;
-      }
-    }
-  }
-}
-
-.links-title {
-  padding-bottom: .35em;
-  margin-block: .5em;
-
-  font-size: 1.35em;
-  font-weight: 200;
-
-  color: $text-secondary;
-  letter-spacing: .2ch;
-
-  border-bottom: 2px dashed $border-dark-30;
-}
-
-.link-0 {
-  & .links-title {
-    color: $primary;
-    border-bottom: 2px dashed $primary-dark-20;
-  }
-}
-
-.links-desc {
-  margin: 1em 0;
-  color: $text-secondary;
-}
+@use "./links.var" as links;
 
 @mixin link-style($color, $color_override: null) {
-  color: $color;
+  @if $color_override {
+    color: $color_override;
+  } @else {
+    color: color.mix($color, white, 50%);
+  }
 
-  & > a {
+  & svg {
     @if $color_override {
-      color: $color_override;
+      fill: $color_override;
     } @else {
-      color: color.mix($color, white, 50%);
-    }
-
-    & svg {
-      @if $color_override {
-        fill: $color_override;
-      } @else {
-        fill: $color;
-      }
+      fill: $color;
     }
   }
 }
 
 .link-item {
-  // padding: .2em .3em;
-  padding: .25em 1em;
-  margin: .5em;
-  background: $background-light;
-  border-radius: 9px;
+  position: relative;
 
   & > a {
     display: flex;
+    gap: links.$item-gap;
+    align-items: center;
+
+    /* Default */
+    @include link-style(black, white);
+
+    @each $link_name, $color in (
+      "itch.io": #FA5C5C,
+      "ArtStation": #13AFF0,
+      "Mastodon": #6364FF,
+      "Bluesky": #0285FF,
+      "Liberapay": #F6C915,
+      "Ko-fi": #FF6433,
+      "OSU!": #FF66AA,
+      "Twitter": #009ef7,
+      "VGen": #b8ff26,
+      "YouTube": color.mix($text, #FF0000, 20%),
+    ) {
+      &[data-link-name="#{$link_name}"] {
+        @include link-style($color);
+      }
+    }
 
     &:not(:hover) {
       text-decoration: none;
     }
-  }
 
-  & :is(svg, img) {
-    width: 1.15em;
-    height: 1.15em;
-  }
+    & > :is(img, svg) {
+      width: links.$icon-size;
+      height: links.$icon-size;
+    }
 
-  /* Default */
-  @include link-style(black, white);
-
-  @each $link_name, $color in (
-    "itch.io": #FA5C5C,
-    "ArtStation": #13AFF0,
-    "Mastodon": #6364FF,
-    "Bluesky": #0285FF,
-    "Liberapay": #F6C915,
-    "Ko-fi": #FF6433,
-    "OSU!": #FF66AA,
-    "Twitter": #009ef7,
-    "VGen": #b8ff26,
-    "YouTube": color.mix($text, #FF0000, 20%),
-  ) {
-    &[data-link-name="#{$link_name}"] {
-      @include link-style($color);
+    & code {
+      font-size: .9em;
     }
   }
-}
 
-.social-icon {
-  display: flex;
-  align-items: center;
-  min-width: 1.6em;
-  /* height: 3rem; */
-  padding-right: .5em;
-}
+  & .inactive {
+    position: absolute;
+    $size: 1.25em;
+    top: math.div(-$size, 2) + .25em;
+    right: math.div(-$size, 2) + .25em;
+    width: $size;
+    height: $size;
 
-.social-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 3em;
-}
+    & > path {
+      fill: $text-secondary;
+    }
+  }
 
-.username {
-  display: block;
-  margin-top: .2em;
+  &:has(.inactive) {
+    opacity: .65;
 
-  font-family: "Ubuntu Sans Mono", monospace;
-  opacity: .5;
-}
-
-.username, .social-name {
-  transition: color .15s ease !important;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .heartbeat {
@@ -167,46 +96,5 @@
 
   50% {
     transform: scale(1.0);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .link-item.anim {
-    &.on {
-      transition: .25s ease-out;
-
-      & .social-name, .username {
-        transition: .25s ease-out;
-      }
-    }
-
-    @include nth-type-loop(1, 5) using ($i) {
-      transition-delay: 0s + (.15 * $i);
-
-      & .social-name, .username {
-        transition-delay: 0s + (.15 * $i);
-      }
-    }
-
-    &:not(.on) {
-      opacity: 0;
-      transform: translateX(-1em);
-      transition: .09s ease-out;
-      transition-delay: 0;
-
-      & .social-name, .username {
-        opacity: 0;
-        transition: .09s ease-out;
-        transition-delay: 0;
-      }
-
-      & .social-name {
-        transform: translateY(2em);
-      }
-
-      & .username {
-        transform: translateY(-2em);
-      }
-    }
   }
 }

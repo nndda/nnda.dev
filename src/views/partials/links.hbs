@@ -3,7 +3,42 @@
     <div class="jp">リンクス</div>
   </div>
 
-  <div class="section-inner has-loader anim fade on">
-    <div class="loader"><div></div></div>
+  <div class="section-inner">
+    <h1 class="heading-hr">
+      {{{ icon "global" "link" 24 24 }}}
+      Links
+    </h1>
+    <p>
+      Me (and my works) on various parts and corners of the internet.
+      <br>
+      Links marked with
+      {{{ icon "global" "skull" 16 16 }}}
+      means am not really active on the platform (yet).
+    </p>
+    <ul class="nostyle">
+      {{#each data.links}}
+        <li class="links-group link-{{@index}}">
+          <h2>
+            {{#if this.icon}}
+              {{{ icon "global" this.icon 22 26 }}}
+            {{/if}}
+
+            {{{this.group}}}
+          </h2>
+          <p>
+            {{{this.desc}}}
+          </p>
+          <ul class="nostyle">
+            {{#each this.links}}
+              {{#if this.main}}
+                <li class="skeleton link-item card main"></li>
+              {{else}}
+                <li class="skeleton link-item card"></li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </section>

@@ -17,12 +17,8 @@ const patreon: LinkGroupItem = {
   url: "patreon.com/nnda",
   icon: "patreon",
   username: nnda,
+  main: true,
 };
-
-// Raster icons
-import vgen from "../assets/icons/vgen.avif"
-import kofi from "../assets/icons/ko-fi.avif"
-import osu from "../assets/icons/osu.avif"
 
 export default [
   { // ------------------------------------------------------------------------
@@ -40,20 +36,48 @@ export default [
         url: "nnda.itch.io",
         icon: "itchdotio",
         username: nnda,
+        main: true,
       },
       patreon,
-      "br",
       {
         name: "TikTok",
         url: "tiktok.com/@nnda.dev",
         icon: "tiktok",
         username: "@nnda.dev",
+        inactive: true,
       },
       {
         name: "YouTube",
         url: "youtube.com/@nnda_dev",
         icon: "youtube",
         username: at_nnda_dev,
+        inactive: true,
+      },
+    ],
+  },
+  { // ------------------------------------------------------------------------
+    group: "Socials",
+    desc: "Places to yell at me.",
+    links: [
+      {
+        name: "Bluesky",
+        url: "bsky.app/profile/nnda.dev",
+        icon: "bluesky",
+        username: "@nnda.dev",
+      },
+      {
+        name: "Mastodon",
+        url: "mastodon.art/@nnda",
+        icon: "mastodon",
+        username: at_nnda,
+        inactive: true,
+      },
+      {
+        name: "Twitter",
+        url: "twitter.com/@nnda_dev",
+        icon: "twitter",
+        username: at_nnda_dev,
+        inactive: true,
       },
     ],
   },
@@ -70,37 +94,15 @@ export default [
       {
         name: "VGen",
         url: "vgen.co/nnda",
-        icon: vgen,
+        icon: "./icons/vgen.avif",
         username: at_nnda,
+        inactive: true,
       },
       {
         name: "cara.app",
         url: "cara.app/nnda",
         username: nnda,
-      },
-    ],
-  },
-  { // ------------------------------------------------------------------------
-    group: "Socials",
-    desc: "Places to yell at me.",
-    links: [
-      {
-        name: "Mastodon",
-        url: "mastodon.art/@nnda",
-        icon: "mastodon",
-        username: at_nnda,
-      },
-      {
-        name: "Twitter",
-        url: "twitter.com/@nnda_dev",
-        icon: "twitter",
-        username: at_nnda_dev,
-      },
-      {
-        name: "Bluesky",
-        url: "bsky.app/profile/nnda.dev",
-        icon: "bluesky",
-        username: "@nnda.dev",
+        inactive: true,
       },
     ],
   },
@@ -111,28 +113,30 @@ export default [
       {
         name: "OSU!",
         url: "osu.ppy.sh/users/10614731",
-        icon: osu,
+        icon: "./icons/osu.avif",
         username: nnda,
+        inactive: true,
       },
     ],
   },
   { // ------------------------------------------------------------------------
     group: "Support",
     desc: "Gimme mone plzzz.",
+    icon: "heart",
     links: [
       patreon,
       {
         name: "Ko-fi",
         url: "ko-fi.com/nnda",
-        icon: kofi,
+        icon: "./icons/ko-fi.avif",
         username: nnda,
       },
-      {
-        name: "Liberapay",
-        url: "liberapay.com/nnda",
-        icon: "liberapay",
-        username: nnda,
-      },
+      // {
+      //   name: "Liberapay",
+      //   url: "liberapay.com/nnda",
+      //   icon: "liberapay",
+      //   username: nnda,
+      // },
       // {
       //   name: "GitHub Sponsors",
       //   url: "github.com/sponsors/nndda?frequency=patreon",

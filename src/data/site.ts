@@ -71,7 +71,15 @@ const DATA: any = async () => { return _.merge({
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA?.substring(0, 16),
 
+  data: {
+    links: dataLinks,
+  },
+
 }, FS.exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
+
+// ============================================================================
+
+import dataLinks from "./site-links";
 
 // ============================================================================
 
