@@ -30,6 +30,11 @@ $border-dark-20: color.mix($border, $background, 80%);
 $border-dark-30: color.mix($border, $background, 70%);
 $border-dark-80: color.mix($border, $background, 20%);
 
+// ============================================================================
+
+$card-padding: 1em;
+$card-br-radius: 6px;
+
 @mixin no-select {
   user-select: none;
 }

@@ -13,10 +13,10 @@
 }
 
 .card {
-  padding: 1em;
+  padding: $card-padding;
   background: $background;
   border: 1px solid $border-dark-80;
-  border-radius: 6px;
+  border-radius: $card-br-radius;
 
   @include shadow-black;
 }
