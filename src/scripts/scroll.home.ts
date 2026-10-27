@@ -18,10 +18,10 @@ export default function (d: Document) {
   , backTop = d.getElementById("back-top") as HTMLButtonElement
 
   , illustContStyle = (d.querySelector(".illust-cont > img") as HTMLElement).style
-  , selfTitleContStyle = (d.querySelector(".self-cont") as HTMLElement).style
-  , selfTitle1Style = (d.querySelector(".self-cont .titles>:nth-child(1)") as HTMLElement).style
-  , selfTitle2Style = (d.querySelector(".self-cont .titles>:nth-child(2)") as HTMLElement).style
-  , selfTitle3Style = (d.querySelector(".self-cont .titles>:nth-child(3)") as HTMLElement).style
+  // , selfTitleContStyle = (d.querySelector(".self-cont") as HTMLElement).style
+  // , selfTitle1Style = (d.querySelector(".self-cont .titles>:nth-child(1)") as HTMLElement).style
+  // , selfTitle2Style = (d.querySelector(".self-cont .titles>:nth-child(2)") as HTMLElement).style
+  // , selfTitle3Style = (d.querySelector(".self-cont .titles>:nth-child(3)") as HTMLElement).style
 
   ;
 
@@ -69,11 +69,11 @@ export default function (d: Document) {
 
     if (scrollRatio <= 1) {
       illustContStyle.translate = `0 -${scrollRatio * 250}px`;
-      selfTitleContStyle.translate = `0 -${scrollRatio * 170}px`;
-
-      selfTitle1Style.translate = `0 -${scrollRatio * 30}px`;
-      selfTitle2Style.translate = `0 -${scrollRatio * 60}px`;
-      selfTitle3Style.translate = `0 -${scrollRatio * 90}px`;
+//       selfTitleContStyle.translate = `0 -${scrollRatio * 170}px`;
+//
+//       selfTitle1Style.translate = `0 -${scrollRatio * 30}px`;
+//       selfTitle2Style.translate = `0 -${scrollRatio * 60}px`;
+//       selfTitle3Style.translate = `0 -${scrollRatio * 90}px`;
     }
 
     ticking = false;
