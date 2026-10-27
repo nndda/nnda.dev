@@ -147,3 +147,19 @@ export function buildSvg(
 ) {
   return `<svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" width="${width}" height="${height}" class="${classes}"><path d="${pathD}"></path></svg>`;
 }
+
+
+export function hydrate(
+  el: HTMLElement,
+  HTMLContent: string,
+) {
+  requestAnimationFrame(() => {
+    el.innerHTML = HTMLContent;
+    el.classList.remove("skeleton");
+    el.classList.add("postload-pop");
+
+    setTimeout(() => {
+      el.classList.remove("postload-pop");
+    }, 500);
+  });
+}

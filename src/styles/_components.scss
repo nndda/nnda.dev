@@ -89,6 +89,45 @@
   }
 }
 
+@keyframes skeleton-blink {
+  from {
+    opacity: .4;
+  }
+
+  to {
+    opacity: .6;
+  }
+}
+
+.skeleton {
+  cursor: wait;
+  opacity: .5;
+  animation: skeleton-blink .3s ease infinite alternate;
+
+  @include nth-type-loop(1, 5) using ($i) {
+    animation-delay: 0s + (.15 * $i);
+  }
+
+  &.card {
+    border-color: $text;
+    border-style: dashed !important;
+  }
+}
+
+@keyframes postload-pop {
+  0% {
+    outline: 0 solid $primary;
+  }
+
+  100% {
+    outline: 5px solid #0000;
+  }
+}
+
+.postload-pop {
+  animation: postload-pop .5s ease-out;
+}
+
 @media (width >= 1150px) {
   .heading-left-sticky {
     position: absolute;
