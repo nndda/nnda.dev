@@ -292,6 +292,7 @@ createIconDefsGrouped(
     faAngleDown,
     faBars,
     faBasketShopping,
+    faHeart,
   ],
   [
     // siArtstation,
