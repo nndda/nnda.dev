@@ -1,5 +1,5 @@
 @mixin style {
-@media (width >= 700px) {
+// @media (width >= 700px) {
 // #illustrations {
 //   & > .section-inner {
 //     padding: 2em;
@@ -9,10 +9,10 @@
 //   }
 // }
 
-.illust {
-  & > .title {
-    font-size: 1.1em;
-  }
-}
-}
+// .illust {
+//   & > .title {
+//     font-size: 1.1em;
+//   }
+// }
+// }
 }

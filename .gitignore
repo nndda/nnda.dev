@@ -8,6 +8,7 @@ share/
 **/*.json.gz
 **/*.json
 src/scripts/build/icons/**/*.ts
+src/data/illustrations/out/**/*.ts
 !package.json
 !tsconfig*.json
 

@@ -1,55 +1,22 @@
 console.log("Updating illustrations data...");
 
-import illustHomeDataPromise, {
-  type IllustGallery,
-  type IllustItem,
-} from "../../data/illustrations/home";
-
-import _ from "lodash";
-import { imageSize } from "image-size";
-import type { ISizeCalculationResult } from "image-size/types/interface";
+import illustHomeDataPromise from "../../data/illustrations/home";
 
 import { FS, Path } from "@dev/util";
-import { resolve } from "path";
-const relative = Path.createRelative(import.meta.dir);
+import { join } from "path";
 
-const
-  dirOut = relative("./out/")
-, illustPaths: Record<string, string> = {}
-;
+const illustPaths = ( await illustHomeDataPromise ).illustrations.reduce((prev, gall) => {
+  return [
+    ... prev,
+    ... gall.items.map(illust => Path.abs(join("./src/", illust.src))),
+  ];
+}, [] as string[]);
 
-illustHomeDataPromise.then((illustHomeData: { illustrations: IllustGallery[] }) => {
-  const illustHome: IllustGallery[] = illustHomeData.illustrations.map((gall: IllustGallery, iG: number): IllustGallery => {
-    return {
-      col: gall.col,
-      items: gall.items.map((illustItem: IllustItem, iI: number): IllustItem => {
-        const
-          id: string = `i${iG}${iI}`
-        , srcAbs: string = Path.abs("./src/" + illustItem.src)
-        , dimensions: ISizeCalculationResult = imageSize(FS.read.buffer(srcAbs))
-        ;
+illustPaths.reverse();
 
-        illustPaths[id] = srcAbs;
+FS.write.text(Path.abs("./src/data/illustrations/out/home.ts"), `${
+    illustPaths.map((src, i) => `import i${i} from "${src}"`).join(";")
+  };export default [${illustPaths.map((_, i) => `i${i}`).join(",")}]
+`);
 
-        return _.merge(illustItem, {
-          src: id,
-          w: dimensions.width,
-          h: dimensions.height,
-        } as IllustItem);
-      }),
-    };
-  });
-
-
-  FS.write.text(relative("./out/illust.home.js"), `${
-      Object.entries(illustPaths).map((val: [string, string]): string => {
-        return `import ${val[0]} from "${resolve(dirOut, val[1])}";`;
-
-      }).join("\n")
-    }\nexport default ${
-      JSON.stringify(illustHome).replace(/"src":\s*"(\w+)"/g, `"src":$1`)
-    };
-  `);
-
-  console.log("Finished updating illustrations data...");
-});
+console.log("Finished updating illustrations data...");

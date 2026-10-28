@@ -7,28 +7,38 @@
   <div class="section-inner">
 
     <h1 class="heading-hr">
-      <span>
-        Illustrations
-      </span>
+      Illustrations
     </h1>
+    <p>
+      Digital illustrations, OCs, some fanarts, and more OCs.
+    </p>
 
-    <div class="illust-items has-loader anim fade on">
-      <div class="loader"><div></div></div>
-    </div>
-    {{!--
-    {{#each illustrations }}
-      <div class="illust">
-        <div class="img">
-          {{ img this.src "" }}
-        </div>
-        <small class="chr">
-          {{#each this.chr}}
-            <span>{{this}}</span>
-          {{/each}}
-        </small>
-        <div class="title">{{ this.title }}</div>
-      </div>
-    {{/each}}
-    --}}
+    <ul class="illust-items nostyle">
+      {{#each data.illusts.home }}
+        <li class="illust-gall {{this.type}}">
+          <ul class="illust-gall-inner nostyle">
+            {{#each this.items }}
+              <li class="illust">
+                <figure>
+                  <div class="img">
+                    <img {{ imgSize this.src }} loading="lazy" alt="">
+                  </div>
+
+                  <figcaption>
+                    <ul class="chr nostyle">
+                      {{#each this.chr}}
+                        <li>{{{this}}}</li>
+                      {{/each}}
+                    </ul>
+                    {{{this.title}}}
+                  </figcaption>
+                </figure>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+
   </div>
 </section>
