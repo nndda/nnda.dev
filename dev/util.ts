@@ -1,4 +1,4 @@
-import { resolve, basename } from "path";
+import { resolve, basename, dirname } from "path";
 import fs from "fs";
 
 export const
@@ -62,6 +62,9 @@ export const
 
     write: {
       text(path: string, data: string) {
+        if (!fs.existsSync(dirname(path))) {
+          fs.mkdirSync(dirname(path), {recursive: true});
+        }
         return fs.writeFileSync(path, data, "utf8");
       }
     },
