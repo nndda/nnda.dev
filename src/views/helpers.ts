@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { basename, join } from "path";
+import { join } from "path";
 import { FS, Path } from "@dev/util";
 import Handlebars from "handlebars";
 import { imageSize } from "image-size";
@@ -66,12 +66,24 @@ export default {
     `);
   },
 
+  imgSize: (src: string) => {
+    const srcAbs: string = Path.abs(join("./src/", src));
+
+    if (!FS.exists(srcAbs)) { throw Error(`Image ${srcAbs} doesn't exists`); }
+
+    const dimensions = imageSize(readFileSync(srcAbs));
+
+    return new Handlebars.SafeString(`
+      width="${dimensions.width}" height="${dimensions.height}"
+    `)
+  },
+
   img: (src: string, alt: string) => {
     const srcAbs: string = Path.abs(join("./src/", src));
 
-    if (!FS.exists(srcAbs)) { throw Error(`Image ${basename(src)} doesn't FS.exists`); }
+    if (!FS.exists(srcAbs)) { throw Error(`Image ${srcAbs} doesn't exists`); }
 
-    const dimensions: any = imageSize(readFileSync(srcAbs));
+    const dimensions = imageSize(readFileSync(srcAbs));
 
     return new Handlebars.SafeString(`
       <img src="${src}" width="${dimensions.width}" height="${dimensions.height}" loading="lazy" alt="${alt}">
