@@ -45,10 +45,10 @@
   }
 
   &.link-0 {
-    font-size: 1.2em;
-
     & > h2 {
-      font-weight: 400;
+      font-weight: bold;
+      color: $primary;
+      border-bottom: 2px dashed $primary-dark-20;
     }
   }
 
@@ -68,19 +68,6 @@
         fill: $primary;
       }
     }
-  }
-}
-
-.link-0 {
-  & > h2 {
-    color: $primary;
-    border-bottom: 2px dashed $primary-dark-20;
-  }
-}
-
-@keyframes skeleton-post {
-  to {
-    opacity: 1;
   }
 }
 

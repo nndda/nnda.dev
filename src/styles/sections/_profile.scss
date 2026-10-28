@@ -16,6 +16,7 @@
 
   & .icon-text {
     & > svg {
+      margin-right: .5em;
       color: $primary-dark-10;
     }
   }
@@ -91,8 +92,8 @@
 
   font-size: 2.5em;
 
-  color: $primary;
-  white-space:nowrap;
+  // color: $secondary;
+  white-space: nowrap;
   background: $background-dark;
 
   border-radius: 9px;

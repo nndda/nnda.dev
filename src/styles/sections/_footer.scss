@@ -1,6 +1,7 @@
 @use "../variables" as *;
 
 @use "footer.desktop" as desktop;
+@use "footer.mobile" as mobile;
 
 body > footer {
   z-index: 3;
@@ -168,3 +169,4 @@ body > footer {
 }
 
 @include desktop.style;
+@include mobile.style;

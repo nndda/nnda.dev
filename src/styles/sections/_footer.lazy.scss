@@ -1,7 +1,5 @@
 @use "../variables" as *;
 
-@use "footer.mobile" as mobile;
-
 @keyframes pkg-scroll {
   to {
     transform: translateX(var(--pkg-len, -100%));
@@ -40,5 +38,3 @@
 		}
 	}
 }
-
-@include mobile.style;
