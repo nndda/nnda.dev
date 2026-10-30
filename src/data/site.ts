@@ -56,6 +56,12 @@ const DATA: any = async () => { return _.merge({
     ],
   },
 
+  platforms: {
+    gh: {
+      user: "nndda",
+    },
+  },
+
   commitSHA: commitSHA,
 
   currentDate: currentDate,

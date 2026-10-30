@@ -15,14 +15,14 @@
     "audit": "bun audit --ignore=GHSA-vfj7-8cjw-p6xm",
     "dev": "bun run start",
     "start": "bun --bun run build:data && concurrently 'bun --bun webpack-dev-server --config ./config/webpack.dev.ts --port 9000' 'bun run watch:data'",
-    "build": "bun run fetch:gh && bun run fetch:data-ext && bun --bun run build:data && bun --bun webpack --no-devtool --config ./config/webpack.config.ts && bun run post:build",
+    "build": "bun run fetch:gh && bun run fetch:ext && bun --bun run build:data && bun --bun webpack --no-devtool --config ./config/webpack.config.ts && bun run post:build",
     "build:data": "bun run ./src/scripts/build/index.ts",
     "watch:project": "bun run ./src/_projects/project-pages.ts -- --watch",
     "watch:data": "bun run build:data -- --watching",
     "lint:styles": "stylelint --config ./config/.stylelintrc.json",
     "lint:scripts": "eslint --config ./config/eslint.config.ts",
-    "fetch:gh": "python ./src/api/gh.py",
-    "fetch:data-ext": "python ./src/api/data-ext.py",
+    "fetch:gh": "bun --bun run ./src/data/get/gh.ts",
+    "fetch:ext": "bun --bun run ./src/data/get/external.ts",
     "post:build": "python ./src/post/post_build.py && bun run ./src/post/post-build.ts"
   },
   "engines": {
