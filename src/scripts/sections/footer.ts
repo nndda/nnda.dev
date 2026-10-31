@@ -54,7 +54,7 @@ const
 , pkgAttrHTMLStr = cached ? cached : packageJSON.slice(packageJSON[0] as unknown as number + 1).map((pkg, id) => {
     console.log("constructing string");
 
-    const currentPkgId = packageJSON[pkgAttrIdCurrent] as number;
+    const currentPkgId = packageJSON[pkgAttrIdCurrent];
 
     if (id === currentPkgId) {
       pkgAttrIdCurrent++;
