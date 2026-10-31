@@ -132,4 +132,4 @@ const
 import postsFeed from "./social-posts";
 FS.write.text(Path.abs("./src/public/posts-feed.json"), JSON.stringify(postsFeed));
 
-export default DATA();
+export default await DATA();
