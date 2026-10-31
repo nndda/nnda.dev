@@ -1,6 +1,5 @@
 import HtmlBundlerPlugin from "html-bundler-webpack-plugin";
-import webpack from "webpack";
-import type { Configuration, RuleSetRule } from "webpack";
+import type { Configuration } from "webpack";
 
 import CopyPlugin from "copy-webpack-plugin";
 export function copyToDist(path: string): CopyPlugin.Pattern {
@@ -20,14 +19,51 @@ import { Path } from "@dev/util";
 import partialsDefinition from "../src/views/generate-partials-def";
 
 export default {
-  resolve: {
-    extensions: [".js", ".ts", ".json"],
-    alias: {
-      "@fonts": Path.abs("./src/assets/fonts/"),
-      "@node_modules": Path.abs("./node_modules/"),
-      "@runtime": Path.abs("./src/scripts/runtime.ts"),
+
+  ... {
+    experiments: {
+      css: true,
+      typescript: true,
     },
-  } as Configuration["resolve"],
+
+    resolve: {
+      extensions: [".js", ".ts", ".json"],
+      tsconfig: Path.abs("./tsconfig.json"),
+      alias: {
+        "@fonts": Path.abs("./src/assets/fonts/"),
+        "@node_modules": Path.abs("./node_modules/"),
+        "@runtime": Path.abs("./src/scripts/runtime.ts"),
+      },
+    },
+
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          Path.abs("./src/public/"),
+        ],
+      }),
+    ],
+
+    module: {
+
+      rules: [
+        {
+          test: /\.ts$/,
+          use: {
+            loader: "ts-loader",
+          },
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.woff2$/,
+          type: "asset/resource",
+          generator: {
+            filename: "[hash:6][ext]",
+          },
+        },
+      ],
+    },
+  } as Configuration,
 
   HtmlBundlerPluginConfig: {
     entry: {
@@ -61,32 +97,4 @@ export default {
       ],
     },
   } as HtmlBundlerPlugin.PluginOptions,
-
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        Path.abs("./src/public/"),
-      ],
-    }),
-  ] as unknown as webpack.DefinePlugin[],
-
-  moduleRules: [
-    {
-      test: /\.ts$/,
-      use: {
-        loader: "ts-loader",
-        options: {
-          configFile: Path.abs("./tsconfig.json"),
-        },
-      },
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.woff2$/,
-      type: "asset/resource",
-      generator: {
-        filename: "[hash:6][ext]",
-      },
-    },
-  ] as RuleSetRule[],
-}
+};

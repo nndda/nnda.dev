@@ -22,7 +22,7 @@ export default {
   resolve: common.resolve,
 
   plugins: [
-    ...common.plugins,
+    ...common.plugins!,
 
     new HtmlBundlerPlugin(_.merge(common.HtmlBundlerPluginConfig, {
       js: {
@@ -88,7 +88,7 @@ export default {
 
   module: {
     rules: [
-      ...common.moduleRules,
+      ...common.module!.rules!,
       {
         test: /\.(ico|png|jp?g|webp|avif|svg)$/,
         type: "asset/resource",
