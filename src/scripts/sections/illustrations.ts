@@ -13,8 +13,19 @@ export interface IllustrationGallery {
   items: IllustrationItem[],
 }
 
-requestAnimationFrame(() => {
-  for (const imgEl of document.querySelectorAll("#illustrations figure img") as NodeListOf<HTMLImageElement>) {
-    imgEl.src = illustrationsHomeData.pop();
-  }
-});
+const imgEls = document.querySelectorAll("#illustrations figure img") as NodeListOf<HTMLImageElement>;
+
+for (let n = imgEls.length; 0 < n--;) {
+  imgEls[n].addEventListener("load", () => {
+    imgEls[n].classList.add("loaded");
+  }, {
+    once: true,
+    passive: true,
+  });
+
+  setTimeout(() => {
+    requestAnimationFrame(() => {
+      imgEls[n].src = illustrationsHomeData[n];
+    });
+  }, Math.random() * 560);
+}

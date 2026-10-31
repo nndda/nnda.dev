@@ -84,6 +84,20 @@ ul.illust-items {
       max-height: var(--max-height, auto);
     }
 
+    & > img {
+      transition:
+        opacity .5s ease
+      , transform 1s ease
+      , filter .75s ease
+      ;
+
+      &:not(.loaded) {
+        opacity: 0;
+        filter: blur(9px);
+        transform: translateY(1em) scale(1.1);
+      }
+    }
+
     &::after {
       position: absolute;
       inset: 0;

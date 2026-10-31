@@ -12,8 +12,6 @@ const illustPaths = ( await illustHomeDataPromise ).illustrations.reduce((prev, 
   ];
 }, [] as string[]);
 
-illustPaths.reverse();
-
 FS.write.text(Path.abs("./src/data/illustrations/out/home.ts"), `${
     illustPaths.map((src, i) => `import i${i} from "${src}"`).join(";")
   };export default [${illustPaths.map((_, i) => `i${i}`).join(",")}]
