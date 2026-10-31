@@ -1,44 +1,44 @@
 import os
+
 from fontTools import subset
 from fontTools.ttLib.ttFont import TTFont
-from typing import Any
 
-fonts_dir: str = os.path.abspath(os.path.join(__file__, "../../../assets/fonts"))
+fonts_dir = os.path.abspath(os.path.join(__file__, "../../../assets/fonts"))
 
-alpha: str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-num: str = "1234567890"
-punc: str = " !\"'#$%&()*+,./:;=><?@[\\]^_`{|}~-–—"
-kana: str = "".join(chr(c) for c in range(0x30A0, 0x30FF + 1))
+alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+num = "1234567890"
+punc = " !\"'#$%&()*+,./:;=><?@[\\]^_`{|}~-–—"
+kana = "".join(chr(c) for c in range(0x30A0, 0x30FF + 1))
 
-fonts: Any = {
+fonts = {
 
     # General font
     "zen-kaku-gothic-new": {
-      "text": alpha + num + punc + kana + "".join([
-        "/ˈnæn.də/",
-        "©",
-        "語",
-        "ウェブ",
-        "ツール",
-        "イラスト",
-        "ゲーム",
-        "フィード"
-      ]),
+      "text": alpha + num + punc + kana + """
+        /ˈnæn.də/
+        ©
+        語
+        ウェブ
+        ツール
+        イラスト
+        ゲーム
+        フィード
+      """,
       "weights": [300, 400, 700],
     },
 
     # Left-side Japanese heading
     "ibm-plex-sans-jp": {
-        "text": "".join([
-            "サマリー",
-            "プロジェクト",
-            "イラスト",
-            # "エスエヌエス",
-            "リンクス",
-            "インディーゲーム",
-            "ツール",
-            "プラグイン",
-        ]),
+        "text": """
+            サマリー
+            プロジェクト
+            イラスト
+            エスエヌエス
+            リンクス
+            インディーゲーム
+            ツール
+            プラグイン
+        """,
         "weights": [200],
     },
 
@@ -50,27 +50,27 @@ fonts: Any = {
 
     # Decorative
     "bytesized": {
-      "text": alpha + num + punc + kana + "".join([
-        "Indie Games",
-        "Tools",
-      ]),
+      "text": alpha + num + punc + kana + """
+        Indie Games
+        Tools
+      """,
       "weights": [400],
     },
 
     # Decorative
     "hi-melody": {
-      "text": "".join([
-        "です",
-        "~!",
-      ]),
+      "text": """
+        です
+        ~!
+      """,
       "weights": [400],
     },
 
     # Decorative
     "lato": {
-      "text": "".join([
-        "≈•>ω<",
-      ]),
+      "text": """
+        ≈•>ω<"
+      """,
       "weights": [400],
     },
 }
