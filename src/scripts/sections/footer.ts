@@ -31,8 +31,12 @@ function getLastUpdatedDays(date: Date) {
 
 initIcons("footer", icons);
 
+let pkgAttrIdCurrent = 1;
+
 const
   d = document
+
+, cached = sessionStorage.getItem("nnda-dev-attributions")
 
 , now = Date.now()
 
@@ -47,33 +51,35 @@ const
 
 , pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages>.inner")!
 
-, pkgAttrHTMLStr = packageJSON.map(pkg => {
-    const
-      pkgName = pkg.slice(0, -1)
-    , pkgId = pkg.slice(-1)
+, pkgAttrHTMLStr = cached ? cached : packageJSON.slice(packageJSON[0] as unknown as number + 1).map((pkg, id) => {
+    console.log("constructing string");
 
-    , hasIcon = pkgName in iconsAttr
-    ;
+    const currentPkgId = packageJSON[pkgAttrIdCurrent] as number;
 
-    let
-      pkgUrl: string
-    ;
-
-    if (pkgId == "1") {
-      pkgUrl = `www.npmjs.com/package/` + pkgName;
-    } else if (pkgId == "2") {
-      pkgUrl = `pypi.org/project/` + pkgName;
-    } else if (pkgId == "3") {
-      pkgUrl = `github.com/` + pkgName;
-    } else {
-      pkgUrl = pkgName;
+    if (id === currentPkgId) {
+      pkgAttrIdCurrent++;
     }
 
-    return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${pkgId} ${hasIcon ? "has-icon" : ""}">${
-      (hasIcon) ? buildSvg(iconsAttr[(pkgName as keyof typeof iconsAttr)], 13, 13) : ""
-    }${pkgName} </a>`;
+    const hasIcon = pkg in iconsAttr;
+
+    let pkgUrl: string;
+
+    if (pkgAttrIdCurrent === 1) {
+      pkgUrl = `www.npmjs.com/package/` + pkg;
+    } else if (pkgAttrIdCurrent === 2) {
+      pkgUrl = `pypi.org/project/` + pkg;
+    } else if (pkgAttrIdCurrent === 3) {
+      pkgUrl = `github.com/` + pkg;
+    } else {
+      pkgUrl = pkg as string;
+    }
+
+    return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${id} ${hasIcon ? "has-icon" : ""}">${
+      (hasIcon) ? buildSvg(iconsAttr[(pkg as keyof typeof iconsAttr)], 13, 13) : ""
+    }${pkg} </a>`;
   }).join("")
 ;
+
 
 requestAnimationFrame(() => {
   pkgAttrElCont.innerHTML = pkgAttrHTMLStr;
@@ -90,4 +96,6 @@ requestAnimationFrame(() => {
   lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
   lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
   nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
+
+  sessionStorage.setItem("nnda-dev-attributions", pkgAttrHTMLStr);
 });

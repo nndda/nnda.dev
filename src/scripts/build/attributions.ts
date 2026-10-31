@@ -1,30 +1,52 @@
 console.log("Updating attribution/acknowledgment data...")
 
 import { FS, Path } from "@dev/util";
-const relative = Path.createRelative(import.meta.dir);
-import _ from "lodash";
+import { resolve } from "path";
 
 import packageJSON from "../../../package.json";
 
-FS.write.text(relative("./out/attribution.json"), JSON.stringify(_.sortBy([
+const
+  credits = {
+    npm: [
+      ...Object.keys({...packageJSON.devDependencies, ...packageJSON.dependencies}),
+    ],
+    pypi: [
+      ...FS.read.text(Path.abs("./config/requirements.txt"))
+        .split("\n")
+        .filter(n => n !== "")
+        .map(n => n.split("==")[0]),
+    ],
+    gh: [
+      "googlefonts/zen-kakugothic",
+      "canonical/Ubuntu-Sans-Mono-fonts",
+      "IBM/plex",
+      "SAWARATSUKI/KawaiiLogos",
+    ],
+    others: [
+      "css-loaders.com",
+    ],
+  }
+, pkgs = Object.keys(credits)
+;
 
-  ..._.entries(packageJSON.devDependencies).map(i => i[0] + "1"),
+FS.write.text(resolve(import.meta.dir, "./out/attribution.json"), JSON.stringify([
+  pkgs.length,
 
-  ...FS.read.text(Path.abs("./config/requirements.txt"))
-    .split("\n")
-    .map(i => i.split("==")[0] + "2"),
+  ...pkgs
+    .map(pkg => credits[pkg].length)
+    .reduce(({ sum, arr }, len ) => {
 
-  ...[
-    "googlefonts/zen-kakugothic",
-    "canonical/Ubuntu-Sans-Mono-fonts",
-    "IBM/plex",
-    "SAWARATSUKI/KawaiiLogos",
-  ].map(i => i + "3"),
+      sum += len;
+      arr.push(sum);
 
-  ...[
-    "css-loaders.com"
-  ],
+      return { sum, arr };
+    }, { sum: 0, arr: [] as number[] }).arr,
 
-])));
+  ...pkgs
+    .reduce((prev, pkg) => {
+      prev.push(...credits[pkg]);
+      return prev;
+    }, [] as string[]),
+]));
 
 console.log("Finished updating attribution/acknowledgment data");
