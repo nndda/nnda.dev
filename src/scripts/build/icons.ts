@@ -1,9 +1,14 @@
 console.log("Updating & tree-shaking icons...");
 
-import { FS, Path } from "@dev/util";
-const relative = Path.createRelative(import.meta.dir);
+import { FS } from "@dev/util";
+import { resolve } from "path";
+const outputPath = resolve(import.meta.dir , "./icons/");
 
-FS.mkdir(relative("./icons/"));
+function outputFile(filename: string) {
+  return resolve(outputPath, filename);
+}
+
+FS.mkdir(outputPath);
 
 // ----------------------------------------------------------------------------
 
@@ -16,6 +21,7 @@ import {
   faAngleDown,
   faBars,
   faBasketShopping,
+  faBookBookmark,
   // faBox,
   // faBug,
   // faCalendar,
@@ -27,22 +33,26 @@ import {
   faClock,
   faCode,
   faCodeCommit,
-  faComment,
+  // faComment,
   // faCodeFork,
   faComputerMouse,
   faEnvelope,
   // faGhost,
   // faFire,
   faGlobe,
+  // faGreaterThan,
+  // faGreaterThanEqual,
   faHeart,
   faLanguage,
   faLink,
   faLocationDot,
   faNoteSticky,
   faPaintBrush,
-  faRetweet,
+  // faRetweet,
   faScaleBalanced,
   faSkull,
+  faTag,
+  faUpRightFromSquare,
   // faSkullCrossbones,
   // faStar,
   faUserTag,
@@ -119,10 +129,6 @@ import {
 
 // ----------------------------------------------------------------------------
 
-function toHTML(name: IconDefinition): string {
-  return icon(name).html.join();
-}
-
 function fa2HTML(name: IconDefinition): string {
   return icon(name).html.join();
 }
@@ -136,9 +142,9 @@ function toPascalCase(str: string) {
 }
 
 function createIconDefs(filename: string, icons: IconDefinition[]): void {
-  FS.write.text(relative(`./icons/${filename}.js`),
+  FS.write.text(outputFile(`${filename}.ts`),
     icons.map(ico => {
-      return `export const icon${toPascalCase(ico.iconName)}=\`${toHTML(ico)}\``;
+      return `export const icon${toPascalCase(ico.iconName)}=\`${fa2HTML(ico)}\``;
     }).join(";")
   );
 }
@@ -162,7 +168,7 @@ function createIconDefsGrouped(
   siIcons: SimpleIcon[] = [],
   iconsOther: Record<string, string> = {},
   ): void {
-  FS.write.text(relative(`./icons/${groupName}.ts`),
+  FS.write.text(outputFile(`${groupName}.ts`),
     `export default {`
     +
     [
@@ -178,12 +184,12 @@ function createIconDefsGrouped(
         }),
     ].join(",")
     +
-    `}`
+    `};`
   );
 }
 
 function createMiniIconDefs(filename: string, iconDefs: Record<string, string>): void {
-  FS.write.text(relative(`./icons/${filename}.js`), `export default ${
+  FS.write.text(outputFile(`${filename}.ts`), `export default ${
     JSON.stringify(
       Object.entries(iconDefs).reduce(
         (
@@ -213,13 +219,13 @@ createIconDefs(
 );
 
 createMiniIconDefs("input", {
-  // "down": toHTML(faCaretDown),
-  // "up": toHTML(faCaretUp),
-  "sq": toHTML(faSquare),
-  "sqChk": toHTML(faCheckSquare),
-  "cir": toHTML(faCircle),
-  "cirChk": toHTML(faCircleCheck),
-  // "x": toHTML(faX),
+  // "down": fa2HTML(faCaretDown),
+  // "up": fa2HTML(faCaretUp),
+  "sq": fa2HTML(faSquare),
+  "sqChk": fa2HTML(faCheckSquare),
+  "cir": fa2HTML(faCircle),
+  "cirChk": fa2HTML(faCircleCheck),
+  // "x": fa2HTML(faX),
 });
 
 createIconDefsGrouped(
@@ -348,17 +354,28 @@ createMiniIconDefs("overview", {
   "webpack": siWebpack.svg,
 });
 
+createMiniIconDefs("projects", {
+  "book-bookmark": fa2HTML(faBookBookmark),
+  "godot": siGodotengine.svg,
+  "itch": siItchdotio.svg,
+  "github": siGithub.svg,
+  "up-right-from-square": fa2HTML(faUpRightFromSquare),
+  // "greater-than-equal": fa2HTML(faGreaterThanEqual),
+  // "greater-than": fa2HTML(faGreaterThan),
+  "tag": fa2HTML(faTag),
+});
+
 createMiniIconDefs("links", {
-  "links": toHTML(faLink),
-  "heart": toHTML(faHeart),
-  // "ghost": toHTML(faGhost),
-  "skull": toHTML(faSkull),
+  "links": fa2HTML(faLink),
+  "heart": fa2HTML(faHeart),
+  // "ghost": fa2HTML(faGhost),
+  "skull": fa2HTML(faSkull),
   "github": siGithub.svg,
   // "githubsponsors": siGithubsponsors.svg,
   "itchdotio": siItchdotio.svg,
   "artstation": siArtstation.svg,
   "mastodon": siMastodon.svg,
-  "twitter": toHTML(faTwitter),
+  "twitter": fa2HTML(faTwitter),
   "bluesky": siBluesky.svg,
   "osu": siOsu.svg,
   "patreon": siPatreon.svg,
@@ -369,12 +386,12 @@ createMiniIconDefs("links", {
 });
 
 createMiniIconDefs("shop", {
-  "globe": toHTML(faGlobe),
+  "globe": fa2HTML(faGlobe),
   "CSS": siCss.svg,
   "Godot": siGodotengine.svg,
   "itch.io": siItchdotio.svg,
   "MacOS": siApple.svg,
-  "Windows": toHTML(faWindows),
+  "Windows": fa2HTML(faWindows),
   "GitHub": siGithub.svg,
   "ko-fi": siKofi.svg,
   "Patreon": siPatreon.svg,
@@ -385,13 +402,13 @@ createMiniIconDefs("shop", {
     </svg>`,
 });
 
-createMiniIconDefs("overview.socials", {
-  "bsky": siBluesky.svg,
-  "mast": siMastodon.svg,
-  "likes": toHTML(faHeart),
-  "replies": toHTML(faComment),
-  "shares": toHTML(faRetweet),
-});
+// createMiniIconDefs("overview.socials", {
+//   "bsky": siBluesky.svg,
+//   "mast": siMastodon.svg,
+//   "likes": fa2HTML(faHeart),
+//   "replies": fa2HTML(faComment),
+//   "shares": fa2HTML(faRetweet),
+// });
 
 createMiniIconDefs("footer.attributions", {
   "@fortawesome/fontawesome-svg-core": siFontawesome.svg,

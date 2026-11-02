@@ -17,6 +17,7 @@
     "start": "bun --bun run build:data && concurrently 'bun --bun webpack-dev-server --config ./config/webpack.dev.ts --port 9000' 'bun run watch:data'",
     "build": "bun run fetch:gh && bun run fetch:ext && bun --bun run build:data && bun --bun webpack --no-devtool --config ./config/webpack.config.ts && bun run post:build",
     "build:data": "bun --bun run ./src/scripts/build/index.ts",
+    "build:icons": "bun --bun run ./src/scripts/build/icons.ts",
     "build:illustrations": "bun --bun run ./src/scripts/build/illustrations.ts",
     "build:attributions": "bun --bun run ./src/scripts/build/attributions.ts",
     "build:subset-fonts": "python ./src/scripts/build/fonts.py",
