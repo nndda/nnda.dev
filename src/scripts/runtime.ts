@@ -56,7 +56,6 @@ export function importLazy(
   rootMargin: string,
   ...imports: (() => Promise<any>)[]
 ) {
-  // NOTE: a little questionable
   let retry = 0;
 
   function importInit() {
@@ -64,10 +63,12 @@ export function importLazy(
       imports.map((val: () => Promise<any>): Promise<any> => val())
     )
     .catch(() => {
-      if (retry < 5) {
-        retry += 1;
-        importInit();
-      }
+      setTimeout(() => {
+        if (retry < 5) {
+          retry += 1;
+          importInit();
+        }
+      }, 500 + retry * 500);
     });
   }
 
