@@ -12,7 +12,7 @@
   ],
   "private": true,
   "scripts": {
-    "audit": "bun audit --ignore=GHSA-g3hv-75wg-m249",
+    "audit": "bun audit",
     "dev": "bun run start",
     "start": "bun --bun run build:data && concurrently 'bun --bun webpack-dev-server --config ./config/webpack.dev.ts --port 9000' 'bun run watch:data'",
     "build": "bun run fetch:gh && bun run fetch:ext && bun --bun run build:data && bun --bun webpack --no-devtool --config ./config/webpack.config.ts && bun run post:build",
@@ -40,7 +40,7 @@
     "@types/lodash": "^4.17.27",
     "@types/node": "^26.6.6",
     "@types/webpack": "^5.28.5",
-    "globals": "^17.13.0",
+    "globals": "^17.14.0",
     "lefthook": "^2.2.2",
     "stylelint": "^17.16.0",
     "stylelint-config-recess-order": "^7.9.0",
@@ -78,7 +78,7 @@
     "typescript": "^6.0.3",
     "webpack": "5.111.1",
     "webpack-cli": "^7.3.1",
-    "wrangler": "^4.156.0"
+    "wrangler": "^4.156.1"
   },
   "overrides": {
     "brace-expansion": "^5.0.9",
@@ -88,6 +88,7 @@
     "immutable": "^5.1.9",
     "js-yaml": "^5.2.2",
     "launch-editor": "^2.14.1",
+    "minimatch": "^11.0.4",
     "postcss": "^8.5.23",
     "sharp": "^0.35.3",
     "shell-quote": "^1.10.0",
