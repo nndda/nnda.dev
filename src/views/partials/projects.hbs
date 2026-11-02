@@ -8,8 +8,14 @@
       Projects
     </h1>
 
-    <ul class="project-items nostyle has-loader">
-      <div class="loader"><div></div></div>
+    <ul class="project-items nostyle">
+      {{#each data.projects }}
+        {{#if this.id}}
+          <li class="project card" data-name="{{this.id}}"></li>
+        {{else}}
+          <li class="project card" data-name="{{this.name}}"></li>
+        {{/if}}
+      {{/each}}
     </ul>
   </div>
 </section>

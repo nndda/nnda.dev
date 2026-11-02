@@ -1,73 +1,52 @@
 @use "../variables" as *;
 @use "sass:color";
 
-@use "projects.mobile" as mobile;
-@use "projects.desktop" as desktop;
+.project {
+  &[data-name="Theatre"] {
+    $col: #3fd4f2;
 
-.project-title {
-  padding: 0;
-  padding-bottom: .5em;
-  margin: 0;
-  font-size: 1.15em;
-  font-weight: 300;
-  letter-spacing: .08em;
+    --col: #{$col};
 
-  & a {
-    display: flex;
-    gap: .5em;
-    align-items: center;
-    text-decoration-color: color.mix($text, $background-dark, 70%);
+    & .project-title a {
+      color: $col;
+    }
 
-    &:not(:hover) {
-      text-decoration: none;
+    & .project-menu {
+      background: color.mix($background-light, $col, 90%);
     }
   }
 
-  & img {
-    max-height: 2em;
+  &[data-name="Pitch"] {
+    $col: #fc3a78;
+
+    --col: #{$col};
+
+    & .project-title a {
+      color: $col;
+    }
+
+    & ul.project-menu {
+      --word-carousel-s: 4s;
+      background: color.mix($background-light, $col, 90%);
+    }
   }
-}
 
-.project {
-  &[data-name="Theatre"] .project-title a {
-    color: #3fd4f2;
-  }
-
-  &[data-name="Pitch"] .project-title a {
-    color: #fc3a78;
-  }
-}
-
-:is(
-  .project[data-name="Theatre"],
-  .project[data-name="Pitch"]
-) .project-title {
-  font-size: 1.5em;
-  font-weight: 700;
-  letter-spacing: .1em;
-}
-
-@mixin project-label-style($color) {
-  color: $color;
-  background: color.mix($color, $background, 1%);
-  border: 1px solid color.mix($color, $background, 20%);
-  transition: .2s ease;
-
-  &:not(:hover) {
-    opacity: .6;
+  &.card[data-name="nndadev"] {
+    background: 0;
+    border: 2px dashed $border-dark-60;
+    box-shadow: none;
   }
 }
 
 .project-label {
-  display: inline-block;
-  padding: .15em .5em;
-  font-size: .65em;
   cursor: pointer;
-  @include project-label-style($text);
 
   /* stylelint-disable */
   &.Web {
-    @include project-label-style(#fc56a8);
+    @include project-label-style(color.mix(#fd68b3, #66b2f2));
+  }
+  &.Front-end {
+    @include project-label-style(#fd68b3);
   }
   &.Godot {
     @include project-label-style(#66b2f2);
@@ -75,16 +54,52 @@
   /* stylelint-enable */
 }
 
-.project {
+ul.project-menu {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
 
-  & > p {
-    font-size: .9em;
-    color: $text-secondary;
-    text-wrap: balance;
+  min-height: 3.5em;
+  margin: -$card-padding;
+  margin-top: $card-padding * .5;
+
+  font-size: 1.1em;
+  background: $background-light;
+
+  --word-carousel-s: 6s;
+
+  & > li {
+    flex-grow: 1;
+    padding: $card-padding;
+
+    transition: .3s background;
+
+    & > * {
+      display: flex;
+      align-items: center;
+    }
+
+    & > a {
+      gap: .5em;
+      place-content: center;
+      padding: $card-padding;
+      margin: -$card-padding;
+      text-decoration: none;
+
+      & > svg {
+        fill: var(--col, currentColor);
+      }
+
+      &:hover {
+        text-decoration: underline 2px solid $border;
+      }
+    }
+
+    &:has( > a.icon-only ) {
+      flex-grow: 0;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $background;
+    }
   }
 }
-
-@include mobile.style;
-@include desktop.style;

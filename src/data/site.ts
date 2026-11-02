@@ -82,6 +82,7 @@ const DATA: any = async () => { return _.merge({
     illusts: {
       home: (await dataIllusts).illustrations,
     },
+    projects: dataProjects,
   },
 
 }, FS.exists(siteExtPath) ? (await import(siteExtPath)).default : {} );};
@@ -90,6 +91,7 @@ const DATA: any = async () => { return _.merge({
 
 import dataLinks from "./site-links";
 import dataIllusts from "./illustrations/home";
+import dataProjects from "./site-projects";
 
 // ============================================================================
 

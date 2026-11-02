@@ -1,6 +1,9 @@
 @use "../variables" as *;
 @use "sass:color";
 
+@use "projects.mobile" as mobile;
+@use "projects.desktop" as desktop;
+
 #projects {
   background: $background;
   @include shadow-black;
@@ -11,21 +14,103 @@
 }
 
 .project {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   outline: 1px solid transparent;
 
-  transition:
-    all .5s ease
-  , outline .2s ease
-  ;
-
-  @include nth-loop(1, 5) using ($i) {
-    transition-delay: 0s + (.09 * $i);
+  & > * {
+    transition: .5s ease;
   }
+
+  & > p {
+    flex-grow: 1;
+    line-height: 1.25lh;
+    color: $text-secondary;
+    text-wrap: balance;
+
+    & > svg {
+      margin-inline: .5em .3em;
+    }
+  }
+
+  &:not(.loaded) {
+    & > * {
+      opacity: 0;
+      transform: translateX(1em);
+    }
+
+    & > .project-menu {
+      transform: translateY(1.5em);
+    }
+  }
+}
+
+.project-title {
+  padding-bottom: .5em;
+  margin: 0;
+  font-size: 1.15em;
+
+  & > a {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+
+    &:not(:hover) {
+      text-decoration: none;
+
+      & > svg{
+        opacity: 0;
+      }
+    }
+
+    & > svg {
+      margin-left: auto;
+      transition: opacity .3s ease;
+
+      & > path {
+        fill: var(--col, currentColor) !important;
+      }
+    }
+  }
+
+  & img {
+    max-height: 2em;
+  }
+}
+
+:is(
+  .project[data-name="Theatre"],
+  .project[data-name="Pitch"]
+) .project-title {
+  font-size: 1.5em;
+  letter-spacing: .1em;
+}
+
+.labels-container {
+  display: flex;
+  // flex-direction: row;
+  gap: .5em;
+}
+
+.project-label {
+  // display: inline-block;
+  padding: .15em .5em;
+  font-size: .85em;
+  border-radius: 3px;
+
+  @include project-label-style($text);
 }
 
 // NOTE: measures manually, to avoid CLS
 ul.project-items {
-  min-height: 375px;
+  // min-height: 375px;
   padding-block: 1em;
+
+  & > li {
+    min-height: 185px;
+  }
 }
+
+@include mobile.style;
+@include desktop.style;

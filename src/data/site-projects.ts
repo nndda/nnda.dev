@@ -1,3 +1,17 @@
+import { buildSvg } from "@runtime";
+const
+  iconsRaw = (await import("../scripts/build/icons/projects")).default
+, icons = {} as PrecompiledIcons
+;
+
+type PrecompiledIcons = Record<keyof typeof iconsRaw, string>;
+
+for (const icon in iconsRaw) {
+  icons[icon] = buildSvg(iconsRaw[icon], 16, 16);
+}
+
+import type { ProjectItem } from "../scripts/sections/projects";
+
 export default [
   {
     name: "Theatre",
@@ -9,8 +23,23 @@ export default [
     ],
     category: "Game Development",
     platform: "N/A",
-    description: " Yet another (linear) dialogue system/addon/plugin for Godot. Written in human-readable plain text.",
-    image: "/assets/project-theatre.avif",
+    description: "A simple, readable, and extensible (linear) text-based dialogue runtime for" + icons["godot"] + "Godot Engine.",
+    menu: [
+      {
+        type: "link",
+        icon: "book-bookmark",
+        url: "https://nnda.dev/",
+        text: "Documentation",
+      },
+      {
+        type: "word-carousel",
+        items: [
+          icons["tag"] + "v0.13 <small>(latest)</small>",
+          "<b>100% GDScript</b>",
+          icons["godot"] + "Godot 4.6 or above",
+        ],
+      },
+    ],
   },
   {
     name: "Pitch",
@@ -18,12 +47,25 @@ export default [
     url: "https://nnda.itch.io/pitch",
     tags: [
       "Web",
-      "CSS",
+      "Front-end",
     ],
     category: "Web Project",
     platform: "Web",
-    description: "Catalogue of CSS UI components, tweaks, and resources tailored specifically for itch.io pages.",
-    image: "/assets/project-pitch.avif",
+    description: "Catalogue of <b>CSS UI components</b>, tweaks, and resources tailored specifically for" + icons["itch"] + "itch.io pages.",
+    menu: [
+      {
+        type: "link",
+        icon: "up-right-from-square",
+        url: "https://nnda.dev/",
+      },
+      {
+        type: "word-carousel",
+        items: [
+          icons["tag"] + "v3.0.0 <small>(latest)</small>",
+          ">40 UI components ",
+        ],
+      },
+    ],
   },
   {
     name: "Obscura",
@@ -37,27 +79,45 @@ export default [
     description: "Image obfuscation library for the web."
   },
   {
-    name: "nnda.dev",
-    url: "https://github.com/nndda/nnda.dev",
+    name: "<code>nnda.dev</code>",
+    id: "nndadev",
+    url: "/",
     tags: [
       "Web",
-      "TypeScript",
-      "SCSS",
     ],
     category: "Web Project",
     platform: "Web",
     description: "This website that you're looking at"
   },
   {
-    name: "nnda.itch.io",
+    name: "<code>nnda.itch.io</code>",
     url: "https://github.com/nndda/itchio-profile",
     tags: [
-      "CSS",
-      "Bun",
-      "TypeScript",
+      "Front-end",
     ],
     category: "Web Project",
     platform: "Web",
-    description: " HTML & CSS source code and build pipelines for my itch.io profile page's content. Live @ https://nnda.itch.io"
+    description: "HTML & CSS source code and build pipelines for my itch.io profile page's content."
   },
-];
+  {
+    name: "...and more!",
+    id: "more",
+    url: "https://nnda.itch.io/",
+    tags: [],
+    description: "Find more of my projects here:",
+    menu: [
+      {
+        type: "link",
+        icon: "itch",
+        url: "https://nnda.dev/",
+        text: "itch.io",
+      },
+      {
+        type: "link",
+        icon: "github",
+        url: "https://nnda.dev/",
+        text: "GitHub",
+      },
+    ],
+  },
+] as ProjectItem[];
