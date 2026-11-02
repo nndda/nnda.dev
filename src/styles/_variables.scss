@@ -28,6 +28,7 @@ $border: color.mix($text, $background, 50%);
 $border-dark-10: color.mix($border, $background, 90%);
 $border-dark-20: color.mix($border, $background, 80%);
 $border-dark-30: color.mix($border, $background, 70%);
+$border-dark-60: color.mix($border, $background, 40%);
 $border-dark-80: color.mix($border, $background, 20%);
 
 // ============================================================================
@@ -66,6 +67,17 @@ $card-br-radius: 6px;
   filter: drop-shadow(
     0 0 2em color.adjust($background-dark, $lightness: -2.5%),
   );
+}
+
+@mixin project-label-style($color) {
+  color: color.mix($color, $text, 75%);
+  background: color.mix($color, $background, 1%);
+  border: 1px solid color.mix($color, $background, 80%);
+  transition: .2s ease;
+
+  &:not(:hover) {
+    opacity: .6;
+  }
 }
 
 @mixin style-scrollbar($col: $primary) {
