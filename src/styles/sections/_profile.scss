@@ -47,41 +47,6 @@
   }
 }
 
-.lists {
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-  height: 1.3em;
-  overflow: hidden;
-  line-height: 1em;
-  white-space: nowrap;
-
-  & > li {
-    margin: .15em 0;
-    font-weight: 400;
-    animation: c 3.5s infinite;
-  }
-}
-
-@keyframes c {
-  0%,
-  20% {
-    transform:translateY(0)
-  }
-
-  40%,
-  60% {
-    transform:translateY(-1.3em)
-  }
-
-  80%,
-  90% {
-    transform:translateY(-1.3em * 2)
-  }
-}
-
 .author-name {
   align-self: end;
   width: min-content;
