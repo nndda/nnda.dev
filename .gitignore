@@ -1,8 +1,9 @@
 # Built fonts
-src/assets/fonts/*/**.woff2
+src/pages/assets/fonts/*/**.woff2
 share/
 
 # Compiled, pre-build scripts and data
+src/pages/**/*.html
 **/*.js
 **/*.js.map
 **/*.json.gz
