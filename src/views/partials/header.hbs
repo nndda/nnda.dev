@@ -1,77 +1,88 @@
 <header>
-  <div class="header-inner">
-    <a
-      href="/"
-      class="logo"
-    >
-      <img
-        src="/assets/logo.svg"
-        height="40"
-        width="40"
-        alt=""
-      >
-    </a>
+  <nav id="navbar" class="shown">
+    <ul class="nostyle path">
+      <li>
+        <a href="/" class="logo">
+          <img
+            src="/assets/logo.svg"
+            height="40"
+            width="40"
+            alt=""
+          >
+        </a>
+      </li>
 
-    <!--<div id="mobile-nav-sect-label"></div>-->
-
-    <nav id="navbar" class="shown">
-      <ul class="nostyle">
-        {{#each nav.links}}
-          {{#unless this.external}}
-            <li class="scrollspy">
-              <a href="/{{this.url}}" class="nav-link">
-                {{{this.icon}}}
-                {{{this.name}}}
-              </a>
-            </li>
-          {{/unless}}
-        {{/each}}
-
-        <li>
-          <a href="404.html" class="nav-link nav-link-btn">
-            <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
-            Shop
-          </a>
-        </li>
-      </ul>
-
-      <div class="vseparator"></div>
-
-      <ul class="nostyle ext-links">
-        {{#each nav.links}}
-          {{#if this.external}}
+      {{#if currentPath}}
+          {{#each currentPath}}
             <li>
-              <a href="https://{{this.url}}" class="nav-link"
-                target="_blank"
-                rel="me nofollow noopener noreferrer"
-                referrerpolicy="no-referrer"
-                aria-label="{{this.url}}"
-              >
-                {{{this.icon}}}
-                {{{this.name}}}
-              </a>
+              {{#if this.href}}
+                <a href="{{this.href}}">
+                  {{{this.display}}}/
+                </a>
+              {{else}}
+                  {{{this.display}}}/
+              {{/if}}
             </li>
-          {{/if}}
-        {{/each}}
-      </ul>
+          {{/each}}
+      {{/if}}
+    </ul>
 
-      <button
-        aria-label="Close navbar button"
-        class="nav-link-btn icon-only"
-        id="navbar-collapse"
-      >
-        {{{icon "global" "angle-down" 36 48}}}
-      </button>
-    </nav>
+    <ul class="nostyle">
+      {{#each nav.links}}
+        {{#unless this.external}}
+          <li>
+            <a href="/{{this.url}}">
+              {{{this.icon}}}
+              {{{this.name}}}
+            </a>
+          </li>
+        {{/unless}}
+      {{/each}}
+
+      <li>
+        <a href="/shop/" class="nav-link-btn icon-text">
+          <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
+          Shop
+        </a>
+      </li>
+    </ul>
+
+    <div class="vseparator"></div>
+
+    <ul class="nostyle ext-links">
+      {{#each nav.links}}
+        {{#if this.external}}
+          <li>
+            <a href="https://{{this.url}}"
+              target="_blank"
+              rel="me nofollow noopener noreferrer"
+              referrerpolicy="no-referrer"
+              aria-label="{{this.url}}"
+            >
+              {{{this.icon}}}
+              {{{this.name}}}
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
 
     <button
-      aria-label="Navbar menu"
-      class="navbar-button icon-only blank"
-      id="navbar-button"
+      aria-label="Close navbar button"
+      class="nav-link-btn icon-only"
+      id="navbar-collapse"
     >
-      {{{icon "global" "bars" 18 20}}}
+      {{{icon "global" "angle-down" 36 48}}}
     </button>
-  </div>
+  </nav>
+
+  <button
+    aria-label="Navbar menu"
+    class="navbar-button icon-only blank"
+    id="navbar-button"
+  >
+    {{{icon "global" "bars" 18 20}}}
+  </button>
 </header>
 
 <div

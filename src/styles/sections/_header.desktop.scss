@@ -31,7 +31,7 @@
 
     & > li {
       box-sizing: border-box;
-      padding: .8em;
+      padding: $header-padding-inner;
 
       letter-spacing: .1em;
 
@@ -39,6 +39,21 @@
         height: 1.1em;
       }
     }
+  }
+
+}
+
+body > header.active {
+  --stick-off: 0;
+
+  transform: translateY(0);
+
+  &::after {
+    opacity: 1;
+  }
+
+  & .logo {
+    transform: scale(.7);
   }
 }
 
