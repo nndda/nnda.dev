@@ -15,7 +15,7 @@
     "audit": "bun audit",
     "dev": "bun run start",
     "start": "bun build:data && bun build:pages && concurrently 'bunx --bun vite --config ./vite.config.mts' 'bun run watch:data'",
-    "build": "bun run fetch:gh && bun run fetch:ext && bun --bun run build:data && bunx --bun vite build --config ./vite.config.mts && bun run post:build",
+    "build": "bun fetch:gh && bun fetch:ext && bun build:data && bun build:pages && bunx --bun vite build --config ./vite.config.mts && bun run post:build",
     "build:data": "bun --bun run ./src/scripts/build/index.ts",
     "build:pages": "bun --bun run ./src/views/index.ts",
     "build:icons": "bun --bun run ./src/scripts/build/icons.ts",
