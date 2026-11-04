@@ -5,17 +5,17 @@ import packageJSON from "../build/out/attribution.json" with { type: "json" };
 import icons from "../build/icons/footer";
 import iconsAttr from "../build/icons/footer.attributions";
 
-function getLastUpdatedHrs(date: Date) {
-  const hours = Math.floor((now - date.getTime()) / 36e5);
-
-  return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`;
-}
-
-function getFutureUpdatedHrs(date: Date) {
-  const hours = Math.floor((date.getTime() - now) / 36e5);
-
-  return hours <= 0 ? "in <1 hour" : `in ${hours} hour${hours === 1 ? "" : "s"}`;
-}
+// function getLastUpdatedHrs(date: Date) {
+//   const hours = Math.floor((now - date.getTime()) / 36e5);
+//
+//   return hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`;
+// }
+//
+// function getFutureUpdatedHrs(date: Date) {
+//   const hours = Math.floor((date.getTime() - now) / 36e5);
+//
+//   return hours <= 0 ? "in <1 hour" : `in ${hours} hour${hours === 1 ? "" : "s"}`;
+// }
 
 function getLastUpdatedDays(date: Date) {
   const
@@ -26,7 +26,7 @@ function getLastUpdatedDays(date: Date) {
 
   return days <= 0
     ? (hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`)
-    : `${days} days, ${hours} hour${hours === 1 ? "" : "s"} ago`;
+    : `${days} day${days === 1 ? "" : "s"}, ${hours} hour${hours === 1 ? "" : "s"} ago`;
 }
 
 initIcons("footer", icons);
@@ -40,14 +40,14 @@ const
 
 , now = Date.now()
 
-, lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label")!
-, lastUpdateDate = new Date(lastUpdateLabel.getAttribute("title")!)
+// , lastUpdateLabel: HTMLElement = d.getElementById("last-updated-label")!
+// , lastUpdateDate = new Date(lastUpdateLabel.getAttribute("title")!)
 
 , lastPublishLabel: HTMLElement = d.getElementById("last-published-label")!
 , lastPublishDate = new Date(lastPublishLabel.getAttribute("title")!)
 
-, nextUpdateLabel: HTMLElement = d.getElementById("next-update-label")!
-, nextUpdateDate = new Date(nextUpdateLabel.getAttribute("title")!)
+// , nextUpdateLabel: HTMLElement = d.getElementById("next-update-label")!
+// , nextUpdateDate = new Date(nextUpdateLabel.getAttribute("title")!)
 
 , pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages>.inner")!
 
@@ -93,9 +93,10 @@ requestAnimationFrame(() => {
 
   })(footerEl);
 
-  lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
+  // lastUpdateLabel.textContent = getLastUpdatedHrs(lastUpdateDate);
   lastPublishLabel.textContent = getLastUpdatedDays(lastPublishDate);
-  nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
+  lastPublishLabel.title = lastPublishDate.toLocaleString();
+  // nextUpdateLabel.textContent = getFutureUpdatedHrs(nextUpdateDate);
 
   sessionStorage.setItem("nnda-dev-attributions", pkgAttrHTMLStr);
 });

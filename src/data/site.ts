@@ -1,6 +1,65 @@
 // Build-side configuration:
 // Exported data will be used in the Handlebars templating directly
-const DATA: any = async () => { return _.merge({
+
+interface SiteData {
+  repoURL: string,
+
+  site: {
+    author: string,
+    title: string,
+    description: string,
+    note: string,
+
+    authorProfile: {
+      status: {
+        icon: string,
+        text: string,
+      },
+
+      description: string,
+      pronouns: string,
+      pronounciation: string,
+      languages: string,
+      location: string,
+      timezone: string,
+    },
+  },
+
+  allRightsReserved: boolean,
+
+  nav: {
+    links: {
+      name: string,
+      url: string,
+      external?: true,
+    }[],
+  },
+
+  platforms: {
+    gh: {
+      user: string,
+    },
+  },
+
+  commitSHA: string,
+
+  currentDate: string,
+  releaseDate: string,
+  year: number,
+
+  nextUpdateDate: Date,
+
+  buildTimetamp: Date,
+  buildCommitSHAFull: string,
+  buildCommitSHA: string,
+
+  data: {
+    links: any,
+    illusts: any,
+  },
+}
+
+const DATA: () => Promise<SiteData> = async () => { return _.merge({
   repoURL: "https://github.com/nndda/nnda.dev",
 
   site: {
@@ -65,15 +124,15 @@ const DATA: any = async () => { return _.merge({
   commitSHA: commitSHA,
 
   currentDate: currentDate,
-  releaseDate: releaseDate,
+  releaseDate: releaseDate.toISOString(),
   year: currentDate.getFullYear(),
 
-  nextUpdateDate: Bun.cron.parse(
-    "0 */12 * * *", // Match GH Actions cron deploy
-    currentDate,
-  ),
+//   nextUpdateDate: Bun.cron.parse(
+//     "0 */12 * * *", // Match GH Actions cron deploy
+//     currentDate,
+//   ),
 
-  buildTimetamp: currentDate,
+  // buildTimetamp: currentDate,
   buildCommitSHAFull: commitSHA,
   buildCommitSHA: commitSHA?.substring(0, 16),
 

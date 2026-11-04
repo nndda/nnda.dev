@@ -125,7 +125,8 @@ body > footer {
 		color: $text-secondary;
 	}
 
-	& a {
+	& a, abbr {
+	  margin-inline: .5em;
 	  color: $secondary-10;
 	}
 

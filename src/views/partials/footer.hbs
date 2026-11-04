@@ -46,6 +46,7 @@
       </li>
       {{/if}}
 
+      {{!--
       <li class="icon-text site-opt">
         {{{icon "footer" "clock" 16 16}}}
         <span>
@@ -58,6 +59,7 @@
           </small>
         </span>
       </li>
+      --}}
     </ul>
 
     <div class="links-section">
@@ -76,7 +78,7 @@
 
   <div class="footer-end">
     <div>
-      Copyright &copy; {{year}} {{site.author}}{{#if allRightsReserved}}. All rights reserved.{{/if}}
+      Copyright &copy; 2022–{{year}} {{site.author}}{{#if allRightsReserved}}. All rights reserved.{{/if}}
     </div>
     <div class="flex-space"></div>
     <div>
@@ -84,6 +86,7 @@
         target="_blank"
         rel="nofollow noopener noreferrer"
         referrerpolicy="origin"
+        class="icon-text"
       >
         {{{icon "footer" "code" 16 16}}} Source Code
       </a>
