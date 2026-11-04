@@ -1,5 +1,5 @@
 import { FS, root } from "@dev/util";
-import siteData from "../site";
+import platforms from "../site-platforms";
 import { resolve } from "path";
 
 for (const env of [
@@ -70,7 +70,7 @@ async function fetchGH<T>(url: string) {
 
 while (more) {
   const
-    url = `https://api.github.com/users/${siteData.platforms.gh.user}/repos?per_page=100&page=${page}`
+    url = `https://api.github.com/users/${platforms.gh.user}/repos?per_page=100&page=${page}`
   , res = await fetchGH<any[]>(url)
   ;
 
@@ -120,7 +120,7 @@ function getContribsStreak(arr: number[]): number {
 function getContribsQuery(dateFrom?: string, dateTo?: string): string {
   return `
 {
-  user(login: "${siteData.platforms.gh.user}") {
+  user(login: "${platforms.gh.user}") {
     contributionsCollection${(dateFrom && dateTo) ? `(from: "${dateFrom}", to: "${dateTo}")` : ''} {
       contributionCalendar {
         totalContributions

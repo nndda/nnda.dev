@@ -115,11 +115,7 @@ const DATA: () => Promise<SiteData> = async () => { return _.merge({
     ],
   },
 
-  platforms: {
-    gh: {
-      user: "nndda",
-    },
-  },
+  platforms: await import("./site-platforms"),
 
   commitSHA: commitSHA,
 
