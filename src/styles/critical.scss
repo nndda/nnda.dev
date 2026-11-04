@@ -24,6 +24,12 @@ svg.loaded {
   opacity: 1;
 }
 
+:is(p, .as-p) {
+  & > :is(a, svg, span, b, i, s, strong, em) {
+    margin-inline: .5em;
+  }
+}
+
 .loader {
   display: flex;
 

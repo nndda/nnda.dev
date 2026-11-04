@@ -51,7 +51,7 @@ export default [
     ],
     category: "Web Project",
     platform: "Web",
-    description: "Catalogue of <b>CSS UI components</b>, tweaks, and resources tailored specifically for" + icons["itch"] + "itch.io pages.",
+    description: "Catalogue of<b>CSS UI components,</b>tweaks, and resources tailored specifically for" + icons["itch"] + "itch.io pages.",
     menu: [
       {
         type: "link",
