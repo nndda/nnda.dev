@@ -10,10 +10,16 @@
     "skipLibCheck": true,
     "types": [
       "node",
-      "bun"
+      "bun",
+      "vite/client"
     ],
     "paths": {
       "@dev/util": ["./dev/util.ts"],
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@fonts/*": ["./src/pages/assets/fonts/*"],
       "@runtime": ["./src/scripts/runtime.ts"]
     }
   },
@@ -24,7 +30,6 @@
     "./node_modules/",
     "./workers/",
     "./dist/",
-    "./src/scripts/build/icons/**/*.js",
     "./src/scripts/build/out/**/*.js"
   ]
 }

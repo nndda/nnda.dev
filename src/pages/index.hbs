@@ -6,9 +6,9 @@
 
   {{> "head" }}
 
-  {{!-- {{ stylesheet "/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }} --}}
+  {{!-- {{ stylesheet "@/styles/main.animations.scss" "(prefers-reduced-motion: no-preference)" }} --}}
 
-  <link rel="preload" as="image" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="./assets/logo.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
 </head>
@@ -40,6 +40,6 @@
 
   {{> "footer" }}
 
-  {{ script "/scripts/_home.ts" true }}
+  {{ script "@/scripts/_home.ts" true }}
 </body>
 </html>

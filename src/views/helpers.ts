@@ -43,7 +43,7 @@ export default {
 
   script: (file: string, defer: boolean = false) => {
     return new Handlebars.SafeString(`
-      <script type="text/javascript" src="${file}" ${defer ? `defer=""` : ""}></script>
+      <script type="module" src="${file}" ${defer ? `defer=""` : ""}></script>
     `);
   },
 
@@ -52,7 +52,6 @@ export default {
 
     return new Handlebars.SafeString(`
       <title>${title}</title>
-      <meta name="title" content="${title}">
       <meta property="og:title" content="${title}">
     `);
   },
@@ -61,7 +60,6 @@ export default {
     if (desc === "") return "";
 
     return new Handlebars.SafeString(`
-      <meta name="description" content="${desc}">
       <meta property="og:description" content="${desc}">
     `);
   },
@@ -79,7 +77,7 @@ export default {
   },
 
   img: (src: string, alt: string) => {
-    const srcAbs: string = Path.abs(join("./src/", src));
+    const srcAbs: string = Path.abs(join("./src/pages/", src));
 
     if (!FS.exists(srcAbs)) { throw Error(`Image ${srcAbs} doesn't exists`); }
 
