@@ -43,23 +43,24 @@ for (let n = projectsData.length; 0 < n--;) {
   const
     data = projectsData[n]
   , el = projEls[n]
-  , html = `
-      <h2 class="project-title">
-        <a href="${data.url}" ${data.url.startsWith("https://") ? `target="_blank"` : ""} rel="noopener noreferrer" referrerpolicy="origin">${
+  , html = `${[
+    ]}<h2 class="project-title">${[
+
+      ]}<a href="${data.url}" ${data.url.startsWith("https://") ? `target="_blank"` : ""} rel="noopener noreferrer" referrerpolicy="origin">${
           (
             data.logo ? `<img width="40" height="40" src="${data.logo}">` : ""
           ) + data.name + headingIcon
-        }</a>
-      </h2>
-      <ul class="labels-container nostyle">${
+      }</a>${[
+
+    ]}</h2>${[
+
+      ]}<ul class="labels-container nostyle">${
           data.tags.map((val: string) => {
-            return `
-              <li class="project-label ${val}">${val}</li>
-            `;
+            return `<li class="project-label ${val}">${val}</li>`;
           }).join("")
-      }</ul>
-      <p>${data.description}</p>
-     ` + (
+      }</ul>${[
+
+      ]}<p>${data.description}</p>` + (
       data.menu ? `<ul class="project-menu nostyle">${
         data.menu.map(item => {
           return "<li>" + (

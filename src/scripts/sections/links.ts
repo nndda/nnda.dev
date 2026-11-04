@@ -27,14 +27,9 @@ const
 
 for (const group of linksData) {
   for (const link of group.links) {
-    linksHTMLStr.push(`
-      <a href="https://${link.url}"
-        target="_blank"
-        rel="me nofollow noopener noreferrer"
-        referrerpolicy="no-referrer"
-        data-link-name="${link.name}"
-      >
-        ${
+    linksHTMLStr.push(`${[
+
+      ]}<a href="https://${link.url}" target="_blank" rel="me nofollow noopener noreferrer" referrerpolicy="no-referrer" data-link-name="${link.name}">${
           (link.icon ?? "links") in icons
             ? buildSvg(
                 icons[link.icon ?? "links"],
@@ -42,16 +37,23 @@ for (const group of linksData) {
                 "links",
               )
             : `<img src="${String(link.icon)}" alt="" width="19" height="19">`
-        }
-        <span>
-          ${link.name}<br>
-          <code>
-            ${link.username || link.url}
-          </code>
-        </span>
-        ${link.inactive ? buildSvg(icons["skull"], 24, 24, "inactive") : ""}
-      </a>
-    `);
+        }${[
+
+        ]}<span>${[
+
+          ]}${link.name}<br>${[
+
+          ]}<code>${[
+            ]}${link.username || link.url}${[
+          ]}</code>${[
+
+        ]}</span>${[
+
+        ]}${link.inactive ? buildSvg(icons["skull"], 24, 24, "inactive") : ""}${[
+
+      ]}</a>${[
+
+    ]}`);
   }
 }
 
