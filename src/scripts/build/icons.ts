@@ -413,6 +413,7 @@ createMiniIconDefs("shop", {
 createMiniIconDefs("footer.attributions", {
   "@fortawesome/fontawesome-svg-core": siFontawesome.svg,
   "autoprefixer": siAutoprefixer.svg,
+  "bun.com": siBun.svg,
   // "dotenv": siDotenv.svg,
   // "eslint": siEslint.svg,
   "handlebars": siHandlebarsdotjs.svg,
@@ -422,7 +423,8 @@ createMiniIconDefs("footer.attributions", {
   "simple-icons": siSimpleicons.svg,
   "stylelint": siStylelint.svg,
   "typescript": siTypescript.svg,
-  "webpack": siWebpack.svg,
+  // "webpack": siWebpack.svg,
+  "vite": siVite.svg,
   // "yaml": siYaml.svg,
   "wrangler": siCloudflare.svg,
 });

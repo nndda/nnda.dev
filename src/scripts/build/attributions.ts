@@ -23,6 +23,7 @@ const
       "SAWARATSUKI/KawaiiLogos",
     ],
     others: [
+      "bun.com",
       "css-loaders.com",
     ],
   }
