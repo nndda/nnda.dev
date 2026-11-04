@@ -3,7 +3,7 @@ import os
 from fontTools import subset
 from fontTools.ttLib.ttFont import TTFont
 
-fonts_dir = os.path.abspath(os.path.join(__file__, "../../../assets/fonts"))
+fonts_dir = os.path.abspath(os.path.join(__file__, "../../../pages/assets/fonts"))
 
 alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 num = "1234567890"
