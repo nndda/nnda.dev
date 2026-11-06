@@ -1,25 +1,26 @@
 main {
   min-height: 100vh;
+
+  & > h1 {
+    flex-direction: column;
+    margin-top: -2em;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 4em;
+    font-weight: lighter;
+    text-align: center;
+    letter-spacing: .2ch;
+
+    & > a {
+      margin-top: .5em;
+      font-size: .5em;
+      letter-spacing: 0;
+    }
+  }
 }
 
-main, main > h1 {
+main,
+main > h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-main > h1 {
-  flex-direction: column;
-  margin-top: -2em;
-  text-align: center;
-  font-size: 4em;
-  font-family: "Noto Sans JP", sans-serif;
-  font-weight: lighter;
-  letter-spacing: .2ch;
-}
-
-main > h1 > a {
-  margin-top: .5em;
-  font-size: .5em;
-  letter-spacing: 0;
 }
