@@ -10,49 +10,49 @@
             </div>
 
             <div class="status">
-              <span>{{ site.authorProfile.status.icon }}</span>
-              {{ site.authorProfile.status.text }}
+              <span>{{ author.status.icon }}</span>
+              {{ author.status.text }}
             </div>
           </div>
         </div>
 
         <h1 class="author-name anim once fade float-right">
-          {{ site.author }}
+          {{ author.name }}
           <small>です~!</small>
         </h1>
 
         <div class="author-desc anim once fade float-up as-p">
-          {{{ site.authorProfile.description }}}
+          {{{ author.description }}}
         </div>
 
         <ul class="author-info nostyle">
           <li class="icon-text anim once">
             {{{ icon "profile" "volume-high" 20 20 }}}
-            {{{ site.authorProfile.pronunciation }}}
+            {{{ author.pronunciation }}}
           </li>
 
           <li class="icon-text anim once">
             {{{ icon "profile" "user-tag" 20 20 }}}
-            {{{ site.authorProfile.pronouns }}}
+            {{{ author.pronouns }}}
           </li>
 
           <li class="icon-text anim once">
             {{{icon "profile" "clock" 20 20}}}
-            <span id="clock-timezone" data-timezone="{{site.authorProfile.timezone}}">
+            <span id="clock-timezone" data-timezone="{{author.timezone}}">
               00:00:00
             </span>
           </li>
 
           <li class="icon-text anim once">
             {{{ icon "profile" "location-dot" 20 20 }}}
-            {{{ site.authorProfile.location }}}
+            {{{ author.location }}}
             <span>
             </span>
           </li>
 
           <li class="icon-text anim once">
             {{{ icon "profile" "language" 20 20 }}}
-            {{{ site.authorProfile.languages }}}
+            {{{ author.languages }}}
           </li>
 
           <li

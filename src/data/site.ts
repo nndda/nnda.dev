@@ -4,25 +4,23 @@
 interface SiteData {
   repoURL: string,
 
-  site: {
-    author: string,
-    title: string,
-    description: string,
-    note: string,
+  title: string,
+  description: string,
+  note: string,
 
-    authorProfile: {
-      status: {
-        icon: string,
-        text: string,
-      },
-
-      description: string,
-      pronouns: string,
-      pronounciation: string,
-      languages: string,
-      location: string,
-      timezone: string,
+  author: {
+    name: string,
+    status: {
+      icon: string,
+      text: string,
     },
+
+    description: string,
+    pronouns: string,
+    pronounciation: string,
+    languages: string,
+    location: string,
+    timezone: string,
   },
 
   allRightsReserved: boolean,
@@ -62,28 +60,26 @@ interface SiteData {
 const DATA: () => Promise<SiteData> = async () => { return _.merge({
   repoURL: "https://github.com/nndda/nnda.dev",
 
-  site: {
-    author: "nnda",
-    title: "nnda's corner of the internet",
-    description: "My little slice of the internet. An all-in-one hub for my stuff. Where I dump my projects, illusts., and my yapping.",
+  title: "nnda's corner of the internet",
+  description: "My little slice of the internet. An all-in-one hub for my stuff. Where I dump my projects, illusts., and my yapping.",
+  note: `This website is licensed under the GNU AGPLv3.\nThe source code is available in the public repository.`,
 
-    note: `This website is licensed under the GNU AGPLv3.\nThe source code is available in the public repository.`,
-
-    authorProfile: {
-      status: {
-        icon: "🛌",
-        text: "eepy",
-      },
-
-      description: `👈 A <s>self-proclaimed</s><ul class="nostyle word-carousel"><li>game developer</li><li>front-end web dev</li><li>digital illustrator</li></ul>`,
-
-      pronouns: "he/him",
-      pronunciation: "/ˈnæn.də/",
-      languages: "ID, EN",
-      location: "ID",
-      timezone: "Asia/Jakarta",
+  author: {
+    name: "nnda",
+    status: {
+      icon: "🛌",
+      text: "eepy",
     },
+
+    description: `👈 A <s>self-proclaimed</s><ul class="nostyle word-carousel"><li>game developer</li><li>front-end web dev</li><li>digital illustrator</li></ul>`,
+
+    pronouns: "he/him",
+    pronunciation: "/ˈnæn.də/",
+    languages: "ID, EN",
+    location: "ID",
+    timezone: "Asia/Jakarta",
   },
+
 
   allRightsReserved: false,
 
