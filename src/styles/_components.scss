@@ -2,9 +2,6 @@
 @use "sass:color";
 
 .icon-text {
-  display: inline-flex;
-  gap: .3em;
-  align-items: center;
   white-space: nowrap;
 
   & > svg {

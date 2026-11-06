@@ -10,7 +10,7 @@ const
   hb = Handlebars.create()
 , swcOpt: Options = {
     collapseBooleanAttributes: true,
-    collapseWhitespaces: "all",
+    collapseWhitespaces: "conservative",
     minifyCss: true,
     minifyJs: true,
     minifyJson: true,
