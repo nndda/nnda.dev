@@ -1,42 +1,25 @@
+import { observe } from "./runtime";
+
 export default function (d: Document) {
   const
-    headerClasses = d.querySelector("body > header")?.classList
+    headerClasses = d.querySelector("body > header")!.classList
+  , backTop = d.getElementById("back-top") as HTMLButtonElement
+  , headerCollapseEl = d.querySelector(".header-collapse")!
   ;
 
-  if (headerClasses) {
-    const
-      backTop: HTMLButtonElement = d.getElementById("back-top") as HTMLButtonElement
-    ;
-
-    let
-      toggled: boolean
-    , ticking: boolean = false
-    ;
-
-    backTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+  backTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
+  });
 
-    function scrollEv() {
-      if (!ticking) {
-        ticking = true
+  observe(entry => {
 
-        requestAnimationFrame(() => {
-          toggled = (window.scrollY / window.innerHeight) > 0.6
+    const active = entry.intersectionRatio <= 0;
 
-          headerClasses!.toggle("active", toggled);
-          backTop.classList.toggle("active", toggled);
+    headerClasses.toggle("active", active);
+    backTop.classList.toggle("active", active);
 
-          ticking = false;
-        });
-      }
-    }
-
-    scrollEv();
-
-    window.addEventListener("scroll", scrollEv, { passive: true });
-  }
+  })(headerCollapseEl);
 };
