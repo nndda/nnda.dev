@@ -3,25 +3,22 @@ export function initIcons(
   selector: string,
   iconSets: Record<string, string[]>,
 ) {
-  const
-    iconEls = document.querySelectorAll("svg." + selector + "[data-i]:not(.loaded)") as NodeListOf<SVGElement>
-  ;
+  for (const iconEl of document.querySelectorAll("svg." + selector + "[data-i]:not(.loaded)") as NodeListOf<SVGElement>) {
+    const
+      [ viewBox, pathD ] = iconSets[iconEl.getAttribute("data-i")!]
+    ;
 
-  requestAnimationFrame(() => {
-    for (const iconEl of iconEls) {
-      const
-        [ viewBox, pathD ] = iconSets[iconEl.getAttribute("data-i")!]
-      ;
+    iconEl.role = "img";
+    iconEl.ariaHidden = "true";
+    iconEl.setAttribute("focusable", "false");
+    iconEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    iconEl.setAttribute("viewBox", viewBox);
+    iconEl.innerHTML = `<path fill="currentColor" d="` + pathD + `"></path>`;
 
-      iconEl.role = "img";
-      iconEl.ariaHidden = "true";
-      iconEl.setAttribute("focusable", "false");
-      iconEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-      iconEl.setAttribute("viewBox", viewBox);
-      iconEl.innerHTML = `<path fill="currentColor" d="` + pathD + `"></path>`;
+    requestAnimationFrame(() => {
       iconEl.classList.add("loaded");
-    }
-  });
+    });
+  }
 };
 
 
