@@ -43,17 +43,21 @@
 
 }
 
-body > header.active {
-  --stick-off: 0;
+body > header {
+  transform: translateY(1.25em);
 
-  transform: translateY(0);
+  &.active {
+    --stick-off: 0;
 
-  &::after {
-    opacity: 1;
-  }
+    transform: translateY(0);
 
-  & .logo {
-    transform: scale(.7);
+    &::after {
+      opacity: 1;
+    }
+
+    & .logo {
+      transform: scale(.7);
+    }
   }
 }
 

@@ -16,8 +16,6 @@ body > header {
   padding: $header-padding-outer 2em;
   font-size: 1.1em;
 
-  transform: translateY(1.25em);
-
   transition: transform .6s ease;
 
   & .logo {
