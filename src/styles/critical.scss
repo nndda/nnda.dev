@@ -15,6 +15,14 @@
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
 
+:is(img, svg[src]) {
+  transition: opacity .5s ease;
+
+  &:not(.loaded) {
+    opacity: 0;
+  }
+}
+
 svg[data-i] {
   opacity: 0;
   transition: opacity .5s ease;

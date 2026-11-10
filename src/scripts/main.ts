@@ -44,4 +44,27 @@ export default function (d: Document) {
     () => import("./sections/footer"),
     () => loadCSS(styleFooter),
   );
+
+  const passiveOnce = {
+    once: true,
+    passive: true,
+  }
+
+  for (const img of d.querySelectorAll(":is(img, svg[src]):not(.loaded)") as NodeListOf<HTMLImageElement>) {
+
+    function loadClass() {
+      img.classList.add("loaded");
+    }
+
+    if (img.complete) {
+
+      loadClass();
+
+    } else {
+
+      img.addEventListener("load", loadClass, passiveOnce);
+
+    }
+  }
+
 }
