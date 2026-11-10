@@ -28,6 +28,10 @@
   background: $secondary;
 }
 
+body {
+  background: black;
+}
+
 svg {
   box-sizing: content-box;
   display: inline-block;
@@ -91,14 +95,11 @@ main {
 
   & > section {
     position: relative;
-    padding-right: .5em;
-    padding-left: .5em;
+    padding-inline: .5em;
 
     & > .section-inner {
       width: 100%;
       max-width: 1100px;
-      // padding-left: 1em;
-      // padding-right: 1em;
       padding: 2em 1em;
       margin: 0 auto;
 
@@ -110,17 +111,7 @@ main {
 }
 
 h1 {
-  font-size: 2em;
   font-weight: 200;
-}
-
-.heading-mobile {
-  padding: 1.5em;
-
-  & > h1 {
-    margin: 0;
-    font-size: 2em;
-  }
 }
 
 // canvas[data-generated="true"] {
@@ -209,7 +200,7 @@ ul.cta-container {
   $bg: rgba($background-dark, 0.75);
 
   position: absolute;
-  inset: calc(50% - 2em) -1.5em;
+  inset: calc(50% - 3em) -2em;
 
   width: fit-content;
   height: fit-content;
@@ -223,7 +214,7 @@ ul.cta-container {
 
   box-shadow: 0 0 1.25em $bg;
 
-  backdrop-filter: blur(8px);
+  // backdrop-filter: blur(8px);
 
   rotate: -90deg;
 
@@ -243,7 +234,6 @@ ul.cta-container {
 .scroll-down {
   & > svg {
     margin: auto;
-
     animation: 2s mouse-wiggle ease infinite;
   }
 
@@ -301,38 +291,16 @@ ul.cta-container {
 
 .self-cont {
   position: absolute;
-  top: 0;
-  left: 1em;
+  inset: 0 5em;
   display: flex;
   flex-direction: column;
   align-items: end;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
 
-  // mix-blend-mode: plus-lighter;
-
-  transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
-  /* transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1); */
-  // will-change: tranform;
-
-  & > .inner {
-    margin-right: 3em;
-  }
-
   & .titles > li {
-    margin: 0;
     font-size: 3em;
     opacity: .8;
-
-    transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
-    /* transition: .8s transform cubic-bezier(0.25, 1, 0.5, 1); */
-    // will-change: tranform;
-
-    // &::first-letter {
-    //   font-weight: bold;
-    // }
   }
 
   & .name-cont {
@@ -342,7 +310,6 @@ ul.cta-container {
       position: absolute;
       top: -2em;
       left: -13em;
-      // font-size: 15em;
       height: 15em;
       opacity: .25;
     }
@@ -355,28 +322,30 @@ ul.cta-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100%;
+  contain: paint;
   pointer-events: none;
 
   & > .fg {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     z-index: 1;
+
     width: 100%;
-    min-height: 100%;
-    background: rgba($background-dark, 0.6);
+    height: 100%;
+
+    $bg-gradient: rgba($background-dark, 0.8);
+    background:
+      linear-gradient(195deg, #{$bg-gradient} var(--p1, 10%), transparent var(--p2, 49%))
+    , linear-gradient(0deg, #{$bg-gradient} 3%, transparent 15%)
+    , linear-gradient(17.5deg, #{$bg-gradient} 9%, transparent 23.5%)
+    , radial-gradient(circle at 0% 0%, #{$bg-gradient} 2%, transparent 35%)
+    ;
+
     // NOTE: Disabled. Chrome absolutely despise this
     // backdrop-filter: blur(13em) brightness(.8);
-    mask-image:
-      linear-gradient(195deg, #000 var(--p1, 10%), transparent var(--p2, 49%))
-    , linear-gradient(0deg, #000 2%, transparent 15%)
-    , linear-gradient(17.5deg, #000 9%, transparent 23.5%)
-    , radial-gradient(circle at 0% 0%, #000 2%, transparent 35%)
-    ;
-    mask-mode: alpha;
-    will-change: translate;
+    // NOTE: even this one too :/
+    // backdrop-filter: blur(4px);
   }
 
   & > img {
@@ -386,8 +355,18 @@ ul.cta-container {
     object-fit: cover;
     object-position: center;
 
-    transition: .8s translate cubic-bezier(0.25, 1, 0.5, 1);
+    transition:
+      all .8s cubic-bezier(0.25, 1, 0.5, 1)
+    , opacity .3s ease
+    , filter 1s ease
+    ;
     will-change: translate;
+
+    &.not-loaded {
+      filter: blur(1em);
+      transform: translateY(5em);
+      scale: 1.2;
+    }
   }
 }
 
@@ -465,6 +444,10 @@ ul.cta-container {
     }
   }
 
+  .self-cont {
+    translate: 50vw -5vh;
+  }
+
   .illust-cont {
     & > .fg {
       --p1: 2%;
@@ -478,7 +461,7 @@ ul.cta-container {
 
   .scroll-down-cont {
     pointer-events: none;
-    transform: translate(-.5em, -10vh);
+    translate: .25em -5vw;
   }
 };
 
@@ -574,27 +557,27 @@ ul.cta-container {
   }
 }
 
-@media (width >= 1700px) {
-  body::before {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    content: "";
-    background: $background-dark;
-    background-image: url(#{"https://s2.svgbox.net/heropatterns.svg?ic=hideout&color=eee1"});
-    background-position-y: 100vw;
-    background-size: 10vw;
-    animation: u 100s linear infinite;
-  }
+// @media (width >= 1700px) {
+//   body::before {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     content: "";
+//     background: $background-dark;
+//     background-image: url(#{"https://s2.svgbox.net/heropatterns.svg?ic=hideout&color=eee1"});
+//     background-position-y: 100vw;
+//     background-size: 10vw;
+//     animation: u 100s linear infinite;
+//   }
 
-  @keyframes u {
-    100% {
-      background-position-y: -100vw;
-    }
-  }
-}
+//   @keyframes u {
+//     100% {
+//       background-position-y: -100vw;
+//     }
+//   }
+// }
 
 @include mobile.style;
 @include desktop.style;
