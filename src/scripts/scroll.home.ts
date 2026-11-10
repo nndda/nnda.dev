@@ -1,39 +1,39 @@
-import scroll from "./scroll";
-
 export default function (d: Document) {
-  scroll(d);
+
+  import("./scroll")
+    .then(({ default: scroll }) => {
+      scroll(d);
+    })
+  ;
 
   const
     illustContStyle = (d.querySelector(".illust-cont > img") as HTMLElement).style
   ;
 
   let
-    scrollPosition = 0
-  , scrollRatio = 0
-  , ticking = false
+   scrollRatio = 0
+  , windowHeight = 0
   ;
 
   function scrollTransform() {
-    scrollRatio = scrollPosition / window.innerHeight;
-
-    if (scrollRatio <= 1) {
-      illustContStyle.translate = `0 -${scrollRatio * 250}px`;
-    }
-
-    ticking = false;
+    illustContStyle.translate = `0 -${scrollRatio * 230}px`;
   }
 
+  function resizeEv() {
+    windowHeight = window.innerHeight;
+  }
 
   function scrollEv() {
-    if (!ticking) {
-      scrollPosition = window.scrollY;
-      ticking = true;
+    scrollRatio = window.scrollY / windowHeight;
 
+    if (scrollRatio <= 1) {
       requestAnimationFrame(scrollTransform);
     }
   }
 
+  resizeEv();
   scrollEv();
 
+  window.addEventListener("resize", resizeEv, { passive: true });
   window.addEventListener("scroll", scrollEv, { passive: true });
 }
