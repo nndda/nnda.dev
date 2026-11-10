@@ -172,6 +172,7 @@ ul.cta-container {
 
   background: var(--col);
 
+  // border: 1px solid $border;
   border-radius: 16px;
 
   box-shadow: 0 0 1em $bg;
@@ -203,6 +204,41 @@ ul.cta-container {
   bottom: 2em;
   z-index: 3;
   font-size: 2em;
+}
+
+.human-badge {
+  $bg: rgba($background-dark, 0.75);
+
+  position: absolute;
+  inset: calc(50% - 2em) -1.5em;
+
+  width: fit-content;
+  height: fit-content;
+
+  padding: .5em 1em .75em;
+
+  background: $bg;
+
+  // border: 1px solid $border;
+  border-radius: 16px;
+
+  box-shadow: 0 0 1.25em $bg;
+
+  backdrop-filter: blur(8px);
+
+  rotate: -90deg;
+
+  & li {
+    font-weight: 700;
+
+    &:first-child {
+      color: $primary;
+    }
+
+    &:last-child {
+      color: $secondary;
+    }
+  }
 }
 
 .scroll-down {
