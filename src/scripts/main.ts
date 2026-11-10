@@ -50,7 +50,7 @@ export default function (d: Document) {
     passive: true,
   }
 
-  for (const img of d.querySelectorAll(":is(img, svg[src]):not(.loaded)") as NodeListOf<HTMLImageElement>) {
+  for (const img of d.querySelectorAll("img") as NodeListOf<HTMLImageElement>) {
 
     function loadClass() {
       img.classList.add("loaded");
