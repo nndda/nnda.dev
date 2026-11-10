@@ -50,10 +50,10 @@ export default function (d: Document) {
     passive: true,
   }
 
-  for (const img of d.querySelectorAll("img") as NodeListOf<HTMLImageElement>) {
+  for (const img of d.querySelectorAll("img.not-loaded") as NodeListOf<HTMLImageElement>) {
 
     function loadClass() {
-      img.classList.add("loaded");
+      img.classList.remove("not-loaded");
     }
 
     if (img.complete) {
