@@ -107,6 +107,16 @@ body > header {
   z-index: 99;
 }
 
+.ext-links {
+  & a[href="https://nnda.itch.io"] {
+    color: #fa5c5c;
+  }
+
+  & a[href="https://bsky.app/profile/nnda.dev"] {
+    color: #1185FE;
+  }
+}
+
 #back-top {
   --col: #{rgba($text-secondary, .16)};
 
