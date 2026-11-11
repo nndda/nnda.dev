@@ -240,7 +240,7 @@
 .stacks-lists {
   padding-bottom: 1em;
 
-  // & > ul.nostyle {
+  // & > ul {
   //   flex-wrap: wrap;
   //   gap: 1.5em;
   // }
@@ -271,7 +271,7 @@
 
 
 .socials-lists {
-  & > ul.nostyle {
+  & > ul {
     column-count: 2;
   }
 }

@@ -1,6 +1,6 @@
 <header>
   <nav id="navbar" class="shown">
-    <ul class="nostyle path">
+    <ul class="path">
       <li>
         <a href="/" class="logo">
           <img
@@ -27,7 +27,7 @@
       {{/if}}
     </ul>
 
-    <ul class="nostyle">
+    <ul>
       {{#each nav.links}}
         {{#unless this.external}}
           <li>
@@ -49,7 +49,7 @@
 
     <div class="vseparator"></div>
 
-    <ul class="nostyle ext-links">
+    <ul class="ext-links">
       {{#each nav.links}}
         {{#if this.external}}
           <li>

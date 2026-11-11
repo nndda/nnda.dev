@@ -34,12 +34,6 @@
   flex-basis: 100%;
 }
 
-ul.nostyle {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
 .scrollbar-secondary {
   @include style-scrollbar($secondary);
 }

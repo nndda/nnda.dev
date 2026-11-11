@@ -16,7 +16,7 @@
       {{{ icon "global" "skull" 16 16 }}}
       means am not really active on the platform (yet).
     </p>
-    <ul class="nostyle">
+    <ul>
       {{#each data.links}}
         <li class="links-group link-{{@index}}">
           <h2>
@@ -29,7 +29,7 @@
           <p>
             {{{this.desc}}}
           </p>
-          <ul class="nostyle">
+          <ul>
             {{#each this.links}}
               {{#if this.main}}
                 <li class="skeleton link-item card main"></li>

@@ -488,7 +488,7 @@ $action-bg: color.mix($background, $background-dark, 50%);
 }
 
 .stacks-lists {
-  & > ul.nostyle {
+  & > ul {
     flex-wrap: wrap;
     gap: 1.5em;
   }

@@ -13,10 +13,10 @@
       Digital illustrations, OCs, some fanarts, and more OCs.
     </p>
 
-    <ul class="illust-items nostyle">
+    <ul class="illust-items">
       {{#each data.illusts.home }}
         <li class="illust-gall {{this.type}}">
-          <ul class="illust-gall-inner nostyle">
+          <ul class="illust-gall-inner">
             {{#each this.items }}
               <li class="illust">
                 <figure>
@@ -25,7 +25,7 @@
                   </div>
 
                   <figcaption>
-                    <ul class="chr nostyle">
+                    <ul class="chr">
                       {{#each this.chr}}
                         <li>{{{this}}}</li>
                       {{/each}}
