@@ -1,20 +1,27 @@
 import { importLazy, initIcons, loadCSS } from "@runtime";
 
-import initializeInputs from "./input";
 import styleFooter from "../styles/sections/_footer.lazy.scss?url";
 
-import icons from "./build/icons/global";
-initIcons("global", icons);
-
 export default function (d: Document) {
-  const
-    navbarClasses = d.getElementById("navbar")?.classList
+
+  import("./build/icons/global")
+    .then(({ default: icons }) => {
+      initIcons("global", icons);
+    })
   ;
 
-  if (navbarClasses) {
-    const
-      collapseArea: HTMLElement = d.getElementById("collapse-area")!
+  if (d.querySelector("input")) {
+    import("./input")
+      .then(({ default: initInput }) => {
+        initInput(d);
+      })
     ;
+  }
+
+  const navbarClasses = d.getElementById("navbar")?.classList;
+
+  if (navbarClasses) {
+    const collapseArea: HTMLElement = d.getElementById("collapse-area")!;
 
     d.getElementById("navbar-button")!.addEventListener("click", (): void => {
       navbarClasses.add("toggled");
@@ -33,10 +40,7 @@ export default function (d: Document) {
     for (const navLink of d.querySelectorAll("#navbar .nav-link")) {
       navLink.addEventListener("click", closeMobileNavbar);
     }
-
   }
-
-  initializeInputs(d);
 
   importLazy(
     d.querySelector("body > footer")!,
@@ -48,7 +52,7 @@ export default function (d: Document) {
   const passiveOnce = {
     once: true,
     passive: true,
-  }
+  };
 
   for (const img of d.querySelectorAll("img.not-loaded") as NodeListOf<HTMLImageElement>) {
 
