@@ -1,6 +1,6 @@
 import { buildSvg, initIcons, observe } from "@runtime";
 
-import packageJSON from "../build/out/attribution.json" with { type: "json" };
+import attributionData from "../build/out/attribution.json" with { type: "json" };
 
 import icons from "../build/icons/footer";
 import iconsAttr from "../build/icons/footer.attributions";
@@ -22,11 +22,14 @@ function getLastUpdatedDays(date: Date) {
     ms = now - date.getTime()
   , days = Math.floor(ms / 864e5)
   , hours = Math.floor((ms % 864e5) / 36e5)
+  , s = hours === 1 ? "" : "s"
   ;
 
-  return days <= 0
-    ? (hours <= 0 ? "<1 hour ago" : `${hours} hour${hours === 1 ? "" : "s"} ago`)
-    : `${days} day${days === 1 ? "" : "s"}, ${hours} hour${hours === 1 ? "" : "s"} ago`;
+  return (
+    days <= 0
+      ? (hours <= 0 ? "<1 hour" : `${hours} hour${s}`)
+      : `${days} day${days === 1 ? "" : "s"}` + ( hours === 0 ? "" : `, ${hours} hour${s}`)
+  ) + " ago";
 }
 
 initIcons("footer", icons);
@@ -51,33 +54,31 @@ const
 
 , pkgAttrElCont: HTMLElement = d.querySelector("footer>.packages>.inner")!
 
-, pkgAttrHTMLStr = cached ? cached : packageJSON.slice(packageJSON[0] as unknown as number + 1).map((pkg, id) => {
-    console.log("constructing string");
+, pkgAttrHTMLStr = cached ? cached : attributionData
+    .slice(attributionData[0] as unknown as number + 1)
+    .map((pkg, id) => {
+      if (id === attributionData[pkgAttrIdCurrent]) {
+        pkgAttrIdCurrent++;
+      }
 
-    const currentPkgId = packageJSON[pkgAttrIdCurrent];
+      return `<a href="https://${
+        (
+            pkgAttrIdCurrent === 1
+          ? `www.npmjs.com/package/`
 
-    if (id === currentPkgId) {
-      pkgAttrIdCurrent++;
-    }
+          : pkgAttrIdCurrent === 2
+          ? `pypi.org/project/`
 
-    const hasIcon = pkg in iconsAttr;
+          : pkgAttrIdCurrent === 3
+          ? `github.com/`
 
-    let pkgUrl: string;
-
-    if (pkgAttrIdCurrent === 1) {
-      pkgUrl = `www.npmjs.com/package/` + pkg;
-    } else if (pkgAttrIdCurrent === 2) {
-      pkgUrl = `pypi.org/project/` + pkg;
-    } else if (pkgAttrIdCurrent === 3) {
-      pkgUrl = `github.com/` + pkg;
-    } else {
-      pkgUrl = pkg as string;
-    }
-
-    return `<a href="https://${pkgUrl}" target="_blank" rel="nofollow noopener noreferrer" referrerpolicy="no-referrer" class="${id} ${hasIcon ? "has-icon" : ""}">${
-      (hasIcon) ? buildSvg(iconsAttr[(pkg as keyof typeof iconsAttr)], 13, 13) : ""
-    }${pkg} </a>`;
-  }).join("")
+          : ""
+        ) + pkg
+      }" target="_blank" rel="nofollow noopener noreferrer">${
+        (pkg in iconsAttr) ? buildSvg(iconsAttr[(pkg as keyof typeof iconsAttr)], 13, 13) : ""
+      }${pkg}</a>`;
+      })
+    .join("")
 ;
 
 
