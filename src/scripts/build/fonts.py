@@ -59,7 +59,7 @@ fonts = {
 
     # Decorative
     "hi-melody": {
-      "text": """
+      "text": alpha + punc + num + """
         です
         ~!
       """,
