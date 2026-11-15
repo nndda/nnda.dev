@@ -50,7 +50,9 @@ ul.labels {
 
 main {
   position: relative;
-  padding-inline: 1em;
+  display: flex;
+  flex-direction: column;
+  // padding-inline: 1em;
 
   & > h1, ul.metadata {
     position: absolute;;
@@ -73,16 +75,6 @@ main {
     position: absolute;
     top: -.75em;
     left: 0;
-  }
-
-  & section {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    // margin: 1em -1em;
-    margin-block: 5em;
-    font-size: 1.1em;
   }
 
   // & aside {
@@ -119,6 +111,20 @@ main {
       }
     }
   }
+}
+
+#blog-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100%;
+
+  margin-block: 5em;
+  font-size: 1.1em;
+}
+
+#announcement {
+  padding-block: 2em;
 }
 
 a[href^="https://handlebarsjs.com/"] {
