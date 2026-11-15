@@ -7,14 +7,14 @@ on:
       - dev
     paths:
       - 'package.json'
-      - 'config/.licensed.yml'
+      - 'dev/config/.licensed.yml'
       - '.github/workflows/licensed.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'package.json'
-      - 'config/.licensed.yml'
+      - 'dev/config/.licensed.yml'
       - '.github/workflows/licensed.yml'
   workflow_dispatch:
 
@@ -52,5 +52,5 @@ jobs:
 
       - name: Check licenses
         run: |
-          ./vendor/bundle/bin/licensed cache --config=./config/.licensed.yml && \
-          ./vendor/bundle/bin/licensed status --config=./config/.licensed.yml
+          ./vendor/bundle/bin/licensed cache --config=./dev/config/.licensed.yml && \
+          ./vendor/bundle/bin/licensed status --config=./dev/config/.licensed.yml

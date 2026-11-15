@@ -20,7 +20,7 @@ updates:
           - major
 
   - package-ecosystem: pip
-    directory: config/
+    directory: dev/config/
     schedule:
       interval: weekly
     versioning-strategy: auto

@@ -14,8 +14,8 @@ src/data/illustrations/out/**/*.ts
 !tsconfig*.json
 
 # Proprietary configs, and assets
-!config/**/*.json
-wrangler.toml
+!dev/config/**/*.json
+./wrangler.toml
 site-config-ext.yaml
 secret_*
 secret-*

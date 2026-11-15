@@ -13,9 +13,9 @@ on:
       - 'package.json'
       - 'tsconfig.json'
       - 'vite.config.mts'
-      - 'config/wrangler.toml'
-      - 'config/requirements.txt'
-      - 'config/Dockerfile'
+      - 'dev/config/wrangler.toml'
+      - 'dev/config/requirements.txt'
+      - 'dev/config/Dockerfile'
   workflow_dispatch:
 
 
@@ -29,12 +29,12 @@ jobs:
       - uses: actions/checkout@v7.0.1
         with:
           sparse-checkout: |
-            config/requirements.txt
+            dev/config/requirements.txt
           sparse-checkout-cone-mode: false
 
       - uses: pypa/gh-action-pip-audit@v1.1.0
         with:
-          inputs: config/requirements.txt
+          inputs: dev/config/requirements.txt
 
 
   check-bun: # ----------------------------------------------------------------
@@ -75,8 +75,8 @@ jobs:
         with:
           filters: |
             deps:
-            - 'config/Dockerfile'
-            - 'config/requirements.txt'
+            - 'dev/config/Dockerfile'
+            - 'dev/config/requirements.txt'
             - 'package.json'
             - 'bun.lock'
 
@@ -198,7 +198,7 @@ jobs:
 
           bun run build
 
-          cp config/wrangler.toml .
+          cp dev/config/wrangler.toml .
 
         shell: bash
         env:

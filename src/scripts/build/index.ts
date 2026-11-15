@@ -27,7 +27,7 @@ const
   ]
 
 , execScriptsDeps: ScriptDeps = Object.entries({
-    "./config/requirements.txt": [
+    "./dev/config/requirements.txt": [
       "attributions.ts",
     ],
     "./package.json": [

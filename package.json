@@ -24,8 +24,8 @@
     "build:fonts": "python ./src/scripts/build/fonts.py",
     "watch:project": "bun run ./src/_projects/project-pages.ts -- --watch",
     "watch:data": "bun run build:data -- --watching",
-    "lint:styles": "stylelint --config ./config/.stylelintrc.json",
-    "lint:scripts": "eslint --config ./config/eslint.config.ts",
+    "lint:styles": "stylelint --config ./dev/config/.stylelintrc.json",
+    "lint:scripts": "eslint --config ./dev/config/eslint.config.ts",
     "fetch:gh": "bun --bun run ./src/data/get/gh.ts",
     "fetch:ext": "bun --bun run ./src/data/get/external.ts",
     "post:build": "python ./src/post/post_build.py && bun run ./src/post/post-build.ts"

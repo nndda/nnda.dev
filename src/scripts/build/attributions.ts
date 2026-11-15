@@ -11,7 +11,7 @@ const
       ...Object.keys({...packageJSON.devDependencies, ...packageJSON.dependencies}),
     ],
     pypi: [
-      ...FS.read.text(Path.abs("./config/requirements.txt"))
+      ...FS.read.text(Path.abs("./dev/config/requirements.txt"))
         .split("\n")
         .filter(n => n !== "")
         .map(n => n.split("==")[0]),

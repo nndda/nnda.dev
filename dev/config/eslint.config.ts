@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 export default [
   includeIgnoreFile(
-    path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.gitignore")
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../.gitignore")
   ),
   {
     files: ["**/*.{js,mjs,cjs,ts}"],
