@@ -22,6 +22,7 @@ import {
   faBars,
   faBasketShopping,
   faBookBookmark,
+  faCalendar,
   // faBox,
   // faBug,
   // faCalendar,
@@ -57,6 +58,7 @@ import {
   // faStar,
   faUserTag,
   faVolumeHigh,
+  faWarning,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -125,6 +127,7 @@ import {
   siYoutube,
   // siX,
   type SimpleIcon,
+  siWikipedia,
 } from "simple-icons";
 
 // ----------------------------------------------------------------------------
@@ -301,10 +304,15 @@ createIconDefsGrouped(
     faAngleDown,
     faBars,
     faBasketShopping,
+    faBookBookmark,
+    faCalendar,
+    faClock,
     // faGhost,
     faHeart,
     faLink,
     faSkull,
+    faVolumeHigh,
+    faWarning,
   ],
   [
     // siArtstation,
@@ -428,5 +436,13 @@ createMiniIconDefs("footer.attributions", {
   // "yaml": siYaml.svg,
   "wrangler": siCloudflare.svg,
 });
+
+createMiniIconDefs("global-links", {
+  "wikipedia.org": siWikipedia.svg,
+  "bun.com": siBun.svg,
+  "handlebarsjs.com": siHandlebarsdotjs.svg,
+  "nodejs.org": siNodedotjs.svg,
+});
+
 
 console.log("Finished updating & tree-shaking icons.");
