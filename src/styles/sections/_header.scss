@@ -3,7 +3,7 @@
 @use "header.mobile" as mobile;
 @use "header.desktop" as desktop;
 
-body > header {
+#header {
   position: fixed;
   top: 0;
   left: auto;

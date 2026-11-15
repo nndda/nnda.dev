@@ -7,7 +7,7 @@ export default function (d: Document) {
   // --------------------------------------------------------------------------
 
   const
-    headerClasses = d.querySelector("body > header")!.classList
+    headerClasses = d.getElementById("header")!.classList
   , backTop = d.getElementById("back-top") as HTMLButtonElement
   , headerCollapseEl = d.querySelector(".header-collapse")!
   ;
