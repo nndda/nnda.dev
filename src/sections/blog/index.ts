@@ -1,7 +1,7 @@
 
 const d = document;
 
-import("../../views/blog.json").then(({default: blogs}) => {
+import("../../views//blog.json").then(({default: blogs}) => {
   d.getElementById("blog-recent")!.innerHTML = blogs.map(({title, desc, date, tags, href }) => {
     return `${[
       ]}<li class="card">${[

@@ -1,4 +1,4 @@
-import { dirname, join, parse, relative, resolve, sep } from "path";
+import { basename, dirname, join, parse, relative, resolve, sep } from "path";
 import { Glob, type GlobScanOptions } from "bun";
 import { FS, root } from "@dev/util";
 
@@ -16,7 +16,7 @@ export const
 , scriptDir = import.meta.dir
 
 , pagesDir = resolve(root, "./src/pages/")
-, partialsDir = resolve(scriptDir, "./partials/")
+, partialsDir = resolve(root, "./src/sections/")
 ;
 
 export function filename(path: string): string {
@@ -82,7 +82,12 @@ export function getHandlebarsFiles(path: string) {
       return {
         ...prev,
         [
-          filename(relative(path, filepath))
+          filename(relative(
+            path,
+            basename(filepath).endsWith("layout.hbs")
+              ? dirname(filepath)
+              : filepath
+          ))
         ]: filepath,
       };
     }, {} as Record<string, string>)

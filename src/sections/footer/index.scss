@@ -1,7 +1,7 @@
 @use "/@styles/variables" as *;
 
-@use "footer.desktop" as desktop;
-@use "footer.mobile" as mobile;
+@use "./index.desktop.scss" as desktop;
+@use "./index.mobile.scss" as mobile;
 
 body > footer {
   z-index: 3;

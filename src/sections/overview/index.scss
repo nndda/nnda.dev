@@ -2,7 +2,7 @@
 @use "sass:color";
 @use "sass:math";
 
-@use "overview.desktop" as desktop;
+@use "./index.desktop.scss" as desktop;
 
 .section-title-sub {
   margin-bottom: .6em;

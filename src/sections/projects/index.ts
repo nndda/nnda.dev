@@ -1,7 +1,7 @@
 import { buildSvg } from "@runtime";
 import projectsData from "../../data/site-projects";
 
-const icons = (await import("../build/icons/projects")).default;
+const icons = (await import("../../scripts/build/icons/projects")).default;
 
 export interface ProjectItem {
   name: string,

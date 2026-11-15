@@ -1,6 +1,6 @@
 import { initAnim, initIcons } from "@runtime";
 
-import icons from "../build/icons/profile";
+import icons from "../../scripts/build/icons/profile";
 initIcons("profile", icons);
 
 const

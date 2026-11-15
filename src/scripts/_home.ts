@@ -49,41 +49,41 @@ addEventListener("scroll", scrollEv, passiveEvOpt);
 // );
 
 
-import styleBlog from "../styles/sections/_blog.lazy.scss?url";
+import styleBlog from "@sections/blog/index.lazy.scss?url";
 
 importLazy(
   d.getElementById("blog")!,
   "200px",
-  () => import("./sections/blog"),
+  () => import("@sections/blog/"),
   () => loadCSS(styleBlog),
 );
 
 
-import styleProjects from "../styles/sections/_projects.lazy.scss?url";
+import styleProjects from "@sections/projects/index.lazy.scss?url";
 
 importLazy(
   d.getElementById("projects")!,
   "180px",
-  () => import("./sections/projects"),
+  () => import("@sections/projects/"),
   () => loadCSS(styleProjects),
 );
 
 
-import styleIllustrations from "../styles/sections/_illustrations.lazy.scss?url";
+import styleIllustrations from "@sections/illustrations/index.lazy.scss?url";
 
 importLazy(
   d.getElementById("illustrations")!,
   "200px",
-  () => import("./sections/illustrations"),
+  () => import("@sections/illustrations/"),
   () => loadCSS(styleIllustrations),
 );
 
 
-import styleLinks from "../styles/sections/_links.lazy.scss?url";
+import styleLinks from "@sections/links/index.lazy.scss?url";
 
 importLazy(
   d.getElementById("links")!,
   "200px",
-  () => import("./sections/links"),
+  () => import("@sections/links/"),
   () => loadCSS(styleLinks),
 );

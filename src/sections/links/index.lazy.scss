@@ -2,7 +2,7 @@
 @use "sass:color";
 @use "sass:math";
 
-@use "./links.var" as links;
+@use "./index.var.scss" as links;
 
 @mixin link-style($color, $color_override: null) {
   @if $color_override {

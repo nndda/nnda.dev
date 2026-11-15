@@ -1,7 +1,7 @@
 import { buildSvg, hydrate } from "@runtime";
 
 import linksData from "../../data/site-links";
-import icons from "../build/icons/links";
+import icons from "../../scripts/build/icons/links";
 
 // TODO: some of these are redundant, unused data at runtime :/
 export interface LinkGroup {

@@ -1,7 +1,7 @@
 @use "/@styles/variables" as *;
 @use "sass:color";
 
-@use "profile.desktop" as desktop;
+@use "./index.desktop.scss" as desktop;
 
 #profile {
   bottom: -3em;

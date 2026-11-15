@@ -1,7 +1,7 @@
 @use "/@styles/variables" as *;
 
-@use "header.mobile" as mobile;
-@use "header.desktop" as desktop;
+@use "./index.desktop.scss" as desktop;
+@use "./index.mobile.scss" as mobile;
 
 #header {
   position: fixed;

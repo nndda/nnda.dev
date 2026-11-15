@@ -18,6 +18,7 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@styles/*": ["./src/styles/*"],
+      "@sections/*": ["./src/sections/*"],
       "@styles/variables": ["./src/styles/_variables.scss"],
       "@scripts/*": ["./src/scripts/*"],
       "@fonts/*": ["./src/pages/assets/fonts/*"],

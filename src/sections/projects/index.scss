@@ -1,8 +1,8 @@
 @use "/@styles/variables" as *;
 @use "sass:color";
 
-@use "projects.mobile" as mobile;
-@use "projects.desktop" as desktop;
+@use "./index.desktop.scss" as desktop;
+@use "./index.mobile.scss" as mobile;
 
 #projects {
   background: $background;

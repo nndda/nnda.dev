@@ -1,6 +1,6 @@
 import { importLazy, initIcons, loadCSS, observe } from "@runtime";
 
-import styleFooter from "../styles/sections/_footer.lazy.scss?url";
+import styleFooter from "@sections/footer/index.lazy.scss?url";
 
 export default function (d: Document) {
 
@@ -72,7 +72,7 @@ export default function (d: Document) {
   importLazy(
     d.querySelector("body > footer")!,
     "300px",
-    () => import("./sections/footer"),
+    () => import("@sections/footer/"),
     () => loadCSS(styleFooter),
   );
 

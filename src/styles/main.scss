@@ -8,15 +8,15 @@
 @use "animations";
 @use "main.animations";
 
-@use "sections/header";
-@use "sections/footer";
-@use "sections/profile";
-@use "sections/announcement";
-@use "sections/blog";
-// @use "sections/overview";
-@use "sections/projects";
-@use "sections/illustrations";
-@use "sections/links";
+@use "/@sections/header/" as *;
+@use "/@sections/footer/" as *;
+@use "/@sections/profile/" as *;
+@use "/@sections/announcement/" as *;
+@use "/@sections/blog/" as *;
+// @use "/@sections/overview/" as *;
+@use "/@sections/projects/" as *;
+@use "/@sections/illustrations/" as *;
+@use "/@sections/links/" as *;
 @use "input";
 @use "extra";
 

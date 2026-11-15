@@ -1,9 +1,9 @@
 import { buildSvg, initIcons, observe } from "@runtime";
 
-import attributionData from "../build/out/attribution.json" with { type: "json" };
+import attributionData from "../../scripts/build/out/attribution.json" with { type: "json" };
 
-import icons from "../build/icons/footer";
-import iconsAttr from "../build/icons/footer.attributions";
+import icons from "../../scripts/build/icons/footer";
+import iconsAttr from "../../scripts/build/icons/footer.attributions";
 
 // function getLastUpdatedHrs(date: Date) {
 //   const hours = Math.floor((now - date.getTime()) / 36e5);

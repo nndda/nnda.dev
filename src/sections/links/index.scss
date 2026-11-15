@@ -1,6 +1,6 @@
 @use "/@styles/variables" as *;
 
-@use "./links.var" as links;
+@use "./index.var.scss" as links;
 
 #links {
   background: $background;
