@@ -1,8 +1,34 @@
-import { importLazy, initIcons, loadCSS } from "@runtime";
+import { importLazy, initIcons, loadCSS, observe } from "@runtime";
 
 import styleFooter from "../styles/sections/_footer.lazy.scss?url";
 
 export default function (d: Document) {
+
+  // --------------------------------------------------------------------------
+
+  const
+    headerClasses = d.querySelector("body > header")!.classList
+  , backTop = d.getElementById("back-top") as HTMLButtonElement
+  , headerCollapseEl = d.querySelector(".header-collapse")!
+  ;
+
+  backTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  observe(entry => {
+
+    const active = entry.intersectionRatio <= 0;
+
+    headerClasses.toggle("active", active);
+    backTop.classList.toggle("active", active);
+
+  })(headerCollapseEl);
+
+  // --------------------------------------------------------------------------
 
   import("./build/icons/global")
     .then(({ default: icons }) => {
@@ -17,6 +43,8 @@ export default function (d: Document) {
       })
     ;
   }
+
+  // --------------------------------------------------------------------------
 
   const navbarClasses = d.getElementById("navbar")?.classList;
 
@@ -48,6 +76,8 @@ export default function (d: Document) {
     () => import("./sections/footer"),
     () => loadCSS(styleFooter),
   );
+
+  // --------------------------------------------------------------------------
 
   const passiveOnce = {
     once: true,
