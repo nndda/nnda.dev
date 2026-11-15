@@ -49,6 +49,16 @@ addEventListener("scroll", scrollEv, passiveEvOpt);
 // );
 
 
+import styleBlog from "../styles/sections/_blog.lazy.scss?url";
+
+importLazy(
+  d.getElementById("blog")!,
+  "200px",
+  () => import("./sections/blog"),
+  () => loadCSS(styleBlog),
+);
+
+
 import styleProjects from "../styles/sections/_projects.lazy.scss?url";
 
 importLazy(

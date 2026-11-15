@@ -3,12 +3,16 @@ import { join } from "path";
 import { FS, Path } from "@dev/util";
 import Handlebars from "handlebars";
 import { imageSize } from "image-size";
+
+import blogComponents from "../blog/components";
 // import type { ISizeCalculationResult } from "image-size/types/interface";
 
 // import _ from "lodash";
 // const sortBy = _.sortBy; // eslint-disable-line
 
 export default {
+  ...blogComponents,
+
   icon: (group: string, name: string, width: number = -1, height: number = -1) => {
     return `
       <svg class="${group}" data-i="${name}" ${

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  {{ title blog.title }}
+  {{ desc blog.desc }}
+
+  {{> "head" }}
+
+  {{ stylesheet "/@/pages/blog/index.scss" "" }}
+</head>
+
+<body>
+  {{> "header" }}
+
+  <section id="banner" class="header-collapse"></section>
+
+  <main>
+    <h1>
+      {{blog.title}}
+    </h1>
+
+    <ul class="nostyle metadata">
+      <li class="icon-text"><svg data-i="calendar" class="global"></svg> <time>{{blog.date}}</time></li>
+    </ul>
+
+
+    {{#if blog.tags}}
+      <ul class="nostyle labels">
+        {{#each blog.tags}}
+          <li class="tag-{{this}}">{{this}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    <section>
+      <article>
+        {{> "blogcontent" }}
+
+        <footer>
+          — nnda
+        </footer>
+      </article>
+
+      <aside>
+
+      </aside>
+
+    </section>
+  </main>
+
+  {{> "footer" }}
+
+  {{ script "/@/scripts/_page.ts" true }}
+</body>
+</html>

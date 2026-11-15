@@ -4,7 +4,7 @@ import Handlebars from "handlebars";
 import { minify, type Options } from "@swc/html";
 import { pathify, filename, pagesDir, partialsDir, getHandlebarsFiles, scriptDir } from "./utils"
 import { FS, root } from "@dev/util";
-import data from "../data/site";
+import frontmatter from "@/blog/frontmatter";
 
 const
   hb = Handlebars.create()
@@ -21,33 +21,94 @@ const
 , pagesTracked = getHandlebarsFiles(pagesDir)
 ;
 
+let data = await (await import("../data/site")).default();
+
+interface RuntimeBlogData {
+  title: string,
+  desc: string,
+  date: string,
+  href: string,
+  tags: string[],
+}
+const runtimeBlogData: RuntimeBlogData[] = [];
+function generateRuntimeBlogData() {
+  runtimeBlogData.sort((a, b) => {
+    return new Date(b.date).getTime() -
+           new Date(a.date).getTime()
+  });
+  FS.write.text(
+    resolve(scriptDir, "blog.json"),
+    JSON.stringify(runtimeBlogData),
+  );
+}
+
+function getBlogTemplateStr() {
+  return FS.read.text(resolve(pagesDir, "./blog/template.hbs"));
+}
+
 async function compile(
   src: string,
   dataExt: any = {},
-): Promise<string> {
-  const
-    compiled = hb.compile(src)({
-      ...data,
-      ...dataExt,
-    })
-  , minified = await minify(compiled, swcOpt)
-  ;
+): Promise<string | void> {
 
-  return minified.code;
+  if (src) {
+    const
+      fmData = frontmatter(src)
+    , isBlog = fmData?.data && "blog" in fmData.data
+    ;
+
+    if (isBlog) {
+      const blogData = fmData.data.blog;
+      blogData.date = Intl.DateTimeFormat("en", { dateStyle: "medium", }).format(new Date(blogData.date));
+
+      runtimeBlogData.push({
+        title: blogData.title as string,
+        desc: blogData.desc as string,
+        date: blogData.date as string,
+        tags: (blogData.tags as string[]).slice(0, 2),
+        href: dataExt.currentPath[dataExt.currentPath.length - 1].href,
+      });
+
+      hb.registerPartial("blogcontent", fmData.content);
+    }
+
+    Object.assign(dataExt, fmData.data ?? {});
+
+    const
+      compiled = hb.compile(isBlog ? getBlogTemplateStr() : fmData.content)({
+        ...data,
+        ...dataExt,
+      })
+    , minified = await minify(compiled, swcOpt)
+    ;
+
+    if (isBlog) {
+      hb.unregisterPartial("blogcontent");
+    }
+
+    return minified.code;
+  }
 }
 
 async function compileAll() {
+  runtimeBlogData.length = 0;
+
   for (const page in pagesTracked) {
-    FS.write.text(
-      resolve(root, "./src/pages/", page) + ".html",
-      await compile(
-        FS.read.text(pagesTracked[page]),
-        {
-          currentPath: pathify(page),
-        },
-      ),
+    const compiled = await compile(
+      FS.read.text(pagesTracked[page]),
+      {
+        currentPath: pathify(page),
+      },
     );
+    if (compiled) {
+      FS.write.text(
+        resolve(root, "./src/pages/", page) + ".html",
+        compiled,
+      );
+    }
   }
+
+  generateRuntimeBlogData();
 }
 
 async function registerHelpers() {
@@ -79,7 +140,10 @@ if (process.argv.includes("--watch")) {
       recursive: true,
 
       ignore: (filepath) => {
-        return !filepath.endsWith(".hbs");
+        if (!filepath.endsWith(".hbs"))
+          return true;
+
+        return filepath.startsWith("blog/template");
       },
 
       encoding: "utf8",
@@ -98,17 +162,25 @@ if (process.argv.includes("--watch")) {
     if (FS.exists(file)) {
       console.log(logPre + filepath + " changed, compiling...");
 
-      FS.write.text(
-        fileOutput,
-        await compile(
-          FS.read.text(file),
-          {
-            currentPath: pathify(filename(filepath)),
-          }
-        ),
+      const compiled = await compile(
+        FS.read.text(file),
+        {
+          currentPath: pathify(filename(filepath)),
+        }
       );
 
-      pagesTracked[id] = file;
+      if (compiled) {
+        FS.write.text(
+          fileOutput,
+          compiled,
+        );
+
+        pagesTracked[id] = file;
+
+      } else {
+        console.log(logPre + `compiling ${filepath} failed, for some reason :/`);
+      }
+
     } else {
 
       unlink(fileOutput, (err) => {
@@ -145,7 +217,22 @@ if (process.argv.includes("--watch")) {
     console.log(logPre + `helpers changed, recompiling...`);
 
     await registerHelpers();
-  })
+  });
+
+  const watcherData = watch(resolve(root, "src/data/"), {
+    ...watcherOpt,
+    ignore: (filepath) => {
+      return !/\.(ts|js|json)/m.test(filepath);
+    },
+  });
+  watcherData.addListener("change", async (_, filepath) => {
+    console.log(logPre + `data changed on ${filepath}, recompiling...`);
+
+    data = await (await import("../data/site")).default();
+    await registerHelpers();
+    registerPartials();
+    await compileAll();
+  });
 }
 
 compileAll();

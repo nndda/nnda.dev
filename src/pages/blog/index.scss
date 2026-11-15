@@ -1,0 +1,130 @@
+@use "../../styles/variables" as *;
+@use "sass:color";
+@use "sass:math";
+
+body {
+  background: $background-dark;
+}
+
+#banner {
+  $s: 100px;
+
+  --g: #0000 90deg, #{$border-dark-80} 0;
+
+  min-height: $header-height-margin * 3.5;
+  background: $background;
+  background:
+    conic-gradient(from 90deg at 2px 2px,var(--g)),
+    conic-gradient(from 90deg at 1px 1px,var(--g)),
+    $background-dark;
+  background-size: $s $s, math.div($s, 5) math.div($s, 5);
+  mask-image: linear-gradient(#0000, #000);
+
+  // @include polka-dots(
+  //   $background-dark,
+  //   $background,
+  //   .5em,
+  //   4em,
+  // );
+}
+
+ul.labels {
+  display: flex;
+  gap: 1em;
+  // margin-inline: 2em;
+  justify-content: center;
+  width: 100%;
+
+  & > li {
+    padding: .15em .5em;
+    background: $background-dark;
+    border: 1px solid $border-dark-80;
+    border-radius: $card-br-radius * .5;
+
+    &::before {
+      color: $primary;
+      content: "#";
+    }
+  }
+}
+
+main {
+  position: relative;
+  padding-inline: 1em;
+
+  & > h1, ul.metadata {
+    position: absolute;;
+    top: -4.5em;
+    left:0;
+    // margin-left: 2em;
+    width: 100%;
+    text-align: center;
+  }
+
+  & > h1 {
+    // font-weight: 700;
+    top: -3.5em;
+    font-family: "Hi melody", sans-serif;
+    font-size: 3.5em;
+    // color:;
+  }
+
+  & > ul.labels {
+    position: absolute;
+    top: -.75em;
+    left: 0;
+  }
+
+  & section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    // margin: 1em -1em;
+    margin-block: 5em;
+    font-size: 1.1em;
+  }
+
+  // & aside {
+  //   min-width: 400px;
+  //   background: $background;
+  //   border: 2px solid $border-dark-80;
+  // }
+
+  & article {
+    max-width: 700px;
+    margin-inline: auto;
+
+    & > :is(h1, h2, h3, h4, h5, h6) {
+      margin-top: 3em;
+    }
+
+    & p {
+      line-height: 1.2lh;
+    }
+
+    & code {
+      padding: .15em .5em;
+      color: $secondary;
+      background: $background-light;
+      border-radius: 9px;
+    }
+
+    & ul {
+      padding-left: 1.5em;
+      list-style: square;
+
+      & li::marker {
+        color: $secondary;
+      }
+    }
+  }
+}
+
+a[href^="https://handlebarsjs.com/"] {
+  color: color.mix(#f0772b, $text,75%);
+}
+
+a[href^="https://bun.com/"] {
+  color: #fbf0df;
+}

@@ -153,7 +153,7 @@ import dataProjects from "./site-projects";
 
 // ============================================================================
 
-import { FS, Path } from "@dev/util";
+import { FS } from "@dev/util";
 
 import {
   execSync,
@@ -189,7 +189,7 @@ const
   )
 ;
 
-import postsFeed from "./social-posts";
-FS.write.text(Path.abs("./src/public/posts-feed.json"), JSON.stringify(postsFeed));
+// import postsFeed from "./social-posts";
+// FS.write.text(Path.abs("./src/public/posts-feed.json"), JSON.stringify(postsFeed));
 
-export default await DATA();
+export default DATA;

@@ -1,0 +1,52 @@
+@use "../variables" as *;
+
+#blog {
+  padding-bottom: 6em;
+  background: $background-dark;
+
+  & h1 {
+    margin-bottom: 1em;
+  }
+
+  & .tags {
+    display: flex;
+    gap: .5em;
+  }
+}
+
+#blog-recent {
+  min-height: 200px;
+
+  & > li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    max-width: 250px;
+    margin-bottom: 1em;
+  }
+
+  & p {
+    flex-grow: 1;
+  }
+
+  & h2 {
+    padding-bottom: .3em;
+    margin: 0;
+    font-family: "hi melody", sans-serif;
+    border-bottom: 1px solid $border-dark-60;
+
+    & a {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none;
+    }
+  }
+
+  & time {
+    position: absolute;
+    inset: 100% 0;
+    margin-top: .65em;
+    margin-left: .5em;
+  }
+}

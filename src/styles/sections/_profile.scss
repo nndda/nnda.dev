@@ -23,7 +23,6 @@
 }
 
 .bg-cover {
-  padding-bottom: 7em;
   background: $background-dark;
 
   box-shadow: 0 0 7em -.1em color.adjust($background-dark, $lightness: -2.5%);

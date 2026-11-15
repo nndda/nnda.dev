@@ -73,6 +73,12 @@ export function getHandlebarsFiles(path: string) {
       cwd: path,
     }))
     .reduce((prev, filepath) => {
+      const id = filename(relative(path, filepath));
+
+      if (id === "blog/template") {
+        return prev;
+      }
+
       return {
         ...prev,
         [
