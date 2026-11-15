@@ -26,10 +26,11 @@
         </div>
 
         <ul class="author-info">
+          <!--
           <li class="icon-text anim once">
-            {{{ icon "profile" "volume-high" 20 20 }}}
-            {{{ author.pronunciation }}}
+            {{{ icon "profile" "volume-high" 20 20 }}}{{{ author.pronunciation }}}
           </li>
+          -->
 
           <li class="icon-text anim once">
             {{{ icon "profile" "user-tag" 20 20 }}}
@@ -38,16 +39,12 @@
 
           <li class="icon-text anim once">
             {{{icon "profile" "clock" 20 20}}}
-            <span id="clock-timezone" data-timezone="{{author.timezone}}">
-              00:00:00
-            </span>
+            <span id="clock-timezone" data-timezone="{{author.timezone}}">00:00:00</span>
           </li>
 
           <li class="icon-text anim once">
             {{{ icon "profile" "location-dot" 20 20 }}}
             {{{ author.location }}}
-            <span>
-            </span>
           </li>
 
           <li class="icon-text anim once">
@@ -55,6 +52,7 @@
             {{{ author.languages }}}
           </li>
 
+          <!--
           <li
             class="icon-text anim once button"
             aria-label="More"
@@ -62,6 +60,7 @@
           >
             ...
           </li>
+          -->
         </ul>
 
       </div>
