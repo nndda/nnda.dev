@@ -1,0 +1,19 @@
+@use "../variables" as *;
+
+.label {
+  --c: var(--col, #{$text});
+
+  padding: .15em .5em;
+
+  color: color-mix(in srgb, var(--c), $text 25%);
+
+  cursor: pointer;
+  background: color-mix(in srgb, var(--c), $background 99%);
+  border: 1px solid color-mix(in srgb, var(--c), $background 20%);
+  border-radius: 3px;
+  transition: .2s ease;
+
+  &:not(:hover) {
+    opacity: .6;
+  }
+}

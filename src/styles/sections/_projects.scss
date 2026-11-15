@@ -44,6 +44,10 @@
       transform: translateY(1.5em);
     }
   }
+
+  .label {
+    font-size: .85em;
+  }
 }
 
 .project-title {
@@ -91,15 +95,6 @@
   display: flex;
   // flex-direction: row;
   gap: .5em;
-}
-
-.project-label {
-  // display: inline-block;
-  padding: .15em .5em;
-  font-size: .85em;
-  border-radius: 3px;
-
-  @include project-label-style($text);
 }
 
 // NOTE: measures manually, to avoid CLS

@@ -1,6 +1,9 @@
 @use "variables" as *;
 @use "sass:color";
 
+@use "./components/flex-carousel.scss" as *;
+@use "./components/label.scss" as *;
+
 .icon-text {
   white-space: nowrap;
 
@@ -206,4 +209,9 @@
   .heading-left-sticky {
     display: none;
   }
+}
+
+.link-decorated {
+  color: $secondary-20;
+  text-decoration: underline 1px dashed $border-dark-10;
 }

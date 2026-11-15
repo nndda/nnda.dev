@@ -1,0 +1,29 @@
+
+.flex-carousel {
+  display: flex;
+
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+
+  overflow-x: scroll;
+
+  scrollbar-width: thin;
+
+  mask-image: linear-gradient(90deg, #0000 0%,  #000 .5em,  #000 90%, #0000);
+
+  & > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+
+    & > li {
+      &:first-child {
+        margin-left: .5em;
+      }
+
+      &:last-child {
+        margin-right: 10%;
+      }
+    }
+  }
+}

@@ -56,7 +56,7 @@ for (let n = projectsData.length; 0 < n--;) {
 
       ]}<ul class="labels-container nostyle">${
           data.tags.map((val: string) => {
-            return `<li class="project-label ${val}">${val}</li>`;
+            return `<li class="label ${val}">${val}</li>`;
           }).join("")
       }</ul>${[
 

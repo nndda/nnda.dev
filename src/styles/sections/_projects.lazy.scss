@@ -38,18 +38,16 @@
   }
 }
 
-.project-label {
-  cursor: pointer;
-
+.label {
   /* stylelint-disable */
   &.Web {
-    @include project-label-style(color.mix(#fd68b3, #66b2f2));
+    --col: #{color.mix(#fd68b3, #66b2f2)};
   }
   &.Front-end {
-    @include project-label-style(#fd68b3);
+    --col: #fd68b3;
   }
   &.Godot {
-    @include project-label-style(#66b2f2);
+    --col: #66b2f2;
   }
   /* stylelint-enable */
 }
