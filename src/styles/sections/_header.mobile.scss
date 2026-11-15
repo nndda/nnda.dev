@@ -78,45 +78,8 @@
   }
 }
 
-#navbar-collapse {
-  width: 100%;
-  margin-top: 1em;
-
-  & > svg {
-    height: 1.2em;
-    margin: auto;
-    transform: scaleY(-1);
-  }
-}
-
-#collapse-area {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 7;
-  width: 100%;
-  height: 100%;
-  background: rgba($background, 0.4);
-  backdrop-filter: blur(6px);
-
-  transition: ease .5s opacity;
-
-  &.hidden-o {
-    pointer-events: none;
-    opacity: 0;
-  }
-}
-
-/*
-#mobile-nav-sect-label {
-  margin: .5em 0;
-  letter-spacing: .2ch;
-}
-*/
-
 #navbar-button {
   padding: 1em;
 }
-
 }
 }

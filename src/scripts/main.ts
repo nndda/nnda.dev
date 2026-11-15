@@ -7,24 +7,28 @@ export default function (d: Document) {
   // --------------------------------------------------------------------------
 
   const
-    headerClasses = d.getElementById("header")!.classList
-  , backTop = d.getElementById("back-top") as HTMLButtonElement
+    headerEl = d.getElementById("header")!
+  , headerClasses = headerEl.classList
   , headerCollapseEl = d.querySelector(".header-collapse")!
   ;
 
-  backTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
+  let backTopNotLoaded = true;
 
   observe(entry => {
 
     const active = entry.intersectionRatio <= 0;
 
     headerClasses.toggle("active", active);
-    backTop.classList.toggle("active", active);
+
+    if (backTopNotLoaded) {
+      import("./components/back-to-top")
+        .then(({ default: init }) => {
+          init(d, headerEl);
+        })
+      ;
+
+      backTopNotLoaded = false;
+    }
 
   })(headerCollapseEl);
 
@@ -46,29 +50,24 @@ export default function (d: Document) {
 
   // --------------------------------------------------------------------------
 
-  const navbarClasses = d.getElementById("navbar")?.classList;
+  const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      if (entry.contentRect.width <= 700) {
 
-  if (navbarClasses) {
-    const collapseArea: HTMLElement = d.getElementById("collapse-area")!;
+        import("./components/mobile-navbar")
+          .then(({ default: init }) => {
+            init(d, headerEl);
+          })
+        ;
 
-    d.getElementById("navbar-button")!.addEventListener("click", (): void => {
-      navbarClasses.add("toggled");
-      collapseArea.classList.remove("hidden-o");
-    });
-
-    function closeMobileNavbar() {
-      navbarClasses!.remove("toggled");
-      collapseArea.classList.add("hidden-o");
+        resizeObserver.disconnect();
+      };
     }
+  });
 
-    d.getElementById("navbar-collapse")!.addEventListener("click", closeMobileNavbar);
-    collapseArea.addEventListener("click", closeMobileNavbar);
+  resizeObserver.observe(headerEl);
 
-
-    for (const navLink of d.querySelectorAll("#navbar .nav-link")) {
-      navLink.addEventListener("click", closeMobileNavbar);
-    }
-  }
+  // --------------------------------------------------------------------------
 
   importLazy(
     d.querySelector("body > footer")!,
