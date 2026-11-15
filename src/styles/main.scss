@@ -97,6 +97,7 @@ main {
   & > section {
     position: relative;
     padding-inline: .5em;
+    background: $background-dark;
 
     & > .section-inner {
       width: 100%;
