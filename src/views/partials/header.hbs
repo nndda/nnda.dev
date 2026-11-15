@@ -30,21 +30,26 @@
     <ul>
       {{#each nav.links}}
         {{#unless this.external}}
-          <li>
-            <a href="/{{this.url}}">
-              {{{this.icon}}}
-              {{{this.name}}}
-            </a>
-          </li>
+          {{#if this.button}}
+            <li>
+              <a href="{{this.url}}" class="nav-link-btn icon-text">
+                {{{icon "global" this.icon 18 18}}}
+                {{{this.name}}}
+              </a>
+            </li>
+          {{else}}
+            <li>
+              <a href="/{{this.url}}">
+                {{#if this.icon}}
+                  {{{icon "global" this.icon 18 18}}}
+                {{/if}}
+                {{{this.name}}}
+              </a>
+            </li>
+          {{/if}}
         {{/unless}}
-      {{/each}}
 
-      <li>
-        <a href="/shop/" class="nav-link-btn icon-text">
-          <svg data-i="basket-shopping" class="global" height="18" width="18"></svg>
-          Shop
-        </a>
-      </li>
+      {{/each}}
     </ul>
 
     <div class="vseparator"></div>
@@ -58,7 +63,7 @@
               rel="me nofollow noopener"
               aria-label="{{this.url}}"
             >
-              {{{this.icon}}}
+              {{{icon "global" this.icon 18 18}}}
               {{{this.name}}}
             </a>
           </li>

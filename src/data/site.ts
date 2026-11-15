@@ -30,6 +30,7 @@ interface SiteData {
       name: string,
       url: string,
       external?: true,
+      button?: true,
     }[],
   },
 
@@ -94,17 +95,23 @@ const DATA: () => Promise<SiteData> = async () => { return _.merge({
         url: "#illustrations",
       },
       {
-        icon: `<svg data-i="itchdotio" class="global" height="18" width="18"></svg>`,
+        name: "Shop",
+        icon: "basket-shopping",
+        url: "/shop/",
+        button: true,
+      },
+      {
+        icon: "itchdotio",
         url: "nnda.itch.io",
         external: true,
       },
       {
-        icon: `<svg data-i="github" class="global" height="18" width="18"></svg>`,
+        icon: "github",
         url: "github.com/nndda",
         external: true,
       },
       {
-        icon: `<svg data-i="bluesky" class="global" height="18" width="18"></svg>`,
+        icon: "bluesky",
         url: "bsky.app/profile/nnda.dev",
         external: true,
       },
