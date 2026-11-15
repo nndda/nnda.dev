@@ -29,10 +29,6 @@ ul.illust-items {
   & ul {
     display: flex;
     gap: .5em;
-
-    & > :not(:last-child)::after {
-      content:",";
-    }
   }
 
   &:first-child {
@@ -92,7 +88,11 @@ ul.illust-items {
   }
 
   & .chr {
-    opacity: .7;
+    padding-block: .5em;
+  }
+
+  & .label {
+    border-color: #0000;
   }
 }
 

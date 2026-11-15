@@ -1,6 +1,18 @@
 @use "../variables" as *;
-// @use "sass:color";
+@use "sass:color";
 
-// @use "illustrations.desktop" as desktop;
+#illustrations {
+  & .label {
+    background: color-mix(in srgb, var(--col), $background-dark 90%);
 
-// @include desktop.style;
+    --col: white;
+
+    &[data-chr="Dia"] {
+      --col: #{$secondary};
+    }
+
+    &[data-chr="Ritsu"] {
+      --col: #{color.mix($primary, $text, 70%)};
+    }
+  }
+}
