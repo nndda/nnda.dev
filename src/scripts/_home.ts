@@ -1,8 +1,6 @@
 import { importLazy, initIcons, loadCSS } from "@runtime";
 
-const
-  d = document
-;
+const d = document;
 
 import init from "./main";
 init(d);
@@ -10,9 +8,36 @@ init(d);
 import icons from "./build/icons/home";
 initIcons("home", icons);
 
-import initScroll from "./scroll.home";
-initScroll(d);
+const
+  illustContStyle = (d.querySelector(".illust-cont > img") as HTMLElement).style
+, passiveEvOpt: AddEventListenerOptions = { passive: true, }
+;
 
+let scrollRatio = 0
+,   windowHeight = 0
+;
+
+function scrollTransform() {
+  illustContStyle.translate = `0 -${scrollRatio * 230}px`;
+}
+
+function resizeEv() {
+  windowHeight = innerHeight;
+}
+
+function scrollEv() {
+  scrollRatio = scrollY / windowHeight;
+
+  if (scrollRatio <= 1) {
+    requestAnimationFrame(scrollTransform);
+  }
+}
+
+resizeEv();
+scrollEv();
+
+addEventListener("resize", resizeEv, passiveEvOpt);
+addEventListener("scroll", scrollEv, passiveEvOpt);
 
 // import styleOverview from "../styles/sections/_overview.lazy.scss?url";
 //
