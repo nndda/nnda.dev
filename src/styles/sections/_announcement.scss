@@ -1,0 +1,42 @@
+@use "../variables" as *;
+@use "sass:color";
+
+#announcement {
+  background: $background-dark;
+  border-top: 1px solid $border-dark-70;
+  border-bottom: 1px solid $border-dark-70;
+
+  & h1 {
+    padding-top: 0;
+    // margin-bottom: 1em;
+    margin: 0;
+    font-size: 1.25em;
+    border: 0;
+  }
+
+  & blockquote {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid color.mix($tertiary, $background, 60%);
+
+    & > h2 {
+      position: relative;
+      top: -$card-padding;
+      left: -$card-padding;
+      width: calc(100% + ($card-padding * 2));
+      padding: .75em 1em;
+      margin: 0;
+      font-size: 1.2em;
+      color: color.mix($tertiary, $text, 70%);;
+      background: color.mix($tertiary, $background, 12.5%);
+
+      & small {
+        color: $text-secondary;
+      }
+    }
+
+    & > p {
+      margin: .3em;
+    }
+  }
+}
