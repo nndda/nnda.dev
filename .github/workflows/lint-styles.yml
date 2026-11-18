@@ -8,14 +8,14 @@ on:
     paths:
       - '**/*.scss'
       - '.github/workflows/lint-styles.yml'
-      - 'dev/config/stylelint.config.ts'
+      - 'dev/config/stylelint.config.mts'
   pull_request:
     branches:
       - main
     paths:
       - '**/*.scss'
       - '.github/workflows/lint-styles.yml'
-      - 'dev/config/stylelint.config.ts'
+      - 'dev/config/stylelint.config.mts'
   workflow_dispatch:
 
 jobs:
