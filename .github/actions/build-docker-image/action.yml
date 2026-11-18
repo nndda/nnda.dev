@@ -31,4 +31,4 @@ runs:
         context: .
         push: true
         tags: nndda/nnda.dev
-        file: ./dev/config/Dockerfile
+        file: ./dev/Dockerfile

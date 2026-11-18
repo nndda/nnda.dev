@@ -15,7 +15,7 @@ on:
       - 'vite.config.mts'
       - 'dev/config/wrangler.toml'
       - 'dev/config/requirements.txt'
-      - 'dev/config/Dockerfile'
+      - 'dev/Dockerfile'
   workflow_dispatch:
 
 
@@ -75,7 +75,7 @@ jobs:
         with:
           filters: |
             deps:
-            - 'dev/config/Dockerfile'
+            - 'dev/Dockerfile'
             - 'dev/config/requirements.txt'
             - 'package.json'
             - 'bun.lock'
