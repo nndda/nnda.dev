@@ -1,15 +1,18 @@
-{
-  "extends": [
+import type { Config } from "stylelint";
+
+export default {
+  extends: [
     "stylelint-config-standard-scss",
-    "stylelint-config-recess-order"
+    "stylelint-config-recess-order",
   ],
-  "rules": {
+
+  rules: {
     "declaration-empty-line-before": null,
     "no-descending-specificity": null,
     "scss/double-slash-comment-empty-line-before": null,
     "scss/dollar-variable-empty-line-before": null,
     "at-rule-empty-line-before": null,
     "comment-empty-line-before": null,
-    "property-no-vendor-prefix": null
-  }
-}
+    "property-no-vendor-prefix": null,
+  },
+} satisfies Config;

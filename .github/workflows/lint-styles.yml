@@ -7,17 +7,15 @@ on:
       - dev
     paths:
       - '**/*.scss'
-      - '**/*.css'
       - '.github/workflows/lint-styles.yml'
-      - 'dev/config/.stylelintrc.json'
+      - 'dev/config/stylelint.config.ts'
   pull_request:
     branches:
       - main
     paths:
       - '**/*.scss'
-      - '**/*.css'
       - '.github/workflows/lint-styles.yml'
-      - 'dev/config/.stylelintrc.json'
+      - 'dev/config/stylelint.config.ts'
   workflow_dispatch:
 
 jobs:
