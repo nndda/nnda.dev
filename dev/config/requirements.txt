@@ -1,2 +1,2 @@
 Brotli==1.2.1
-fonttools==4.67.0
+fonttools==4.68.0
